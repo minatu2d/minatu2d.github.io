@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</h2>
+        <h5>July 29, 2016</h5>
+        
+<a href="localhost:1313tags/kernel"><kbd class="item-tag">Kernel</kbd></a>
+
+<a href="localhost:1313tags/linuximage"><kbd class="item-tag">LinuxImage</kbd></a>
+
+<a href="localhost:1313tags/raspberrypi"><kbd class="item-tag">RaspberryPI</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"></p>
+<h5>. Tạo một bản build cho Raspberry PI từ Ubuntu bằng Yocto Project</h5>
+<p>Mục đích của bước này là tạo ra được một ảnh đĩa (file .img giống như Raspabian cung cấp cho người dùng tại <a href="https://www.raspberrypi.org/downloads/raspbian/">đây</a>, sau khi đã giải nén). Sử dụng kết quả của <a href="https://www.yoctoproject.org/">Yocto Project</a> - một khung (framework) cho phép tạo ra một bản Linux có thể tùy biến được. Yocto Project cung cấp một bản phân phối Linux (gọi là Poky), người dùng có thể build cho rất nhiều target (gồm mainboard, chíp,etc) khác nhau.</p>
+<p>Việc build một bản Linux cho RPI trong trường hợp này là quá trình build Poky cho board Raspberry PI, chip là ARM (không nhớ phiên bản lắm).</p>
+<p>Nhưng thông tin có vẻ nghe khó hiểu và phức tạp, nhưng ta chỉ hiểu rằng ta Raspberry là một trong nhiều target mà Yocto Project hỗ trợ build OS cho. Vậy thôi, bắt đầu nào. Nó đơn giản hơn chúng ta nghĩ rất nhiều, chỉ tốn thời gian và khoảng trống ổ đĩa thôi.</p>
+<p>À, cần ít nhất khoảng 30GB trước khi thực hiện các bước này, một mạng có tốc độ tốt sẽ giúp giảm thời gian hoàn thành các bước bên dưới còn nửa ngày chẳng hạn :)))</p>
+<ul>
+<li>Trước khi bắt đầu, ta nên cài các gói cần thiết như dưới để đỡ phải cài lúc gặp lỗi:</li>
+</ul>
+<p>[code lang="shell"]<br />
+$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \<br />
+build-essential chrpath socat libsdl1.2-dev xterm<br />
+[/code]</p>
+<ul>
+<li>Tạo thư mục cần build, hiện tại <strong>krogoth</strong> đang là bản mới nhất:</li>
+</ul>
+<p>[code lang="shell"]<br />
+$mkdir raspberrpi_krogoth<br />
+[/code]</p>
+<ul>
+<li>Tải các Poky, như cách mọi người vẫn làm với <strong>git</strong> :</li>
+</ul>
+<p>[code lang="shell"]<br />
+$cd raspberrpi_krogoth<br />
+$<br />
+$git clone -b krogoth git://git.yoctoproject.org/poky.git<br />
+[/code]</p>
+<ul>
+<li>Như ta đã nói ở phần đầu, Poky là một bản phân phối Linux của Yocto Project, mặc định của nó không hỗ trợ RPI (chỉ có Texas Instruments Beaglebone - beaglebone và Freescale MPC8315E-RDB - mpc8315e-rdb mà thôi, xem thêm tại <a href="http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/README.hardware?h=krogoth">đây</a>). Vì thế, ta phải tải phần hỗ trợ liên quan đến bo mạch (BSP) của RPI<br />
+<strong>jethro</strong> là bản mới nhất</li>
+</ul>
+<p>[code lang="shell"]<br />
+$cd poky<br />
+$<br />
+$git clone -b jethro git://git.yoctoproject.org/meta-raspberrypi<br />
+[/code]</p>
+<p>Đến đây, ta đã được 1 nửa về mặt thao tác phải làm, nhưng chỉ mới 1/10 về mặt thời gian phải đợi. Xin hãy từ từ :))</p>
+<p>Tiếp theo, ta bắt đầu vào build.<br />
+- Thiết lập các biến môi trường<br />
+Do poky đã cung cấp sẵn script thiết lập các biến này rồi.<br />
+Ta chỉ cần chạy.</p>
+<p>[code lang="shell"]<br />
+$source poky/oe-init-build-env build<br />
+[/code]</p>
+<p>(có thể không cần <strong>buid</strong> ở cuối)<br />
+Sau khi chạy xong lệnh trên, đường dẫn sẽ tự động chuyển về thư mục build của Yocto. Ta bắt đầu làm mọi thứ từ đây.<br />
+Nó có dạng kiểu như thế này:</p>
+<p>[code lang="shell"]<br />
+oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$<br />
+[/code]</p>
+<ul>
+<li>Poky chia các gói phần mềm thành các layer (lớp), gói hỗ trợ RPI cũng vậy, vì không được hỗ trợ mặc định nên ta phải thêm vào bằng cách:</li>
+</ul>
+<p>Mở file <strong>build/conf/bblayers.conf</strong> bằng <em>nano</em>, <em>vi</em> hoặc bất cứ editor nào.<br />
+Rồi thêm đường dẫn đến gói hỗ trợ bo mạch RPI.<br />
+Sau khi sửa, nó sẽ có nội dung kiểu như sau:</p>
+<p>[code lang="shell"]<br />
+oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ cat conf/bblayers.conf</p>
+<p># POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf<br />
+# changes incompatibly<br />
+POKY_BBLAYERS_CONF_VERSION = &amp;amp;quot;2&amp;amp;quot;</p>
+<p>BBPATH = &amp;amp;quot;${TOPDIR}&amp;amp;quot;<br />
+BBFILES ?= &amp;amp;quot;&amp;amp;quot;</p>
+<p>BBLAYERS ?= &amp;amp;quot; \<br />
+/home/oedev/raspberrypi_krogoth/poky/meta \<br />
+/home/oedev/raspberrypi_krogoth/poky/meta-poky \<br />
+/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp \<br />
+/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi \ # mới thêm vào<br />
+&amp;amp;quot;<br />
+[/code]</p>
+<ul>
+<li>Tiếp theo, ta phải thay đổi Target Machine,</li>
+</ul>
+<p>Bản phân phối Poky của Yocto Project hỗ trợ rất nhiều Target Machine, trong đó có những Board mặc định của TI, Freescale hoặc chương trình mô phỏng phần cứng Qemu.</p>
+<p>Raspberry PI không được hỗ trợ mặc định nên ta phải thêm nó vào.</p>
+<p>Mở file <strong>build/conf/local.conf </strong>và sửa như sau:</p>
+<p>[code lang="shell"]<br />
+....<br />
+#MACHINE ?= &quot;qemuarm64&quot;<br />
+#MACHINE ?= &quot;qemumips&quot;<br />
+#MACHINE ?= &quot;qemumips64&quot;<br />
+#MACHINE ?= &quot;qemuppc&quot;<br />
+#MACHINE ?= &quot;qemux86&quot;<br />
+#MACHINE ?= &quot;qemux86-64&quot;<br />
+#<br />
+# There are also the following hardware board target machines included for<br />
+# demonstration purposes:<br />
+#<br />
+#MACHINE ?= &quot;beaglebone&quot;<br />
+#MACHINE ?= &quot;genericx86&quot;<br />
+#MACHINE ?= &quot;genericx86-64&quot;<br />
+#MACHINE ?= &quot;mpc8315e-rdb&quot;<br />
+#MACHINE ?= &quot;edgerouter&quot;<br />
+#<br />
+# This sets the default machine to be qemux86 if no other machine is selected:<br />
+MACHINE ??= &quot;qemux86&quot;</p>
+<p># Thêm vào cho RaspberryPI<br />
+MACHINE ?= &quot;raspberrypi&quot;<br />
+....<br />
+[/code]</p>
+<ul>
+<li>Giờ bắt đầu build và bỏ máy, ở phần chạy lệnh <strong>source</strong> phía trên, ta có thể thấy một đoạn được hiện ra với hướng dẫn kiểu <strong>bitbake XXX</strong>.<br />
+Ta cũng làm tương tự như vậy</li>
+</ul>
+<p>[code lang="shell"]<br />
+$bitbake rpi-basic-image<br />
+[/code]</p>
+<p>Bước này sẽ thực hiện việc tải các source cần thiết, thực hiện các sửa, thực hiện tạo compiler, build source, rồi tạo image.<br />
+<strong>rpi-basic-image</strong> : là 1 một images mà framework có thể tạo, ta có thể xem danh sách các images khác bằng đường dẫn bên dưới đây:</p>
+<p>[code lang="shell"]<br />
+oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky/meta-raspberrypi$ ls recipes-core/images/<br />
+rpi-basic-image.bb rpi-hwup-image.bb rpi-test-image.bb<br />
+[/code]</p>
+<p>Trong quá trình thực hiện, có thể gặp phải lỗi kiểu như sau:</p>
+<p>Error.01 : Việc tải bị timeout: chỉ có cách thực hiện lại một vài lần<br />
+Tức là chạy lại câu lệnh <strong>bitbake rpi-basic-image</strong> ở phía trên.<br />
+Error.02 : Không tìm thấy file <strong>mkknlimg</strong>:<br />
+Lỗi sẽ hiện ra kiểu như thế này:</p>
+<p>[code lang="shell"]<br />
+DEBUG: Executing shell function do_rpiboot_mkimage<br />
+/build/tmp/sysroots/x86_64-linux/usr/lib/rpi-mkimage/mkknlimg: not found<br />
+WARNING: exit code 127 from a shell command.<br />
+[/code]</p>
+<p>Đây là lỗi đường dẫn, hãy sửa bằng cách:</p>
+<p>[code lang="shell"]<br />
+#Tìm kiếm mkknlimg xem có ở đâu đó không.<br />
+$ locate mkknlimg<br />
+[/code]</p>
+<p>Sẽ có kết quả dạng:<br />
+<em>.../tmp/sysroots/x86_64-linux/usr/libexec/mkknlimg</em><br />
+Ta đi sửa cho đúng là ok.<br />
+Mở file <em>poky/meta-raspberrypi/recipes-kernel/linux/linux-raspberrypi.inc</em><br />
+Tìm đến hàm <em>do_rpiboot_mkimage()</em> sửa thành như sau:</p>
+<p>[code lang="python"]<br />
+#Comment dòng cũ này: ${STAGING_DIR_NATIVE}/usr/lib/rpi-mkimage/mkknlimg ...<br />
+${STAGING_DIR_NATIVE}/usr/libexec/mkknlimg ...<br />
+[/code]</p>
+<p>Error.03 : Việc tải <strong>bcm2835-bootfiles</strong> dường như bị đứng lại, thực ra không phải vậy, nó nặng đến 3GB, nếu đường truyền chậm thì rất có thể phải đợi rất lâu, ta có cả giác nó không hề làm việc. Nhưng hãy cố gắng đợi nha. :))</p>
+<p>Error.04 : Lỗi khi kiểm tra check sum của image được build ra, lỗi này được sửa bằng cách thêm 1 dòng vào file dưới đây:</p>
+<p><em>poky/meta-raspberrypi/classes/sdcard_image-rpi.bbclass</em></p>
+<p>Nội dung đoạn thêm sẽ như thế này:</p>
+<p>[code lang="python"]<br />
+IMAGEDATESTAMP = &amp;amp;quot;${@time.strftime('%Y.%m.%d',time.gmtime())}&amp;amp;quot;<br />
+#Nội dung thêm vào:<br />
+IMAGE_CMD_rpi-sdimg[vardepsexclude] = &amp;amp;quot;IMAGEDATESTAMP&amp;amp;quot;<br />
+[/code]</p>
+<p>Sau khi thực hiện xong bước build images, ta sẽ thu được images trong thư mục<br />
+<strong>build/tmp/deploy/images/raspberrypi</strong> với tên <strong>rpi-basic-image-raspberrypi.rpi-sdimg</strong>.</p>
+<p>Ta có thể ghi vào thẻ nhớ để để boot RPI bình thường</p>
+<p>Việc ghi ra thẻ nhớ thì làm theo hướng dẫn dành cho Raspbian ở link <a href="https://www.raspberrypi.org/documentation/installation/installing-images/linux.md">này</a>.</p>
+<p>Update: 2017/02/14: Cám ơn bạn HocARM review và phát phát hiện ra chỗ thiếu phần configure Target Machine.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2017-01-19-ve-dev-trong-embedded-linux/">Về /dev trong Embedded Linux</a></h4>
+    <h5>January 19, 2017</h5>
+    
+<a href="localhost:1313tags/device-file"><kbd class="item-tag">device file</kbd></a>
+
+<a href="localhost:1313tags/kernel"><kbd class="item-tag">Kernel</kbd></a>
+
+<a href="localhost:1313tags/systemd"><kbd class="item-tag">systemd</kbd></a>
+
+<a href="localhost:1313tags/udev"><kbd class="item-tag">udev</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/">[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</a></h4>
+    <h5>April 25, 2015</h5>
+    
+<a href="localhost:1313tags/raspberrypi"><kbd class="item-tag">RaspberryPI</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

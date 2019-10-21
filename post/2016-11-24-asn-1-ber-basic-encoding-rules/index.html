@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>ASN.1 - BER (Basic Encoding Rules)</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">ASN.1 - BER (Basic Encoding Rules)</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>ASN.1 - BER (Basic Encoding Rules)</h2>
+        <h5>November 24, 2016</h5>
+        
+<a href="localhost:1313tags/asn1"><kbd class="item-tag">ASN1</kbd></a>
+
+<a href="localhost:1313tags/per"><kbd class="item-tag">PER</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">Bài này sẽ nói về <strong>BER</strong> và <strong>CER/DER</strong>, <strong>PER</strong> sẽ để ở bài sau.</p>
+<p>Link nguồn chính:<br />
+<a href="http://www5d.biglobe.ne.jp/~stssk/asn1/index.html">http://www5d.biglobe.ne.jp/~stssk/asn1/index.html</a></p>
+<p>của bác <a href="http://www5d.biglobe.ne.jp/~stssk/mail.html">Ishida So</a></p>
+<p><em>Một chút về lịch sử</em>:<br />
+<strong>BER</strong> ban đầu là phương pháp hiện thực duy nhất của ASN.1. Từ 1985, ASN.1 tách riêng phần định nghĩa và phần hiện thực dữ liệu ra, vì thế có thêm nhiều phương thức hiện thực khác được đưa ra.<br />
+<strong>CER/DER</strong> được kế thừa từ <strong>BER</strong>, còn <strong>PER</strong> được đưa ra năm 1994.</p>
+<h3>1. Hiện thực hóa TLV (TLV Encoding)</h3>
+<p>Về mặt kĩ thuật, <strong>BER</strong> sử dụng <strong>TLV</strong> cho việc hiện thực dữ liệu.<br />
+Khi Encode <strong>TLV</strong> sử dụng 3 yếu tố dưới đây, để biểu diễn từng loại dữ liệu.<br />
+Khi Decode, dựa vào 3 yếu tố này để xác định kiểu, độ dài tướng ứng của mỗi loại dữ liệu.</p>
+<p><strong>T</strong> : Type, tức là kiểu dữ liệu, sử dụng <strong>Tag</strong><br />
+<strong>L</strong> : Length, tức là độ dài dữ liệu<br />
+<strong>V</strong> : Value, tức là giá trị</p>
+<p>Với kiểu cơ bản, phần giá trị (<strong>V</strong>) sẽ được biểu diễn theo dữ liệu của kiểu. Còn với kiểu cấu trúc, phần dữ liệu lại một lần nữa được biểu diễn bằng <strong>TLV</strong>.</p>
+<p><img class="alignnone size-full wp-image-1596" src="{{ site.baseurl }}/assets/pic_1.png" alt="pic_1" width="614" height="68" /></p>
+<h3>2. Thứ tự bit (Bit order)</h3>
+<p><strong>BER</strong> sử dụng đơn vị 8 bit (1 octet) để biểu diễn.<br />
+Tức là cho dù kiểu dữ liệu là 1 bit thì nó vẫn sử dụng 1 octet để biểu diễn.<br />
+Thứ tự octet là Octet ý nghĩa cao -&gt; Octet ý nghĩa thấp) theo chiều từ trái qua phải. Điều này hướng đến việc thích hợp với truyền dữ liệu qua mạng (Network Byte Order).</p>
+<p><img class="alignnone size-full wp-image-1597" src="{{ site.baseurl }}/assets/pic_3.png" alt="pic_3" width="502" height="113" /></p>
+<p>Còn trong 1 octet, thứ tự và ý nghĩa được thể hiện như sau:</p>
+<p><img class="alignnone size-full wp-image-1598" src="{{ site.baseurl }}/assets/pic_4.png" alt="pic_4" width="790" height="85" /></p>
+<h3>3. Hiện thực hóa các thẻ</h3>
+<p>Thẻ (<strong>Tag</strong>) là khái niệm đã được nhắc đến trong <a href="https://lazytrick.wordpress.com/2016/11/16/asn-1-cu-phap-co-ban/">bài trước</a></p>
+<p>Có 4 nhóm thẻ khác nhau là:<br />
+- Phổ biến (UNIVERSAL)<br />
+- Ứng dụng (APPLICATION)<br />
+- Đặc trưng ngữ cảnh<br />
+- Riêng (PRIVATE)</p>
+<p>Ta hãy xem <strong>BER</strong> biểu diễn <strong>T</strong> như thế nào:<br />
+- Bit thứ 8-7: Biểu diễn nhóm Thẻ<br />
+- Bit thứ 6: Biểu diễn là kiểu cơ bản hay cấu trúc<br />
+- Bit thứ 5-1: Biểu diễn số Thẻ<br />
+Cụ thể như sau:</p>
+<table border="1">
+<tbody>
+<tr>
+<td>Chỉ số Thẻ</td>
+<td>Các biểu diễn</td>
+<td rowspan="3">Lớp：</p>
+<p>００：Phổ biến</p>
+<p>０１：Ứng dụng</p>
+<p>１０：Đặc trưng ngữ cảnh</p>
+<p>１１：Riêng</p>
+<p>Ｐ／Ｃ：</p>
+<p>０：Kiểu cơ bản</p>
+<p>１：Kiểu cấu trúc</td>
+</tr>
+<tr>
+<td>０～３０</td>
+<td><img class="alignnone size-full wp-image-1599" src="{{ site.baseurl }}/assets/pic5.png" /></td>
+</tr>
+<tr>
+<td>３１～</td>
+<td><img class=" size-full wp-image-1600 alignnone" src="{{ site.baseurl }}/assets/pic_6.png" /></td>
+</tr>
+</tbody>
+</table>
+<p><em>Ví dụ</em>: Số điện thoại với định nghĩa và hiện thực tương ứng như bên dưới đây là một ví dụ cho 2 lần <strong>TLV</strong>.</p>
+<p>[code lang=cpp]<br />
+TelephoneNumber ::= [1] NumericString<br />
+[/code]</p>
+<p><img class="alignnone size-full wp-image-1602" src="{{ site.baseurl }}/assets/pic_8.png" alt="pic_8" width="260" height="51" /></p>
+<p>Khi muốn bỏ biểu diễn phần <strong>T</strong> đi, <strong>BER</strong> sử dụng từ khóa <strong>IMPLICIT</strong> trong định nghĩa của ASN.1.<br />
+*Thế mới biết, từ khóa này ban đầu dành cho <strong>BER</strong></p>
+<p>[code lang=cpp]<br />
+TelephoneNumber ::= [1] IMPLICIT NumericString<br />
+[/code]</p>
+<p><img class="alignnone size-full wp-image-1603" src="{{ site.baseurl }}/assets/pic_9.png" alt="pic_9" width="136" height="34" /></p>
+<p>Ngược lại với <strong>IMPLICIT</strong>, sử dụng <strong>EXPLICIT</strong> sẽ phải sử dụng <strong>TLV</strong> cho phần dữ liệu <strong>V</strong>.</p>
+<h3>4. Hiện thực độ dài dữ liệu(L)</h3>
+<ul>
+<li>Khi độ dài dữ liệu nhỏ &lt;= 127, được gọi là Short Definite - Dạng ngắn, 1 octet được sử dụng để biểu diễn (thực sự sử dụng 7 bit, còn bit đầu là 0). - Khi độ dài &gt;=128, 2 octet trở lên được sử dụng để biểu diễn, gọi là Long Definite - Dạng dài. Bit đầu của octet đầu tiên được set là 1. 7 bit tiếp theo miêu tả độ dài tính theo octet của độ dài dữ liệu (1-126).</li>
+</ul>
+<p><img class="alignnone size-full wp-image-1622" src="{{ site.baseurl }}/assets/pic_12.png" alt="pic_12" width="259" height="34" /><br />
+Tức là nếu độ dài dữ liệu (<strong>V</strong>)là 128-255 thì 7 bit này sẽ có giá trị 1. Nếu độ dài dữ liệu từ 256-65535 thì 7 bit này sẽ có giá trị 2.<br />
+- Giá trị 127 cũng có thể được sử dụng nếu cần thiết.</p>
+<p><img class="alignnone size-full wp-image-1623" src="{{ site.baseurl }}/assets/pic_13.png" alt="pic_13" width="642" height="51" /></p>
+<p>Trong trường hợp của kiểu cấu trúc, phải hiện thực với độ dài có thể thay đổi (Inefinite). Trường độ dài (<strong>L</strong>) sẽ có độ dài là 1 octet, bit cao nhất được gán là 1, các bit còn lại là 0 (tức là <strong>giá trị 0x80</strong>). Phần giá trị <strong>V</strong> sẽ được hiện thực ở ngay phía sau, phần này sẽ được kết thúc bởi <strong>2 octet toàn là 0</strong>.</p>
+<p><img class="alignnone size-full wp-image-1605" src="{{ site.baseurl }}/assets/pic_11.png" alt="pic_11" width="695" height="34" /></p>
+<h3>5. Hiện thực phần giá trị</h3>
+<p>Mỗi giá trị phụ thuộc vào từng Tag tương ứng với nó.</p>
+<table border="1">
+<tbody>
+<tr>
+<td>Kiểu logic</p>
+<p>(<b>BOOLEAN</b>)</td>
+<td>Kiểu cơ bản, sử dụng 1 octet, giá trị 0 cho FALSE, giá trị khác 0 cho TRUE</td>
+</tr>
+<tr>
+<td>Kiểu NULL</p>
+<p>(<b>NULL</b>)</td>
+<td>Kiểu cơ bản, độ dài bằng 0, không phục thuộc vào giá trị</td>
+</tr>
+<tr>
+<td>Kiểu số nguyên</p>
+<p>(<b>INTEGER</b>)</td>
+<td>Kiểu cơ bản, giá trị được biểu diễn ở dạng bù 2 (có dấu).</td>
+</tr>
+<tr>
+<td>Kiểu số thực</p>
+<p>(<b>REAL</b>)</td>
+<td>Đại khái là không giống với cách biểu diễn trên máy tính. (Giải thích dịp khác)</td>
+</tr>
+<tr>
+<td>Kiểu liệt kê</p>
+<p>(<b>ENUMERATED</b>)</td>
+<td>Phụ thuộc vào các giá trị mà nó biểu diễn, sẽ được biểu diễn giống với kiểu nguyên</td>
+</tr>
+<tr>
+<td>Kiểu dãy bit</p>
+<p>(<b>BIT STRING</b>)</td>
+<td>Có thể biểu diễn bằng cả kiểu cơ bản lẫn cấu trúc.<br />
+Trường hợp sử dụng kiểu cơ bản, octet đầu tiên chứa giá trị bằng số bit không được sử dụng của octet cuối cùng. Dù nó là 0 hay 1 đi nữa đều được biểu diễn. Trong trường hợp này, nếu độ dài dãy bit là 0, thì no không thục thuộc vào dữ liệu chứa nữa.<br />
+Trường hợp sử dụng kiểu cấu trúc, được biểu diễn bằng dãy kiểu cơ bản.</td>
+</tr>
+<tr>
+<td>Kiểu OCTET (byte)</p>
+<p>(<b>OCTET STRING</b>)</td>
+<td>Có thể biểu diễn bằng cả kiểu cơ bản lẫn kiểu cấu trúc.<br />
+Với kiểu cơ bản, thì biểu diễn bằng một dãy Octet thôi.<br />
+Với kiểu cấu trúc, được biểu diễn bằng một dãy kiểu cơ bản khác.</td>
+</tr>
+<tr>
+<td>Kiểu chỉ định đối tượng</p>
+<p>(<b>OBJECT IDENTIFIER</b>)</td>
+<td>Được biểu diễn bằng kiểu cơ bản. Chỉ số của đối tượng cũng được chỉ ra. (Chi tiết sẽ được giải thích sau)</td>
+</tr>
+<tr>
+<td>Kiểu giới hạn kí tự</p>
+<p>(<b>...String</b>)</td>
+<td>Được biểu diễn giống với kiểu Octet</td>
+</tr>
+<tr>
+<td>Kiểu lựa chọn</p>
+<p>(<b>CHOICE</b>)</td>
+<td>Kiểu lựa chọn bản thân nó không được biểu diễn bằng BER, BER chỉ hiện thực khi đã được lựa chọn rồi thôi.</td>
+</tr>
+<tr>
+<td>Kiểu xếp tuần tự</p>
+<p>(<b>SEQUENCE</b>)</td>
+<td>Biểu diễn bằng kiểu cấu trúc. Nội dung sẽ là nội dung của môi thành phần.</td>
+</tr>
+<tr>
+<td>Kiểu mảng</p>
+<p>(<b>SEQUENCE OF</b>)</td>
+<td>Giống với kiểu xếp tuần tự</td>
+</tr>
+<tr>
+<td>Kiểu tập hợp hỗn hợp</p>
+<p>(<b>SET</b>)</td>
+<td>Thứ tự tùy ý sẽ bị bỏ đi, và được biểu diễn giống với kiểu xếp tuần tự.</td>
+</tr>
+<tr>
+<td>Kiểu tập hợp đồng nhất</p>
+<p>(<b>SET-OF</b>)</td>
+<td>Giống với kiểu sếp tuần tự.</td>
+</tr>
+</tbody>
+</table>
+<div class="itanywhere-activator" style="left:145px;top:2305px;display:none;" title="Google Translator Anywhere"></div>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-11-29-per-trong-asn-1-encoding/">PER trong ASN.1 Encoding</a></h4>
+    <h5>November 29, 2016</h5>
+    
+<a href="localhost:1313tags/asn1"><kbd class="item-tag">ASN1</kbd></a>
+
+<a href="localhost:1313tags/per"><kbd class="item-tag">PER</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-11-25-phuong-thuc-cerder/">CER/DER trong ASN.1 Encoding</a></h4>
+    <h5>November 25, 2016</h5>
+    
+<a href="localhost:1313tags/asn1"><kbd class="item-tag">ASN1</kbd></a>
+
+<a href="localhost:1313tags/cer"><kbd class="item-tag">CER</kbd></a>
+
+<a href="localhost:1313tags/der"><kbd class="item-tag">DER</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-11-16-asn-1-cu-phap-co-ban/">ASN.1 - Cú pháp cơ bản</a></h4>
+    <h5>November 16, 2016</h5>
+    
+<a href="localhost:1313tags/asn1"><kbd class="item-tag">ASN1</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

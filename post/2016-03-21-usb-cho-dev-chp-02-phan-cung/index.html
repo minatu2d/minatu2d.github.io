@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>USB cho Dev (Chp.02 - Phần cứng)</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">USB cho Dev (Chp.02 - Phần cứng)</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>USB cho Dev (Chp.02 - Phần cứng)</h2>
+        <h5>March 21, 2016</h5>
+        
+<a href="localhost:1313tags/translate"><kbd class="item-tag">Translate</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">Cắm vào type A nghĩa là hướng đến upstream. Ta thường thấy khe cắm Type A (đầu cái) trên Host hoặc Hubs ta vẫn dùng hàng ngày. Cắm vào Type B nghĩa là hướng đến downstream, ta vẫn thấy đầu cắm loại này ở thiết bị.</p>
+<p>Có một điều khá thú vị, đó là ta có thể hay bắt gặp các dây type A - type A (nối thằng) hay nối dài, gồm một dãy các các đầu chuyển cực (đực -&gt; cái -&gt; đực...) . Đúng ra những dây đó mâu thuẫn với đặc tả USB. Những số loại dây khác cũng thế, chúng thường được sử dụng là dây trung gian giữa 2 đầu type A và type B.</p>
+<p>USB 2.0 cũng có một hiệu đính để giới thiệu về đầu kết nối mini-usb B. Chi tiết về đầu kết nối này có thể xem tại <a href="http://www.usb.org/developers/data/ecn1.pdf">Mini-B Connector Engineering Change Notice</a>. Lý do là, type B quá to để tích hợp vào những thiết bị điện tử yêu cầu nhỏ gọn tối đa như điện thoại, thiết bị cầm tay.</p>
+<p>Gần đây, đặc tả về OTG <a href="http://www.beyondlogic.org/usb/otghost.htm">On-The-Go specification</a> ra đời, cho phép kết nối ngang hàng Peer-to-Peer giữa 2 thiết bị USB. Chuẩn này được đưa ra cho phép USB Host có thể nằm trên các thiết bị như điện thoại, thiết bị cầm tay. Tôi đoán rằng, chúng ta sẽ thấy tràn ngập thiết bị được trang bị mini-USB trong thời gian sớm thôi.</p>
+<table>
+<tbody>
+<tr id="head">
+<td>Pin Number</td>
+<td>Cable Colour</td>
+<td>Function</td>
+</tr>
+<tr id="row">
+<td>1</td>
+<td>Red</td>
+<td>V<sub>BUS</sub> (5 volts)</td>
+</tr>
+<tr id="row">
+<td>2</td>
+<td>White</td>
+<td>D-</td>
+</tr>
+<tr id="row">
+<td>3</td>
+<td>Green</td>
+<td>D+</td>
+</tr>
+<tr id="row">
+<td>4</td>
+<td>Black</td>
+<td>Ground</td>
+</tr>
+</tbody>
+</table>
+<p>Các màu dây bên trong bên trong cáp USB, việc gán màu giúp các nhà phát triển dễ dàng hơn trong việc xác định tín hiệu. Đặc tả USB chỉ ra nhiều tham số về điện khác nhau cho cáp USB. Nếu bạn có muốn tìm hiểu kĩ hơn nên đọc đặc tả của USB 1.0. Trong tài liệu đó, người ta gợi ý rằng nên để các dây toàn màu màu xám sương. Nhưng trong USB 1.1, 2.0 thì chúng được thay thế bằng các màu tự nhiên hơn Đen, Xám.</p>
+<p>PCB Designer có lẽ muốn tham khảo ở Chapter 6 để biết thêm những chi tiết về pinout.</p>
+<h3>Về điện (Electrical)</h3>
+<p>Trừ khi bạn là người đang mong muốn thiết kế mức silicon cho USB Device/Transceiver hoặc USB Host/ Hubs. Không phải là tất cả, nhưng bạn có thể tham khảo kĩ hơn ở Chapter 7. Chúng ta chỉ lướt qua những điểm cơ bản ở đây thôi.</p>
+<p>Như chúng ta đã thảo luận ở bài trước, USB có nhiều dạng truyền dữ liệu khác nhau. Nó được Encode sử dụng NRZI, các bit được chuyển đảm bảo theo dòng. Ở thiết bị low và full speed, mức logic 1 được xác định ở mức điện áp cho D+ là 2.8V với trở kháng là 15K ohm, nối đất;cho D- ở mức dưới 0.3V và cũng qua trở kháng 1.5K Ohm được kéo bởi điện ap 3.6V. Mức logic 0 là những trường hợp còn lại, hay D- lớn hơn 2.8V và D+ nhỏ hơn 0.3V với một trở kháng kéo xuống/lên tương ứng như ở trên.</p>
+<p>Tốc độ là low/full speed được xác định thông qua giá trị dòng qua điện trở 90 ohm +/- 15%. Vì thế, giá trị này rất quan trọng trọng việc chọn dòng phù hợp tương ứng với các điện trở ở D+/D-.</p>
+<p>High Speed sử dụng dòng cố định 17.78mA cho các tín hiệu của nó nhàm giảm nhiễu.</p>
+<h3>Xác định tốc độ</h3>
+<p>Một thiết bị phải thiết lập tốc độ cho chính nó bằng cách Pull D+ hoặc D- đến 3.3V. Một thiết bị Full Speed, như hình bên dưới đây, sẽ sử dụng một điện trở Pull Up đến gắn với D+. Giá trị điện trở này cũng được phía Host/Hub sử dụng để phát hiện thiết bị được cắm vào. Nếu không có điện trở pull up này, thì phía Host/Hub sẽ coi như không có gì được kết nối vào bus. Một số thiết bị tích hợp điện trở này bên trong thành phần mạch của nó, và cho phép bật hay không bằng xử lý trong firmware, mốt số khác thì sử dụng điện trở gắn ngoài chip.</p>
+<p>Ví dụ: Philips Semiconductor đưa ra SoftConnect Technology. Khi kết nối thiết bị hỗ trợ công nghệ này vào bus, chức năng của thiết bị USB này sẽ được khởi động trước cả khi nó bật hay tắt điện trở pull up để host xác định tốc độ của nó. Nếu điện trở này được bật ngay, và được kết nối đến Vbus thì rất có thể phía Host sẽ xác định kết nối và liên tục gửi yêu cầu reset cũng như hỏi các thông số khác khi mà controller phía device còn chưa được khởi động.</p>
+<p>Một số nhà sản xuất khác như Cypress Semiconductor, sử dụng điện trở lập trình lại được cho các thiết bị EzUSB của họ. Khi đó, một thiết bị sau khi được nhận là một chức năng nào đó, có thể được ngắt kết nối bằng xử lý trên firmware, sau đó kết nối như một chức năng khác. Tất cả được thực hiện mà không cần sự tác động của người dùng. Rất nhiều thiết bị EzUSB không sử dụng Flash hoặc OTP ROM để chưa code.  Chúng được load load khi có connect thôi.</p>
+<table width="60%">
+<tbody>
+<tr>
+<td width="50%"><img src="{{ site.baseurl }}/assets/fspullup.gif" alt="" /></td>
+</tr>
+<tr>
+<td>Hình 2 : Thiết bị Full Speed có một điện trở pull up nối với D+</td>
+</tr>
+<tr>
+<td width="50%"><img src="{{ site.baseurl }}/assets/lspullup.gif" alt="" /></td>
+</tr>
+<tr>
+<td>Hình 3 : Thiết bị Low Speed có một điện trở Pull Up nối với D-</td>
+</tr>
+</tbody>
+</table>
+<p>Bạn sẽ nhận thấy là, việc xác định High Speed không được nhắc đến. Thực ra, thiết bị High Speed sẽ bắt đầu kết nối như là một thiết bị Full Speed. Khi đã được đã gắn vào Bus, nó sẽ thiết lập chế độ High Speed ở bước Reset nếu Hub/Host support tốc độ này. Khi chế độ High Speed được bật, thì điện trở Pull Up sẽ được loại bỏ để giữ cân bằng line.</p>
+<p>Thiết bị tuân theo USB 2.0 không yêu cầu bắt buộc support High Speed. Điều này cho phép thiết bị có thể được sản xuất với giá rẻ hơn nếu không có yêu cầu khắt khe về tốc độ. Một thiết bị low speed cũng thế, không yêu cầu support Full Speed nếu nó không cần thiết cho thiết bị.</p>
+<p>Một thiết bị High Speed không cần support low speed, nó chỉ cần support Full Speed vì sẽ sử dụng ở bước connect ban đầu. Tuân thủ USB 2.0, downstreamxuống thiết bị phải support cả 3 mode về tốc độ.</p>
+<h3>Nguồn (VBus)</h3>
+<p>Một trong những điểm mạnh của USB là khả năng cung cấp nguồn cho thiết bị. Thiết bị có thể lấy nguồn từ Bus vì thế không cần trang bị thêm module cung cấp nguồn nào khác. Tuy nhiên, có nhiều trường hợp quá trông cậy vào đặc điểm này mà không tính đến hết các yếu khác.</p>
+<p>Một thiết bị USB miêu tả dòng tiêu thụ (chính xác đến 2mA) của nó trong miêu tả cấu hình của nó (chúng ta sẽ xem xét chi tiết ở phần sau). Một thiết bị không thể nhận một dòng cao hơn cái được thiết trong suốt quá trình emuration được kể cả nó không có nguồn cấp ngoài đi nữa. Có 3 lớp cung cấp nguồn chu USB:</p>
+<p>Cấp nguồn thấp qua bus: Low-power bus powered functions<br />
+Cấp nguồn cao bus: High-power bus powered functions<br />
+Tự cấp nguồn : Self-powered functions</p>
+<p>Chức năng cung cấp nguồn thấp qua bus sẽ cung cấp nguồn cho thiết bị từ Vbus, nó không thể có dòng lớn hơn 1 unit được. Đặc tả USB định nghĩa 1 unit tải tương đương với 100mA. Chức năng cung cấp nguồn thấp qua bus này phải được thiết kế để làm việc điện áp từ 4.40V đến 5.25V được đo ở phía UpStream (host/hub). Với những thiết bị 3.3V thì cần phải có LCD Regulators.</p>
+<p>Chức năng cung cấp nguồn cao qua bus sẽ cung cấp nguồn cho thiết bị từ Vbú, nó không thể có dòng lớn hơn 1 unit cho đến khi được configured xong. Sau đó, nó có thể sử dụng tối đa 5 units (500mA) nếu cấu hình của nó yêu cầu. Chức năng này phải được thực hiện với điện áp nhỏ nhất là 4.4V khi phát hiện kết nối và enumerated. Sau khi configure xong, thì điện áp nguồn phía đầu cắm upstream phải nằm trong khoảng 4.75V - 5.25V.</p>
+<p>Chức năng tự cấp nguồn, có thể nhận được nguồn tối đa 1 unit từ bus, còn lại nhận từ nguồn bên ngoài. Nếu nguồn bên ngoài bị ngắt, thì ngay lúc đó phải đảm bảo không lấy nhiều hơn 1 unit từ bus. Chức năng tự cung cấp nguồn này sẽ dễ để thiêt kết hơn vì không xảy ra nhiều vấn đề liên quan đến nguồn tiêu thụ. Với 1 unit từ bus, đủ để quá trình enumuration và configure thiết bị diễn ra mà không cần nguồn thứ 2.</p>
+<p>Không có thiết bị USB nào được phép điều chỉnh VBus từ upstream. Nếu VBus hỏng, tín hiệu qua các chân D+/D- sẽ bị ngắt trong 10 s.</p>
+<p>Một vấn đề khác với VBus là dòng ban đầu phải được giới hạn. Điều này được đề cập đến trong phần 7.2.4.1 của đặc tả. Dòng sẽ hóa giải bởi một điện dung vừa đủ giữa VBus và ground. Trong đặc tả chỉ giá trị lớn nhất của điện dung có thể sử dụng là 10uF. Một điều nữa, khi rút thiết bị khỏi kết nối, dòng hiện tại sẽ bị ném qua dây USB một sự tăng áp lớn có thể xảy trên các đầu mở dây. Để ngăn điều này, một điện dung nhỏ nhất 1uF được chỉ định.</p>
+<p>Với những thiết bị sử dụng nguồn từ bus, nó không thể có dòng lớn hơn 500mA, thường là không thể. Bạn có tự hỏi đây là giá trị gì không? Có lẽ là Suspend Mode.</p>
+<h3>Suspend Current</h3>
+<p>Suspend mode là cần thiết cho tất cả các thiết bị. Ở chế độ suspend, một số ràng buộc khác bắt buộc phải tuân theo.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/">USB cho dev (Chap.06 – Các gói tin Setup)</a></h4>
+    <h5>July 23, 2016</h5>
+    
+<a href="localhost:1313tags/translate"><kbd class="item-tag">Translate</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/">USB cho dev (Chap.05 – Đặc tả thiết bị)</a></h4>
+    <h5>July 18, 2016</h5>
+    
+<a href="localhost:1313tags/translate"><kbd class="item-tag">Translate</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/">USB cho dev (Chap.04 - Các loại Endpoint)</a></h4>
+    <h5>March 26, 2016</h5>
+    
+<a href="localhost:1313tags/translate"><kbd class="item-tag">Translate</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

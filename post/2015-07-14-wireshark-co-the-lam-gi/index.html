@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Wireshark có thể làm gì?</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Wireshark có thể làm gì?</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Wireshark có thể làm gì?</h2>
+        <h5>July 14, 2015</h5>
+        
+<a href="localhost:1313tags/wireshark"><kbd class="item-tag">Wireshark</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">
+
+<p>Dù biết tool này đã lâu, từ hồi học ĐH có mở ra mở vào để làm mấy bài tập mạng theo kiểu &ldquo;chống chế&rdquo;. Hơn nữa ngày đó, phần mạng (networking) mình cũng không nhiều kiến thức vì đang ham hố phần viết một phần mềm để đời, có giao diện chứ không đen ngòm như mấy cái thầy giáo dạy trên lớp.</p>
+
+<p>Lại sắp lan man rồi, vào đề thôi.</p>
+
+<p>Trong bài này sẽ trả lời mấy câu sau:</p>
+
+<ul>
+<li>1.  Thế nào là phân tích traffic của mạng.</li>
+<li>2.  Một chút hiểu biết cơ bản về phần cứng trong mạng (hub, switch, router&hellip;)</li>
+<li>3.  Wireshark là phần mềm gì thế?</li>
+<li>4.  Một số ứng dụng có thể thấy.</li>
+</ul>
+
+<p>Ta sẽ đi trả lời tuần tự từng câu hỏi.</p>
+
+<h2 id="1-thế-nào-là-phân-tích-traffic-mạng">1.  Thế nào là phân tích traffic mạng.</h2>
+
+<ul>
+<li><p>Trước hết traffic nghĩa là gì? Tại sao không gọi là dữ liệu mạng, hay tài nguyên mạng hay gì khác.</p></li>
+
+<li><p>Từ traffic ở đây được hiểu là lưu lượng đi qua, hay nội dung đi qua một chỗ nào đó. Trong mạng đó có thể là card mạng (chỗ nối dây mạng vào trên máy tính), hub, switch, hay router&hellip;. Ta nên hiểu mạng giống như một hệ thống đường xá.</p></li>
+
+<li><p>Dữ liệu của chúng ta giống như hàng hóa, được chuyên chở đến đích bằng một hệ thống đường dây kết nối điểm gửi và điểm nhận. Ta có thể hiểu như thế này, muốn chuyên hàng từ làng L1 của tỉnh T1, đến làng L2 của tỉnh T2. Người ta sẽ phải gửi hàng lên tỉnh, rồi từ tỉnh T1 gửi sang tỉnh T2 rồi từ T2 chuyển dần xuống làng L2. Vận chuyển dữ liệu cũng vậy, dữ liệu được đóng vào các gói tin rồi cho di chuyển qua đường mạng. Tuy nhiên, vì mạng quá chẳng chịt nên nhiều khi không biết phải chuyển đi đường nào là đúng nhất nên có những trường hợp phải chuyển đi mọi hướng, rồi đến đâu lại hỏi tiếp, đến khi nào tới nơi thì thôi.</p></li>
+
+<li><p>Đến mỗi điểm mà có giao cắt chẳng hạn, các gói tin này sẽ được người quản lý ở các điểm giao cắt đó chuyển đến điểm kế tiếp.</p></li>
+
+<li><p>Lưu thông trong mạng cũng vậy, không phải bao giờ gói tin cũng đuợc chuyển đến đúng điểm nhận bằng một đường duy nhất. Và rất nhiều trường hợp không thể chuyển đến điểm đích được.</p></li>
+
+<li><p>Khi gặp vấn đề này, người ta thường dùng cách phân tích traffic (các gói tin qua các điểm nối) để thấy gói đó được chuyển như thế nào, và từ đó tại sao lại không tới đích.</p></li>
+
+<li><p>Thêm một điểm cần nói đến ở đây, không phải sau khi ta nhấn nút gửi trên màn hình máy tính, thì máy tính tập hợp tất cả cái đó rồi quăng xuống dây mạng và vận chuyển đi. Giống như hàng hóa, nó cần được bọc lại, để tránh bị tò mò.</p></li>
+
+<li><p>Trong mạng có 7 tầng, không nhớ rõ lắm nữa. Tại mỗi tầng, dữ liệu đều được bọc lại, và lúc đó gói bé cũng như gói lớn bên ngoài giống nhau hết. Được gọi là đơn vị vận chuyển của tầng tương ứng.</p></li>
+</ul>
+
+<p><strong>Ví dụ</strong> : Web sẽ sử dụng giấy là HTTP để bọc dữ liệu, xuống phía dưới, Cả cục HTTP này lại được bọc bên trong 1 cục TCP, sau đó cả cục TCP đó được bọc tiếp trong một cục IP, cuối cùng IP mới chuyển cho mấy em đường dây để chuyển qua mạng. Bên nhận cũng có các tầng tương ứng, mỗi tầng sẽ bóc lớp tương ứng của nó thôi rồi chuyển cái có được bên trong lên cho tầng trên.</p>
+
+<h2 id="2-một-chút-về-phần-cứng-mạng">2. Một chút về phần cứng mạng.</h2>
+
+<h3 id="a-hub">a. Hub</h3>
+
+<p>Hay còn gọi là repeater, nó có nhiều cổng, dữ liệu vào bất kì cổng nào sẽ được copy ra nhiều bản, mỗi bản gửi đến một cổng còn lại. Anh Hub này thực sự không có một chút trí nhớ nào, dù có chuyển bao nhiều lần đi nữa thì mỗi gói tin đến anh này đề copy bi ra rồi gửi mỗi bản đến các cổng còn lại. Và nó không thể nhận nhiều gói cùng một lúc trên các cổng khác nhau được.</p>
+
+<h3 id="b-switch">b. Switch</h3>
+
+<p>Về cơ bản là cũng chuyển gói tin đến từ một cổng vào sang một cổng ra khác. Tuy nhiên, switch &ldquo;khôn&rdquo; hơn hub, nó không copy gói đó rồi chuyển đến tất cả các cổng. Nó lưu lại một bảng để biết là cổng nào sẽ nói đến IP nào. Vì vậy lúc chuyển nó sẽ chuyển gói đó đến port tương ứng thôi.</p>
+
+<h3 id="c-router">c. Router</h3>
+
+<p>Cái này mới gọi là pro nè. Nó chẳng những làm được việc chuyển gói tin đến các máy cắm vào nó một cách chính xác như switch, nó còn có khả năng chuyển gói tin ra ngoài nếu bản thân nó không biết địa chỉ đến của gói tin ở đâu.</p>
+
+<h2 id="3-wireshark-là-phần-mềm-gì">3.  Wireshark là phần mềm gì?</h2>
+
+<ul>
+<li>Là phần mềm mã nguồn mở được sử dụng phổ biến trong lĩnh vực phân tích traffic mạng.<br /></li>
+<li>Về mặt phần cứng, nó hoạt động được là nhờ vào chế độ promiscuous của thiết bị mạng.<br /></li>
+
+<li><p>Khi chạy ở chế độ này, card mạng sẽ cho ta biết tất cả các gói tin qua nó kể các cái gói tin mà đích đến không phải là card mạng đó.</p></li>
+
+<li><p>Có rất nhiều tool cho việc phân tích traffic mạng này. Nhưng nhờ rất nhiều ưu điểm vượt trội mà wireshark thường được sử dụng nhiều nhất. Có thể kể ra ở đây một vài ưu điểm sau:<br />
+&ndash; Số protocol hỗ trợ là quá nhiều, nếu bạn thấy có giao thức nào chưa được hỗ trợ hay gửi mail yêu cầu cho công đồng, nó sẽ có ở phiên bản tiếp theo. Thậm chí, bạn có thể tự viết một protocol rồi gửi yêu cầu được merge vào đến các maintainer. Nó cũng sẽ xuất hiện trong phiên bản tiếp theo nếu được chấp nhận.<br />
+&ndash; Giao diện thân thiện và kinh điển.　Wireshark có giao diện được coi như điển hình của một chương trình phân tích traffic mạng.</p></li>
+
+<li><p>Giá là zero. Vì là phần mềm mã nguồn mở theo giấu GPL. Chúng ta có thể sử dụng chúng với bất kì mục đích nào, kể cả thương mại lẫn không thương mại.</p></li>
+</ul>
+
+<h2 id="4-một-số-số-ứng-dụng-có-thể-thấy-của-wireshark">4. Một số số ứng dụng có thể thấy của wireshark.</h2>
+
+<h3 id="phân-tích-vấn-đề-không-kết-nối-của-2-endpoint-đã-được-kết-nối-vật-lý-với-nhau">Phân tích vấn đề không kết nối của 2 endpoint đã được kết nối vật lý với nhau.</h3>
+
+<p>Vì gói tin được di chuyển qua rất nhiều thiết bị mạng trước khi đến máy đích.</p>
+
+<p>Ta cần kiểm tra tại mỗi node (có thể là hub, switch, router&hellip;) để biết được, gói tin có được truyển theo đường mong muốn không.</p>
+
+<p>Với hub, ta chỉ cần nối một máy tính chạy wireshark vào một cổng bất kì của hub đó. Mọi gói tin vào hub sẽ qua máy tính phân tích của chúng ta.<br />
+Với switch, do các cái gói tin sẽ được truyền đến 1 port để đi tiếp đến đích. Ta sẽ sử dụng 2 phương án:<br />
+sw1 : Ta đặt một hub trên đường từ điểm muốn kiểm tra tới switch.<br />
+sw2 : Ta sử dụng chế độ mirror trong switch để sao chép gói tin sang một port ta mong muốn.</p>
+
+<p>Với router, ta sẽ sử dụng cách 1 của switch.</p>
+
+<h3 id="sử-dụng-stream-để-theo-dõ-follow-dữ-liệu-được-trao-đổi-giữa-2-endpoint">Sử dụng stream để theo dõ follow dữ liệu được trao đổi giữa 2 endpoint.</h3>
+
+<p>Với TCP, việc view stream sẽ cho ta thấy tất cả các gói tin được gửi giữa 2 điểm từ lúc socket được tạo đến lúc kết thúc việc bắt gói tin hoặc ngắt kết nối.<br />
+Với UDP, việc view stream sẽ cho ta thấy thứ tự về thời gian các các gói tin UDP.</p>
+
+<h3 id="sử-dụng-flow-graph">Sử dụng Flow Graph</h3>
+
+<p>Chức năng này cho ta thấy một biểu đồ ở dạng tuần tự. Nó mô tả những end point nào, giap tiếp với card mạng hiện tai. Trong một mạng nhỏ không kết nối internet, biểu đồ này cho thấy tổng quan thứ tự kết nối, truyển dữ liệu giữa các máy tính với nhau một cách dễ dàng nhất.</p>
+
+<h3 id="io-graph">IO Graph</h3>
+
+<p>Chức năng này cho ta một biểu đồ histogram mô tả lưu lượng gói tin qua card mạng theo thời gian.</p>
+
+<h3 id="chức-năng-conversation">Chức năng conversation</h3>
+
+<p>Cho ta tổng quan về lượng dữ liệu đã trao đổi giữa các endpoint với máy tính ta đang phân tích.<br />
+Bao nhiêu gửi đi, gửi cho những ai, bao nhiều nhận về, nhận từ những ai sẽ hiện ra rất rõ ràng.</p>
+
+<p>Qua phần đầu của dự án hiện tại, mình mới để ý thấy chừng đó chức năng.<br />
+Mình nghĩ rằng mình sẽ viết một phần mở rộng cho wireshark để hỗ trợ phân tích các message ứng dụng mình tự định nghĩa. Chưa có kế hoạch cụ thể.</p>
+</div>
+
+    
+    
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Thực hiện 3 phép tập hợp trên bash</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Thực hiện 3 phép tập hợp trên bash</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Thực hiện 3 phép tập hợp trên bash</h2>
+        <h5>November 3, 2017</h5>
+        
+<a href="localhost:1313tags/bash"><kbd class="item-tag">Bash</kbd></a>
+
+<a href="localhost:1313tags/script"><kbd class="item-tag">script</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"></p>
+<h2>1. Phép giao</h2>
+<p>Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.</p>
+<p>Cách đầu tiên, đơn giản nhất, dùng <code>uniq -d</code> với sự hỗ trợ của <code>sort</code><br />
+Giả sử có 2 tập (tức là file text luôn) <code>set1</code>, <code>set2</code> (mỗi phần tử nằm trên một dòng).<br />
+Câu lệnh sau sẽ tìm giao của chúng:</p>
+<p>[code lang="shell"]<br />
+$set set1 set2 | uniq -d<br />
+[/code]</p>
+<p>Cách thứ hai, sử dụng câu lệnh <code>comm</code>, câu lệnh sử dụng để so sánh 2 files đã được sắp xếp.<br />
+Câu lệnh sẽ như sau:</p>
+<p>[code lang="shell"]<br />
+$ comm -12 &lt;(sort set1) &lt;(sort set2)<br />
+[/code]</p>
+<p>Cách thứ ba, sử dụng câu lệnh <code>join</code>, câu lệnh sử dụng để nối 2 hoặc nhiều files (thường được dùng kết hợp với <code>split</code>).<br />
+Với câu lệnh này, việc tìm giao hai tập sẽ như sau:</p>
+<p>[code lang="shell"]<br />
+$ join &lt;(sort set1) &lt;(sort set2)<br />
+[/code]</p>
+<h2>2. Phép hợp</h2>
+<p>Đây là phép tập hợp dễ làm nhất.</p>
+<p>Cách đầu tiên, sử dụng <code>cat</code>.<br />
+Ta cũng giả sử có 2 tập set1, set2 như phần 1.<br />
+Như ta đã biết, ta đã có câu lệnh <code>cat</code> để nối lại, rồi in ra một, hai hay nhiều files.</p>
+<p>[code lang="shell"]<br />
+$cat set1 set2<br />
+[/code]</p>
+<p>Giờ ta phải loại bỏ các phần tử lặp lại và chỉ để lại một từ kết của của lệnh <code>cat</code> ở trên.<br />
+Đơn giản nhất là <code>sort</code> rồi cho qua <code>uniq</code> để lấy dãy duy nhất các phần tử.</p>
+<p>[code lang="shell"]<br />
+$cat set1 set2 | sort | uniq<br />
+[/code]</p>
+<p>Hoặc khỏi cần dùng <code>cat</code> mà <code>sort</code> trực tiếp luôn.</p>
+<p>[code lang="shell"]<br />
+$sort set1 set2 | uniq<br />
+[/code]</p>
+<p>Thậm chí, có thể bỏ qua của <code>uniq</code> bằng tham số <code>-u</code> của <code>sort</code>:```shell</p>
+<p>[code lang="shell"]<br />
+$sort -u set1 set2<br />
+[/code]</p>
+<p><strong>Nếu 2 tập đã được sắp xếp rồi</strong>, bạn có thể lấy hợp của hai tập nhanh hơn bằng tham số <code>-m</code> của <code>sort</code>.<br />
+Tham số này nghĩa là <code>merge</code>.<br />
+Câu lệnh có thể như sau:</p>
+<p>[code lang="shell"]<br />
+$sort -m set1 set2 | uniq<br />
+[/code]</p>
+<p>Đương nhiên, có thể bỏ <code>uniq</code> nếu thay <code>-m</code> bằng <code>-um</code> như đã nói ngay trên.</p>
+<h2>3. Phép hiệu</h2>
+<p>Tức là lấy các phần từ thuộc chỉ một trong 2 tập mà thôi.<br />
+Ta cũng giả sử có 2 tập set1, set2 như phần 1.</p>
+<p>Đầu tiên, câu lệnh phù hợp nhất trong trường hợp này là <code>comm</code>.<br />
+Câu lệnh sau sẽ in ra các phần tử chỉ thuộc set1 mà không thuộc set2:</p>
+<p>[code lang="shell"]<br />
+$ comm -23 &lt;(sort set1) &lt;(sort set2)<br />
+[/code]</p>
+<p>Về câu lệnh <code>comm</code>, ở phần 1 chúng ta cũng đã có dùng với tham số <code>-12</code> rồi.<br />
+Tiện thể giải thích một chút về tham số này:<br />
+<strong>1</strong> : Không in những dòng chỉ thuộc file 1<br />
+<strong>2</strong> : Không in những dòng chỉ thuộc file 2<br />
+<strong>3</strong> : Không in những dòng thuộc cả 2 file<br />
+Trong trường hợp này, sử dụng <code>-23</code> sẽ không in ra các dòng thuộc file 2 và cả hai file.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/">Một số thứ khi sử dụng command, viết script trong bash</a></h4>
+    <h5>November 3, 2017</h5>
+    
+<a href="localhost:1313tags/bash"><kbd class="item-tag">Bash</kbd></a>
+
+<a href="localhost:1313tags/script"><kbd class="item-tag">script</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2017-04-02-phim-tat-cho-bash/">Phím tắt cho bash</a></h4>
+    <h5>April 2, 2017</h5>
+    
+<a href="localhost:1313tags/bash"><kbd class="item-tag">Bash</kbd></a>
+
+<a href="localhost:1313tags/linux"><kbd class="item-tag">Linux</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/">Một số điều rút ra từ việc phải sử dụng command</a></h4>
+    <h5>March 30, 2017</h5>
+    
+<a href="localhost:1313tags/bash"><kbd class="item-tag">Bash</kbd></a>
+
+<a href="localhost:1313tags/editor"><kbd class="item-tag">Editor</kbd></a>
+
+<a href="localhost:1313tags/linux"><kbd class="item-tag">Linux</kbd></a>
+
+<a href="localhost:1313tags/unix"><kbd class="item-tag">Unix</kbd></a>
+
+<a href="localhost:1313tags/vim"><kbd class="item-tag">Vim</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

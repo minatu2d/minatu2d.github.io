@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>GDB on Lazytrick</title>
+    <link>localhost:1313/tags/gdb/</link>
+    <description>Recent content in GDB on Lazytrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 19 Oct 2016 14:27:19 +0900</lastBuildDate>
+    
+	<atom:link href="localhost:1313/tags/gdb/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GDB dòng lệnh cơ bản (03 - Cơ bản)</title>
+      <link>localhost:1313/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
+      <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
+      <description>&lt;p&gt;Trong bài số &lt;a href=&#34;https://lazytrick.wordpress.com/2016/09/19/gdb-co-the-lam-gi/&#34;&gt;02&lt;/a&gt;, ta đã nói đến những việc mà GDB có thể giúp chúng ta.&lt;/p&gt;
+&lt;p&gt;Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số &lt;strong&gt;-g&lt;/strong&gt; khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.&lt;br /&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Cài đặt GDB (02 - Cài đặt)</title>
+      <link>localhost:1313/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
+      <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
+      <description>&lt;p&gt;Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là &lt;strong&gt;target program&lt;/strong&gt;.&lt;br /&gt;
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;GDB và &lt;strong&gt;target program&lt;/strong&gt; cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.&lt;/li&gt;
+&lt;li&gt;GDB và &lt;strong&gt;target program&lt;/strong&gt; không cùng trên 1 máy : Tức là GDB sẽ chạy trên 1 máy để debug 1 chương trình chạy trên máy khác thông qua Serial hoặc Network. Cái này hay thấy khi phát triển ứng dụng nhúng. Xem thêm tại &lt;a href=&#34;https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/&#34;&gt;đây&lt;/a&gt;.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Một số distro khi được cài đặt, đã bao gồm &lt;strong&gt;GDB&lt;/strong&gt; rồi. Có thể kiểm tra bằng command dưới đây:&lt;/p&gt;
+&lt;p&gt;[code lang=&#34;shell&#34;]&lt;br /&gt;
+$gdb --version&lt;br /&gt;
+[/code]&lt;/p&gt;
+&lt;p&gt;</description>
+    </item>
+    
+    <item>
+      <title>GDB có thể làm gì? (01 - Khả năng của GDB)</title>
+      <link>localhost:1313/post/2016-09-19-gdb-co-the-lam-gi/</link>
+      <pubDate>Mon, 19 Sep 2016 11:58:27 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2016-09-19-gdb-co-the-lam-gi/</guid>
+      <description>&lt;p&gt;Trước khi nói về chủ đề chính là &#34;GDB có thể làm gì&#34;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.&lt;/p&gt;
+&lt;h4&gt;1. Phầm mềm Debugger sinh ra giải quyết cái gì?&lt;/h4&gt;
+&lt;p&gt;Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.&lt;br /&gt;
+Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế. Những cái đó người ta gọi là &lt;strong&gt;BUG&lt;/strong&gt;.&lt;/p&gt;
+&lt;p&gt;Một điều nữa, khi đã biên dịch (ở đây không xét đến ngôn ngữ thông dịch nhé), các code mà con người viết ra sẽ trở thành mã nhị phân.</description>
+    </item>
+    
+    <item>
+      <title>Làm việc với GDB - GNU Debugger (00- Mở đầu)</title>
+      <link>localhost:1313/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</link>
+      <pubDate>Thu, 15 Sep 2016 09:19:53 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</guid>
+      <description>&lt;p&gt;Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！&lt;/p&gt;
+&lt;p&gt;Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với &#34;siêu lười&#34; như mình, loạt về &lt;a href=&#34;https://lazytrick.wordpress.com/category/usb/&#34;&gt;USB Basic&lt;/a&gt; dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.&lt;/p&gt;
+&lt;p&gt;Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).&lt;/p&gt;
+&lt;p&gt;Nội dung sẽ như sau:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;GDB có thể làm gì?&lt;/li&gt;
+&lt;li&gt;Cài đặt GDB&lt;/li&gt;
+&lt;li&gt;GDB dòng lệnh cơ bản&lt;/li&gt;
+&lt;li&gt;GDB trên Eclipse IDE&lt;/li&gt;
+&lt;li&gt;GDB trên QtCreator&lt;/li&gt;
+&lt;li&gt;GDB làm việc như thế nào?&lt;/li&gt;
+&lt;li&gt;GDB Server giải quyết vấn đề gì&lt;/li&gt;
+&lt;li&gt;GDB trên Visual Studio 2015&lt;/li&gt;
+&lt;li&gt;GDB trên Eclipse IDE, QtCreator khi sử dụng với GDB Server&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

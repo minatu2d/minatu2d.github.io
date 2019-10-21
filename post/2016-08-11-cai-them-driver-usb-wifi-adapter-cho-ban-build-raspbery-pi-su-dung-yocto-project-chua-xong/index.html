@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project</h2>
+        <h5>August 11, 2016</h5>
+        
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+<a href="localhost:1313tags/firmware"><kbd class="item-tag">Firmware</kbd></a>
+
+<a href="localhost:1313tags/rt2870"><kbd class="item-tag">RT2870</kbd></a>
+
+<a href="localhost:1313tags/wifiusb"><kbd class="item-tag">WifiUSB</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"></p>
+<p>Dù image chúng ta vẫn build (<strong>rpi-basic-image</strong>) được tích hợp nhiều nhất trong số 3 image ở trên nhưng không phải tất cả driver đều được cài đặt.<br />
+Điển hình là USB Toggle - Wifi thông qua USB (Buffalo WLI-UC-GNM) không chạy được.<br />
+Thông qua log hệ thống, ta thấy được rằng việc load firmware cho thiết bị đã không thành công vì thế không thể bật được thiết bị.</p>
+<p>Mục đích của bài này là làm cho thiết bị trên có thể chạy được trên bản build <strong>rpi-basic-image</strong>, giống như Raspbian.</p>
+<p>Trong bài này sẽ thử thực hiện 2 cách sau:</p>
+<ol>
+<li>Chuyển driver đã chạy tốt từ Raspbian sang bản build <strong>rpi-basic-image</strong></li>
+<li>Build driver từ source code.</li>
+</ol>
+<h5>1.  Chuyển driver đã chạy tốt từ Raspbian sang bản build <strong>rpi-basic-image</strong></h5>
+<p>Cách này về cơ bản là một "cheat", nó hơi khác với tinh thần ban đầu khi build toàn bộ từ source. Nhưng trong tình huống này, ta vẫn hay thử nó.</p>
+<p>Trước hết, ta cần chạy lại <strong>Raspbian</strong> và kiểm tra các thông tin sau:<br />
+- Các thông số phần cứng của USB-Wifi Adapter mà ta đang sử dụng<br />
+- Lấy log hệ thống từ thời điểm thiết bị được cắm vào đến lúc sử dụng được.</p>
+<p>Update:2016/09/05:<br />
+Qua kết quả tìm hiểu từ <a href="https://lazytrick.wordpress.com/2016/08/29/khai-niem-driver-va-firmware-trong-linux/">Driver và Firmware trong Linux</a>, <a href="https://lazytrick.wordpress.com/2016/09/05/qua-trinh-load-firmware-cua-driver-trong-linux/">Quá trình load firmware của Driver trong Linux</a>, <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm Driver cho Linux</a></p>
+<p>Trong trường hợp này ta phải làm sao để firmware của USB Wifi Client có mặt ở <strong>/lib/firmware/</strong> khi Driver của thiết bị được chạy.<br />
+Cách đơn giản nhát là thêm rcipy <strong>linux-firmware</strong> vào layer <strong>meta-local</strong><br />
+Tuy nhiên, để cấu hình sử dụng được USB Wifi Client ta cần thêm một tập các tool về Wifi nữa. Nó nằm trong gói <strong>packagegroup-base-wifi</strong></p>
+<p>Xem lại <strong>meta-local</strong> ở bài <a href="https://lazytrick.wordpress.com/2016/08/06/them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/"></a></p>
+<p>[code lang="shell"]<br />
+poky/meta-local/<br />
+├── conf<br />
+│   └── layer.conf<br />
+└── recipes-core<br />
+    └── images<br />
+        └── rpi-basic-image.bbappend<br />
+[/code]</p>
+<p>Ta cần sửa lại <strong>rpi-basic-image.bbappend</strong> thành như sau:</p>
+<p>[code lang="python"]<br />
+IMAGE_INSTALL += &amp;quot;samba \<br />
+              linux-firmware \<br />
+              packagegroup-base-wifi<br />
+[/code]</p>
+<h5>2. Build từ source code</h5>
+<p>Cách này sai lầm vì bản thân Driver đã có rồi chứ không phải chưa có như đã nghĩ lúc trước.<br />
+Thứ còn thiếu là <strong>firmware</strong> cái sẽ được Driver tải vào để thực hiện cá chức năng vốn có của nó.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-09-05-qua-trinh-load-firmware-cua-driver-trong-linux/">Quá trình load firmware của Driver trong Linux</a></h4>
+    <h5>September 5, 2016</h5>
+    
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+<a href="localhost:1313tags/firmware"><kbd class="item-tag">Firmware</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/">Driver và Firmware trong Linux</a></h4>
+    <h5>August 29, 2016</h5>
+    
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+<a href="localhost:1313tags/firmware"><kbd class="item-tag">Firmware</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm Driver cho Linux</a></h4>
+    <h5>August 19, 2016</h5>
+    
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

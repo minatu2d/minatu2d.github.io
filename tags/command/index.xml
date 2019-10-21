@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Command on Lazytrick</title>
+    <link>localhost:1313/tags/command/</link>
+    <description>Recent content in Command on Lazytrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 07 Sep 2016 09:25:06 +0900</lastBuildDate>
+    
+	<atom:link href="localhost:1313/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>AWK - Sử dụng cơ bản</title>
+      <link>localhost:1313/post/2016-09-07-awk-su-dung-co-ban/</link>
+      <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2016-09-07-awk-su-dung-co-ban/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;AWK&lt;/strong&gt; : 1 trong 3 tool (cùng với &lt;strong&gt;grep&lt;/strong&gt; và &lt;strong&gt;sed&lt;/strong&gt;) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.&lt;/p&gt;
+&lt;p&gt;Sau một hồi tìm hiểu &lt;strong&gt;awk&lt;/strong&gt; trên &lt;a href=&#34;http://www.tutorialspoint.com/awk/index.htm&#34;&gt;TutorialPoint&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;awk&lt;/strong&gt; là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng. AWK cung cấp hẳn 1 ngôn ngữ để so khớp input cũng như xuất output. Ngôn ngữ này cực kì giống ngôn ngữ C, nên rất dễ làm quen. Nó cung cấp 1 cơ chế matching mạnh là regular express nữa cho xử lý input.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Khi làm việc với AWK, ta hãy hiểu rằng, từng line trong input sẽ được thực hiện qua đoạn script mà ta cung cấp cho Awk.&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sử dụng Patch và Diff</title>
+      <link>localhost:1313/post/2016-09-02-su-dung-patch-vs-diff/</link>
+      <pubDate>Fri, 02 Sep 2016 08:53:59 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2016-09-02-su-dung-patch-vs-diff/</guid>
+      <description>&lt;p&gt;&lt;strong&gt;Patch&lt;/strong&gt;, hay người ta vẫn gọi là các bản vá, víu gì đó. Cũng thấy khái niệm này từ lâu rồi. Nhưng chưa bao giờ phát sinh nhu cầu sử dụng vì đa số các dự án mình từng làm đều dùng Server SVN tập trung. Mọi thay đổi đều có quản lý chặt chẽ, cũng ít khi rẽ quá nhiều nhánh (branch).&lt;br /&gt;
+Gần đây, bắt buộc phải nghĩ đến việc sử dụng 2 tool này vì phải update source trên máy thật (một board mạch) chỉ hỗ trợ truyền Serial. :((&lt;br /&gt;
+Sau nhiều lần truyền source, dù đã nén bằng &lt;strong&gt;&lt;em&gt;tar&lt;/em&gt;&lt;/strong&gt;, cũng mất đến 20-30 phút, mình không thể chịu nổi nữa. Thế là hỏi thầy google. Thấy có 2 command khá thông dụng để giải quyết vấn đề này.&lt;/p&gt;
+&lt;p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

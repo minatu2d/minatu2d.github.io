@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</h2>
+        <h5>February 11, 2017</h5>
+        
+<a href="localhost:1313tags/asm"><kbd class="item-tag">Asm</kbd></a>
+
+<a href="localhost:1313tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"></li>
+<li>Khi muốn động vào các kết quả được sinh ra từ trình biên dich/thông dịch ở trên, ta không khó có thể sử trực tiếp trên <strong>instruction code</strong>, một dạng dễ nhớ của các <strong>instruction code</strong> này được sinh ra để phục vụ việc này. Đó chính là <strong>Assembly Language</strong>.</li>
+<li>Vì gần như được chuyển sang <strong>instruction code</strong> của Processor nên <strong>Assemble Code</strong> gần như được gắn với Processor nào đó.</li>
+<li>Dù các lệnh của hầu hết bộ xử lý là tương tự nhau nhưng quy tắc gợi nhớ các mã <strong>Assembly</strong> dù chỉ khác nhau một chút thôi cũng khiến việc viết code cross-processor gần như là không thể rồi.</li>
+<li>Ta nói <strong>Assembly Language</strong> là nói đến 1 ngôn ngữ, nhưng thực chất mỗi Processor có 1 <strong>Assembly Language</strong> riêng của nó.</li>
+<li>Bởi vậy, để để lập trình với <strong>Assembly</strong> cho 1 Processor nào đó, ta cũng cần <strong>Assembler</strong> tương ứng cho Processor đó.</li>
+</ul>
+<h2>2. Intel ASM và AT&amp;T ASM và ARM</h2>
+<ul>
+<li>Các bộ xử lý cùng kiến trúc thường ít có thay đổi về <strong>Assembly Language</strong>, tuy nhiên 2 kiến trúc khác nhau thì thường có <strong>Assembly Language</strong> khác nhau</li>
+<li><strong>ARM</strong> : Hiện tại chưa tìm hiểu được.</li>
+<li>Nếu bỏ qua <strong>ARM</strong>, ta có thể chia ra làm 2 loại <strong>Assembly Language</strong> sau theo tiêu chí <strong>lệnh gợi nhớ</strong>, đó là <strong>Intel</strong> và <strong>AT&amp;T</strong>.<br />
+Về sự khác nhau của 2 loại này:<br />
+Hầu hết sự khác biệt xuất hiện ở một dài định dạng cụ thể. Nhưng những điểm khác nhau chính giữa <strong>Intel</strong> và <strong>AT&amp;T</strong> được đưa ra dưới đây:</li>
+</ul>
+<blockquote>
+<ul>
+<li><strong>AT&amp;T</strong> sử dụng <strong>$</strong> để kí hiệu, còn <strong>Intel</strong> thì không.<br />
+  Vì thế, khi biểu diễn giá trị <strong>4</strong>, AT&amp;T sẽ sử dụng <strong>$4</strong>, còn <strong>Intel</strong> thì<br />
+  đơn giản viết <strong>4</strong>.</li>
+<li>
+<p><strong>AT&amp;T</strong> sử dụng thứ tự về source (nguồn), destination (đích) ngược với <strong>Intel</strong>,<br />
+  Ví thế, để chuyển giá trị <strong>4</strong> vào thanh ghi <strong>EAX</strong>, <strong>AT&amp;T</strong> sẽ viết là<br />
+  <em>movl $4, %eax</em>, còn <strong>Intel</strong> lại viết là <em>mov eax, 4</em>.</p>
+</li>
+<li>
+<p>Ở Long calls và jumps cũng sử dụng cú pháp khác nhau để định nghĩa segment và<br />
+  offset. <strong>AT&amp;T</strong> sử dụng <em>ljmp $section, $offset</em>, trong khi đó Intel sử dụng<br />
+  <em>jmp section:offset</em></p>
+</li>
+</ul>
+</blockquote>
+<h2>3. ASM trên Linux</h2>
+<p>Để lập trình ASM trên Linux, ta sử dụng những công cụ sau:</p>
+<ul>
+<li>Assembler :<strong>as</strong><br />
+Đây là <strong>GNU Assembler</strong>, là cross-platform assembler phổ biến nhất trên Linux.<br />
+Như đã nói ở trên, mỗi <strong>assemble language</strong> thường gắn liền với assembler của nó. Vậy thì cross-platform ở trên là ý gì. Có nghĩa là compiler này có khả năng biên dịch nhiều loại assembly code khác nhau.<br />
+Cùng 1 source nhưng nó có thể sinh ra nhiều loại instruction code tùy theo processor được chỉ đinh.</li>
+</ul>
+<li>
+<p>Linker :<strong>ld</strong><br />
+Ở ngôn ngữ C/C++ hầu như ít khi ta phải thao tác trực tiếp với linker. <strong>gcc</strong> thường sẽ làm tất rồi.<br />
+Nhưng đối với assembler thì không như thế, nó sẽ không tự động gọi linker đâu, ta phải tự gọi <strong>linker</strong> để tạo ra file chạy cho source chúng ta viết.<br />
+Và <strong>linker</strong> duy nhất sử dụng trên Linux chính là <strong>GNU Linker</strong>, hay <strong>ld</strong>.</p>
+</li>
+<li>
+<p>Debugger : <strong>gdb</strong><br />
+Chúng ta đã có 1 loại bài về <a href=""><strong>GDB</strong></a> rồi, <strong>gdb</strong> debug được mọi chương trình trong Linux dù chúng được viết bằng C/C++ hay bây giờ là Assembly đi nữa.</p>
+</li>
+<li>
+<p>C/C++ Compiler :<strong>gcc</strong><br />
+Thực ra không trực tiếp liên quan lắm. Nhưng như trong 1 bài nói về <a href=""><strong>Tìm hiểu thêm về biên dịch HelloWorl</strong></a>, ta cũng đề cập đến khả năng sinh Asssembly Code của <strong>gcc</strong> rồi.<br />
+Có thể chúng ta sẽ sử dụng <strong>gcc</strong> để sinh mã ASM rồi optimize chúng thay vì viết từ zero.</p>
+</li>
+<li>
+<p>Object code dissassembler (Dịch ngược asm):<strong>objdump</strong><br />
+Cho phép xem instruction code và mã dịch ngược về ASM của nó.</p>
+</li>
+<li>
+<p>Profiler : <strong>gprof</strong><br />
+Là công cụ đánh giá performance của phần mềm trong Linux. Nó cho phép xác định hàm nào tốn nhiều thời gian xử lý nhất. Từ đó, ta có thể tập trung cải tiến để tăng hiệu năng.</p>
+</li>
+<h2>4. Một chương trình Assembly đơn giản</h2>
+<p>Chương trình sau sẽ lấy tên của CPU và hiển thị ra dòng **The processor Vendor ID is XXXX **</p>
+<ul>
+<li>Source code</li>
+</ul>
+<p>[code lang=cpp]<br />
+#Author : Richard Blum<br />
+#cpuid.s Sample program to extract the processor Vendor ID<br />
+.section .data<br />
+output:<br />
+.ascii “The processor Vendor ID is ‘xxxxxxxxxxxx’\n”<br />
+.section .text<br />
+.globl _start<br />
+_start:<br />
+movl $0, %eax<br />
+cpuid<br />
+movl $output, %edi<br />
+movl %ebx, 28(%edi)<br />
+movl %edx, 32(%edi)<br />
+movl %ecx, 36(%edi)<br />
+movl $4, %eax<br />
+movl $1, %ebx<br />
+movl $output, %ecx<br />
+movl $42, %edx<br />
+int $0x80<br />
+movl $1, %eax<br />
+movl $0, %ebx<br />
+int $0x80<br />
+[/code]</p>
+<p>Lưu lại và đặt tên là <strong>cpuid.s</strong>:<br />
+- Biên dịch bằng Assembler:</p>
+<p>[code lang=bash]<br />
+$as -o cpuid.o cpuid.s<br />
+[/code]</p>
+<p>Output: <strong>cpuid.o</strong></p>
+<ul>
+<li>Link để tạo file chạy:</li>
+</ul>
+<p>[code lang=bash]<br />
+ld -o cpuid cpuid.o<br />
+[/code]</p>
+<p>Output: <strong>cpuid</strong></p>
+<ul>
+<li>Chạy</li>
+</ul>
+<p>[code lang=bash]<br />
+$ ./cpuid<br />
+The processor Vendor ID is &#039;GenuineIntel&#039;<br />
+[/code]</p>
+<ul>
+<li>Debug<br />
+Ta cần biên dịch với option khác thì mới debug được.</li>
+</ul>
+<p>[code lang=bash]<br />
+$as -o cpuid.o cpuid.s<br />
+ld -o cpuid cpuid.o<br />
+[/code]</p>
+<p>Ta sẽ đặt break point ở <strong>_start</strong> và xem thử vị trí dừng:</p>
+<p>[code lang=bash]<br />
+$ gdb ./cpuid<br />
+GNU gdb (Ubuntu 7.11-0ubuntu1) 7.11<br />
+Copyright (C) 2016 Free Software Foundation, Inc.<br />
+License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;<br />
+This is free software: you are free to change and redistribute it.<br />
+There is NO WARRANTY, to the extent permitted by law. Type &quot;show copying&quot;<br />
+and &quot;show warranty&quot; for details.<br />
+This GDB was configured as &quot;i686-linux-gnu&quot;.<br />
+Type &quot;show configuration&quot; for configuration details.<br />
+For bug reporting instructions, please see:<br />
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.<br />
+Find the GDB manual and other documentation resources online at:<br />
+&lt;http://www.gnu.org/software/gdb/documentation/&gt;.<br />
+For help, type &quot;help&quot;.<br />
+Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;...<br />
+Reading symbols from ./cpuid...done.<br />
+(gdb) b *_start<br />
+Breakpoint 1 at 0x8048074: file cpuid.s, line 10.<br />
+(gdb) r<br />
+Starting program: /home/osboxes/code/asm/cpuid</p>
+<p>Breakpoint 1, _start () at cpuid.s:10<br />
+10 movl $0, %eax<br />
+(gdb) l<br />
+5 .section .text<br />
+6 .globl _start<br />
+7 _start:<br />
+8 # Using $0 for value 0<br />
+9 # Using %eax for register EAX<br />
+10 movl $0, %eax<br />
+11 cpuid<br />
+12 movl $output, %edi<br />
+13 movl %ebx, 28(%edi)<br />
+14 movl %edx, 32(%edi)<br />
+[/code]</p>
+<ul>
+<li>Dissassemler:<br />
+Cho <strong>cpuid.o</strong>:</li>
+</ul>
+<p>[code lang=bash]<br />
+$ objdump -d cpuid.o</p>
+<p>cpuid.o: file format elf32-i386</p>
+<p>Disassembly of section .text:</p>
+<p>00000000 :<br />
+0: b8 00 00 00 00 mov $0x0,%eax<br />
+5: 0f a2 cpuid<br />
+7: bf 00 00 00 00 mov $0x0,%edi<br />
+c: 89 5f 1c mov %ebx,0x1c(%edi)<br />
+f: 89 57 20 mov %edx,0x20(%edi)<br />
+12: 89 4f 24 mov %ecx,0x24(%edi)<br />
+15: b8 04 00 00 00 mov $0x4,%eax<br />
+1a: bb 01 00 00 00 mov $0x1,%ebx<br />
+1f: b9 00 00 00 00 mov $0x0,%ecx<br />
+24: ba 2a 00 00 00 mov $0x2a,%edx<br />
+29: cd 80 int $0x80<br />
+2b: b8 01 00 00 00 mov $0x1,%eax<br />
+30: bb 00 00 00 00 mov $0x0,%ebx<br />
+35: cd 80 int $0x80<br />
+[/code]</p>
+<p>Cho <strong>cpuid</strong>:</p>
+<p>[code lang=bash]<br />
+$ objdump -d cpuid</p>
+<p>cpuid: file format elf32-i386</p>
+<p>Disassembly of section .text:</p>
+<p>08048074 :<br />
+8048074: b8 00 00 00 00 mov $0x0,%eax<br />
+8048079: 0f a2 cpuid<br />
+804807b: bf ab 90 04 08 mov $0x80490ab,%edi<br />
+8048080: 89 5f 1c mov %ebx,0x1c(%edi)<br />
+8048083: 89 57 20 mov %edx,0x20(%edi)<br />
+8048086: 89 4f 24 mov %ecx,0x24(%edi)<br />
+8048089: b8 04 00 00 00 mov $0x4,%eax<br />
+804808e: bb 01 00 00 00 mov $0x1,%ebx<br />
+8048093: b9 ab 90 04 08 mov $0x80490ab,%ecx<br />
+8048098: ba 2a 00 00 00 mov $0x2a,%edx<br />
+804809d: cd 80 int $0x80<br />
+804809f: b8 01 00 00 00 mov $0x1,%eax<br />
+80480a4: bb 00 00 00 00 mov $0x0,%ebx<br />
+80480a9: cd 80 int $0x80<br />
+[/code]</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</a></h4>
+    <h5>May 14, 2017</h5>
+    
+<a href="localhost:1313tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2017-05-14-lenh-mov-trong-assembly/">Lệnh MOV trong Assembly</a></h4>
+    <h5>May 14, 2017</h5>
+    
+<a href="localhost:1313tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

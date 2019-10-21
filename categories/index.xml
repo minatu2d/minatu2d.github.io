@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Lazytrick</title>
+    <link>localhost:1313/categories/</link>
+    <description>Recent content in Categories on Lazytrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 11 Sep 2019 06:00:22 +0900</lastBuildDate>
+    
+	<atom:link href="localhost:1313/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Khác</title>
+      <link>localhost:1313/categories/kh%C3%A1c/</link>
+      <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/kh%C3%A1c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Basic</title>
+      <link>localhost:1313/categories/basic/</link>
+      <pubDate>Wed, 06 Feb 2019 07:26:15 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/basic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>localhost:1313/categories/python/</link>
+      <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Machine Learning</title>
+      <link>localhost:1313/categories/machine-learning/</link>
+      <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/machine-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Driver</title>
+      <link>localhost:1313/categories/driver/</link>
+      <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/driver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Firmware</title>
+      <link>localhost:1313/categories/firmware/</link>
+      <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/firmware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>USB</title>
+      <link>localhost:1313/categories/usb/</link>
+      <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/usb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Compile</title>
+      <link>localhost:1313/categories/compile/</link>
+      <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/compile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Embedded</title>
+      <link>localhost:1313/categories/embedded/</link>
+      <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/embedded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenEmbbeded</title>
+      <link>localhost:1313/categories/openembbeded/</link>
+      <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/openembbeded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>YoctoProject</title>
+      <link>localhost:1313/categories/yoctoproject/</link>
+      <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/yoctoproject/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CodeSkill</title>
+      <link>localhost:1313/categories/codeskill/</link>
+      <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/codeskill/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Buildroot</title>
+      <link>localhost:1313/categories/buildroot/</link>
+      <pubDate>Fri, 20 Jan 2017 01:22:46 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/buildroot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Communication</title>
+      <link>localhost:1313/categories/communication/</link>
+      <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/communication/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debug</title>
+      <link>localhost:1313/categories/debug/</link>
+      <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/debug/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>thread</title>
+      <link>localhost:1313/categories/thread/</link>
+      <pubDate>Wed, 06 Apr 2016 15:26:51 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/thread/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>IoT</title>
+      <link>localhost:1313/categories/iot/</link>
+      <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/iot/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RTOS</title>
+      <link>localhost:1313/categories/rtos/</link>
+      <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/rtos/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Microcontroller</title>
+      <link>localhost:1313/categories/microcontroller/</link>
+      <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/microcontroller/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ITS</title>
+      <link>localhost:1313/categories/its/</link>
+      <pubDate>Sun, 24 Jan 2016 13:28:34 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/its/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Security</title>
+      <link>localhost:1313/categories/security/</link>
+      <pubDate>Tue, 05 Jan 2016 14:48:34 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/security/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network</title>
+      <link>localhost:1313/categories/network/</link>
+      <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/network/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Js</title>
+      <link>localhost:1313/categories/js/</link>
+      <pubDate>Sat, 11 Apr 2015 06:30:59 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/js/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenSource</title>
+      <link>localhost:1313/categories/opensource/</link>
+      <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
+      
+      <guid>localhost:1313/categories/opensource/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
