@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>C on Lazytrick</title>
-    <link>minatu2.github.io/tags/c/</link>
+    <link>/tags/c/</link>
     <description>Recent content in C on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 01 Dec 2016 13:08:38 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/c/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/c/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
-      <link>minatu2.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <link>/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <guid>/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
       <description>&lt;p&gt;Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch &lt;strong&gt;GCC&lt;/strong&gt; lên đó.&lt;br /&gt;
 Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.&lt;br /&gt;
 Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.&lt;br /&gt;
@@ -25,10 +25,10 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
     
     <item>
       <title>&#34;Data structure alignment&#34; là gì? Tại sao phải hiểu nó khi code C.</title>
-      <link>minatu2.github.io/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
+      <link>/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
+      <guid>/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
       <description>&lt;p&gt;Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.&lt;br /&gt;
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về &lt;strong&gt;Data Structure Aligment&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;</description>
@@ -36,10 +36,10 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
     
     <item>
       <title>GDB dòng lệnh cơ bản (03 - Cơ bản)</title>
-      <link>minatu2.github.io/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
+      <link>/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
       <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
+      <guid>/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
       <description>&lt;p&gt;Trong bài số &lt;a href=&#34;https://lazytrick.wordpress.com/2016/09/19/gdb-co-the-lam-gi/&#34;&gt;02&lt;/a&gt;, ta đã nói đến những việc mà GDB có thể giúp chúng ta.&lt;/p&gt;
 &lt;p&gt;Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số &lt;strong&gt;-g&lt;/strong&gt; khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.&lt;br /&gt;
 </description>
@@ -47,10 +47,10 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
     
     <item>
       <title>[CodeC] Về cách viết code</title>
-      <link>minatu2.github.io/post/2016-01-05-codec-ve-cach-viet-code/</link>
+      <link>/post/2016-01-05-codec-ve-cach-viet-code/</link>
       <pubDate>Tue, 05 Jan 2016 15:02:39 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-01-05-codec-ve-cach-viet-code/</guid>
+      <guid>/post/2016-01-05-codec-ve-cach-viet-code/</guid>
       <description>Việc code thường hay phải lặp đi lặp lại rất nhiều thao tác trong nhiều dự án khác nhau. Có thể kể đến nhưng scanf, fread, fwrite&amp;hellip;.print, debug&amp;hellip;
 Giờ có một design, tức là flow chart+ danh sách tên hàm.
 Flow chart thì rõ là phải viết rồi, có thể đặt tên theo các xử lý, gắn các mã. Nó dù rất giống với phần implement nhưng ta có thể tách bạch được.</description>

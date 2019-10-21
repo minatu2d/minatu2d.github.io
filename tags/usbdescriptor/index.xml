@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>USBDescriptor on Lazytrick</title>
-    <link>minatu2.github.io/tags/usbdescriptor/</link>
+    <link>/tags/usbdescriptor/</link>
     <description>Recent content in USBDescriptor on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 28 Jan 2016 15:44:23 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/usbdescriptor/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/usbdescriptor/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hiểu thêm về HID Report Descriptor</title>
-      <link>minatu2.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
+      <link>/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
+      <guid>/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
       <description>&lt;p&gt;Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.&lt;/p&gt;
 &lt;p&gt;Giờ xin dịch lại bài này một cách khái quát nhất.&lt;/p&gt;
 &lt;p&gt;Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).&lt;/p&gt;

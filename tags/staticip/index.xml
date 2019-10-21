@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>StaticIP on Lazytrick</title>
-    <link>minatu2.github.io/tags/staticip/</link>
+    <link>/tags/staticip/</link>
     <description>Recent content in StaticIP on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Aug 2016 17:08:17 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/staticip/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/staticip/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Thiết lập IP mặc định của bản build Linux cho Raspberry PI bằng Yocto Project</title>
-      <link>minatu2.github.io/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</link>
+      <link>/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</link>
       <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</guid>
+      <guid>/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</guid>
       <description>&lt;p&gt;Để tiếp tục customize bản OS được build trong bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/&#34;&gt;trước&lt;/a&gt;.&lt;br /&gt;
 Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.&lt;br /&gt;
 Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.&lt;/p&gt;

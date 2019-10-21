@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Compile on Lazytrick</title>
-    <link>minatu2.github.io/categories/compile/</link>
+    <link>/categories/compile/</link>
     <description>Recent content in Compile on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 10 Apr 2017 14:07:48 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/categories/compile/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/compile/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Build, chạy nhân Linux trong QEMU ARM</title>
-      <link>minatu2.github.io/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
+      <link>/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
+      <guid>/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
       <description>&lt;p&gt;Chạy một bản Linux tối giản trên Qemu ARM&lt;/p&gt;
 &lt;p&gt;Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa&lt;br /&gt;
 các thành phần của một hệ thống Linux thông qua&lt;br /&gt;
@@ -35,10 +35,10 @@ Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải
     
     <item>
       <title>So sánh giữa Buildroot và Yocto Project</title>
-      <link>minatu2.github.io/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
+      <link>/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
       <pubDate>Fri, 20 Jan 2017 01:22:46 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
+      <guid>/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
       <description>&lt;p&gt;Bài này sẽ dịch lại &lt;a href=&#34;http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf&#34;&gt;Slide&lt;/a&gt; thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni&lt;br /&gt;
 từ Free Electrons tại Embedded Linux Conference 2016.&lt;/p&gt;
 &lt;p&gt;So sánh giữa Buildroot và OpenEmbedded/Yocto Project&lt;/p&gt;
@@ -58,10 +58,10 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders&lt;/li&gt;
     
     <item>
       <title>Thực hiện 4 Stage khi Compile bằng tay (Manual)</title>
-      <link>minatu2.github.io/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
+      <link>/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
+      <guid>/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
       <description>&lt;p&gt;Ta đã có bài giới thiệu về &lt;a href=&#34;https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/&#34;&gt;4 Stage khi Compiling&lt;/a&gt; rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.&lt;/p&gt;
 &lt;p&gt;Trong compile thông thường dạng&lt;/p&gt;
 &lt;p&gt;[code lang=bash]&lt;br /&gt;
@@ -74,10 +74,10 @@ $gcc -o HelloWorld HelloWorld.c&lt;br /&gt;
     
     <item>
       <title>4 Stage khi biên dịch HelloWorld.c</title>
-      <link>minatu2.github.io/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
+      <link>/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
+      <guid>/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
       <description>&lt;p&gt;Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.&lt;br /&gt;
 Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.&lt;br /&gt;
 Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.&lt;/p&gt;
@@ -100,10 +100,10 @@ HelloWorld&lt;br /&gt;
     
     <item>
       <title>Một chút hiểu thêm về &#34;Hello World&#34; trong C.</title>
-      <link>minatu2.github.io/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
+      <link>/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
       <pubDate>Wed, 21 Dec 2016 05:31:09 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
+      <guid>/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
       <description>&lt;p&gt;Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.&lt;/p&gt;
 &lt;p&gt;Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì&lt;br /&gt;
 một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
@@ -112,10 +112,10 @@ một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
     
     <item>
       <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
-      <link>minatu2.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <link>/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <guid>/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
       <description>&lt;p&gt;Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch &lt;strong&gt;GCC&lt;/strong&gt; lên đó.&lt;br /&gt;
 Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.&lt;br /&gt;
 Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.&lt;br /&gt;
@@ -124,10 +124,10 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
     
     <item>
       <title>&#34;Data structure alignment&#34; là gì? Tại sao phải hiểu nó khi code C.</title>
-      <link>minatu2.github.io/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
+      <link>/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
+      <guid>/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
       <description>&lt;p&gt;Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.&lt;br /&gt;
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về &lt;strong&gt;Data Structure Aligment&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;</description>
@@ -135,10 +135,10 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
     
     <item>
       <title>Phân biệt Build vs Host vs Target</title>
-      <link>minatu2.github.io/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
+      <link>/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
       <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
+      <guid>/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
       <description>&lt;p&gt;Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.&lt;br /&gt;
 Với người mới, hiểu rõ khái niệm là rất quan trọng.&lt;/p&gt;
 &lt;p&gt;Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là &lt;strong&gt;Host Enviroment&lt;/strong&gt;, &lt;strong&gt;Build Enviroment&lt;/strong&gt;, và &lt;strong&gt;Target Enviroment&lt;/strong&gt;. Có thể dịch nôm na là &lt;strong&gt;Môi trường chủ&lt;/strong&gt;, &lt;strong&gt;Môi trường biên dịch&lt;/strong&gt;, và &lt;strong&gt;Môi trường chạy đích&lt;/strong&gt;.&lt;br /&gt;
@@ -149,10 +149,10 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>2 cách sử dụng thư viện trong Linux</title>
-      <link>minatu2.github.io/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
+      <link>/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
+      <guid>/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
       <description>&lt;p&gt;Mình đang gặp 1 vấn đề là 1 hàm &lt;em&gt;F1()&lt;/em&gt; trong thư viện động mình viết &lt;em&gt;(lib1.so)&lt;/em&gt; không hoạt động đúng như mong muốn. Trong hàm &lt;em&gt;F1()&lt;/em&gt;có gọi một loại hàm &lt;em&gt;F21(), F22(), F23()...F2n()&lt;/em&gt; từ 1 thư viện tĩnh &lt;em&gt;(lib2.a)&lt;/em&gt; khác.&lt;/p&gt;
 &lt;p&gt;Khi build không gặp lỗi,&lt;/p&gt;
 &lt;p&gt;Khi biên dịch thư viện động này với 1 file &lt;strong&gt;sample.c&lt;/strong&gt; để chưa &lt;strong&gt;main()&lt;/strong&gt; để chạy thử và gọi hàm &lt;em&gt;F1() &lt;/em&gt;từ thư viện động &lt;em&gt;lib1.so&lt;/em&gt;. Kết quả vẫn mong muốn.&lt;/p&gt;
@@ -162,20 +162,20 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>CMake - Một ví dụ đơn giản</title>
-      <link>minatu2.github.io/post/2015-08-16-cmake-mot-vi-du-don-gian/</link>
+      <link>/post/2015-08-16-cmake-mot-vi-du-don-gian/</link>
       <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2015-08-16-cmake-mot-vi-du-don-gian/</guid>
+      <guid>/post/2015-08-16-cmake-mot-vi-du-don-gian/</guid>
       <description>Trong bài tôi đã giới thiệu qua về CMake. Như ta đã biết nó cung cấp tính tăng giúp việc sinh ra Makefile một cách hiệu quả. Nhất là đối với các dự án phức tạp. Nó cũng cung cấp thêm các bộ sinh khác để sinh cấu trúc quản lý source cho các IDE khác nhau như Visual Studio, KDE.
 Trong giới hạn, tôi sẽ nói về việc sử dụng CMake để build một simple project trên cả Windows và Linux.</description>
     </item>
     
     <item>
       <title>CMake - Công cụ hỗ trợ việc build source trên nhiều platform.</title>
-      <link>minatu2.github.io/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</link>
+      <link>/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</link>
       <pubDate>Sun, 02 Aug 2015 20:38:27 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</guid>
+      <guid>/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</guid>
       <description>Đuợc làm việc cùng những pro đầy kinh nghiệm thực sự rất thú vị, ngoài việc chia sẻ hiểu biết của mình, còn đuợc hóng nhiều kĩ năng sử dụng tool của các pro nữa. Mình thấy rằng, không có tool nào gọi là thần thành, mọi tool chỉ giúp tăng tốc độc với những người mới và không đủ thời gian để hiểu sâu. Còn với những người đã nhiều kinh nghiệm, họ sử dụng tool theo các điểm mạnh của chúng và kết hợp rất nhiều tool một cách nhịp nhàng sao cho công việc tiến hành nhanh nhất.</description>
     </item>
     

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ObjectFile on Lazytrick</title>
-    <link>minatu2.github.io/tags/objectfile/</link>
+    <link>/tags/objectfile/</link>
     <description>Recent content in ObjectFile on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 12 Jun 2016 13:20:13 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/objectfile/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/objectfile/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>2 cách sử dụng thư viện trong Linux</title>
-      <link>minatu2.github.io/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
+      <link>/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
+      <guid>/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
       <description>&lt;p&gt;Mình đang gặp 1 vấn đề là 1 hàm &lt;em&gt;F1()&lt;/em&gt; trong thư viện động mình viết &lt;em&gt;(lib1.so)&lt;/em&gt; không hoạt động đúng như mong muốn. Trong hàm &lt;em&gt;F1()&lt;/em&gt;có gọi một loại hàm &lt;em&gt;F21(), F22(), F23()...F2n()&lt;/em&gt; từ 1 thư viện tĩnh &lt;em&gt;(lib2.a)&lt;/em&gt; khác.&lt;/p&gt;
 &lt;p&gt;Khi build không gặp lỗi,&lt;/p&gt;
 &lt;p&gt;Khi biên dịch thư viện động này với 1 file &lt;strong&gt;sample.c&lt;/strong&gt; để chưa &lt;strong&gt;main()&lt;/strong&gt; để chạy thử và gọi hàm &lt;em&gt;F1() &lt;/em&gt;từ thư viện động &lt;em&gt;lib1.so&lt;/em&gt;. Kết quả vẫn mong muốn.&lt;/p&gt;

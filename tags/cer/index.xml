@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CER on Lazytrick</title>
-    <link>minatu2.github.io/tags/cer/</link>
+    <link>/tags/cer/</link>
     <description>Recent content in CER on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 25 Nov 2016 14:43:11 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/cer/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/cer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>CER/DER trong ASN.1 Encoding</title>
-      <link>minatu2.github.io/post/2016-11-25-phuong-thuc-cerder/</link>
+      <link>/post/2016-11-25-phuong-thuc-cerder/</link>
       <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-11-25-phuong-thuc-cerder/</guid>
+      <guid>/post/2016-11-25-phuong-thuc-cerder/</guid>
       <description>&lt;p&gt;Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.&lt;/p&gt;
 &lt;p&gt;Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào &lt;strong&gt;BER&lt;/strong&gt;, và tạo ra &lt;strong&gt;CER&lt;/strong&gt; và &lt;strong&gt;DER&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Sự khác nhau chủ yếu giữa &lt;strong&gt;CER&lt;/strong&gt; và &lt;strong&gt;DER&lt;/strong&gt; là về biểu diễn trường độ dài. &lt;strong&gt;Length(L)&lt;/strong&gt;. Trong khi &lt;strong&gt;DER&lt;/strong&gt; sử dụng một định dạng với độ dài cố định, thì &lt;strong&gt;CER&lt;/strong&gt; sử dụng định dạng với độ dài không có định,&lt;br /&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>PER on Lazytrick</title>
-    <link>minatu2.github.io/tags/per/</link>
+    <link>/tags/per/</link>
     <description>Recent content in PER on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 29 Nov 2016 14:48:30 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/per/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/per/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>PER trong ASN.1 Encoding</title>
-      <link>minatu2.github.io/post/2016-11-29-per-trong-asn-1-encoding/</link>
+      <link>/post/2016-11-29-per-trong-asn-1-encoding/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-11-29-per-trong-asn-1-encoding/</guid>
+      <guid>/post/2016-11-29-per-trong-asn-1-encoding/</guid>
       <description>&lt;p&gt;&lt;strong&gt;PER&lt;/strong&gt; là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng &lt;strong&gt;TLV&lt;/strong&gt; như &lt;strong&gt;BER&lt;/strong&gt;, &lt;strong&gt;PER&lt;/strong&gt; sử dụng &lt;em&gt;Preamble&lt;/em&gt; (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là &lt;strong&gt;PLV&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Đơn vị biểu diễn của &lt;strong&gt;PER&lt;/strong&gt; không phải Octet mà là Bit. Mỗi phần tử sẽ thuộc 1 trong 3 loại sau:&lt;br /&gt;
 1. Trường dư bit, tức là dãy bit không thể biểu diễn bằng một số nguyên các Octet.&lt;br /&gt;
@@ -27,10 +27,10 @@
     
     <item>
       <title>ASN.1 - BER (Basic Encoding Rules)</title>
-      <link>minatu2.github.io/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
+      <link>/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
       <pubDate>Thu, 24 Nov 2016 15:58:01 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
+      <guid>/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
       <description>&lt;p&gt;Tiếp tục về &lt;a href=&#34;https://lazytrick.wordpress.com/tag/asn1/&#34;&gt;ASN.1&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)&lt;/p&gt;
 &lt;p&gt;Ta sẽ tiếp tục nói về hiện thực dữ liệu.&lt;br /&gt;

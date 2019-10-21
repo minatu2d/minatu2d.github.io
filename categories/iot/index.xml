@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>IoT on Lazytrick</title>
-    <link>minatu2.github.io/categories/iot/</link>
+    <link>/categories/iot/</link>
     <description>Recent content in IoT on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 08 Mar 2016 15:39:23 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/categories/iot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/iot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Trường Remain Length trong MQTT Fixed Header</title>
-      <link>minatu2.github.io/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</link>
+      <link>/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</link>
       <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</guid>
+      <guid>/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</guid>
       <description>Như ta đã biết trong bản gốc và bản tiếng Việt của giao thức MQTT, đơn vị truyền tin trong MQTT là message. Message chứa 2 phần cơ bản là Header (phần mô tả thuộc tính dữ liệu) và Payload (phần mô tả dữ liệu). Phần header chứa 2 phần nữa là Header có độ dài cố định và Header có độ dài thay đổi được.
 Hầu hết các trường của phần Header cố định đều khá dễ hiểu, duy chỉ có 1 trường tương đối khó hiểu.</description>
     </item>
     
     <item>
       <title>Cờ Retain và QoS trong message PUBLISH</title>
-      <link>minatu2.github.io/post/2016-02-21-khai-quat-ve-mqtt/</link>
+      <link>/post/2016-02-21-khai-quat-ve-mqtt/</link>
       <pubDate>Sun, 21 Feb 2016 15:41:14 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-02-21-khai-quat-ve-mqtt/</guid>
+      <guid>/post/2016-02-21-khai-quat-ve-mqtt/</guid>
       <description>&lt;p&gt;Giao thức MQTT dựa trên mô hình publisher/subscriber (nhà cung cấp/người sử dụng), publisher có dữ liệu trên một lĩnh nào đó (được đại diện bằng các topic), phía subscriber (người mong muốn thông tin) sẽ mong muốn thông tin trên môt lĩnh vực nào đó (cũng được miêu tả bằng topic). Môt anh trung gian ở giữa sẽ nhận từ rất nhiều anh cung cấp trên rất nhiều lĩnh vực, sau đó xem xét, thông tin phù hợp để gửi đến những người sử dụng mà anh trung gian này biết.&lt;/p&gt;
 &lt;p&gt;Message PUBLISH được gửi từ publisher đến server (hay broker, hay chính là anh trung gian) để cung cấp thông tin.&lt;/p&gt;
 &lt;p&gt;Bài này nói về 2 trường của message PUBLISH, đó là QoS và Retain. Và 2 trường này tuy nằm ở phần &lt;strong&gt;header cố định&lt;/strong&gt; (có trên mọi message). Về trường QoS chỉ được sử dụng ở 3 Message, trong đó PUBLISH (dùng cả 3 level 0, 1, 2), SUBSCRIBE và UNSUBSCRIBE (chỉ dùng level 1). Bài này chỉ nói về message PUBLISH thôi.&lt;/p&gt;
@@ -40,10 +40,10 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
     
     <item>
       <title>Giao thức MQTT</title>
-      <link>minatu2.github.io/post/2015-08-04-giao-thuc-mqtt/</link>
+      <link>/post/2015-08-04-giao-thuc-mqtt/</link>
       <pubDate>Tue, 04 Aug 2015 14:56:02 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2015-08-04-giao-thuc-mqtt/</guid>
+      <guid>/post/2015-08-04-giao-thuc-mqtt/</guid>
       <description>Bài này dự là sẽ dịch lại đặc của giao thức MQTT này, nhằm có một cách hiểu tổng quát về MQTT protocol.
 Link gốc :
 http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html

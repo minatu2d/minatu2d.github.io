@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>device file on Lazytrick</title>
-    <link>minatu2.github.io/tags/device-file/</link>
+    <link>/tags/device-file/</link>
     <description>Recent content in device file on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 19 Jan 2017 16:19:32 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/device-file/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/device-file/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Về /dev trong Embedded Linux</title>
-      <link>minatu2.github.io/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
+      <link>/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
+      <guid>/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
       <description>&lt;p&gt;Đây là nội dung &lt;strong&gt;pick up&lt;/strong&gt; từ &lt;a href=&#34;https://buildroot.org/downloads/manual/manual.html&#34;&gt;manual&lt;/a&gt; của Buildroot.&lt;/p&gt;
 &lt;p&gt;Nó mô tả khá rõ về &lt;strong&gt;/dev&lt;/strong&gt; trong hệ thống Linux, cùng&lt;br /&gt;
 với các giải pháp dành cho hệ thống Embedded Linux.&lt;/p&gt;

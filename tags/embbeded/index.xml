@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Embbeded on Lazytrick</title>
-    <link>minatu2.github.io/tags/embbeded/</link>
+    <link>/tags/embbeded/</link>
     <description>Recent content in Embbeded on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 11 Feb 2015 09:21:19 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/embbeded/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/embbeded/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>OpenEmbedded là gì?</title>
-      <link>minatu2.github.io/post/2015-02-11-openembedded-la-gi/</link>
+      <link>/post/2015-02-11-openembedded-la-gi/</link>
       <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2015-02-11-openembedded-la-gi/</guid>
+      <guid>/post/2015-02-11-openembedded-la-gi/</guid>
       <description>Cái gì liên quan đến Linux, Embedded thì mình tìm hiểu kĩ nhất có thể. Trừ những chỗ không thể sờ vào hoặc cực kì mất thời gian để tìm hiểu nó thì mình sẽ bỏ quá.
 Đại khái sẽ trả lời mấy câu hỏi sau
  OpenEmbedded là cái L gì?

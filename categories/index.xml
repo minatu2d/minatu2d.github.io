@@ -2,228 +2,228 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Lazytrick</title>
-    <link>minatu2.github.io/categories/</link>
+    <link>/categories/</link>
     <description>Recent content in Categories on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 11 Sep 2019 06:00:22 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Khác</title>
-      <link>minatu2.github.io/categories/kh%C3%A1c/</link>
+      <link>/categories/kh%C3%A1c/</link>
       <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/kh%C3%A1c/</guid>
+      <guid>/categories/kh%C3%A1c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Basic</title>
-      <link>minatu2.github.io/categories/basic/</link>
+      <link>/categories/basic/</link>
       <pubDate>Wed, 06 Feb 2019 07:26:15 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/basic/</guid>
+      <guid>/categories/basic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>minatu2.github.io/categories/python/</link>
+      <link>/categories/python/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/python/</guid>
+      <guid>/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>minatu2.github.io/categories/machine-learning/</link>
+      <link>/categories/machine-learning/</link>
       <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/machine-learning/</guid>
+      <guid>/categories/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Driver</title>
-      <link>minatu2.github.io/categories/driver/</link>
+      <link>/categories/driver/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/driver/</guid>
+      <guid>/categories/driver/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Firmware</title>
-      <link>minatu2.github.io/categories/firmware/</link>
+      <link>/categories/firmware/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/firmware/</guid>
+      <guid>/categories/firmware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USB</title>
-      <link>minatu2.github.io/categories/usb/</link>
+      <link>/categories/usb/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/usb/</guid>
+      <guid>/categories/usb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Compile</title>
-      <link>minatu2.github.io/categories/compile/</link>
+      <link>/categories/compile/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/compile/</guid>
+      <guid>/categories/compile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Embedded</title>
-      <link>minatu2.github.io/categories/embedded/</link>
+      <link>/categories/embedded/</link>
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/embedded/</guid>
+      <guid>/categories/embedded/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OpenEmbbeded</title>
-      <link>minatu2.github.io/categories/openembbeded/</link>
+      <link>/categories/openembbeded/</link>
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/openembbeded/</guid>
+      <guid>/categories/openembbeded/</guid>
       <description></description>
     </item>
     
     <item>
       <title>YoctoProject</title>
-      <link>minatu2.github.io/categories/yoctoproject/</link>
+      <link>/categories/yoctoproject/</link>
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/yoctoproject/</guid>
+      <guid>/categories/yoctoproject/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CodeSkill</title>
-      <link>minatu2.github.io/categories/codeskill/</link>
+      <link>/categories/codeskill/</link>
       <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/codeskill/</guid>
+      <guid>/categories/codeskill/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Buildroot</title>
-      <link>minatu2.github.io/categories/buildroot/</link>
+      <link>/categories/buildroot/</link>
       <pubDate>Fri, 20 Jan 2017 01:22:46 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/buildroot/</guid>
+      <guid>/categories/buildroot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Communication</title>
-      <link>minatu2.github.io/categories/communication/</link>
+      <link>/categories/communication/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/communication/</guid>
+      <guid>/categories/communication/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Debug</title>
-      <link>minatu2.github.io/categories/debug/</link>
+      <link>/categories/debug/</link>
       <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/debug/</guid>
+      <guid>/categories/debug/</guid>
       <description></description>
     </item>
     
     <item>
       <title>thread</title>
-      <link>minatu2.github.io/categories/thread/</link>
+      <link>/categories/thread/</link>
       <pubDate>Wed, 06 Apr 2016 15:26:51 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/thread/</guid>
+      <guid>/categories/thread/</guid>
       <description></description>
     </item>
     
     <item>
       <title>IoT</title>
-      <link>minatu2.github.io/categories/iot/</link>
+      <link>/categories/iot/</link>
       <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/iot/</guid>
+      <guid>/categories/iot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RTOS</title>
-      <link>minatu2.github.io/categories/rtos/</link>
+      <link>/categories/rtos/</link>
       <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/rtos/</guid>
+      <guid>/categories/rtos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Microcontroller</title>
-      <link>minatu2.github.io/categories/microcontroller/</link>
+      <link>/categories/microcontroller/</link>
       <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/microcontroller/</guid>
+      <guid>/categories/microcontroller/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ITS</title>
-      <link>minatu2.github.io/categories/its/</link>
+      <link>/categories/its/</link>
       <pubDate>Sun, 24 Jan 2016 13:28:34 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/its/</guid>
+      <guid>/categories/its/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Security</title>
-      <link>minatu2.github.io/categories/security/</link>
+      <link>/categories/security/</link>
       <pubDate>Tue, 05 Jan 2016 14:48:34 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/security/</guid>
+      <guid>/categories/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Network</title>
-      <link>minatu2.github.io/categories/network/</link>
+      <link>/categories/network/</link>
       <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/network/</guid>
+      <guid>/categories/network/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Js</title>
-      <link>minatu2.github.io/categories/js/</link>
+      <link>/categories/js/</link>
       <pubDate>Sat, 11 Apr 2015 06:30:59 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/js/</guid>
+      <guid>/categories/js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OpenSource</title>
-      <link>minatu2.github.io/categories/opensource/</link>
+      <link>/categories/opensource/</link>
       <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/categories/opensource/</guid>
+      <guid>/categories/opensource/</guid>
       <description></description>
     </item>
     

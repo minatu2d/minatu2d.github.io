@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Debug on Lazytrick</title>
-    <link>minatu2.github.io/categories/debug/</link>
+    <link>/categories/debug/</link>
     <description>Recent content in Debug on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 19 Oct 2016 14:27:19 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/categories/debug/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/debug/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>GDB dòng lệnh cơ bản (03 - Cơ bản)</title>
-      <link>minatu2.github.io/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
+      <link>/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
       <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
+      <guid>/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
       <description>&lt;p&gt;Trong bài số &lt;a href=&#34;https://lazytrick.wordpress.com/2016/09/19/gdb-co-the-lam-gi/&#34;&gt;02&lt;/a&gt;, ta đã nói đến những việc mà GDB có thể giúp chúng ta.&lt;/p&gt;
 &lt;p&gt;Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số &lt;strong&gt;-g&lt;/strong&gt; khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.&lt;br /&gt;
 </description>
@@ -24,10 +24,10 @@
     
     <item>
       <title>Cài đặt GDB (02 - Cài đặt)</title>
-      <link>minatu2.github.io/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
+      <link>/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
       <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
+      <guid>/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
       <description>&lt;p&gt;Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là &lt;strong&gt;target program&lt;/strong&gt;.&lt;br /&gt;
 Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:&lt;/p&gt;
 &lt;ol&gt;
@@ -43,10 +43,10 @@ $gdb --version&lt;br /&gt;
     
     <item>
       <title>GDB có thể làm gì? (01 - Khả năng của GDB)</title>
-      <link>minatu2.github.io/post/2016-09-19-gdb-co-the-lam-gi/</link>
+      <link>/post/2016-09-19-gdb-co-the-lam-gi/</link>
       <pubDate>Mon, 19 Sep 2016 11:58:27 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-09-19-gdb-co-the-lam-gi/</guid>
+      <guid>/post/2016-09-19-gdb-co-the-lam-gi/</guid>
       <description>&lt;p&gt;Trước khi nói về chủ đề chính là &#34;GDB có thể làm gì&#34;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.&lt;/p&gt;
 &lt;h4&gt;1. Phầm mềm Debugger sinh ra giải quyết cái gì?&lt;/h4&gt;
 &lt;p&gt;Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.&lt;br /&gt;
@@ -56,10 +56,10 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
     
     <item>
       <title>Làm việc với GDB - GNU Debugger (00- Mở đầu)</title>
-      <link>minatu2.github.io/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</link>
+      <link>/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</link>
       <pubDate>Thu, 15 Sep 2016 09:19:53 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</guid>
+      <guid>/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</guid>
       <description>&lt;p&gt;Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！&lt;/p&gt;
 &lt;p&gt;Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với &#34;siêu lười&#34; như mình, loạt về &lt;a href=&#34;https://lazytrick.wordpress.com/category/usb/&#34;&gt;USB Basic&lt;/a&gt; dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.&lt;/p&gt;
 &lt;p&gt;Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).&lt;/p&gt;

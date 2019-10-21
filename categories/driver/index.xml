@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Driver on Lazytrick</title>
-    <link>minatu2.github.io/categories/driver/</link>
+    <link>/categories/driver/</link>
     <description>Recent content in Driver on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 23 Apr 2017 04:10:05 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/categories/driver/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/categories/driver/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tìm source code của USB Driver trên Linux</title>
-      <link>minatu2.github.io/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
+      <link>/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
+      <guid>/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
       <description>&lt;p&gt;Ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/&#34;&gt;Tìm driver cho Linux&lt;/a&gt; cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.&lt;/p&gt;
 &lt;h2&gt;Cách tìm source code driver cho thiết bị USB&lt;/h2&gt;
 &lt;h2&gt;1. Nói qua về thiết bị USB&lt;/h2&gt;

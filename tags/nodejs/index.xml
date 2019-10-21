@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Nodejs on Lazytrick</title>
-    <link>minatu2.github.io/tags/nodejs/</link>
+    <link>/tags/nodejs/</link>
     <description>Recent content in Nodejs on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 11 Apr 2015 06:30:59 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>NodeJS - Cũng hay hay</title>
-      <link>minatu2.github.io/post/2015-04-11-nodejs-cung-hay-hay/</link>
+      <link>/post/2015-04-11-nodejs-cung-hay-hay/</link>
       <pubDate>Sat, 11 Apr 2015 06:30:59 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2015-04-11-nodejs-cung-hay-hay/</guid>
+      <guid>/post/2015-04-11-nodejs-cung-hay-hay/</guid>
       <description></description>
     </item>
     

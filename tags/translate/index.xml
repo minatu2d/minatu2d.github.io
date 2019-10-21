@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Translate on Lazytrick</title>
-    <link>minatu2.github.io/tags/translate/</link>
+    <link>/tags/translate/</link>
     <description>Recent content in Translate on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 23 Jul 2016 05:46:28 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/translate/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/translate/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>USB cho dev (Chap.06 – Các gói tin Setup)</title>
-      <link>minatu2.github.io/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</link>
+      <link>/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</link>
       <pubDate>Sat, 23 Jul 2016 05:46:28 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</guid>
+      <guid>/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</guid>
       <description>&lt;p&gt;Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.&lt;/p&gt;
 &lt;p&gt;Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây. Ngoài ra, nó cũng quy định chặt hơn cho từng Request từ phía Host.&lt;/p&gt;
 &lt;ul&gt;
@@ -32,10 +32,10 @@
     
     <item>
       <title>USB cho dev (Chap.05 – Đặc tả thiết bị)</title>
-      <link>minatu2.github.io/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</link>
+      <link>/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</link>
       <pubDate>Mon, 18 Jul 2016 09:19:07 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</guid>
+      <guid>/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</guid>
       <description>&lt;p&gt;Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.&lt;/p&gt;
 &lt;p&gt;Các đặc tả phổ biết nhất bao gồm:&lt;/p&gt;
 &lt;ul&gt;
@@ -50,10 +50,10 @@
     
     <item>
       <title>USB cho dev (Chap.04 - Các loại Endpoint)</title>
-      <link>minatu2.github.io/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</link>
+      <link>/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</link>
       <pubDate>Sat, 26 Mar 2016 03:11:25 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
+      <guid>/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Đặc tả USB định nghĩa 4 loại Transfer/EndPoint&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Control Transfer&lt;/p&gt;
 &lt;p&gt;Interrupt Transfer&lt;/p&gt;
@@ -64,10 +64,10 @@
     
     <item>
       <title>USB cho dev (Chap.03 - Giao thức)</title>
-      <link>minatu2.github.io/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</link>
+      <link>/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</link>
       <pubDate>Mon, 21 Mar 2016 15:19:47 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</guid>
+      <guid>/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</guid>
       <description>&lt;p&gt;Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &#34;nguy hiểm&#34;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi. Trong thực tế, hầu hết USB Controller I.C.s sẽ lo hết mấy tầng dưới rồi. Hay nói cách khác, mấy tầng đó nhà phát triển cũng không thấy được.&lt;/p&gt;
 &lt;p&gt;Mỗi USB Transaction bao gồm&lt;/p&gt;
 &lt;ul&gt;
@@ -78,10 +78,10 @@
     
     <item>
       <title>USB cho Dev (Chp.02 - Phần cứng)</title>
-      <link>minatu2.github.io/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</link>
+      <link>/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</link>
       <pubDate>Mon, 21 Mar 2016 02:17:04 +0900</pubDate>
       
-      <guid>minatu2.github.io/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
+      <guid>/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
       <description>&lt;p&gt;Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.&lt;/p&gt;
 &lt;p&gt;Đầu kết nối (Connectors)&lt;/p&gt;
 &lt;p&gt;Mọi thiết bị có một upstream &#34;chảy&#34;đến host, và mọi host có một downstream &#34;chảy&#34; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs. Có 2 loại connector phổ biến là type A và type B. Như hình bên dưới đây:&lt;/p&gt;

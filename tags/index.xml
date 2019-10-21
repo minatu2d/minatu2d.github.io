@@ -2,759 +2,759 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Lazytrick</title>
-    <link>minatu2.github.io/tags/</link>
+    <link>/tags/</link>
     <description>Recent content in Tags on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 24 May 2018 07:53:35 +0900</lastBuildDate>
     
-	<atom:link href="minatu2.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Deserialization</title>
-      <link>minatu2.github.io/tags/deserialization/</link>
+      <link>/tags/deserialization/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/deserialization/</guid>
+      <guid>/tags/deserialization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pickle</title>
-      <link>minatu2.github.io/tags/pickle/</link>
+      <link>/tags/pickle/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/pickle/</guid>
+      <guid>/tags/pickle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Serialization</title>
-      <link>minatu2.github.io/tags/serialization/</link>
+      <link>/tags/serialization/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/serialization/</guid>
+      <guid>/tags/serialization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CourserA</title>
-      <link>minatu2.github.io/tags/coursera/</link>
+      <link>/tags/coursera/</link>
       <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/coursera/</guid>
+      <guid>/tags/coursera/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bash</title>
-      <link>minatu2.github.io/tags/bash/</link>
+      <link>/tags/bash/</link>
       <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/bash/</guid>
+      <guid>/tags/bash/</guid>
       <description></description>
     </item>
     
     <item>
       <title>script</title>
-      <link>minatu2.github.io/tags/script/</link>
+      <link>/tags/script/</link>
       <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/script/</guid>
+      <guid>/tags/script/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pthread</title>
-      <link>minatu2.github.io/tags/pthread/</link>
+      <link>/tags/pthread/</link>
       <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/pthread/</guid>
+      <guid>/tags/pthread/</guid>
       <description></description>
     </item>
     
     <item>
       <title>thread</title>
-      <link>minatu2.github.io/tags/thread/</link>
+      <link>/tags/thread/</link>
       <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/thread/</guid>
+      <guid>/tags/thread/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Assembly</title>
-      <link>minatu2.github.io/tags/assembly/</link>
+      <link>/tags/assembly/</link>
       <pubDate>Sun, 14 May 2017 08:43:10 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/assembly/</guid>
+      <guid>/tags/assembly/</guid>
       <description></description>
     </item>
     
     <item>
       <title>busybox</title>
-      <link>minatu2.github.io/tags/busybox/</link>
+      <link>/tags/busybox/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/busybox/</guid>
+      <guid>/tags/busybox/</guid>
       <description></description>
     </item>
     
     <item>
       <title>qemu</title>
-      <link>minatu2.github.io/tags/qemu/</link>
+      <link>/tags/qemu/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/qemu/</guid>
+      <guid>/tags/qemu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rootfs</title>
-      <link>minatu2.github.io/tags/rootfs/</link>
+      <link>/tags/rootfs/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/rootfs/</guid>
+      <guid>/tags/rootfs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>minatu2.github.io/tags/linux/</link>
+      <link>/tags/linux/</link>
       <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/linux/</guid>
+      <guid>/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Editor</title>
-      <link>minatu2.github.io/tags/editor/</link>
+      <link>/tags/editor/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/editor/</guid>
+      <guid>/tags/editor/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unix</title>
-      <link>minatu2.github.io/tags/unix/</link>
+      <link>/tags/unix/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/unix/</guid>
+      <guid>/tags/unix/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vim</title>
-      <link>minatu2.github.io/tags/vim/</link>
+      <link>/tags/vim/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/vim/</guid>
+      <guid>/tags/vim/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bitbake</title>
-      <link>minatu2.github.io/tags/bitbake/</link>
+      <link>/tags/bitbake/</link>
       <pubDate>Sun, 19 Feb 2017 00:14:48 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/bitbake/</guid>
+      <guid>/tags/bitbake/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Asm</title>
-      <link>minatu2.github.io/tags/asm/</link>
+      <link>/tags/asm/</link>
       <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/asm/</guid>
+      <guid>/tags/asm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>device file</title>
-      <link>minatu2.github.io/tags/device-file/</link>
+      <link>/tags/device-file/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/device-file/</guid>
+      <guid>/tags/device-file/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kernel</title>
-      <link>minatu2.github.io/tags/kernel/</link>
+      <link>/tags/kernel/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/kernel/</guid>
+      <guid>/tags/kernel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>systemd</title>
-      <link>minatu2.github.io/tags/systemd/</link>
+      <link>/tags/systemd/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/systemd/</guid>
+      <guid>/tags/systemd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>udev</title>
-      <link>minatu2.github.io/tags/udev/</link>
+      <link>/tags/udev/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/udev/</guid>
+      <guid>/tags/udev/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Compiler</title>
-      <link>minatu2.github.io/tags/compiler/</link>
+      <link>/tags/compiler/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/compiler/</guid>
+      <guid>/tags/compiler/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linker</title>
-      <link>minatu2.github.io/tags/linker/</link>
+      <link>/tags/linker/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/linker/</guid>
+      <guid>/tags/linker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Loader</title>
-      <link>minatu2.github.io/tags/loader/</link>
+      <link>/tags/loader/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/loader/</guid>
+      <guid>/tags/loader/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GCC</title>
-      <link>minatu2.github.io/tags/gcc/</link>
+      <link>/tags/gcc/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/gcc/</guid>
+      <guid>/tags/gcc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HelloWorld</title>
-      <link>minatu2.github.io/tags/helloworld/</link>
+      <link>/tags/helloworld/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/helloworld/</guid>
+      <guid>/tags/helloworld/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C</title>
-      <link>minatu2.github.io/tags/c/</link>
+      <link>/tags/c/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/c/</guid>
+      <guid>/tags/c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Error</title>
-      <link>minatu2.github.io/tags/error/</link>
+      <link>/tags/error/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/error/</guid>
+      <guid>/tags/error/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FileSystem</title>
-      <link>minatu2.github.io/tags/filesystem/</link>
+      <link>/tags/filesystem/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/filesystem/</guid>
+      <guid>/tags/filesystem/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ASN1</title>
-      <link>minatu2.github.io/tags/asn1/</link>
+      <link>/tags/asn1/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/asn1/</guid>
+      <guid>/tags/asn1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PER</title>
-      <link>minatu2.github.io/tags/per/</link>
+      <link>/tags/per/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/per/</guid>
+      <guid>/tags/per/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CER</title>
-      <link>minatu2.github.io/tags/cer/</link>
+      <link>/tags/cer/</link>
       <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/cer/</guid>
+      <guid>/tags/cer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DER</title>
-      <link>minatu2.github.io/tags/der/</link>
+      <link>/tags/der/</link>
       <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/der/</guid>
+      <guid>/tags/der/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Aligment</title>
-      <link>minatu2.github.io/tags/aligment/</link>
+      <link>/tags/aligment/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/aligment/</guid>
+      <guid>/tags/aligment/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Casting</title>
-      <link>minatu2.github.io/tags/casting/</link>
+      <link>/tags/casting/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/casting/</guid>
+      <guid>/tags/casting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pointer</title>
-      <link>minatu2.github.io/tags/pointer/</link>
+      <link>/tags/pointer/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/pointer/</guid>
+      <guid>/tags/pointer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GDB</title>
-      <link>minatu2.github.io/tags/gdb/</link>
+      <link>/tags/gdb/</link>
       <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/gdb/</guid>
+      <guid>/tags/gdb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Installation</title>
-      <link>minatu2.github.io/tags/installation/</link>
+      <link>/tags/installation/</link>
       <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/installation/</guid>
+      <guid>/tags/installation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Command</title>
-      <link>minatu2.github.io/tags/command/</link>
+      <link>/tags/command/</link>
       <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/command/</guid>
+      <guid>/tags/command/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Driver</title>
-      <link>minatu2.github.io/tags/driver/</link>
+      <link>/tags/driver/</link>
       <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/driver/</guid>
+      <guid>/tags/driver/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Firmware</title>
-      <link>minatu2.github.io/tags/firmware/</link>
+      <link>/tags/firmware/</link>
       <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/firmware/</guid>
+      <guid>/tags/firmware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RT2870</title>
-      <link>minatu2.github.io/tags/rt2870/</link>
+      <link>/tags/rt2870/</link>
       <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/rt2870/</guid>
+      <guid>/tags/rt2870/</guid>
       <description></description>
     </item>
     
     <item>
       <title>WifiUSB</title>
-      <link>minatu2.github.io/tags/wifiusb/</link>
+      <link>/tags/wifiusb/</link>
       <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/wifiusb/</guid>
+      <guid>/tags/wifiusb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recipe</title>
-      <link>minatu2.github.io/tags/recipe/</link>
+      <link>/tags/recipe/</link>
       <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/recipe/</guid>
+      <guid>/tags/recipe/</guid>
       <description></description>
     </item>
     
     <item>
       <title>StaticIP</title>
-      <link>minatu2.github.io/tags/staticip/</link>
+      <link>/tags/staticip/</link>
       <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/staticip/</guid>
+      <guid>/tags/staticip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Samba</title>
-      <link>minatu2.github.io/tags/samba/</link>
+      <link>/tags/samba/</link>
       <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/samba/</guid>
+      <guid>/tags/samba/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SMB</title>
-      <link>minatu2.github.io/tags/smb/</link>
+      <link>/tags/smb/</link>
       <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/smb/</guid>
+      <guid>/tags/smb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flash</title>
-      <link>minatu2.github.io/tags/flash/</link>
+      <link>/tags/flash/</link>
       <pubDate>Fri, 05 Aug 2016 01:50:50 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/flash/</guid>
+      <guid>/tags/flash/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CrossCompile</title>
-      <link>minatu2.github.io/tags/crosscompile/</link>
+      <link>/tags/crosscompile/</link>
       <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/crosscompile/</guid>
+      <guid>/tags/crosscompile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LinuxImage</title>
-      <link>minatu2.github.io/tags/linuximage/</link>
+      <link>/tags/linuximage/</link>
       <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/linuximage/</guid>
+      <guid>/tags/linuximage/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RaspberryPI</title>
-      <link>minatu2.github.io/tags/raspberrypi/</link>
+      <link>/tags/raspberrypi/</link>
       <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/raspberrypi/</guid>
+      <guid>/tags/raspberrypi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Translate</title>
-      <link>minatu2.github.io/tags/translate/</link>
+      <link>/tags/translate/</link>
       <pubDate>Sat, 23 Jul 2016 05:46:28 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/translate/</guid>
+      <guid>/tags/translate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Library</title>
-      <link>minatu2.github.io/tags/library/</link>
+      <link>/tags/library/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/library/</guid>
+      <guid>/tags/library/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linking</title>
-      <link>minatu2.github.io/tags/linking/</link>
+      <link>/tags/linking/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/linking/</guid>
+      <guid>/tags/linking/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ObjectFile</title>
-      <link>minatu2.github.io/tags/objectfile/</link>
+      <link>/tags/objectfile/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/objectfile/</guid>
+      <guid>/tags/objectfile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SCSI</title>
-      <link>minatu2.github.io/tags/scsi/</link>
+      <link>/tags/scsi/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/scsi/</guid>
+      <guid>/tags/scsi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USB</title>
-      <link>minatu2.github.io/tags/usb/</link>
+      <link>/tags/usb/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/usb/</guid>
+      <guid>/tags/usb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USBMemory</title>
-      <link>minatu2.github.io/tags/usbmemory/</link>
+      <link>/tags/usbmemory/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/usbmemory/</guid>
+      <guid>/tags/usbmemory/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mqtt</title>
-      <link>minatu2.github.io/tags/mqtt/</link>
+      <link>/tags/mqtt/</link>
       <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/mqtt/</guid>
+      <guid>/tags/mqtt/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ITRON</title>
-      <link>minatu2.github.io/tags/itron/</link>
+      <link>/tags/itron/</link>
       <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/itron/</guid>
+      <guid>/tags/itron/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DigitalSignal</title>
-      <link>minatu2.github.io/tags/digitalsignal/</link>
+      <link>/tags/digitalsignal/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/digitalsignal/</guid>
+      <guid>/tags/digitalsignal/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RGB</title>
-      <link>minatu2.github.io/tags/rgb/</link>
+      <link>/tags/rgb/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/rgb/</guid>
+      <guid>/tags/rgb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VGA</title>
-      <link>minatu2.github.io/tags/vga/</link>
+      <link>/tags/vga/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/vga/</guid>
+      <guid>/tags/vga/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Draft</title>
-      <link>minatu2.github.io/tags/draft/</link>
+      <link>/tags/draft/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/draft/</guid>
+      <guid>/tags/draft/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HID</title>
-      <link>minatu2.github.io/tags/hid/</link>
+      <link>/tags/hid/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/hid/</guid>
+      <guid>/tags/hid/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USBDescriptor</title>
-      <link>minatu2.github.io/tags/usbdescriptor/</link>
+      <link>/tags/usbdescriptor/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/usbdescriptor/</guid>
+      <guid>/tags/usbdescriptor/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FIT</title>
-      <link>minatu2.github.io/tags/fit/</link>
+      <link>/tags/fit/</link>
       <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/fit/</guid>
+      <guid>/tags/fit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Renesas</title>
-      <link>minatu2.github.io/tags/renesas/</link>
+      <link>/tags/renesas/</link>
       <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/renesas/</guid>
+      <guid>/tags/renesas/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Porting</title>
-      <link>minatu2.github.io/tags/porting/</link>
+      <link>/tags/porting/</link>
       <pubDate>Mon, 25 Jan 2016 14:27:20 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/porting/</guid>
+      <guid>/tags/porting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>I2C</title>
-      <link>minatu2.github.io/tags/i2c/</link>
+      <link>/tags/i2c/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/i2c/</guid>
+      <guid>/tags/i2c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SPI</title>
-      <link>minatu2.github.io/tags/spi/</link>
+      <link>/tags/spi/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/spi/</guid>
+      <guid>/tags/spi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>UART</title>
-      <link>minatu2.github.io/tags/uart/</link>
+      <link>/tags/uart/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/uart/</guid>
+      <guid>/tags/uart/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Beyondlogic</title>
-      <link>minatu2.github.io/tags/beyondlogic/</link>
+      <link>/tags/beyondlogic/</link>
       <pubDate>Mon, 25 Jan 2016 14:18:10 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/beyondlogic/</guid>
+      <guid>/tags/beyondlogic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>AES</title>
-      <link>minatu2.github.io/tags/aes/</link>
+      <link>/tags/aes/</link>
       <pubDate>Tue, 05 Jan 2016 14:48:34 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/aes/</guid>
+      <guid>/tags/aes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FAT</title>
-      <link>minatu2.github.io/tags/fat/</link>
+      <link>/tags/fat/</link>
       <pubDate>Sun, 27 Dec 2015 13:39:16 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/fat/</guid>
+      <guid>/tags/fat/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cmake</title>
-      <link>minatu2.github.io/tags/cmake/</link>
+      <link>/tags/cmake/</link>
       <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/cmake/</guid>
+      <guid>/tags/cmake/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Make</title>
-      <link>minatu2.github.io/tags/make/</link>
+      <link>/tags/make/</link>
       <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/make/</guid>
+      <guid>/tags/make/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wireshark</title>
-      <link>minatu2.github.io/tags/wireshark/</link>
+      <link>/tags/wireshark/</link>
       <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/wireshark/</guid>
+      <guid>/tags/wireshark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Distro</title>
-      <link>minatu2.github.io/tags/distro/</link>
+      <link>/tags/distro/</link>
       <pubDate>Sat, 25 Apr 2015 07:50:24 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/distro/</guid>
+      <guid>/tags/distro/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nodejs</title>
-      <link>minatu2.github.io/tags/nodejs/</link>
+      <link>/tags/nodejs/</link>
       <pubDate>Sat, 11 Apr 2015 06:30:59 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/nodejs/</guid>
+      <guid>/tags/nodejs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Embbeded</title>
-      <link>minatu2.github.io/tags/embbeded/</link>
+      <link>/tags/embbeded/</link>
       <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/embbeded/</guid>
+      <guid>/tags/embbeded/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Open</title>
-      <link>minatu2.github.io/tags/open/</link>
+      <link>/tags/open/</link>
       <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
       
-      <guid>minatu2.github.io/tags/open/</guid>
+      <guid>/tags/open/</guid>
       <description></description>
     </item>
     
