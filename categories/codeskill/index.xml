@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CodeSkill on Lazytrick</title>
-    <link>localhost:1313/categories/codeskill/</link>
+    <link>minatu2.github.io/categories/codeskill/</link>
     <description>Recent content in CodeSkill on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 02 Apr 2017 11:16:36 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/categories/codeskill/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/categories/codeskill/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Phím tắt cho bash</title>
-      <link>localhost:1313/post/2017-04-02-phim-tat-cho-bash/</link>
+      <link>minatu2.github.io/post/2017-04-02-phim-tat-cho-bash/</link>
       <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
       
-      <guid>localhost:1313/post/2017-04-02-phim-tat-cho-bash/</guid>
+      <guid>minatu2.github.io/post/2017-04-02-phim-tat-cho-bash/</guid>
       <description>&lt;p&gt;Mặc định, bash sử dụng &lt;em&gt;emacs&lt;/em&gt; mode, có thể chuyển sang &lt;em&gt;vi&lt;/em&gt; mode được.&lt;br /&gt;
 Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.&lt;/p&gt;
 &lt;h2&gt;Chiều ngang : Di chuyển cơ bản&lt;/h2&gt;
@@ -28,20 +28,20 @@ Ctrl + d : (Delete) Xóa kí tự ở vị trí con trỏ&lt;/p&gt;
     
     <item>
       <title>Ví dụ minh họa sử dụng pthread</title>
-      <link>localhost:1313/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</link>
+      <link>minatu2.github.io/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</link>
       <pubDate>Wed, 06 Apr 2016 15:26:51 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</guid>
+      <guid>minatu2.github.io/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</guid>
       <description>&lt;p&gt;Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.&lt;/p&gt;
 &lt;p&gt;Mục đích ban đầu nói đến ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2015/07/16/dung-pthread-theo-cac-da-nen-tang-den-muc-nao/&#34;&gt;Cơ bản về pthread&lt;/a&gt;, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</description>
     </item>
     
     <item>
       <title>[CodeC] Về cách viết code</title>
-      <link>localhost:1313/post/2016-01-05-codec-ve-cach-viet-code/</link>
+      <link>minatu2.github.io/post/2016-01-05-codec-ve-cach-viet-code/</link>
       <pubDate>Tue, 05 Jan 2016 15:02:39 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-01-05-codec-ve-cach-viet-code/</guid>
+      <guid>minatu2.github.io/post/2016-01-05-codec-ve-cach-viet-code/</guid>
       <description>Việc code thường hay phải lặp đi lặp lại rất nhiều thao tác trong nhiều dự án khác nhau. Có thể kể đến nhưng scanf, fread, fwrite&amp;hellip;.print, debug&amp;hellip;
 Giờ có một design, tức là flow chart+ danh sách tên hàm.
 Flow chart thì rõ là phải viết rồi, có thể đặt tên theo các xử lý, gắn các mã. Nó dù rất giống với phần implement nhưng ta có thể tách bạch được.</description>

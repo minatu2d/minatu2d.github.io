@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Khác on Lazytrick</title>
-    <link>localhost:1313/categories/kh%C3%A1c/</link>
+    <link>minatu2.github.io/categories/kh%C3%A1c/</link>
     <description>Recent content in Khác on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 11 Sep 2019 06:00:22 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/categories/kh%C3%A1c/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/categories/kh%C3%A1c/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Học Ruby On Rails (RoR)</title>
-      <link>localhost:1313/post/2019-09-11-hoc-ruby-on-rails-ror/</link>
+      <link>minatu2.github.io/post/2019-09-11-hoc-ruby-on-rails-ror/</link>
       <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
       
-      <guid>localhost:1313/post/2019-09-11-hoc-ruby-on-rails-ror/</guid>
+      <guid>minatu2.github.io/post/2019-09-11-hoc-ruby-on-rails-ror/</guid>
       <description>1. General 2. Scope  Biến bắt đầu bằng @* gọi là instance variable
 https://stackoverflow.com/questions/14319347/variables-in-ruby-on-rails  3. Model 4. View 5. Controller  </description>
     </item>
     
     <item>
       <title>Phím tắt cho bash</title>
-      <link>localhost:1313/post/2017-04-02-phim-tat-cho-bash/</link>
+      <link>minatu2.github.io/post/2017-04-02-phim-tat-cho-bash/</link>
       <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
       
-      <guid>localhost:1313/post/2017-04-02-phim-tat-cho-bash/</guid>
+      <guid>minatu2.github.io/post/2017-04-02-phim-tat-cho-bash/</guid>
       <description>&lt;p&gt;Mặc định, bash sử dụng &lt;em&gt;emacs&lt;/em&gt; mode, có thể chuyển sang &lt;em&gt;vi&lt;/em&gt; mode được.&lt;br /&gt;
 Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.&lt;/p&gt;
 &lt;h2&gt;Chiều ngang : Di chuyển cơ bản&lt;/h2&gt;
@@ -38,10 +38,10 @@ Ctrl + d : (Delete) Xóa kí tự ở vị trí con trỏ&lt;/p&gt;
     
     <item>
       <title>Một số điều rút ra từ việc phải sử dụng command</title>
-      <link>localhost:1313/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
+      <link>minatu2.github.io/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>localhost:1313/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
+      <guid>minatu2.github.io/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
       <description>&lt;p&gt;Do yêu cầu bắt buộc nên gần đây phải làm việc với VIM.&lt;/p&gt;
 &lt;p&gt;Thực ra vẫn dùng máy tính Windows để chạy các ứng dụng SSH Client, SCP, rồi thì Excel. Tuy nhiên, các thao tác chủ yếu với source, text file, là trên command.&lt;/p&gt;
 &lt;p&gt;Mà trên command của Unix, hay Linux. Dù có trả qua bao nhiêu năm nữa, thì có vẻ chỉ có 2 trường phái là &lt;strong&gt;VIM và Emacs&lt;/strong&gt; thôi. Nhiều người thích Emacs, cũng nhiều người thích VIM.&lt;/p&gt;
@@ -50,10 +50,10 @@ Ctrl + d : (Delete) Xóa kí tự ở vị trí con trỏ&lt;/p&gt;
     
     <item>
       <title>Chuyển sang dùng VI(M)</title>
-      <link>localhost:1313/post/2017-03-29-chuyen-sang-dung-vim/</link>
+      <link>minatu2.github.io/post/2017-03-29-chuyen-sang-dung-vim/</link>
       <pubDate>Wed, 29 Mar 2017 13:37:36 +0900</pubDate>
       
-      <guid>localhost:1313/post/2017-03-29-chuyen-sang-dung-vim/</guid>
+      <guid>minatu2.github.io/post/2017-03-29-chuyen-sang-dung-vim/</guid>
       <description>&lt;h2&gt;Chuyển sang dùng Vi&lt;/h2&gt;
 &lt;p&gt;Vi - Editor khá nhiều tuổi, có lẽ còn nhiều tuổi hơn của mình.&lt;br /&gt;
 Là editor phổ biến nhất trên hệ thống dòng lệnh Linux, Unix hoặc tương tự.&lt;br /&gt;
@@ -69,10 +69,10 @@ emacs-fan nữa nên ít khi phải dùng Vi.&lt;br /&gt;
     
     <item>
       <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
-      <link>localhost:1313/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <link>minatu2.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <guid>minatu2.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
       <description>&lt;p&gt;Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch &lt;strong&gt;GCC&lt;/strong&gt; lên đó.&lt;br /&gt;
 Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.&lt;br /&gt;
 Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.&lt;br /&gt;
@@ -81,10 +81,10 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
     
     <item>
       <title>Chia sẻ dữ liệu giữa Host và Guest như thế nào là có lợi nhất?</title>
-      <link>localhost:1313/post/2016-01-24-chia-se-du-lieu-giua-host-va-guest-nhu-the-nao-la-co-loi-nhat/</link>
+      <link>minatu2.github.io/post/2016-01-24-chia-se-du-lieu-giua-host-va-guest-nhu-the-nao-la-co-loi-nhat/</link>
       <pubDate>Sun, 24 Jan 2016 13:14:00 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-01-24-chia-se-du-lieu-giua-host-va-guest-nhu-the-nao-la-co-loi-nhat/</guid>
+      <guid>minatu2.github.io/post/2016-01-24-chia-se-du-lieu-giua-host-va-guest-nhu-the-nao-la-co-loi-nhat/</guid>
       <description>&lt;p&gt;Ngày nay, dù chỉ cần có 1 mày tính thì người ta vẫn có thể sử dụng nhiều môi trường hệ điều hành khác nhau. Cái đó gọi là ảo hóa.&lt;/p&gt;
 &lt;p&gt;Tức là trên một máy tính chạy một hệ điều hành cụ thể. Ta cài đặt một ứng dụng mô phỏng một máy tính trên đó. Ta sẽ có bao nhiều máy tính tùy vào khả năng phần cứng của máy thôi.&lt;/p&gt;
 &lt;p&gt;2 phần mềm được sử dụng free nhiều nhất hiện tại là VirtualBox và VMWare Player.&lt;/p&gt;
@@ -98,10 +98,10 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
     
     <item>
       <title>[CodeC] Về cách viết code</title>
-      <link>localhost:1313/post/2016-01-05-codec-ve-cach-viet-code/</link>
+      <link>minatu2.github.io/post/2016-01-05-codec-ve-cach-viet-code/</link>
       <pubDate>Tue, 05 Jan 2016 15:02:39 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-01-05-codec-ve-cach-viet-code/</guid>
+      <guid>minatu2.github.io/post/2016-01-05-codec-ve-cach-viet-code/</guid>
       <description>Việc code thường hay phải lặp đi lặp lại rất nhiều thao tác trong nhiều dự án khác nhau. Có thể kể đến nhưng scanf, fread, fwrite&amp;hellip;.print, debug&amp;hellip;
 Giờ có một design, tức là flow chart+ danh sách tên hàm.
 Flow chart thì rõ là phải viết rồi, có thể đặt tên theo các xử lý, gắn các mã. Nó dù rất giống với phần implement nhưng ta có thể tách bạch được.</description>
@@ -109,10 +109,10 @@ Flow chart thì rõ là phải viết rồi, có thể đặt tên theo các x�
     
     <item>
       <title>Glogger - Log viewer tốt nhưng còn một vài điểm</title>
-      <link>localhost:1313/post/2015-07-28-glogger-log-viewer-very-tot-nhung-con-mot-vai-diem/</link>
+      <link>minatu2.github.io/post/2015-07-28-glogger-log-viewer-very-tot-nhung-con-mot-vai-diem/</link>
       <pubDate>Tue, 28 Jul 2015 15:21:24 +0900</pubDate>
       
-      <guid>localhost:1313/post/2015-07-28-glogger-log-viewer-very-tot-nhung-con-mot-vai-diem/</guid>
+      <guid>minatu2.github.io/post/2015-07-28-glogger-log-viewer-very-tot-nhung-con-mot-vai-diem/</guid>
       <description>Nói đến editor, ai cũng nghĩ đến Notepad++. Sakura (JP thôi), hay gì gì đó.
 Ừ thì đúng Notepad++ rất nhiều tính năng, rất nhanh, rất nhẹ.
 Nhưng gần đây tôi phát hiện ra điểm yếu của nó, xử lý file lớn của nó rất tệ. Thậm chí nó còn gây mất dữ liệu.
@@ -121,10 +121,10 @@ Tôi và bạn tôi đã thử với một file khoảng 600MB trở lên thì k
     
     <item>
       <title>Thêm chức năng giao tiếp bằng telnet cho ứng dụng?</title>
-      <link>localhost:1313/post/2015-07-28-them-chuc-nang-giao-tiep-bang-telnet-cho-ung-dung/</link>
+      <link>minatu2.github.io/post/2015-07-28-them-chuc-nang-giao-tiep-bang-telnet-cho-ung-dung/</link>
       <pubDate>Tue, 28 Jul 2015 15:09:41 +0900</pubDate>
       
-      <guid>localhost:1313/post/2015-07-28-them-chuc-nang-giao-tiep-bang-telnet-cho-ung-dung/</guid>
+      <guid>minatu2.github.io/post/2015-07-28-them-chuc-nang-giao-tiep-bang-telnet-cho-ung-dung/</guid>
       <description>Hôm nay mình có gợi ý ông leader về việc sử dụng giao diện telnet để giúp ứng dụng giao tiếp tốt hơn với bên ngoài.
 Thì ông ấy hỏi : &amp;ldquo;Mày làm nó bao giờ chưa? Không đủ time đâu. Nghĩ cũng đúng, mình thấy có thể làm thôi chứ chưa đo time để làm cái đó.&amp;rdquo;
 Vậy thì thử xem sao:
@@ -133,10 +133,10 @@ Tôi dự định sẽ thêm tính năng giao tiếp bằng telnet cho một ứ
     
     <item>
       <title>Nếu wireshark trên Windows gặp lỗi, hãy thử dùng dumpcap</title>
-      <link>localhost:1313/post/2015-07-28-neu-wireshark-tren-windows-gap-loi-hay-thu-dung-dumpcap/</link>
+      <link>minatu2.github.io/post/2015-07-28-neu-wireshark-tren-windows-gap-loi-hay-thu-dung-dumpcap/</link>
       <pubDate>Tue, 28 Jul 2015 15:04:10 +0900</pubDate>
       
-      <guid>localhost:1313/post/2015-07-28-neu-wireshark-tren-windows-gap-loi-hay-thu-dung-dumpcap/</guid>
+      <guid>minatu2.github.io/post/2015-07-28-neu-wireshark-tren-windows-gap-loi-hay-thu-dung-dumpcap/</guid>
       <description>Wireshark, một phần mềm quá phổ biến để phân tích gói tin cho dù là có dây hay không dây, 1 dây hay 2 dây, tất tần tật. Gì em nó cũng làm được.
 Wireshark vốn đuợc phát triển cho Solaris và Linux. Và thư viện đồ họa hiện đang sử dụng là gtk.
 Gtk là vốn là thư viện đựoc phát triển từ dự án GIMP ( GNOME Graphic Toolkit).</description>
@@ -144,20 +144,20 @@ Gtk là vốn là thư viện đựoc phát triển từ dự án GIMP ( GNOME G
     
     <item>
       <title>Wireshark có thể làm gì?</title>
-      <link>localhost:1313/post/2015-07-14-wireshark-co-the-lam-gi/</link>
+      <link>minatu2.github.io/post/2015-07-14-wireshark-co-the-lam-gi/</link>
       <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
       
-      <guid>localhost:1313/post/2015-07-14-wireshark-co-the-lam-gi/</guid>
+      <guid>minatu2.github.io/post/2015-07-14-wireshark-co-the-lam-gi/</guid>
       <description>Dù biết tool này đã lâu, từ hồi học ĐH có mở ra mở vào để làm mấy bài tập mạng theo kiểu &amp;ldquo;chống chế&amp;rdquo;. Hơn nữa ngày đó, phần mạng (networking) mình cũng không nhiều kiến thức vì đang ham hố phần viết một phần mềm để đời, có giao diện chứ không đen ngòm như mấy cái thầy giáo dạy trên lớp.
 Lại sắp lan man rồi, vào đề thôi.</description>
     </item>
     
     <item>
       <title>Một ứng dụng Web đơn giản sử dụng CGI/Perl sẽ cần những gì?</title>
-      <link>localhost:1313/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</link>
+      <link>minatu2.github.io/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</link>
       <pubDate>Sat, 11 Jul 2015 13:52:18 +0900</pubDate>
       
-      <guid>localhost:1313/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</guid>
+      <guid>minatu2.github.io/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</guid>
       <description>&lt;p&gt;Với những ai đã từng làm nhiều với &lt;code&gt;CGI&lt;/code&gt; và &lt;code&gt;Perl&lt;/code&gt; sẽ dễ dàng đưa ra phương án tối ưu nhất.&lt;/p&gt;
 
 &lt;p&gt;Còn với những ai mới bắt đầu như mình , hoặc chỉ cần 1 chút thôi chẳng hạn thì có thể dễ bị lạc đường giữa rất nhiều framework hoặc thư viện của perl.&lt;/p&gt;
@@ -174,10 +174,10 @@ Lại sắp lan man rồi, vào đề thôi.</description>
     
     <item>
       <title>CentOS 7 - Ổn định, chính xác, dễ hiểu</title>
-      <link>localhost:1313/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</link>
+      <link>minatu2.github.io/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</link>
       <pubDate>Sat, 25 Apr 2015 08:19:53 +0900</pubDate>
       
-      <guid>localhost:1313/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</guid>
+      <guid>minatu2.github.io/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</guid>
       <description>&lt;p&gt;Đang chán nản với cái ứng dụng C# vì không thích cái kiểu làm thì theo yêu cầu mà hỏi thì cái gì các sếp cũng không rõ. Thì anh Kusu ra hỏi.&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>I2C on Lazytrick</title>
-    <link>localhost:1313/tags/i2c/</link>
+    <link>minatu2.github.io/tags/i2c/</link>
     <description>Recent content in I2C on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 25 Jan 2016 14:22:56 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/tags/i2c/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/tags/i2c/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>I2C - Kế thừa UART và SPI (sẽ viết)</title>
-      <link>localhost:1313/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
+      <link>minatu2.github.io/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
+      <guid>minatu2.github.io/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
       <description></description>
     </item>
     

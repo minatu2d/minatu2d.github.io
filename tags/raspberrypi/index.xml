@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>RaspberryPI on Lazytrick</title>
-    <link>localhost:1313/tags/raspberrypi/</link>
+    <link>minatu2.github.io/tags/raspberrypi/</link>
     <description>Recent content in RaspberryPI on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Fri, 29 Jul 2016 08:06:07 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</title>
-      <link>localhost:1313/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
+      <link>minatu2.github.io/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
       <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
+      <guid>minatu2.github.io/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
       <description>&lt;p&gt;Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.&lt;br /&gt;
 Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.&lt;br /&gt;
 Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề. Mà nếu không giải quyết được các vấn đề đó thì nội dung các bài khác sẽ không thể thực hiện được.&lt;br /&gt;
@@ -28,10 +28,10 @@ Do vậy, bài này sẽ tập trung vào tạo bản basic &lt;strong&gt;rpi-ba
     
     <item>
       <title>[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</title>
-      <link>localhost:1313/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</link>
+      <link>minatu2.github.io/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</link>
       <pubDate>Sat, 25 Apr 2015 15:30:15 +0900</pubDate>
       
-      <guid>localhost:1313/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</guid>
+      <guid>minatu2.github.io/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</guid>
       <description>Poky là một hệ distro linux ở dạng tham chiếu của Yocto Project.
 OpenEmbedded là một phần trong đó.
 Nào thế đủ rồi, ta đi vào phần chính.

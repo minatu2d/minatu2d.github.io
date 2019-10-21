@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Pointer on Lazytrick</title>
-    <link>localhost:1313/tags/pointer/</link>
+    <link>minatu2.github.io/tags/pointer/</link>
     <description>Recent content in Pointer on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Wed, 26 Oct 2016 06:50:13 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/tags/pointer/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/tags/pointer/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>&#34;Data structure alignment&#34; là gì? Tại sao phải hiểu nó khi code C.</title>
-      <link>localhost:1313/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
+      <link>minatu2.github.io/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
+      <guid>minatu2.github.io/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
       <description>&lt;p&gt;Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.&lt;br /&gt;
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về &lt;strong&gt;Data Structure Aligment&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;</description>

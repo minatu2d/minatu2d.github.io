@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Loader on Lazytrick</title>
-    <link>localhost:1313/tags/loader/</link>
+    <link>minatu2.github.io/tags/loader/</link>
     <description>Recent content in Loader on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 08 Jan 2017 06:18:19 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/tags/loader/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/tags/loader/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Thực hiện 4 Stage khi Compile bằng tay (Manual)</title>
-      <link>localhost:1313/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
+      <link>minatu2.github.io/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>localhost:1313/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
+      <guid>minatu2.github.io/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
       <description>&lt;p&gt;Ta đã có bài giới thiệu về &lt;a href=&#34;https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/&#34;&gt;4 Stage khi Compiling&lt;/a&gt; rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.&lt;/p&gt;
 &lt;p&gt;Trong compile thông thường dạng&lt;/p&gt;
 &lt;p&gt;[code lang=bash]&lt;br /&gt;
@@ -29,10 +29,10 @@ $gcc -o HelloWorld HelloWorld.c&lt;br /&gt;
     
     <item>
       <title>Một chút hiểu thêm về &#34;Hello World&#34; trong C.</title>
-      <link>localhost:1313/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
+      <link>minatu2.github.io/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
       <pubDate>Wed, 21 Dec 2016 05:31:09 +0900</pubDate>
       
-      <guid>localhost:1313/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
+      <guid>minatu2.github.io/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
       <description>&lt;p&gt;Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.&lt;/p&gt;
 &lt;p&gt;Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì&lt;br /&gt;
 một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;

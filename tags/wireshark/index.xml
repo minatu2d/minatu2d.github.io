@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Wireshark on Lazytrick</title>
-    <link>localhost:1313/tags/wireshark/</link>
+    <link>minatu2.github.io/tags/wireshark/</link>
     <description>Recent content in Wireshark on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Tue, 14 Jul 2015 14:40:03 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/tags/wireshark/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/tags/wireshark/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Wireshark có thể làm gì?</title>
-      <link>localhost:1313/post/2015-07-14-wireshark-co-the-lam-gi/</link>
+      <link>minatu2.github.io/post/2015-07-14-wireshark-co-the-lam-gi/</link>
       <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
       
-      <guid>localhost:1313/post/2015-07-14-wireshark-co-the-lam-gi/</guid>
+      <guid>minatu2.github.io/post/2015-07-14-wireshark-co-the-lam-gi/</guid>
       <description>Dù biết tool này đã lâu, từ hồi học ĐH có mở ra mở vào để làm mấy bài tập mạng theo kiểu &amp;ldquo;chống chế&amp;rdquo;. Hơn nữa ngày đó, phần mạng (networking) mình cũng không nhiều kiến thức vì đang ham hố phần viết một phần mềm để đời, có giao diện chứ không đen ngòm như mấy cái thầy giáo dạy trên lớp.
 Lại sắp lan man rồi, vào đề thôi.</description>
     </item>

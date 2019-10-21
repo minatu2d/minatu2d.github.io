@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Vim on Lazytrick</title>
-    <link>localhost:1313/tags/vim/</link>
+    <link>minatu2.github.io/tags/vim/</link>
     <description>Recent content in Vim on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 30 Mar 2017 13:16:57 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/tags/vim/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Một số điều rút ra từ việc phải sử dụng command</title>
-      <link>localhost:1313/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
+      <link>minatu2.github.io/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>localhost:1313/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
+      <guid>minatu2.github.io/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
       <description>&lt;p&gt;Do yêu cầu bắt buộc nên gần đây phải làm việc với VIM.&lt;/p&gt;
 &lt;p&gt;Thực ra vẫn dùng máy tính Windows để chạy các ứng dụng SSH Client, SCP, rồi thì Excel. Tuy nhiên, các thao tác chủ yếu với source, text file, là trên command.&lt;/p&gt;
 &lt;p&gt;Mà trên command của Unix, hay Linux. Dù có trả qua bao nhiêu năm nữa, thì có vẻ chỉ có 2 trường phái là &lt;strong&gt;VIM và Emacs&lt;/strong&gt; thôi. Nhiều người thích Emacs, cũng nhiều người thích VIM.&lt;/p&gt;
@@ -25,10 +25,10 @@
     
     <item>
       <title>Chuyển sang dùng VI(M)</title>
-      <link>localhost:1313/post/2017-03-29-chuyen-sang-dung-vim/</link>
+      <link>minatu2.github.io/post/2017-03-29-chuyen-sang-dung-vim/</link>
       <pubDate>Wed, 29 Mar 2017 13:37:36 +0900</pubDate>
       
-      <guid>localhost:1313/post/2017-03-29-chuyen-sang-dung-vim/</guid>
+      <guid>minatu2.github.io/post/2017-03-29-chuyen-sang-dung-vim/</guid>
       <description>&lt;h2&gt;Chuyển sang dùng Vi&lt;/h2&gt;
 &lt;p&gt;Vi - Editor khá nhiều tuổi, có lẽ còn nhiều tuổi hơn của mình.&lt;br /&gt;
 Là editor phổ biến nhất trên hệ thống dòng lệnh Linux, Unix hoặc tương tự.&lt;br /&gt;

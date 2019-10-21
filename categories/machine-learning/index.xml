@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Machine Learning on Lazytrick</title>
-    <link>localhost:1313/categories/machine-learning/</link>
+    <link>minatu2.github.io/categories/machine-learning/</link>
     <description>Recent content in Machine Learning on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Thu, 24 May 2018 00:30:01 +0900</lastBuildDate>
     
-	<atom:link href="localhost:1313/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="minatu2.github.io/categories/machine-learning/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</title>
-      <link>localhost:1313/post/2018-05-24-__trashed/</link>
+      <link>minatu2.github.io/post/2018-05-24-__trashed/</link>
       <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
       
-      <guid>localhost:1313/post/2018-05-24-__trashed/</guid>
+      <guid>minatu2.github.io/post/2018-05-24-__trashed/</guid>
       <description>&lt;p&gt;Tiếp theo &lt;a href=&#34;https://lazytrick.wordpress.com/2018/05/23/khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/&#34;&gt;bài trước&lt;/a&gt; trong loạt note về Khóa học online về Machine Learning đầu tiên.&lt;/p&gt;
 &lt;h2&gt;Tuần 6 : Lời khuyên khi ứng áp dụng Machine Learning.&lt;/h2&gt;
 &lt;p&gt;Kiến thúc trong phần này không phải nói về thuật toán, mà là kĩ năng, rồi những thứ cần chú ý khi áp dụng Machine Learning. Và tất nhiên của khi áp dụng Deep Learning nữa.&lt;/p&gt;
@@ -25,10 +25,10 @@
     
     <item>
       <title>Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</title>
-      <link>localhost:1313/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</link>
+      <link>minatu2.github.io/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</link>
       <pubDate>Wed, 23 May 2018 07:55:50 +0900</pubDate>
       
-      <guid>localhost:1313/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</guid>
+      <guid>minatu2.github.io/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</guid>
       <description>&lt;p&gt;Tiếp theo &lt;a href=&#34;https://lazytrick.wordpress.com/2018/05/23/khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/&#34; target=&#34;_blank&#34;&gt;bài trước&lt;/a&gt; trong loạt note về khóa học online đầu tiên về Machine Learning.&lt;/p&gt;
 &lt;h2&gt;Tuần 4 : Neurtal Networks : Biểu diễn&lt;/h2&gt;
 &lt;p&gt;Như đã biết, khi nói về dữ liệu, ta thường nói đến một loạt đặc trưng.&lt;br /&gt;
@@ -39,10 +39,10 @@ Và ta cũng đã biết về tạo cá đặc trưng đa thức khi các đặc
     
     <item>
       <title>Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</title>
-      <link>localhost:1313/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</link>
+      <link>minatu2.github.io/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</link>
       <pubDate>Wed, 23 May 2018 02:18:56 +0900</pubDate>
       
-      <guid>localhost:1313/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</guid>
+      <guid>minatu2.github.io/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</guid>
       <description>&lt;p&gt;Cuối cùng cũng kết thúc khoá học Online đầu tiên về Machine Learnning.&lt;br /&gt;
 Do tiếng Anh cùi, nên dù nhìn sub liên tục nhưng vẫn vô số lần tua lại để xem.&lt;br /&gt;
 Khoá học rất hay, thầy Andrew NG giảng khá kĩ các khái niệm quan trọng.&lt;br /&gt;
