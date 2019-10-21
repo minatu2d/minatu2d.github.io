@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>[USB]Các khái niệm về USB</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">[USB]Các khái niệm về USB</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>[USB]Các khái niệm về USB</h2>
+        <h5>December 22, 2015</h5>
+        
+
+    </div>
+
+    <div align="start" class="content"><p>Kết nối USB, chắc chắn ai cũng biết. Mỗi người đểu sở hữu ít nhất một thiết bị có kết nối này.</p>
+
+<p>Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập trình giống như người dùng vẫn hiểu về nó.</p>
+
+<p>Đúng là với người dùng cuối, một thiết bị có kết nối thì khả năng có nó có thể kết với máy tính như smartphone, máy nghe nhạc, bộ sạc&hellip;. rất dễ hiểu, dễ gần.</p>
+
+<p>Nhưng gần đây khi được tiếp cận với USB ở dạng driver và firmware cho thiết bị, tôi thấy nó không dễ dàng như tôi tưởng. Nó đủ phực tạp để chúng ta tiếp tục nói về nó.</p>
+
+<p>Trong bài này, tôi sẽ giới thiệu một số khái niệm tôi đọc và rút ra được trong quá trình làm. Nó gồm cả những khái niệm về phần cứng, lẫn phần mềm cho dù về mặt phần cứng mình không được tự tin lắm.</p>
+
+<ol>
+<li>Chúng ta vẫn thấy mỗi máy tính có 2, 3 có khi 4 cổng USB, những tất cả chúng đều nối đến một điểm mà ở đó hệ điều hành điều khiển, quan sát được tất cả các thiết bị cắm vào.</li>
+<li>Dù nhiều cổng nhưng cùng nối đến 1 điểm, cái này gọi là Bus, dữ liệu tất cả các cổng đều truyền qua các Bus này, vì thế, khi số thiết bị đang sử dụng đạt đến một số lượng nhất định thì tốc độ sẽ bị chậm.</li>
+<li>Chắc chắn chúng ta từng nghe đến USB Hub, ví dụ khi máy chỉ có 2 cổng USB mà ta muốn dùng đến 3 cổng là chuột, bàn phím và 1 cái USB. Khi đó nối một chiếc USB Hub 4 cổng hay gì đó vào bất kì cổng USB nào. Tức là cần 1 đầu vào cho máy tính mà có đến 4 đầu cho các thiết bị bên ngoài. Quá là tiện.</li>
+<li>Về mặt lý thuyết, USB Host hỗ trợ đến 127 thiết bị được cắm vào chúng (không tính Hub)</li>
+<li>Người ta hay nói đến tốc độ của USB là Low-Speed, Full-Speed, High-Speed. Đó là muốn nói đến tương quan về mặt thời gian cần thiết để truyền một khối dữ liệu nhất đinh. Không mang ra để làm thước đo về mặt hiệu năng sử dụng được. Ta nên hiểu tốc độ đặc trưng cho một lớp thiết bị. Ví dụ như bàn phím, hầu hết chuột thì chỉ cần tốc độ Full là đủ lắm rồi. Có thiết bị truyền tải Video, thì sẽ cần High để đảm bảo độ trễ giới hạn.</li>
+<li>Khi một thiết bị USB được cắm vào máy tính hay là Host thì sẽ có 3 qua trình lớn xả ra cho đến khi sử dụng. Đó là quá trình Reset(về mặt điện đóm), quá trình nhận dạng (tức là Host hiểu đây là thiết bị gì, phải thao tác với nó như thế nào), sau đó mới đến trạng thái sử dụng.</li>
+<li>Đặc trưng truyền dữ liệu tầng ứng dụng với thiết bị là khi nào Host hỏi, thì thiết bị mới trả lời (kèm theo dữ liệu), Host không hỏi thì thiết bị không gửi gì hết (trừ trường hợp Wake-up).</li>
+<li>Nếu thiết bị không thể được nhận dạng bởi Window, ta sẽ thấy xuất hiện một hộp thoại thông báo &ldquo;Unrecognize device &rdquo; hiện ra.</li>
+<li>Nếu thiết bị hỏng cả mạch rồi, thì đến cái đèn báo (nếu có) cũng sẽ không sáng.</li>
+</ol>
+</div>
+
+    
+    
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

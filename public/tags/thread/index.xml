@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>thread on Lazytrick</title>
+    <link>localhost:1313/tags/thread/</link>
+    <description>Recent content in thread on Lazytrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 20 May 2017 15:50:20 +0900</lastBuildDate>
+    
+	<atom:link href="localhost:1313/tags/thread/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ví dụ cơ bản với pthread trên Linux</title>
+      <link>localhost:1313/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</link>
+      <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</guid>
+      <description>&lt;h2&gt;Ví dụ cơ bản với pthread trên Linux&lt;/h2&gt;
+&lt;h2&gt;1. Tạo và dừng thread&lt;/h2&gt;
+&lt;p&gt;Source code gốc lấy từ &lt;a href=&#34;https://computing.llnl.gov/tutorials/pthreads/samples/hello.c&#34;&gt;link&lt;/a&gt;&lt;br /&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

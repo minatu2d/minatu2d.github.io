@@ -1,0 +1,632 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>GDB dòng lệnh cơ bản (03 - Cơ bản)</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">GDB dòng lệnh cơ bản (03 - Cơ bản)</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>GDB dòng lệnh cơ bản (03 - Cơ bản)</h2>
+        <h5>October 19, 2016</h5>
+        
+<a href="localhost:1313tags/c"><kbd class="item-tag">C</kbd></a>
+
+<a href="localhost:1313tags/gdb"><kbd class="item-tag">GDB</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><br />
+Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.<br />
+Giả sử ta có một source Hello world như sau:</p>
+<p>[code lang=bash]<br />
+.<br />
+├── include<br />
+│   ├── greetings_en.h<br />
+│   ├── greetings_ja.h<br />
+│   └── greetings_vi.h<br />
+└── src<br />
+├── greetings_en.c<br />
+├── greetings_ja.c<br />
+├── greetings_vi.c<br />
+├── mainapp<br />
+└── mainapp.c<br />
+[/code]</p>
+<p>Trong đó, các file có nội dung như sau:</p>
+<p>[code lang=cpp]<br />
+// mainapp.c</p>
+<p>#include<br />
+#include&quot;greetings_en.h&quot;<br />
+#include&quot;greetings_ja.h&quot;<br />
+#include&quot;greetings_vi.h&quot;</p>
+<p>//<br />
+// Main functions<br />
+//<br />
+int main(int argc, char* argv[])<br />
+{<br />
+greeting_en();<br />
+greeting_ja();<br />
+greeting_vi();</p>
+<p>return 0;<br />
+}</p>
+<p>// greetings_en.h<br />
+void greeting_en();</p>
+<p>// greetings_ja.h<br />
+void greeting_ja();</p>
+<p>// greetings_vi.h<br />
+void greeting_vi();</p>
+<p>// greetings_en.c<br />
+#include<br />
+void greeting_en()<br />
+{<br />
+printf(&quot;Hello world\n&quot;);<br />
+}</p>
+<p>// greetings_ja.c<br />
+#include<br />
+void greeting_ja()<br />
+{<br />
+printf(&quot;Konnichiwa \n&quot;);<br />
+}</p>
+<p>// greetings_vi.c<br />
+#include<br />
+void greeting_vi()<br />
+{<br />
+printf(&quot;Xin chao \n&quot;);<br />
+}<br />
+[/code]</p>
+<p>Lệnh biên dịch từ <strong>src</strong>:</p>
+<p>[code lang=bash]<br />
+oedev@OEDEV-Ubuntu:~/src$gcc -g -o mainapp mainapp.c -I../include greetings_*.c<br />
+[/code]</p>
+<p>Chú ý, để sử dụng GDB tốt nhất, ta nên thêm tham số <strong>-g</strong> (viết thường) như ở trên.<br />
+Kết quả sau khi chạy sẽ như thế này:</p>
+<p>[code lang=bash]<br />
+oedev@OEDEV-Ubuntu:~/src$./mainapp<br />
+Hello world<br />
+Konnichiwa<br />
+Xin chao<br />
+[/code]</p>
+<p>OK, đó là 1 chương trình đơn giản để làm ví dụ các phần bên dưới đây.</p>
+<h3>1. Chạy chương trình với GDB</h3>
+<p>-Ta chỉ cần thêm <strong>gdb</strong> vào đầu câu lệnh thông thường, ta sẽ thấy GDB được khởi động với giao diện sau:</p>
+<p>[code lang=bash]<br />
+oedev@OEDEV-Ubuntu:~/src$gdb ./mainapp<br />
+GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1<br />
+Copyright (C) 2016 Free Software Foundation, Inc.<br />
+License GPLv3+: GNU GPL version 3 or later<br />
+This is free software: you are free to change and redistribute it.<br />
+There is NO WARRANTY, to the extent permitted by law. Type &quot;show copying&quot;<br />
+and &quot;show warranty&quot; for details.<br />
+This GDB was configured as &quot;x86_64-linux-gnu&quot;.<br />
+Type &quot;show configuration&quot; for configuration details.<br />
+For bug reporting instructions, please see:<br />
+.<br />
+Find the GDB manual and other documentation resources online at:<br />
+.<br />
+For help, type &quot;help&quot;.<br />
+Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;...<br />
+Reading symbols from ./mainapp...done.<br />
+(gdb)<br />
+[/code]</p>
+<p>Ta thấy giao diện giao tiếp bằng dòng lệnh hiện ra, chương trình chính vẫn chưa được chạy.<br />
+Đến đây, hầu hết là thông tin về phiên bản, rồi cấu hình của GBD thôi. Nhưng có 1 dòng ta sẽ để ý thấy.<br />
+Đó là :</p>
+<p><strong><em>Reading symbols from ./mainapp...done.</em></strong></p>
+<p>Nếu ta biên dịch mà không có <strong><em>-g</em></strong> (như đã nói ở trên), ta sẽ nhận một dòng khác như sau:</p>
+<p><strong><em>Reading symbols from ./mainapp...(no debugging symbols found)...done.</em></strong></p>
+<p>Hiểu nôm na là, khi có <strong><em>-g</em></strong>, GDB sẽ load được các symbol (là tên các hàm sử dụng trong ứng dụng), còn không có thì nó không thể load được.</p>
+<p>Rồi, ta mới chỉ thấy được rằng, GDB đã thực hiện xong các bước kiểm tra các symbol có trong file chạy và load các source code trong đường dẫn nó biết.</p>
+<p>-Giờ ta bắt đầu chạy, nếu muốn GDB dừng lại ở hàm <strong>main()</strong>thì hãy dùng lệnh <strong>start</strong>, còn muốn chạy luôn không cần dừng thì hãy dùng <strong>run</strong>(viết ngắn là <strong><em>r</em></strong>).<br />
+Khi *<strong>start</strong>:</p>
+<p>[code lang=bash]<br />
+(gdb) start<br />
+Temporary breakpoint 1 at 0x400535: file mainapp.c, line 11.<br />
+Starting program: /home/oedev/code/debug_03/src/mainapp </p>
+<p>Temporary breakpoint 1, main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:11<br />
+11      greeting_en();<br />
+(gdb)<br />
+[/code]</p>
+<h3>2. Breakpoint</h3>
+<p>-Ta chỉ có thể đặt khi chương trình chính không chạy (chưa chạy hoặc đang bị paused).<br />
+Mỗi breakpoint sẽ gắn với dòng tại 1 file nào đó.<br />
+Về cơ bản, ta sử dụng lệnh <strong>break</strong> (viết ngắn <strong><em>b</em></strong>) để đặt breakpoint, đưa 2 tham số là tên file và chỉ số dòng vào là ok.<br />
+Ví dụ, đặt breakpoint ở dòng 13 của <strong>mainapp.c</strong>:</p>
+<p>[code lang=bash]<br />
+(gdb) b mainapp.c:13<br />
+Breakpoint 2 at 0x400549: file mainapp.c, line 13.<br />
+(gdb)<br />
+[/code]</p>
+<p>GDB cũng hỗ trợ đặt break theo tên hàm nữa.<br />
+Ví dụ, đặt breakpoint ở hàm <strong>greeting_en()</strong> trong file <strong>greetings_en.c</strong>:</p>
+<p>[code lang=bash]<br />
+(gdb) b greetings_en.c:greeting_en<br />
+Breakpoint 3 at 0x40055e: file greetings_en.c, line 4.<br />
+[/code]</p>
+<p>-Xem danh sách các breakpoint bằng <strong>info break</strong>:</p>
+<p>[code lang=bash]<br />
+(gdb) info break<br />
+Num     Type           Disp Enb Address            What<br />
+2       breakpoint     keep y   0x0000000000400549 in main at mainapp.c:13<br />
+3       breakpoint     keep y   0x000000000040055e in greeting_en at greetings_en.c:4<br />
+[/code]</p>
+<p>Chú ý là, breakpoint đầu tiên ở đầu hàm main (do lệnh <strong>start</strong>) không được tính.</p>
+<p>-Xóa một breakpoint<br />
+Ta cũng có thể dùng cách tương tự như đặt chỉ thay command <strong>break</strong> bằng <strong>clear</strong> là ok.<br />
+Nhưng có một cách đơn giản hơn.<br />
+Ta để ý thấy mỗi khi đặt một breakpoint mới, ta thấy các dòng kết quả:</p>
+<p>[code lang=bash]<br />
+Breakpoint 1..<br />
+Breakpoint 2..<br />
+[/code]</p>
+<p>Ta có thể xóa theo các tham số đó bằng lệnh <strong>del</strong>:</p>
+<p>[code lang=bash]<br />
+(gdb) info break<br />
+Num     Type           Disp Enb Address            What<br />
+2       breakpoint     keep y   0x0000000000400549 in main at mainapp.c:13<br />
+3       breakpoint     keep y   0x000000000040055e in greeting_en at greetings_en.c:4<br />
+(gdb) del 3<br />
+(gdb) info break<br />
+Num     Type           Disp Enb Address            What<br />
+2       breakpoint     keep y   0x0000000000400549 in main at mainapp.c:13<br />
+[/code]</p>
+<p>Dù xóa breakpoint 3 đi thì số 3 đó cũng không được sử dụng lại để đánh số cho các breakpoint được đánh dấu sau này (trừ khi khởi động lại GDB).</p>
+<h3>3. Các thao tác debug khi chương trình dừng tại breakpoint</h3>
+<p>Sau khi đặt breakpoint, ta tiến hành chạy chương trình.<br />
+Vì chương trình đang dừng (paused), ta dùng lệnh <strong>continue</strong> (viết ngắn là <strong><em>c</em></strong>) để chạy tiếp. Chương trình sẽ dừng lại khi gặp breakpoint.<br />
+Sau khi dừng lại, nó sẽ có dạng như sau:</p>
+<p>[code lang=bash]<br />
+(gdb) c<br />
+Continuing.<br />
+Hello world<br />
+Konnichiwa </p>
+<p>Breakpoint 2, main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:13<br />
+13      greeting_vi();<br />
+(gdb)<br />
+[/code]</p>
+<p>-Kiểm tra xem chương trình xem đã bị dừng ở đâu<br />
+Thực ra nhìn vào trạng thái dừng ở trên ta cũng biết được rằng, chương trình đang dừng ở <strong>mainapp.c</strong>, dòng 13, chỗ lời gọi hàm <strong>greeting_vi()</strong>.<br />
+Có một cách trực quan hơn là lệnh <strong>layout</strong> (viết ngắn là <strong><em>l</em></strong>).</p>
+<p>[code lang=bash]<br />
+(gdb) l<br />
+8   //<br />
+9   int main(int argc, char* argv[])<br />
+10  {<br />
+11      greeting_en();<br />
+12      greeting_ja();<br />
+13      greeting_vi();<br />
+14<br />
+15      return 0;<br />
+16  }<br />
+[/code]</p>
+<p>GDB sẽ hiển thị cả đoạn source xung quanh điểm đang bị dừng (còn giao diện trực quan hơn nữa sẽ được giới thiệu ở bài sau),</p>
+<p>-Thực hiện dòng hiện tại (không nhảy sâu vào hàm nếu đang gọi hàm):<br />
+Lệnh <strong>next</strong> (viết ngắn là <strong><em>n</em></strong>)</p>
+<p>[code lang=bash]<br />
+(gdb) n<br />
+Xin chao<br />
+15      return 0;<br />
+[/code]</p>
+<p>GDB sẽ dừng lại ở dòng tiếp theo, dòng 15 như ở trên (vì 14 không có gì)</p>
+<p>-Thực hiện gọi sâu vào hàm<br />
+Giả sử đang dừng ở lời gọi <strong>greeting_vi()</strong>,<br />
+Sử dụng <strong>step</strong>, GDB sẽ chạy vào bên trong <strong>greeting_vi()</strong> thay vì thực hiện ngay toàn bộ xử lý trong nó giống như <strong>next</strong>.</p>
+<p>[code lang=bash]<br />
+(gdb) step<br />
+greeting_vi () at greetings_vi.c:4<br />
+4       printf(&quot;Xin chao \n&quot;);<br />
+(gdb) l<br />
+1   #include<br />
+2   void greeting_vi()<br />
+3   {<br />
+4       printf(&quot;Xin chao \n&quot;);<br />
+5<br />
+[/code]</p>
+<h3>4. Xem giá trị khi chương trình dừng tại breakpoint</h3>
+<p>Trước khi đi vào phần này, ta sửa lại nội dung file <strong>mainapp.c</strong> ở trên thành như sau:</p>
+<p>[code lang=cpp]<br />
+#include<br />
+#include<br />
+#include<br />
+#include&quot;greetings_en.h&quot;<br />
+#include&quot;greetings_ja.h&quot;<br />
+#include&quot;greetings_vi.h&quot;</p>
+<p>typedef struct _currency_<br />
+{<br />
+    char iso4217Code[5];<br />
+    char name[255];<br />
+}ST_CURRENCY;</p>
+<p>typedef struct _country_<br />
+{<br />
+    char capital[255];<br />
+    float area;<br />
+    uint32_t population;<br />
+    float density;<br />
+    ST_CURRENCY currency;<br />
+    int16_t timezone;<br />
+    char dateFormat[100];<br />
+}ST_COUNTRY;</p>
+<p>void printCountry(void *data)<br />
+{<br />
+    ST_COUNTRY *country = (ST_COUNTRY*)data;</p>
+<p>    printf(&quot;Capital :%s\n&quot;,country-&gt;capital);<br />
+    printf(&quot;Area :%.2f km2\n&quot;,country-&gt;area);<br />
+    printf(&quot;Density :%.2f /km2\n&quot;,country-&gt;density);<br />
+    printf(&quot;Currency : %s (%s) \n&quot;,country-&gt;currency.iso4217Code, country-&gt;currency.name);<br />
+    printf(&quot;Timezone : GMT + %d \n&quot;,country-&gt;timezone);<br />
+    printf(&quot;Dateformat :%s\n&quot;,country-&gt;dateFormat);<br />
+}<br />
+//<br />
+// Main functions<br />
+//<br />
+int main(int argc, char* argv[])<br />
+{<br />
+    greeting_en();<br />
+    greeting_ja();<br />
+    greeting_vi();</p>
+<p>    /*Vietnam*/<br />
+    ST_COUNTRY vietnam;<br />
+    memset(&amp;vietnam, 0x00, sizeof(england));</p>
+<p>    strcpy(vietnam.capital,&quot;Hanoi&quot;);<br />
+    vietnam.area = 332698;  // km2<br />
+    vietnam.population = 91700000;<br />
+    strcpy(vietnam.currency.iso4217Code,&quot;VND&quot;);<br />
+    strcpy(vietnam.currency.name,&quot;Dong&quot;);<br />
+    vietnam.timezone = +7;<br />
+    vietnam.density = 276.03;<br />
+    strcpy(vietnam.dateFormat,&quot;dd/mm/yyyy&quot;);</p>
+<p>    printCountry(&amp;vietnam);</p>
+<p>    return 0;<br />
+}</p>
+<p>[/code]</p>
+<p>Ta tiến hành chạy với GDB như trên và dừng ở lời gọi hàm <strong>printCountry(&amp;vietnam)</strong></p>
+<p>-Sử dụng print (viết ngắn là p)<br />
+Ta lần lượt sẽ hiển thị giá trị nguyên, thực, chuỗi, cấu trúc như sau:</p>
+<p>[code lang=bash]<br />
+Breakpoint 1, main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58<br />
+58      printCountry(&amp;vietnam);<br />
+(gdb) l<br />
+53      strcpy(vietnam.currency.name,&quot;Dong&quot;);<br />
+54      vietnam.timezone = +7;<br />
+55      vietnam.density = 276.03;<br />
+56      strcpy(vietnam.dateFormat,&quot;dd/mm/yyyy&quot;);<br />
+57<br />
+58      printCountry(&amp;vietnam);<br />
+59<br />
+60      return 0;<br />
+61  }<br />
+(gdb) p vietnam.population<br />
+$1 = 91700000<br />
+(gdb) p vietnam.density<br />
+$2 = 276.029999<br />
+(gdb) p vietnam.capital<br />
+$3 = &quot;Hanoi&quot;, &#039;\000&#039;<br />
+(gdb) p vietnam<br />
+$4 = {capital = &quot;Hanoi&quot;, &#039;\000&#039; , area = 332698,<br />
+  population = 91700000, density = 276.029999, currency = {<br />
+    iso4217Code = &quot;VND\000&quot;, name = &quot;Dong&quot;, &#039;\000&#039; },<br />
+  timezone = 7, dateFormat = &quot;dd/mm/yyyy&quot;, &#039;\000&#039; }<br />
+(gdb)<br />
+[/code]</p>
+<p>-Hiển thị giá trị biến cấu trúc đẹp hơn<br />
+Bật chế độ in đẹp bằng <strong>set print pretty on</strong>, rồi thực hiện in như bình thường.</p>
+<p>[code lang=bash]<br />
+(gdb) p vietnam<br />
+$4 = {capital = &quot;Hanoi&quot;, &#039;\000&#039; , area = 332698,<br />
+  population = 91700000, density = 276.029999, currency = {<br />
+    iso4217Code = &quot;VND\000&quot;, name = &quot;Dong&quot;, &#039;\000&#039; },<br />
+  timezone = 7, dateFormat = &quot;dd/mm/yyyy&quot;, &#039;\000&#039; }<br />
+(gdb) set print pretty on<br />
+(gdb) p vietnam<br />
+$5 = {<br />
+  capital = &quot;Hanoi&quot;, &#039;\000&#039; ,<br />
+  area = 332698,<br />
+  population = 91700000,<br />
+  density = 276.029999,<br />
+  currency = {<br />
+    iso4217Code = &quot;VND\000&quot;,<br />
+    name = &quot;Dong&quot;, &#039;\000&#039;<br />
+  },<br />
+  timezone = 7,<br />
+  dateFormat = &quot;dd/mm/yyyy&quot;, &#039;\000&#039;<br />
+}<br />
+[/code]</p>
+<p>Ta có thể thấy rõ sự khác bọt giữa khi pretty là off/on.</p>
+<p>-Hiển thị giá trị con trỏ có ép kiểu<br />
+Đặt breakpoint ở hàm <strong>printCountry</strong>, sau khi dừng ta sẽ có như sau:</p>
+<p>[code lang=bash]<br />
+Breakpoint 2, printCountry (data=0x7fffffffd950) at mainapp.c:27<br />
+27      ST_COUNTRY *country = (ST_COUNTRY*)data;<br />
+(gdb) p data<br />
+$6 = (void *) 0x7fffffffd950<br />
+[/code]</p>
+<p>Tham số <strong>data</strong> được truyền vào là kiểu void. Nên khi ta dùng lệnh print thì chỉ thấy được địa chỉ con trỏ thôi. Ta có thể ép kiểu bất cứ kiểu nào.<br />
+Nhưng vì biết đó là kiểu con trỏ của <strong>ST_COUNTRY</strong> rồi, ta có thể làm như sau:</p>
+<p>[code lang=bash]<br />
+(gdb) p (*(ST_COUNTRY*)data)<br />
+$7 = {<br />
+  capital = &quot;Hanoi&quot;, &#039;\000&#039; ,<br />
+  area = 332698,<br />
+  population = 91700000,<br />
+  density = 276.029999,<br />
+  currency = {<br />
+    iso4217Code = &quot;VND\000&quot;,<br />
+    name = &quot;Dong&quot;, &#039;\000&#039;<br />
+  },<br />
+  timezone = 7,<br />
+  dateFormat = &quot;dd/mm/yyyy&quot;, &#039;\000&#039;<br />
+}<br />
+[/code]</p>
+<p>-Hiển thị mảng<br />
+Ở trên ta đã thấy chuỗi được hiển thị rồi, chuỗi cũng là mảng nên tả hãy thử hiện thị độ dài bất kì của mảng đó xem sao, cách làm phổ biến như sau:</p>
+<p>[code lang=bash]<br />
+(gdb) x/10xb country-&gt;capital<br />
+0x7fffffffd950: 0x48    0x61    0x6e    0x6f    0x69    0x00    0x00    0x00<br />
+0x7fffffffd958: 0x00    0x00<br />
+[/code]</p>
+<p>Câu lệnh trên sẽ hiển thị <strong>10</strong> bytes (<strong>b</strong> cuối cùng là byte) đầu tiên của mảng <strong>country-&gt;capital</strong>, ở dang cơ số 16(chính là <strong>x</strong> sau số 10).</p>
+<h3>5. Kiểm tra stacktrace</h3>
+<p>-backtrace (viết ngắn là bt) được sử dụng để cho biết luồng xử lý đi như thế nào để đến được điểm dang dừng lại, ta có thể sử dụng thêm <strong>bt full</strong> để thấy các lời gọi ở vị trí nào trong code.</p>
+<p>[code lang=bash]<br />
+(gdb) bt<br />
+#0  printCountry (data=0x7fffffffd950) at mainapp.c:29<br />
+#1  0x00000000004007ef in main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58<br />
+(gdb) bt full<br />
+#0  printCountry (data=0x7fffffffd950) at mainapp.c:29<br />
+        country = 0x7fffffffd950<br />
+#1  0x00000000004007ef in main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58<br />
+        vietnam = {<br />
+          capital = &quot;Hanoi&quot;, &#039;\000&#039; ,<br />
+          area = 332698,<br />
+          population = 91700000,<br />
+          density = 276.029999,<br />
+          currency = {<br />
+            iso4217Code = &quot;VND\000&quot;,<br />
+            name = &quot;Dong&quot;, &#039;\000&#039;<br />
+          },<br />
+          timezone = 7,<br />
+          dateFormat = &quot;dd/mm/yyyy&quot;, &#039;\000&#039;<br />
+        }<br />
+[/code]</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/">Lỗi về Case-sensive khi biên dịch C (gcc)</a></h4>
+    <h5>December 1, 2016</h5>
+    
+<a href="localhost:1313tags/c"><kbd class="item-tag">C</kbd></a>
+
+<a href="localhost:1313tags/error"><kbd class="item-tag">Error</kbd></a>
+
+<a href="localhost:1313tags/filesystem"><kbd class="item-tag">FileSystem</kbd></a>
+
+<a href="localhost:1313tags/gcc"><kbd class="item-tag">GCC</kbd></a>
+
+<a href="localhost:1313tags/linux"><kbd class="item-tag">Linux</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/">&#34;Data structure alignment&#34; là gì? Tại sao phải hiểu nó khi code C.</a></h4>
+    <h5>October 26, 2016</h5>
+    
+<a href="localhost:1313tags/aligment"><kbd class="item-tag">Aligment</kbd></a>
+
+<a href="localhost:1313tags/c"><kbd class="item-tag">C</kbd></a>
+
+<a href="localhost:1313tags/casting"><kbd class="item-tag">Casting</kbd></a>
+
+<a href="localhost:1313tags/pointer"><kbd class="item-tag">Pointer</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-09-20-cai-dat-gdb-02-cai-dat/">Cài đặt GDB (02 - Cài đặt)</a></h4>
+    <h5>September 20, 2016</h5>
+    
+<a href="localhost:1313tags/gdb"><kbd class="item-tag">GDB</kbd></a>
+
+<a href="localhost:1313tags/installation"><kbd class="item-tag">Installation</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

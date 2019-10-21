@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Asm on Lazytrick</title>
+    <link>localhost:1313/tags/asm/</link>
+    <description>Recent content in Asm on Lazytrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 11 Feb 2017 12:47:50 +0900</lastBuildDate>
+    
+	<atom:link href="localhost:1313/tags/asm/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</title>
+      <link>localhost:1313/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
+      <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
+      <description>&lt;p&gt;&lt;em&gt;Tham khảo&lt;/em&gt;&lt;br /&gt;
+- Sách : AT&amp;amp;T Assembly Language, Richard Blum&lt;/p&gt;
+&lt;h2&gt;1. Ngôn ngữ Assembly là gì?&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ở mức thấp nhất, Process chỉ hiểu &lt;strong&gt;instruction code&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Instruction Code&lt;/strong&gt; là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element.&lt;/li&gt;
+&lt;li&gt;Người ta hoàn toàn có thể viết chương trình bằng &lt;strong&gt;instruction code&lt;/strong&gt;, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.&lt;/li&gt;
+&lt;li&gt;Việc sử dụng các ngôn ngữ bậc cao giúp việc viết chương trình dễ dàng hơn rất nhiều, vì trình biên dịch hoặc thông dịch đảm nhiệm việc chuyển mã ngôn ngữ bậc cao trực tiếp hoặc gián tiếp sang &lt;strong&gt;instruction code&lt;/strong&gt; để chạy.&lt;/li&gt;
+&lt;li&gt;Tuy nhiên, việc sinh &lt;strong&gt;instruction code&lt;/strong&gt; của trình biên dịch/thông dịch không phải luôn luôn hiệu quả.</description>
+    </item>
+    
+  </channel>
+</rss>

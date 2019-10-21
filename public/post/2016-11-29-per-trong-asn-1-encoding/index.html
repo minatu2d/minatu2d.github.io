@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>PER trong ASN.1 Encoding</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">PER trong ASN.1 Encoding</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>PER trong ASN.1 Encoding</h2>
+        <h5>November 29, 2016</h5>
+        
+<a href="localhost:1313tags/asn1"><kbd class="item-tag">ASN1</kbd></a>
+
+<a href="localhost:1313tags/per"><kbd class="item-tag">PER</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><br />
+Trong <strong>BER</strong>, dù không biết các định nghĩa ASN.1 của một đoạn dữ liệu, ta vẫn có thể giải mã ở mức độ nào đó dựa vào chỉ số các Thẻ (theo cấu trúc <strong>TLV</strong>). Với <strong>PER</strong>, trường độ dài, và nội dung (chỉ xuất hiện khi thực sự cần) phụ thuộc rất chặt vào định nghĩa ASN.1 của nó, vì thế khi Encode/Decode ta nhất định phải tham khảo các định nghĩa đó.<br />
+Trong <strong>BER</strong>, vì sử dụng các thẻ (Tag) để phân biệt kiểu, nên ta dễ dàng mở rộng các kiểu <strong>CHOICE</strong>, <strong>SET</strong>, <strong>SEQUENCE</strong>. Trong <strong>PER</strong>, vì không có Thẻ nên tính mở rộng phải được tính đến từ trước (bước viết định nghĩa ASN.1).<br />
+Khi định nghĩa chưa các thành phần mở rộng, việc hiện thực sẽ sử dụng <strong>Preamble</strong> để xác định xem trong dữ liệu có phần mở rộng hay không. Giá trị độ dài của những thành phần độ dài cố định (giới hạn bằng <strong>SIZE</strong> trong định nghĩa) sẽ không được đưa vào dữ liệu hiện thực (ngoại trừ một số ngoại lệ). Giá trị của <strong>SEQUENCE</strong>, <strong>SET</strong> khi hiện thực sẽ bắt đầu bằng <strong>Preamble</strong> để xác định sự tồn tại của các thành phần <strong>OPTIONAL</strong> bên trong. Còn <strong>CHOICE</strong> sẽ bắt đầu bằng chỉ số của cái được chọn.</p>
+<p>Nói chung, xử lý khởi tạo cho <strong>PER</strong> rắc rối hơn, nhưng tốc độ Encode/Decode thì nhanh hơn <strong>BER</strong>, kích thước dữ liệu được Encode cũng nhỏ hơn, vì thế, rất thích hợp cho truyền qua mạng.</p>
+<h3>1. 4 kiểu hiện thực hóa (Encoding)</h3>
+<p><strong>PER</strong> có 2 loại là: Kiểu cơ bản (<strong>BASIC PER</strong>), và kiểu chính quy (<strong>CANONICAL-PER</strong>).<br />
+Mỗi loại trên lại có 2 loại con là: Sắp xếp lại (<strong>ALIGNED</strong>) và không sắp xếp lại (<strong>UNALIGNED</strong>).</p>
+<p>Kiểu chính quy, thực ra là kiểu cơ bản được thêm một số điều kiện giới hạn. Nó được sử dụng nhiều trong các hệ thống <strong>Relay</strong>, <strong>Chữ kí số</strong>. Kiểu cơ bản, giá trị được biểu diễn theo một vài loại. Nhưng giới hạn lỏng hơn, nên Encoding theo kiểu cơ bản các là sẽ nhanh hơn kiểu chính quy thôi.</p>
+<p>Sắp xếp lại (<strong>ALIGNED</strong>), có nghĩa các dữ liệu được xếp sao cho vừa đủ số Octet (nếu không đủ thì các bit 0 sẽ được thêm vào). Kiểu không sắp (<strong>UNALIGNED</strong>), nghĩa là sử dụng mọi bit, không có bit nào không sử dụng.<br />
+Vì thế, kiểu <strong>UNALIGED</strong> thường sẽ nhỏ hơn <strong>ALIGNED</strong>.<br />
+2 kiểu này không tương thích với nhau, một Decoder dạng <strong>ALIGNED</strong> sẽ không thể decode được dữ liệu kiểu <strong>UNALIGNED</strong>.</p>
+<h3>2. Hiện thực số nguyên</h3>
+<h4>2.1 Kiểu nguyên hữu hạn</h4>
+<p>Giả sử ta sẽ biểu diễn số một số nguyên N.<br />
+Nếu giá trị nhỏ nhất <strong>N_MIN</strong> và giá trị lớn nhất <strong>N_MAX</strong> đã được biết (trong định nghĩa ASN.1) thì ta phải biểu diễn giá trị <strong>N-NMIN</strong>, tức là khi <strong>N=N_MIN</strong> thì giá trị <strong>0</strong> được biểu diễn.<br />
+Nếu <strong>N_MIN</strong>=<strong>N_MAX</strong> thì chỉ có 1 giá trị, không cần phải biểu diễn gì nữa (được khuyết luôn, biết rồi không cần cho vào tốn chỗ).<br />
+Khoảng giá trị thực tế sẽ biểu diễn sẽ &gt;=0, sử dụng số không dấu, và sử dụng số bit nhỏ nhất để biểu diễn khoảng giá trị từ <strong>N-N_MIN</strong> đến <strong>N_MAX</strong>.</p>
+<p>[code lang=c]<br />
+Số bit cần để biểu diễn = log2(N_MAX - N_MIN + 1)<br />
+Không làm tròn, bỏ phần thập phân.<br />
+[/code]</p>
+<p>a. Với <strong>UNALIGNED</strong>, các bit bị dư ra ở Octet cuối sẽ được sử dụng để biểu diễn các thành phần tiếp theo.</p>
+<p>b. Với <strong>ALIGNED</strong>, tùy thuộc vào khoảng khoảng giá trị <strong>range</strong> = N_MAX - N_MIN + 1 mà cách biểu diễn sẽ thay đổi.</p>
+<blockquote>
+<ol>
+<li><strong>range  2. **range = 256</strong>: Sử dụng 1 Octet để biểu diễn.</li>
+<li><strong>257&lt;=range 4. **range &gt;= 65537</strong>: Biểu diễn theo dạng độ dài thay đổi. Số Octet L và rồi L Octet. <strong>L = log256(N - N_MIN)</strong>. Định dạng của L Octet này được nói phía dưới.</li>
+</ol>
+</blockquote>
+<h4>2.2 Các số nguyên không âm nhỏ</h4>
+<p>Thông thường, các khoảng có cả các khoảng giá trị nhỏ, nhưng khoảng giá trị không giới hạn cũng không ít. Kích thước của giá trị mở rộng của <strong>SEQUENCE</strong>, <strong>SET</strong>, chỉ số trong <strong>CHOICE</strong> là các số nguyên có khoảng giá trị nhỏ. Được gọi là Dạng các số nguyên không âm nhỏ thông thường.<br />
+Giả sử số cần biểu diễn là N.<br />
+a. Nếu <strong>N = 64</strong>: 1 bit đầu, giá trị 1, để mô tả là <strong>ALIGNED</strong>, 6 bit tiếp theo được biểu diễn cho <strong>Khoảng số nguyên giới hạn</strong> ở ngay phần dưới đây.</p>
+<h4>2.3 Khoảng số nguyên giới hạn</h4>
+<p>Khoảng được nói đến ở đây là có giới hạn nhỏ nhất N_MIN nhưng không có giới hạn trên. Được biểu diễn theo dạng độ dài thay đổi được.<br />
+Đầu tiên là số lượng Octet tối thiểu để biểu diễn <strong>N - N_MIN</strong>, sau đó là L Octet tương ứng ở dạng không dấu.<br />
+Tùy vào <strong>UNALIGNED</strong> hay <strong>ALIGNED</strong> mà các biểu diễn L Octet này sẽ khác nhau. Chi tiết được trình bày ở phần sau.</p>
+<h4>2.4 Kiểu nguyên không giới hạn.</h4>
+<p>Giả sử ta sẽ biểu diễn N mà nó không được định nghĩa một giới hạn nào cả. Đương nhiên sẽ sử dụng biểu diễn độ dài thay đổi.<br />
+Đầu tiên là số lượng Octet L, sau đó là L Octet, nhưng L Octet này được biểu diễn ở dạng nhị phân có dấu (bù 2).<br />
+Tùy vào <strong>UNALIGNED</strong> hay <strong>ALIGNED</strong> mà các biểu diễn L Octet này sẽ khác nhau. Xem ở phần sau. Chi tiết được trình bày ở phần sau.</p>
+<h4>2.5 Biểu diễn độ dài</h4>
+<p>Trong <strong>BER</strong>, trường độ dài luôn luôn được đưa vào khi biểu diễn, và theo đơn vị Octet. Nhưng <strong>PER</strong> thì khác, nó chỉ xuất hiện khi thực sự cần mà thôi.<br />
+Về biểu diễn độ dài dữ liệu,<br />
+<strong>BER</strong> biểu diễn độ dài theo đơn vị Octet với mọi kiểu dữ liệu.<br />
+<strong>PER</strong> biểu diễn theo độ đơn vị Bit cho dãy Bit, biểu diễn đơn vị Octet cho OCTET STRING và kiểu mở, dãy kí tự theo số kí tự, <strong>SEQUENCE OF</strong> và <strong>SET OF</strong> theo số phần tử.<br />
+Trong ASN.1 thì độ dài cũng có thể là có khoảng giá trị là 0-vô cùng, vì thế cách biểu diễn của độ dài cũng bị ảnh hưởng.</p>
+<p>a. Nếu giới hạn trên của độ dài là 65535 và nó là 1 giá trị cố định, thì không cần biểu diễn độ dài nữa. (tức là trường độ dài sẽ bi khuyết)<br />
+b. Trường hợp độ dài bit của <em>Preamble</em>, giả sử độ dài là nBit, thì giá trị <strong>nBit - 1</strong> sẽ được biểu diễn theo <strong>Các số nguyên không âm nhỏ</strong> ở trên.<br />
+c. Trường hợp <strong>ALIGNED</strong>:</p>
+<blockquote>
+<ol>
+<li>Nếu giới hạn trên của độ dài len 2. Nếu giới hạn trên của độ dài len từ 655356 trở lên hay là vô cùng:<br />
+  &gt;1. len &gt;2. 128 &lt;= len &gt;3. len &gt;= 16384: Giá trị độ len được biểu diễn một lần nữa giống như một giá trị.</li>
+</ol>
+</blockquote>
+<p>d. Trường hợp <strong>UNALIGNED</strong>:</p>
+<blockquote>
+<ol>
+<li>Nếu giới hạn trên của len 2. Các trường hợp khác, ngoại trừ những kiểu không sử dụng Octet để biểu diễn thì sẽ được biểu diễn giống với trường hợp <strong>ALIGNED</strong>.</li>
+</ol>
+</blockquote>
+<h4>2.6 Kiểu mở</h4>
+<p>Là kiểu được thêm vào sau các dữ liệu được miêu tả. Nó không có giới hạn về độ dài, vì thế được biểu diễn theo kiểu độ dài thay đổi.<br />
+Đầu tiên là độ dài L (biểu diễn bằng đơn vị Octet), sau đó là dãy L Octet.</p>
+<h3>3. Cách biểu diễn cụ thể cho mỗi kiểu</h3>
+<h4>3.1 Kiểu logic (BOOL)</h4>
+<p>Sẽ biểu diễn bằng 1 bit thôi. TRUE được biểu diễn là 1, FALSE được biểu diễn là 0. Không có trường độ dài.</p>
+<h4>3.2 Kiểu số nguyên</h4>
+<p>Phạm vi biểu diễn của tập giá trị sẽ quyết định giá trị thuộc tập đó được biểu diễn như thế nào.</p>
+<p>Các phạm vi biểu diễn có thể của tập số nguyên sẽ bao gồm:<br />
+- Chỉ có 1 giá trị</p>
+<p>[code lang=cpp]<br />
+Two ::= INTEGER (2)<br />
+[/code]</p>
+<ul>
+<li>Khoảng giá trị có một đầu hữu hạn (cận trên hoặc cận dưới), và một đầu vô hạn (cận trên hoặc cận dưới), ta sẽ sử dụng <strong>MIN</strong>, <strong>MAX</strong> trong trường hợp này.</li>
+</ul>
+<p>[code lang=cpp]<br />
+From3to15 ::= INTEGER (3..15)<br />
+PositiveOrZeroNumber ::= Number (0..MAX)<br />
+[/code]</p>
+<ul>
+<li>Tập giá trị chứa trong một tập có sẵn, quan hệ thuộc.</li>
+<li>
+<p>Tập giá trị là kết quả của các phép tập hợp như: Hợp, Giao, Loại trừ, Loại trừ đảo.</p>
+</li>
+</ul>
+<p>Số nguyên sẽ được biểu diễn theo các bước mô tả dưới đây:</p>
+<ol>
+<li>Nếu có <strong>dấu mở rộng</strong> (Extension Mark), thì sẽ có 1 bit (<em>Preamble</em>) để biểu diễn (là <strong>UNALIGNED</strong>) trạng thái mở rộng.<br />
+Nếu giá trị được biểu diễn thuộc khoảng giá trị được mô tả ban đầu (chưa trở thành mở rộng) thì bit này được gán 0.<br />
+Nếu giá trị đó nằm ngoài khoảng ban đầu, thì bit này được gán là 1.<br />
+Nếu bit này là 0, ta sẽ tiếp tục ở bước <strong>2.</strong>, nếu bằng 1, ta sẽ tiếp tục ở bước <strong>5.</strong>.<br />
+Khi biểu diễn số nguyên, ta mới chỉ cần để ý đến cận trên, cận dưới của nó mà thôi. Cho dù khi sử dụng <strong>dấu mở rộng</strong> thì nếu giá trị thực nằm trong khoảng cận trên, cận dưới thì giá trị đó sẽ được biểu diễn giống với trường hợp không có dấu <strong>mở rộng</strong>.</li>
+</ol>
+<li>
+<p>Nếu dựa vào một điều kiện nào đó, ta chỉ có 1 giá trị thôi, thì giá trị này sẽ không được biểu diễn nữa (tất nhiên cả <strong>L</strong> và <strong>V</strong> đều bị khuyết). Biểu diễn chỉ đến đây là hết.</p>
+</li>
+<li>
+<p>Nếu định nghĩa miêu tả một giới hạn hữu hạn, giá trị sẽ được biểu diễn giống với số nguyên hữu hạn miêu tả ở trên. Biểu diễn chỉ đến đây là hết.</p>
+</li>
+<li>
+<p>Nếu chỉ có giới hạn dưới được định nghĩa, giá trị sẽ được biểu diễn theo dạng Khoảng số nguyên giới hạn ở trên. Biểu diễn chỉ đến đây là hết.</p>
+</li>
+<li>
+<p>Biểu diễn một số nguyên không có giới hạn. Biểu diễn cũng kết thúc ở đây.</p>
+</li>
+<p>Các trường hợp được tóm tắt dưới bảng sau:</p>
+<p><b></p>
+<h4>3.3 Kiểu liệt kê (ENUMERATED)</h4>
+<p>Kiểu liệt kê được biểu diễn theo cách được mô tả dưới đây.</p>
+<ol>
+<li>Nếu có dấu mở rộng, <em>Preamble</em> là 1 bit đầu tiên. Nếu giá trị cần biểu diễn nằm trong khoảng biểu diễn ban đầu, thì bit này sẽ có giá trị 0. Ngược lại, bit này sẽ có giá trị là 0. Chi tiết các biểu diễn được miêu tả ở bước 2 nếu là 0, ở bước 3 nếu là 1.</li>
+</ol>
+<p></b></p>
+<li>
+<p>Các giá trị trong kiểu liệt kê sẽ luôn được tính từ 0 (nếu ban đầu không bắt đầu từ 0, thì sẽ được đánh số lại). Kiểu liệt kê dạng này sẽ được biểu diễn giống với Số nguyên hữu hạn.</p>
+</li>
+<li>
+<p>Sau khi loại bỏ khoảng giá trị khi chưa mở rộng, ta sẽ đánh số lại từ 0. Phần giá trị cần biểu diễn thêm sẽ được biểu diễn như là Số nguyên không âm nhỏ.</p>
+</li>
+<p>Các bước được tóm tắt dưới bảng sau:</p>
+<p><b></p>
+<h3>3.4 Kiểu số thực (REAL)</h3>
+<p>Được biểu diễn gần như giống với <strong>CER/DER</strong>.<br />
+Đầu tiên là biểu diễn độ dài, sau đó là giá trị biểu diễn ở dạng <strong>CER/DER</strong>. Giá trị này sẽ được biểu diễn theo đơn vị <strong>OCTET</strong> hoặc <strong>BIT</strong> phụ thuộc vào <strong>ALIGNGED</strong> hay <strong>UNALIGNED</strong> hay không.</p>
+<h3>3.5 Kiểu dãy BIT</h3>
+<p>Khi biểu diễn, những điều kiện sau đây sẽ được tính đến.</p>
+<ul>
+<li>Kích thước: Giới hạn về đọ dài. Cũng giống với kiểu số nguyên, giá trị về mặt độ dài có thể thay đổi tùy theo định nghĩa độ dài cố định, hoặc định nghĩa khoảng độ dài.<br />
+Ví dụ </li>
+</ul>
+<p>[code lang=cpp]<br />
+Exactly31BitsString ::= BIT STRING (SIZE (31))<br />
+StringOf31BitsAtTheMost ::= BIT STRING (SIZE (0..31))<br />
+[/code]</p>
+<ul>
+<li>Giới hạn được tạo bằng các phép tập hợp như phép giao, phép hợp, phép loại trừ, phép loại trừ đảo.</li>
+</ul>
+<p></b></p>
+<li>
+<p>Sử dụng dấu mở rộng cho mục đích có thể sử dụng trong tương lai.</p>
+</li>
+<p>Biểu diễn dãy BIT được mô tả theo các bước như sau:</p>
+<ol>
+<li>Nếu là một dãy bit đã được định nghĩa <strong>TÊN</strong> thì các bit không sử dụng phía sau sẽ bị loại bỏ.</li>
+</ol>
+<li>
+<p>Nếu có giới hạn về kích thước, trong phạm vi thỏa mãn giới hạn, các giá trị luôn được biểu diễn sao cho có độ dài BIT là nhỏ nhất.<br />
+Có thể thêm các bit 0, hoặc xóa bit.</p>
+</li>
+<li>
+<p>Nếu trong giới hạn kích thước có <strong>dấu mở rộng</strong>, thì cũng tương tự các trường hợp khác. Bit đầu được sử dụng là <em>Preamble</em>. Nếu giá trị cần biểu diễn nằm trong phạm vi ban đầu, thì bit này giá trị bằng 0. Ngược lại, bit đó sẽ có giá trị bằng 1 (để mô tả đây là 1 giá trị mở rộng).<br />
+Với trường hợp <em>Preamble</em> bằng 0, ta đến tiếp bước 4. Còn lại ta đến bước 7.</p>
+</li>
+<li>
+<p>Nếu giới hạn trên của kích thước là 0. Thì không cần biểu diễn giá trị này. Kết thúc quá trình biểu diễn.</p>
+</li>
+<li>
+<p>Nếu kích thước là cố định (cận trên = cận dưới), và nhỏ hơn hoặc bằng 16, thì không cần biểu diễn độ dài nữa. Biểu diễn luôn toàn bộ giá trị với độ dài cố định đó. Không biểu diễn bằng đơn vị Octet. Kết thúc biểu diễn cho giá trị này ở đây.</p>
+</li>
+<li>
+<p>Nếu kích thước là cố định, và &gt;=17, &lt;= 65536. Cũng không cần biểu diễn độ dài, mà biểu diễn thẳng dãy bit đó luôn. Trường hợp <strong>ALIGNED</strong> có thể biểu diễn theo đơn vị Octet.</p>
+</li>
+<li>
+<p>Đầu tiên biểu diễn độ dài dãy bit. Nếu giới hạn trên của kích thước hữu hạn thì sử dụng số nguyên hữu hạn. Nếu không có cận trên, thì biểu diễn số nguyên giới hạn bộ phận. Sau đó mới đến dãy bit miêu tả độ dài.</p>
+</li>
+<p>Các trường hợp biểu diễn được tóm tắt dưới bảng sau:</p>
+<p><b></p>
+<h3>3.6 Kiểu OCTET (OCTET STRING)</h3>
+<p>Ta cần quan tâm đến các thông số dưới đây:<br />
+- Kích thước: Giới hạn về độ dài.<br />
+- Các phép toán tập hợp dùng để giới hạn: Phép hợp, giao, loại trừ, loại trừ đảo.<br />
+- Dấu mở rộng: Miêu tả khả năng sử dụng trong tương lai.</p>
+<p>Biểu diễn một giá trị kiểu dãy <strong>Octet</strong> được thực hiện theo các bước dưới đây (về cơ bản, ngoài việc khác nhau về đơn vị ra thì gần như giống hệt kiểu dãy <strong>Bit</strong>.</p>
+<ol>
+<li>Nếu kích thước bị giới hạn, có sử dụng dấu mở rộng, thì 1 bit đầu được sử dụng là <em>Preamble</em>. Nếu giá trị nằm trong khoảng ban đầu (chưa mở rộng), thì giá trị <em>Preamble</em> là 0, ngược lại sẽ là 1. Bằng 0 thì đến tiếp bước 2, bằng 1 đến bước 5.</li>
+</ol>
+<p></b></p>
+<li>
+<p>Nếu kích thước là 0, thì chẳng có gì để biểu diễn cho giá trị này. Kết thúc biểu diễn của giá trị đó luôn.</p>
+</li>
+<li>
+<p>Nếu kích thước cố định (cận trên = cận dưới), và =2, và = 65537 thì cách biểu diễn sẽ khác đi một chút, tuy nhiên do rất ít xảy ra nên không được nói đến ở đây.</p>
+</li>
+<li>
+<p>Tiếp theo, từng giá trị sẽ được biểu diễn. Các yếu tốt <strong>OPTIONAL</strong>, <strong>DEFAULT</strong> mà không tồn tại sẽ bị bỏ qua.</p>
+</li>
+<li>
+<p>Ở dạng biểu diễn chính quy (CER), khi yếu tố có nhãn <strong>DEFAULT</strong> nhận chính giá trị mặc định đó thì sẽ không được biểu diễn. Dạng biểu diễn cơ bản <strong>BER</strong> cũng thế. Trường hợp kiểu cấu trúc, có biểu diễn hay không phụ thuộc hoàn toàn vào Encoder.</p>
+</li>
+<li>
+<p>Trường hợp không có dấu mở rộng, đến đây ra kết thúc biểu diễn.</p>
+</li>
+<li>
+<p>Số dấu mở rộng, gọi là N-ext sẽ được biểu diễn bằng <strong>Số nguyên nhỏ không âm thông thường</strong></p>
+</li>
+<li>
+<p>Tiếp theo là N-ext bit để mô tả giá trị cần biểu diễn là mở rộng hay không mở rộng.</p>
+</li>
+<li>
+<p>Tiếp theo, từng giá trị sẽ được biểu diễn tương ứng. Dãy giá trị biểu diễn của từng yếu tố sẽ được coi là giá trị của kiểu Mở.</p>
+</li>
+<h3>3.9 Kiểu mảng.</h3>
+<p>Khi biểu diễn giá trị kiểu mảng, ta cần xem xét các yếu tố sau:</p>
+<ul>
+<li>Kích thước: Giới hạn độ dài<br />
+Ví dụ:</li>
+</ul>
+<p>[code lang=cpp]<br />
+ListOf5Strings ::= SEQUENCE (SIZE (5)) OF PrintableString<br />
+ListOf5StringsOf5Characters ::=SEQUENCE (SIZE (5)) OF PrintableString (SIZE (5))<br />
+[/code]</p>
+<ul>
+<li>Kết quả của cá phép tập hợp: hợp, giao, loại trừ</li>
+<li>Dấu mở rộng: chỉ định các vị trí có thể sử dụng trong tương lai.</li>
+</ul>
+<ol>
+<li>Nếu kích thước có thể mở rộng, thì bit đầu tiên được sử dụng như là <em>Preamble</em> (không làm tròn thành byte cho bit này). Như biểu diễn các kiểu khác, nếu giá trị kích thước cần biểu diễn nằm trong khoảng ban đầu, thi giá trị <em>Preamble</em> bằng 0, sau đó đến bước 2. Ngược lại sẽ bằng 1, và biểu diễn số phần tử bằng kiểu *Số nguyên giới hạn bộ phận, rồi cuối cùng là biểu diễn của các phần tử.</li>
+</ol>
+<li>
+<p>Nếu kích thước chỉ là 1 giá trị cố định, và &lt;= 65536, thì giá trị kích thước không được biểu diễn nữa. Chỉ n phần tử được biểu diễn thôi, rồi kết thúc.</p>
+</li>
+<li>
+<p>Số phần tử sẽ được biểu diễn bằng kiểu số nguyên giới hạn trong trường hợp có giới hạn trên hữu hạn, được biểu diễn bằng kiểu giới hạn bộ phận khi không cận trên. Cuối cùng là các phần tử.</p>
+</li>
+<p><b></p>
+<h3>3.10 Kiểu tập hợp (SET)</h3>
+<p>Các yếu tố sau cần xem xét khi biểu diễn kiểu này.</p>
+<ul>
+<li>Kích thước: giới hạn độ dài</li>
+<li>Các phép tập hợp: phép hợp, giao, loại trừ, loại trừ đảo.</li>
+<li>Dấu mở rộng: cho mục đích tương lai.</li>
+</ul>
+<p>Trong biểu diễn chính quy (CER), các phần tử của SET được biểu diễn theo thứ tự tăng dần của số BIT của mỗi phần tử.<br />
+Biểu của SET được biểu diễn giống với <strong>SEQUENCE OF</strong>.</p>
+<h3>3.12 Kiểu lựa chọn</h3>
+<ol>
+<li>Nếu có sử dụng dấu mở rộng, bit đầu tiên được sử dụng là <em>Preamble</em>. Nếu giá trị lựa chọn nằm trong số các giá trị ban đầu, thì <em>Preamble</em> sẽ bằng 0, ngược lại bằng 1.</li>
+</ol>
+<p></b></p>
+<li>
+<p>Trường hợp kiểu có nhiều lựa chọn, index sẽ được biểu diễn trong khoảng giá trị từ 0 đến số lựa chọn - 1. Đối với các lựa chọn nằm trong khoảng ban đầu (chứ không phải đã mở rộng), xếp theo thứ tự của tag, index sẽ được đánh từ 0. Thứ tự giữa các class sẽ như sau Lớp chung (<strong>UNIVERSAL</strong>), lớp ứng dụng (<strong>APPLICATION</strong>), lớp đặc trưng ngữ cảnh, lớp sử dụng riên (<strong>PRIVATE</strong>). Với các thẻ cùng 1 lớp, thì thẻ số nhỏ sẽ đứng trước, thẻ số lớn hơn xếp sau. Đối với kiểu mà không có thẻ tag, thì thứ tự được sếp theo tên của từng thành phần, sau đó index được đánh dấu vẫn từ 0. Giá trị index sẽ được biểu diễn là số nguyên nếu nó là giá trị chưa mở rộng, hoặc được biểu diễn là số nguyên nhỏ không âm nếu là một giá trị đã mở rộng.<br />
+Nếu chỉ có 1 lựa chọn, thì index không cần biểu diễn.</p>
+</li>
+<li>
+<p>Cuối cùng, từng thành phần sẽ được biểu diễn. Các giá trị trước mở rộng sẽ được biểu diễn bình thường, giá trị mở rộng sẽ biểu diễn thành giá trị kiểu OPEN.</p>
+</li>
+<p><b></p>
+<h3>3.13 Kiểu chỉ định đối tượng (OBJECT IDENTIFIER)</h3>
+<p>Đầu tiên là số <strong>Octet</strong> sau đó là biểu diễn giá trị bằng <strong>BER</strong>.</p>
+<h3>3.14 Kiểu kí tự hạn chế</h3>
+<p>Xét đến một số yếu tố sau:</p>
+<ul>
+<li>Kế thừa từ kiểu Alphabet</li>
+</ul>
+<p>[code lang=cpp]<br />
+Morse ::= PrintableString (FROM (&quot;.&quot;|&quot;-&quot;|&quot; &quot;))<br />
+IDCardNumber ::=NumericString (FROM (&quot;0&quot;..&quot;9&quot;))<br />
+PushButtonDialSequence ::=IA5String (FROM (&quot;0&quot;..&quot;9&quot;|&quot;*&quot;|&quot;#&quot;))<br />
+[/code]</p>
+<ul>
+<li>Kích thước: giới hạn độ dài</li>
+<li>Phép chứa trong : Kết hợp từ những kiểu khác nhau.</li>
+</ul>
+<p>[code lang=cpp]<br />
+LongWeekEnd ::= Day (WeekEnd|monday)<br />
+[/code]</p>
+<ul>
+<li>Các phép tập hơn: giao, hợp, loại trừ, loại trừ đảo</li>
+<li>Dấu mở rộng: dấu mở rộng trong sử dụng trong tương lai.</li>
+</ul>
+<p>Quá trình sẽ được thực hiện theo các bước sau:</p>
+<ol>
+<li>
+<p>Về cơ bản, sau khi biểu diễn số kí tự, thì từng kí tự sẽ được biểu diễn.</p>
+</li>
+<li>
+<p>Mỗi kí tự sẽ được biểu diễn bằng số bit ít nhất. Trường hợp <strong>UNALIGNED</strong>, giả sử có N kí tự cần biểu diễn thì sẽ cần Log2(N) bit để biểu diễn. Trường hợp <strong>ALIGNED</strong> bằng đơn vị Octet, thì sẽ cần bit là lũy thừa của 2 nhỏ nhất lớn hơn Log2(N). Thứ tự mỗi kí tự sẽ được sếp theo thứ tự của chính giá trị của nó. Bắt đầu từ 0. Trường hợp biểu diễn cho giá trị mở rộng, thì những giá trị chưa nằm trong dãy mở rộng sẽ được biểu diễn giống với lúc trước mở rộng, coi như không bị ảnh hưởng gì từ dấu mở rộng.</p>
+</li>
+<li>
+<p>Nếu có dấu mở rộng, thì giống như những kiểu khác ở trên. Bit đầu được sử dụng là <em>Preamble</em>. Giá trị cần biểu diễn thuộc khoảng ban đầu, thì <em>Preamble</em> bằng 0, sau đó ta đến bước 4. Ngược lại sẽ được gán là 1, thì ta đến tiếp bước 6.</p>
+</li>
+<li>
+<p>Nếu kích thước là cố định, chuỗi biểu diễn có độ dài dưới 2 Octet. Thì biểu diễn độ dài được bỏ qua, ta chỉ biểu diễn giá trị ở dạng không làm tròn thành Octet rồi kết thúc.</p>
+</li>
+<li>
+<p>Nếu kích thước cố định, và số kí tự cần biểu diễn &gt;=2, &lt;= 65536 thì cũng vẫn biểu diễn giống bước 4 nhưng được phép làm tròn thành Octet trong trường hợp <strong>ALIGNED</strong>.</p>
+</li>
+<li>
+<p>Độ dài dãy kí tự được biểu diễn theo kiểu số nguyên giới hạn (nếu có cận trên), hoặc theo kiểu số nguyên bộ phận (nếu không có cận trên), tiếp theo đó là dãy kí tự.</p>
+</li>
+</ol>
+<p></b></p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-11-25-phuong-thuc-cerder/">CER/DER trong ASN.1 Encoding</a></h4>
+    <h5>November 25, 2016</h5>
+    
+<a href="localhost:1313tags/asn1"><kbd class="item-tag">ASN1</kbd></a>
+
+<a href="localhost:1313tags/cer"><kbd class="item-tag">CER</kbd></a>
+
+<a href="localhost:1313tags/der"><kbd class="item-tag">DER</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-11-24-asn-1-ber-basic-encoding-rules/">ASN.1 - BER (Basic Encoding Rules)</a></h4>
+    <h5>November 24, 2016</h5>
+    
+<a href="localhost:1313tags/asn1"><kbd class="item-tag">ASN1</kbd></a>
+
+<a href="localhost:1313tags/per"><kbd class="item-tag">PER</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-11-16-asn-1-cu-phap-co-ban/">ASN.1 - Cú pháp cơ bản</a></h4>
+    <h5>November 16, 2016</h5>
+    
+<a href="localhost:1313tags/asn1"><kbd class="item-tag">ASN1</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

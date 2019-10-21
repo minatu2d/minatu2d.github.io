@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Lệnh MOV trong Assembly</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Lệnh MOV trong Assembly</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Lệnh MOV trong Assembly</h2>
+        <h5>May 14, 2017</h5>
+        
+<a href="localhost:1313tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><h2>Lệnh MOV trong Assembly</h2>
+<p><strong>Link gốc</strong>: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html</p>
+<p>#Lệnh MOV</p>
+<h2>1. Lệnh MOV</h2>
+<p>Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.<br />
+Làm bất cứ cái gì, đều có bao gồm <code>sao chép</code> dữ liệu trong đó. Nói là chức năng <code>sao chép</code> thôi, chứ thực sự nó bao hàm sao chép, truyền dữ liệu. Đó có thể là từ bộ nhớ (các loại RAM) vào thanh ghi, từ thanh ghi vào bộ nhớ, từ một giá trị nào đó xuống thanh ghi hoặc bộ nhớ chẳng hạn.<br />
+Tuy nhiên hãy nhớ rằng <strong>KHÔNG THỂ CHUYỂN DỮ LIỆU TỪ BỘ NHỚ SANG BỐ NHỚ ĐƯỢC</strong>,<br />
+bởi vì <strong>BỘ NHỚ ĐƯỢC TRUY CẬP THEO BUS (20bit hoặc 32bit), MỖI LẦN TRUY CẬP BỘ NHỚ CHỈ CÓ THỂ TRUY CẬP MỘT ĐỊA CHỈ MÀ THÔI</strong><br />
+<code></p>
+<p>Lệnh MOV có 2 tham số, được gọi là <strong>Operand</strong>, nó giống như bên dưới đây:</p>
+<p>[code lang="C"]<br />
+MOV DEST, SOURCE<br />
+[/code]</p>
+<p>Lệnh này theo cú pháp Intel nha.<br />
+Chuyển (Copy) dữ liệu từ <strong>SRC</strong> đến <strong>DEST</strong><br />
+<strong>SRC</strong>, <strong>DEST</strong>: là địa chỉ thanh ghi hoặc bộ nhớ, bỏ trường hợp cả 2 là bộ nhớ.</p>
+<p>Một số ví dụ:</p>
+<p>[code lang="C"]<br />
+MOV AX, BX : Copy nội dung từ thanh ghi BX sang thanh ghi AX<br />
+MOV AL,10  : Lưu giá trị 10 vào thanh ghi AL<br />
+[/code]</p>
+<p>Một số chú ý:<br />
+- Không thể chuyển dữ liệu giữa bộ nhớ với nhau.<br />
+- Nguồn và đích chuyển dữ liệu phải có cùng kích thước<br />
+- Không thể chuyển giá giá trị vào thanh ghi segment</code></p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</a></h4>
+    <h5>May 14, 2017</h5>
+    
+<a href="localhost:1313tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/">Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</a></h4>
+    <h5>February 11, 2017</h5>
+    
+<a href="localhost:1313tags/asm"><kbd class="item-tag">Asm</kbd></a>
+
+<a href="localhost:1313tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

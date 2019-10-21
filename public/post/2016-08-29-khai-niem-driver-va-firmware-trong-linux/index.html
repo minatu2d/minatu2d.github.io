@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Driver và Firmware trong Linux</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Driver và Firmware trong Linux</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Driver và Firmware trong Linux</h2>
+        <h5>August 29, 2016</h5>
+        
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+<a href="localhost:1313tags/firmware"><kbd class="item-tag">Firmware</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"><br />
+Bài này sẽ dịch lại <a href="https://wiki.ubuntu.com/Kernel/Firmware">trang</a>, để hiểu qua về Firmware trong Linux Kernel.</p>
+<h5>1. Firmware ở đây là gì?</h5>
+<p>Nhiều thiết bị có tới 2 thành phần để tạo nên chức năng của chúng khi trong hệ điều hành. Đầu tiên, đó là một <strong>Driver</strong>, là phần mềm cho phép hệ điều hành nói chuyện được với phần cứng của thiết bị. Thứ hai, đó là <strong>Firmware</strong>, thường là một mã nhị phân được upload trực tiếp vài thiết bị để nó có thể hoạt động được. Bạn có thể nghĩ Firmware ở đây là cách để lập trình phần cứng bên trong thiết bị. Trong thực tế, hầu hết <strong>Firmware</strong> đều có dạng (closed-source), thường không có source code đi kèm, và được phân phối miễn phí.</p>
+<h5>2. Lấy Firmware như thế này ở đâu?</h5>
+<p><strong>Firmware</strong> thường được maintained bởi chính các công ty phát triển thiết bị. Trên Windows, <strong>firmware</strong> thường là một phần của <strong>Driver</strong> bạn cài đặt để sử dụng thiết bị đó, và tất nhiên, user không hề thấy nó. Trên Linux, <strong>firmware</strong> đến từ rất nhiều nguồn. Một số có ngay trong source của nhân. Số khác được phân phối từ <a href="http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git">upstream</a>. Một số khác thì thật không may, chúng không được phân phối miễn phí.</p>
+<p>Trên Ubuntu, <strong>firmware</strong> có thể đến từ 1 trong các nguồn dưới đây:<br />
+- Gói <strong><em>linux-image</em></strong><br />
+- Gói <strong><em>linux-firmware</em></strong><br />
+- Gói <strong><em>linux-firmware-nonfree</em></strong><br />
+- Gói driver riêng biệt<br />
+- Các nguồn khác như Driver CD, Email, Website.</p>
+<p>Chú ý rằng, gói <strong><em>linux-firmware-nonfree</em></strong> không được cài mặc định.<br />
+Các <strong>firmware</strong> đã được cài đặt sẽ nằm ở <strong>/lib/firmware/</strong>.</p>
+<h5>3. Các Firmware này được sử dụng lúc nào?</h5>
+<p>Khi driver cho các thiết bị này được chạy, nó sẽ "yêu cầu" các <strong>firmare</strong> tương ứng từ <strong><em>lib/firmware/</em></strong><br />
+Quá trình về cơ bản sẽ như sau:<br />
+1. Driver yêu cầu file Firmware.<br />
+2. Kernel sẽ gửi 1 yêu cầu đến <strong>udev</strong> để hỏi Firmware<br />
+3. <strong>udev</strong> sẽ chạy 1 script để load dữ liệu từ firmware vào 1 file đặc biệt được tạo bởi Kernel.<br />
+4. Kernels sẽ đọc đọc Firmware từ file đó và chuyển cho Driver.<br />
+5. Driver sau đó sẽ bằng cách nào đó load firmware vào thiết bị.</p>
+<p><strong>Vị dụ về USB Wifi Buffalo sử dụng chip Ralink</strong></p>
+<p>Thông thường các module khi yêu cầu <strong>External Firmware</strong>, nhân sẽ tìm trong đường dẫn <strong>/lib/firmware</strong>. Đường dẫn này được set trong biến <strong>CONFIG_EXTRA_FIRMWARE_DIR</strong> khi cấu hình để build kernel.</p>
+<p>Trong trường hợp của chúng ta, module đã được load nhưng firmware dành cho thiết bị không có trong <strong>/lib/firmware</strong>, có lẽ ta chỉ cần copy vào thư mục trên là vấn đề sẽ được giải quyết.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-09-05-qua-trinh-load-firmware-cua-driver-trong-linux/">Quá trình load firmware của Driver trong Linux</a></h4>
+    <h5>September 5, 2016</h5>
+    
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+<a href="localhost:1313tags/firmware"><kbd class="item-tag">Firmware</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm Driver cho Linux</a></h4>
+    <h5>August 19, 2016</h5>
+    
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-08-15-mot-chut-ve-driver-cho-usb-device-trong-linux/">Một chút về Driver cho USB Device trong Linux</a></h4>
+    <h5>August 15, 2016</h5>
+    
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

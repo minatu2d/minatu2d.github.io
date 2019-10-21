@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Hiểu thêm về HID Report Descriptor</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Hiểu thêm về HID Report Descriptor</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Hiểu thêm về HID Report Descriptor</h2>
+        <h5>January 28, 2016</h5>
+        
+<a href="localhost:1313tags/draft"><kbd class="item-tag">Draft</kbd></a>
+
+<a href="localhost:1313tags/hid"><kbd class="item-tag">HID</kbd></a>
+
+<a href="localhost:1313tags/usb"><kbd class="item-tag">USB</kbd></a>
+
+<a href="localhost:1313tags/usbdescriptor"><kbd class="item-tag">USBDescriptor</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content"></p>
+<p>Đầu tiên, hãy vào trang <a href="http://www.usb.org/developers/hidpage/">http://www.usb.org/developers/hidpage/</a> và tìm tài liệu có tên  “Device Class Definition for HID”(Định nghĩa lớp cho các thiết bị HID), trong bài này tác giả sẽ nói về phần cơ bản nhất để hiểu tài liệu này.</p>
+<p>Thứ hai, có thể tải Tool tên là HID Descriptor Tool từ cùng link ở trên luôn. Tool này hỗ trợ việc Edit, Parse một miêu tả HID ở dạng Binary sang dạng người thiết kế dễ dàng đọc hơn.</p>
+<h4>USB HID report descriptor là cái gì?</h4>
+<blockquote><p>Giao thức HID giúp việc implement thiết bị trở nên rất dễ dàng. Thiết bị tự định nghĩa các gói dữ liệu của nó và gửi đến Host trông qua các  “HID descriptor”.  HID descriptor là một mảng 1 chiều không hơn không kém, miêu tả gói mà thiết bị định gửi sau đó.  Nó bao gồm : thiết bị hỗ trợ bao nhiêu gói dữ liêu, các gói có kích thước ra sao,  và mục đích của mỗi byte trong dữ liệu. Ví dụ, một phím tính toán trên một keyboard có thể được miêu tả với Host rằng 2 trạng thái (nhấn/nhả) được miêu tả trong bít thứ 2, của byte thứ 6 trong packet số 4.(chú ý là đây chỉ là giả đinh thôi). Một thiết bị thông thường lưu trữ HID Descriptor của nó trong ROM và đương nhiên không cần phải Parse lại làm gì. Nhiều chuột và bàn phím hiện nay được implement chỉ với CPU-8bit.</p></blockquote>
+<p>– Wikipedia on Human Interface Device</p>
+<p>Trong bài viết này, tác giả sẽ dạy chúng ta về USB HID Report Descriptors (Đặc tả mẫu báo cáo dữ liệu cho thiết bị USB HID) bằng một vài ví dụ cụ thể.</p>
+<p>Để cho đơn giản, chúng ta hãy cùng tạo Report Descriptor cho một mouse chuẩn gồm: 3 nút bấm và toa độ di chuyển X, Y. Chúng ta tất nhiên sẽ muốn gửi thông tin về 3 nút kia và tọa độ di chuyển của chuột. Ta cần 1 bit để miêu tả mỗi nút, và 1 byte (giá trị có dấu) để miêu tả mỗi tọa độ. Ta có thể miêu tả đơn giản bằng một bảng các byte như sau:</p>
+<table class="franktable" border="1">
+<tbody>
+<tr>
+<td></td>
+<td>Bit 7</td>
+<td>Bit 6</td>
+<td>Bit 5</td>
+<td>Bit 4</td>
+<td>Bit 3</td>
+<td>Bit 2</td>
+<td>Bit 1</td>
+<td>Bit 0</td>
+</tr>
+<tr>
+<td>Byte 0</td>
+<td>Ko sd</td>
+<td>Ko sd</td>
+<td>Ko sd</td>
+<td>Ko sd</td>
+<td>Ko sd</td>
+<td>Nút trái</td>
+<td>Nút giữa</td>
+<td>Nút phải</td>
+</tr>
+<tr>
+<td>Byte 1</td>
+<td colspan="8">Giá trị có dấu miêu tả tọa độ tương đối X</td>
+</tr>
+<tr>
+<td>Byte 2</td>
+<td colspan="8">Gia trị có dấu miêu tả tọa độ tương đối Y</td>
+</tr>
+</tbody>
+</table>
+<p>Có thể miêu dữ liệu trên trong một cấu trúc ngôn ngữ C như thế này:</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>struct</code> <code>mouse_report_t</code></div>
+<div class="line number2 index1 alt1"><code>{</code></div>
+<div class="line number3 index2 alt2"><code>    </code><code>uint8_t buttons;</code></div>
+<div class="line number4 index3 alt1"><code>    </code><code>int8_t x;</code></div>
+<div class="line number5 index4 alt2"><code>    </code><code>int8_t y;</code></div>
+<div class="line number6 index5 alt1"><code>}</code></div>
+</div>
+<p>Giờ, ta sẽ miêu tả dữ liêu trên trong Report Descriptor.</p>
+<p>Đầu tiên, ta miêu tả rằng, ta cần một nhóm 3 nút.</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>USAGE_PAGE (Button)</code></div>
+<div class="line number2 index1 alt1"><code>USAGE_MINIMUM (Button 1)</code></div>
+<div class="line number3 index2 alt2"><code>USAGE_MAXIMUM (Button 3)</code></div>
+</div>
+<p>Mỗi nút có trạng thái biểu diễn bằng 1 bít (0/1 tương đương với nhấn và không được nhấn).</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>LOGICAL_MINIMUM (0)</code></div>
+<div class="line number2 index1 alt1"><code>LOGICAL_MAXIMUM (1)</code></div>
+</div>
+<div class="line number2 index1 alt1">Và ta cần 1 nhóm 3 bít này, nó sẽ được biểu diễn như sau:</div>
+<div class="container">
+<div class="line number1 index0 alt2"><code>REPORT_COUNT (3)</code></div>
+<div class="line number2 index1 alt1"><code>REPORT_SIZE (1)</code></div>
+</div>
+<p>Cuối cùng, khai báo rằng đây là 1 input, nó cần được gửi đến máy tính:</p>
+<p><code>INPUT (Data,Var,Abs)</code></p>
+<p>Cuối cùng, 3 nút được biểu diễn bằng dãy sau:</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>USAGE_PAGE (Button)</code></div>
+<div class="line number2 index1 alt1"><code>USAGE_MINIMUM (Button 1)</code></div>
+<div class="line number3 index2 alt2"><code>USAGE_MAXIMUM (Button 3)</code></div>
+<div class="line number4 index3 alt1"><code>LOGICAL_MINIMUM (0)</code></div>
+<div class="line number5 index4 alt2"><code>LOGICAL_MAXIMUM (1)</code></div>
+<div class="line number6 index5 alt1"><code>REPORT_COUNT (3)</code></div>
+<div class="line number7 index6 alt2"><code>REPORT_SIZE (1)</code></div>
+<div class="line number8 index7 alt1"><code>INPUT (Data,Var,Abs)</code></div>
+</div>
+<p>OK rồi. nhưng đến đây chưa xong, ta nhớ rằng, cần miêu tả đến mỗi byte được sử dụng như thế nào. Ta ở đây còn 5 bit chưa sử dụng của byte đầu tiên. Ta cần phải báo cho Host biết nó sẽ được dùng làm gì. Hoặc không được dùng làm gì hết thì ta khai báo như sau:</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>REPORT_COUNT (1)</code></div>
+<div class="line number2 index1 alt1"><code>REPORT_SIZE (5)</code></div>
+<div class="line number3 index2 alt2"><code>INPUT (Cnst,Var,Abs)</code></div>
+</div>
+<p>Vậy là 3 nút bấm, trong byte đầu tiên luôn.</p>
+<p>Giờ ta đến với tọa độ X, đầu tiên ta cũng cần khai báo rằng đây là X.</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number2 index1 alt1"><code>USAGE (X)</code></div>
+</div>
+<p>Giá trị ó có thể nhận trong khoảng -127 đến 128, ta miêu tả như sau:</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>LOGICAL_MINIMUM (-127)</code></div>
+<div class="line number2 index1 alt1"><code>LOGICAL_MAXIMUM (127)</code></div>
+</div>
+<p>Cần 1 bộ 8 bit.</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>REPORT_SIZE (8)</code></div>
+<div class="line number2 index1 alt1"><code>REPORT_COUNT (1)</code></div>
+</div>
+<p>Và đây là dữ liệu input, cần gửi đến máy tính;</p>
+<p><code>INPUT (Data,Var,Rel)</code></p>
+<p>Và ta được dãy miêu tả tọa độ X như sau:</p>
+<div class="container">
+<div class="line number1 index0 alt2"><code>USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number2 index1 alt1"><code>USAGE (X)</code></div>
+<div class="line number3 index2 alt2"><code>LOGICAL_MINIMUM (-127)</code></div>
+<div class="line number4 index3 alt1"><code>LOGICAL_MAXIMUM (127)</code></div>
+<div class="line number5 index4 alt2"><code>REPORT_SIZE (8)</code></div>
+<div class="line number6 index5 alt1"><code>REPORT_COUNT (1)</code></div>
+<div class="line number7 index6 alt2"><code>INPUT (Data,Var,Rel)</code></div>
+<div class="line number7 index6 alt2">Ta sư dụng trọn ven trọng 1 byte nên không có phần thừa ở đây.</div>
+<div class="line number7 index6 alt2">Với tọa độ Y, ta cũng tương tự có tọa độ X, Y như sau:</div>
+</div>
+<div class="line number7 index6 alt2">
+<div class="container">
+<div class="line number1 index0 alt2"><code>USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number2 index1 alt1"><code>USAGE (X)</code></div>
+<div class="line number3 index2 alt2"><code>LOGICAL_MINIMUM (-127)</code></div>
+<div class="line number4 index3 alt1"><code>LOGICAL_MAXIMUM (127)</code></div>
+<div class="line number5 index4 alt2"><code>REPORT_SIZE (8)</code></div>
+<div class="line number6 index5 alt1"><code>REPORT_COUNT (1)</code></div>
+<div class="line number7 index6 alt2"><code>INPUT (Data,Var,Rel)</code></div>
+<div class="line number8 index7 alt1"><code>USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number9 index8 alt2"><code>USAGE (Y)</code></div>
+<div class="line number10 index9 alt1"><code>LOGICAL_MINIMUM (-127)</code></div>
+<div class="line number11 index10 alt2"><code>LOGICAL_MAXIMUM (127)</code></div>
+<div class="line number12 index11 alt1"><code>REPORT_SIZE (8)</code></div>
+<div class="line number13 index12 alt2"><code>REPORT_COUNT (1)</code></div>
+<div class="line number14 index13 alt1"><code>INPUT (Data,Var,Rel)</code></div>
+<div class="line number14 index13 alt1"></div>
+</div>
+</div>
+<div class="line number7 index6 alt2">Mỗi trên vẫn chạy ngon nhưng để tiết kiệp bộ nhớ (vì Report này thường được lưu trên bộ nhớ rất nhỏ mà). Ta có thể rút như như sau mà không thay đổi ý nghĩa:</div>
+<div class="line number7 index6 alt2">
+<div class="container">
+<div class="line number1 index0 alt2"><code>USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number2 index1 alt1"><code>USAGE (X)</code></div>
+<div class="line number3 index2 alt2"><code>USAGE (Y)</code></div>
+<div class="line number4 index3 alt1"><code>LOGICAL_MINIMUM (-127)</code></div>
+<div class="line number5 index4 alt2"><code>LOGICAL_MAXIMUM (127)</code></div>
+<div class="line number6 index5 alt1"><code>REPORT_SIZE (8)</code></div>
+<div class="line number7 index6 alt2"><code>REPORT_COUNT (2)</code></div>
+<div class="line number8 index7 alt1"><code>INPUT (Data,Var,Rel)</code></div>
+</div>
+<div class="line number8 index7 alt1">Toàn bộ 3 nút và tọa độ X, Y được miêu tả bằng dãy dữ liệu sau:</div>
+<div class="line number8 index7 alt1"></div>
+</div>
+<div class="line number7 index6 alt2">
+<div class="container">
+<div class="line number1 index0 alt2"><code>USAGE_PAGE (Button)</code></div>
+<div class="line number2 index1 alt1"><code>USAGE_MINIMUM (Button 1)</code></div>
+<div class="line number3 index2 alt2"><code>USAGE_MAXIMUM (Button 3)</code></div>
+<div class="line number4 index3 alt1"><code>LOGICAL_MINIMUM (0)</code></div>
+<div class="line number5 index4 alt2"><code>LOGICAL_MAXIMUM (1)</code></div>
+<div class="line number6 index5 alt1"><code>REPORT_COUNT (3)</code></div>
+<div class="line number7 index6 alt2"><code>REPORT_SIZE (1)</code></div>
+<div class="line number8 index7 alt1"><code>INPUT (Data,Var,Abs)</code></div>
+<div class="line number9 index8 alt2"><code>REPORT_COUNT (1)</code></div>
+<div class="line number10 index9 alt1"><code>REPORT_SIZE (5)</code></div>
+<div class="line number11 index10 alt2"><code>INPUT (Cnst,Var,Abs)</code></div>
+<div class="line number12 index11 alt1"><code>USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number13 index12 alt2"><code>USAGE (X)</code></div>
+<div class="line number14 index13 alt1"><code>USAGE (Y)</code></div>
+<div class="line number15 index14 alt2"><code>LOGICAL_MINIMUM (-127)</code></div>
+<div class="line number16 index15 alt1"><code>LOGICAL_MAXIMUM (127)</code></div>
+<div class="line number17 index16 alt2"><code>REPORT_SIZE (8)</code></div>
+<div class="line number18 index17 alt1"><code>REPORT_COUNT (2)</code></div>
+<div class="line number19 index18 alt2"><code>INPUT (Data,Var,Rel)</code></div>
+<div class="line number19 index18 alt2"></div>
+</div>
+</div>
+<div class="line number7 index6 alt2">Đến đây vẫn chưa hết, ta cần thêm một vài trường bao bọc khối này để máy tính hiểu đây là một Report của Mouse.</div>
+<div class="line number7 index6 alt2"></div>
+<div class="line number7 index6 alt2">Nó giống như thế này:</div>
+<div class="line number7 index6 alt2">
+<div class="container">
+<div class="line number1 index0 alt2"><code>USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number2 index1 alt1"><code>USAGE (Mouse)</code></div>
+<div class="line number3 index2 alt2"><code>COLLECTION (Application)</code></div>
+<div class="line number4 index3 alt1"><code>    </code><code>USAGE (Pointer)</code></div>
+<div class="line number5 index4 alt2"><code>    </code><code>COLLECTION (Physical)</code></div>
+<div class="line number6 index5 alt1"><code>    </code></div>
+<div class="line number7 index6 alt2"><code>    </code><code>... What we wrote already goes here</code></div>
+<div class="line number8 index7 alt1"><code>    </code></div>
+<div class="line number9 index8 alt2"><code>    </code><code>END COLLECTION</code></div>
+<div class="line number10 index9 alt1"><code>END COLLECTION</code></div>
+</div>
+</div>
+<div class="line number7 index6 alt2"></div>
+<div class="line number7 index6 alt2">Cuối cùng, dãy dưới đây mới thực sự là dữ liệu ta vừa tạo:</div>
+<div class="line number7 index6 alt2"></div>
+<div class="line number7 index6 alt2">
+<div class="container">
+<div class="line number1 index0 alt2"><code>0x05, 0x01,                    </code><code>// USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number2 index1 alt1"><code>0x09, 0x02,                    </code><code>// USAGE (Mouse)</code></div>
+<div class="line number3 index2 alt2"><code>0xa1, 0x01,                    </code><code>// COLLECTION (Application)</code></div>
+<div class="line number4 index3 alt1"><code>0x09, 0x01,                    </code><code>//   USAGE (Pointer)</code></div>
+<div class="line number5 index4 alt2"><code>0xa1, 0x00,                    </code><code>//   COLLECTION (Physical)</code></div>
+<div class="line number6 index5 alt1"><code>0x05, 0x09,                    </code><code>//     USAGE_PAGE (Button)</code></div>
+<div class="line number7 index6 alt2"><code>0x19, 0x01,                    </code><code>//     USAGE_MINIMUM (Button 1)</code></div>
+<div class="line number8 index7 alt1"><code>0x29, 0x03,                    </code><code>//     USAGE_MAXIMUM (Button 3)</code></div>
+<div class="line number9 index8 alt2"><code>0x15, 0x00,                    </code><code>//     LOGICAL_MINIMUM (0)</code></div>
+<div class="line number10 index9 alt1"><code>0x25, 0x01,                    </code><code>//     LOGICAL_MAXIMUM (1)</code></div>
+<div class="line number11 index10 alt2"><code>0x95, 0x03,                    </code><code>//     REPORT_COUNT (3)</code></div>
+<div class="line number12 index11 alt1"><code>0x75, 0x01,                    </code><code>//     REPORT_SIZE (1)</code></div>
+<div class="line number13 index12 alt2"><code>0x81, 0x02,                    </code><code>//     INPUT (Data,Var,Abs)</code></div>
+<div class="line number14 index13 alt1"><code>0x95, 0x01,                    </code><code>//     REPORT_COUNT (1)</code></div>
+<div class="line number15 index14 alt2"><code>0x75, 0x05,                    </code><code>//     REPORT_SIZE (5)</code></div>
+<div class="line number16 index15 alt1"><code>0x81, 0x03,                    </code><code>//     INPUT (Cnst,Var,Abs)</code></div>
+<div class="line number17 index16 alt2"><code>0x05, 0x01,                    </code><code>//     USAGE_PAGE (Generic Desktop)</code></div>
+<div class="line number18 index17 alt1"><code>0x09, 0x30,                    </code><code>//     USAGE (X)</code></div>
+<div class="line number19 index18 alt2"><code>0x09, 0x31,                    </code><code>//     USAGE (Y)</code></div>
+<div class="line number20 index19 alt1"><code>0x15, 0x81,                    </code><code>//     LOGICAL_MINIMUM (-127)</code></div>
+<div class="line number21 index20 alt2"><code>0x25, 0x7f,                    </code><code>//     LOGICAL_MAXIMUM (127)</code></div>
+<div class="line number22 index21 alt1"><code>0x75, 0x08,                    </code><code>//     REPORT_SIZE (8)</code></div>
+<div class="line number23 index22 alt2"><code>0x95, 0x02,                    </code><code>//     REPORT_COUNT (2)</code></div>
+<div class="line number24 index23 alt1"><code>0x81, 0x06,                    </code><code>//     INPUT (Data,Var,Rel)</code></div>
+<div class="line number25 index24 alt2"><code>0xc0,                          </code><code>//   END_COLLECTION</code></div>
+<div class="line number26 index25 alt1"><code>0xc0                           </code><code>// END_COLLECTION</code></div>
+<div class="line number26 index25 alt1"></div>
+</div>
+</div>
+<div class="line number26 index25 alt1">Đến đây, nếu bạn gặp vấn đề về một vài khái niệm, bạn có thể đặt câu hỏi với tác giả link gốc hoặc đặt câu hỏi bằng tiếng Việt với chủ blog để cùng thảo luận.</div>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/">SCSI - Giao tiếp với USB Memory</a></h4>
+    <h5>March 15, 2016</h5>
+    
+<a href="localhost:1313tags/scsi"><kbd class="item-tag">SCSI</kbd></a>
+
+<a href="localhost:1313tags/usb"><kbd class="item-tag">USB</kbd></a>
+
+<a href="localhost:1313tags/usbmemory"><kbd class="item-tag">USBMemory</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-01-25-bo-nho-flash-se-viet/">Bộ nhớ Flash</a></h4>
+    <h5>January 25, 2016</h5>
+    
+<a href="localhost:1313tags/draft"><kbd class="item-tag">Draft</kbd></a>
+
+<a href="localhost:1313tags/flash"><kbd class="item-tag">Flash</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-01-25-porting-non-os-driver-sang-itron-based-os/">Porting Non-OS Driver sang ITRON-based OS</a></h4>
+    <h5>January 25, 2016</h5>
+    
+<a href="localhost:1313tags/draft"><kbd class="item-tag">Draft</kbd></a>
+
+<a href="localhost:1313tags/driver"><kbd class="item-tag">Driver</kbd></a>
+
+<a href="localhost:1313tags/porting"><kbd class="item-tag">Porting</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+

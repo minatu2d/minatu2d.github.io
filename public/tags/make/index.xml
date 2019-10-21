@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Make on Lazytrick</title>
+    <link>localhost:1313/tags/make/</link>
+    <description>Recent content in Make on Lazytrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 16 Aug 2015 04:12:53 +0900</lastBuildDate>
+    
+	<atom:link href="localhost:1313/tags/make/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>CMake - Một ví dụ đơn giản</title>
+      <link>localhost:1313/post/2015-08-16-cmake-mot-vi-du-don-gian/</link>
+      <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2015-08-16-cmake-mot-vi-du-don-gian/</guid>
+      <description>Trong bài tôi đã giới thiệu qua về CMake. Như ta đã biết nó cung cấp tính tăng giúp việc sinh ra Makefile một cách hiệu quả. Nhất là đối với các dự án phức tạp. Nó cũng cung cấp thêm các bộ sinh khác để sinh cấu trúc quản lý source cho các IDE khác nhau như Visual Studio, KDE.
+Trong giới hạn, tôi sẽ nói về việc sử dụng CMake để build một simple project trên cả Windows và Linux.</description>
+    </item>
+    
+  </channel>
+</rss>

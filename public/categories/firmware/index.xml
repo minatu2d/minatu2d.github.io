@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Firmware on Lazytrick</title>
+    <link>localhost:1313/categories/firmware/</link>
+    <description>Recent content in Firmware on Lazytrick</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Apr 2017 04:10:05 +0900</lastBuildDate>
+    
+	<atom:link href="localhost:1313/categories/firmware/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tìm source code của USB Driver trên Linux</title>
+      <link>localhost:1313/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
+      <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
+      <description>&lt;p&gt;Ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/&#34;&gt;Tìm driver cho Linux&lt;/a&gt; cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.&lt;/p&gt;
+&lt;h2&gt;Cách tìm source code driver cho thiết bị USB&lt;/h2&gt;
+&lt;h2&gt;1. Nói qua về thiết bị USB&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.&lt;br /&gt;
+Đó là &lt;strong&gt;Vendor&lt;/strong&gt; (nhà sản xuất), và &lt;strong&gt;Product&lt;/strong&gt; (sản phẩm).&lt;br /&gt;
+Thông tin về &lt;strong&gt;Vendor&lt;/strong&gt; được mô tả bằng một id, trong source thường là &lt;strong&gt;idVendor&lt;/strong&gt;.&lt;br /&gt;
+Thông tin về &lt;strong&gt;Product&lt;/strong&gt; cũng được mô tả bằng một id, trong source thường là &lt;strong&gt;idProduct&lt;/strong&gt;.&lt;br /&gt;
+2 thông tin trên sẽ xác định duy nhất một loại thiết bị.&lt;br /&gt;
+Thông tin về id của mỗi Vendor, Product được đăng kí với tổ chức hỗ trợ USB.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Về Renesas FIT - Firmware Intergrated Technology</title>
+      <link>localhost:1313/post/2016-01-25-ve-renesas-fit-firmware-intergrated-technology/</link>
+      <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
+      
+      <guid>localhost:1313/post/2016-01-25-ve-renesas-fit-firmware-intergrated-technology/</guid>
+      <description>&lt;p&gt;Kinh nghiệm lập trình với Microcontroller chưa nhiều, chỉ mới 3 năm không liên tục. Nhưng cũng thấy phần nào được một ít gọi là cái hay của một công nghệ (thực ra cứ gọi là công nghệ thôi, chứ nhiều lúc công nghệ với kĩ thuật cũng khá gần nhau). Đó là FIT  viết tắt của Firmware Intergration Technology (FIT) của Renesas.&lt;/p&gt;
+&lt;p&gt;Theo những gì Renesas cung cấp, công nghệ này được sử dụng trong các dòng Chip RX từ RX63M, RX64M...RX113).&lt;/p&gt;
+&lt;p&gt;Trong bài sẽ đi giới thiệu khái quát về FIT.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;FIT là gì?&lt;/li&gt;
+&lt;li&gt;Đặt trưng của FIT&lt;/li&gt;
+&lt;li&gt;Môi trường phát triển cho FIT&lt;/li&gt;
+&lt;li&gt;Các thành phần phần mềm sử dụng trong FIT&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pages on Lazytrick - Write to read later</title>
+    <link>/post/pages/</link>
+    <description>Recent content in Pages on Lazytrick - Write to read later</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Jan 2015 07:19:16 +0900</lastBuildDate>
+    
+	<atom:link href="/post/pages/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>About</title>
+      <link>/post/pages/2015-01-23-gioi-thieu/</link>
+      <pubDate>Fri, 23 Jan 2015 07:19:16 +0900</pubDate>
+      
+      <guid>/post/pages/2015-01-23-gioi-thieu/</guid>
+      <description>Xin chào, tôi là một lập trình viên.
+Tôi quan tâm đến Linux, đặc biệt là Embedded Linux.
+Tôi viết blog này để mô tả cách tôi giải quyết vấn đề trong trong quá trình làm việc của mình.
+Cám ơn bạn đã ghé thăm.</description>
+    </item>
+    
+  </channel>
+</rss>

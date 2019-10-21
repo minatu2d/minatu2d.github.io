@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en-us">
+    <head>
+        
+
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cài đặt GDB (02 - Cài đặt)</title>
+        
+        <style>
+
+    html body {
+        font-family: 'Raleway', sans-serif;
+        background-color: white;
+    }
+
+    :root {
+        --accent: red;
+        --border-width:  5px ;
+    }
+
+</style>
+
+
+<link rel="stylesheet" href="#ZgotmplZ">
+
+
+
+
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+
+
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+ 
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
+    
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
+ <meta name="generator" content="Hugo 0.58.3" />
+        
+
+        
+
+        
+            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+
+        
+
+    </head>
+
+    <body>
+        
+
+        <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand visible-xs" href="#">Cài đặt GDB (02 - Cài đặt)</a>
+                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                </div>
+                <div class="collapse navbar-collapse">
+                    
+                        <ul class="nav navbar-nav">
+                            
+                                <li><a href="/">Home</a></li>
+                            
+                                <li><a href="/post/">Posts</a></li>
+                            
+                                <li><a href="/tags/">Tags</a></li>
+                            
+                                <li><a href="/categories/">Category</a></li>
+                            
+                                <li><a href="/about/">About</a></li>
+                            
+                        </ul>
+                    
+                    
+                        <ul class="nav navbar-nav navbar-right">
+                            
+                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
+                            
+                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
+                            
+                        </ul>
+                    
+                </div>
+            </div>
+        </nav>
+
+
+<main>
+
+    <div>
+        <h2>Cài đặt GDB (02 - Cài đặt)</h2>
+        <h5>September 20, 2016</h5>
+        
+<a href="localhost:1313tags/gdb"><kbd class="item-tag">GDB</kbd></a>
+
+<a href="localhost:1313tags/installation"><kbd class="item-tag">Installation</kbd></a>
+
+
+    </div>
+
+    <div align="start" class="content">Dưới đây, sẽ đưa ra hướng dẫn cách cài đặt GDB trên máy sử dụng để debug. Nó có thể là máy chạy <strong>target program</strong>, có thể không.</p>
+<h3>1. Cài đặt trên Debian (Debian-based distro)</h3>
+<p>Debian 8.x chưa được cài mặc định GDB, hãy sử dụng command sau để cài nó:</p>
+<p>[code lang="shell"]<br />
+#aptitude install gdb<br />
+[/code]</p>
+<p>Chú ý rằng, ở đây phải sử dụng quyền <strong><em>root</em></strong> hoặc <strong><em>sudo</em></strong>.<br />
+Trên một số bản Debian như 8.x thì hoàn toàn có thể dùng cách cài đặt như Ubuntu được.</p>
+<h3>2. Cài đặt trên Ubuntu (Ubuntu-based distro)</h3>
+<p>Trên các bản Ubuntu gần đây như <a href="http://releases.ubuntu.com/trusty/ubuntu-14.04.4-desktop-i386.manifest">14.04</a>, <a href="http://releases.ubuntu.com/xenial/ubuntu-16.04-desktop-i386.manifest">16.04</a> <strong>GDB</strong> đều được được cài mặc định.<br />
+Hoặc nếu chưa được cài, thì hãy chạy command sau để cài nó :</p>
+<p>[code lang="shell"]<br />
+$sudo apt-get install gdb<br />
+[/code]</p>
+<h3>2. Cài đặt trên CentOS, Fedora</h3>
+<p>Trên CentOS, Fedora, ta cài bằng lệnh sau dưới quyền root.</p>
+<p>[code lang="shell"]<br />
+#yum install gdb<br />
+[/code]</p>
+<p>Nếu có đĩa DVD cài đặt, có thể tải gói cài từ DVD bằng lệnh sau:</p>
+<p>[code lang="shell"]<br />
+#yum install --disablerepo=\* --enablerepo=c7-media install gdb<br />
+[/code]</p>
+<h3>3. Cài đặt trên Raspbian</h3>
+<p>Raspbian dựa trên Debian, có thể cài theo cách cài trên Ubuntu hoặc Debian đều được.</p>
+<p>[code lang="shell"]<br />
+#aptitude install gdb<br />
+[/code]</p>
+<p>hoặc</p>
+<p>[code lang="shell"]<br />
+$sudo apt-get install gdb<br />
+[/code]</p>
+<h3>4. Cài đặt từ source code</h3>
+<p>Ta có thể tải một bản gdb bất kì tại <a href="ftp://sourceware.org/pub/gdb/releases/">đây</a> để tiến hành cài đặt.</p>
+<p>Ở đây, bản mới nhất là <strong>7.11.1</strong> để build, cài đặt.<br />
+Chú ý là, ta có thể cài đặt <strong>GDB</strong> trên 1 đường dẫn bất kì của user đang sử dụng mà không cần phải cài vào các đường dẫn mặc định như <strong>/usr/bin</strong>, hay <strong>/usr/local/bin</strong>, etc.<br />
+Và quá trình này không cần phải là <strong>root</strong>.<br />
+Thực hiện với quyền root nhiều khi còn phát sinh vấn đề.</p>
+<h4>4.1. Tạo thư mục để build</h4>
+<p>Command:</p>
+<p>[code lang="shell"]<br />
+$ #1. Creating local directory<br />
+$pwd<br />
+/home/oedev<br />
+$mkdir gdb<br />
+$cd gdb<br />
+$pwd<br />
+/home/oedev/gdb<br />
+$mkdir gdb_install<br />
+[/code]</p>
+<p>Ta sẽ cài đặt <strong>GDB</strong> vào *<strong>gdb_install</strong>.</p>
+<h4>4.2. Tải source code</h4>
+<p>[code lang="shell"]<br />
+$ #2. Download source code<br />
+$wget ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz<br />
+[/code]</p>
+<h4>4.3. Giải nén source code</h4>
+<p>[code lang="shell"]<br />
+$ #3. Extrating the source code<br />
+$tar -xzvf gdb-7.11.1.tar.gz<br />
+$ls<br />
+gdb-7.11.1 gdb-7.11.1.tar.gz<br />
+$cd gdb-7.11.1<br />
+[/code]</p>
+<h4>4.4. Cấu hình (Configure)</h4>
+<p>Khi ta chỉ chạy GDB trên chính máy hiện tại, và debug các chương trình chạy trên máy này thôi thì command đơn giản là :</p>
+<p>[code lang="shell"]<br />
+$./configure --prefix=/home/oedev/gdb/gdb_install<br />
+[/code]</p>
+<p>Sẽ mất vài giây để chạy xong.</p>
+<h4>4.5. Biên dịch (Compiling)</h4>
+<p>Sau khi <strong>configure</strong>, thì sẽ là <strong>make</strong>:</p>
+<p>[code lang="shell"]<br />
+$make<br />
+[/code]</p>
+<p>Cần 5-10 phút để build xong.</p>
+<h4>4.6. Cài đặt (Installing)</h4>
+<p>Vì ta đã cấu hình đường dẫn ở bước configure rồi nên ở đây, chỉ cần chạy lệnh sau là <strong>GDB</strong> sẽ được cài đặt vào được dẫn đó (không cần quyền root):</p>
+<p>[code lang="shell"]<br />
+$make install<br />
+[/code]</p>
+<p>Kiểm tra thư mục cài đặt</p>
+<p>[code lang="shell"]<br />
+oedev@OEDEV-Ubuntu:~/gdb/gdb_install$ tree -L 2<br />
+.<br />
+├── bin<br />
+│   ├── gcore<br />
+│   ├── gdb<br />
+│   └── gdbserver<br />
+├── include<br />
+│   ├── ansidecl.h<br />
+│   ├── bfd.h<br />
+│   ├── bfdlink.h<br />
+│   ├── dis-asm.h<br />
+│   ├── gdb<br />
+│   ├── plugin-api.h<br />
+│   └── symcat.h<br />
+├── lib<br />
+│   ├── libbfd.a<br />
+│   ├── libbfd.la<br />
+│   ├── libinproctrace.so<br />
+│   ├── libopcodes.a<br />
+│   └── libopcodes.la<br />
+└── share<br />
+├── gdb<br />
+├── info<br />
+├── locale<br />
+└── man<br />
+[/code]</p>
+<p>Giờ ta có thể sử dụng các file trong thư mục bin rồi.<br />
+Ta chủ yếu sử dụng 2 file là <strong>bin/gdb</strong> và <strong>bin/gdbserver</strong>.<br />
+Chi tiết sẽ được nói trong các bài tiếp theo.</p>
+</div>
+
+    
+    
+    
+        <h4 class="page-header">Related</h4>
+         <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/">GDB dòng lệnh cơ bản (03 - Cơ bản)</a></h4>
+    <h5>October 19, 2016</h5>
+    
+<a href="localhost:1313tags/c"><kbd class="item-tag">C</kbd></a>
+
+<a href="localhost:1313tags/gdb"><kbd class="item-tag">GDB</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-09-19-gdb-co-the-lam-gi/">GDB có thể làm gì? (01 - Khả năng của GDB)</a></h4>
+    <h5>September 19, 2016</h5>
+    
+<a href="localhost:1313tags/gdb"><kbd class="item-tag">GDB</kbd></a>
+
+
+
+</div>
+  <div class="item">
+
+    
+    
+    
+
+    
+    
+
+    <h4><a href="/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/">Làm việc với GDB - GNU Debugger (00- Mở đầu)</a></h4>
+    <h5>September 15, 2016</h5>
+    
+<a href="localhost:1313tags/gdb"><kbd class="item-tag">GDB</kbd></a>
+
+
+
+</div>
+ 
+    
+
+    
+    
+        <h4 class="page-header">Comments</h4>
+        <div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+
+</main>
+
+        <footer>
+            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
+        </footer>
+
+        
+
+        
+    </body>
+
+</html>
+
