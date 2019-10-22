@@ -1,153 +1,68 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[OE]Bitbake - Từ Hello World đến một Distro - Lazytrick</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/example.com/css/style.css">
+	
+	<link rel="shortcut icon" href="/example.com/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/example.com" title="Lazytrick" rel="home">
+				<div class="logo__title">Lazytrick</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/">Home</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/post/">Posts</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/about/">About</a>
+		</li>
+	</ul>
+</nav>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>[OE]Bitbake - Từ Hello World đến một Distro</title>
-        
-        <style>
-
-    html body {
-        font-family: 'Raleway', sans-serif;
-        background-color: white;
-    }
-
-    :root {
-        --accent: red;
-        --border-width:  5px ;
-    }
-
-</style>
-
-
-<link rel="stylesheet" href="css/main.css">
-
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
-
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
-    
-    <script>hljs.initHighlightingOnLoad();</script>
-
-
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
-        
-
-        
-
-        
-            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
-
-        
-
-    </head>
-
-    <body>
-        
-
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">[OE]Bitbake - Từ Hello World đến một Distro</a>
-                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse">
-                    
-                        <ul class="nav navbar-nav">
-                            
-                                <li><a href="/">Home</a></li>
-                            
-                                <li><a href="/post/">Posts</a></li>
-                            
-                                <li><a href="/tags/">Tags</a></li>
-                            
-                                <li><a href="/categories/">Category</a></li>
-                            
-                                <li><a href="/about/">About</a></li>
-                            
-                        </ul>
-                    
-                    
-                        <ul class="nav navbar-nav navbar-right">
-                            
-                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
-                            
-                        </ul>
-                    
-                </div>
-            </div>
-        </nav>
-
-
-<main>
-
-    <div>
-        <h2>[OE]Bitbake - Từ Hello World đến một Distro</h2>
-        <h5>April 25, 2015</h5>
-        
-<a href="tags/bitbake"><kbd class="item-tag">Bitbake</kbd></a>
-
-<a href="tags/distro"><kbd class="item-tag">Distro</kbd></a>
-
-<a href="tags/helloworld"><kbd class="item-tag">HelloWorld</kbd></a>
-
-
-    </div>
-
-    <div align="start" class="content"><p><img src="{{ site.baseurl }}/assets/user-configuration.png?w=300" alt="user-configuration" /></p>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[OE]Bitbake - Từ Hello World đến một Distro</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p><img src="{{ site.baseurl }}/assets/user-configuration.png?w=300" alt="user-configuration" /></p>
 
 <p>Bitbake là một công cụ cốt lõi của <a href="https://www.yoctoproject.org/about">Yocto Project</a>. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.</p>
 
@@ -185,19 +100,13 @@
 <p>Bạn có thể đọc thêm về ở metadata section của bitbake manual (đang được dịch)</p>
 
 <h2 id="2-lấy-bitbake-về">2. LẤY BITBAKE VỀ</h2>
-
-<pre><code class="language-bash">wget http://git.openembedded.org/bitbake/snapshot/bitbake-1.16.0.tar.bz2  
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">wget http://git.openembedded.org/bitbake/snapshot/bitbake-1.16.0.tar.bz2  
 tar xvf bitbake-1.16.0.tar.bz2  
-cd bitbake-1.16.0&amp;lt;/code&amp;gt;
-</code></pre>
-
+<span class="nb">cd</span> bitbake-1.16.0<span class="p">&amp;</span>lt<span class="p">;</span>/code<span class="p">&amp;</span>gt<span class="p">;</span></code></pre></div>
 <p>Thay vì cài đặt, trong bài này ta sẽ chạy nó từ thư mục buil bằng cách add PATH.</p>
-
-<pre><code class="language-bash">\# FIXME: how to disable xml doc generation? It takes a little time for this doc.  
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="se">\#</span> FIXME: how to disable xml doc generation? It takes a little <span class="nb">time</span> <span class="k">for</span> this doc.  
 python setup.py build  
-export PYTHONPATH=`pwd`/build/lib
-</code></pre>
-
+<span class="nb">export</span> <span class="nv">PYTHONPATH</span><span class="o">=</span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span>/build/lib</code></pre></div>
 <h2 id="3-build-thử">3. Build thử</h2>
 
 <p>Chúng ta sẽ đi vào một project cụ thẻ.  <em>Hello World Project</em>
@@ -236,116 +145,102 @@ Nó bao gồm 1 vài hàm cho việc in ra các info, warning, 3 hàm showdata, 
 
 <p>Câu trên chỉ giống như khai bao tên hàm.<br />
 Code của task được định nghĩa như sau:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">do_</span> <span class="p">{</span>
 
-<pre><code class="language-python">do_ {
-
-}  
-</code></pre>
-
+<span class="p">}</span>  </code></pre></div>
 <p>Phần code này có thể là python hoặc shell.<br />
 Chúng ta cùng định nghĩa build logic.<br />
 Giờ edit file <code>base.bbclas</code> và thay đổi nó thành như thế này:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">bbplain</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;$*&#34;</span>  
+<span class="p">}</span>
 
-<pre><code class="language-python">bbplain() {
-  echo &quot;$*&quot;  
-}
+<span class="n">bbnote</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;NOTE: $*&#34;</span>  
+<span class="p">}</span>
 
-bbnote() {
-  echo &quot;NOTE: $*&quot;  
-}
+<span class="n">bbwarn</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;WARNING: $*&#34;</span>  
+<span class="p">}</span>
 
-bbwarn() {
-  echo &quot;WARNING: $*&quot;  
-}
+<span class="n">bberror</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;ERROR: $*&#34;</span>  
+<span class="p">}</span>
 
-bberror() {
-  echo &quot;ERROR: $*&quot;  
-}
+<span class="n">bbfatal</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;ERROR: $*&#34;</span>
+  <span class="nb">exit</span> <span class="mi">1</span>  
+<span class="p">}</span>
 
-bbfatal() {
-  echo &quot;ERROR: $*&quot;
-  exit 1  
-}
+<span class="n">addtask</span> <span class="n">fetch</span>  
+<span class="n">python</span> <span class="n">base_do_fetch</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">note</span><span class="p">(</span><span class="s2">&#34;BASE_DO_FETCH&#34;</span><span class="p">)</span>  
+<span class="p">}</span>
 
-addtask fetch  
-python base_do_fetch() {
-  bb.note(&quot;BASE_DO_FETCH&quot;)  
-}
+<span class="n">addtask</span> <span class="n">unpack</span> <span class="n">after</span> <span class="n">do_fetch</span>  
+<span class="n">python</span> <span class="n">base_do_unpack</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">note</span><span class="p">(</span><span class="s2">&#34;BASE_DO_UNPACK&#34;</span><span class="p">)</span>  
+<span class="p">}</span>
 
-addtask unpack after do_fetch  
-python base_do_unpack() {
-  bb.note(&quot;BASE_DO_UNPACK&quot;)  
-}
+<span class="n">addtask</span> <span class="n">patch</span> <span class="n">after</span> <span class="n">do_unpack</span>  
+<span class="n">base_do_patch</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">bbnote</span> <span class="s2">&#34;BASE_DO_PATCH&#34;</span>  
+<span class="p">}</span>
 
-addtask patch after do_unpack  
-base_do_patch() {
-  bbnote &quot;BASE_DO_PATCH&quot;  
-}
+<span class="n">addtask</span> <span class="n">configure</span> <span class="n">after</span> <span class="n">do_patch</span>  
+<span class="n">base_do_configure</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">bbnote</span> <span class="s2">&#34;BASE_DO_CONFIGURE&#34;</span>  
+<span class="p">}</span>
 
-addtask configure after do_patch  
-base_do_configure() {
-  bbnote &quot;BASE_DO_CONFIGURE&quot;  
-}
+<span class="n">addtask</span> <span class="n">make</span> <span class="n">after</span> <span class="n">do_configure</span>  
+<span class="n">base_do_make</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">bbnote</span> <span class="s2">&#34;BASE_DO_MAKE&#34;</span>  
+<span class="p">}</span>
 
-addtask make after do_configure  
-base_do_make() {
-  bbnote &quot;BASE_DO_MAKE&quot;  
-}
+<span class="n">addtask</span> <span class="n">install</span> <span class="n">after</span> <span class="n">do_make</span>  
+<span class="n">base_do_install</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">bbnote</span> <span class="s2">&#34;BASE_DO_INSTALL&#34;</span>  
+<span class="p">}</span>
 
-addtask install after do_make  
-base_do_install() {
-  bbnote &quot;BASE_DO_INSTALL&quot;  
-}
+<span class="n">addtask</span> <span class="n">build</span> <span class="n">after</span> <span class="n">do_install</span>  
+<span class="n">base_do_build</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">bbnote</span> <span class="s2">&#34;DO_BUILD&#34;</span>  
+<span class="p">}</span>
 
-addtask build after do_install  
-base_do_build() {
-  bbnote &quot;DO_BUILD&quot;  
-}
-
-EXPORT_FUNCTIONS do_fetch do_unpack do_patch do_configure do_make do_install do_build
-
-</code></pre>
-
+<span class="n">EXPORT_FUNCTIONS</span> <span class="n">do_fetch</span> <span class="n">do_unpack</span> <span class="n">do_patch</span> <span class="n">do_configure</span> <span class="n">do_make</span> <span class="n">do_install</span> <span class="n">do_build</span></code></pre></div>
 <p>Như bạn đã thấy, ở code ở trên có 2 hàm là <code>python</code>, còn lại là <code>shell</code>.<br />
 Việc in ra tên function ở trên khiến cho việc đọc lại logic dễ dàng hơn từ logs.</p>
 
 <p>Chúng ta sẽ thấy được build logic từ cách làm trên nhưng sẽ tốt hơn nếu tách riêng chúng ra thành module cho việc logging.<br />
 Chúng ta cùng tạo một <strong>logging.bblass</strong> trong thư mục <em>classes/</em>. File <strong>logging.bbclass</strong> trông sẽ giống như sau:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="err">`</span><span class="n">bbplain</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;$*&#34;</span>  
+<span class="p">}</span><span class="err">`</span>
 
-<pre><code class="language-python">`bbplain() {
-  echo &quot;$*&quot;  
-}`
+<span class="n">bbnote</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;NOTE: $*&#34;</span>  
+<span class="p">}</span>
 
-bbnote() {
-  echo &quot;NOTE: $*&quot;  
-}
+<span class="n">bbwarn</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;WARNING: $*&#34;</span>  
+<span class="p">}</span>
 
-bbwarn() {
-  echo &quot;WARNING: $*&quot;  
-}
+<span class="n">bberror</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;ERROR: $*&#34;</span>  
+<span class="p">}</span>
 
-bberror() {
-  echo &quot;ERROR: $*&quot;  
-}
-
-bbfatal() {
-  echo &quot;ERROR: $*&quot;
-  exit 1  
-}
-
-</code></pre>
-
+<span class="n">bbfatal</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">echo</span> <span class="s2">&#34;ERROR: $*&#34;</span>
+  <span class="nb">exit</span> <span class="mi">1</span>  
+<span class="p">}</span></code></pre></div>
 <p>Chúng ta sẽ kế thừa module logging bằng cách như sau, file này là base.bbclass như đã được<br />
 nói đến ở trên.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">inherit</span> <span class="n">logging</span>
 
-<pre><code class="language-python">inherit logging
-
-addtask fetch  
-python base_do_fetch() {
-  bb.note(&quot;BASE_DO_FETCH&quot;)  
-}
-</code></pre>
-
+<span class="n">addtask</span> <span class="n">fetch</span>  
+<span class="n">python</span> <span class="n">base_do_fetch</span><span class="p">()</span> <span class="p">{</span>
+  <span class="n">bb</span><span class="o">.</span><span class="n">note</span><span class="p">(</span><span class="s2">&#34;BASE_DO_FETCH&#34;</span><span class="p">)</span>  
+<span class="p">}</span></code></pre></div>
 <p>Khi file này được parse, các hàm được định nghĩa ở loggging sẽ được kế thừa.<br />
 Kế thừa là một trong rất nhiều cách để thực hiện module hóa trong BitBake.</p>
 
@@ -354,14 +249,11 @@ Kế thừa là một trong rất nhiều cách để thực hiện module hóa 
 <p>Tạo một thư mục tên <strong>meta-test</strong> trong thư mục hiện tại (thư mục giải nén bitbake).<br />
 Giờ chúng ta phải cho BitBake biết rằng chúng ta có 1 layer.<br />
 Cách làm như sau, tạo file <strong>conf/bblayers.conf</strong> với nội dung như sau:</p>
-
-<pre><code class="language-python">BBPATH := &quot;${TOPDIR}&quot;  
-BBFILES ?= &quot;&quot;  
-BBLAYERS = &quot; \  
-${TOPDIR}/meta-test \  
-&quot;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">BBPATH</span> <span class="p">:</span><span class="o">=</span> <span class="s2">&#34;${TOPDIR}&#34;</span>  
+<span class="n">BBFILES</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;&#34;</span>  
+<span class="n">BBLAYERS</span> <span class="o">=</span> <span class="s2">&#34; \  </span>
+<span class="err">$</span><span class="p">{</span><span class="n">TOPDIR</span><span class="p">}</span><span class="o">/</span><span class="n">meta</span><span class="o">-</span><span class="n">test</span> \  
+<span class="s2">&#34;</span></code></pre></div>
 <p>Biến ${TOPDIR} ta thấy chưa được nhắc đến. Khi parse đến file này mà biến vẫn chưa định nghĩa, thì BitBake sẽ tự địn nghĩa.<br />
 Trong source code của BitBake có đoạn như sau:</p>
 
@@ -439,21 +331,18 @@ vim meta-test/recipes-example/firstrecipe/firstrecipe_0.0.bb</code></p>
 <code>DESCRIPTION = &quot;Our first recipe for bitbake hello world&quot;</code></p>
 
 <p>Ta sẽ có thư mục meta-test được tổ chức như dưới đây:</p>
-
-<pre><code class="language-bash">|-- classes  
-| |-- base.bbclass  
-|  -- logging.bbclass  
-|-- conf  
-| |-- bblayers.conf  
-| -- bitbake.conf  
-|-- meta-test  
-| |-- conf  
-| |  -- layer.conf  
-| -- recipes-example  
-| -- firstrecipe  
-| -- firstrecipe_0.0.bb  
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="p">|</span>-- classes  
+<span class="p">|</span> <span class="p">|</span>-- base.bbclass  
+<span class="p">|</span>  -- logging.bbclass  
+<span class="p">|</span>-- conf  
+<span class="p">|</span> <span class="p">|</span>-- bblayers.conf  
+<span class="p">|</span> -- bitbake.conf  
+<span class="p">|</span>-- meta-test  
+<span class="p">|</span> <span class="p">|</span>-- conf  
+<span class="p">|</span> <span class="p">|</span>  -- layer.conf  
+<span class="p">|</span> -- recipes-example  
+<span class="p">|</span> -- firstrecipe  
+<span class="p">|</span> -- firstrecipe_0.0.bb  </code></pre></div>
 <p>Với cấu trúc thư mục ở trên, ta có thể chạy Bitbake được rồi.<br />
 <code>./bin/bitbake firstrecipe -vDD</code></p>
 
@@ -475,67 +364,53 @@ có nghĩa là nó sẽ có <strong>configure script</strong>, sau đó chúng t
 và cài đặt sử dụng <strong>make install</strong>.<br />
 Chúng ta sẽ bắt đầu ngay với việc tạo file <strong>autotools.bbclass</strong> trong <strong>classes/</strong><br />
 với nội dung như sau:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">autotools_do_configure</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">bbnote</span> <span class="s2">&#34;AUTOTOOLS_CONFIGURE&#34;</span>  
+<span class="p">}</span>
 
-<pre><code class="language-python">autotools_do_configure() {  
-  bbnote &quot;AUTOTOOLS_CONFIGURE&quot;  
-}
+<span class="n">autotools_do_make</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">bbnote</span> <span class="s2">&#34;AUTOTOOLS_MAKE&#34;</span>  
+<span class="p">}</span>
 
-autotools_do_make() {  
-  bbnote &quot;AUTOTOOLS_MAKE&quot;  
-}
+<span class="n">autotools_do_install</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">bbnote</span> <span class="s2">&#34;AUTOTOOLS_INSTALL&#34;</span>  
+<span class="p">}</span>
 
-autotools_do_install() {  
-  bbnote &quot;AUTOTOOLS_INSTALL&quot;  
-}
-
-EXPORT_FUNCTIONS do_configure do_make do_install
-
-</code></pre>
-
+<span class="n">EXPORT_FUNCTIONS</span> <span class="n">do_configure</span> <span class="n">do_make</span> <span class="n">do_install</span></code></pre></div>
 <p>Kế thừa autotools package trong <strong>firstrecipe</strong></p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">DESCRIPTION</span> <span class="o">=</span> <span class="s2">&#34;Our first recipe for bitbake hello world&#34;</span><span class="err">`</span>
 
-<pre><code class="language-python">DESCRIPTION = &quot;Our first recipe for bitbake hello world&quot;`
-
-inherit autotools
-</code></pre>
-
+<span class="n">inherit</span> <span class="n">autotools</span></code></pre></div>
 <p>chúng ta cùng sẽ chạy lại BitBake với các hàm kế thừa từ autotool package</p>
 
 <p><code>./bin/bitbake firstrecipe -vDD</code></p>
 
 <p>Kiểm tra 2 file log trong thư mục temp để thấy các hàm mới đã được gọi (một cách tự động)<br />
 Khi không có kế thừa trong recipi thì code chạy sẽ như thế này.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">do_configure</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">base_do_configure</span>
+<span class="p">}</span>
 
-<pre><code class="language-python">
-do_configure() {  
-  base_do_configure
-}
+<span class="n">base_do_configure</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">bbnote</span> <span class="s2">&#34;BASE_DO_CONFIGURE&#34;</span>
+<span class="p">}</span>
 
-base_do_configure() {  
-  bbnote &quot;BASE_DO_CONFIGURE&quot;
-}
-
-bbnote() {  
-  echo &quot;NOTE: $*&quot;
-}
-</code></pre>
-
+<span class="n">bbnote</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">echo</span> <span class="s2">&#34;NOTE: $*&#34;</span>
+<span class="p">}</span></code></pre></div>
 <p>Hàm của lớp base BitBake base class sẽ được gọi.<br />
 Khi sử dụng kế thừa thì nó thế này:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">do_configure</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">base_do_configure</span>
+<span class="p">}</span>
 
-<pre><code class="language-python">do_configure() {  
-  base_do_configure
-}
+<span class="n">base_do_configure</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">bbnote</span> <span class="s2">&#34;BASE_DO_CONFIGURE&#34;</span>
+<span class="p">}</span>
 
-base_do_configure() {  
-  bbnote &quot;BASE_DO_CONFIGURE&quot;
-}
-
-bbnote() {  
-  echo &quot;NOTE: $*&quot;
-}
-</code></pre>
-
+<span class="n">bbnote</span><span class="p">()</span> <span class="p">{</span>  
+  <span class="n">echo</span> <span class="s2">&#34;NOTE: $*&#34;</span>
+<span class="p">}</span></code></pre></div>
 <p>Việc gọi các hàm từ lớp kế thừa được thực hiện thông qua từ khóa EXPORT_FUNCTIONS.<br />
 Khi từ khóa này được sử dụng được dunjgthif do_xxx sẽ được map đến autotools_do_xxx.</p>
 
@@ -558,12 +433,9 @@ Trong bài này, chúng ta không bàn về chi tiết.<br />
 Từ những điều đã biết ở trên về Hell World, hãy thử chúng được áp dụng như thế nào trong OE.</p>
 
 <p>Tải source code</p>
-
-<pre><code class="language-bash">wget http://downloads.yoctoproject.org/releases/yocto/yocto-1.3/poky-danny-8.0.tar.bz2  
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">wget http://downloads.yoctoproject.org/releases/yocto/yocto-1.3/poky-danny-8.0.tar.bz2  
 tar xvf poky-danny-8.0.tar.bz2  
-cd poky-danny-8.0
-</code></pre>
-
+<span class="nb">cd</span> poky-danny-8.0</code></pre></div>
 <p>Như chúng ta đã nói ở trên, bitbake.conf sẽ được parse khi bitbake được chạy. File là một trong những file cấu hình quan trọng của OE.<br />
 Vị trí file này</p>
 
@@ -571,14 +443,11 @@ Vị trí file này</p>
 
 <p>File cấu hình này có thể được module hóa, ở đây chúng được chia ra làm nhiều file.<br />
 Nội dung file sẽ có dòng như thế này:</p>
-
-<pre><code class="language-bash">include conf/build/${BUILD_SYS}.conf  
-include conf/target/${TARGET_SYS}.conf  
-include conf/machine/${MACHINE}.conf  
-include conf/machine-sdk/${SDKMACHINE}.conf  
-include conf/distro/${DISTRO}.conf
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">include conf/build/<span class="si">${</span><span class="nv">BUILD_SYS</span><span class="si">}</span>.conf  
+include conf/target/<span class="si">${</span><span class="nv">TARGET_SYS</span><span class="si">}</span>.conf  
+include conf/machine/<span class="si">${</span><span class="nv">MACHINE</span><span class="si">}</span>.conf  
+include conf/machine-sdk/<span class="si">${</span><span class="nv">SDKMACHINE</span><span class="si">}</span>.conf  
+include conf/distro/<span class="si">${</span><span class="nv">DISTRO</span><span class="si">}</span>.conf</code></pre></div>
 <p>Các file configure này sẽ được search trong các thư mục được định nghĩa ở BBPATH.<br />
 Điều đó có nghĩa là khi BitBake chạy, những file cấu hình này sẽ được searched trong tất các<br />
 các layer bạn định nghĩa. Cái tìm thấy đầu tiên sẽ được sử dụng.<br />
@@ -591,89 +460,74 @@ và có đến 99% số biến được định nghĩa trong <code>bitbake.conf<
 Chúng ta đã được thấy file <strong>base.bbclass</strong> là một nơi lý tưởng để định nghĩa logic và các code chúng.<br />
 tất cả các file bbclass được định nghĩa trong <em>meta/classes/</em>.<br />
 Mở file base.bbclass và search &ldquo;addtask&rdquo; keyword, ta sẽ thấy nội dung sẽ giống như thế này:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">fetch</span>
 
-<pre><code class="language-python">...  
-addtask fetch
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">unpack</span> <span class="n">after</span> <span class="n">do_fetch</span>
 
-...  
-addtask unpack after do_fetch
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">configure</span> <span class="n">after</span> <span class="n">do_patch</span>
 
-...  
-addtask configure after do_patch
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="nb">compile</span> <span class="n">after</span> <span class="n">do_configure</span>
 
-...  
-addtask compile after do_configure
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">install</span> <span class="n">after</span> <span class="n">do_compile</span>
 
-...  
-addtask install after do_compile
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">build</span> <span class="n">after</span> <span class="n">do_populate_sysroot</span>
 
-...  
-addtask build after do_populate_sysroot
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">cleansstate</span> <span class="n">after</span> <span class="n">do_clean</span>
 
-...  
-addtask cleansstate after do_clean
-
-...  
-addtask cleanall after do_cleansstate
-</code></pre>
-
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">cleanall</span> <span class="n">after</span> <span class="n">do_cleansstate</span></code></pre></div>
 <p>Tuy nhiên, trong file này không chỉ có những task này được định nghĩa.<br />
 Có những task được định nghĩa trong <strong>{patch, staging}.</strong>bbclass.<br />
 Chúng ta cùng nhau xem task nào được định nghĩa.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">//</span> <span class="n">patch</span><span class="o">.</span><span class="n">bbclass</span>  
+<span class="n">addtask</span> <span class="n">patch</span> <span class="n">after</span> <span class="n">do_unpack</span><span class="err">`</span>
 
-<pre><code class="language-python">// patch.bbclass  
-addtask patch after do_unpack`
-
-// staging.bbclass  
-addtask populate_sysroot after do_install  
-addtask do_populate_sysroot_setscene
-</code></pre>
-
+<span class="o">//</span> <span class="n">staging</span><span class="o">.</span><span class="n">bbclass</span>  
+<span class="n">addtask</span> <span class="n">populate_sysroot</span> <span class="n">after</span> <span class="n">do_install</span>  
+<span class="n">addtask</span> <span class="n">do_populate_sysroot_setscene</span></code></pre></div>
 <p>Những task này cũng vẫn chưa đủ. Trong file bitbake.còn, ta thấy file conf.distro/defaultsetup.conf được<br />
 include. Nó định nghĩa các packagage sau đây được kế thừa.</p>
 
 <p><code>_package_ipk, insane, debian devshell sstate license_</code></p>
-
-<pre><code class="language-python">USER_CLASSES ?= &quot;&quot;  
-PACKAGE_CLASSES ?= &quot;package_ipk&quot;  
-INHERIT_INSANE ?= &quot;insane&quot;  
-INHERIT_DISTRO ?= &quot;debian devshell sstate license&quot;  
-INHERIT += &quot;${PACKAGE_CLASSES} ${USER_CLASSES} ${INHERIT_INSANE} ${INHERIT_DISTRO}&quot;
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">USER_CLASSES</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;&#34;</span>  
+<span class="n">PACKAGE_CLASSES</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;package_ipk&#34;</span>  
+<span class="n">INHERIT_INSANE</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;insane&#34;</span>  
+<span class="n">INHERIT_DISTRO</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;debian devshell sstate license&#34;</span>  
+<span class="n">INHERIT</span> <span class="o">+=</span> <span class="s2">&#34;${PACKAGE_CLASSES} ${USER_CLASSES} ${INHERIT_INSANE} ${INHERIT_DISTRO}&#34;</span></code></pre></div>
 <p>Trong các bbclass file, có 1 file liên quan tưới việc quản lý các gói/<br />
 Ta cùng tìm hiểu 1 loại dễ nhất là package_ipk.bblcass. File này được kế thừa package.bbclass.<br />
 File package.bbclass sẽ định nghĩa logic build, như thế này:</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">...</span>
+<span class="n">addtask</span> <span class="n">package</span> <span class="n">before</span> <span class="n">do_build</span> <span class="n">after</span> <span class="n">do_install</span>
 
-<pre><code class="language-python">...
-addtask package before do_build after do_install
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">do_package_setscene</span>
 
-...  
-addtask do_package_setscene
-
-...  
-addtask package_write before do_build after do_package
-</code></pre>
-
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">package_write</span> <span class="n">before</span> <span class="n">do_build</span> <span class="n">after</span> <span class="n">do_package</span></code></pre></div>
 <p>Thứ tự là install -&gt; packaging.<br />
 Vì vậy task cũng đượ địnhg nghĩa như vậy.<br />
 Với mỗi loại package khác nhau, ipk, deb, rpm&hellip;<br />
 Chúng ta cùng tìm hiểu loại dễ nhất là ipk.<br />
 Nó định nghĩa như sau :</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">do_package_write_ipk_setscene</span>
 
-<pre><code class="language-python">...  
-addtask do_package_write_ipk_setscene
+<span class="o">...</span>  
+<span class="n">python</span> <span class="n">do_package_write_ipk</span> <span class="p">()</span> <span class="p">{</span>  
+<span class="n">bb</span><span class="o">.</span><span class="n">build</span><span class="o">.</span><span class="n">exec_func</span><span class="p">(</span><span class="s2">&#34;read_subpackage_metadata&#34;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>  
+<span class="n">bb</span><span class="o">.</span><span class="n">build</span><span class="o">.</span><span class="n">exec_func</span><span class="p">(</span><span class="s2">&#34;do_package_ipk&#34;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span>  
+<span class="p">}</span>
 
-...  
-python do_package_write_ipk () {  
-bb.build.exec_func(&quot;read_subpackage_metadata&quot;, d)  
-bb.build.exec_func(&quot;do_package_ipk&quot;, d)  
-}
-
-...  
-addtask package_write_ipk before do_package_write after do_package
-</code></pre>
-
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">package_write_ipk</span> <span class="n">before</span> <span class="n">do_package_write</span> <span class="n">after</span> <span class="n">do_package</span></code></pre></div>
 <p>Như bạn thấy, khi package_write_ipk được chạy, nó sẽ gọi <strong>read_subpackage_metadata</strong><br />
 và thực hiện hàm do_package_ipk để tạo ipk package.<br />
 Nhưng gói khác cũng tương tự như vậy.</p>
@@ -688,110 +542,104 @@ Package group có thể được xem như package ảo, chúng có các gói ph�
 &ldquo;tinylogin&rdquo;. Tuy nhiên chúng không có source để build, chúng phụ thuộc vào những gói khác để cung cấp<br />
 chức năng. Bên dưới là danh sách các package groups trong OE-core layer<br />
 ta hãy xem có những group nào</p>
-
-<pre><code class="language-bash">% find meta/recipes-*/packagegroups -type d | xargs tree --charset=utf
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">% find meta/recipes-*/packagegroups -type d <span class="p">|</span> xargs tree --charset<span class="o">=</span>utf
 
 meta/recipes-core/packagegroups  
-|-- nativesdk-packagegroup-sdk-host.bb  
-|-- packagegroup-base.bb  
-|-- packagegroup-core-boot.bb  
-|-- packagegroup-core-buildessential.bb  
-|-- packagegroup-core-nfs.bb  
-|-- packagegroup-core-sdk.bb  
-|-- packagegroup-core-ssh-dropbear.bb  
-|-- packagegroup-core-ssh-openssh.bb  
-|-- packagegroup-core-standalone-sdk-target.bb  
-|-- packagegroup-core-tools-debug.bb  
-|-- packagegroup-core-tools-profile.bb  
-|-- packagegroup-core-tools-testapps.bb  
-|-- packagegroup-cross-canadian.bb  
-|-- packagegroup-self-hosted.bb  
+<span class="p">|</span>-- nativesdk-packagegroup-sdk-host.bb  
+<span class="p">|</span>-- packagegroup-base.bb  
+<span class="p">|</span>-- packagegroup-core-boot.bb  
+<span class="p">|</span>-- packagegroup-core-buildessential.bb  
+<span class="p">|</span>-- packagegroup-core-nfs.bb  
+<span class="p">|</span>-- packagegroup-core-sdk.bb  
+<span class="p">|</span>-- packagegroup-core-ssh-dropbear.bb  
+<span class="p">|</span>-- packagegroup-core-ssh-openssh.bb  
+<span class="p">|</span>-- packagegroup-core-standalone-sdk-target.bb  
+<span class="p">|</span>-- packagegroup-core-tools-debug.bb  
+<span class="p">|</span>-- packagegroup-core-tools-profile.bb  
+<span class="p">|</span>-- packagegroup-core-tools-testapps.bb  
+<span class="p">|</span>-- packagegroup-cross-canadian.bb  
+<span class="p">|</span>-- packagegroup-self-hosted.bb  
 meta/recipes-devtools/packagegroups-- packagegroup-core-device-devel.bb  
 meta/recipes-extended/packagegroups  
-|-- packagegroup-core-basic.bb  
-|-- packagegroup-core-lsb.bb  
+<span class="p">|</span>-- packagegroup-core-basic.bb  
+<span class="p">|</span>-- packagegroup-core-lsb.bb  
 meta/recipes-gnome/packagegroups  
-|-- packagegroup-core-sdk-gmae.bb  
-|-- packagegroup-core-standalone-gmae-sdk-target.bb`-- packagegroup-sdk-gmae.inc  
+<span class="p">|</span>-- packagegroup-core-sdk-gmae.bb  
+<span class="p">|</span>-- packagegroup-core-standalone-gmae-sdk-target.bb<span class="sb">`</span>-- packagegroup-sdk-gmae.inc  
 meta/recipes-graphics/packagegroups  
-|-- packagegroup-core-clutter.bb  
-|-- packagegroup-core-gtk-directfb.bb  
-|-- packagegroup-core-x11-base.bb  
-|-- packagegroup-core-x11-xserver.bb  
-|-- packagegroup-core-x11.bb  
+<span class="p">|</span>-- packagegroup-core-clutter.bb  
+<span class="p">|</span>-- packagegroup-core-gtk-directfb.bb  
+<span class="p">|</span>-- packagegroup-core-x11-base.bb  
+<span class="p">|</span>-- packagegroup-core-x11-xserver.bb  
+<span class="p">|</span>-- packagegroup-core-x11.bb  
 meta/recipes-qt/packagegroups  
-|-- nativesdk-packagegroup-qte-toolchain-host.bb  
-|-- packagegroup-core-qt.bb  
-|-- packagegroup-core-qt4e.bb-- packagegroup-qte-toolchain-target.bb  
+<span class="p">|</span>-- nativesdk-packagegroup-qte-toolchain-host.bb  
+<span class="p">|</span>-- packagegroup-core-qt.bb  
+<span class="p">|</span>-- packagegroup-core-qt4e.bb-- packagegroup-qte-toolchain-target.bb  
 meta/recipes-sato/packagegroups  
-|-- packagegroup-core-x11-sato.bb
-</code></pre>
-
+<span class="p">|</span>-- packagegroup-core-x11-sato.bb</code></pre></div>
 <p>Quá nhiều, ta chỉ xét 1 cái thôi. Đó là <strong>packagegroup-core-boot</strong><br />
 Đây là group sẽ yêu cầu các package để có thể boot hệ thống.<br />
 Nào cùng tìm hiểu về nó</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">meta</span><span class="o">/</span><span class="n">recipes</span><span class="o">-</span><span class="n">core</span><span class="o">/</span><span class="n">packagegroups</span><span class="o">/</span><span class="n">packagegroup</span><span class="o">-</span><span class="n">core</span><span class="o">-</span><span class="n">boot</span><span class="o">.</span><span class="n">bb</span>  
 
-<pre><code class="language-python">meta/recipes-core/packagegroups/packagegroup-core-boot.bb  
+<span class="c1">#``Copyright (C) 2007 OpenedHand Ltd.</span>
+<span class="o">==================================</span><span class="err">`</span>
 
-#``Copyright (C) 2007 OpenedHand Ltd.
-==================================`
+<span class="sb">`#`</span>
 
-`#`
+<span class="n">SUMMARY</span> <span class="o">=</span> <span class="s2">&#34;Minimal boot requirements&#34;</span>  
+<span class="n">DESCRIPTION</span> <span class="o">=</span> <span class="s2">&#34;The minimal set of packages required to boot the system&#34;</span>  
+<span class="n">LICENSE</span> <span class="o">=</span> <span class="s2">&#34;MIT&#34;</span>  
+<span class="n">DEPENDS</span> <span class="o">=</span> <span class="s2">&#34;virtual/kernel&#34;</span>  
+<span class="n">PR</span> <span class="o">=</span> <span class="s2">&#34;r10&#34;</span>
 
-SUMMARY = &quot;Minimal boot requirements&quot;  
-DESCRIPTION = &quot;The minimal set of packages required to boot the system&quot;  
-LICENSE = &quot;MIT&quot;  
-DEPENDS = &quot;virtual/kernel&quot;  
-PR = &quot;r10&quot;
+<span class="n">inherit</span> <span class="n">packagegroup</span>
 
-inherit packagegroup
+<span class="n">PACKAGE_ARCH</span> <span class="o">=</span> <span class="s2">&#34;${MACHINE_ARCH}&#34;</span>
 
-PACKAGE_ARCH = &quot;${MACHINE_ARCH}&quot;
+\<span class="c1">#</span>
 
-\#
+<span class="n">Set</span> <span class="n">by</span> <span class="n">the</span> <span class="n">machine</span> <span class="n">configuration</span> <span class="k">with</span> <span class="n">packages</span> <span class="n">essential</span> <span class="k">for</span> <span class="n">device</span> <span class="n">bootup</span>
+<span class="o">==========================================================================</span>
 
-Set by the machine configuration with packages essential for device bootup
-==========================================================================
+\<span class="c1">#  </span>
+<span class="n">MACHINE_ESSENTIAL_EXTRA_RDEPENDS</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;&#34;</span>  
+<span class="n">MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;&#34;</span>
 
-\#  
-MACHINE_ESSENTIAL_EXTRA_RDEPENDS ?= &quot;&quot;  
-MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS ?= &quot;&quot;
+<span class="n">For</span> <span class="n">backwards</span> <span class="n">compatibility</span> <span class="n">after</span> <span class="n">rename</span>
+<span class="o">========================================</span>
 
-For backwards compatibility after rename
-========================================
+<span class="n">RPROVIDES_</span><span class="err">$</span><span class="p">{</span><span class="n">PN</span><span class="p">}</span> <span class="o">=</span> <span class="s2">&#34;task-core-boot&#34;</span>  
+<span class="n">RREPLACES_</span><span class="err">$</span><span class="p">{</span><span class="n">PN</span><span class="p">}</span> <span class="o">=</span> <span class="s2">&#34;task-core-boot&#34;</span>  
+<span class="n">RCONFLICTS_</span><span class="err">$</span><span class="p">{</span><span class="n">PN</span><span class="p">}</span> <span class="o">=</span> <span class="s2">&#34;task-core-boot&#34;</span>
 
-RPROVIDES_${PN} = &quot;task-core-boot&quot;  
-RREPLACES_${PN} = &quot;task-core-boot&quot;  
-RCONFLICTS_${PN} = &quot;task-core-boot&quot;
+<span class="n">Distro</span> <span class="n">can</span> <span class="n">override</span> <span class="n">the</span> <span class="n">following</span> <span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME</span> <span class="n">providers</span><span class="p">:</span>
+<span class="o">============================================================</span>
 
-Distro can override the following VIRTUAL-RUNTIME providers:
-============================================================
+<span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_dev_manager</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;udev&#34;</span>  
+<span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_login_manager</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;tinylogin&#34;</span>  
+<span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_init_manager</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;sysvinit&#34;</span>  
+<span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_initscripts</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;initscripts&#34;</span>  
+<span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_keymaps</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;keymaps&#34;</span>
 
-VIRTUAL-RUNTIME_dev_manager ?= &quot;udev&quot;  
-VIRTUAL-RUNTIME_login_manager ?= &quot;tinylogin&quot;  
-VIRTUAL-RUNTIME_init_manager ?= &quot;sysvinit&quot;  
-VIRTUAL-RUNTIME_initscripts ?= &quot;initscripts&quot;  
-VIRTUAL-RUNTIME_keymaps ?= &quot;keymaps&quot;
+<span class="n">RDEPENDS_</span><span class="err">$</span><span class="p">{</span><span class="n">PN</span><span class="p">}</span> <span class="o">=</span> <span class="s2">&#34;\  </span>
+<span class="n">base</span><span class="o">-</span><span class="n">files</span> \  
+<span class="n">base</span><span class="o">-</span><span class="n">passwd</span> \  
+<span class="n">busybox</span> \  
+<span class="err">$</span><span class="p">{</span><span class="nd">@base_contains</span><span class="p">(</span><span class="s2">&#34;MACHINE_FEATURES&#34;</span><span class="p">,</span> <span class="s2">&#34;rtc&#34;</span><span class="p">,</span> <span class="s2">&#34;busybox-hwclock&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="n">d</span><span class="p">)}</span> \  
+<span class="err">$</span><span class="p">{</span><span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_initscripts</span><span class="p">}</span> \  
+<span class="err">$</span><span class="p">{</span><span class="nd">@base_contains</span><span class="p">(</span><span class="s2">&#34;MACHINE_FEATURES&#34;</span><span class="p">,</span> <span class="s2">&#34;keyboard&#34;</span><span class="p">,</span> <span class="s2">&#34;${VIRTUAL-RUNTIME_keymaps}&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="n">d</span><span class="p">)}</span> \  
+<span class="n">modutils</span><span class="o">-</span><span class="n">initscripts</span> \  
+<span class="n">netbase</span> \  
+<span class="err">$</span><span class="p">{</span><span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_login_manager</span><span class="p">}</span> \  
+<span class="err">$</span><span class="p">{</span><span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_init_manager</span><span class="p">}</span> \  
+<span class="err">$</span><span class="p">{</span><span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_dev_manager</span><span class="p">}</span> \  
+<span class="err">$</span><span class="p">{</span><span class="n">VIRTUAL</span><span class="o">-</span><span class="n">RUNTIME_update</span><span class="o">-</span><span class="n">alternatives</span><span class="p">}</span> \  
+<span class="err">$</span><span class="p">{</span><span class="n">MACHINE_ESSENTIAL_EXTRA_RDEPENDS</span><span class="p">}</span><span class="s2">&#34;</span>
 
-RDEPENDS_${PN} = &quot;\  
-base-files \  
-base-passwd \  
-busybox \  
-${@base_contains(&quot;MACHINE_FEATURES&quot;, &quot;rtc&quot;, &quot;busybox-hwclock&quot;, &quot;&quot;, d)} \  
-${VIRTUAL-RUNTIME_initscripts} \  
-${@base_contains(&quot;MACHINE_FEATURES&quot;, &quot;keyboard&quot;, &quot;${VIRTUAL-RUNTIME_keymaps}&quot;, &quot;&quot;, d)} \  
-modutils-initscripts \  
-netbase \  
-${VIRTUAL-RUNTIME_login_manager} \  
-${VIRTUAL-RUNTIME_init_manager} \  
-${VIRTUAL-RUNTIME_dev_manager} \  
-${VIRTUAL-RUNTIME_update-alternatives} \  
-${MACHINE_ESSENTIAL_EXTRA_RDEPENDS}&quot;
-
-RRECOMMENDS_${PN} = &quot;\  
-${MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS}&quot;
-</code></pre>
-
+<span class="n">RRECOMMENDS_</span><span class="err">$</span><span class="p">{</span><span class="n">PN</span><span class="p">}</span> <span class="o">=</span> <span class="s2">&#34;\  </span>
+<span class="err">$</span><span class="p">{</span><span class="n">MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS</span><span class="p">}</span><span class="s2">&#34;</span></code></pre></div>
 <p>Biến <strong>RDEPENDS_${PN}</strong> chưa các package sẽ bitbake build.<br />
 Các package này cũng được control bằng các tham số được định nghĩa ở trên như<br />
 rtc, keyboard,&hellip;.</p>
@@ -801,212 +649,202 @@ rtc, keyboard,&hellip;.</p>
 <p>Các recipes Image, tức là chưa đầy đủ các package cho 1 hệ thống.<br />
 nằm ở <strong>recipes-*/images/</strong>. Có nhiều loại image với các mục đích khác nhau.<br />
 Danh sách có thể được list ra như sau</p>
-
-<pre><code class="language-bash">% find meta/recipes-*/images -type d | xargs tree --charset=utf
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">% find meta/recipes-*/images -type d <span class="p">|</span> xargs tree --charset<span class="o">=</span>utf
 
 meta/recipes-core/images  
-|-- build-appliance-image  
-| |-- Yocto_Build_Appliance.vmx  
-| |-- Yocto_Build_Appliance.vmxf  
-|-- build-appliance-image.bb  
-|-- core-image-base.bb  
-|-- core-image-minimal-dev.bb  
-|-- core-image-minimal-initramfs.bb  
-|-- core-image-minimal-mtdutils.bb-- core-image-minimal.bb  
+<span class="p">|</span>-- build-appliance-image  
+<span class="p">|</span> <span class="p">|</span>-- Yocto_Build_Appliance.vmx  
+<span class="p">|</span> <span class="p">|</span>-- Yocto_Build_Appliance.vmxf  
+<span class="p">|</span>-- build-appliance-image.bb  
+<span class="p">|</span>-- core-image-base.bb  
+<span class="p">|</span>-- core-image-minimal-dev.bb  
+<span class="p">|</span>-- core-image-minimal-initramfs.bb  
+<span class="p">|</span>-- core-image-minimal-mtdutils.bb-- core-image-minimal.bb  
 meta/recipes-core/images/build-appliance-image  
-|-- Yocto_Build_Appliance.vmx  
-|-- Yocto_Build_Appliance.vmxf  
+<span class="p">|</span>-- Yocto_Build_Appliance.vmx  
+<span class="p">|</span>-- Yocto_Build_Appliance.vmxf  
 meta/recipes-extended/images  
-|-- core-image-basic.bb  
-|-- core-image-lsb-dev.bb  
-|-- core-image-lsb-sdk.bb-- core-image-lsb.bb  
+<span class="p">|</span>-- core-image-basic.bb  
+<span class="p">|</span>-- core-image-lsb-dev.bb  
+<span class="p">|</span>-- core-image-lsb-sdk.bb-- core-image-lsb.bb  
 meta/recipes-graphics/images  
-|-- core-image-clutter.bb  
-|-- core-image-gtk-directfb.bb  
-|-- core-image-x11.bb  
+<span class="p">|</span>-- core-image-clutter.bb  
+<span class="p">|</span>-- core-image-gtk-directfb.bb  
+<span class="p">|</span>-- core-image-x11.bb  
 meta/recipes-qt/images-- qt4e-demo-image.bb  
 meta/recipes-rt/images  
-|-- core-image-rt-sdk.bb  
-|-- core-image-rt.bb  
+<span class="p">|</span>-- core-image-rt-sdk.bb  
+<span class="p">|</span>-- core-image-rt.bb  
 meta/recipes-sato/images  
-|-- core-image-sato-dev.bb  
-|-- core-image-sato-sdk.bb-- core-image-sato.bb
-</code></pre>
-
+<span class="p">|</span>-- core-image-sato-dev.bb  
+<span class="p">|</span>-- core-image-sato-sdk.bb-- core-image-sato.bb</code></pre></div>
 <p>Minimal image là dễ hiểu nhất. Chúng ta sẽ tìm hiểu 1 chút về nó.<br />
 core-image-minimal.<br />
 Vậy làm thế nào core-image-minimal được built.</p>
 
 <p>File recipie của core-image-minimal như sau</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">meta/recipes-core/images/core-image-minimal.bb  
 
-<pre><code class="language-bash">
-meta/recipes-core/images/core-image-minimal.bb  
+<span class="nv">DESCRIPTION</span> <span class="o">=</span> <span class="s2">&#34;A small image just capable of allowing a device to boot.&#34;</span>
 
-DESCRIPTION = &quot;A small image just capable of allowing a device to boot.&quot;
+<span class="nv">IMAGE_INSTALL</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-boot </span><span class="si">${</span><span class="nv">ROOTFS_PKGMANAGE_BOOTSTRAP</span><span class="si">}</span><span class="s2"> </span><span class="si">${</span><span class="nv">CORE_IMAGE_EXTRA_INSTALL</span><span class="si">}</span><span class="s2">&#34;</span>
 
-IMAGE_INSTALL = &quot;packagegroup-core-boot ${ROOTFS_PKGMANAGE_BOOTSTRAP} ${CORE_IMAGE_EXTRA_INSTALL}&quot;
+<span class="nv">IMAGE_LINGUAS</span> <span class="o">=</span> <span class="s2">&#34; &#34;</span>
 
-IMAGE_LINGUAS = &quot; &quot;
-
-LICENSE = &quot;MIT&quot;
+<span class="nv">LICENSE</span> <span class="o">=</span> <span class="s2">&#34;MIT&#34;</span>
 
 inherit core-image
 
-IMAGE_ROOTFS_SIZE = &quot;8192&quot;
+<span class="nv">IMAGE_ROOTFS_SIZE</span> <span class="o">=</span> <span class="s2">&#34;8192&#34;</span>
 
-remove not needed ipkg informations
-===================================
+remove not needed ipkg <span class="nv">informations</span>
+<span class="o">===================================</span>
 
-ROOTFS_POSTPROCESS_COMMAND += &quot;remove_packaging_data_files ; &quot;
-</code></pre>
-
+<span class="nv">ROOTFS_POSTPROCESS_COMMAND</span> <span class="o">+=</span> <span class="s2">&#34;remove_packaging_data_files ; &#34;</span></code></pre></div>
 <p>Như các bạn thấy, biến IMAGE_INSTALL chưa <strong>packagegroup-core-boot</strong><br />
 Và nó cũng kế thừa một lớp core-image bbclass.</p>
 
 <p>Tìm hiểu qua về core-image</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">meta</span><span class="o">/</span><span class="n">classes</span><span class="o">/</span><span class="n">core</span><span class="o">-</span><span class="n">image</span><span class="o">.</span><span class="n">bbclass</span>
 
-<pre><code class="language-python">meta/classes/core-image.bbclass
-
-Common code for generating core reference images
-================================================
-
-
-Copyright (C) 2007-2011 Linux Foundation
-========================================`
+<span class="n">Common</span> <span class="n">code</span> <span class="k">for</span> <span class="n">generating</span> <span class="n">core</span> <span class="n">reference</span> <span class="n">images</span>
+<span class="o">================================================</span>
 
 
-LIC_FILES_CHKSUM = &quot;file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \  
-file://${COREBASE}/meta/COPYING.MIT;md5=3da9cfbcb788c80a0384361b4de20420&quot;
-
-IMAGE_FEATURES control content of the core reference images
-===========================================================
+<span class="n">Copyright</span> <span class="p">(</span><span class="n">C</span><span class="p">)</span> <span class="mi">2007</span><span class="o">-</span><span class="mi">2011</span> <span class="n">Linux</span> <span class="n">Foundation</span>
+<span class="o">========================================</span><span class="err">`</span>
 
 
-By default we install packagegroup-core-boot and packagegroup-base packages - this gives us
-===========================================================================================
+<span class="n">LIC_FILES_CHKSUM</span> <span class="o">=</span> <span class="s2">&#34;file://${COREBASE}/LICENSE;md5=3f40d7994397109285ec7b81fdeb3b58 \  </span>
+<span class="nb">file</span><span class="p">:</span><span class="o">//</span><span class="err">$</span><span class="p">{</span><span class="n">COREBASE</span><span class="p">}</span><span class="o">/</span><span class="n">meta</span><span class="o">/</span><span class="n">COPYING</span><span class="o">.</span><span class="n">MIT</span><span class="p">;</span><span class="n">md5</span><span class="o">=</span><span class="mi">3</span><span class="n">da9cfbcb788c80a0384361b4de20420</span><span class="s2">&#34;</span>
 
-working (console only) rootfs.
-==============================
-
-
-Available IMAGE_FEATURES:
-=========================
+<span class="n">IMAGE_FEATURES</span> <span class="n">control</span> <span class="n">content</span> <span class="n">of</span> <span class="n">the</span> <span class="n">core</span> <span class="n">reference</span> <span class="n">images</span>
+<span class="o">===========================================================</span>
 
 
-- x11 - X server
-================
+<span class="n">By</span> <span class="n">default</span> <span class="n">we</span> <span class="n">install</span> <span class="n">packagegroup</span><span class="o">-</span><span class="n">core</span><span class="o">-</span><span class="n">boot</span> <span class="ow">and</span> <span class="n">packagegroup</span><span class="o">-</span><span class="n">base</span> <span class="n">packages</span> <span class="o">-</span> <span class="n">this</span> <span class="n">gives</span> <span class="n">us</span>
+<span class="o">===========================================================================================</span>
 
-- x11-base - X server with minimal environment
-==============================================
+<span class="n">working</span> <span class="p">(</span><span class="n">console</span> <span class="n">only</span><span class="p">)</span> <span class="n">rootfs</span><span class="o">.</span>
+<span class="o">==============================</span>
 
-- x11-sato - OpenedHand Sato environment
-========================================
 
-- tools-debug - debugging tools
-===============================
+<span class="n">Available</span> <span class="n">IMAGE_FEATURES</span><span class="p">:</span>
+<span class="o">=========================</span>
 
-- tools-profile - profiling tools
-=================================
 
-- tools-testapps - tools usable to make some device tests
-=========================================================
+<span class="o">-</span> <span class="n">x11</span> <span class="o">-</span> <span class="n">X</span> <span class="n">server</span>
+<span class="o">================</span>
 
-- tools-sdk - SDK (C/C++ compiler, autotools, etc.)
-===================================================
+<span class="o">-</span> <span class="n">x11</span><span class="o">-</span><span class="n">base</span> <span class="o">-</span> <span class="n">X</span> <span class="n">server</span> <span class="k">with</span> <span class="n">minimal</span> <span class="n">environment</span>
+<span class="o">==============================================</span>
 
-- nfs-server - NFS server
-=========================
+<span class="o">-</span> <span class="n">x11</span><span class="o">-</span><span class="n">sato</span> <span class="o">-</span> <span class="n">OpenedHand</span> <span class="n">Sato</span> <span class="n">environment</span>
+<span class="o">========================================</span>
 
-- ssh-server-dropbear - SSH server (dropbear)
-=============================================
+<span class="o">-</span> <span class="n">tools</span><span class="o">-</span><span class="n">debug</span> <span class="o">-</span> <span class="n">debugging</span> <span class="n">tools</span>
+<span class="o">===============================</span>
 
-- ssh-server-openssh - SSH server (openssh)
-===========================================
+<span class="o">-</span> <span class="n">tools</span><span class="o">-</span><span class="n">profile</span> <span class="o">-</span> <span class="n">profiling</span> <span class="n">tools</span>
+<span class="o">=================================</span>
 
-- qt4-pkgs - Qt4/X11 and demo applications
-==========================================
+<span class="o">-</span> <span class="n">tools</span><span class="o">-</span><span class="n">testapps</span> <span class="o">-</span> <span class="n">tools</span> <span class="n">usable</span> <span class="n">to</span> <span class="n">make</span> <span class="n">some</span> <span class="n">device</span> <span class="n">tests</span>
+<span class="o">=========================================================</span>
 
-- package-management - installs package management tools and preserves the package manager database
-===================================================================================================
+<span class="o">-</span> <span class="n">tools</span><span class="o">-</span><span class="n">sdk</span> <span class="o">-</span> <span class="n">SDK</span> <span class="p">(</span><span class="n">C</span><span class="o">/</span><span class="n">C</span><span class="o">++</span> <span class="n">compiler</span><span class="p">,</span> <span class="n">autotools</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span>
+<span class="o">===================================================</span>
 
-- debug-tweaks - makes an image suitable for development, e.g. allowing passwordless root logins
-================================================================================================
+<span class="o">-</span> <span class="n">nfs</span><span class="o">-</span><span class="n">server</span> <span class="o">-</span> <span class="n">NFS</span> <span class="n">server</span>
+<span class="o">=========================</span>
 
-- dev-pkgs - development packages (headers, etc.) for all installed packages in the rootfs
-==========================================================================================
+<span class="o">-</span> <span class="n">ssh</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dropbear</span> <span class="o">-</span> <span class="n">SSH</span> <span class="n">server</span> <span class="p">(</span><span class="n">dropbear</span><span class="p">)</span>
+<span class="o">=============================================</span>
 
-- dbg-pkgs - debug symbol packages for all installed packages in the rootfs
-===========================================================================
+<span class="o">-</span> <span class="n">ssh</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">openssh</span> <span class="o">-</span> <span class="n">SSH</span> <span class="n">server</span> <span class="p">(</span><span class="n">openssh</span><span class="p">)</span>
+<span class="o">===========================================</span>
 
-- doc-pkgs - documentation packages for all installed packages in the rootfs
-============================================================================
+<span class="o">-</span> <span class="n">qt4</span><span class="o">-</span><span class="n">pkgs</span> <span class="o">-</span> <span class="n">Qt4</span><span class="o">/</span><span class="n">X11</span> <span class="ow">and</span> <span class="n">demo</span> <span class="n">applications</span>
+<span class="o">==========================================</span>
 
-PACKAGE_GROUP_x11 = &quot;packagegroup-core-x11&quot;  
-PACKAGE_GROUP_x11-base = &quot;packagegroup-core-x11-base&quot;  
-PACKAGE_GROUP_x11-sato = &quot;packagegroup-core-x11-sato&quot;  
-PACKAGE_GROUP_tools-debug = &quot;packagegroup-core-tools-debug&quot;  
-PACKAGE_GROUP_tools-profile = &quot;packagegroup-core-tools-profile&quot;  
-PACKAGE_GROUP_tools-testapps = &quot;packagegroup-core-tools-testapps&quot;  
-PACKAGE_GROUP_tools-sdk = &quot;packagegroup-core-sdk packagegroup-core-standalone-sdk-target&quot;  
-PACKAGE_GROUP_nfs-server = &quot;packagegroup-core-nfs-server&quot;  
-PACKAGE_GROUP_ssh-server-dropbear = &quot;packagegroup-core-ssh-dropbear&quot;  
-PACKAGE_GROUP_ssh-server-openssh = &quot;packagegroup-core-ssh-openssh&quot;  
-PACKAGE_GROUP_package-management = &quot;${ROOTFS_PKGMANAGE}&quot;  
-PACKAGE_GROUP_qt4-pkgs = &quot;packagegroup-core-qt-demoapps&quot;
+<span class="o">-</span> <span class="n">package</span><span class="o">-</span><span class="n">management</span> <span class="o">-</span> <span class="n">installs</span> <span class="n">package</span> <span class="n">management</span> <span class="n">tools</span> <span class="ow">and</span> <span class="n">preserves</span> <span class="n">the</span> <span class="n">package</span> <span class="n">manager</span> <span class="n">database</span>
+<span class="o">===================================================================================================</span>
 
-IMAGE_FEATURES_REPLACES_foo = 'bar1 bar2'
-=========================================
+<span class="o">-</span> <span class="n">debug</span><span class="o">-</span><span class="n">tweaks</span> <span class="o">-</span> <span class="n">makes</span> <span class="n">an</span> <span class="n">image</span> <span class="n">suitable</span> <span class="k">for</span> <span class="n">development</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">g</span><span class="o">.</span> <span class="n">allowing</span> <span class="n">passwordless</span> <span class="n">root</span> <span class="n">logins</span>
+<span class="o">================================================================================================</span>
 
-Including image feature foo would replace the image features bar1 and bar2
-==========================================================================
+<span class="o">-</span> <span class="n">dev</span><span class="o">-</span><span class="n">pkgs</span> <span class="o">-</span> <span class="n">development</span> <span class="n">packages</span> <span class="p">(</span><span class="n">headers</span><span class="p">,</span> <span class="n">etc</span><span class="o">.</span><span class="p">)</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">installed</span> <span class="n">packages</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">rootfs</span>
+<span class="o">==========================================================================================</span>
 
-IMAGE_FEATURES_REPLACES_ssh-server-openssh = &quot;ssh-server-dropbear&quot;
+<span class="o">-</span> <span class="n">dbg</span><span class="o">-</span><span class="n">pkgs</span> <span class="o">-</span> <span class="n">debug</span> <span class="n">symbol</span> <span class="n">packages</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">installed</span> <span class="n">packages</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">rootfs</span>
+<span class="o">===========================================================================</span>
 
-IMAGE_FEATURES_CONFLICTS_foo = 'bar1 bar2'
-==========================================
+<span class="o">-</span> <span class="n">doc</span><span class="o">-</span><span class="n">pkgs</span> <span class="o">-</span> <span class="n">documentation</span> <span class="n">packages</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">installed</span> <span class="n">packages</span> <span class="ow">in</span> <span class="n">the</span> <span class="n">rootfs</span>
+<span class="o">============================================================================</span>
 
-An error exception would be raised if both image features foo and bar1(or bar2) are included
-============================================================================================
+<span class="n">PACKAGE_GROUP_x11</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-x11&#34;</span>  
+<span class="n">PACKAGE_GROUP_x11</span><span class="o">-</span><span class="n">base</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-x11-base&#34;</span>  
+<span class="n">PACKAGE_GROUP_x11</span><span class="o">-</span><span class="n">sato</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-x11-sato&#34;</span>  
+<span class="n">PACKAGE_GROUP_tools</span><span class="o">-</span><span class="n">debug</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-tools-debug&#34;</span>  
+<span class="n">PACKAGE_GROUP_tools</span><span class="o">-</span><span class="n">profile</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-tools-profile&#34;</span>  
+<span class="n">PACKAGE_GROUP_tools</span><span class="o">-</span><span class="n">testapps</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-tools-testapps&#34;</span>  
+<span class="n">PACKAGE_GROUP_tools</span><span class="o">-</span><span class="n">sdk</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-sdk packagegroup-core-standalone-sdk-target&#34;</span>  
+<span class="n">PACKAGE_GROUP_nfs</span><span class="o">-</span><span class="n">server</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-nfs-server&#34;</span>  
+<span class="n">PACKAGE_GROUP_ssh</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">dropbear</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-ssh-dropbear&#34;</span>  
+<span class="n">PACKAGE_GROUP_ssh</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">openssh</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-ssh-openssh&#34;</span>  
+<span class="n">PACKAGE_GROUP_package</span><span class="o">-</span><span class="n">management</span> <span class="o">=</span> <span class="s2">&#34;${ROOTFS_PKGMANAGE}&#34;</span>  
+<span class="n">PACKAGE_GROUP_qt4</span><span class="o">-</span><span class="n">pkgs</span> <span class="o">=</span> <span class="s2">&#34;packagegroup-core-qt-demoapps&#34;</span>
 
-python __anonymous() {
+<span class="n">IMAGE_FEATURES_REPLACES_foo</span> <span class="o">=</span> <span class="s1">&#39;bar1 bar2&#39;</span>
+<span class="o">=========================================</span>
 
-Ensure we still have a splash screen for existing images
-========================================================
+<span class="n">Including</span> <span class="n">image</span> <span class="n">feature</span> <span class="n">foo</span> <span class="n">would</span> <span class="n">replace</span> <span class="n">the</span> <span class="n">image</span> <span class="n">features</span> <span class="n">bar1</span> <span class="ow">and</span> <span class="n">bar2</span>
+<span class="o">==========================================================================</span>
 
-if base_contains(&quot;IMAGE_FEATURES&quot;, &quot;apps-console-core&quot;, &quot;1&quot;, &quot;&quot;, d) == &quot;1&quot;:  
-bb.warn(&quot;%s: apps-console-core in IMAGE_FEATURES is no longer supported; adding \&quot;splash\&quot; to enable splash screen&quot; % d.getVar(&quot;PN&quot;, True))  
-d.appendVar(&quot;IMAGE_FEATURES&quot;, &quot; splash&quot;)  
-}
+<span class="n">IMAGE_FEATURES_REPLACES_ssh</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">openssh</span> <span class="o">=</span> <span class="s2">&#34;ssh-server-dropbear&#34;</span>
 
-CORE_IMAGE_BASE_INSTALL = '\  
-packagegroup-core-boot \  
-packagegroup-base-extended \  
+<span class="n">IMAGE_FEATURES_CONFLICTS_foo</span> <span class="o">=</span> <span class="s1">&#39;bar1 bar2&#39;</span>
+<span class="o">==========================================</span>
+
+<span class="n">An</span> <span class="n">error</span> <span class="n">exception</span> <span class="n">would</span> <span class="n">be</span> <span class="n">raised</span> <span class="k">if</span> <span class="n">both</span> <span class="n">image</span> <span class="n">features</span> <span class="n">foo</span> <span class="ow">and</span> <span class="n">bar1</span><span class="p">(</span><span class="ow">or</span> <span class="n">bar2</span><span class="p">)</span> <span class="n">are</span> <span class="n">included</span>
+<span class="o">============================================================================================</span>
+
+<span class="n">python</span> <span class="n">__anonymous</span><span class="p">()</span> <span class="p">{</span>
+
+<span class="n">Ensure</span> <span class="n">we</span> <span class="n">still</span> <span class="n">have</span> <span class="n">a</span> <span class="n">splash</span> <span class="n">screen</span> <span class="k">for</span> <span class="n">existing</span> <span class="n">images</span>
+<span class="o">========================================================</span>
+
+<span class="k">if</span> <span class="n">base_contains</span><span class="p">(</span><span class="s2">&#34;IMAGE_FEATURES&#34;</span><span class="p">,</span> <span class="s2">&#34;apps-console-core&#34;</span><span class="p">,</span> <span class="s2">&#34;1&#34;</span><span class="p">,</span> <span class="s2">&#34;&#34;</span><span class="p">,</span> <span class="n">d</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&#34;1&#34;</span><span class="p">:</span>  
+<span class="n">bb</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span><span class="s2">&#34;</span><span class="si">%s</span><span class="s2">: apps-console-core in IMAGE_FEATURES is no longer supported; adding </span><span class="se">\&#34;</span><span class="s2">splash</span><span class="se">\&#34;</span><span class="s2"> to enable splash screen&#34;</span> <span class="o">%</span> <span class="n">d</span><span class="o">.</span><span class="n">getVar</span><span class="p">(</span><span class="s2">&#34;PN&#34;</span><span class="p">,</span> <span class="bp">True</span><span class="p">))</span>  
+<span class="n">d</span><span class="o">.</span><span class="n">appendVar</span><span class="p">(</span><span class="s2">&#34;IMAGE_FEATURES&#34;</span><span class="p">,</span> <span class="s2">&#34; splash&#34;</span><span class="p">)</span>  
+<span class="p">}</span>
+
+<span class="n">CORE_IMAGE_BASE_INSTALL</span> <span class="o">=</span> <span class="s1">&#39;\  </span>
+<span class="n">packagegroup</span><span class="o">-</span><span class="n">core</span><span class="o">-</span><span class="n">boot</span> \  
+<span class="n">packagegroup</span><span class="o">-</span><span class="n">base</span><span class="o">-</span><span class="n">extended</span> \  
 \  
-${CORE_IMAGE_EXTRA_INSTALL} \  
-'
+<span class="err">$</span><span class="p">{</span><span class="n">CORE_IMAGE_EXTRA_INSTALL</span><span class="p">}</span> \  
+<span class="s1">&#39;</span>
 
-CORE_IMAGE_EXTRA_INSTALL ?= &quot;&quot;
+<span class="n">CORE_IMAGE_EXTRA_INSTALL</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;&#34;</span>
 
-IMAGE_INSTALL ?= &quot;${CORE_IMAGE_BASE_INSTALL}&quot;
+<span class="n">IMAGE_INSTALL</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;${CORE_IMAGE_BASE_INSTALL}&#34;</span>
 
-inherit image
+<span class="n">inherit</span> <span class="n">image</span>
 
-Create /etc/timestamp during image construction to give a reasonably sane default time setting
-==============================================================================================
+<span class="n">Create</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">timestamp</span> <span class="n">during</span> <span class="n">image</span> <span class="n">construction</span> <span class="n">to</span> <span class="n">give</span> <span class="n">a</span> <span class="n">reasonably</span> <span class="n">sane</span> <span class="n">default</span> <span class="n">time</span> <span class="n">setting</span>
+<span class="o">==============================================================================================</span>
 
-ROOTFS_POSTPROCESS_COMMAND += &quot;rootfs_update_timestamp ; &quot;
+<span class="n">ROOTFS_POSTPROCESS_COMMAND</span> <span class="o">+=</span> <span class="s2">&#34;rootfs_update_timestamp ; &#34;</span>
 
-Zap the root password if debug-tweaks feature is not enabled
-============================================================
+<span class="n">Zap</span> <span class="n">the</span> <span class="n">root</span> <span class="n">password</span> <span class="k">if</span> <span class="n">debug</span><span class="o">-</span><span class="n">tweaks</span> <span class="n">feature</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">enabled</span>
+<span class="o">============================================================</span>
 
-ROOTFS_POSTPROCESS_COMMAND += '${@base_contains(&quot;IMAGE_FEATURES&quot;, &quot;debug-tweaks&quot;, &quot;&quot;, &quot;zap_root_password ; &quot;,d)}'
+<span class="n">ROOTFS_POSTPROCESS_COMMAND</span> <span class="o">+=</span> <span class="s1">&#39;${@base_contains(&#34;IMAGE_FEATURES&#34;, &#34;debug-tweaks&#34;, &#34;&#34;, &#34;zap_root_password ; &#34;,d)}&#39;</span>
 
-Allow openssh accept empty password login if both debug-tweaks and ssh-server-openssh are enabled
-=================================================================================================
+<span class="n">Allow</span> <span class="n">openssh</span> <span class="n">accept</span> <span class="n">empty</span> <span class="n">password</span> <span class="n">login</span> <span class="k">if</span> <span class="n">both</span> <span class="n">debug</span><span class="o">-</span><span class="n">tweaks</span> <span class="ow">and</span> <span class="n">ssh</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">openssh</span> <span class="n">are</span> <span class="n">enabled</span>
+<span class="o">=================================================================================================</span>
 
-ROOTFS_POSTPROCESS_COMMAND += '${@base_contains(&quot;IMAGE_FEATURES&quot;, &quot;debug-tweaks ssh-server-openssh&quot;, &quot;openssh_allow_empty_password; &quot;, &quot;&quot;,d)}'
-</code></pre>
-
+<span class="n">ROOTFS_POSTPROCESS_COMMAND</span> <span class="o">+=</span> <span class="s1">&#39;${@base_contains(&#34;IMAGE_FEATURES&#34;, &#34;debug-tweaks ssh-server-openssh&#34;, &#34;openssh_allow_empty_password; &#34;, &#34;&#34;,d)}&#39;</span></code></pre></div>
 <p>Do biến <code>IMAGE_INSTALL</code> được định nghĩa trước khi kế thừa lớp recipe <code>core-image</code>. Vì thế, giá trị đó vẫn không bị thay đổi khi<br />
 parse đến <code>core-image.bbclass</code>.<br />
 Ỏ đây ta thấy có xử lý postprogress _rootfs_update<em>timestamp</em><br />
@@ -1026,114 +864,56 @@ Nhưng gói trong đó được cài đặt sử dụng <strong>opkg</strong> v�
 Đầu tiên các package phải được build đã.</p>
 
 <p>Tuy nhiên chúng ta không định nghĩa bất cứ phụ thuộc vào, mà chỉ là set giá trị biến IMAGE_INSTALL</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">meta</span><span class="o">/</span><span class="n">classes</span><span class="o">/</span><span class="n">image</span><span class="o">.</span><span class="n">bbclass</span>
 
-<pre><code class="language-python">meta/classes/image.bbclass
+<span class="o">...</span>  
+<span class="n">RDEPENDS</span> <span class="o">+=</span> <span class="s2">&#34;${IMAGE_INSTALL} ${LINGUAS_INSTALL} ${NORMAL_FEATURE_INSTALL} ${ROOTFS_BOOTSTRAP_INSTALL}&#34;</span>
 
-...  
-RDEPENDS += &quot;${IMAGE_INSTALL} ${LINGUAS_INSTALL} ${NORMAL_FEATURE_INSTALL} ${ROOTFS_BOOTSTRAP_INSTALL}&quot;
+<span class="o">...</span>
 
-...
+<span class="n">definition</span> <span class="n">of</span> <span class="n">which</span> <span class="n">packages</span> <span class="n">should</span> <span class="n">be</span> <span class="n">installed</span> <span class="n">on</span> <span class="n">image</span><span class="o">.</span> <span class="n">PACKAGE_INSTALL</span>
+<span class="o">==========================================================================</span>
 
-definition of which packages should be installed on image. PACKAGE_INSTALL
-==========================================================================
+<span class="n">variable</span> <span class="ow">is</span> <span class="n">used</span> <span class="ow">in</span> <span class="n">rootfs</span> <span class="n">creation</span> <span class="n">code</span> <span class="ow">in</span> <span class="n">rootfs_ipk</span><span class="o">.</span><span class="n">bbclass</span>
+<span class="o">==============================================================</span>
 
-variable is used in rootfs creation code in rootfs_ipk.bbclass
-==============================================================
-
-export PACKAGE_INSTALL ?= &quot;${IMAGE_INSTALL} ${ROOTFS_BOOTSTRAP_INSTALL} ${FEATURE_INSTALL}&quot;  
-...  
-addtask rootfs before do_build
-</code></pre>
-
+<span class="n">export</span> <span class="n">PACKAGE_INSTALL</span> <span class="err">?</span><span class="o">=</span> <span class="s2">&#34;${IMAGE_INSTALL} ${ROOTFS_BOOTSTRAP_INSTALL} ${FEATURE_INSTALL}&#34;</span>  
+<span class="o">...</span>  
+<span class="n">addtask</span> <span class="n">rootfs</span> <span class="n">before</span> <span class="n">do_build</span></code></pre></div>
 <p>Class này phụ thuộc vào biến IMAGE_INSTALL và các biến khác vì thế. Các package cần được build trước.<br />
 Ta cũng thấy một task là <em>rootfs</em> chạy trước task build. Vì thế khi mà tất cả các task khác được chạy<br />
 xong thì do_rootfs sẽ bắt đầu việc tạo image.</p>
 
 <p>Sau khi check một vài thư mục, do_rootfs sẽ gọi đến hàm tạo cho loại package tương tứng.</p>
+<div class="highlight"><pre class="chroma"><code class="language-python" data-lang="python"><span class="n">meta</span><span class="o">/</span><span class="n">classes</span><span class="o">/</span><span class="n">image</span><span class="o">.</span><span class="n">bbclass</span><span class="p">,</span> <span class="n">do_rootfs</span><span class="p">()</span>
 
-<pre><code class="language-python">meta/classes/image.bbclass, do_rootfs()
-
-rootfs_${IMAGE_PKGTYPE}_do_rootfs
-</code></pre>
-
+<span class="n">rootfs_</span><span class="err">$</span><span class="p">{</span><span class="n">IMAGE_PKGTYPE</span><span class="p">}</span><span class="n">_do_rootfs</span></code></pre></div>
 <p>ví dụ<br />
 trong trường của chúng ta sử dụng ipk, nó sẽ như thế này :<br />
 <strong>rootfs_ipk_do_rootfs</strong></p>
 
 <p>Cùng xem 1 chút về hàm tạo <strong>rootfs_ipk_do_rootfs</strong> này<br />
 rootfs_ipk_do_rootfs() tạo các thư mục cần thiết cho opkg làm việc, ghi một số file trạng thái và update chings nó<br />
-bằng : <em>opk-cl update</em>.</p></div>
-
-    
-    
-    
-        <h4 class="page-header">Related</h4>
-         <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/">Một vài lệnh Bitbake hữu dụng</a></h4>
-    <h5>February 19, 2017</h5>
-    
-<a href="tags/bitbake"><kbd class="item-tag">Bitbake</kbd></a>
-
-
-
+bằng : <em>opk-cl update</em>.</p>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/example.com/tags/bitbake/" rel="tag">Bitbake</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/example.com/tags/distro/" rel="tag">Distro</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/example.com/tags/helloworld/" rel="tag">HelloWorld</a></li>
+	</ul>
 </div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/">4 Stage khi biên dịch HelloWorld.c</a></h4>
-    <h5>January 1, 2017</h5>
-    
-<a href="tags/gcc"><kbd class="item-tag">GCC</kbd></a>
-
-<a href="tags/helloworld"><kbd class="item-tag">HelloWorld</kbd></a>
+		</footer>
+	</article>
+</main>
 
 
 
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/">Một chút hiểu thêm về &#34;Hello World&#34; trong C.</a></h4>
-    <h5>December 21, 2016</h5>
-    
-<a href="tags/compiler"><kbd class="item-tag">Compiler</kbd></a>
-
-<a href="tags/helloworld"><kbd class="item-tag">HelloWorld</kbd></a>
-
-<a href="tags/linker"><kbd class="item-tag">Linker</kbd></a>
-
-<a href="tags/loader"><kbd class="item-tag">Loader</kbd></a>
-
-
-
-</div>
- 
-    
-
-    
-    
-        <h4 class="page-header">Comments</h4>
-        <div id="disqus_thread"></div>
+<section class="comments">
+	<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -1146,25 +926,29 @@ bằng : <em>opk-cl update</em>.</p></div>
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.src = '//' + "minatu2d" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
+</section>
 
-</main>
 
-        <footer>
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
-        </footer>
-
-        
-
-        
-    </body>
-
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Lazytrick.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/example.com/js/menu.js"></script>
+</body>
 </html>
-

@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Linux on Lazytrick</title>
-    <link>/tags/linux/</link>
+    <link>example.com/tags/linux/</link>
     <description>Recent content in Linux on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Sun, 02 Apr 2017 11:16:36 +0900</lastBuildDate>
     
-	<atom:link href="/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Phím tắt cho bash</title>
-      <link>/post/2017-04-02-phim-tat-cho-bash/</link>
+      <link>example.com/post/2017-04-02-phim-tat-cho-bash/</link>
       <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
       
-      <guid>/post/2017-04-02-phim-tat-cho-bash/</guid>
+      <guid>example.com/post/2017-04-02-phim-tat-cho-bash/</guid>
       <description>&lt;p&gt;Mặc định, bash sử dụng &lt;em&gt;emacs&lt;/em&gt; mode, có thể chuyển sang &lt;em&gt;vi&lt;/em&gt; mode được.&lt;br /&gt;
 Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.&lt;/p&gt;
 &lt;h2&gt;Chiều ngang : Di chuyển cơ bản&lt;/h2&gt;
@@ -28,10 +28,10 @@ Ctrl + d : (Delete) Xóa kí tự ở vị trí con trỏ&lt;/p&gt;
     
     <item>
       <title>Một số điều rút ra từ việc phải sử dụng command</title>
-      <link>/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
+      <link>example.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
+      <guid>example.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
       <description>&lt;p&gt;Do yêu cầu bắt buộc nên gần đây phải làm việc với VIM.&lt;/p&gt;
 &lt;p&gt;Thực ra vẫn dùng máy tính Windows để chạy các ứng dụng SSH Client, SCP, rồi thì Excel. Tuy nhiên, các thao tác chủ yếu với source, text file, là trên command.&lt;/p&gt;
 &lt;p&gt;Mà trên command của Unix, hay Linux. Dù có trả qua bao nhiêu năm nữa, thì có vẻ chỉ có 2 trường phái là &lt;strong&gt;VIM và Emacs&lt;/strong&gt; thôi. Nhiều người thích Emacs, cũng nhiều người thích VIM.&lt;/p&gt;
@@ -40,10 +40,10 @@ Ctrl + d : (Delete) Xóa kí tự ở vị trí con trỏ&lt;/p&gt;
     
     <item>
       <title>Chuyển sang dùng VI(M)</title>
-      <link>/post/2017-03-29-chuyen-sang-dung-vim/</link>
+      <link>example.com/post/2017-03-29-chuyen-sang-dung-vim/</link>
       <pubDate>Wed, 29 Mar 2017 13:37:36 +0900</pubDate>
       
-      <guid>/post/2017-03-29-chuyen-sang-dung-vim/</guid>
+      <guid>example.com/post/2017-03-29-chuyen-sang-dung-vim/</guid>
       <description>&lt;h2&gt;Chuyển sang dùng Vi&lt;/h2&gt;
 &lt;p&gt;Vi - Editor khá nhiều tuổi, có lẽ còn nhiều tuổi hơn của mình.&lt;br /&gt;
 Là editor phổ biến nhất trên hệ thống dòng lệnh Linux, Unix hoặc tương tự.&lt;br /&gt;
@@ -59,10 +59,10 @@ emacs-fan nữa nên ít khi phải dùng Vi.&lt;br /&gt;
     
     <item>
       <title>Thực hiện 4 Stage khi Compile bằng tay (Manual)</title>
-      <link>/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
+      <link>example.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
+      <guid>example.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
       <description>&lt;p&gt;Ta đã có bài giới thiệu về &lt;a href=&#34;https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/&#34;&gt;4 Stage khi Compiling&lt;/a&gt; rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.&lt;/p&gt;
 &lt;p&gt;Trong compile thông thường dạng&lt;/p&gt;
 &lt;p&gt;[code lang=bash]&lt;br /&gt;
@@ -75,10 +75,10 @@ $gcc -o HelloWorld HelloWorld.c&lt;br /&gt;
     
     <item>
       <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
-      <link>/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <link>example.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <guid>example.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
       <description>&lt;p&gt;Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch &lt;strong&gt;GCC&lt;/strong&gt; lên đó.&lt;br /&gt;
 Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.&lt;br /&gt;
 Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.&lt;br /&gt;
@@ -87,10 +87,10 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
     
     <item>
       <title>AWK - Sử dụng cơ bản</title>
-      <link>/post/2016-09-07-awk-su-dung-co-ban/</link>
+      <link>example.com/post/2016-09-07-awk-su-dung-co-ban/</link>
       <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
       
-      <guid>/post/2016-09-07-awk-su-dung-co-ban/</guid>
+      <guid>example.com/post/2016-09-07-awk-su-dung-co-ban/</guid>
       <description>&lt;p&gt;&lt;strong&gt;AWK&lt;/strong&gt; : 1 trong 3 tool (cùng với &lt;strong&gt;grep&lt;/strong&gt; và &lt;strong&gt;sed&lt;/strong&gt;) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.&lt;/p&gt;
 &lt;p&gt;Sau một hồi tìm hiểu &lt;strong&gt;awk&lt;/strong&gt; trên &lt;a href=&#34;http://www.tutorialspoint.com/awk/index.htm&#34;&gt;TutorialPoint&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;awk&lt;/strong&gt; là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng. AWK cung cấp hẳn 1 ngôn ngữ để so khớp input cũng như xuất output. Ngôn ngữ này cực kì giống ngôn ngữ C, nên rất dễ làm quen. Nó cung cấp 1 cơ chế matching mạnh là regular express nữa cho xử lý input.&lt;/p&gt;

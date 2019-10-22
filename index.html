@@ -1,157 +1,592 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        
+<html class="no-js" lang="en-us">
+<head>
+	<meta name="generator" content="Hugo 0.58.3" />
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lazytrick</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="alternate" type="application/rss+xml" href="example.com/index.xml" title="Lazytrick">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/example.com/css/style.css">
+	
+	<link rel="shortcut icon" href="/example.com/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/example.com" title="Lazytrick" rel="home">
+				<div class="logo__title">Lazytrick</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="example.com/">Home</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/post/">Posts</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/about/">About</a>
+		</li>
+	</ul>
+</nav>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Lazytrick</title>
-        
-        <style>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2019-09-11-hoc-ruby-on-rails-ror/" rel="bookmark">
+			Học Ruby On Rails (RoR)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		1. General 2. Scope  Biến bắt đầu bằng @* gọi là instance variable
+https://stackoverflow.com/questions/14319347/variables-in-ruby-on-rails  3. Model 4. View 5. Controller  
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2019-02-06-2015/" rel="bookmark">
+			Bắt đầu về Docker
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p><!-- wp:paragraph --></p>
+<p>Docker, là công nghệ rất nổi và có ảnh hưởng đến hầu hết developer.<br />
+Được coi là một công nghệ ảo hóa ở mức hệ điều hành khi so với các phương pháp ảo hóa phần cứng khác.<br />
+Theo mình hỏi, kĩ thuật để làm việc này không mới, nó dựa trên kĩ thuật <strong>chroot</strong> có được sử dụng từ khá lâu trong linux.</p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:paragraph --></p>
+<p>Nói là vậy, nhưng học để sử dụng thì cần bài bản chút, bài này mình sẽ tóm tắt lại trang <strong>Overview</strong> từ trang của <strong>Docker</strong></p>
+<p><!-- /wp:paragraph --></p>
+<p><!-- wp:heading --></p>
+<h2>0. Docker dùng cho mục đích gì?</h2>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:heading {"level":4} --></p>
+<h4>1. Tối ưu hóa chu trình phát triển:</h4>
+<p><!-- /wp:heading --></p>
+<p><!-- wp:more --><br />
 
-    html body {
-        font-family: 'Raleway', sans-serif;
-        background-color: white;
-    }
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/" rel="bookmark">
+			Pickle - Thư viện Serialization/Deserialization trong Python
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Gần đây khi chạy thử một vài thuật toán Deep Learning, đặc biệt là các thuật toán cung cấp source code sử dụng thư viện Caffe, có gặp một vài vấn đề liên quan đến module <strong>Pickle</strong> trong Python.<br />
+Thực ra, bình thường cũng không định viết gì cả. Nhưng chợt nhớ ra mình cũng quan tâm đến chủ đề <strong>Serialization/Deserialization</strong> này. Nó có vai trò giống như <a href="https://lazytrick.wordpress.com/2016/11/12/asn-1-la-gi-tai-sao-no-quan-trong/">ASN.1</a> mà có tìm hiểu hồi trước, hay phổ biến nhất của thể loại này là <strong>Protocol Buffer</strong> của Google, hay <strong>Apache Thrift</strong>. Thế là note lại cái để quên nó đi.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2018-05-24-__trashed/" rel="bookmark">
+			Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Tiếp theo <a href="https://lazytrick.wordpress.com/2018/05/23/khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">bài trước</a> trong loạt note về Khóa học online về Machine Learning đầu tiên.</p>
+<h2>Tuần 6 : Lời khuyên khi ứng áp dụng Machine Learning.</h2>
+<p>Kiến thúc trong phần này không phải nói về thuật toán, mà là kĩ năng, rồi những thứ cần chú ý khi áp dụng Machine Learning. Và tất nhiên của khi áp dụng Deep Learning nữa.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/" rel="bookmark">
+			Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Tiếp theo <a href="https://lazytrick.wordpress.com/2018/05/23/khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/" target="_blank">bài trước</a> trong loạt note về khóa học online đầu tiên về Machine Learning.</p>
+<h2>Tuần 4 : Neurtal Networks : Biểu diễn</h2>
+<p>Như đã biết, khi nói về dữ liệu, ta thường nói đến một loạt đặc trưng.<br />
+Ví dụ: người thì có chiều cao, cân nặng, sở thích, etc.<br />
+Và ta cũng đã biết về tạo cá đặc trưng đa thức khi các đặc trưng bậc 1 không đủ để miêu tả tốt dữ liệu.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/" rel="bookmark">
+			Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Cuối cùng cũng kết thúc khoá học Online đầu tiên về Machine Learnning.<br />
+Do tiếng Anh cùi, nên dù nhìn sub liên tục nhưng vẫn vô số lần tua lại để xem.<br />
+Khoá học rất hay, thầy Andrew NG giảng khá kĩ các khái niệm quan trọng.<br />
+Dù mình biết Machine Learning nặng về Toán, đặc biệt Toán Tối ưu như machinelearningcoban.com viết, nhưng khoá này không tập trung vào những cái đó.<br />
+Nó tập trung vào việc Intuition - Trực giác về Machine Learning.<br />
+Ví dụ như giải quyết vấn đề gì. Quá trình Train là đi tìm cái gì. Quá trình Test làm gì. Rồi cách đánh giá một mô hình Machine Learning.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/" rel="bookmark">
+			Thực hiện 3 phép tập hợp trên bash
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h2>Thực hiện 3 phép tập hợp trên bash</h2>
+<p>Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.<br />
+Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.<br />
+Nội dung được dịch từ <a href="http://www.catonmat.net/blog/set-operations-in-unix-shell/">bài viết</a> khá chi tiết của pro <a href="http://www.catonmat.net/about/">Peter Krumins</a> chủ trang <a href="http://www.catonmat.net/">http://www.catonmat.net/</a></p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/" rel="bookmark">
+			Một số thứ khi sử dụng command, viết script trong bash
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h2>Một số thứ hữu ích khi viết sử dụng command, viết script trong bash</h2>
+<p>Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên <a href="https://github.com/jlevy/the-art-of-command-line">The art of command line</a> và mình cũng đã dịch thử (chưa được review) ở<br />
+<a href="https://github.com/minatu2d/the-art-of-command-line/blob/master/README-vi.md">Nghệ thuật sử dụng dòng lệnh</a></p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/" rel="bookmark">
+			Ví dụ cơ bản với pthread trên Linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h2>Ví dụ cơ bản với pthread trên Linux</h2>
+<h2>1. Tạo và dừng thread</h2>
+<p>Source code gốc lấy từ <a href="https://computing.llnl.gov/tutorials/pthreads/samples/hello.c">link</a><br />
 
-    :root {
-        --accent: red;
-        --border-width:  5px ;
-    }
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/" rel="bookmark">
+			So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h2>So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</h2>
+<p><strong>Link gốc</strong>:<br />
+http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm</p>
+<p><strong>Người dịch</strong>:<br />
+Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụng,nhất là bây giờ đã là năm 2017. Có quá nhiều thứ hiệu quả và nhanh hơn. Tuy nhiên, khi cần tìm hiểu ở mức hệ điều hành, rồi driver thiết bị, thì việc đọc được Assembly là rất hữu ích.</p>
+<p><strong>Nội dung</strong></p>
+<p>Cú pháp ASM giữa Intel và AT&amp;T có rất nhiều điềm khác nhau rõ rệt. Điều này nhiều khi dẫn đến sự nhầm lẫn khi một người đã học một ASM của Intel trước rồi sang học ASM của AT&amp;T hoặc ngoặc lại. Bài này, chúng ta sẽ xem xét những cái khác biệt cơ bản đó.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-05-14-lenh-mov-trong-assembly/" rel="bookmark">
+			Lệnh MOV trong Assembly
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Lệnh MOV trong Assembly Link gốc: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html
+#Lệnh MOV
+1. Lệnh MOV Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.
+Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó. Nói là chức năng sao chép thôi, chứ thực sự nó bao hàm sao chép, truyền dữ liệu. Đó có thể là từ bộ nhớ (các loại RAM) vào thanh ghi, từ thanh ghi vào bộ nhớ, từ một giá trị nào đó xuống thanh ghi hoặc bộ nhớ chẳng hạn.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/" rel="bookmark">
+			Tìm source code của USB Driver trên Linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Ở bài <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm driver cho Linux</a> cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.</p>
+<h2>Cách tìm source code driver cho thiết bị USB</h2>
+<h2>1. Nói qua về thiết bị USB</h2>
+<ul>
+<li>Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.<br />
+Đó là <strong>Vendor</strong> (nhà sản xuất), và <strong>Product</strong> (sản phẩm).<br />
+Thông tin về <strong>Vendor</strong> được mô tả bằng một id, trong source thường là <strong>idVendor</strong>.<br />
+Thông tin về <strong>Product</strong> cũng được mô tả bằng một id, trong source thường là <strong>idProduct</strong>.<br />
+2 thông tin trên sẽ xác định duy nhất một loại thiết bị.<br />
+Thông tin về id của mỗi Vendor, Product được đăng kí với tổ chức hỗ trợ USB.</li>
+</ul>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/" rel="bookmark">
+			Build, chạy nhân Linux trong QEMU ARM
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Chạy một bản Linux tối giản trên Qemu ARM</p>
+<p>Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa<br />
+các thành phần của một hệ thống Linux thông qua<br />
+việc build, chạy Kernel trên board <strong>vexpress-a9</strong> mô phỏng bằng Qemu.</p>
+<p>Đó là Kernel, Root file system, Busybox, Init.</p>
+<hr />
+<h2>1. "Chém" chút về quá trình khởi động của Linux</h2>
+<ul>
+<li>Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.<br />
+Giai đoạn đầu là load kernel lên RAM và chạy<br />
+Giai đoạn thứ hai là kernle sẽ tự động mount hệ thống file<br />
+rồi các ứng dụng trên hệ thống file được mount.<br />
+Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải có 2 giai đoạn ở trên.<br />
 
-</style>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/" rel="bookmark">
+			4 thành phần của Embedded Linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h2>4 thành phần của Embedded Linux</h2>
+<p>Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)...cho đến các thiết bị gia dụng, gia đình.</p>
+<p>Khi sử dụng máy tính cá nhân, server ta dễ dàng "sờ" thấy được các thành phần của Linux như các tiến trình, shell..etc.<br />
+Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi. Ta thường chỉ quan tâm đến ứng dụng chạy trên đó thôi.</p>
+<p>Nhưng ở một mảng ứng dụng khác của Linux, nơi mà trên đó ta thường chỉ chạy 1 ứng dụng, rất khó thấy các thành phần bên trong, hầu như không thay đổi được...thì Linux như thế nào, nó giống với các bản phân phối ta vẫn gặp không.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-04-02-phim-tat-cho-bash/" rel="bookmark">
+			Phím tắt cho bash
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Mặc định, bash sử dụng <em>emacs</em> mode, có thể chuyển sang <em>vi</em> mode được.<br />
+Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.</p>
+<h2>Chiều ngang : Di chuyển cơ bản</h2>
+<p>Ctrl + b : (Backward) Di chuyển con trỏ sang trái về trước 1 kí tự<br />
+Ctrl + f : (Fordware) Di chuyển con trỏ sang phải một kí tự.<br />
+Ctrl + d : (Delete) Xóa kí tự ở vị trí con trỏ</p>
+<h2>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/" rel="bookmark">
+			Một số điều rút ra từ việc phải sử dụng command
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Do yêu cầu bắt buộc nên gần đây phải làm việc với VIM.</p>
+<p>Thực ra vẫn dùng máy tính Windows để chạy các ứng dụng SSH Client, SCP, rồi thì Excel. Tuy nhiên, các thao tác chủ yếu với source, text file, là trên command.</p>
+<p>Mà trên command của Unix, hay Linux. Dù có trả qua bao nhiêu năm nữa, thì có vẻ chỉ có 2 trường phái là <strong>VIM và Emacs</strong> thôi. Nhiều người thích Emacs, cũng nhiều người thích VIM.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-03-29-chuyen-sang-dung-vim/" rel="bookmark">
+			Chuyển sang dùng VI(M)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<h2>Chuyển sang dùng Vi</h2>
+<p>Vi - Editor khá nhiều tuổi, có lẽ còn nhiều tuổi hơn của mình.<br />
+Là editor phổ biến nhất trên hệ thống dòng lệnh Linux, Unix hoặc tương tự.<br />
+Có Linux, bạn gần như sẽ có thể dùng Vi. Mà Linux thì có ở rất rất nhiều nơi.<br />
+Có phải vì nó mặc định nên nó phổ biến???<br />
+Mình từng nghĩ vậy hoặc nghĩ chắc nó nhẹ nên người ta cài sẵn nó thôi<br />
+chứ chức năng hoặc độ tiện dụng chắc tệ lắm.<br />
+Vì thực ra, ở trường mình từng dùng 1, 2 lần thôi. Vì khi mới bắt đầu biết đến<br />
+Linux, thì nó cũng có giao diện đồ họa khá tiện rồi. Thầy giáo lại là một<br />
+emacs-fan nữa nên ít khi phải dùng Vi.<br />
 
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/" rel="bookmark">
+			Một vài lệnh Bitbake hữu dụng
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Có một vài lệnh hữu dụng được cộng đồng sử dụng board NXP chia sẻ, mình sẽ note ở đây cho dễ tìm vậy. Link tại <a href="https://community.nxp.com/docs/DOC-94953">đây</a>.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/" rel="bookmark">
+			Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p><em>Tham khảo</em><br />
+- Sách : AT&amp;T Assembly Language, Richard Blum</p>
+<h2>1. Ngôn ngữ Assembly là gì?</h2>
+<ul>
+<li>Ở mức thấp nhất, Process chỉ hiểu <strong>instruction code</strong></li>
+<li><strong>Instruction Code</strong> là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element.</li>
+<li>Người ta hoàn toàn có thể viết chương trình bằng <strong>instruction code</strong>, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</li>
+<li>Việc sử dụng các ngôn ngữ bậc cao giúp việc viết chương trình dễ dàng hơn rất nhiều, vì trình biên dịch hoặc thông dịch đảm nhiệm việc chuyển mã ngôn ngữ bậc cao trực tiếp hoặc gián tiếp sang <strong>instruction code</strong> để chạy.</li>
+<li>Tuy nhiên, việc sinh <strong>instruction code</strong> của trình biên dịch/thông dịch không phải luôn luôn hiệu quả.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/" rel="bookmark">
+			So sánh giữa Buildroot và Yocto Project
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Bài này sẽ dịch lại <a href="http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf">Slide</a> thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni<br />
+từ Free Electrons tại Embedded Linux Conference 2016.</p>
+<p>So sánh giữa Buildroot và OpenEmbedded/Yocto Project</p>
+<h2>1. Điểm chung</h2>
+<ul>
+<li>Đều là build-system cho Embedded Linux.<br />
+Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.<br />
+Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
+<li>Đều được build từ source</li>
+<li>Sử dụng cross-compilation</li>
+<li>Rất actively trong cả dự án đang maintained và phát triển.</li>
+<li>Được sử dụng rộng dãi trong công nghiệp.</li>
+<li>Tài liệu tốt, nhiều khóa đào tạo.</li>
+<li>Sử dụng Free Software (phần mềm tự do)<br />
 
-<link rel="stylesheet" href="css/main.css">
-
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
-
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
-    
-    <script>hljs.initHighlightingOnLoad();</script>
-
-
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
-        
-            <link href="/index.xml" rel="alternate" type="application/rss&#43;xml" title="Lazytrick" />
-            <link href="/index.xml" rel="feed" type="application/rss&#43;xml" title="Lazytrick" />
-        
-
-        
-
-        
-            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
-
-        
-
-    </head>
-
-    <body>
-        
-
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Lazytrick</a>
-                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse">
-                    
-                        <ul class="nav navbar-nav">
-                            
-                                <li><a href="/">Home</a></li>
-                            
-                                <li><a href="/post/">Posts</a></li>
-                            
-                                <li><a href="/tags/">Tags</a></li>
-                            
-                                <li><a href="/categories/">Category</a></li>
-                            
-                                <li><a href="/about/">About</a></li>
-                            
-                        </ul>
-                    
-                    
-                        <ul class="nav navbar-nav navbar-right">
-                            
-                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
-                            
-                        </ul>
-                    
-                </div>
-            </div>
-        </nav>
-
-
-<main>
-    <div class="intro">
-        
-        <h1>Lazytrick</h1>
-        <h2>Write to read later</h2>
-        
-    </div>
+	</div>
+</article>
 </main>
 
-        <footer>
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
-        </footer>
+<div class="pagination">
+	<span class="pagination__item pagination__item--current">1/5</span>
+	<a class="pagination__item pagination__item--next btn" href="example.com/page/2/">»</a>
+</div>
 
-        
 
-        
-    </body>
-
+			</div>
+			<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="example.com" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2019-02-06-2015/">Bắt đầu về Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/">Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/">Thực hiện 3 phép tập hợp trên bash</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/">Một số thứ khi sử dụng command, viết script trong bash</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/">Ví dụ cơ bản với pthread trên Linux</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/basic">Basic</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/buildroot">Buildroot</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/codeskill">Codeskill</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/communication">Communication</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/compile">Compile</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/debug">Debug</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/driver">Driver</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/embedded">Embedded</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/firmware">Firmware</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/iot">Iot</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/its">Its</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/js">Js</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/kh%c3%a1c">Khác</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/machine-learning">Machine learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/microcontroller">Microcontroller</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/network">Network</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/openembbeded">Openembbeded</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/opensource">Opensource</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/python">Python</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/rtos">Rtos</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/security">Security</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/thread">Thread</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/usb">Usb</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/yoctoproject">Yoctoproject</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/aes" title="Aes">Aes</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/aligment" title="Aligment">Aligment</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/asm" title="Asm">Asm</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/asn1" title="Asn1">Asn1</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/assembly" title="Assembly">Assembly</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/bash" title="Bash">Bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/beyondlogic" title="Beyondlogic">Beyondlogic</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/bitbake" title="Bitbake">Bitbake</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/busybox" title="Busybox">Busybox</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/c" title="C">C</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/casting" title="Casting">Casting</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/cer" title="Cer">Cer</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/cmake" title="Cmake">Cmake</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/command" title="Command">Command</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/compiler" title="Compiler">Compiler</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/coursera" title="Coursera">Coursera</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/crosscompile" title="Crosscompile">Crosscompile</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/der" title="Der">Der</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/deserialization" title="Deserialization">Deserialization</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/device-file" title="Device file">Device file</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/digitalsignal" title="Digitalsignal">Digitalsignal</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/distro" title="Distro">Distro</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/draft" title="Draft">Draft</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/driver" title="Driver">Driver</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/editor" title="Editor">Editor</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/embbeded" title="Embbeded">Embbeded</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/error" title="Error">Error</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/fat" title="Fat">Fat</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/filesystem" title="Filesystem">Filesystem</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/firmware" title="Firmware">Firmware</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/fit" title="Fit">Fit</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/flash" title="Flash">Flash</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/gcc" title="Gcc">Gcc</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/gdb" title="Gdb">Gdb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/helloworld" title="Helloworld">Helloworld</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/hid" title="Hid">Hid</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/i2c" title="I2c">I2c</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/installation" title="Installation">Installation</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/itron" title="Itron">Itron</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/kernel" title="Kernel">Kernel</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/library" title="Library">Library</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linker" title="Linker">Linker</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linking" title="Linking">Linking</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linux" title="Linux">Linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linuximage" title="Linuximage">Linuximage</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/make" title="Make">Make</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/mqtt" title="Mqtt">Mqtt</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/nodejs" title="Nodejs">Nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/objectfile" title="Objectfile">Objectfile</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/open" title="Open">Open</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/per" title="Per">Per</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pickle" title="Pickle">Pickle</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pointer" title="Pointer">Pointer</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/porting" title="Porting">Porting</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pthread" title="Pthread">Pthread</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/qemu" title="Qemu">Qemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/raspberrypi" title="Raspberrypi">Raspberrypi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/recipe" title="Recipe">Recipe</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/renesas" title="Renesas">Renesas</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rgb" title="Rgb">Rgb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rootfs" title="Rootfs">Rootfs</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rt2870" title="Rt2870">Rt2870</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/samba" title="Samba">Samba</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/script" title="Script">Script</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/scsi" title="Scsi">Scsi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/serialization" title="Serialization">Serialization</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/smb" title="Smb">Smb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/spi" title="Spi">Spi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/staticip" title="Staticip">Staticip</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/systemd" title="Systemd">Systemd</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/thread" title="Thread">Thread</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/translate" title="Translate">Translate</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/uart" title="Uart">Uart</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/udev" title="Udev">Udev</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/unix" title="Unix">Unix</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usb" title="Usb">Usb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usbdescriptor" title="Usbdescriptor">Usbdescriptor</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usbmemory" title="Usbmemory">Usbmemory</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/vga" title="Vga">Vga</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/vim" title="Vim">Vim</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/wifiusb" title="Wifiusb">Wifiusb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/wireshark" title="Wireshark">Wireshark</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Lazytrick.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/example.com/js/menu.js"></script>
+</body>
 </html>
-

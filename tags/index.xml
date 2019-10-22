@@ -2,759 +2,759 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on Lazytrick</title>
-    <link>/tags/</link>
+    <link>example.com/tags/</link>
     <description>Recent content in Tags on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Thu, 24 May 2018 07:53:35 +0900</lastBuildDate>
     
-	<atom:link href="/tags/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Deserialization</title>
-      <link>/tags/deserialization/</link>
+      <link>example.com/tags/deserialization/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>/tags/deserialization/</guid>
+      <guid>example.com/tags/deserialization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pickle</title>
-      <link>/tags/pickle/</link>
+      <link>example.com/tags/pickle/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>/tags/pickle/</guid>
+      <guid>example.com/tags/pickle/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Serialization</title>
-      <link>/tags/serialization/</link>
+      <link>example.com/tags/serialization/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>/tags/serialization/</guid>
+      <guid>example.com/tags/serialization/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CourserA</title>
-      <link>/tags/coursera/</link>
+      <link>example.com/tags/coursera/</link>
       <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
       
-      <guid>/tags/coursera/</guid>
+      <guid>example.com/tags/coursera/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bash</title>
-      <link>/tags/bash/</link>
+      <link>example.com/tags/bash/</link>
       <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
       
-      <guid>/tags/bash/</guid>
+      <guid>example.com/tags/bash/</guid>
       <description></description>
     </item>
     
     <item>
       <title>script</title>
-      <link>/tags/script/</link>
+      <link>example.com/tags/script/</link>
       <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
       
-      <guid>/tags/script/</guid>
+      <guid>example.com/tags/script/</guid>
       <description></description>
     </item>
     
     <item>
       <title>pthread</title>
-      <link>/tags/pthread/</link>
+      <link>example.com/tags/pthread/</link>
       <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
       
-      <guid>/tags/pthread/</guid>
+      <guid>example.com/tags/pthread/</guid>
       <description></description>
     </item>
     
     <item>
       <title>thread</title>
-      <link>/tags/thread/</link>
+      <link>example.com/tags/thread/</link>
       <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
       
-      <guid>/tags/thread/</guid>
+      <guid>example.com/tags/thread/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Assembly</title>
-      <link>/tags/assembly/</link>
+      <link>example.com/tags/assembly/</link>
       <pubDate>Sun, 14 May 2017 08:43:10 +0900</pubDate>
       
-      <guid>/tags/assembly/</guid>
+      <guid>example.com/tags/assembly/</guid>
       <description></description>
     </item>
     
     <item>
       <title>busybox</title>
-      <link>/tags/busybox/</link>
+      <link>example.com/tags/busybox/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>/tags/busybox/</guid>
+      <guid>example.com/tags/busybox/</guid>
       <description></description>
     </item>
     
     <item>
       <title>qemu</title>
-      <link>/tags/qemu/</link>
+      <link>example.com/tags/qemu/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>/tags/qemu/</guid>
+      <guid>example.com/tags/qemu/</guid>
       <description></description>
     </item>
     
     <item>
       <title>rootfs</title>
-      <link>/tags/rootfs/</link>
+      <link>example.com/tags/rootfs/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>/tags/rootfs/</guid>
+      <guid>example.com/tags/rootfs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linux</title>
-      <link>/tags/linux/</link>
+      <link>example.com/tags/linux/</link>
       <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
       
-      <guid>/tags/linux/</guid>
+      <guid>example.com/tags/linux/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Editor</title>
-      <link>/tags/editor/</link>
+      <link>example.com/tags/editor/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>/tags/editor/</guid>
+      <guid>example.com/tags/editor/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Unix</title>
-      <link>/tags/unix/</link>
+      <link>example.com/tags/unix/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>/tags/unix/</guid>
+      <guid>example.com/tags/unix/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Vim</title>
-      <link>/tags/vim/</link>
+      <link>example.com/tags/vim/</link>
       <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
       
-      <guid>/tags/vim/</guid>
+      <guid>example.com/tags/vim/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Bitbake</title>
-      <link>/tags/bitbake/</link>
+      <link>example.com/tags/bitbake/</link>
       <pubDate>Sun, 19 Feb 2017 00:14:48 +0900</pubDate>
       
-      <guid>/tags/bitbake/</guid>
+      <guid>example.com/tags/bitbake/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Asm</title>
-      <link>/tags/asm/</link>
+      <link>example.com/tags/asm/</link>
       <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
       
-      <guid>/tags/asm/</guid>
+      <guid>example.com/tags/asm/</guid>
       <description></description>
     </item>
     
     <item>
       <title>device file</title>
-      <link>/tags/device-file/</link>
+      <link>example.com/tags/device-file/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>/tags/device-file/</guid>
+      <guid>example.com/tags/device-file/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Kernel</title>
-      <link>/tags/kernel/</link>
+      <link>example.com/tags/kernel/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>/tags/kernel/</guid>
+      <guid>example.com/tags/kernel/</guid>
       <description></description>
     </item>
     
     <item>
       <title>systemd</title>
-      <link>/tags/systemd/</link>
+      <link>example.com/tags/systemd/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>/tags/systemd/</guid>
+      <guid>example.com/tags/systemd/</guid>
       <description></description>
     </item>
     
     <item>
       <title>udev</title>
-      <link>/tags/udev/</link>
+      <link>example.com/tags/udev/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>/tags/udev/</guid>
+      <guid>example.com/tags/udev/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Compiler</title>
-      <link>/tags/compiler/</link>
+      <link>example.com/tags/compiler/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>/tags/compiler/</guid>
+      <guid>example.com/tags/compiler/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linker</title>
-      <link>/tags/linker/</link>
+      <link>example.com/tags/linker/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>/tags/linker/</guid>
+      <guid>example.com/tags/linker/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Loader</title>
-      <link>/tags/loader/</link>
+      <link>example.com/tags/loader/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>/tags/loader/</guid>
+      <guid>example.com/tags/loader/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GCC</title>
-      <link>/tags/gcc/</link>
+      <link>example.com/tags/gcc/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>/tags/gcc/</guid>
+      <guid>example.com/tags/gcc/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HelloWorld</title>
-      <link>/tags/helloworld/</link>
+      <link>example.com/tags/helloworld/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>/tags/helloworld/</guid>
+      <guid>example.com/tags/helloworld/</guid>
       <description></description>
     </item>
     
     <item>
       <title>C</title>
-      <link>/tags/c/</link>
+      <link>example.com/tags/c/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>/tags/c/</guid>
+      <guid>example.com/tags/c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Error</title>
-      <link>/tags/error/</link>
+      <link>example.com/tags/error/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>/tags/error/</guid>
+      <guid>example.com/tags/error/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FileSystem</title>
-      <link>/tags/filesystem/</link>
+      <link>example.com/tags/filesystem/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>/tags/filesystem/</guid>
+      <guid>example.com/tags/filesystem/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ASN1</title>
-      <link>/tags/asn1/</link>
+      <link>example.com/tags/asn1/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>/tags/asn1/</guid>
+      <guid>example.com/tags/asn1/</guid>
       <description></description>
     </item>
     
     <item>
       <title>PER</title>
-      <link>/tags/per/</link>
+      <link>example.com/tags/per/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>/tags/per/</guid>
+      <guid>example.com/tags/per/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CER</title>
-      <link>/tags/cer/</link>
+      <link>example.com/tags/cer/</link>
       <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
       
-      <guid>/tags/cer/</guid>
+      <guid>example.com/tags/cer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DER</title>
-      <link>/tags/der/</link>
+      <link>example.com/tags/der/</link>
       <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
       
-      <guid>/tags/der/</guid>
+      <guid>example.com/tags/der/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Aligment</title>
-      <link>/tags/aligment/</link>
+      <link>example.com/tags/aligment/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>/tags/aligment/</guid>
+      <guid>example.com/tags/aligment/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Casting</title>
-      <link>/tags/casting/</link>
+      <link>example.com/tags/casting/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>/tags/casting/</guid>
+      <guid>example.com/tags/casting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Pointer</title>
-      <link>/tags/pointer/</link>
+      <link>example.com/tags/pointer/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>/tags/pointer/</guid>
+      <guid>example.com/tags/pointer/</guid>
       <description></description>
     </item>
     
     <item>
       <title>GDB</title>
-      <link>/tags/gdb/</link>
+      <link>example.com/tags/gdb/</link>
       <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
       
-      <guid>/tags/gdb/</guid>
+      <guid>example.com/tags/gdb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Installation</title>
-      <link>/tags/installation/</link>
+      <link>example.com/tags/installation/</link>
       <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
       
-      <guid>/tags/installation/</guid>
+      <guid>example.com/tags/installation/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Command</title>
-      <link>/tags/command/</link>
+      <link>example.com/tags/command/</link>
       <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
       
-      <guid>/tags/command/</guid>
+      <guid>example.com/tags/command/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Driver</title>
-      <link>/tags/driver/</link>
+      <link>example.com/tags/driver/</link>
       <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
       
-      <guid>/tags/driver/</guid>
+      <guid>example.com/tags/driver/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Firmware</title>
-      <link>/tags/firmware/</link>
+      <link>example.com/tags/firmware/</link>
       <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
       
-      <guid>/tags/firmware/</guid>
+      <guid>example.com/tags/firmware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RT2870</title>
-      <link>/tags/rt2870/</link>
+      <link>example.com/tags/rt2870/</link>
       <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
       
-      <guid>/tags/rt2870/</guid>
+      <guid>example.com/tags/rt2870/</guid>
       <description></description>
     </item>
     
     <item>
       <title>WifiUSB</title>
-      <link>/tags/wifiusb/</link>
+      <link>example.com/tags/wifiusb/</link>
       <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
       
-      <guid>/tags/wifiusb/</guid>
+      <guid>example.com/tags/wifiusb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Recipe</title>
-      <link>/tags/recipe/</link>
+      <link>example.com/tags/recipe/</link>
       <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
       
-      <guid>/tags/recipe/</guid>
+      <guid>example.com/tags/recipe/</guid>
       <description></description>
     </item>
     
     <item>
       <title>StaticIP</title>
-      <link>/tags/staticip/</link>
+      <link>example.com/tags/staticip/</link>
       <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
       
-      <guid>/tags/staticip/</guid>
+      <guid>example.com/tags/staticip/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Samba</title>
-      <link>/tags/samba/</link>
+      <link>example.com/tags/samba/</link>
       <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
       
-      <guid>/tags/samba/</guid>
+      <guid>example.com/tags/samba/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SMB</title>
-      <link>/tags/smb/</link>
+      <link>example.com/tags/smb/</link>
       <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
       
-      <guid>/tags/smb/</guid>
+      <guid>example.com/tags/smb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Flash</title>
-      <link>/tags/flash/</link>
+      <link>example.com/tags/flash/</link>
       <pubDate>Fri, 05 Aug 2016 01:50:50 +0900</pubDate>
       
-      <guid>/tags/flash/</guid>
+      <guid>example.com/tags/flash/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CrossCompile</title>
-      <link>/tags/crosscompile/</link>
+      <link>example.com/tags/crosscompile/</link>
       <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
       
-      <guid>/tags/crosscompile/</guid>
+      <guid>example.com/tags/crosscompile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>LinuxImage</title>
-      <link>/tags/linuximage/</link>
+      <link>example.com/tags/linuximage/</link>
       <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
       
-      <guid>/tags/linuximage/</guid>
+      <guid>example.com/tags/linuximage/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RaspberryPI</title>
-      <link>/tags/raspberrypi/</link>
+      <link>example.com/tags/raspberrypi/</link>
       <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
       
-      <guid>/tags/raspberrypi/</guid>
+      <guid>example.com/tags/raspberrypi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Translate</title>
-      <link>/tags/translate/</link>
+      <link>example.com/tags/translate/</link>
       <pubDate>Sat, 23 Jul 2016 05:46:28 +0900</pubDate>
       
-      <guid>/tags/translate/</guid>
+      <guid>example.com/tags/translate/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Library</title>
-      <link>/tags/library/</link>
+      <link>example.com/tags/library/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>/tags/library/</guid>
+      <guid>example.com/tags/library/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Linking</title>
-      <link>/tags/linking/</link>
+      <link>example.com/tags/linking/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>/tags/linking/</guid>
+      <guid>example.com/tags/linking/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ObjectFile</title>
-      <link>/tags/objectfile/</link>
+      <link>example.com/tags/objectfile/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>/tags/objectfile/</guid>
+      <guid>example.com/tags/objectfile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SCSI</title>
-      <link>/tags/scsi/</link>
+      <link>example.com/tags/scsi/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>/tags/scsi/</guid>
+      <guid>example.com/tags/scsi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USB</title>
-      <link>/tags/usb/</link>
+      <link>example.com/tags/usb/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>/tags/usb/</guid>
+      <guid>example.com/tags/usb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USBMemory</title>
-      <link>/tags/usbmemory/</link>
+      <link>example.com/tags/usbmemory/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>/tags/usbmemory/</guid>
+      <guid>example.com/tags/usbmemory/</guid>
       <description></description>
     </item>
     
     <item>
       <title>mqtt</title>
-      <link>/tags/mqtt/</link>
+      <link>example.com/tags/mqtt/</link>
       <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
       
-      <guid>/tags/mqtt/</guid>
+      <guid>example.com/tags/mqtt/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ITRON</title>
-      <link>/tags/itron/</link>
+      <link>example.com/tags/itron/</link>
       <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
       
-      <guid>/tags/itron/</guid>
+      <guid>example.com/tags/itron/</guid>
       <description></description>
     </item>
     
     <item>
       <title>DigitalSignal</title>
-      <link>/tags/digitalsignal/</link>
+      <link>example.com/tags/digitalsignal/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>/tags/digitalsignal/</guid>
+      <guid>example.com/tags/digitalsignal/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RGB</title>
-      <link>/tags/rgb/</link>
+      <link>example.com/tags/rgb/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>/tags/rgb/</guid>
+      <guid>example.com/tags/rgb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>VGA</title>
-      <link>/tags/vga/</link>
+      <link>example.com/tags/vga/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>/tags/vga/</guid>
+      <guid>example.com/tags/vga/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Draft</title>
-      <link>/tags/draft/</link>
+      <link>example.com/tags/draft/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>/tags/draft/</guid>
+      <guid>example.com/tags/draft/</guid>
       <description></description>
     </item>
     
     <item>
       <title>HID</title>
-      <link>/tags/hid/</link>
+      <link>example.com/tags/hid/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>/tags/hid/</guid>
+      <guid>example.com/tags/hid/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USBDescriptor</title>
-      <link>/tags/usbdescriptor/</link>
+      <link>example.com/tags/usbdescriptor/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>/tags/usbdescriptor/</guid>
+      <guid>example.com/tags/usbdescriptor/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FIT</title>
-      <link>/tags/fit/</link>
+      <link>example.com/tags/fit/</link>
       <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
       
-      <guid>/tags/fit/</guid>
+      <guid>example.com/tags/fit/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Renesas</title>
-      <link>/tags/renesas/</link>
+      <link>example.com/tags/renesas/</link>
       <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
       
-      <guid>/tags/renesas/</guid>
+      <guid>example.com/tags/renesas/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Porting</title>
-      <link>/tags/porting/</link>
+      <link>example.com/tags/porting/</link>
       <pubDate>Mon, 25 Jan 2016 14:27:20 +0900</pubDate>
       
-      <guid>/tags/porting/</guid>
+      <guid>example.com/tags/porting/</guid>
       <description></description>
     </item>
     
     <item>
       <title>I2C</title>
-      <link>/tags/i2c/</link>
+      <link>example.com/tags/i2c/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>/tags/i2c/</guid>
+      <guid>example.com/tags/i2c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>SPI</title>
-      <link>/tags/spi/</link>
+      <link>example.com/tags/spi/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>/tags/spi/</guid>
+      <guid>example.com/tags/spi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>UART</title>
-      <link>/tags/uart/</link>
+      <link>example.com/tags/uart/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>/tags/uart/</guid>
+      <guid>example.com/tags/uart/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Beyondlogic</title>
-      <link>/tags/beyondlogic/</link>
+      <link>example.com/tags/beyondlogic/</link>
       <pubDate>Mon, 25 Jan 2016 14:18:10 +0900</pubDate>
       
-      <guid>/tags/beyondlogic/</guid>
+      <guid>example.com/tags/beyondlogic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>AES</title>
-      <link>/tags/aes/</link>
+      <link>example.com/tags/aes/</link>
       <pubDate>Tue, 05 Jan 2016 14:48:34 +0900</pubDate>
       
-      <guid>/tags/aes/</guid>
+      <guid>example.com/tags/aes/</guid>
       <description></description>
     </item>
     
     <item>
       <title>FAT</title>
-      <link>/tags/fat/</link>
+      <link>example.com/tags/fat/</link>
       <pubDate>Sun, 27 Dec 2015 13:39:16 +0900</pubDate>
       
-      <guid>/tags/fat/</guid>
+      <guid>example.com/tags/fat/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Cmake</title>
-      <link>/tags/cmake/</link>
+      <link>example.com/tags/cmake/</link>
       <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
       
-      <guid>/tags/cmake/</guid>
+      <guid>example.com/tags/cmake/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Make</title>
-      <link>/tags/make/</link>
+      <link>example.com/tags/make/</link>
       <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
       
-      <guid>/tags/make/</guid>
+      <guid>example.com/tags/make/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Wireshark</title>
-      <link>/tags/wireshark/</link>
+      <link>example.com/tags/wireshark/</link>
       <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
       
-      <guid>/tags/wireshark/</guid>
+      <guid>example.com/tags/wireshark/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Distro</title>
-      <link>/tags/distro/</link>
+      <link>example.com/tags/distro/</link>
       <pubDate>Sat, 25 Apr 2015 07:50:24 +0900</pubDate>
       
-      <guid>/tags/distro/</guid>
+      <guid>example.com/tags/distro/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Nodejs</title>
-      <link>/tags/nodejs/</link>
+      <link>example.com/tags/nodejs/</link>
       <pubDate>Sat, 11 Apr 2015 06:30:59 +0900</pubDate>
       
-      <guid>/tags/nodejs/</guid>
+      <guid>example.com/tags/nodejs/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Embbeded</title>
-      <link>/tags/embbeded/</link>
+      <link>example.com/tags/embbeded/</link>
       <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
       
-      <guid>/tags/embbeded/</guid>
+      <guid>example.com/tags/embbeded/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Open</title>
-      <link>/tags/open/</link>
+      <link>example.com/tags/open/</link>
       <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
       
-      <guid>/tags/open/</guid>
+      <guid>example.com/tags/open/</guid>
       <description></description>
     </item>
     

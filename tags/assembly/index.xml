@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Assembly on Lazytrick</title>
-    <link>/tags/assembly/</link>
+    <link>example.com/tags/assembly/</link>
     <description>Recent content in Assembly on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Sun, 14 May 2017 08:43:10 +0900</lastBuildDate>
     
-	<atom:link href="/tags/assembly/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/assembly/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</title>
-      <link>/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</link>
+      <link>example.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</link>
       <pubDate>Sun, 14 May 2017 08:43:10 +0900</pubDate>
       
-      <guid>/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</guid>
+      <guid>example.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</guid>
       <description>&lt;h2&gt;So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;amp;T và Intel&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Link gốc&lt;/strong&gt;:&lt;br /&gt;
 http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm&lt;/p&gt;
@@ -29,10 +29,10 @@ Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụ
     
     <item>
       <title>Lệnh MOV trong Assembly</title>
-      <link>/post/2017-05-14-lenh-mov-trong-assembly/</link>
+      <link>example.com/post/2017-05-14-lenh-mov-trong-assembly/</link>
       <pubDate>Sun, 14 May 2017 07:59:46 +0900</pubDate>
       
-      <guid>/post/2017-05-14-lenh-mov-trong-assembly/</guid>
+      <guid>example.com/post/2017-05-14-lenh-mov-trong-assembly/</guid>
       <description>Lệnh MOV trong Assembly Link gốc: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html
 #Lệnh MOV
 1. Lệnh MOV Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.
@@ -41,10 +41,10 @@ Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó.
     
     <item>
       <title>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</title>
-      <link>/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
+      <link>example.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
       <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
       
-      <guid>/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
+      <guid>example.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
       <description>&lt;p&gt;&lt;em&gt;Tham khảo&lt;/em&gt;&lt;br /&gt;
 - Sách : AT&amp;amp;T Assembly Language, Richard Blum&lt;/p&gt;
 &lt;h2&gt;1. Ngôn ngữ Assembly là gì?&lt;/h2&gt;

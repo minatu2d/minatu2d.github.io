@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Basic on Lazytrick</title>
-    <link>/categories/basic/</link>
+    <link>example.com/categories/basic/</link>
     <description>Recent content in Basic on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Wed, 06 Feb 2019 07:26:15 +0900</lastBuildDate>
     
-	<atom:link href="/categories/basic/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/categories/basic/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Bắt đầu về Docker</title>
-      <link>/post/2019-02-06-2015/</link>
+      <link>example.com/post/2019-02-06-2015/</link>
       <pubDate>Wed, 06 Feb 2019 07:26:15 +0900</pubDate>
       
-      <guid>/post/2019-02-06-2015/</guid>
+      <guid>example.com/post/2019-02-06-2015/</guid>
       <description>&lt;p&gt;&lt;!-- wp:paragraph --&gt;&lt;/p&gt;
 &lt;p&gt;Docker, là công nghệ rất nổi và có ảnh hưởng đến hầu hết developer.&lt;br /&gt;
 Được coi là một công nghệ ảo hóa ở mức hệ điều hành khi so với các phương pháp ảo hóa phần cứng khác.&lt;br /&gt;
@@ -37,10 +37,10 @@ Theo mình hỏi, kĩ thuật để làm việc này không mới, nó dựa tr�
     
     <item>
       <title>Thực hiện 3 phép tập hợp trên bash</title>
-      <link>/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</link>
+      <link>example.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</link>
       <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
       
-      <guid>/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</guid>
+      <guid>example.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</guid>
       <description>&lt;h2&gt;Thực hiện 3 phép tập hợp trên bash&lt;/h2&gt;
 &lt;p&gt;Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.&lt;br /&gt;
 Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.&lt;br /&gt;
@@ -50,10 +50,10 @@ Nội dung được dịch từ &lt;a href=&#34;http://www.catonmat.net/blog/set
     
     <item>
       <title>Một số thứ khi sử dụng command, viết script trong bash</title>
-      <link>/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</link>
+      <link>example.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</link>
       <pubDate>Fri, 03 Nov 2017 06:31:11 +0900</pubDate>
       
-      <guid>/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</guid>
+      <guid>example.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</guid>
       <description>&lt;h2&gt;Một số thứ hữu ích khi viết sử dụng command, viết script trong bash&lt;/h2&gt;
 &lt;p&gt;Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên &lt;a href=&#34;https://github.com/jlevy/the-art-of-command-line&#34;&gt;The art of command line&lt;/a&gt; và mình cũng đã dịch thử (chưa được review) ở&lt;br /&gt;
 &lt;a href=&#34;https://github.com/minatu2d/the-art-of-command-line/blob/master/README-vi.md&#34;&gt;Nghệ thuật sử dụng dòng lệnh&lt;/a&gt;&lt;/p&gt;
@@ -62,10 +62,10 @@ Nội dung được dịch từ &lt;a href=&#34;http://www.catonmat.net/blog/set
     
     <item>
       <title>Ví dụ cơ bản với pthread trên Linux</title>
-      <link>/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</link>
+      <link>example.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</link>
       <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
       
-      <guid>/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</guid>
+      <guid>example.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</guid>
       <description>&lt;h2&gt;Ví dụ cơ bản với pthread trên Linux&lt;/h2&gt;
 &lt;h2&gt;1. Tạo và dừng thread&lt;/h2&gt;
 &lt;p&gt;Source code gốc lấy từ &lt;a href=&#34;https://computing.llnl.gov/tutorials/pthreads/samples/hello.c&#34;&gt;link&lt;/a&gt;&lt;br /&gt;
@@ -74,10 +74,10 @@ Nội dung được dịch từ &lt;a href=&#34;http://www.catonmat.net/blog/set
     
     <item>
       <title>So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</title>
-      <link>/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</link>
+      <link>example.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</link>
       <pubDate>Sun, 14 May 2017 08:43:10 +0900</pubDate>
       
-      <guid>/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</guid>
+      <guid>example.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</guid>
       <description>&lt;h2&gt;So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;amp;T và Intel&lt;/h2&gt;
 &lt;p&gt;&lt;strong&gt;Link gốc&lt;/strong&gt;:&lt;br /&gt;
 http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm&lt;/p&gt;
@@ -90,10 +90,10 @@ Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụ
     
     <item>
       <title>Lệnh MOV trong Assembly</title>
-      <link>/post/2017-05-14-lenh-mov-trong-assembly/</link>
+      <link>example.com/post/2017-05-14-lenh-mov-trong-assembly/</link>
       <pubDate>Sun, 14 May 2017 07:59:46 +0900</pubDate>
       
-      <guid>/post/2017-05-14-lenh-mov-trong-assembly/</guid>
+      <guid>example.com/post/2017-05-14-lenh-mov-trong-assembly/</guid>
       <description>Lệnh MOV trong Assembly Link gốc: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html
 #Lệnh MOV
 1. Lệnh MOV Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.
@@ -102,10 +102,10 @@ Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó.
     
     <item>
       <title>Tìm source code của USB Driver trên Linux</title>
-      <link>/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
+      <link>example.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
+      <guid>example.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
       <description>&lt;p&gt;Ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/&#34;&gt;Tìm driver cho Linux&lt;/a&gt; cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.&lt;/p&gt;
 &lt;h2&gt;Cách tìm source code driver cho thiết bị USB&lt;/h2&gt;
 &lt;h2&gt;1. Nói qua về thiết bị USB&lt;/h2&gt;
@@ -122,10 +122,10 @@ Thông tin về id của mỗi Vendor, Product được đăng kí với tổ ch
     
     <item>
       <title>Build, chạy nhân Linux trong QEMU ARM</title>
-      <link>/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
+      <link>example.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
+      <guid>example.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
       <description>&lt;p&gt;Chạy một bản Linux tối giản trên Qemu ARM&lt;/p&gt;
 &lt;p&gt;Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa&lt;br /&gt;
 các thành phần của một hệ thống Linux thông qua&lt;br /&gt;
@@ -144,10 +144,10 @@ Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải
     
     <item>
       <title>4 thành phần của Embedded Linux</title>
-      <link>/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</link>
+      <link>example.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</link>
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
-      <guid>/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</guid>
+      <guid>example.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</guid>
       <description>&lt;h2&gt;4 thành phần của Embedded Linux&lt;/h2&gt;
 &lt;p&gt;Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)...cho đến các thiết bị gia dụng, gia đình.&lt;/p&gt;
 &lt;p&gt;Khi sử dụng máy tính cá nhân, server ta dễ dàng &#34;sờ&#34; thấy được các thành phần của Linux như các tiến trình, shell..etc.&lt;br /&gt;
@@ -157,19 +157,19 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
     
     <item>
       <title>Một vài lệnh Bitbake hữu dụng</title>
-      <link>/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</link>
+      <link>example.com/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</link>
       <pubDate>Sun, 19 Feb 2017 00:14:48 +0900</pubDate>
       
-      <guid>/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</guid>
+      <guid>example.com/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</guid>
       <description>&lt;p&gt;Có một vài lệnh hữu dụng được cộng đồng sử dụng board NXP chia sẻ, mình sẽ note ở đây cho dễ tìm vậy. Link tại &lt;a href=&#34;https://community.nxp.com/docs/DOC-94953&#34;&gt;đây&lt;/a&gt;.</description>
     </item>
     
     <item>
       <title>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</title>
-      <link>/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
+      <link>example.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
       <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
       
-      <guid>/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
+      <guid>example.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
       <description>&lt;p&gt;&lt;em&gt;Tham khảo&lt;/em&gt;&lt;br /&gt;
 - Sách : AT&amp;amp;T Assembly Language, Richard Blum&lt;/p&gt;
 &lt;h2&gt;1. Ngôn ngữ Assembly là gì?&lt;/h2&gt;
@@ -183,10 +183,10 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
     
     <item>
       <title>So sánh giữa Buildroot và Yocto Project</title>
-      <link>/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
+      <link>example.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
       <pubDate>Fri, 20 Jan 2017 01:22:46 +0900</pubDate>
       
-      <guid>/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
+      <guid>example.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
       <description>&lt;p&gt;Bài này sẽ dịch lại &lt;a href=&#34;http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf&#34;&gt;Slide&lt;/a&gt; thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni&lt;br /&gt;
 từ Free Electrons tại Embedded Linux Conference 2016.&lt;/p&gt;
 &lt;p&gt;So sánh giữa Buildroot và OpenEmbedded/Yocto Project&lt;/p&gt;
@@ -206,10 +206,10 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders&lt;/li&gt;
     
     <item>
       <title>Về /dev trong Embedded Linux</title>
-      <link>/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
+      <link>example.com/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
+      <guid>example.com/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
       <description>&lt;p&gt;Đây là nội dung &lt;strong&gt;pick up&lt;/strong&gt; từ &lt;a href=&#34;https://buildroot.org/downloads/manual/manual.html&#34;&gt;manual&lt;/a&gt; của Buildroot.&lt;/p&gt;
 &lt;p&gt;Nó mô tả khá rõ về &lt;strong&gt;/dev&lt;/strong&gt; trong hệ thống Linux, cùng&lt;br /&gt;
 với các giải pháp dành cho hệ thống Embedded Linux.&lt;/p&gt;
@@ -218,10 +218,10 @@ với các giải pháp dành cho hệ thống Embedded Linux.&lt;/p&gt;
     
     <item>
       <title>Thực hiện 4 Stage khi Compile bằng tay (Manual)</title>
-      <link>/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
+      <link>example.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
+      <guid>example.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
       <description>&lt;p&gt;Ta đã có bài giới thiệu về &lt;a href=&#34;https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/&#34;&gt;4 Stage khi Compiling&lt;/a&gt; rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.&lt;/p&gt;
 &lt;p&gt;Trong compile thông thường dạng&lt;/p&gt;
 &lt;p&gt;[code lang=bash]&lt;br /&gt;
@@ -234,10 +234,10 @@ $gcc -o HelloWorld HelloWorld.c&lt;br /&gt;
     
     <item>
       <title>4 Stage khi biên dịch HelloWorld.c</title>
-      <link>/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
+      <link>example.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
+      <guid>example.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
       <description>&lt;p&gt;Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.&lt;br /&gt;
 Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.&lt;br /&gt;
 Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.&lt;/p&gt;
@@ -260,10 +260,10 @@ HelloWorld&lt;br /&gt;
     
     <item>
       <title>Một chút hiểu thêm về &#34;Hello World&#34; trong C.</title>
-      <link>/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
+      <link>example.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
       <pubDate>Wed, 21 Dec 2016 05:31:09 +0900</pubDate>
       
-      <guid>/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
+      <guid>example.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
       <description>&lt;p&gt;Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.&lt;/p&gt;
 &lt;p&gt;Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì&lt;br /&gt;
 một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
@@ -272,10 +272,10 @@ một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
     
     <item>
       <title>PER trong ASN.1 Encoding</title>
-      <link>/post/2016-11-29-per-trong-asn-1-encoding/</link>
+      <link>example.com/post/2016-11-29-per-trong-asn-1-encoding/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>/post/2016-11-29-per-trong-asn-1-encoding/</guid>
+      <guid>example.com/post/2016-11-29-per-trong-asn-1-encoding/</guid>
       <description>&lt;p&gt;&lt;strong&gt;PER&lt;/strong&gt; là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng &lt;strong&gt;TLV&lt;/strong&gt; như &lt;strong&gt;BER&lt;/strong&gt;, &lt;strong&gt;PER&lt;/strong&gt; sử dụng &lt;em&gt;Preamble&lt;/em&gt; (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là &lt;strong&gt;PLV&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Đơn vị biểu diễn của &lt;strong&gt;PER&lt;/strong&gt; không phải Octet mà là Bit. Mỗi phần tử sẽ thuộc 1 trong 3 loại sau:&lt;br /&gt;
 1. Trường dư bit, tức là dãy bit không thể biểu diễn bằng một số nguyên các Octet.&lt;br /&gt;
@@ -286,10 +286,10 @@ một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
     
     <item>
       <title>CER/DER trong ASN.1 Encoding</title>
-      <link>/post/2016-11-25-phuong-thuc-cerder/</link>
+      <link>example.com/post/2016-11-25-phuong-thuc-cerder/</link>
       <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
       
-      <guid>/post/2016-11-25-phuong-thuc-cerder/</guid>
+      <guid>example.com/post/2016-11-25-phuong-thuc-cerder/</guid>
       <description>&lt;p&gt;Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.&lt;/p&gt;
 &lt;p&gt;Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào &lt;strong&gt;BER&lt;/strong&gt;, và tạo ra &lt;strong&gt;CER&lt;/strong&gt; và &lt;strong&gt;DER&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Sự khác nhau chủ yếu giữa &lt;strong&gt;CER&lt;/strong&gt; và &lt;strong&gt;DER&lt;/strong&gt; là về biểu diễn trường độ dài. &lt;strong&gt;Length(L)&lt;/strong&gt;. Trong khi &lt;strong&gt;DER&lt;/strong&gt; sử dụng một định dạng với độ dài cố định, thì &lt;strong&gt;CER&lt;/strong&gt; sử dụng định dạng với độ dài không có định,&lt;br /&gt;
@@ -298,10 +298,10 @@ một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
     
     <item>
       <title>ASN.1 - BER (Basic Encoding Rules)</title>
-      <link>/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
+      <link>example.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
       <pubDate>Thu, 24 Nov 2016 15:58:01 +0900</pubDate>
       
-      <guid>/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
+      <guid>example.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
       <description>&lt;p&gt;Tiếp tục về &lt;a href=&#34;https://lazytrick.wordpress.com/tag/asn1/&#34;&gt;ASN.1&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)&lt;/p&gt;
 &lt;p&gt;Ta sẽ tiếp tục nói về hiện thực dữ liệu.&lt;br /&gt;
@@ -315,10 +315,10 @@ Các phương thức để hiện thực dữ liệu gồm có: &lt;strong&gt;BE
     
     <item>
       <title>ASN.1 - Cú pháp cơ bản</title>
-      <link>/post/2016-11-16-asn-1-cu-phap-co-ban/</link>
+      <link>example.com/post/2016-11-16-asn-1-cu-phap-co-ban/</link>
       <pubDate>Wed, 16 Nov 2016 15:49:05 +0900</pubDate>
       
-      <guid>/post/2016-11-16-asn-1-cu-phap-co-ban/</guid>
+      <guid>example.com/post/2016-11-16-asn-1-cu-phap-co-ban/</guid>
       <description>&lt;p&gt;Tiếp theo loạt bài về ASN.1, bài này sẽ &#34;dịch&#34; tài liệu của anh &lt;a href=&#34;http://www5d.biglobe.ne.jp/~stssk/mail.html&#34;&gt;Isida So&lt;/a&gt; nói về cú pháp cơ bản của ASN.1.&lt;/p&gt;
 &lt;p&gt;Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.&lt;/p&gt;
 &lt;p&gt;ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.&lt;/p&gt;
@@ -338,10 +338,10 @@ TelephoneNumber ::= NumericString&lt;br /&gt;
     
     <item>
       <title>ASN.1 là gì? Tại sao nó quan trọng.</title>
-      <link>/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</link>
+      <link>example.com/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</link>
       <pubDate>Sat, 12 Nov 2016 08:51:58 +0900</pubDate>
       
-      <guid>/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</guid>
+      <guid>example.com/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</guid>
       <description>&lt;p&gt;Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.&lt;/p&gt;
 &lt;p&gt;Google tiếng Việt thấy khá ít thông tin về ASN.1.&lt;br /&gt;
 Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.&lt;/p&gt;
@@ -357,10 +357,10 @@ Bài viết tham khảo rất nhiều từ bài viết của anh &lt;a href=&#34
     
     <item>
       <title>&#34;Data structure alignment&#34; là gì? Tại sao phải hiểu nó khi code C.</title>
-      <link>/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
+      <link>example.com/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
+      <guid>example.com/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
       <description>&lt;p&gt;Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.&lt;br /&gt;
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về &lt;strong&gt;Data Structure Aligment&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;</description>
@@ -368,10 +368,10 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
     
     <item>
       <title>GDB dòng lệnh cơ bản (03 - Cơ bản)</title>
-      <link>/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
+      <link>example.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
       <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
       
-      <guid>/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
+      <guid>example.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
       <description>&lt;p&gt;Trong bài số &lt;a href=&#34;https://lazytrick.wordpress.com/2016/09/19/gdb-co-the-lam-gi/&#34;&gt;02&lt;/a&gt;, ta đã nói đến những việc mà GDB có thể giúp chúng ta.&lt;/p&gt;
 &lt;p&gt;Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số &lt;strong&gt;-g&lt;/strong&gt; khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.&lt;br /&gt;
 </description>
@@ -379,10 +379,10 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
     
     <item>
       <title>Cài đặt GDB (02 - Cài đặt)</title>
-      <link>/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
+      <link>example.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
       <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
       
-      <guid>/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
+      <guid>example.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
       <description>&lt;p&gt;Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là &lt;strong&gt;target program&lt;/strong&gt;.&lt;br /&gt;
 Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:&lt;/p&gt;
 &lt;ol&gt;
@@ -398,10 +398,10 @@ $gdb --version&lt;br /&gt;
     
     <item>
       <title>GDB có thể làm gì? (01 - Khả năng của GDB)</title>
-      <link>/post/2016-09-19-gdb-co-the-lam-gi/</link>
+      <link>example.com/post/2016-09-19-gdb-co-the-lam-gi/</link>
       <pubDate>Mon, 19 Sep 2016 11:58:27 +0900</pubDate>
       
-      <guid>/post/2016-09-19-gdb-co-the-lam-gi/</guid>
+      <guid>example.com/post/2016-09-19-gdb-co-the-lam-gi/</guid>
       <description>&lt;p&gt;Trước khi nói về chủ đề chính là &#34;GDB có thể làm gì&#34;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.&lt;/p&gt;
 &lt;h4&gt;1. Phầm mềm Debugger sinh ra giải quyết cái gì?&lt;/h4&gt;
 &lt;p&gt;Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.&lt;br /&gt;
@@ -411,10 +411,10 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
     
     <item>
       <title>Làm việc với GDB - GNU Debugger (00- Mở đầu)</title>
-      <link>/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</link>
+      <link>example.com/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</link>
       <pubDate>Thu, 15 Sep 2016 09:19:53 +0900</pubDate>
       
-      <guid>/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</guid>
+      <guid>example.com/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</guid>
       <description>&lt;p&gt;Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！&lt;/p&gt;
 &lt;p&gt;Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với &#34;siêu lười&#34; như mình, loạt về &lt;a href=&#34;https://lazytrick.wordpress.com/category/usb/&#34;&gt;USB Basic&lt;/a&gt; dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.&lt;/p&gt;
 &lt;p&gt;Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).&lt;/p&gt;
@@ -435,10 +435,10 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
     
     <item>
       <title>AWK - Sử dụng cơ bản</title>
-      <link>/post/2016-09-07-awk-su-dung-co-ban/</link>
+      <link>example.com/post/2016-09-07-awk-su-dung-co-ban/</link>
       <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
       
-      <guid>/post/2016-09-07-awk-su-dung-co-ban/</guid>
+      <guid>example.com/post/2016-09-07-awk-su-dung-co-ban/</guid>
       <description>&lt;p&gt;&lt;strong&gt;AWK&lt;/strong&gt; : 1 trong 3 tool (cùng với &lt;strong&gt;grep&lt;/strong&gt; và &lt;strong&gt;sed&lt;/strong&gt;) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.&lt;/p&gt;
 &lt;p&gt;Sau một hồi tìm hiểu &lt;strong&gt;awk&lt;/strong&gt; trên &lt;a href=&#34;http://www.tutorialspoint.com/awk/index.htm&#34;&gt;TutorialPoint&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;&lt;strong&gt;awk&lt;/strong&gt; là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng. AWK cung cấp hẳn 1 ngôn ngữ để so khớp input cũng như xuất output. Ngôn ngữ này cực kì giống ngôn ngữ C, nên rất dễ làm quen. Nó cung cấp 1 cơ chế matching mạnh là regular express nữa cho xử lý input.&lt;/p&gt;
@@ -448,10 +448,10 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
     
     <item>
       <title>Sử dụng Patch và Diff</title>
-      <link>/post/2016-09-02-su-dung-patch-vs-diff/</link>
+      <link>example.com/post/2016-09-02-su-dung-patch-vs-diff/</link>
       <pubDate>Fri, 02 Sep 2016 08:53:59 +0900</pubDate>
       
-      <guid>/post/2016-09-02-su-dung-patch-vs-diff/</guid>
+      <guid>example.com/post/2016-09-02-su-dung-patch-vs-diff/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Patch&lt;/strong&gt;, hay người ta vẫn gọi là các bản vá, víu gì đó. Cũng thấy khái niệm này từ lâu rồi. Nhưng chưa bao giờ phát sinh nhu cầu sử dụng vì đa số các dự án mình từng làm đều dùng Server SVN tập trung. Mọi thay đổi đều có quản lý chặt chẽ, cũng ít khi rẽ quá nhiều nhánh (branch).&lt;br /&gt;
 Gần đây, bắt buộc phải nghĩ đến việc sử dụng 2 tool này vì phải update source trên máy thật (một board mạch) chỉ hỗ trợ truyền Serial. :((&lt;br /&gt;
 Sau nhiều lần truyền source, dù đã nén bằng &lt;strong&gt;&lt;em&gt;tar&lt;/em&gt;&lt;/strong&gt;, cũng mất đến 20-30 phút, mình không thể chịu nổi nữa. Thế là hỏi thầy google. Thấy có 2 command khá thông dụng để giải quyết vấn đề này.&lt;/p&gt;
@@ -460,10 +460,10 @@ Sau nhiều lần truyền source, dù đã nén bằng &lt;strong&gt;&lt;em&gt;
     
     <item>
       <title>Driver và Firmware trong Linux</title>
-      <link>/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/</link>
+      <link>example.com/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/</link>
       <pubDate>Mon, 29 Aug 2016 08:25:25 +0900</pubDate>
       
-      <guid>/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/</guid>
+      <guid>example.com/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/</guid>
       <description>&lt;p&gt;Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.&lt;br /&gt;
 Mình thấy ngoài &lt;strong&gt;Driver&lt;/strong&gt;, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là &lt;strong&gt;Firmware&lt;/strong&gt;.&lt;br /&gt;
 </description>
@@ -471,10 +471,10 @@ Mình thấy ngoài &lt;strong&gt;Driver&lt;/strong&gt;, tức là thành phần
     
     <item>
       <title>Tìm Driver cho Linux</title>
-      <link>/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/</link>
+      <link>example.com/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/</link>
       <pubDate>Fri, 19 Aug 2016 01:38:50 +0900</pubDate>
       
-      <guid>/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/</guid>
+      <guid>example.com/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/</guid>
       <description>&lt;p&gt;Trong quá trình tìm cách cài đặt driver cho &lt;a href=&#34;https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/&#34;&gt;bản build Raspberry PI&lt;/a&gt; sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách &lt;strong&gt;Linux in A Nutshell&lt;/strong&gt; (link tại &lt;a href=&#34;http://files.kroah.com/lkn/&#34;&gt;đây&lt;/a&gt; ) của pro này.&lt;/p&gt;
 &lt;p&gt;Chương 7, chương mà tác giả đặc biệt &#34;tự hào&#34;, nói về Customize một Linux Kernel.&lt;br /&gt;
 Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.&lt;br /&gt;
@@ -483,10 +483,10 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
     
     <item>
       <title>Hệ thống File Ubifs</title>
-      <link>/post/2016-08-05-luot-qua-he-thong-file-ubifs/</link>
+      <link>example.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/</link>
       <pubDate>Fri, 05 Aug 2016 01:50:50 +0900</pubDate>
       
-      <guid>/post/2016-08-05-luot-qua-he-thong-file-ubifs/</guid>
+      <guid>example.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/</guid>
       <description>&lt;p&gt;Gần đây, có thấy trên Board mạch phát triển của mình có xuất hiện 1 process là &lt;strong&gt;ubifs&lt;/strong&gt;. Qua tìm hiểu mới biết rằng, em nó là &lt;strong&gt;UBIFS&lt;/strong&gt;, được phát triển năm 2007 bởi &lt;a href=&#34;http://www.nokia.com/&#34;&gt;Nokia&lt;/a&gt; với sự giúp đỡ của &lt;a href=&#34;http://www.u-szeged.hu/&#34;&gt;University of Szeged&lt;/a&gt;, Hungary.&lt;/p&gt;
 &lt;p&gt;Bắt đầu được đưa vào mainline của Linux 2.6.27 năm 2008.&lt;/p&gt;
 &lt;p&gt;Hỏi thấy GG thấy được 1 &lt;a href=&#34;https://kythuatmaytinh.wordpress.com/2008/05/26/h%E1%BB%87-th%E1%BB%91ng-file-flash-tren-linux/&#34;&gt;bài giới thiệu chung về hệ thống file cho thiết bị nhớ Flash&lt;/a&gt; của anh &lt;a href=&#34;https://www.facebook.com/lddthao&#34;&gt;Le Dinh Thao&lt;/a&gt; trên blog &lt;a href=&#34;https://kythuatmaytinh.wordpress.com/&#34;&gt;kithuatmaytinh&lt;/a&gt;.&lt;/p&gt;
@@ -496,10 +496,10 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
     
     <item>
       <title>Phân biệt Build vs Host vs Target</title>
-      <link>/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
+      <link>example.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
       <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
       
-      <guid>/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
+      <guid>example.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
       <description>&lt;p&gt;Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.&lt;br /&gt;
 Với người mới, hiểu rõ khái niệm là rất quan trọng.&lt;/p&gt;
 &lt;p&gt;Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là &lt;strong&gt;Host Enviroment&lt;/strong&gt;, &lt;strong&gt;Build Enviroment&lt;/strong&gt;, và &lt;strong&gt;Target Enviroment&lt;/strong&gt;. Có thể dịch nôm na là &lt;strong&gt;Môi trường chủ&lt;/strong&gt;, &lt;strong&gt;Môi trường biên dịch&lt;/strong&gt;, và &lt;strong&gt;Môi trường chạy đích&lt;/strong&gt;.&lt;br /&gt;
@@ -510,10 +510,10 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>USB cho dev (Chap.06 – Các gói tin Setup)</title>
-      <link>/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</link>
+      <link>example.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</link>
       <pubDate>Sat, 23 Jul 2016 05:46:28 +0900</pubDate>
       
-      <guid>/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</guid>
+      <guid>example.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</guid>
       <description>&lt;p&gt;Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.&lt;/p&gt;
 &lt;p&gt;Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây. Ngoài ra, nó cũng quy định chặt hơn cho từng Request từ phía Host.&lt;/p&gt;
 &lt;ul&gt;
@@ -529,10 +529,10 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>USB cho dev (Chap.05 – Đặc tả thiết bị)</title>
-      <link>/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</link>
+      <link>example.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</link>
       <pubDate>Mon, 18 Jul 2016 09:19:07 +0900</pubDate>
       
-      <guid>/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</guid>
+      <guid>example.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</guid>
       <description>&lt;p&gt;Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.&lt;/p&gt;
 &lt;p&gt;Các đặc tả phổ biết nhất bao gồm:&lt;/p&gt;
 &lt;ul&gt;
@@ -547,10 +547,10 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>2 cách sử dụng thư viện trong Linux</title>
-      <link>/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
+      <link>example.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
+      <guid>example.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
       <description>&lt;p&gt;Mình đang gặp 1 vấn đề là 1 hàm &lt;em&gt;F1()&lt;/em&gt; trong thư viện động mình viết &lt;em&gt;(lib1.so)&lt;/em&gt; không hoạt động đúng như mong muốn. Trong hàm &lt;em&gt;F1()&lt;/em&gt;có gọi một loại hàm &lt;em&gt;F21(), F22(), F23()...F2n()&lt;/em&gt; từ 1 thư viện tĩnh &lt;em&gt;(lib2.a)&lt;/em&gt; khác.&lt;/p&gt;
 &lt;p&gt;Khi build không gặp lỗi,&lt;/p&gt;
 &lt;p&gt;Khi biên dịch thư viện động này với 1 file &lt;strong&gt;sample.c&lt;/strong&gt; để chưa &lt;strong&gt;main()&lt;/strong&gt; để chạy thử và gọi hàm &lt;em&gt;F1() &lt;/em&gt;từ thư viện động &lt;em&gt;lib1.so&lt;/em&gt;. Kết quả vẫn mong muốn.&lt;/p&gt;
@@ -560,10 +560,10 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>USB cho dev (Chap.04 - Các loại Endpoint)</title>
-      <link>/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</link>
+      <link>example.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</link>
       <pubDate>Sat, 26 Mar 2016 03:11:25 +0900</pubDate>
       
-      <guid>/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
+      <guid>example.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
       <description>&lt;p&gt;&lt;strong&gt;Đặc tả USB định nghĩa 4 loại Transfer/EndPoint&lt;/strong&gt;&lt;/p&gt;
 &lt;p&gt;Control Transfer&lt;/p&gt;
 &lt;p&gt;Interrupt Transfer&lt;/p&gt;
@@ -574,10 +574,10 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>USB cho dev (Chap.03 - Giao thức)</title>
-      <link>/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</link>
+      <link>example.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</link>
       <pubDate>Mon, 21 Mar 2016 15:19:47 +0900</pubDate>
       
-      <guid>/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</guid>
+      <guid>example.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</guid>
       <description>&lt;p&gt;Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &#34;nguy hiểm&#34;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi. Trong thực tế, hầu hết USB Controller I.C.s sẽ lo hết mấy tầng dưới rồi. Hay nói cách khác, mấy tầng đó nhà phát triển cũng không thấy được.&lt;/p&gt;
 &lt;p&gt;Mỗi USB Transaction bao gồm&lt;/p&gt;
 &lt;ul&gt;
@@ -588,10 +588,10 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>USB cho Dev (Chp.02 - Phần cứng)</title>
-      <link>/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</link>
+      <link>example.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</link>
       <pubDate>Mon, 21 Mar 2016 02:17:04 +0900</pubDate>
       
-      <guid>/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
+      <guid>example.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
       <description>&lt;p&gt;Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.&lt;/p&gt;
 &lt;p&gt;Đầu kết nối (Connectors)&lt;/p&gt;
 &lt;p&gt;Mọi thiết bị có một upstream &#34;chảy&#34;đến host, và mọi host có một downstream &#34;chảy&#34; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs. Có 2 loại connector phổ biến là type A và type B. Như hình bên dưới đây:&lt;/p&gt;
@@ -612,10 +612,10 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>SCSI - Giao tiếp với USB Memory</title>
-      <link>/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
+      <link>example.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
+      <guid>example.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
       <description>&lt;p&gt;&lt;img class=&#34;  wp-image-533 aligncenter&#34; src=&#34;{{ site.baseurl }}/assets/8gb-usb-flash-drive-rotation-2-0-usb-disk-model-pen-drive-memory-stick-8g-hot.jpg&#34; alt=&#34;8GB-USB-Flash-Drive-Rotation-2-0-USB-DISK-Model-Pen-drive-memory-stick-8G-HOT.jpg&#34; width=&#34;196&#34; height=&#34;196&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &#34;USB Flash Memory&#34; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.&lt;/p&gt;
 &lt;p&gt;Ở một số bài trước, tôi cũng viết về một số điểm chính của giao tiếp USB.&lt;/p&gt;
@@ -625,20 +625,20 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
     
     <item>
       <title>Trường Remain Length trong MQTT Fixed Header</title>
-      <link>/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</link>
+      <link>example.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</link>
       <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
       
-      <guid>/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</guid>
+      <guid>example.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</guid>
       <description>Như ta đã biết trong bản gốc và bản tiếng Việt của giao thức MQTT, đơn vị truyền tin trong MQTT là message. Message chứa 2 phần cơ bản là Header (phần mô tả thuộc tính dữ liệu) và Payload (phần mô tả dữ liệu). Phần header chứa 2 phần nữa là Header có độ dài cố định và Header có độ dài thay đổi được.
 Hầu hết các trường của phần Header cố định đều khá dễ hiểu, duy chỉ có 1 trường tương đối khó hiểu.</description>
     </item>
     
     <item>
       <title>RTOS - Hầu hết giống như một thư viện</title>
-      <link>/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</link>
+      <link>example.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</link>
       <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
       
-      <guid>/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</guid>
+      <guid>example.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</guid>
       <description>&lt;p&gt;Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.&lt;/p&gt;
 &lt;p&gt;Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver... Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.&lt;/p&gt;
 &lt;p&gt;Gần đây, do chạy thử các Sample trên môi trường Non-OS, rồi OS. Nên vỡ ra được một số điều. Tất nhiên chưa được kiểm chứng kĩ lượng, đây chỉ là sự ghép các kiến thức rời rạc, rồi nắn cho nó nghe có vẻ logic. Không sao, cứ đưa ra dự đoán, chúng sẽ được kiểm chứng bằng trải nghiệm thực tế trong công việc.&lt;/p&gt;
@@ -647,10 +647,10 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
     
     <item>
       <title>Một chút về RGB VGA, Digital RGB</title>
-      <link>/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</link>
+      <link>example.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</guid>
+      <guid>example.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</guid>
       <description>&lt;p&gt;MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.&lt;/p&gt;
 &lt;p&gt;Mô tả ngắn gọn ở đây để sau đỡ quên vậy:&lt;/p&gt;
 &lt;p&gt;ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC...) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.&lt;/p&gt;
@@ -668,10 +668,10 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
     
     <item>
       <title>Hiểu thêm về HID Report Descriptor</title>
-      <link>/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
+      <link>example.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
+      <guid>example.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
       <description>&lt;p&gt;Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.&lt;/p&gt;
 &lt;p&gt;Giờ xin dịch lại bài này một cách khái quát nhất.&lt;/p&gt;
 &lt;p&gt;Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).&lt;/p&gt;
@@ -683,10 +683,10 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
     
     <item>
       <title>Bộ nhớ Flash</title>
-      <link>/post/2016-01-25-bo-nho-flash-se-viet/</link>
+      <link>example.com/post/2016-01-25-bo-nho-flash-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:29:09 +0900</pubDate>
       
-      <guid>/post/2016-01-25-bo-nho-flash-se-viet/</guid>
+      <guid>example.com/post/2016-01-25-bo-nho-flash-se-viet/</guid>
       <description>&lt;p&gt;Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.&lt;/p&gt;
 &lt;h5&gt;Lập trình với bộ nhớ Flash&lt;/h5&gt;
 &lt;p&gt;Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn &lt;strong&gt;0xFF&lt;/strong&gt; thôi.&lt;/p&gt;
@@ -698,19 +698,19 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
     
     <item>
       <title>I2C - Kế thừa UART và SPI (sẽ viết)</title>
-      <link>/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
+      <link>example.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
+      <guid>example.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USB cho Dev (Chp.01 - Giới thiệu)</title>
-      <link>/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</link>
+      <link>example.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:18:10 +0900</pubDate>
       
-      <guid>/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</guid>
+      <guid>example.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</guid>
       <description>&lt;p&gt;USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.&lt;/p&gt;
 &lt;p&gt;Link gốc tại &lt;a href=&#34;http://www.beyondlogic.org/usbnutshell/usb1.shtml&#34;&gt;http://www.beyondlogic.org/usbnutshell/usb1.shtml&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Tóm tắt về USB&lt;/h4&gt;
@@ -720,19 +720,19 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
     
     <item>
       <title>Tầng thấp của USB</title>
-      <link>/post/2016-01-25-tang-thap-cua-usb-se-viet/</link>
+      <link>example.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:17:00 +0900</pubDate>
       
-      <guid>/post/2016-01-25-tang-thap-cua-usb-se-viet/</guid>
+      <guid>example.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</guid>
       <description>USB - Khỏi cần nói thì nó cũng đã quá nổi tiếng về sự phổ biến rồi. Gần như mọi thứ đều mặc định phải có kết nối USB, cổng USB gần như là bắt buộc trên máy tính, và rất nhiều thiết bị điện tử ta thấy. Từ USB1.1 đến 2.0, rồi gần đây nhất là 3.0. Rồi gần đây người ta có nhắc nhiều đến USB Type C.</description>
     </item>
     
     <item>
       <title>Khái quát về FAT</title>
-      <link>/post/2015-12-27-khai-quat-ve-fat/</link>
+      <link>example.com/post/2015-12-27-khai-quat-ve-fat/</link>
       <pubDate>Sun, 27 Dec 2015 13:39:16 +0900</pubDate>
       
-      <guid>/post/2015-12-27-khai-quat-ve-fat/</guid>
+      <guid>example.com/post/2015-12-27-khai-quat-ve-fat/</guid>
       <description>Trong quá trình porting sang hệ điều hành ITRON-based (NORTi), đã có dịp tìm hiểu về FAT, thấy bài của anh ELMちゃん này đầy đủ những thứ mình muốn biết về FAT nên sẽ dịch lại cả bài ở đây.
 Link gốc: http://elm-chan.org/docs/fat.html
 Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Spec , nhưng sẽ được giản luợc và bô sung thêm phần giải thích khái niệm mà bản gốc không có.</description>
@@ -740,20 +740,20 @@ Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Sp
     
     <item>
       <title>[OE] Tại sao vẫn dùng FAT</title>
-      <link>/post/2015-12-27-oe-tai-sao-van-dung-fat/</link>
+      <link>example.com/post/2015-12-27-oe-tai-sao-van-dung-fat/</link>
       <pubDate>Sun, 27 Dec 2015 13:17:33 +0900</pubDate>
       
-      <guid>/post/2015-12-27-oe-tai-sao-van-dung-fat/</guid>
+      <guid>example.com/post/2015-12-27-oe-tai-sao-van-dung-fat/</guid>
       <description>Bài hôm nay nói về một hệ thống file được sử dụng khá nhiều trên các phần mềm chạy trên mạch.
 Dù hiện nay có rất nhiều hệ thống file được nói đến như NTFS, Ext3, Ext4&amp;hellip;Hầu hết những hệ thống file đó được sử dụng chủ yếu trên các máy có năng lực tính toán cao và khả năng lưu trữ lớn. Thế còn với những máy có năng lực tính toán hạn chế, dung lượng lưu trữ nhỏ thì sẽ sử dụng hệ thống file nào.</description>
     </item>
     
     <item>
       <title>[USB]Các khái niệm về USB</title>
-      <link>/post/2015-12-22-usbcac-khai-niem-ve-usb/</link>
+      <link>example.com/post/2015-12-22-usbcac-khai-niem-ve-usb/</link>
       <pubDate>Tue, 22 Dec 2015 16:41:13 +0900</pubDate>
       
-      <guid>/post/2015-12-22-usbcac-khai-niem-ve-usb/</guid>
+      <guid>example.com/post/2015-12-22-usbcac-khai-niem-ve-usb/</guid>
       <description>Kết nối USB, chắc chắn ai cũng biết. Mỗi người đểu sở hữu ít nhất một thiết bị có kết nối này.
 Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập trình giống như người dùng vẫn hiểu về nó.
 Đúng là với người dùng cuối, một thiết bị có kết nối thì khả năng có nó có thể kết với máy tính như smartphone, máy nghe nhạc, bộ sạc&amp;hellip;.</description>
@@ -761,10 +761,10 @@ Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập 
     
     <item>
       <title>Giao thức MQTT</title>
-      <link>/post/2015-08-04-giao-thuc-mqtt/</link>
+      <link>example.com/post/2015-08-04-giao-thuc-mqtt/</link>
       <pubDate>Tue, 04 Aug 2015 14:56:02 +0900</pubDate>
       
-      <guid>/post/2015-08-04-giao-thuc-mqtt/</guid>
+      <guid>example.com/post/2015-08-04-giao-thuc-mqtt/</guid>
       <description>Bài này dự là sẽ dịch lại đặc của giao thức MQTT này, nhằm có một cách hiểu tổng quát về MQTT protocol.
 Link gốc :
 http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html
@@ -774,10 +774,10 @@ http://minatu2d.github.io/</description>
     
     <item>
       <title>Cơ bản về pthread</title>
-      <link>/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</link>
+      <link>example.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</link>
       <pubDate>Thu, 16 Jul 2015 23:18:38 +0900</pubDate>
       
-      <guid>/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
+      <guid>example.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
       <description>&lt;p&gt;Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.&lt;/p&gt;
 
 &lt;p&gt;Khi gặp những ứng dụng chạy đa nền tảng mình mới thấy quảng cáo chỉ miêu tả rất nhỏ thôi. Các dự án thực tế luôn có cực kì nhiều vấn đề. Nó không phải là hello world mà chỉ bằng vài click là đa nền tảng được. Ta biết rằng, những thư viện như Qt hỗ trợ rất nhiều. Nhưng thông thường các dự án chỉ dùng 1 phần thôi, còn lại họ tự viết hoặc sử dụng lại ở đâu đó. Vì vậy, nếu nói một dự án pure Qt thì đương nhiên dễ dàng chuyển đổi giữa các platform. Còn một dự án không phải là pure Qt thì rất nhiều vấn đề phát sinh.&lt;/p&gt;

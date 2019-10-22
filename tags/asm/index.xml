@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Asm on Lazytrick</title>
-    <link>/tags/asm/</link>
+    <link>example.com/tags/asm/</link>
     <description>Recent content in Asm on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Sat, 11 Feb 2017 12:47:50 +0900</lastBuildDate>
     
-	<atom:link href="/tags/asm/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/asm/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</title>
-      <link>/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
+      <link>example.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
       <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
       
-      <guid>/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
+      <guid>example.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
       <description>&lt;p&gt;&lt;em&gt;Tham khảo&lt;/em&gt;&lt;br /&gt;
 - Sách : AT&amp;amp;T Assembly Language, Richard Blum&lt;/p&gt;
 &lt;h2&gt;1. Ngôn ngữ Assembly là gì?&lt;/h2&gt;

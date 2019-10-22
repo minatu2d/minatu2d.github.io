@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Serialization on Lazytrick</title>
-    <link>/tags/serialization/</link>
+    <link>example.com/tags/serialization/</link>
     <description>Recent content in Serialization on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Thu, 24 May 2018 07:53:35 +0900</lastBuildDate>
     
-	<atom:link href="/tags/serialization/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/serialization/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Pickle - Thư viện Serialization/Deserialization trong Python</title>
-      <link>/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/</link>
+      <link>example.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/</guid>
+      <guid>example.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/</guid>
       <description>&lt;p&gt;Gần đây khi chạy thử một vài thuật toán Deep Learning, đặc biệt là các thuật toán cung cấp source code sử dụng thư viện Caffe, có gặp một vài vấn đề liên quan đến module &lt;strong&gt;Pickle&lt;/strong&gt; trong Python.&lt;br /&gt;
 Thực ra, bình thường cũng không định viết gì cả. Nhưng chợt nhớ ra mình cũng quan tâm đến chủ đề &lt;strong&gt;Serialization/Deserialization&lt;/strong&gt; này. Nó có vai trò giống như &lt;a href=&#34;https://lazytrick.wordpress.com/2016/11/12/asn-1-la-gi-tai-sao-no-quan-trong/&#34;&gt;ASN.1&lt;/a&gt; mà có tìm hiểu hồi trước, hay phổ biến nhất của thể loại này là &lt;strong&gt;Protocol Buffer&lt;/strong&gt; của Google, hay &lt;strong&gt;Apache Thrift&lt;/strong&gt;. Thế là note lại cái để quên nó đi.&lt;/p&gt;
 &lt;p&gt;</description>

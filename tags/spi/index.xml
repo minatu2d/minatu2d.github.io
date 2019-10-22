@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SPI on Lazytrick</title>
-    <link>/tags/spi/</link>
+    <link>example.com/tags/spi/</link>
     <description>Recent content in SPI on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Mon, 25 Jan 2016 14:22:56 +0900</lastBuildDate>
     
-	<atom:link href="/tags/spi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/spi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>I2C - Kế thừa UART và SPI (sẽ viết)</title>
-      <link>/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
+      <link>example.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
+      <guid>example.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
       <description></description>
     </item>
     

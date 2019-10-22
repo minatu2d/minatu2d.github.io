@@ -1,149 +1,68 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded - Lazytrick</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/example.com/css/style.css">
+	
+	<link rel="shortcut icon" href="/example.com/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/example.com" title="Lazytrick" rel="home">
+				<div class="logo__title">Lazytrick</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/">Home</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/post/">Posts</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/about/">About</a>
+		</li>
+	</ul>
+</nav>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</title>
-        
-        <style>
-
-    html body {
-        font-family: 'Raleway', sans-serif;
-        background-color: white;
-    }
-
-    :root {
-        --accent: red;
-        --border-width:  5px ;
-    }
-
-</style>
-
-
-<link rel="stylesheet" href="css/main.css">
-
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
-
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
-    
-    <script>hljs.initHighlightingOnLoad();</script>
-
-
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
-        
-
-        
-
-        
-            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
-
-        
-
-    </head>
-
-    <body>
-        
-
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</a>
-                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse">
-                    
-                        <ul class="nav navbar-nav">
-                            
-                                <li><a href="/">Home</a></li>
-                            
-                                <li><a href="/post/">Posts</a></li>
-                            
-                                <li><a href="/tags/">Tags</a></li>
-                            
-                                <li><a href="/categories/">Category</a></li>
-                            
-                                <li><a href="/about/">About</a></li>
-                            
-                        </ul>
-                    
-                    
-                        <ul class="nav navbar-nav navbar-right">
-                            
-                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
-                            
-                        </ul>
-                    
-                </div>
-            </div>
-        </nav>
-
-
-<main>
-
-    <div>
-        <h2>[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</h2>
-        <h5>April 25, 2015</h5>
-        
-<a href="tags/raspberrypi"><kbd class="item-tag">RaspberryPI</kbd></a>
-
-
-    </div>
-
-    <div align="start" class="content">
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</h1>
+			
+		</header><div class="content post__content clearfix">
+			
 
 <p>Poky là một hệ distro linux ở dạng tham chiếu của Yocto Project.</p>
 
@@ -176,27 +95,19 @@
 <h4 id="2-1-lấy-source">2.1 Lấy source</h4>
 
 <p>Đầu tiên chúng ta lấy source của poky và meta layer dành cho Raspberry PI.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir yocto
 
-<pre><code class="language-bash">mkdir yocto
-
-cd yocto
+<span class="nb">cd</span> yocto
 
 git clone -b dylan git://git.yoctoproject.org/poky.git
 
-cd poky
+<span class="nb">cd</span> poky
 
-git clone -b dylan git://git.yoctoproject.org/meta-raspberrypi
-</code></pre>
-
+git clone -b dylan git://git.yoctoproject.org/meta-raspberrypi</code></pre></div>
 <h3 id="2-2-thiết-lập-biến-môi-trường">2.2 Thiết lập biến môi trường</h3>
 
 <p>Chạy lệnh sau để setup một số biến môi trường</p>
-
-<pre><code class="language-bash">
-. oe-init-build-env build
-
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">. oe-init-build-env build</code></pre></div>
 <p>Nhất định phải có dấu cách sau dấu &ldquo;.&rdquo; . (Dấu này đại diện cho lệnh <code>source</code>)</p>
 
 <p>Sau khi chạy xong lệnh trên và succecced.</p>
@@ -208,19 +119,15 @@ git clone -b dylan git://git.yoctoproject.org/meta-raspberrypi
 <p>Chúng sẽ edit 1 file cấu hình để giúp bitbake sử dụng CPU của PC chúng ta build tốt hơn.</p>
 
 <p>Giúp tiết kiệm thời gian build.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Edit conf/local.conf
 
-<pre><code class="language-bash">
-Edit conf/local.conf
+<span class="nv">BB_NUMBER_THREADS</span> <span class="o">=</span> <span class="s2">&#34;9&#34;</span>
 
-BB_NUMBER_THREADS = &quot;9&quot;
+<span class="nv">PARALLEL_MAKE</span> <span class="o">=</span> <span class="s2">&#34;-j 9&#34;</span>
 
-PARALLEL_MAKE = &quot;-j 9&quot;
+MACHINE ?<span class="o">=</span> <span class="s2">&#34;raspberrypi&#34;</span>
 
-MACHINE ?= &quot;raspberrypi&quot;
-
-GPU_MEM = &quot;16&quot;
-</code></pre>
-
+<span class="nv">GPU_MEM</span> <span class="o">=</span> <span class="s2">&#34;16&#34;</span></code></pre></div>
 <p>Trường nào không có thì bỏ qua, kết quả cuối cùng không thay đổi tuy nhiên, nếu cấu hình chính xác</p>
 
 <p>với thông tin của máy sẽ giúp quá trình build nhanh hơn.</p>
@@ -228,23 +135,19 @@ GPU_MEM = &quot;16&quot;
 <p>Cuối cùng, để OE build một image cho Raspberry PI, ta cần thêm lớp của RPI vào danh sách các lớp</p>
 
 <p>mà OE có thể biết.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Edit conf/bblayers
 
-<pre><code class="language-bash">
-Edit conf/bblayers
-
-BBLAYERS ?= &quot; \
-
-poky/meta \
-
-poky/meta-yocto \
-
-poky/meta-yocto-bsp \
-
-poky/meta-raspberrypi \
-
-&quot;
-</code></pre>
-
+BBLAYERS ?<span class="o">=</span> <span class="s2">&#34; \
+</span><span class="s2">
+</span><span class="s2">poky/meta \
+</span><span class="s2">
+</span><span class="s2">poky/meta-yocto \
+</span><span class="s2">
+</span><span class="s2">poky/meta-yocto-bsp \
+</span><span class="s2">
+</span><span class="s2">poky/meta-raspberrypi \
+</span><span class="s2">
+</span><span class="s2">&#34;</span></code></pre></div>
 <p>Giờ là lệnh build, có 2 option cho file image. Đó là <strong>rpi-basic-image</strong> và <strong>rpi-hwup-image</strong>.</p>
 
 <p>Cả 2 đều là minimal image. Nhưng <strong>rpi-basic-image</strong> có sẵn ssh-server-dropbear và splash</p>
@@ -254,12 +157,7 @@ poky/meta-raspberrypi \
 <p>Chúng ta sẽ build <strong>rpi-basic-image</strong></p>
 
 <p>Lệnh build như sau</p>
-
-<pre><code class="language-bash">
-`bitbake rpi-basic-image`
-
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="sb">`</span>bitbake rpi-basic-image<span class="sb">`</span></code></pre></div>
 <p>Quá trình build này phụ thuộc vào perform của máy và tốc độ mạng.</p>
 
 <p>Có thể mất cả tiếng đồng hồ.</p>
@@ -298,12 +196,7 @@ poky/meta-raspberrypi \
 <p>Kiểm tra lại log hệ thống để xem, PI đã nhận dạng được thiết bị này chưa.</p>
 
 <p>Log như hình sau, ở đây t sử dụng lệnh</p>
-
-<pre><code class="language-bash">
-`tail -f /var/log/messages `
-
-</code></pre>
-
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="sb">`</span>tail -f /var/log/messages <span class="sb">`</span></code></pre></div>
 <p>Ta sẽ thấy log dưới đây khi cắm wire dongle vào PI.</p>
 
 <p><img src="{{ site.baseurl }}/assets/dsc_0086.jpg?w=300" alt="Featured image" /></p>
@@ -327,40 +220,24 @@ poky/meta-raspberrypi \
 
 <p>Trong thư mục build của yocto, add thêm dòng này vào <strong>conf/local.conf</strong><br />
 IMAGE_INSTALL_append = &ldquo; wpa-supplicant wireless-tools dhcp-client linux-firmware&rdquo;</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/example.com/tags/raspberrypi/" rel="tag">RaspberryPI</a></li>
+	</ul>
 </div>
-
-    
-    
-    
-        <h4 class="page-header">Related</h4>
-         <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/">Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</a></h4>
-    <h5>July 29, 2016</h5>
-    
-<a href="tags/kernel"><kbd class="item-tag">Kernel</kbd></a>
-
-<a href="tags/linuximage"><kbd class="item-tag">LinuxImage</kbd></a>
-
-<a href="tags/raspberrypi"><kbd class="item-tag">RaspberryPI</kbd></a>
+		</footer>
+	</article>
+</main>
 
 
 
-</div>
- 
-    
-
-    
-    
-        <h4 class="page-header">Comments</h4>
-        <div id="disqus_thread"></div>
+<section class="comments">
+	<div id="disqus_thread"></div>
 <script type="application/javascript">
     var disqus_config = function () {
     
@@ -373,25 +250,29 @@ IMAGE_INSTALL_append = &ldquo; wpa-supplicant wireless-tools dhcp-client linux-f
             return;
         }
         var d = document, s = d.createElement('script'); s.async = true;
-        s.src = '//' + "username" + '.disqus.com/embed.js';
+        s.src = '//' + "minatu2d" + '.disqus.com/embed.js';
         s.setAttribute('data-timestamp', +new Date());
         (d.head || d.body).appendChild(s);
     })();
 </script>
 <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
 <a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
-    
+</section>
 
-</main>
 
-        <footer>
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
-        </footer>
-
-        
-
-        
-    </body>
-
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Lazytrick.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/example.com/js/menu.js"></script>
+</body>
 </html>
-

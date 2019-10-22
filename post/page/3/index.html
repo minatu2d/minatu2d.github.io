@@ -1,244 +1,590 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Post - Lazytrick</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="alternate" type="application/rss+xml" href="example.com/post/index.xml" title="Lazytrick">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/example.com/css/style.css">
+	
+	<link rel="shortcut icon" href="/example.com/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/example.com" title="Lazytrick" rel="home">
+				<div class="logo__title">Lazytrick</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/">Home</a>
+		</li>
+		<li class="menu__item menu__item--active">
+			<a class="menu__link" href="example.com/post/">Posts</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/about/">About</a>
+		</li>
+	</ul>
+</nav>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Posts</title>
-        
-        <style>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Post</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-08-15-mot-chut-ve-driver-cho-usb-device-trong-linux/" rel="bookmark">
+			Một chút về Driver cho USB Device trong Linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Trong loại bài dịch <a href="https://lazytrick.wordpress.com/2016/01/25/usb-driver-va-usb-device-firmware-se-viet/">trước đây</a> nói về USB, tôi có nhắc một chút đến việc load đúng driver thì phía Host làm thế nào?</p>
+<p>Như ta đã biết, khi một thiết bị USB được cắm vào máy (Host), phía Host sẽ thực hiện một loạt thao tác từ xác định nguồn (bus, hay self), lấy thông tin tốc độ, các thông tin về descriptor (thiết bị, giao diện, các Endpoint). Cuối cùng để sử dụng các tính năng chính mà thiết bị cung cấp, thì hệ điều hành phía Host, dù là Windows, hay Linux, hay MacOS sẽ phải load driver tương ứng với thiết bị.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/" rel="bookmark">
+			Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh <strong>source</strong>, ta thực hiện build tạo image có có tên là <strong>rpi-basic-image</strong> thông qua lệnh:</p>
+<p>[code lang="shell"]<br />
+$bitbake rpi-basic-image<br />
+[/code]</p>
+<p>Thực ra còn 2 image khác ta có thể build đó là <strong>rpi-hwup-image</strong> <strong>rpi-test-image</strong>. Ta có thể thấy 2 file bb cho 2 image ở thư mục <strong>meta-raspberrypi/recipes-core/images/</strong>.</p>
+<p><strong>rpi-hwup-image</strong> : là image nhỏ nhất (có dịp sẽ thử)<br />
+<strong>rpi-basic-image</strong>: là image ta vấn dùng đến bây giờ.<br />
+<strong>rpi-test-image</strong> : là image dùng cho việc test. (có dịp sẽ thử)
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/" rel="bookmark">
+			Thiết lập IP mặc định của bản build Linux cho Raspberry PI bằng Yocto Project
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Để tiếp tục customize bản OS được build trong bài <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">trước</a>.<br />
+Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.<br />
+Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.</p>
+<p>Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</p>
+<p>[code lang=shell]<br />
+$source poky/oe-init-build-env build<br />
+[/code]</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/" rel="bookmark">
+			Thêm samba server vào bản build Linux cho Raspberry PI bằng Yocto Project
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project</a>.</p>
+<p>Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).</p>
+<p>Trong bài này, sẽ trình bày cách đưa <strong>Samba</strong> vào bản phân phối Linux đã được build ở bài trước.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/" rel="bookmark">
+			Hệ thống File Ubifs
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Gần đây, có thấy trên Board mạch phát triển của mình có xuất hiện 1 process là <strong>ubifs</strong>. Qua tìm hiểu mới biết rằng, em nó là <strong>UBIFS</strong>, được phát triển năm 2007 bởi <a href="http://www.nokia.com/">Nokia</a> với sự giúp đỡ của <a href="http://www.u-szeged.hu/">University of Szeged</a>, Hungary.</p>
+<p>Bắt đầu được đưa vào mainline của Linux 2.6.27 năm 2008.</p>
+<p>Hỏi thấy GG thấy được 1 <a href="https://kythuatmaytinh.wordpress.com/2008/05/26/h%E1%BB%87-th%E1%BB%91ng-file-flash-tren-linux/">bài giới thiệu chung về hệ thống file cho thiết bị nhớ Flash</a> của anh <a href="https://www.facebook.com/lddthao">Le Dinh Thao</a> trên blog <a href="https://kythuatmaytinh.wordpress.com/">kithuatmaytinh</a>.</p>
+<p>Trong bài có nói tới các vấn đề khi hệ thống sử dụng Flash gặp phải và có nói đến 2 hệ thống File khá triển vọng là <strong>LogFS</strong> và <strong>UBIFS</strong><br />
 
-    html body {
-        font-family: 'Raleway', sans-serif;
-        background-color: white;
-    }
-
-    :root {
-        --accent: red;
-        --border-width:  5px ;
-    }
-
-</style>
-
-
-<link rel="stylesheet" href="css/main.css">
-
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
-
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
-    
-    <script>hljs.initHighlightingOnLoad();</script>
-
-
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
-        
-            <link href="/post/index.xml" rel="alternate" type="application/rss&#43;xml" title="Lazytrick" />
-            <link href="/post/index.xml" rel="feed" type="application/rss&#43;xml" title="Lazytrick" />
-        
-
-        
-
-        
-            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
-
-        
-
-    </head>
-
-    <body>
-        
-
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Posts</a>
-                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse">
-                    
-                        <ul class="nav navbar-nav">
-                            
-                                <li><a href="/">Home</a></li>
-                            
-                                <li><a href="/post/">Posts</a></li>
-                            
-                                <li><a href="/tags/">Tags</a></li>
-                            
-                                <li><a href="/categories/">Category</a></li>
-                            
-                                <li><a href="/about/">About</a></li>
-                            
-                        </ul>
-                    
-                    
-                        <ul class="nav navbar-nav navbar-right">
-                            
-                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
-                            
-                        </ul>
-                    
-                </div>
-            </div>
-        </nav>
-
-
-<main>
-
-    <h2>Posts</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/">Ví dụ cơ bản với pthread trên Linux</a></h4>
-    <h5>May 20, 2017</h5>
-    
-<a href="tags/pthread"><kbd class="item-tag">pthread</kbd></a>
-
-<a href="tags/thread"><kbd class="item-tag">thread</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</a></h4>
-    <h5>May 14, 2017</h5>
-    
-<a href="tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-05-14-lenh-mov-trong-assembly/">Lệnh MOV trong Assembly</a></h4>
-    <h5>May 14, 2017</h5>
-    
-<a href="tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/">Tìm source code của USB Driver trên Linux</a></h4>
-    <h5>April 23, 2017</h5>
-    
-
-
-</div>
- 
-
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/" rel="bookmark">
+			Phân biệt Build vs Host vs Target
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.<br />
+Với người mới, hiểu rõ khái niệm là rất quan trọng.</p>
+<p>Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là <strong>Host Enviroment</strong>, <strong>Build Enviroment</strong>, và <strong>Target Enviroment</strong>. Có thể dịch nôm na là <strong>Môi trường chủ</strong>, <strong>Môi trường biên dịch</strong>, và <strong>Môi trường chạy đích</strong>.<br />
+Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.</p>
+<p>Trước khi bắt đầu với các ví dụ, ta nên xem qua một số nguồn diễn giải 3 khái niệm này.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/" rel="bookmark">
+			Tạo một bản build Linux cho Raspberry PI bằng Yocto Project
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.<br />
+Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.<br />
+Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề. Mà nếu không giải quyết được các vấn đề đó thì nội dung các bài khác sẽ không thể thực hiện được.<br />
+Do vậy, bài này sẽ tập trung vào tạo bản basic <strong>rpi-basic-image</strong> thôi.</p>
+<p>Link tham khảo:<br />
+<a href="http://mickey-happygolucky.hatenablog.com/entry/2015/02/14/002035">http://mickey-happygolucky.hatenablog.com/entry/2015/02/14/002035</a></p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/" rel="bookmark">
+			USB cho dev (Chap.06 – Các gói tin Setup)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.</p>
+<p>Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây. Ngoài ra, nó cũng quy định chặt hơn cho từng Request từ phía Host.</p>
+<ul>
+<li>Yêu cầu thông tin chuẩn của thiết bị (Standard Device request) mà không có dữ liệu (hay DATA Stage) thì phải hoàn thành trong vòng 50ms.</li>
+<li>Nếu yêu cầu có dữ liệu kèm theo (có DATA stage) thì dữ liệu phải được trao đổi sau ít nhất 500ms sau request được gửi đến.
+<ul>
+<li>Mỗi gói dữ liệu phải gửi trong 500ms sau khi gói trước được gửi</li>
+<li>Thông báo trạng thái (Status Stage) phải hoàn thành trong vòng 50ms sau khi gửi gói tin cuối cùng.</li>
+</ul>
+</li>
+<li>Lệnh SetAddresss (có chưa phần Data) phải được thực hiện và trả lại Status trong vòng 50ms. Phía thiết bị có 2ms để thực hiện thay địa chỉ trước khi request tiếp theo được gửi đến.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/" rel="bookmark">
+			USB cho dev (Chap.05 – Đặc tả thiết bị)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.</p>
+<p>Các đặc tả phổ biết nhất bao gồm:</p>
+<ul>
+<li>Miêu tả thiết bị (Device Descriptors)</li>
+<li>Miêu tả các cấu hình (Configuration Descriptors)</li>
+<li>Miêu tả giao diện (Interface Descriptors)</li>
+<li>Miêu tả điểm đầu cuối (EndPoint Descriptors)</li>
+<li>Các chuỗi sử dụng trong các miêu tả trên.</li>
+</ul>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/" rel="bookmark">
+			2 cách sử dụng thư viện trong Linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Mình đang gặp 1 vấn đề là 1 hàm <em>F1()</em> trong thư viện động mình viết <em>(lib1.so)</em> không hoạt động đúng như mong muốn. Trong hàm <em>F1()</em>có gọi một loại hàm <em>F21(), F22(), F23()...F2n()</em> từ 1 thư viện tĩnh <em>(lib2.a)</em> khác.</p>
+<p>Khi build không gặp lỗi,</p>
+<p>Khi biên dịch thư viện động này với 1 file <strong>sample.c</strong> để chưa <strong>main()</strong> để chạy thử và gọi hàm <em>F1() </em>từ thư viện động <em>lib1.so</em>. Kết quả vẫn mong muốn.</p>
+<p>Tuy nhiên, khi ném thư viện đó vào ứng dụng khác (mà mình không biết họ có sử dụng cùng cách làm với ví dụ của mình không) thì các hàm <em>F2x() </em>có vẻ vẫn chạy nhưng kết quả không như mong muốn, và luôn đưa ra những kết quả giống nhau.</p>
+<p>Tìm hiểu 1 chút về Dynamic Libraries, thì thấy có vẻ chưa hiểu kĩ lắm nên sẽ tìm 1 vài bài để dịch, đọc. Có thể chưa phải là đúng tutor cho đúng problem. Nhưng cứ dịch đã, hiểu được sẽ giải thích được và tìm ra được nguyên nhân ở trên.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/" rel="bookmark">
+			Ví dụ minh họa sử dụng pthread
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.</p>
+<p>Mục đích ban đầu nói đến ở bài <a href="https://lazytrick.wordpress.com/2015/07/16/dung-pthread-theo-cac-da-nen-tang-den-muc-nao/">Cơ bản về pthread</a>, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/" rel="bookmark">
+			USB cho dev (Chap.04 - Các loại Endpoint)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p><strong>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint</strong></p>
+<p>Control Transfer</p>
+<p>Interrupt Transfer</p>
+<p>Isochronous Transfer</p>
+<p>Bulk Transfer</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/" rel="bookmark">
+			USB cho dev (Chap.03 - Giao thức)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ "nguy hiểm", nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi. Trong thực tế, hầu hết USB Controller I.C.s sẽ lo hết mấy tầng dưới rồi. Hay nói cách khác, mấy tầng đó nhà phát triển cũng không thấy được.</p>
+<p>Mỗi USB Transaction bao gồm</p>
+<ul>
+<li>SMột packet chứa Token (Giống như Header cho biết cái gì sẽ đến tiếp sau đó) - luôn có</li>
+<li>Một packet chứa dữ liệu (có thể không có) , (chứa payload)</li>
+<li>Một packet chứa trạng thái (được sử dụng để thông báo trạng thái truyền và cung cấp cơ chế kiểm soát lỗi nữa)
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/" rel="bookmark">
+			USB cho Dev (Chp.02 - Phần cứng)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.</p>
+<p>Đầu kết nối (Connectors)</p>
+<p>Mọi thiết bị có một upstream "chảy"đến host, và mọi host có một downstream "chảy" thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs. Có 2 loại connector phổ biến là type A và type B. Như hình bên dưới đây:</p>
+<table width="60%">
+<tbody>
+<tr>
+<td width="50%"><img src="{{ site.baseurl }}/assets/contypea.gif" alt="" /></td>
+<td width="50%"><img src="{{ site.baseurl }}/assets/contypeb.gif" alt="" /></td>
+</tr>
+<tr>
+<td>Type A USB Connector</td>
+<td>Type B USB Connector</td>
+</tr>
+</tbody>
+</table>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/" rel="bookmark">
+			SCSI - Giao tiếp với USB Memory
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p><img class="  wp-image-533 aligncenter" src="{{ site.baseurl }}/assets/8gb-usb-flash-drive-rotation-2-0-usb-disk-model-pen-drive-memory-stick-8g-hot.jpg" alt="8GB-USB-Flash-Drive-Rotation-2-0-USB-DISK-Model-Pen-drive-memory-stick-8G-HOT.jpg" width="196" height="196" /></p>
+<p>Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). "USB Flash Memory" bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.</p>
+<p>Ở một số bài trước, tôi cũng viết về một số điểm chính của giao tiếp USB.</p>
+<p>Về cơ bản, phần mềm mà programer có thể viết cho USB hầu như được xác định từ sau bước tín hiệu. Tức là phía ứng dụng mức thấp (tức driver ấy) sẽ sử dụng các thanh và các ngắt được cung cấp để setup, nhận dữ liệu, gửi dữ liêu, phát hiện kết nối.</p>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/" rel="bookmark">
+			Trường Remain Length trong MQTT Fixed Header
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Như ta đã biết trong bản gốc và bản tiếng Việt của giao thức MQTT, đơn vị truyền tin trong MQTT là message. Message chứa 2 phần cơ bản là Header (phần mô tả thuộc tính dữ liệu) và Payload (phần mô tả dữ liệu). Phần header chứa 2 phần nữa là Header có độ dài cố định và Header có độ dài thay đổi được.
+Hầu hết các trường của phần Header cố định đều khá dễ hiểu, duy chỉ có 1 trường tương đối khó hiểu.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/" rel="bookmark">
+			RTOS - Hầu hết giống như một thư viện
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.</p>
+<p>Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver... Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.</p>
+<p>Gần đây, do chạy thử các Sample trên môi trường Non-OS, rồi OS. Nên vỡ ra được một số điều. Tất nhiên chưa được kiểm chứng kĩ lượng, đây chỉ là sự ghép các kiến thức rời rạc, rồi nắn cho nó nghe có vẻ logic. Không sao, cứ đưa ra dự đoán, chúng sẽ được kiểm chứng bằng trải nghiệm thực tế trong công việc.</p>
+<p>Cái NORTi (một hệ điều hành implement các API cho RTOS của iTRON Project)
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-02-21-khai-quat-ve-mqtt/" rel="bookmark">
+			Cờ Retain và QoS trong message PUBLISH
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Giao thức MQTT dựa trên mô hình publisher/subscriber (nhà cung cấp/người sử dụng), publisher có dữ liệu trên một lĩnh nào đó (được đại diện bằng các topic), phía subscriber (người mong muốn thông tin) sẽ mong muốn thông tin trên môt lĩnh vực nào đó (cũng được miêu tả bằng topic). Môt anh trung gian ở giữa sẽ nhận từ rất nhiều anh cung cấp trên rất nhiều lĩnh vực, sau đó xem xét, thông tin phù hợp để gửi đến những người sử dụng mà anh trung gian này biết.</p>
+<p>Message PUBLISH được gửi từ publisher đến server (hay broker, hay chính là anh trung gian) để cung cấp thông tin.</p>
+<p>Bài này nói về 2 trường của message PUBLISH, đó là QoS và Retain. Và 2 trường này tuy nằm ở phần <strong>header cố định</strong> (có trên mọi message). Về trường QoS chỉ được sử dụng ở 3 Message, trong đó PUBLISH (dùng cả 3 level 0, 1, 2), SUBSCRIBE và UNSUBSCRIBE (chỉ dùng level 1). Bài này chỉ nói về message PUBLISH thôi.</p>
+<ol>
+<li>Trường QoS</li>
+<li>Trường Retain</li>
+<li>Ví dụ thực tế với mosquitto</li>
+</ol>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/" rel="bookmark">
+			Một chút về RGB VGA, Digital RGB
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.</p>
+<p>Mô tả ngắn gọn ở đây để sau đỡ quên vậy:</p>
+<p>ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC...) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.</p>
+<p>Về chức năng, mình đang có một tín hiệu VGA, nhưng do không hiểu các khái niệm về đầu ra, đầu vào của chip này nên cũng mất một thời gian mới rõ được.</p>
+<p>Bài này sẽ note lại một số keyword xuất hiện trong Datasheet của ADV7401.</p>
+<ol>
+<li>Video Decoding là quá trình làm gì.</li>
+<li>Graphic Digitization là quá trình làm gì.</li>
+<li>720p, 1080i nói lên điều gì.</li>
+<li>VGA, SXGA nói lên điều gì.</li>
+<li>Một số keyword khác, có tìm hiểu nhưng không liên quan.</li>
+</ol>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/" rel="bookmark">
+			Hiểu thêm về HID Report Descriptor
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.</p>
+<p>Giờ xin dịch lại bài này một cách khái quát nhất.</p>
+<p>Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).</p>
+<p>Về nguyên tắc, từ khi cắm 1 thiết bị USB bất kì cắm vào cổng, cần trải qua 3 giai đoạn giao tiếp giữa máy tính và thiết bị để có thể hiểu nhau. Đó là Reset (về điện đóm), Configured (load các driver tương ứng), Sử dụng được (khi chúng di chuyển được con chuột, hoặc gõ được phím).</p>
+<p>Trong bài này giới thiệu dữ liệu trao đổi giữa HID Driver (nằm trên máy tính) và HID Device (hay về mặt phần mềm là Firmware chạy trên Device). Mà cụ thể nói về "HID Report Descriptor", cái được HID Device gửi lên HID Driver để báo cho Driver biết HID Device có những dữ liệu gì mà Driver có thể hỏi được, được tổ chức như thế nào.</p>
+<p>Link : <a href="http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/">http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/</a></p>
+<p>Một USB HID Report là một trong những descriptor (đặc tả) mà Host yêu cầu từ thiết bị USB. Thiết bị USB sẽ trả lời yêu cầu này bằng các Report. Nhưng Report này sẽ nói cho Host biết các dữ liệu trong quá trình sử dụng mà Device gửi lên nên được hiểu như thế nào. Trong bài này, tác giả Frank-Zhang(Sony Engineer) đã giới thiệu theo từng ví dụ.
+	</div>
+</article>
 </main>
 
-
-
-<div class="pages">
-
-    
-        <a class="icon pages-icon" href="/post/page/2/" rel="prev">
-            <i class="fa fa-arrow-left"></i>
-        </a>
-    
-
-    
-        <a class="icon pages-icon" href="/post/page/4/" rel="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    
-
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="example.com/post/page/2/">«</a>
+	<span class="pagination__item pagination__item--current">3/5</span>
+	<a class="pagination__item pagination__item--next btn" href="example.com/post/page/4/">»</a>
 </div>
 
 
-
-        <footer>
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
-        </footer>
-
-        
-
-        
-    </body>
-
+			</div>
+			
+<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="example.com" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2019-02-06-2015/">Bắt đầu về Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/">Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/">Thực hiện 3 phép tập hợp trên bash</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/">Một số thứ khi sử dụng command, viết script trong bash</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/">Ví dụ cơ bản với pthread trên Linux</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/basic">Basic</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/buildroot">Buildroot</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/codeskill">Codeskill</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/communication">Communication</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/compile">Compile</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/debug">Debug</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/driver">Driver</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/embedded">Embedded</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/firmware">Firmware</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/iot">Iot</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/its">Its</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/js">Js</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/kh%c3%a1c">Khác</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/machine-learning">Machine learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/microcontroller">Microcontroller</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/network">Network</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/openembbeded">Openembbeded</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/opensource">Opensource</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/python">Python</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/rtos">Rtos</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/security">Security</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/thread">Thread</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/usb">Usb</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/yoctoproject">Yoctoproject</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/aes" title="Aes">Aes</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/aligment" title="Aligment">Aligment</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/asm" title="Asm">Asm</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/asn1" title="Asn1">Asn1</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/assembly" title="Assembly">Assembly</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/bash" title="Bash">Bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/beyondlogic" title="Beyondlogic">Beyondlogic</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/bitbake" title="Bitbake">Bitbake</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/busybox" title="Busybox">Busybox</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/c" title="C">C</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/casting" title="Casting">Casting</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/cer" title="Cer">Cer</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/cmake" title="Cmake">Cmake</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/command" title="Command">Command</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/compiler" title="Compiler">Compiler</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/coursera" title="Coursera">Coursera</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/crosscompile" title="Crosscompile">Crosscompile</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/der" title="Der">Der</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/deserialization" title="Deserialization">Deserialization</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/device-file" title="Device file">Device file</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/digitalsignal" title="Digitalsignal">Digitalsignal</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/distro" title="Distro">Distro</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/draft" title="Draft">Draft</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/driver" title="Driver">Driver</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/editor" title="Editor">Editor</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/embbeded" title="Embbeded">Embbeded</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/error" title="Error">Error</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/fat" title="Fat">Fat</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/filesystem" title="Filesystem">Filesystem</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/firmware" title="Firmware">Firmware</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/fit" title="Fit">Fit</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/flash" title="Flash">Flash</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/gcc" title="Gcc">Gcc</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/gdb" title="Gdb">Gdb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/helloworld" title="Helloworld">Helloworld</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/hid" title="Hid">Hid</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/i2c" title="I2c">I2c</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/installation" title="Installation">Installation</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/itron" title="Itron">Itron</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/kernel" title="Kernel">Kernel</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/library" title="Library">Library</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linker" title="Linker">Linker</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linking" title="Linking">Linking</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linux" title="Linux">Linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linuximage" title="Linuximage">Linuximage</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/make" title="Make">Make</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/mqtt" title="Mqtt">Mqtt</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/nodejs" title="Nodejs">Nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/objectfile" title="Objectfile">Objectfile</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/open" title="Open">Open</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/per" title="Per">Per</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pickle" title="Pickle">Pickle</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pointer" title="Pointer">Pointer</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/porting" title="Porting">Porting</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pthread" title="Pthread">Pthread</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/qemu" title="Qemu">Qemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/raspberrypi" title="Raspberrypi">Raspberrypi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/recipe" title="Recipe">Recipe</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/renesas" title="Renesas">Renesas</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rgb" title="Rgb">Rgb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rootfs" title="Rootfs">Rootfs</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rt2870" title="Rt2870">Rt2870</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/samba" title="Samba">Samba</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/script" title="Script">Script</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/scsi" title="Scsi">Scsi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/serialization" title="Serialization">Serialization</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/smb" title="Smb">Smb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/spi" title="Spi">Spi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/staticip" title="Staticip">Staticip</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/systemd" title="Systemd">Systemd</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/thread" title="Thread">Thread</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/translate" title="Translate">Translate</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/uart" title="Uart">Uart</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/udev" title="Udev">Udev</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/unix" title="Unix">Unix</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usb" title="Usb">Usb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usbdescriptor" title="Usbdescriptor">Usbdescriptor</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usbmemory" title="Usbmemory">Usbmemory</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/vga" title="Vga">Vga</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/vim" title="Vim">Vim</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/wifiusb" title="Wifiusb">Wifiusb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/wireshark" title="Wireshark">Wireshark</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Lazytrick.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/example.com/js/menu.js"></script>
+</body>
 </html>
-

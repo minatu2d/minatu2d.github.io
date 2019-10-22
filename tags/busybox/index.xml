@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>busybox on Lazytrick</title>
-    <link>/tags/busybox/</link>
+    <link>example.com/tags/busybox/</link>
     <description>Recent content in busybox on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Mon, 10 Apr 2017 14:07:48 +0900</lastBuildDate>
     
-	<atom:link href="/tags/busybox/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/busybox/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Build, chạy nhân Linux trong QEMU ARM</title>
-      <link>/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
+      <link>example.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
+      <guid>example.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
       <description>&lt;p&gt;Chạy một bản Linux tối giản trên Qemu ARM&lt;/p&gt;
 &lt;p&gt;Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa&lt;br /&gt;
 các thành phần của một hệ thống Linux thông qua&lt;br /&gt;

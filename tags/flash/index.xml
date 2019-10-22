@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Flash on Lazytrick</title>
-    <link>/tags/flash/</link>
+    <link>example.com/tags/flash/</link>
     <description>Recent content in Flash on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Fri, 05 Aug 2016 01:50:50 +0900</lastBuildDate>
     
-	<atom:link href="/tags/flash/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/flash/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hệ thống File Ubifs</title>
-      <link>/post/2016-08-05-luot-qua-he-thong-file-ubifs/</link>
+      <link>example.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/</link>
       <pubDate>Fri, 05 Aug 2016 01:50:50 +0900</pubDate>
       
-      <guid>/post/2016-08-05-luot-qua-he-thong-file-ubifs/</guid>
+      <guid>example.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/</guid>
       <description>&lt;p&gt;Gần đây, có thấy trên Board mạch phát triển của mình có xuất hiện 1 process là &lt;strong&gt;ubifs&lt;/strong&gt;. Qua tìm hiểu mới biết rằng, em nó là &lt;strong&gt;UBIFS&lt;/strong&gt;, được phát triển năm 2007 bởi &lt;a href=&#34;http://www.nokia.com/&#34;&gt;Nokia&lt;/a&gt; với sự giúp đỡ của &lt;a href=&#34;http://www.u-szeged.hu/&#34;&gt;University of Szeged&lt;/a&gt;, Hungary.&lt;/p&gt;
 &lt;p&gt;Bắt đầu được đưa vào mainline của Linux 2.6.27 năm 2008.&lt;/p&gt;
 &lt;p&gt;Hỏi thấy GG thấy được 1 &lt;a href=&#34;https://kythuatmaytinh.wordpress.com/2008/05/26/h%E1%BB%87-th%E1%BB%91ng-file-flash-tren-linux/&#34;&gt;bài giới thiệu chung về hệ thống file cho thiết bị nhớ Flash&lt;/a&gt; của anh &lt;a href=&#34;https://www.facebook.com/lddthao&#34;&gt;Le Dinh Thao&lt;/a&gt; trên blog &lt;a href=&#34;https://kythuatmaytinh.wordpress.com/&#34;&gt;kithuatmaytinh&lt;/a&gt;.&lt;/p&gt;
@@ -26,10 +26,10 @@
     
     <item>
       <title>Bộ nhớ Flash</title>
-      <link>/post/2016-01-25-bo-nho-flash-se-viet/</link>
+      <link>example.com/post/2016-01-25-bo-nho-flash-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:29:09 +0900</pubDate>
       
-      <guid>/post/2016-01-25-bo-nho-flash-se-viet/</guid>
+      <guid>example.com/post/2016-01-25-bo-nho-flash-se-viet/</guid>
       <description>&lt;p&gt;Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.&lt;/p&gt;
 &lt;h5&gt;Lập trình với bộ nhớ Flash&lt;/h5&gt;
 &lt;p&gt;Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn &lt;strong&gt;0xFF&lt;/strong&gt; thôi.&lt;/p&gt;

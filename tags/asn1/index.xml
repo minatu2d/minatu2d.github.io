@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ASN1 on Lazytrick</title>
-    <link>/tags/asn1/</link>
+    <link>example.com/tags/asn1/</link>
     <description>Recent content in ASN1 on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Tue, 29 Nov 2016 14:48:30 +0900</lastBuildDate>
     
-	<atom:link href="/tags/asn1/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="example.com/tags/asn1/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>PER trong ASN.1 Encoding</title>
-      <link>/post/2016-11-29-per-trong-asn-1-encoding/</link>
+      <link>example.com/post/2016-11-29-per-trong-asn-1-encoding/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>/post/2016-11-29-per-trong-asn-1-encoding/</guid>
+      <guid>example.com/post/2016-11-29-per-trong-asn-1-encoding/</guid>
       <description>&lt;p&gt;&lt;strong&gt;PER&lt;/strong&gt; là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng &lt;strong&gt;TLV&lt;/strong&gt; như &lt;strong&gt;BER&lt;/strong&gt;, &lt;strong&gt;PER&lt;/strong&gt; sử dụng &lt;em&gt;Preamble&lt;/em&gt; (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là &lt;strong&gt;PLV&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Đơn vị biểu diễn của &lt;strong&gt;PER&lt;/strong&gt; không phải Octet mà là Bit. Mỗi phần tử sẽ thuộc 1 trong 3 loại sau:&lt;br /&gt;
 1. Trường dư bit, tức là dãy bit không thể biểu diễn bằng một số nguyên các Octet.&lt;br /&gt;
@@ -27,10 +27,10 @@
     
     <item>
       <title>CER/DER trong ASN.1 Encoding</title>
-      <link>/post/2016-11-25-phuong-thuc-cerder/</link>
+      <link>example.com/post/2016-11-25-phuong-thuc-cerder/</link>
       <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
       
-      <guid>/post/2016-11-25-phuong-thuc-cerder/</guid>
+      <guid>example.com/post/2016-11-25-phuong-thuc-cerder/</guid>
       <description>&lt;p&gt;Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.&lt;/p&gt;
 &lt;p&gt;Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào &lt;strong&gt;BER&lt;/strong&gt;, và tạo ra &lt;strong&gt;CER&lt;/strong&gt; và &lt;strong&gt;DER&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Sự khác nhau chủ yếu giữa &lt;strong&gt;CER&lt;/strong&gt; và &lt;strong&gt;DER&lt;/strong&gt; là về biểu diễn trường độ dài. &lt;strong&gt;Length(L)&lt;/strong&gt;. Trong khi &lt;strong&gt;DER&lt;/strong&gt; sử dụng một định dạng với độ dài cố định, thì &lt;strong&gt;CER&lt;/strong&gt; sử dụng định dạng với độ dài không có định,&lt;br /&gt;
@@ -39,10 +39,10 @@
     
     <item>
       <title>ASN.1 - BER (Basic Encoding Rules)</title>
-      <link>/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
+      <link>example.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
       <pubDate>Thu, 24 Nov 2016 15:58:01 +0900</pubDate>
       
-      <guid>/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
+      <guid>example.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
       <description>&lt;p&gt;Tiếp tục về &lt;a href=&#34;https://lazytrick.wordpress.com/tag/asn1/&#34;&gt;ASN.1&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)&lt;/p&gt;
 &lt;p&gt;Ta sẽ tiếp tục nói về hiện thực dữ liệu.&lt;br /&gt;
@@ -56,10 +56,10 @@ Các phương thức để hiện thực dữ liệu gồm có: &lt;strong&gt;BE
     
     <item>
       <title>ASN.1 - Cú pháp cơ bản</title>
-      <link>/post/2016-11-16-asn-1-cu-phap-co-ban/</link>
+      <link>example.com/post/2016-11-16-asn-1-cu-phap-co-ban/</link>
       <pubDate>Wed, 16 Nov 2016 15:49:05 +0900</pubDate>
       
-      <guid>/post/2016-11-16-asn-1-cu-phap-co-ban/</guid>
+      <guid>example.com/post/2016-11-16-asn-1-cu-phap-co-ban/</guid>
       <description>&lt;p&gt;Tiếp theo loạt bài về ASN.1, bài này sẽ &#34;dịch&#34; tài liệu của anh &lt;a href=&#34;http://www5d.biglobe.ne.jp/~stssk/mail.html&#34;&gt;Isida So&lt;/a&gt; nói về cú pháp cơ bản của ASN.1.&lt;/p&gt;
 &lt;p&gt;Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.&lt;/p&gt;
 &lt;p&gt;ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.&lt;/p&gt;
@@ -79,10 +79,10 @@ TelephoneNumber ::= NumericString&lt;br /&gt;
     
     <item>
       <title>ASN.1 là gì? Tại sao nó quan trọng.</title>
-      <link>/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</link>
+      <link>example.com/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</link>
       <pubDate>Sat, 12 Nov 2016 08:51:58 +0900</pubDate>
       
-      <guid>/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</guid>
+      <guid>example.com/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</guid>
       <description>&lt;p&gt;Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.&lt;/p&gt;
 &lt;p&gt;Google tiếng Việt thấy khá ít thông tin về ASN.1.&lt;br /&gt;
 Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.&lt;/p&gt;

@@ -1,242 +1,431 @@
 <!DOCTYPE html>
-<html lang="en-us">
-    <head>
-        
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Basic - Lazytrick</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="alternate" type="application/rss+xml" href="example.com/categories/basic/index.xml" title="Lazytrick">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/example.com/css/style.css">
+	
+	<link rel="shortcut icon" href="/example.com/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/example.com" title="Lazytrick" rel="home">
+				<div class="logo__title">Lazytrick</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/">Home</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/post/">Posts</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="example.com/about/">About</a>
+		</li>
+	</ul>
+</nav>
 
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Basic</title>
-        
-        <style>
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Basic</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/" rel="bookmark">
+			RTOS - Hầu hết giống như một thư viện
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.</p>
+<p>Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver... Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.</p>
+<p>Gần đây, do chạy thử các Sample trên môi trường Non-OS, rồi OS. Nên vỡ ra được một số điều. Tất nhiên chưa được kiểm chứng kĩ lượng, đây chỉ là sự ghép các kiến thức rời rạc, rồi nắn cho nó nghe có vẻ logic. Không sao, cứ đưa ra dự đoán, chúng sẽ được kiểm chứng bằng trải nghiệm thực tế trong công việc.</p>
+<p>Cái NORTi (một hệ điều hành implement các API cho RTOS của iTRON Project)
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/" rel="bookmark">
+			Một chút về RGB VGA, Digital RGB
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.</p>
+<p>Mô tả ngắn gọn ở đây để sau đỡ quên vậy:</p>
+<p>ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC...) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.</p>
+<p>Về chức năng, mình đang có một tín hiệu VGA, nhưng do không hiểu các khái niệm về đầu ra, đầu vào của chip này nên cũng mất một thời gian mới rõ được.</p>
+<p>Bài này sẽ note lại một số keyword xuất hiện trong Datasheet của ADV7401.</p>
+<ol>
+<li>Video Decoding là quá trình làm gì.</li>
+<li>Graphic Digitization là quá trình làm gì.</li>
+<li>720p, 1080i nói lên điều gì.</li>
+<li>VGA, SXGA nói lên điều gì.</li>
+<li>Một số keyword khác, có tìm hiểu nhưng không liên quan.</li>
+</ol>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/" rel="bookmark">
+			Hiểu thêm về HID Report Descriptor
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.</p>
+<p>Giờ xin dịch lại bài này một cách khái quát nhất.</p>
+<p>Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).</p>
+<p>Về nguyên tắc, từ khi cắm 1 thiết bị USB bất kì cắm vào cổng, cần trải qua 3 giai đoạn giao tiếp giữa máy tính và thiết bị để có thể hiểu nhau. Đó là Reset (về điện đóm), Configured (load các driver tương ứng), Sử dụng được (khi chúng di chuyển được con chuột, hoặc gõ được phím).</p>
+<p>Trong bài này giới thiệu dữ liệu trao đổi giữa HID Driver (nằm trên máy tính) và HID Device (hay về mặt phần mềm là Firmware chạy trên Device). Mà cụ thể nói về "HID Report Descriptor", cái được HID Device gửi lên HID Driver để báo cho Driver biết HID Device có những dữ liệu gì mà Driver có thể hỏi được, được tổ chức như thế nào.</p>
+<p>Link : <a href="http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/">http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/</a></p>
+<p>Một USB HID Report là một trong những descriptor (đặc tả) mà Host yêu cầu từ thiết bị USB. Thiết bị USB sẽ trả lời yêu cầu này bằng các Report. Nhưng Report này sẽ nói cho Host biết các dữ liệu trong quá trình sử dụng mà Device gửi lên nên được hiểu như thế nào. Trong bài này, tác giả Frank-Zhang(Sony Engineer) đã giới thiệu theo từng ví dụ.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-01-25-bo-nho-flash-se-viet/" rel="bookmark">
+			Bộ nhớ Flash
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.</p>
+<h5>Lập trình với bộ nhớ Flash</h5>
+<p>Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn <strong>0xFF</strong> thôi.</p>
+<h5>Serial Flash</h5>
+<p>Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất. Vì giao tiếp được bằng các chuẩn Serial như SPI, I2C nên nó dễ dàng ghép nối với các chip trên board.</p>
+<h5>NAND và NOR</h5>
+<p>Có 2 điểm khác biệt giữa 2
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/" rel="bookmark">
+			I2C - Kế thừa UART và SPI (sẽ viết)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/" rel="bookmark">
+			USB cho Dev (Chp.01 - Giới thiệu)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.</p>
+<p>Link gốc tại <a href="http://www.beyondlogic.org/usbnutshell/usb1.shtml">http://www.beyondlogic.org/usbnutshell/usb1.shtml</a></p>
+<h4>Tóm tắt về USB</h4>
+<h5>Hiểu chuẩn USB để sử dụng trong phát triển</h5>
+<p>
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2016-01-25-tang-thap-cua-usb-se-viet/" rel="bookmark">
+			Tầng thấp của USB
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		USB - Khỏi cần nói thì nó cũng đã quá nổi tiếng về sự phổ biến rồi. Gần như mọi thứ đều mặc định phải có kết nối USB, cổng USB gần như là bắt buộc trên máy tính, và rất nhiều thiết bị điện tử ta thấy. Từ USB1.1 đến 2.0, rồi gần đây nhất là 3.0. Rồi gần đây người ta có nhắc nhiều đến USB Type C.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2015-12-27-khai-quat-ve-fat/" rel="bookmark">
+			Khái quát về FAT
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Trong quá trình porting sang hệ điều hành ITRON-based (NORTi), đã có dịp tìm hiểu về FAT, thấy bài của anh ELMちゃん này đầy đủ những thứ mình muốn biết về FAT nên sẽ dịch lại cả bài ở đây.
+Link gốc: http://elm-chan.org/docs/fat.html
+Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Spec , nhưng sẽ được giản luợc và bô sung thêm phần giải thích khái niệm mà bản gốc không có.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2015-12-27-oe-tai-sao-van-dung-fat/" rel="bookmark">
+			[OE] Tại sao vẫn dùng FAT
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Bài hôm nay nói về một hệ thống file được sử dụng khá nhiều trên các phần mềm chạy trên mạch.
+Dù hiện nay có rất nhiều hệ thống file được nói đến như NTFS, Ext3, Ext4&hellip;Hầu hết những hệ thống file đó được sử dụng chủ yếu trên các máy có năng lực tính toán cao và khả năng lưu trữ lớn. Thế còn với những máy có năng lực tính toán hạn chế, dung lượng lưu trữ nhỏ thì sẽ sử dụng hệ thống file nào.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2015-12-22-usbcac-khai-niem-ve-usb/" rel="bookmark">
+			[USB]Các khái niệm về USB
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Kết nối USB, chắc chắn ai cũng biết. Mỗi người đểu sở hữu ít nhất một thiết bị có kết nối này.
+Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập trình giống như người dùng vẫn hiểu về nó.
+Đúng là với người dùng cuối, một thiết bị có kết nối thì khả năng có nó có thể kết với máy tính như smartphone, máy nghe nhạc, bộ sạc&hellip;.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2015-08-04-giao-thuc-mqtt/" rel="bookmark">
+			Giao thức MQTT
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Bài này dự là sẽ dịch lại đặc của giao thức MQTT này, nhằm có một cách hiểu tổng quát về MQTT protocol.
+Link gốc :
+http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html
+Update 2017/03/24: Bản dịch của MQTT đã được chuyển sang địa chỉ sau:
+http://minatu2d.github.io/
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="example.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/" rel="bookmark">
+			Cơ bản về pthread
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		<p>Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.</p>
 
-    html body {
-        font-family: 'Raleway', sans-serif;
-        background-color: white;
-    }
+<p>Khi gặp những ứng dụng chạy đa nền tảng mình mới thấy quảng cáo chỉ miêu tả rất nhỏ thôi. Các dự án thực tế luôn có cực kì nhiều vấn đề. Nó không phải là hello world mà chỉ bằng vài click là đa nền tảng được. Ta biết rằng, những thư viện như Qt hỗ trợ rất nhiều. Nhưng thông thường các dự án chỉ dùng 1 phần thôi, còn lại họ tự viết hoặc sử dụng lại ở đâu đó. Vì vậy, nếu nói một dự án pure Qt thì đương nhiên dễ dàng chuyển đổi giữa các platform. Còn một dự án không phải là pure Qt thì rất nhiều vấn đề phát sinh.</p>
 
-    :root {
-        --accent: red;
-        --border-width:  5px ;
-    }
+<p>Nói lan man rồi, phần chính của bài này là nói về <strong>pthread</strong>.<br />
+Pthread được giới thiệu là thư viện implement chuẩn POSIX đặc tả việc tạo nhiều luồng tính toán song song.<br />
+Hầu hết các implement của pthread là trên Linux. Ta hiểu POSIX miểu tả các API ( tức là các tên hàm và chức năng của chúng). Khi viết các hàm đó, thì tùy mỗi nền tảng mà người ta sẽ có những các khác nhau để thực hiện được nhiệm vụ được miêu tả trong đặc tả của các hàm này.</p>
 
-</style>
+<p>Trong bài này ta sẽ tìm hiểu một số thứ về pthread trên Linux và Window, chắc bài này sẽ khá đầu &ldquo;lâu&rdquo; nên thui mỗi hôm viết một tẹo vậy.</p>
 
+<p>Thứ tự thực hiện sẽ như sau:</p>
 
-<link rel="stylesheet" href="css/main.css">
-
-
-
-
-
-<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
-
-
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"> 
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
- 
-
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/c.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/python.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/bash.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/html.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/javascript.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/ruby.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/shell.min.js"></script>
-    
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/perl.min.js"></script>
-    
-    <script>hljs.initHighlightingOnLoad();</script>
-
-
-
-
-
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-
-<script>$(document).on('click', function() { $('.collapse').collapse('hide'); })</script>
- <meta name="generator" content="Hugo 0.58.3" />
-        
-            <link href="/categories/basic/index.xml" rel="alternate" type="application/rss&#43;xml" title="Lazytrick" />
-            <link href="/categories/basic/index.xml" rel="feed" type="application/rss&#43;xml" title="Lazytrick" />
-        
-
-        
-
-        
-            <script type="text/javascript" async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
-
-        
-
-    </head>
-
-    <body>
-        
-
-        <nav class="navbar navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <a class="navbar-brand visible-xs" href="#">Basic</a>
-                    <button class="navbar-toggle" data-target=".navbar-collapse" data-toggle="collapse">
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div class="collapse navbar-collapse">
-                    
-                        <ul class="nav navbar-nav">
-                            
-                                <li><a href="/">Home</a></li>
-                            
-                                <li><a href="/post/">Posts</a></li>
-                            
-                                <li><a href="/tags/">Tags</a></li>
-                            
-                                <li><a href="/categories/">Category</a></li>
-                            
-                                <li><a href="/about/">About</a></li>
-                            
-                        </ul>
-                    
-                    
-                        <ul class="nav navbar-nav navbar-right">
-                            
-                                <li class="navbar-icon"><a href="mailto:pvta2pn@gmail.com"><i class="fa fa-envelope-o"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://github.com/minatu2d/"><i class="fa fa-github"></i></a></li>
-                            
-                                <li class="navbar-icon"><a href="https://facebook.com/pvta2cvp/"><i class="fa fa-facebook"></i></a></li>
-                            
-                        </ul>
-                    
-                </div>
-            </div>
-        </nav>
-
-
-<main>
-
-    <h2>Basic</h2>
-
-     <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-04-02-4-thanh-phan-cua-embedded-linux/">4 thành phần của Embedded Linux</a></h4>
-    <h5>April 2, 2017</h5>
-    
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/">Một vài lệnh Bitbake hữu dụng</a></h4>
-    <h5>February 19, 2017</h5>
-    
-<a href="tags/bitbake"><kbd class="item-tag">Bitbake</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/">Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</a></h4>
-    <h5>February 11, 2017</h5>
-    
-<a href="tags/asm"><kbd class="item-tag">Asm</kbd></a>
-
-<a href="tags/assembly"><kbd class="item-tag">Assembly</kbd></a>
-
-
-
-</div>
-  <div class="item">
-
-    
-    
-    
-
-    
-    
-
-    <h4><a href="/post/2017-01-20-so-sanh-buildroot-va-yocto-project/">So sánh giữa Buildroot và Yocto Project</a></h4>
-    <h5>January 20, 2017</h5>
-    
-
-
-</div>
- 
-
+<p>I. Những thứ cần biết về pthread API<br />
+II. Test thử trên Window.<br />
+III. Test thử trên Linux.</p>
+	</div>
+</article>
 </main>
 
-
-
-<div class="pages">
-
-    
-        <a class="icon pages-icon" href="/categories/basic/page/2/" rel="prev">
-            <i class="fa fa-arrow-left"></i>
-        </a>
-    
-
-    
-        <a class="icon pages-icon" href="/categories/basic/page/4/" rel="next">
-            <i class="fa fa-arrow-right"></i>
-        </a>
-    
-
+<div class="pagination">
+	<a class="pagination__item pagination__item--prev btn" href="example.com/categories/basic/page/2/">«</a>
+	<span class="pagination__item pagination__item--current">3/3</span>
 </div>
 
 
-
-        <footer>
-            <p class="copyright text-muted">&copy; All rights reserved. Powered by <a href="https://gohugo.io">Hugo</a> and <a href="https://github.com/calintat/minimal">Minimal</a>.</p>
-        </footer>
-
-        
-
-        
-    </body>
-
+			</div>
+			
+<aside class="sidebar"><div class="widget-search widget">
+	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
+		<label>
+			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
+		</label>
+		<input class="widget-search__submit" type="submit" value="Search">
+		<input type="hidden" name="sitesearch" value="example.com" />
+	</form>
+</div>
+<div class="widget-recent widget">
+	<h4 class="widget__title">Recent Posts</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2019-02-06-2015/">Bắt đầu về Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/">Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/">Thực hiện 3 phép tập hợp trên bash</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/">Một số thứ khi sử dụng command, viết script trong bash</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/">Ví dụ cơ bản với pthread trên Linux</a></li>
+			<li class="widget__item"><a class="widget__link" href="example.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Categories</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/basic">Basic</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/buildroot">Buildroot</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/codeskill">Codeskill</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/communication">Communication</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/compile">Compile</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/debug">Debug</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/driver">Driver</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/embedded">Embedded</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/firmware">Firmware</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/iot">Iot</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/its">Its</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/js">Js</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/kh%c3%a1c">Khác</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/machine-learning">Machine learning</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/microcontroller">Microcontroller</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/network">Network</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/openembbeded">Openembbeded</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/opensource">Opensource</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/python">Python</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/rtos">Rtos</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/security">Security</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/thread">Thread</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/usb">Usb</a></li>
+			<li class="widget__item"><a class="widget__link" href="/example.com/categories/yoctoproject">Yoctoproject</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Tags</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/aes" title="Aes">Aes</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/aligment" title="Aligment">Aligment</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/asm" title="Asm">Asm</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/asn1" title="Asn1">Asn1</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/assembly" title="Assembly">Assembly</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/bash" title="Bash">Bash</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/beyondlogic" title="Beyondlogic">Beyondlogic</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/bitbake" title="Bitbake">Bitbake</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/busybox" title="Busybox">Busybox</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/c" title="C">C</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/casting" title="Casting">Casting</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/cer" title="Cer">Cer</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/cmake" title="Cmake">Cmake</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/command" title="Command">Command</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/compiler" title="Compiler">Compiler</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/coursera" title="Coursera">Coursera</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/crosscompile" title="Crosscompile">Crosscompile</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/der" title="Der">Der</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/deserialization" title="Deserialization">Deserialization</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/device-file" title="Device file">Device file</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/digitalsignal" title="Digitalsignal">Digitalsignal</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/distro" title="Distro">Distro</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/draft" title="Draft">Draft</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/driver" title="Driver">Driver</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/editor" title="Editor">Editor</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/embbeded" title="Embbeded">Embbeded</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/error" title="Error">Error</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/fat" title="Fat">Fat</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/filesystem" title="Filesystem">Filesystem</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/firmware" title="Firmware">Firmware</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/fit" title="Fit">Fit</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/flash" title="Flash">Flash</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/gcc" title="Gcc">Gcc</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/gdb" title="Gdb">Gdb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/helloworld" title="Helloworld">Helloworld</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/hid" title="Hid">Hid</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/i2c" title="I2c">I2c</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/installation" title="Installation">Installation</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/itron" title="Itron">Itron</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/kernel" title="Kernel">Kernel</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/library" title="Library">Library</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linker" title="Linker">Linker</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linking" title="Linking">Linking</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linux" title="Linux">Linux</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/linuximage" title="Linuximage">Linuximage</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/make" title="Make">Make</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/mqtt" title="Mqtt">Mqtt</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/nodejs" title="Nodejs">Nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/objectfile" title="Objectfile">Objectfile</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/open" title="Open">Open</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/per" title="Per">Per</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pickle" title="Pickle">Pickle</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pointer" title="Pointer">Pointer</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/porting" title="Porting">Porting</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/pthread" title="Pthread">Pthread</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/qemu" title="Qemu">Qemu</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/raspberrypi" title="Raspberrypi">Raspberrypi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/recipe" title="Recipe">Recipe</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/renesas" title="Renesas">Renesas</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rgb" title="Rgb">Rgb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rootfs" title="Rootfs">Rootfs</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/rt2870" title="Rt2870">Rt2870</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/samba" title="Samba">Samba</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/script" title="Script">Script</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/scsi" title="Scsi">Scsi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/serialization" title="Serialization">Serialization</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/smb" title="Smb">Smb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/spi" title="Spi">Spi</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/staticip" title="Staticip">Staticip</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/systemd" title="Systemd">Systemd</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/thread" title="Thread">Thread</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/translate" title="Translate">Translate</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/uart" title="Uart">Uart</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/udev" title="Udev">Udev</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/unix" title="Unix">Unix</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usb" title="Usb">Usb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usbdescriptor" title="Usbdescriptor">Usbdescriptor</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/usbmemory" title="Usbmemory">Usbmemory</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/vga" title="Vga">Vga</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/vim" title="Vim">Vim</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/wifiusb" title="Wifiusb">Wifiusb</a>
+		<a class="widget-taglist__link widget__link btn" href="/example.com/tags/wireshark" title="Wireshark">Wireshark</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Lazytrick.
+			<span class="footer__copyright-credits">Generated with <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a> theme.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/example.com/js/menu.js"></script>
+</body>
 </html>
-
