@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>HelloWorld on Lazytrick</title>
-    <link>example.com/tags/helloworld/</link>
+    <link>https://minatu2d.github.io/tags/helloworld/</link>
     <description>Recent content in HelloWorld on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 22:00:04 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/helloworld/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/helloworld/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>4 Stage khi biên dịch HelloWorld.c</title>
-      <link>example.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
+      <link>https://minatu2d.github.io/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>example.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
+      <guid>https://minatu2d.github.io/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
       <description>&lt;p&gt;Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.&lt;br /&gt;
 Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.&lt;br /&gt;
 Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.&lt;/p&gt;
@@ -39,10 +39,10 @@ HelloWorld&lt;br /&gt;
     
     <item>
       <title>Một chút hiểu thêm về &#34;Hello World&#34; trong C.</title>
-      <link>example.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
+      <link>https://minatu2d.github.io/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
       <pubDate>Wed, 21 Dec 2016 05:31:09 +0900</pubDate>
       
-      <guid>example.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
+      <guid>https://minatu2d.github.io/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
       <description>&lt;p&gt;Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.&lt;/p&gt;
 &lt;p&gt;Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì&lt;br /&gt;
 một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
@@ -51,10 +51,10 @@ một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
     
     <item>
       <title>[OE]Bitbake - Từ Hello World đến một Distro</title>
-      <link>example.com/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</link>
+      <link>https://minatu2d.github.io/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</link>
       <pubDate>Sat, 25 Apr 2015 07:50:24 +0900</pubDate>
       
-      <guid>example.com/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</guid>
+      <guid>https://minatu2d.github.io/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;{{ site.baseurl }}/assets/user-configuration.png?w=300&#34; alt=&#34;user-configuration&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Bitbake là một công cụ cốt lõi của &lt;a href=&#34;https://www.yoctoproject.org/about&#34;&gt;Yocto Project&lt;/a&gt;. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.&lt;/p&gt;

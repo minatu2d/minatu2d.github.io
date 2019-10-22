@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>ITRON on Lazytrick</title>
-    <link>example.com/tags/itron/</link>
+    <link>https://minatu2d.github.io/tags/itron/</link>
     <description>Recent content in ITRON on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Tue, 01 Mar 2016 15:25:24 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/itron/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/itron/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>RTOS - Hầu hết giống như một thư viện</title>
-      <link>example.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</link>
+      <link>https://minatu2d.github.io/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</link>
       <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
       
-      <guid>example.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</guid>
+      <guid>https://minatu2d.github.io/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</guid>
       <description>&lt;p&gt;Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.&lt;/p&gt;
 &lt;p&gt;Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver... Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.&lt;/p&gt;
 &lt;p&gt;Gần đây, do chạy thử các Sample trên môi trường Non-OS, rồi OS. Nên vỡ ra được một số điều. Tất nhiên chưa được kiểm chứng kĩ lượng, đây chỉ là sự ghép các kiến thức rời rạc, rồi nắn cho nó nghe có vẻ logic. Không sao, cứ đưa ra dự đoán, chúng sẽ được kiểm chứng bằng trải nghiệm thực tế trong công việc.&lt;/p&gt;
@@ -25,10 +25,10 @@
     
     <item>
       <title>Hệ điều hành ITRON-based trông như thế nào?(sẽ viết)</title>
-      <link>example.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</link>
+      <link>https://minatu2d.github.io/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:25:05 +0900</pubDate>
       
-      <guid>example.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</guid>
+      <guid>https://minatu2d.github.io/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</guid>
       <description>Có lẽ viết về ITRON cần toàn diện một chút, tiếc là không có mạch để thử.
 Cứ viết trước 3 đề mục lớn để có hướng để ý, tìm hiểu.
  ITRON-OS là gì? Những thuật ngữ cơ bản Người ta đã viết ITRON như thế nào?  &amp;nbsp;</description>

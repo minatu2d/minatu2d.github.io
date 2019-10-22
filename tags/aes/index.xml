@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>AES on Lazytrick</title>
-    <link>example.com/tags/aes/</link>
+    <link>https://minatu2d.github.io/tags/aes/</link>
     <description>Recent content in AES on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Tue, 05 Jan 2016 14:48:34 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/aes/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/aes/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>ECB, CBC trong AES</title>
-      <link>example.com/post/2016-01-05-ecb-cbc-trong-aes/</link>
+      <link>https://minatu2d.github.io/post/2016-01-05-ecb-cbc-trong-aes/</link>
       <pubDate>Tue, 05 Jan 2016 14:48:34 +0900</pubDate>
       
-      <guid>example.com/post/2016-01-05-ecb-cbc-trong-aes/</guid>
+      <guid>https://minatu2d.github.io/post/2016-01-05-ecb-cbc-trong-aes/</guid>
       <description>Một trong những phương pháp mã hóa dữ liệu được sử dụng như là một chuẩn. Đó là AES (Advanced Encryption Standard)
 Về mã hóa, là quá trình biến dữ liệu rõ (plain) thành dữ liệu nhiễu (encrypt).
 1. Hai cách ứng dụng Mã hóa nói chung, thường sử dụng dụng một phương pháp toán học, mã học nào đó để làm nhiễu một cách chủ động thông tin ban đầu.</description>

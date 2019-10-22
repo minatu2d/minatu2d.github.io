@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>OpenEmbbeded on Lazytrick</title>
-    <link>example.com/categories/openembbeded/</link>
+    <link>https://minatu2d.github.io/categories/openembbeded/</link>
     <description>Recent content in OpenEmbbeded on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Sun, 02 Apr 2017 14:29:17 +0900</lastBuildDate>
     
-	<atom:link href="example.com/categories/openembbeded/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/categories/openembbeded/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>4 thành phần của Embedded Linux</title>
-      <link>example.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</link>
+      <link>https://minatu2d.github.io/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</link>
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
-      <guid>example.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</guid>
+      <guid>https://minatu2d.github.io/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</guid>
       <description>&lt;h2&gt;4 thành phần của Embedded Linux&lt;/h2&gt;
 &lt;p&gt;Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)...cho đến các thiết bị gia dụng, gia đình.&lt;/p&gt;
 &lt;p&gt;Khi sử dụng máy tính cá nhân, server ta dễ dàng &#34;sờ&#34; thấy được các thành phần của Linux như các tiến trình, shell..etc.&lt;br /&gt;
@@ -26,29 +26,29 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
     
     <item>
       <title>Một vài lệnh Bitbake hữu dụng</title>
-      <link>example.com/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</link>
+      <link>https://minatu2d.github.io/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</link>
       <pubDate>Sun, 19 Feb 2017 00:14:48 +0900</pubDate>
       
-      <guid>example.com/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</guid>
+      <guid>https://minatu2d.github.io/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</guid>
       <description>&lt;p&gt;Có một vài lệnh hữu dụng được cộng đồng sử dụng board NXP chia sẻ, mình sẽ note ở đây cho dễ tìm vậy. Link tại &lt;a href=&#34;https://community.nxp.com/docs/DOC-94953&#34;&gt;đây&lt;/a&gt;.</description>
     </item>
     
     <item>
       <title>Một chút về Driver cho USB Device trong Linux</title>
-      <link>example.com/post/2016-08-15-mot-chut-ve-driver-cho-usb-device-trong-linux/</link>
+      <link>https://minatu2d.github.io/post/2016-08-15-mot-chut-ve-driver-cho-usb-device-trong-linux/</link>
       <pubDate>Mon, 15 Aug 2016 05:47:10 +0900</pubDate>
       
-      <guid>example.com/post/2016-08-15-mot-chut-ve-driver-cho-usb-device-trong-linux/</guid>
+      <guid>https://minatu2d.github.io/post/2016-08-15-mot-chut-ve-driver-cho-usb-device-trong-linux/</guid>
       <description>&lt;p&gt;Trong loại bài dịch &lt;a href=&#34;https://lazytrick.wordpress.com/2016/01/25/usb-driver-va-usb-device-firmware-se-viet/&#34;&gt;trước đây&lt;/a&gt; nói về USB, tôi có nhắc một chút đến việc load đúng driver thì phía Host làm thế nào?&lt;/p&gt;
 &lt;p&gt;Như ta đã biết, khi một thiết bị USB được cắm vào máy (Host), phía Host sẽ thực hiện một loạt thao tác từ xác định nguồn (bus, hay self), lấy thông tin tốc độ, các thông tin về descriptor (thiết bị, giao diện, các Endpoint). Cuối cùng để sử dụng các tính năng chính mà thiết bị cung cấp, thì hệ điều hành phía Host, dù là Windows, hay Linux, hay MacOS sẽ phải load driver tương ứng với thiết bị.</description>
     </item>
     
     <item>
       <title>Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project</title>
-      <link>example.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</link>
+      <link>https://minatu2d.github.io/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</link>
       <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
       
-      <guid>example.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</guid>
+      <guid>https://minatu2d.github.io/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</guid>
       <description>&lt;p&gt;Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh &lt;strong&gt;source&lt;/strong&gt;, ta thực hiện build tạo image có có tên là &lt;strong&gt;rpi-basic-image&lt;/strong&gt; thông qua lệnh:&lt;/p&gt;
 &lt;p&gt;[code lang=&#34;shell&#34;]&lt;br /&gt;
 $bitbake rpi-basic-image&lt;br /&gt;
@@ -61,10 +61,10 @@ $bitbake rpi-basic-image&lt;br /&gt;
     
     <item>
       <title>Thiết lập IP mặc định của bản build Linux cho Raspberry PI bằng Yocto Project</title>
-      <link>example.com/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</link>
+      <link>https://minatu2d.github.io/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</link>
       <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
       
-      <guid>example.com/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</guid>
+      <guid>https://minatu2d.github.io/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</guid>
       <description>&lt;p&gt;Để tiếp tục customize bản OS được build trong bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/&#34;&gt;trước&lt;/a&gt;.&lt;br /&gt;
 Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.&lt;br /&gt;
 Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.&lt;/p&gt;
@@ -77,10 +77,10 @@ $source poky/oe-init-build-env build&lt;br /&gt;
     
     <item>
       <title>Thêm samba server vào bản build Linux cho Raspberry PI bằng Yocto Project</title>
-      <link>example.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</link>
+      <link>https://minatu2d.github.io/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</link>
       <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
       
-      <guid>example.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</guid>
+      <guid>https://minatu2d.github.io/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</guid>
       <description>&lt;p&gt;Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/&#34;&gt;Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).&lt;/p&gt;
 &lt;p&gt;Trong bài này, sẽ trình bày cách đưa &lt;strong&gt;Samba&lt;/strong&gt; vào bản phân phối Linux đã được build ở bài trước.&lt;/p&gt;
@@ -89,10 +89,10 @@ $source poky/oe-init-build-env build&lt;br /&gt;
     
     <item>
       <title>Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</title>
-      <link>example.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
+      <link>https://minatu2d.github.io/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
       <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
       
-      <guid>example.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
+      <guid>https://minatu2d.github.io/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
       <description>&lt;p&gt;Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.&lt;br /&gt;
 Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.&lt;br /&gt;
 Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề. Mà nếu không giải quyết được các vấn đề đó thì nội dung các bài khác sẽ không thể thực hiện được.&lt;br /&gt;
@@ -104,10 +104,10 @@ Do vậy, bài này sẽ tập trung vào tạo bản basic &lt;strong&gt;rpi-ba
     
     <item>
       <title>[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</title>
-      <link>example.com/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</link>
+      <link>https://minatu2d.github.io/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</link>
       <pubDate>Sat, 25 Apr 2015 15:30:15 +0900</pubDate>
       
-      <guid>example.com/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</guid>
+      <guid>https://minatu2d.github.io/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</guid>
       <description>Poky là một hệ distro linux ở dạng tham chiếu của Yocto Project.
 OpenEmbedded là một phần trong đó.
 Nào thế đủ rồi, ta đi vào phần chính.
@@ -116,10 +116,10 @@ Nào thế đủ rồi, ta đi vào phần chính.
     
     <item>
       <title>[OE]Bitbake - Từ Hello World đến một Distro</title>
-      <link>example.com/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</link>
+      <link>https://minatu2d.github.io/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</link>
       <pubDate>Sat, 25 Apr 2015 07:50:24 +0900</pubDate>
       
-      <guid>example.com/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</guid>
+      <guid>https://minatu2d.github.io/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</guid>
       <description>&lt;p&gt;&lt;img src=&#34;{{ site.baseurl }}/assets/user-configuration.png?w=300&#34; alt=&#34;user-configuration&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Bitbake là một công cụ cốt lõi của &lt;a href=&#34;https://www.yoctoproject.org/about&#34;&gt;Yocto Project&lt;/a&gt;. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.&lt;/p&gt;
@@ -146,10 +146,10 @@ Nào thế đủ rồi, ta đi vào phần chính.
     
     <item>
       <title>OpenEmbedded là gì?</title>
-      <link>example.com/post/2015-02-11-openembedded-la-gi/</link>
+      <link>https://minatu2d.github.io/post/2015-02-11-openembedded-la-gi/</link>
       <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
       
-      <guid>example.com/post/2015-02-11-openembedded-la-gi/</guid>
+      <guid>https://minatu2d.github.io/post/2015-02-11-openembedded-la-gi/</guid>
       <description>Cái gì liên quan đến Linux, Embedded thì mình tìm hiểu kĩ nhất có thể. Trừ những chỗ không thể sờ vào hoặc cực kì mất thời gian để tìm hiểu nó thì mình sẽ bỏ quá.
 Đại khái sẽ trả lời mấy câu hỏi sau
  OpenEmbedded là cái L gì?

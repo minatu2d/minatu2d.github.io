@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SCSI on Lazytrick</title>
-    <link>example.com/tags/scsi/</link>
+    <link>https://minatu2d.github.io/tags/scsi/</link>
     <description>Recent content in SCSI on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Tue, 15 Mar 2016 14:54:41 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/scsi/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/scsi/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SCSI - Giao tiếp với USB Memory</title>
-      <link>example.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
+      <link>https://minatu2d.github.io/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>example.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
+      <guid>https://minatu2d.github.io/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
       <description>&lt;p&gt;&lt;img class=&#34;  wp-image-533 aligncenter&#34; src=&#34;{{ site.baseurl }}/assets/8gb-usb-flash-drive-rotation-2-0-usb-disk-model-pen-drive-memory-stick-8g-hot.jpg&#34; alt=&#34;8GB-USB-Flash-Drive-Rotation-2-0-USB-DISK-Model-Pen-drive-memory-stick-8G-HOT.jpg&#34; width=&#34;196&#34; height=&#34;196&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &#34;USB Flash Memory&#34; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.&lt;/p&gt;
 &lt;p&gt;Ở một số bài trước, tôi cũng viết về một số điểm chính của giao tiếp USB.&lt;/p&gt;

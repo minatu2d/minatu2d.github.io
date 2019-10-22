@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Communication on Lazytrick</title>
-    <link>example.com/categories/communication/</link>
+    <link>https://minatu2d.github.io/categories/communication/</link>
     <description>Recent content in Communication on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Tue, 29 Nov 2016 14:48:30 +0900</lastBuildDate>
     
-	<atom:link href="example.com/categories/communication/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/categories/communication/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>PER trong ASN.1 Encoding</title>
-      <link>example.com/post/2016-11-29-per-trong-asn-1-encoding/</link>
+      <link>https://minatu2d.github.io/post/2016-11-29-per-trong-asn-1-encoding/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>example.com/post/2016-11-29-per-trong-asn-1-encoding/</guid>
+      <guid>https://minatu2d.github.io/post/2016-11-29-per-trong-asn-1-encoding/</guid>
       <description>&lt;p&gt;&lt;strong&gt;PER&lt;/strong&gt; là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng &lt;strong&gt;TLV&lt;/strong&gt; như &lt;strong&gt;BER&lt;/strong&gt;, &lt;strong&gt;PER&lt;/strong&gt; sử dụng &lt;em&gt;Preamble&lt;/em&gt; (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là &lt;strong&gt;PLV&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Đơn vị biểu diễn của &lt;strong&gt;PER&lt;/strong&gt; không phải Octet mà là Bit. Mỗi phần tử sẽ thuộc 1 trong 3 loại sau:&lt;br /&gt;
 1. Trường dư bit, tức là dãy bit không thể biểu diễn bằng một số nguyên các Octet.&lt;br /&gt;
@@ -27,10 +27,10 @@
     
     <item>
       <title>CER/DER trong ASN.1 Encoding</title>
-      <link>example.com/post/2016-11-25-phuong-thuc-cerder/</link>
+      <link>https://minatu2d.github.io/post/2016-11-25-phuong-thuc-cerder/</link>
       <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
       
-      <guid>example.com/post/2016-11-25-phuong-thuc-cerder/</guid>
+      <guid>https://minatu2d.github.io/post/2016-11-25-phuong-thuc-cerder/</guid>
       <description>&lt;p&gt;Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.&lt;/p&gt;
 &lt;p&gt;Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào &lt;strong&gt;BER&lt;/strong&gt;, và tạo ra &lt;strong&gt;CER&lt;/strong&gt; và &lt;strong&gt;DER&lt;/strong&gt;.&lt;/p&gt;
 &lt;p&gt;Sự khác nhau chủ yếu giữa &lt;strong&gt;CER&lt;/strong&gt; và &lt;strong&gt;DER&lt;/strong&gt; là về biểu diễn trường độ dài. &lt;strong&gt;Length(L)&lt;/strong&gt;. Trong khi &lt;strong&gt;DER&lt;/strong&gt; sử dụng một định dạng với độ dài cố định, thì &lt;strong&gt;CER&lt;/strong&gt; sử dụng định dạng với độ dài không có định,&lt;br /&gt;
@@ -39,10 +39,10 @@
     
     <item>
       <title>ASN.1 - BER (Basic Encoding Rules)</title>
-      <link>example.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
+      <link>https://minatu2d.github.io/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
       <pubDate>Thu, 24 Nov 2016 15:58:01 +0900</pubDate>
       
-      <guid>example.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
+      <guid>https://minatu2d.github.io/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
       <description>&lt;p&gt;Tiếp tục về &lt;a href=&#34;https://lazytrick.wordpress.com/tag/asn1/&#34;&gt;ASN.1&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)&lt;/p&gt;
 &lt;p&gt;Ta sẽ tiếp tục nói về hiện thực dữ liệu.&lt;br /&gt;
@@ -56,10 +56,10 @@ Các phương thức để hiện thực dữ liệu gồm có: &lt;strong&gt;BE
     
     <item>
       <title>ASN.1 - Cú pháp cơ bản</title>
-      <link>example.com/post/2016-11-16-asn-1-cu-phap-co-ban/</link>
+      <link>https://minatu2d.github.io/post/2016-11-16-asn-1-cu-phap-co-ban/</link>
       <pubDate>Wed, 16 Nov 2016 15:49:05 +0900</pubDate>
       
-      <guid>example.com/post/2016-11-16-asn-1-cu-phap-co-ban/</guid>
+      <guid>https://minatu2d.github.io/post/2016-11-16-asn-1-cu-phap-co-ban/</guid>
       <description>&lt;p&gt;Tiếp theo loạt bài về ASN.1, bài này sẽ &#34;dịch&#34; tài liệu của anh &lt;a href=&#34;http://www5d.biglobe.ne.jp/~stssk/mail.html&#34;&gt;Isida So&lt;/a&gt; nói về cú pháp cơ bản của ASN.1.&lt;/p&gt;
 &lt;p&gt;Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.&lt;/p&gt;
 &lt;p&gt;ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.&lt;/p&gt;
@@ -79,10 +79,10 @@ TelephoneNumber ::= NumericString&lt;br /&gt;
     
     <item>
       <title>ASN.1 là gì? Tại sao nó quan trọng.</title>
-      <link>example.com/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</link>
+      <link>https://minatu2d.github.io/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</link>
       <pubDate>Sat, 12 Nov 2016 08:51:58 +0900</pubDate>
       
-      <guid>example.com/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</guid>
+      <guid>https://minatu2d.github.io/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</guid>
       <description>&lt;p&gt;Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.&lt;/p&gt;
 &lt;p&gt;Google tiếng Việt thấy khá ít thông tin về ASN.1.&lt;br /&gt;
 Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.&lt;/p&gt;
@@ -98,10 +98,10 @@ Bài viết tham khảo rất nhiều từ bài viết của anh &lt;a href=&#34
     
     <item>
       <title>Thêm samba server vào bản build Linux cho Raspberry PI bằng Yocto Project</title>
-      <link>example.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</link>
+      <link>https://minatu2d.github.io/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</link>
       <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
       
-      <guid>example.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</guid>
+      <guid>https://minatu2d.github.io/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</guid>
       <description>&lt;p&gt;Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/&#34;&gt;Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).&lt;/p&gt;
 &lt;p&gt;Trong bài này, sẽ trình bày cách đưa &lt;strong&gt;Samba&lt;/strong&gt; vào bản phân phối Linux đã được build ở bài trước.&lt;/p&gt;
@@ -110,10 +110,10 @@ Bài viết tham khảo rất nhiều từ bài viết của anh &lt;a href=&#34
     
     <item>
       <title>SCSI - Giao tiếp với USB Memory</title>
-      <link>example.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
+      <link>https://minatu2d.github.io/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>example.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
+      <guid>https://minatu2d.github.io/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
       <description>&lt;p&gt;&lt;img class=&#34;  wp-image-533 aligncenter&#34; src=&#34;{{ site.baseurl }}/assets/8gb-usb-flash-drive-rotation-2-0-usb-disk-model-pen-drive-memory-stick-8g-hot.jpg&#34; alt=&#34;8GB-USB-Flash-Drive-Rotation-2-0-USB-DISK-Model-Pen-drive-memory-stick-8G-HOT.jpg&#34; width=&#34;196&#34; height=&#34;196&#34; /&gt;&lt;/p&gt;
 &lt;p&gt;Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &#34;USB Flash Memory&#34; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.&lt;/p&gt;
 &lt;p&gt;Ở một số bài trước, tôi cũng viết về một số điểm chính của giao tiếp USB.&lt;/p&gt;
@@ -123,20 +123,20 @@ Bài viết tham khảo rất nhiều từ bài viết của anh &lt;a href=&#34
     
     <item>
       <title>Trường Remain Length trong MQTT Fixed Header</title>
-      <link>example.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</link>
+      <link>https://minatu2d.github.io/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</link>
       <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
       
-      <guid>example.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</guid>
+      <guid>https://minatu2d.github.io/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</guid>
       <description>Như ta đã biết trong bản gốc và bản tiếng Việt của giao thức MQTT, đơn vị truyền tin trong MQTT là message. Message chứa 2 phần cơ bản là Header (phần mô tả thuộc tính dữ liệu) và Payload (phần mô tả dữ liệu). Phần header chứa 2 phần nữa là Header có độ dài cố định và Header có độ dài thay đổi được.
 Hầu hết các trường của phần Header cố định đều khá dễ hiểu, duy chỉ có 1 trường tương đối khó hiểu.</description>
     </item>
     
     <item>
       <title>Hiểu thêm về HID Report Descriptor</title>
-      <link>example.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
+      <link>https://minatu2d.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>example.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
+      <guid>https://minatu2d.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
       <description>&lt;p&gt;Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.&lt;/p&gt;
 &lt;p&gt;Giờ xin dịch lại bài này một cách khái quát nhất.&lt;/p&gt;
 &lt;p&gt;Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).&lt;/p&gt;
@@ -148,19 +148,19 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
     
     <item>
       <title>I2C - Kế thừa UART và SPI (sẽ viết)</title>
-      <link>example.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
+      <link>https://minatu2d.github.io/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>example.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
+      <guid>https://minatu2d.github.io/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USB cho Dev (Chp.01 - Giới thiệu)</title>
-      <link>example.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</link>
+      <link>https://minatu2d.github.io/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:18:10 +0900</pubDate>
       
-      <guid>example.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</guid>
+      <guid>https://minatu2d.github.io/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</guid>
       <description>&lt;p&gt;USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.&lt;/p&gt;
 &lt;p&gt;Link gốc tại &lt;a href=&#34;http://www.beyondlogic.org/usbnutshell/usb1.shtml&#34;&gt;http://www.beyondlogic.org/usbnutshell/usb1.shtml&lt;/a&gt;&lt;/p&gt;
 &lt;h4&gt;Tóm tắt về USB&lt;/h4&gt;
@@ -170,19 +170,19 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
     
     <item>
       <title>Tầng thấp của USB</title>
-      <link>example.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</link>
+      <link>https://minatu2d.github.io/post/2016-01-25-tang-thap-cua-usb-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:17:00 +0900</pubDate>
       
-      <guid>example.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</guid>
+      <guid>https://minatu2d.github.io/post/2016-01-25-tang-thap-cua-usb-se-viet/</guid>
       <description>USB - Khỏi cần nói thì nó cũng đã quá nổi tiếng về sự phổ biến rồi. Gần như mọi thứ đều mặc định phải có kết nối USB, cổng USB gần như là bắt buộc trên máy tính, và rất nhiều thiết bị điện tử ta thấy. Từ USB1.1 đến 2.0, rồi gần đây nhất là 3.0. Rồi gần đây người ta có nhắc nhiều đến USB Type C.</description>
     </item>
     
     <item>
       <title>[USB]Các khái niệm về USB</title>
-      <link>example.com/post/2015-12-22-usbcac-khai-niem-ve-usb/</link>
+      <link>https://minatu2d.github.io/post/2015-12-22-usbcac-khai-niem-ve-usb/</link>
       <pubDate>Tue, 22 Dec 2015 16:41:13 +0900</pubDate>
       
-      <guid>example.com/post/2015-12-22-usbcac-khai-niem-ve-usb/</guid>
+      <guid>https://minatu2d.github.io/post/2015-12-22-usbcac-khai-niem-ve-usb/</guid>
       <description>Kết nối USB, chắc chắn ai cũng biết. Mỗi người đểu sở hữu ít nhất một thiết bị có kết nối này.
 Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập trình giống như người dùng vẫn hiểu về nó.
 Đúng là với người dùng cuối, một thiết bị có kết nối thì khả năng có nó có thể kết với máy tính như smartphone, máy nghe nhạc, bộ sạc&amp;hellip;.</description>

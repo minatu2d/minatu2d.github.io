@@ -2,228 +2,228 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on Lazytrick</title>
-    <link>example.com/categories/</link>
+    <link>https://minatu2d.github.io/categories/</link>
     <description>Recent content in Categories on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Wed, 11 Sep 2019 06:00:22 +0900</lastBuildDate>
     
-	<atom:link href="example.com/categories/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Khác</title>
-      <link>example.com/categories/kh%C3%A1c/</link>
+      <link>https://minatu2d.github.io/categories/kh%C3%A1c/</link>
       <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
       
-      <guid>example.com/categories/kh%C3%A1c/</guid>
+      <guid>https://minatu2d.github.io/categories/kh%C3%A1c/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Basic</title>
-      <link>example.com/categories/basic/</link>
+      <link>https://minatu2d.github.io/categories/basic/</link>
       <pubDate>Wed, 06 Feb 2019 07:26:15 +0900</pubDate>
       
-      <guid>example.com/categories/basic/</guid>
+      <guid>https://minatu2d.github.io/categories/basic/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Python</title>
-      <link>example.com/categories/python/</link>
+      <link>https://minatu2d.github.io/categories/python/</link>
       <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
       
-      <guid>example.com/categories/python/</guid>
+      <guid>https://minatu2d.github.io/categories/python/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Machine Learning</title>
-      <link>example.com/categories/machine-learning/</link>
+      <link>https://minatu2d.github.io/categories/machine-learning/</link>
       <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
       
-      <guid>example.com/categories/machine-learning/</guid>
+      <guid>https://minatu2d.github.io/categories/machine-learning/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Driver</title>
-      <link>example.com/categories/driver/</link>
+      <link>https://minatu2d.github.io/categories/driver/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>example.com/categories/driver/</guid>
+      <guid>https://minatu2d.github.io/categories/driver/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Firmware</title>
-      <link>example.com/categories/firmware/</link>
+      <link>https://minatu2d.github.io/categories/firmware/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>example.com/categories/firmware/</guid>
+      <guid>https://minatu2d.github.io/categories/firmware/</guid>
       <description></description>
     </item>
     
     <item>
       <title>USB</title>
-      <link>example.com/categories/usb/</link>
+      <link>https://minatu2d.github.io/categories/usb/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>example.com/categories/usb/</guid>
+      <guid>https://minatu2d.github.io/categories/usb/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Compile</title>
-      <link>example.com/categories/compile/</link>
+      <link>https://minatu2d.github.io/categories/compile/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>example.com/categories/compile/</guid>
+      <guid>https://minatu2d.github.io/categories/compile/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Embedded</title>
-      <link>example.com/categories/embedded/</link>
+      <link>https://minatu2d.github.io/categories/embedded/</link>
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
-      <guid>example.com/categories/embedded/</guid>
+      <guid>https://minatu2d.github.io/categories/embedded/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OpenEmbbeded</title>
-      <link>example.com/categories/openembbeded/</link>
+      <link>https://minatu2d.github.io/categories/openembbeded/</link>
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
-      <guid>example.com/categories/openembbeded/</guid>
+      <guid>https://minatu2d.github.io/categories/openembbeded/</guid>
       <description></description>
     </item>
     
     <item>
       <title>YoctoProject</title>
-      <link>example.com/categories/yoctoproject/</link>
+      <link>https://minatu2d.github.io/categories/yoctoproject/</link>
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
-      <guid>example.com/categories/yoctoproject/</guid>
+      <guid>https://minatu2d.github.io/categories/yoctoproject/</guid>
       <description></description>
     </item>
     
     <item>
       <title>CodeSkill</title>
-      <link>example.com/categories/codeskill/</link>
+      <link>https://minatu2d.github.io/categories/codeskill/</link>
       <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
       
-      <guid>example.com/categories/codeskill/</guid>
+      <guid>https://minatu2d.github.io/categories/codeskill/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Buildroot</title>
-      <link>example.com/categories/buildroot/</link>
+      <link>https://minatu2d.github.io/categories/buildroot/</link>
       <pubDate>Fri, 20 Jan 2017 01:22:46 +0900</pubDate>
       
-      <guid>example.com/categories/buildroot/</guid>
+      <guid>https://minatu2d.github.io/categories/buildroot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Communication</title>
-      <link>example.com/categories/communication/</link>
+      <link>https://minatu2d.github.io/categories/communication/</link>
       <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
       
-      <guid>example.com/categories/communication/</guid>
+      <guid>https://minatu2d.github.io/categories/communication/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Debug</title>
-      <link>example.com/categories/debug/</link>
+      <link>https://minatu2d.github.io/categories/debug/</link>
       <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
       
-      <guid>example.com/categories/debug/</guid>
+      <guid>https://minatu2d.github.io/categories/debug/</guid>
       <description></description>
     </item>
     
     <item>
       <title>thread</title>
-      <link>example.com/categories/thread/</link>
+      <link>https://minatu2d.github.io/categories/thread/</link>
       <pubDate>Wed, 06 Apr 2016 15:26:51 +0900</pubDate>
       
-      <guid>example.com/categories/thread/</guid>
+      <guid>https://minatu2d.github.io/categories/thread/</guid>
       <description></description>
     </item>
     
     <item>
       <title>IoT</title>
-      <link>example.com/categories/iot/</link>
+      <link>https://minatu2d.github.io/categories/iot/</link>
       <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
       
-      <guid>example.com/categories/iot/</guid>
+      <guid>https://minatu2d.github.io/categories/iot/</guid>
       <description></description>
     </item>
     
     <item>
       <title>RTOS</title>
-      <link>example.com/categories/rtos/</link>
+      <link>https://minatu2d.github.io/categories/rtos/</link>
       <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
       
-      <guid>example.com/categories/rtos/</guid>
+      <guid>https://minatu2d.github.io/categories/rtos/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Microcontroller</title>
-      <link>example.com/categories/microcontroller/</link>
+      <link>https://minatu2d.github.io/categories/microcontroller/</link>
       <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
       
-      <guid>example.com/categories/microcontroller/</guid>
+      <guid>https://minatu2d.github.io/categories/microcontroller/</guid>
       <description></description>
     </item>
     
     <item>
       <title>ITS</title>
-      <link>example.com/categories/its/</link>
+      <link>https://minatu2d.github.io/categories/its/</link>
       <pubDate>Sun, 24 Jan 2016 13:28:34 +0900</pubDate>
       
-      <guid>example.com/categories/its/</guid>
+      <guid>https://minatu2d.github.io/categories/its/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Security</title>
-      <link>example.com/categories/security/</link>
+      <link>https://minatu2d.github.io/categories/security/</link>
       <pubDate>Tue, 05 Jan 2016 14:48:34 +0900</pubDate>
       
-      <guid>example.com/categories/security/</guid>
+      <guid>https://minatu2d.github.io/categories/security/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Network</title>
-      <link>example.com/categories/network/</link>
+      <link>https://minatu2d.github.io/categories/network/</link>
       <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
       
-      <guid>example.com/categories/network/</guid>
+      <guid>https://minatu2d.github.io/categories/network/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Js</title>
-      <link>example.com/categories/js/</link>
+      <link>https://minatu2d.github.io/categories/js/</link>
       <pubDate>Sat, 11 Apr 2015 06:30:59 +0900</pubDate>
       
-      <guid>example.com/categories/js/</guid>
+      <guid>https://minatu2d.github.io/categories/js/</guid>
       <description></description>
     </item>
     
     <item>
       <title>OpenSource</title>
-      <link>example.com/categories/opensource/</link>
+      <link>https://minatu2d.github.io/categories/opensource/</link>
       <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
       
-      <guid>example.com/categories/opensource/</guid>
+      <guid>https://minatu2d.github.io/categories/opensource/</guid>
       <description></description>
     </item>
     

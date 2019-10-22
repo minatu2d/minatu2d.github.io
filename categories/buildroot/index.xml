@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Buildroot on Lazytrick</title>
-    <link>example.com/categories/buildroot/</link>
+    <link>https://minatu2d.github.io/categories/buildroot/</link>
     <description>Recent content in Buildroot on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Fri, 20 Jan 2017 01:22:46 +0900</lastBuildDate>
     
-	<atom:link href="example.com/categories/buildroot/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/categories/buildroot/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>So sánh giữa Buildroot và Yocto Project</title>
-      <link>example.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
+      <link>https://minatu2d.github.io/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
       <pubDate>Fri, 20 Jan 2017 01:22:46 +0900</pubDate>
       
-      <guid>example.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
+      <guid>https://minatu2d.github.io/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
       <description>&lt;p&gt;Bài này sẽ dịch lại &lt;a href=&#34;http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf&#34;&gt;Slide&lt;/a&gt; thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni&lt;br /&gt;
 từ Free Electrons tại Embedded Linux Conference 2016.&lt;/p&gt;
 &lt;p&gt;So sánh giữa Buildroot và OpenEmbedded/Yocto Project&lt;/p&gt;
@@ -36,10 +36,10 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders&lt;/li&gt;
     
     <item>
       <title>Về /dev trong Embedded Linux</title>
-      <link>example.com/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
+      <link>https://minatu2d.github.io/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>example.com/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
+      <guid>https://minatu2d.github.io/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
       <description>&lt;p&gt;Đây là nội dung &lt;strong&gt;pick up&lt;/strong&gt; từ &lt;a href=&#34;https://buildroot.org/downloads/manual/manual.html&#34;&gt;manual&lt;/a&gt; của Buildroot.&lt;/p&gt;
 &lt;p&gt;Nó mô tả khá rõ về &lt;strong&gt;/dev&lt;/strong&gt; trong hệ thống Linux, cùng&lt;br /&gt;
 với các giải pháp dành cho hệ thống Embedded Linux.&lt;/p&gt;

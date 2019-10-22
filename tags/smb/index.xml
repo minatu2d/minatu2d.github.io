@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>SMB on Lazytrick</title>
-    <link>example.com/tags/smb/</link>
+    <link>https://minatu2d.github.io/tags/smb/</link>
     <description>Recent content in SMB on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Sat, 06 Aug 2016 16:05:42 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/smb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/smb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Thêm samba server vào bản build Linux cho Raspberry PI bằng Yocto Project</title>
-      <link>example.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</link>
+      <link>https://minatu2d.github.io/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</link>
       <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
       
-      <guid>example.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</guid>
+      <guid>https://minatu2d.github.io/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</guid>
       <description>&lt;p&gt;Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/&#34;&gt;Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project&lt;/a&gt;.&lt;/p&gt;
 &lt;p&gt;Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).&lt;/p&gt;
 &lt;p&gt;Trong bài này, sẽ trình bày cách đưa &lt;strong&gt;Samba&lt;/strong&gt; vào bản phân phối Linux đã được build ở bài trước.&lt;/p&gt;

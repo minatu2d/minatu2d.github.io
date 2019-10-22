@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CrossCompile on Lazytrick</title>
-    <link>example.com/tags/crosscompile/</link>
+    <link>https://minatu2d.github.io/tags/crosscompile/</link>
     <description>Recent content in CrossCompile on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Wed, 03 Aug 2016 01:24:36 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/crosscompile/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/crosscompile/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Phân biệt Build vs Host vs Target</title>
-      <link>example.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
+      <link>https://minatu2d.github.io/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
       <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
       
-      <guid>example.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
+      <guid>https://minatu2d.github.io/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
       <description>&lt;p&gt;Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.&lt;br /&gt;
 Với người mới, hiểu rõ khái niệm là rất quan trọng.&lt;/p&gt;
 &lt;p&gt;Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là &lt;strong&gt;Host Enviroment&lt;/strong&gt;, &lt;strong&gt;Build Enviroment&lt;/strong&gt;, và &lt;strong&gt;Target Enviroment&lt;/strong&gt;. Có thể dịch nôm na là &lt;strong&gt;Môi trường chủ&lt;/strong&gt;, &lt;strong&gt;Môi trường biên dịch&lt;/strong&gt;, và &lt;strong&gt;Môi trường chạy đích&lt;/strong&gt;.&lt;br /&gt;

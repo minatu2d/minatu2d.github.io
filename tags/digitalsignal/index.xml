@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DigitalSignal on Lazytrick</title>
-    <link>example.com/tags/digitalsignal/</link>
+    <link>https://minatu2d.github.io/tags/digitalsignal/</link>
     <description>Recent content in DigitalSignal on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Wed, 03 Feb 2016 15:31:36 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/digitalsignal/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/digitalsignal/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Một chút về RGB VGA, Digital RGB</title>
-      <link>example.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</link>
+      <link>https://minatu2d.github.io/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>example.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</guid>
+      <guid>https://minatu2d.github.io/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</guid>
       <description>&lt;p&gt;MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.&lt;/p&gt;
 &lt;p&gt;Mô tả ngắn gọn ở đây để sau đỡ quên vậy:&lt;/p&gt;
 &lt;p&gt;ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC...) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.&lt;/p&gt;

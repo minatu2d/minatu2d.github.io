@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>GCC on Lazytrick</title>
-    <link>example.com/tags/gcc/</link>
+    <link>https://minatu2d.github.io/tags/gcc/</link>
     <description>Recent content in GCC on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Sun, 01 Jan 2017 22:00:04 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/gcc/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/gcc/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>4 Stage khi biên dịch HelloWorld.c</title>
-      <link>example.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
+      <link>https://minatu2d.github.io/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>example.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
+      <guid>https://minatu2d.github.io/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
       <description>&lt;p&gt;Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.&lt;br /&gt;
 Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.&lt;br /&gt;
 Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.&lt;/p&gt;
@@ -39,10 +39,10 @@ HelloWorld&lt;br /&gt;
     
     <item>
       <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
-      <link>example.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <link>https://minatu2d.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>example.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <guid>https://minatu2d.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
       <description>&lt;p&gt;Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch &lt;strong&gt;GCC&lt;/strong&gt; lên đó.&lt;br /&gt;
 Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.&lt;br /&gt;
 Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.&lt;br /&gt;

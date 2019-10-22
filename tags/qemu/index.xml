@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>qemu on Lazytrick</title>
-    <link>example.com/tags/qemu/</link>
+    <link>https://minatu2d.github.io/tags/qemu/</link>
     <description>Recent content in qemu on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Mon, 10 Apr 2017 14:07:48 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/qemu/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/qemu/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Build, chạy nhân Linux trong QEMU ARM</title>
-      <link>example.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
+      <link>https://minatu2d.github.io/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>example.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
+      <guid>https://minatu2d.github.io/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
       <description>&lt;p&gt;Chạy một bản Linux tối giản trên Qemu ARM&lt;/p&gt;
 &lt;p&gt;Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa&lt;br /&gt;
 các thành phần của một hệ thống Linux thông qua&lt;br /&gt;

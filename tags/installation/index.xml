@@ -2,21 +2,21 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Installation on Lazytrick</title>
-    <link>example.com/tags/installation/</link>
+    <link>https://minatu2d.github.io/tags/installation/</link>
     <description>Recent content in Installation on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Tue, 20 Sep 2016 08:42:17 +0900</lastBuildDate>
     
-	<atom:link href="example.com/tags/installation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://minatu2d.github.io/tags/installation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cài đặt GDB (02 - Cài đặt)</title>
-      <link>example.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
+      <link>https://minatu2d.github.io/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
       <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
       
-      <guid>example.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
+      <guid>https://minatu2d.github.io/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
       <description>&lt;p&gt;Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là &lt;strong&gt;target program&lt;/strong&gt;.&lt;br /&gt;
 Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:&lt;/p&gt;
 &lt;ol&gt;
