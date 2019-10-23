@@ -68,7 +68,7 @@
 
 <p>1 . Hello world</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"C"" data-lang=""C"">/*  
-* p\_hello.c -- a hello program (in pthread)  
+* p_hello.c -- a hello program (in pthread)  
 */  
 #include  
 #include  
@@ -76,8 +76,8 @@
 #include &amp;lt;sys/types.h&amp;gt;  
 #include
 
-#define MAX\_THREAD 1000  
-#define CURRENT\_TERMINAL\_CMD &amp;quot;tty&amp;quot;
+#define MAX_THREAD 1000  
+#define CURRENT_TERMINAL_CMD &amp;quot;tty&amp;quot;
 
 typedef struct {  
 int id;  
@@ -111,7 +111,7 @@ int getCurrentTerminal(char *terminal)
 {  
 int retVal = 0;
 
-FILE *ttyCmdFo = popen(CURRENT\_TERMINAL\_CMD,&amp;quot;r&amp;quot;);  
+FILE *ttyCmdFo = popen(CURRENT_TERMINAL_CMD,&amp;quot;r&amp;quot;);  
 if (ttyCmdFo == NULL)  
 {  
 retVal = -1;  
@@ -129,13 +129,13 @@ printf(&amp;quot;Terminal :%s&amp;quot;,terminal);
 return retVal;  
 }
 
-typedef char T\_TERM\_NAME[100];  
+typedef char T_TERM_NAME[100];  
 void main(int argc, char* argv[]) {  
 int n,i;  
-pthread\_t *threads;  
+pthread_t *threads;  
 parm *p;  
 char currentTerminal[100];  
-T\_TERM\_NAME terminals[10];  
+T_TERM_NAME terminals[10];  
 char tmpTerm[100];
 
 if (argc != 2)  
@@ -146,13 +146,13 @@ exit(1);
 
 n=atoi(argv[1]);
 
-if ((n &amp;lt; 1) || (n &amp;gt; MAX\_THREAD))  
+if ((n &amp;lt; 1) || (n &amp;gt; MAX_THREAD))  
 {  
-printf (&amp;quot;Số lượng thread phải &amp;gt;=1 và &amp;lt; %d.\\n&amp;quot;, MAX\_THREAD);  
+printf (&amp;quot;Số lượng thread phải &amp;gt;=1 và &amp;lt; %d.\\n&amp;quot;, MAX_THREAD);  
 exit(1);  
 }
 
-threads=(pthread\_t *)malloc(n*sizeof(*threads));
+threads=(pthread_t *)malloc(n*sizeof(*threads));
 
 p=(parm *)malloc(sizeof(parm)*n);
 
@@ -184,7 +184,7 @@ for (i=0; i&amp;lt;n; i++)
 {  
 p[i].id=i;  
 p[i].terminal = terminals[i];  
-pthread\_create(&amp;amp;threads[i], NULL, hello, (void *)(p+i));  
+pthread_create(&amp;amp;threads[i], NULL, hello, (void *)(p+i));  
 }
 
 /* Đợt để các thread được tạo cùng kết thúc. */
@@ -192,7 +192,7 @@ pthread\_create(&amp;amp;threads[i], NULL, hello, (void *)(p+i));
 for (i=0; i&amp;lt;n; i++)  
 {  
 printf(&amp;quot;[Main] : Đang đợi [Node %d] kết thúc \\n&amp;quot;,i);  
-pthread\_join(threads[i],NULL);  
+pthread_join(threads[i],NULL);  
 printf(&amp;quot;[Main] : [Node %d] đã kết thúc\\n&amp;quot;,i);  
 }
 

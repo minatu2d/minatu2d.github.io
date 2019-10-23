@@ -86,15 +86,15 @@ Cách làm được miêu tả trong bài <a href="https://lazytrick.wordpress.c
 <hr />
 
 <p><code>args</code> để biến mọi thứ thành tham số cho lệnh khác.<br />
-Ví dụ muốn thực hiện tạo bản backup (thêm đuôi <em>_backup</em> chẳng hạn) cho các file <code>.txt</code> trong thư mục chẳng hạn.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello cp hello hello<span style="color:#cd5555">\_</span>backup  </code></pre></div>
+Ví dụ muốn thực hiện tạo bản backup (thêm đuôi _<em>backup</em> chẳng hạn) cho các file <code>.txt</code> trong thư mục chẳng hạn.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello cp hello hello_backup  </code></pre></div>
 <p>Khi muốn tạo một lệnh phức tạp sử dụng tham số được lấy từ <code>xargs</code>, hoặc không chắc chắn về câu lệnh thì hãy in toàn bộ đoạn câu lệnh ra bằng cách đặt trong lệnh <code>echo</code><br />
 Ví dụ với đoạn backup ở trên:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#39;cp hello hello\_backup&#39;</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#39;cp hello hello_backup&#39;</span>  </code></pre></div>
 <p>Ta sẽ có danh sách các câu lệnh định viết được hiển thị ra màn hình.<br />
 Vì thế có thể dễ dàng kiểm tra xem câu lệnh đã viết đúng chưa, hoặc thử thực hiện một câu mẫu xem kết quả như mong muốn không rồi mới thực hiện thực sự.<br />
 Với mình, mình thường viết như này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#39;cp hello hello\_backup &amp;&amp; echo &#34;Finished hello&#34;&#39;</span> &gt; tmp<span style="color:#cd5555">\_</span>script.sh  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#39;cp hello hello_backup &amp;&amp; echo &#34;Finished hello&#34;&#39;</span> &gt; tmp_script.sh  </code></pre></div>
 <p>Sau đó mình sẽ có scipt tên là <code>tmp_script</code> chứa những câu lệnh định chạy.<br />
 Giờ lấy một câu trong đó chạy thử, nếu ok thì chạy script đó là xong.</p>
 
