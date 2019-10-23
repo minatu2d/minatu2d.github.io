@@ -70,22 +70,8 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Ví dụ cơ bản với pthread trên Linux 1. Tạo và dừng thread Source code gốc lấy từ link
-[code lang=c]
-/******************************************************************************
-* FILE: hello.c
-* DESCRIPTION:
-* Chuong trinh demo thao tac tao thread, tat thread
-* AUTHOR: Blaise Barney
-* LAST REVISED: 08/09/11
-*
-* TRANSLATE to Vietnamese by Minatu
-* COMPILE CMD : $gcc -o hello hello.c -lpthread
-******************************************************************************/
-//
-#include 
-#include 
-#include
+		1. Tạo và dừng thread Source code gốc lấy từ link
+/****************************************************************************** * FILE: hello.c * DESCRIPTION: * Chuong trinh demo thao tac tao thread, tat thread * AUTHOR: Blaise Barney * LAST REVISED: 08/09/11 * * TRANSLATE to Vietnamese by Minatu * COMPILE CMD : $gcc -o hello hello.c -lpthread ******************************************************************************/ // #include &lt;pthread.h&gt;#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#define NUM_THREADS 5  void *PrintHello(void *threadid) { long tid; tid = (long)threadid; printf(&#34;Hello World!
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -132,21 +118,13 @@ III. Test thử trên Linux.</p>
 
 			</div>
 			
-<aside class="sidebar"><div class="widget-search widget">
-	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
-		<label>
-			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
-		</label>
-		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
-	</form>
-</div>
+<aside class="sidebar">
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-2015/">Bắt đầu về Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</a></li>
@@ -284,7 +262,7 @@ III. Test thử trên Linux.</p>
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

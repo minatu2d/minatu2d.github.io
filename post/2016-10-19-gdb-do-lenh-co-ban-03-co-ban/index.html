@@ -70,116 +70,97 @@
 
 <p>Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.<br />
 Giả sử ta có một source Hello world như sau:</p>
-
-<p>[code lang=bash]<br />
-.<br />
-├── include<br />
-│   ├── greetings_en.h<br />
-│   ├── greetings_ja.h<br />
-│   └── greetings_vi.h<br />
-└── src<br />
-├── greetings_en.c<br />
-├── greetings_ja.c<br />
-├── greetings_vi.c<br />
-├── mainapp<br />
-└── mainapp.c<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.  
+├── include  
+│   ├── greetings_en.h  
+│   ├── greetings_ja.h  
+│   └── greetings_vi.h  
+└── src  
+├── greetings_en.c  
+├── greetings_ja.c  
+├── greetings_vi.c  
+├── mainapp  
+└── mainapp.c  </code></pre></div>
 <p>Trong đó, các file có nội dung như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#228b22">// mainapp.c
+</span><span style="color:#228b22"></span>
+<span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">#include&#34;greetings_en.h&#34;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&#34;greetings_ja.h&#34;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&#34;greetings_vi.h&#34;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#228b22">//  
+</span><span style="color:#228b22">// Main functions  
+</span><span style="color:#228b22">//  
+</span><span style="color:#228b22"></span><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span>* argv[])  
+{  
+greeting_en();  
+greeting_ja();  
+greeting_vi();
 
-<p>[code lang=cpp]<br />
-// mainapp.c</p>
+<span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+}
 
-<p>#include<br />
-#include&rdquo;greetings_en.h&rdquo;<br />
-#include&rdquo;greetings_ja.h&rdquo;<br />
-#include&rdquo;greetings_vi.h&rdquo;</p>
+<span style="color:#228b22">// greetings_en.h  
+</span><span style="color:#228b22"></span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">greeting_en</span>();
 
-<p>//<br />
-// Main functions<br />
-//<br />
-int main(int argc, char* argv[])<br />
-{<br />
-greeting_en();<br />
-greeting_ja();<br />
-greeting_vi();</p>
+<span style="color:#228b22">// greetings_ja.h  
+</span><span style="color:#228b22"></span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">greeting_ja</span>();
 
-<p>return 0;<br />
-}</p>
+<span style="color:#228b22">// greetings_vi.h  
+</span><span style="color:#228b22"></span><span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">greeting_vi</span>();
 
-<p>// greetings_en.h<br />
-void greeting_en();</p>
+<span style="color:#228b22">// greetings_en.c  
+</span><span style="color:#228b22"></span><span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">void greeting_en()  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>{  
+printf(<span style="color:#cd5555">&#34;Hello world</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+}
 
-<p>// greetings_ja.h<br />
-void greeting_ja();</p>
+<span style="color:#228b22">// greetings_ja.c  
+</span><span style="color:#228b22"></span><span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">void greeting_ja()  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>{  
+printf(<span style="color:#cd5555">&#34;Konnichiwa </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+}
 
-<p>// greetings_vi.h<br />
-void greeting_vi();</p>
-
-<p>// greetings_en.c<br />
-#include<br />
-void greeting_en()<br />
-{<br />
-printf(&ldquo;Hello world\n&rdquo;);<br />
-}</p>
-
-<p>// greetings_ja.c<br />
-#include<br />
-void greeting_ja()<br />
-{<br />
-printf(&ldquo;Konnichiwa \n&rdquo;);<br />
-}</p>
-
-<p>// greetings_vi.c<br />
-#include<br />
-void greeting_vi()<br />
-{<br />
-printf(&ldquo;Xin chao \n&rdquo;);<br />
-}<br />
-[/code]</p>
-
+<span style="color:#228b22">// greetings_vi.c  
+</span><span style="color:#228b22"></span><span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">void greeting_vi()  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>{  
+printf(<span style="color:#cd5555">&#34;Xin chao </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+}  
+</code></pre></div>
 <p>Lệnh biên dịch từ <strong>src</strong>:</p>
-
-<p>[code lang=bash]<br />
-oedev@OEDEV-Ubuntu:~/src$gcc -g -o mainapp mainapp.c -I../include greetings_*.c<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/src<span style="color:#00688b">$gcc</span> -g -o mainapp mainapp.c -I../include greetings_*.c  </code></pre></div>
 <p>Chú ý, để sử dụng GDB tốt nhất, ta nên thêm tham số <strong>-g</strong> (viết thường) như ở trên.<br />
 Kết quả sau khi chạy sẽ như thế này:</p>
-
-<p>[code lang=bash]<br />
-oedev@OEDEV-Ubuntu:~/src$./mainapp<br />
-Hello world<br />
-Konnichiwa<br />
-Xin chao<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/src$./mainapp  
+Hello world  
+Konnichiwa  
+Xin chao  </code></pre></div>
 <p>OK, đó là 1 chương trình đơn giản để làm ví dụ các phần bên dưới đây.</p>
 
 <h3 id="1-chạy-chương-trình-với-gdb">1. Chạy chương trình với GDB</h3>
 
 <p>-Ta chỉ cần thêm <strong>gdb</strong> vào đầu câu lệnh thông thường, ta sẽ thấy GDB được khởi động với giao diện sau:</p>
-
-<p>[code lang=bash]<br />
-oedev@OEDEV-Ubuntu:~/src$gdb ./mainapp<br />
-GNU gdb (Ubuntu 7.11.1-0ubuntu1~16.04) 7.11.1<br />
-Copyright &copy; 2016 Free Software Foundation, Inc.<br />
-License GPLv3+: GNU GPL version 3 or later<br />
-This is free software: you are free to change and redistribute it.<br />
-There is NO WARRANTY, to the extent permitted by law. Type &ldquo;show copying&rdquo;<br />
-and &ldquo;show warranty&rdquo; for details.<br />
-This GDB was configured as &ldquo;x86_64-linux-gnu&rdquo;.<br />
-Type &ldquo;show configuration&rdquo; for configuration details.<br />
-For bug reporting instructions, please see:<br />
-.<br />
-Find the GDB manual and other documentation resources online at:<br />
-.<br />
-For help, type &ldquo;help&rdquo;.<br />
-Type &ldquo;apropos word&rdquo; to search for commands related to &ldquo;word&rdquo;&hellip;<br />
-Reading symbols from ./mainapp&hellip;done.<br />
-(gdb)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/src<span style="color:#00688b">$gdb</span> ./mainapp  
+GNU gdb (Ubuntu <span style="color:#b452cd">7</span>.11.1-0ubuntu1~16.04) <span style="color:#b452cd">7</span>.11.1  
+Copyright (C) <span style="color:#b452cd">2016</span> Free Software Foundation, Inc.  
+License GPLv3+: GNU GPL version <span style="color:#b452cd">3</span> or later  
+This is free software: you are free to change and redistribute it.  
+There is NO WARRANTY, to the extent permitted by law. Type <span style="color:#cd5555">&#34;show copying&#34;</span>  
+and <span style="color:#cd5555">&#34;show warranty&#34;</span> <span style="color:#8b008b;font-weight:bold">for</span> details.  
+This GDB was configured as <span style="color:#cd5555">&#34;x86_64-linux-gnu&#34;</span>.  
+Type <span style="color:#cd5555">&#34;show configuration&#34;</span> <span style="color:#8b008b;font-weight:bold">for</span> configuration details.  
+For bug reporting instructions, please see:  
+.  
+Find the GDB manual and other documentation resources online at:  
+.  
+For help, <span style="color:#658b00">type</span> <span style="color:#cd5555">&#34;help&#34;</span>.  
+Type <span style="color:#cd5555">&#34;apropos word&#34;</span> to search <span style="color:#8b008b;font-weight:bold">for</span> commands related to <span style="color:#cd5555">&#34;word&#34;</span>...  
+Reading symbols from ./mainapp...done.  
+(gdb)  </code></pre></div>
 <p>Ta thấy giao diện giao tiếp bằng dòng lệnh hiện ra, chương trình chính vẫn chưa được chạy.<br />
 Đến đây, hầu hết là thông tin về phiên bản, rồi cấu hình của GBD thôi. Nhưng có 1 dòng ta sẽ để ý thấy.<br />
 Đó là :</p>
@@ -196,72 +177,48 @@ Reading symbols from ./mainapp&hellip;done.<br />
 
 <p>-Giờ ta bắt đầu chạy, nếu muốn GDB dừng lại ở hàm <strong>main()</strong>thì hãy dùng lệnh <strong>start</strong>, còn muốn chạy luôn không cần dừng thì hãy dùng <strong>run</strong>(viết ngắn là <strong><em>r</em></strong>).<br />
 Khi *<strong>start</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) start  
+Temporary breakpoint <span style="color:#b452cd">1</span> at 0x400535: file mainapp.c, line <span style="color:#b452cd">11</span>.  
+Starting program: /home/oedev/code/debug_03/src/mainapp
 
-<p>[code lang=bash]<br />
-(gdb) start<br />
-Temporary breakpoint 1 at 0x400535: file mainapp.c, line 11.<br />
-Starting program: /home/oedev/code/debug_03/src/mainapp</p>
-
-<p>Temporary breakpoint 1, main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:11<br />
-11 greeting_en();<br />
-(gdb)<br />
-[/code]</p>
-
+Temporary breakpoint <span style="color:#b452cd">1</span>, main (<span style="color:#00688b">argc</span>=<span style="color:#b452cd">1</span>, <span style="color:#00688b">argv</span>=0x7fffffffdcb8) at mainapp.c:11  
+<span style="color:#b452cd">11</span> greeting_en();  
+(gdb)  </code></pre></div>
 <h3 id="2-breakpoint">2. Breakpoint</h3>
 
 <p>-Ta chỉ có thể đặt khi chương trình chính không chạy (chưa chạy hoặc đang bị paused).<br />
 Mỗi breakpoint sẽ gắn với dòng tại 1 file nào đó.<br />
 Về cơ bản, ta sử dụng lệnh <strong>break</strong> (viết ngắn <strong><em>b</em></strong>) để đặt breakpoint, đưa 2 tham số là tên file và chỉ số dòng vào là ok.<br />
 Ví dụ, đặt breakpoint ở dòng 13 của <strong>mainapp.c</strong>:</p>
-
-<p>[code lang=bash]<br />
-(gdb) b mainapp.c:13<br />
-Breakpoint 2 at 0x400549: file mainapp.c, line 13.<br />
-(gdb)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) b mainapp.c:13  
+Breakpoint <span style="color:#b452cd">2</span> at 0x400549: file mainapp.c, line <span style="color:#b452cd">13</span>.  
+(gdb)  </code></pre></div>
 <p>GDB cũng hỗ trợ đặt break theo tên hàm nữa.<br />
 Ví dụ, đặt breakpoint ở hàm <strong>greeting_en()</strong> trong file <strong>greetings_en.c</strong>:</p>
-
-<p>[code lang=bash]<br />
-(gdb) b greetings_en.c:greeting_en<br />
-Breakpoint 3 at 0x40055e: file greetings_en.c, line 4.<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) b greetings_en.c:greeting_en  
+Breakpoint <span style="color:#b452cd">3</span> at 0x40055e: file greetings_en.c, line <span style="color:#b452cd">4</span>.  </code></pre></div>
 <p>-Xem danh sách các breakpoint bằng <strong>info break</strong>:</p>
-
-<p>[code lang=bash]<br />
-(gdb) info break<br />
-Num Type Disp Enb Address What<br />
-2 breakpoint keep y 0x0000000000400549 in main at mainapp.c:13<br />
-3 breakpoint keep y 0x000000000040055e in greeting_en at greetings_en.c:4<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) info <span style="color:#658b00">break</span>  
+Num Type Disp Enb Address What  
+<span style="color:#b452cd">2</span> breakpoint keep y 0x0000000000400549 in main at mainapp.c:13  
+<span style="color:#b452cd">3</span> breakpoint keep y 0x000000000040055e in greeting_en at greetings_en.c:4  </code></pre></div>
 <p>Chú ý là, breakpoint đầu tiên ở đầu hàm main (do lệnh <strong>start</strong>) không được tính.</p>
 
 <p>-Xóa một breakpoint<br />
 Ta cũng có thể dùng cách tương tự như đặt chỉ thay command <strong>break</strong> bằng <strong>clear</strong> là ok.<br />
 Nhưng có một cách đơn giản hơn.<br />
 Ta để ý thấy mỗi khi đặt một breakpoint mới, ta thấy các dòng kết quả:</p>
-
-<p>[code lang=bash]<br />
-Breakpoint 1..<br />
-Breakpoint 2..<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Breakpoint <span style="color:#b452cd">1</span>..  
+Breakpoint <span style="color:#b452cd">2</span>..  </code></pre></div>
 <p>Ta có thể xóa theo các tham số đó bằng lệnh <strong>del</strong>:</p>
-
-<p>[code lang=bash]<br />
-(gdb) info break<br />
-Num Type Disp Enb Address What<br />
-2 breakpoint keep y 0x0000000000400549 in main at mainapp.c:13<br />
-3 breakpoint keep y 0x000000000040055e in greeting_en at greetings_en.c:4<br />
-(gdb) del 3<br />
-(gdb) info break<br />
-Num Type Disp Enb Address What<br />
-2 breakpoint keep y 0x0000000000400549 in main at mainapp.c:13<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) info <span style="color:#658b00">break</span>  
+Num Type Disp Enb Address What  
+<span style="color:#b452cd">2</span> breakpoint keep y 0x0000000000400549 in main at mainapp.c:13  
+<span style="color:#b452cd">3</span> breakpoint keep y 0x000000000040055e in greeting_en at greetings_en.c:4  
+(gdb) del <span style="color:#b452cd">3</span>  
+(gdb) info <span style="color:#658b00">break</span>  
+Num Type Disp Enb Address What  
+<span style="color:#b452cd">2</span> breakpoint keep y 0x0000000000400549 in main at mainapp.c:13  </code></pre></div>
 <p>Dù xóa breakpoint 3 đi thì số 3 đó cũng không được sử dụng lại để đánh số cho các breakpoint được đánh dấu sau này (trừ khi khởi động lại GDB).</p>
 
 <h3 id="3-các-thao-tác-debug-khi-chương-trình-dừng-tại-breakpoint">3. Các thao tác debug khi chương trình dừng tại breakpoint</h3>
@@ -269,258 +226,214 @@ Num Type Disp Enb Address What<br />
 <p>Sau khi đặt breakpoint, ta tiến hành chạy chương trình.<br />
 Vì chương trình đang dừng (paused), ta dùng lệnh <strong>continue</strong> (viết ngắn là <strong><em>c</em></strong>) để chạy tiếp. Chương trình sẽ dừng lại khi gặp breakpoint.<br />
 Sau khi dừng lại, nó sẽ có dạng như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) c  
+Continuing.  
+Hello world  
+Konnichiwa
 
-<p>[code lang=bash]<br />
-(gdb) c<br />
-Continuing.<br />
-Hello world<br />
-Konnichiwa</p>
-
-<p>Breakpoint 2, main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:13<br />
-13 greeting_vi();<br />
-(gdb)<br />
-[/code]</p>
-
+Breakpoint <span style="color:#b452cd">2</span>, main (<span style="color:#00688b">argc</span>=<span style="color:#b452cd">1</span>, <span style="color:#00688b">argv</span>=0x7fffffffdcb8) at mainapp.c:13  
+<span style="color:#b452cd">13</span> greeting_vi();  
+(gdb)  </code></pre></div>
 <p>-Kiểm tra xem chương trình xem đã bị dừng ở đâu<br />
 Thực ra nhìn vào trạng thái dừng ở trên ta cũng biết được rằng, chương trình đang dừng ở <strong>mainapp.c</strong>, dòng 13, chỗ lời gọi hàm <strong>greeting_vi()</strong>.<br />
 Có một cách trực quan hơn là lệnh <strong>layout</strong> (viết ngắn là <strong><em>l</em></strong>).</p>
-
-<p>[code lang=bash]<br />
-(gdb) l<br />
-8 //<br />
-9 int main(int argc, char* argv[])<br />
-10 {<br />
-11 greeting_en();<br />
-12 greeting_ja();<br />
-13 greeting_vi();<br />
-14<br />
-15 return 0;<br />
-16 }<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) l  
+<span style="color:#b452cd">8</span> //  
+<span style="color:#b452cd">9</span> int main(int argc, char* argv[])  
+<span style="color:#b452cd">10</span> {  
+<span style="color:#b452cd">11</span> greeting_en();  
+<span style="color:#b452cd">12</span> greeting_ja();  
+<span style="color:#b452cd">13</span> greeting_vi();  
+<span style="color:#b452cd">14</span>  
+<span style="color:#b452cd">15</span> <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+<span style="color:#b452cd">16</span> }  </code></pre></div>
 <p>GDB sẽ hiển thị cả đoạn source xung quanh điểm đang bị dừng (còn giao diện trực quan hơn nữa sẽ được giới thiệu ở bài sau),</p>
 
 <p>-Thực hiện dòng hiện tại (không nhảy sâu vào hàm nếu đang gọi hàm):<br />
 Lệnh <strong>next</strong> (viết ngắn là <strong><em>n</em></strong>)</p>
-
-<p>[code lang=bash]<br />
-(gdb) n<br />
-Xin chao<br />
-15 return 0;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) n  
+Xin chao  
+<span style="color:#b452cd">15</span> <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  </code></pre></div>
 <p>GDB sẽ dừng lại ở dòng tiếp theo, dòng 15 như ở trên (vì 14 không có gì)</p>
 
 <p>-Thực hiện gọi sâu vào hàm<br />
 Giả sử đang dừng ở lời gọi <strong>greeting_vi()</strong>,<br />
 Sử dụng <strong>step</strong>, GDB sẽ chạy vào bên trong <strong>greeting_vi()</strong> thay vì thực hiện ngay toàn bộ xử lý trong nó giống như <strong>next</strong>.</p>
-
-<p>[code lang=bash]<br />
-(gdb) step<br />
-greeting_vi () at greetings_vi.c:4<br />
-4 printf(&ldquo;Xin chao \n&rdquo;);<br />
-(gdb) l<br />
-1 #include<br />
-2 void greeting_vi()<br />
-3 {<br />
-4 printf(&ldquo;Xin chao \n&rdquo;);<br />
-5<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) step  
+greeting_vi () at greetings_vi.c:4  
+<span style="color:#b452cd">4</span> printf(<span style="color:#cd5555">&#34;Xin chao \\n&#34;</span>);  
+(gdb) l  
+<span style="color:#b452cd">1</span> <span style="color:#228b22">#include</span>  
+<span style="color:#b452cd">2</span> void greeting_vi()  
+<span style="color:#b452cd">3</span> {  
+<span style="color:#b452cd">4</span> printf(<span style="color:#cd5555">&#34;Xin chao \\n&#34;</span>);  
+<span style="color:#b452cd">5</span>  </code></pre></div>
 <h3 id="4-xem-giá-trị-khi-chương-trình-dừng-tại-breakpoint">4. Xem giá trị khi chương trình dừng tại breakpoint</h3>
 
 <p>Trước khi đi vào phần này, ta sửa lại nội dung file <strong>mainapp.c</strong> ở trên thành như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">#include  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">#include&#34;greetings_en.h&#34;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&#34;greetings_ja.h&#34;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&#34;greetings_vi.h&#34;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span> _currency_  
+{  
+<span style="color:#00688b;font-weight:bold">char</span> iso4217Code[<span style="color:#b452cd">5</span>];  
+<span style="color:#00688b;font-weight:bold">char</span> name[<span style="color:#b452cd">255</span>];  
+}ST_CURRENCY;
 
-<p>[code lang=cpp]<br />
-#include<br />
-#include<br />
-#include<br />
-#include&rdquo;greetings_en.h&rdquo;<br />
-#include&rdquo;greetings_ja.h&rdquo;<br />
-#include&rdquo;greetings_vi.h&rdquo;</p>
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span> _country_  
+{  
+<span style="color:#00688b;font-weight:bold">char</span> capital[<span style="color:#b452cd">255</span>];  
+<span style="color:#00688b;font-weight:bold">float</span> area;  
+uint32_t population;  
+<span style="color:#00688b;font-weight:bold">float</span> density;  
+ST_CURRENCY currency;  
+int16_t timezone;  
+<span style="color:#00688b;font-weight:bold">char</span> dateFormat[<span style="color:#b452cd">100</span>];  
+}ST_COUNTRY;
 
-<p>typedef struct _currency_<br />
-{<br />
-char iso4217Code[5];<br />
-char name[255];<br />
-}ST_CURRENCY;</p>
+<span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">printCountry</span>(<span style="color:#00688b;font-weight:bold">void</span> *data)  
+{  
+ST_COUNTRY *country = (ST_COUNTRY*)data;
 
-<p>typedef struct _country_<br />
-{<br />
-char capital[255];<br />
-float area;<br />
-uint32_t population;<br />
-float density;<br />
-ST_CURRENCY currency;<br />
-int16_t timezone;<br />
-char dateFormat[100];<br />
-}ST_COUNTRY;</p>
+printf(<span style="color:#cd5555">&#34;Capital :%s</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;capital);  
+printf(<span style="color:#cd5555">&#34;Area :%.2f km2</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;area);  
+printf(<span style="color:#cd5555">&#34;Density :%.2f /km2</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;density);  
+printf(<span style="color:#cd5555">&#34;Currency : %s (%s) </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;currency.iso4217Code, country-&gt;currency.name);  
+printf(<span style="color:#cd5555">&#34;Timezone : GMT + %d </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;timezone);  
+printf(<span style="color:#cd5555">&#34;Dateformat :%s</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;dateFormat);  
+}  
+<span style="color:#228b22">//  
+</span><span style="color:#228b22">// Main functions  
+</span><span style="color:#228b22">//  
+</span><span style="color:#228b22"></span><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span>* argv[])  
+{  
+greeting_en();  
+greeting_ja();  
+greeting_vi();
 
-<p>void printCountry(void *data)<br />
-{<br />
-ST_COUNTRY *country = (ST_COUNTRY*)data;</p>
+<span style="color:#228b22">/*Vietnam*/</span>  
+ST_COUNTRY vietnam;  
+memset(&amp;vietnam, <span style="color:#b452cd">0x00</span>, <span style="color:#8b008b;font-weight:bold">sizeof</span>(england));
 
-<p>printf(&ldquo;Capital :%s\n&rdquo;,country-&gt;capital);<br />
-printf(&ldquo;Area :%.2f km2\n&rdquo;,country-&gt;area);<br />
-printf(&ldquo;Density :%.2f /km2\n&rdquo;,country-&gt;density);<br />
-printf(&ldquo;Currency : %s (%s) \n&rdquo;,country-&gt;currency.iso4217Code, country-&gt;currency.name);<br />
-printf(&ldquo;Timezone : GMT + %d \n&rdquo;,country-&gt;timezone);<br />
-printf(&ldquo;Dateformat :%s\n&rdquo;,country-&gt;dateFormat);<br />
-}<br />
-//<br />
-// Main functions<br />
-//<br />
-int main(int argc, char* argv[])<br />
-{<br />
-greeting_en();<br />
-greeting_ja();<br />
-greeting_vi();</p>
+strcpy(vietnam.capital,<span style="color:#cd5555">&#34;Hanoi&#34;</span>);  
+vietnam.area = <span style="color:#b452cd">332698</span>; <span style="color:#228b22">// km2  
+</span><span style="color:#228b22"></span>vietnam.population = <span style="color:#b452cd">91700000</span>;  
+strcpy(vietnam.currency.iso4217Code,<span style="color:#cd5555">&#34;VND&#34;</span>);  
+strcpy(vietnam.currency.name,<span style="color:#cd5555">&#34;Dong&#34;</span>);  
+vietnam.timezone = +<span style="color:#b452cd">7</span>;  
+vietnam.density = <span style="color:#b452cd">276.03</span>;  
+strcpy(vietnam.dateFormat,<span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>);
 
-<p>/*Vietnam*/<br />
-ST_COUNTRY vietnam;<br />
-memset(&amp;vietnam, 0x00, sizeof(england));</p>
+printCountry(&amp;vietnam);
 
-<p>strcpy(vietnam.capital,&ldquo;Hanoi&rdquo;);<br />
-vietnam.area = 332698; // km2<br />
-vietnam.population = 91700000;<br />
-strcpy(vietnam.currency.iso4217Code,&ldquo;VND&rdquo;);<br />
-strcpy(vietnam.currency.name,&ldquo;Dong&rdquo;);<br />
-vietnam.timezone = +7;<br />
-vietnam.density = 276.03;<br />
-strcpy(vietnam.dateFormat,&ldquo;dd/mm/yyyy&rdquo;);</p>
-
-<p>printCountry(&amp;vietnam);</p>
-
-<p>return 0;<br />
-}</p>
-
-<p>[/code]</p>
-
+<span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+}
+</code></pre></div>
 <p>Ta tiến hành chạy với GDB như trên và dừng ở lời gọi hàm <strong>printCountry(&amp;vietnam)</strong></p>
 
 <p>-Sử dụng print (viết ngắn là p)<br />
 Ta lần lượt sẽ hiển thị giá trị nguyên, thực, chuỗi, cấu trúc như sau:</p>
-
-<p>[code lang=bash]<br />
-Breakpoint 1, main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58<br />
-58 printCountry(&amp;vietnam);<br />
-(gdb) l<br />
-53 strcpy(vietnam.currency.name,&ldquo;Dong&rdquo;);<br />
-54 vietnam.timezone = +7;<br />
-55 vietnam.density = 276.03;<br />
-56 strcpy(vietnam.dateFormat,&ldquo;dd/mm/yyyy&rdquo;);<br />
-57<br />
-58 printCountry(&amp;vietnam);<br />
-59<br />
-60 return 0;<br />
-61 }<br />
-(gdb) p vietnam.population<br />
-$1 = 91700000<br />
-(gdb) p vietnam.density<br />
-$2 = 276.029999<br />
-(gdb) p vietnam.capital<br />
-$3 = &ldquo;Hanoi&rdquo;, &lsquo;\000&rsquo;<br />
-(gdb) p vietnam<br />
-$4 = {capital = &ldquo;Hanoi&rdquo;, &lsquo;\000&rsquo; , area = 332698,<br />
-population = 91700000, density = 276.029999, currency = {<br />
-iso4217Code = &ldquo;VND\000&rdquo;, name = &ldquo;Dong&rdquo;, &lsquo;\000&rsquo; },<br />
-timezone = 7, dateFormat = &ldquo;dd/mm/yyyy&rdquo;, &lsquo;\000&rsquo; }<br />
-(gdb)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Breakpoint <span style="color:#b452cd">1</span>, main (<span style="color:#00688b">argc</span>=<span style="color:#b452cd">1</span>, <span style="color:#00688b">argv</span>=0x7fffffffdcb8) at mainapp.c:58  
+<span style="color:#b452cd">58</span> printCountry(&amp;vietnam);  
+(gdb) l  
+<span style="color:#b452cd">53</span> strcpy(vietnam.currency.name,<span style="color:#cd5555">&#34;Dong&#34;</span>);  
+<span style="color:#b452cd">54</span> vietnam.timezone = +7;  
+<span style="color:#b452cd">55</span> vietnam.density = <span style="color:#b452cd">276</span>.03;  
+<span style="color:#b452cd">56</span> strcpy(vietnam.dateFormat,<span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>);  
+<span style="color:#b452cd">57</span>  
+<span style="color:#b452cd">58</span> printCountry(&amp;vietnam);  
+<span style="color:#b452cd">59</span>  
+<span style="color:#b452cd">60</span> <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+<span style="color:#b452cd">61</span> }  
+(gdb) p vietnam.population  
+<span style="color:#00688b">$1</span> = <span style="color:#b452cd">91700000</span>  
+(gdb) p vietnam.density  
+<span style="color:#00688b">$2</span> = <span style="color:#b452cd">276</span>.029999  
+(gdb) p vietnam.capital  
+<span style="color:#00688b">$3</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+(gdb) p vietnam  
+<span style="color:#00688b">$4</span> = {<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> , <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
+<span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>, <span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999, <span style="color:#00688b">currency</span> = {  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>, <span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> },  
+<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>, <span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> }  
+(gdb)  </code></pre></div>
 <p>-Hiển thị giá trị biến cấu trúc đẹp hơn<br />
 Bật chế độ in đẹp bằng <strong>set print pretty on</strong>, rồi thực hiện in như bình thường.</p>
-
-<p>[code lang=bash]<br />
-(gdb) p vietnam<br />
-$4 = {capital = &ldquo;Hanoi&rdquo;, &lsquo;\000&rsquo; , area = 332698,<br />
-population = 91700000, density = 276.029999, currency = {<br />
-iso4217Code = &ldquo;VND\000&rdquo;, name = &ldquo;Dong&rdquo;, &lsquo;\000&rsquo; },<br />
-timezone = 7, dateFormat = &ldquo;dd/mm/yyyy&rdquo;, &lsquo;\000&rsquo; }<br />
-(gdb) set print pretty on<br />
-(gdb) p vietnam<br />
-$5 = {<br />
-capital = &ldquo;Hanoi&rdquo;, &lsquo;\000&rsquo; ,<br />
-area = 332698,<br />
-population = 91700000,<br />
-density = 276.029999,<br />
-currency = {<br />
-iso4217Code = &ldquo;VND\000&rdquo;,<br />
-name = &ldquo;Dong&rdquo;, &lsquo;\000&rsquo;<br />
-},<br />
-timezone = 7,<br />
-dateFormat = &ldquo;dd/mm/yyyy&rdquo;, &lsquo;\000&rsquo;<br />
-}<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) p vietnam  
+<span style="color:#00688b">$4</span> = {<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> , <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
+<span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>, <span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999, <span style="color:#00688b">currency</span> = {  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>, <span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> },  
+<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>, <span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> }  
+(gdb) <span style="color:#658b00">set</span> print pretty on  
+(gdb) p vietnam  
+<span style="color:#00688b">$5</span> = {  
+<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> ,  
+<span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
+<span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>,  
+<span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999,  
+<span style="color:#00688b">currency</span> = {  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>,  
+<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+},  
+<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>,  
+<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+}  </code></pre></div>
 <p>Ta có thể thấy rõ sự khác bọt giữa khi pretty là off/on.</p>
 
 <p>-Hiển thị giá trị con trỏ có ép kiểu<br />
 Đặt breakpoint ở hàm <strong>printCountry</strong>, sau khi dừng ta sẽ có như sau:</p>
-
-<p>[code lang=bash]<br />
-Breakpoint 2, printCountry (data=0x7fffffffd950) at mainapp.c:27<br />
-27 ST_COUNTRY *country = (ST_COUNTRY*)data;<br />
-(gdb) p data<br />
-$6 = (void *) 0x7fffffffd950<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Breakpoint <span style="color:#b452cd">2</span>, printCountry (<span style="color:#00688b">data</span>=0x7fffffffd950) at mainapp.c:27  
+<span style="color:#b452cd">27</span> ST_COUNTRY *country = (ST_COUNTRY*)data;  
+(gdb) p data  
+<span style="color:#00688b">$6</span> = (void *) 0x7fffffffd950  </code></pre></div>
 <p>Tham số <strong>data</strong> được truyền vào là kiểu void. Nên khi ta dùng lệnh print thì chỉ thấy được địa chỉ con trỏ thôi. Ta có thể ép kiểu bất cứ kiểu nào.<br />
 Nhưng vì biết đó là kiểu con trỏ của <strong>ST_COUNTRY</strong> rồi, ta có thể làm như sau:</p>
-
-<p>[code lang=bash]<br />
-(gdb) p (*(ST_COUNTRY*)data)<br />
-$7 = {<br />
-capital = &ldquo;Hanoi&rdquo;, &lsquo;\000&rsquo; ,<br />
-area = 332698,<br />
-population = 91700000,<br />
-density = 276.029999,<br />
-currency = {<br />
-iso4217Code = &ldquo;VND\000&rdquo;,<br />
-name = &ldquo;Dong&rdquo;, &lsquo;\000&rsquo;<br />
-},<br />
-timezone = 7,<br />
-dateFormat = &ldquo;dd/mm/yyyy&rdquo;, &lsquo;\000&rsquo;<br />
-}<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) p (*(ST_COUNTRY*)data)  
+<span style="color:#00688b">$7</span> = {  
+<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> ,  
+<span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
+<span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>,  
+<span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999,  
+<span style="color:#00688b">currency</span> = {  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>,  
+<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+},  
+<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>,  
+<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+}  </code></pre></div>
 <p>-Hiển thị mảng<br />
 Ở trên ta đã thấy chuỗi được hiển thị rồi, chuỗi cũng là mảng nên tả hãy thử hiện thị độ dài bất kì của mảng đó xem sao, cách làm phổ biến như sau:</p>
-
-<p>[code lang=bash]<br />
-(gdb) x/10xb country-&gt;capital<br />
-0x7fffffffd950: 0x48 0x61 0x6e 0x6f 0x69 0x00 0x00 0x00<br />
-0x7fffffffd958: 0x00 0x00<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) x/10xb country-&gt;capital  
+0x7fffffffd950: 0x48 0x61 0x6e 0x6f 0x69 0x00 0x00 0x00  
+0x7fffffffd958: 0x00 0x00  </code></pre></div>
 <p>Câu lệnh trên sẽ hiển thị <strong>10</strong> bytes (<strong>b</strong> cuối cùng là byte) đầu tiên của mảng <strong>country-&gt;capital</strong>, ở dang cơ số 16(chính là <strong>x</strong> sau số 10).</p>
 
 <h3 id="5-kiểm-tra-stacktrace">5. Kiểm tra stacktrace</h3>
 
 <p>-backtrace (viết ngắn là bt) được sử dụng để cho biết luồng xử lý đi như thế nào để đến được điểm dang dừng lại, ta có thể sử dụng thêm <strong>bt full</strong> để thấy các lời gọi ở vị trí nào trong code.</p>
-
-<p>[code lang=bash]<br />
-(gdb) bt<br />
-#0 printCountry (data=0x7fffffffd950) at mainapp.c:29<br />
-#1 0x00000000004007ef in main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58<br />
-(gdb) bt full<br />
-#0 printCountry (data=0x7fffffffd950) at mainapp.c:29<br />
-country = 0x7fffffffd950<br />
-#1 0x00000000004007ef in main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58<br />
-vietnam = {<br />
-capital = &ldquo;Hanoi&rdquo;, &lsquo;\000&rsquo; ,<br />
-area = 332698,<br />
-population = 91700000,<br />
-density = 276.029999,<br />
-currency = {<br />
-iso4217Code = &ldquo;VND\000&rdquo;,<br />
-name = &ldquo;Dong&rdquo;, &lsquo;\000&rsquo;<br />
-},<br />
-timezone = 7,<br />
-dateFormat = &ldquo;dd/mm/yyyy&rdquo;, &lsquo;\000&rsquo;<br />
-}<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) bt  
+<span style="color:#228b22">#0 printCountry (data=0x7fffffffd950) at mainapp.c:29</span>  
+<span style="color:#228b22">#1 0x00000000004007ef in main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58</span>  
+(gdb) bt full  
+<span style="color:#228b22">#0 printCountry (data=0x7fffffffd950) at mainapp.c:29</span>  
+<span style="color:#00688b">country</span> = 0x7fffffffd950  
+<span style="color:#228b22">#1 0x00000000004007ef in main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58</span>  
+<span style="color:#00688b">vietnam</span> = {  
+<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> ,  
+<span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
+<span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>,  
+<span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999,  
+<span style="color:#00688b">currency</span> = {  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>,  
+<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+},  
+<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>,  
+<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+}  </code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -569,7 +482,7 @@ dateFormat = &ldquo;dd/mm/yyyy&rdquo;, &lsquo;\000&rsquo;<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

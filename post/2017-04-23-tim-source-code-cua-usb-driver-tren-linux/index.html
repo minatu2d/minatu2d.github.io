@@ -66,7 +66,7 @@
 
 <p>Ở bài <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm driver cho Linux</a> cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.</p>
 
-<h2 id="cách-tìm-source-code-driver-cho-thiết-bị-usb">Cách tìm source code driver cho thiết bị USB</h2>
+<p>Cách tìm source code driver cho thiết bị USB</p>
 
 <h2 id="1-nói-qua-về-thiết-bị-usb">1. Nói qua về thiết bị USB</h2>
 
@@ -90,17 +90,12 @@ Vì thế, cách này thường được dùng để giữ những tài sản c�
 <h2 id="2-lấy-thông-tin-vendor-product-từ-var-log-syslog">2. Lấy thông tin Vendor, Product từ /var/log/syslog</h2>
 
 <ul>
-<li>Như ta đã biết, linux có một hệ thống file log, chứa những thông tin trong<br />
+<li><p>Như ta đã biết, linux có một hệ thống file log, chứa những thông tin trong<br />
 quá trình hoạt động của nhân, các phần mềm, dịch vụ. Nó thường nằm ở <em>/var/log/</em><br />
 Trong trường hợp này, ta chỉ quan tâm đến log của nhân, ta sẽ xem file <em>/var/log/syslog/</em><br />
-Câu lệnh để xem ở chế độ <em>live</em> là:</li>
-</ul>
+Câu lệnh để xem ở chế độ <em>live</em> là:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$tail</span> -f /var/log/syslog  </code></pre></div></li>
 
-<p>[code lang=shell]<br />
-$tail -f /var/log/syslog<br />
-[/code]</p>
-
-<ul>
 <li><p>Để quan sát được toàn bộ log của quá trình từ lúc cắm thiết bị đến lúc dùng được<br />
 ta sẽ bật lệnh xem log ở trên ở một terminal khác cho tiện.<br />
 Nếu không, ta phải xem lại file log ở trên và tìm ra được tương ứng cho thiết bị.</p>
@@ -109,29 +104,22 @@ Nếu không, ta phải xem lại file log ở trên và tìm ra được tươn
 
 <li><p>Thiết bị là USB-Serial Converter, có giao tiếp bằng USB.<br />
 Ta cùng xem sẽ lấy được thông tin gì từ log của thiết bị này:<br />
-Đoạn log ta lấy được như như sau:</p></li>
+Đoạn log ta lấy được như như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.576063] usb <span style="color:#b452cd">2</span>-3.1: new full-speed USB device number <span style="color:#b452cd">14</span> using xhci_hcd  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.671613] usb <span style="color:#b452cd">2</span>-3.1: New USB device found, <span style="color:#00688b">idVendor</span>=<span style="color:#b452cd">0403</span>, <span style="color:#00688b">idProduct</span>=<span style="color:#b452cd">6015</span>  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.671617] usb <span style="color:#b452cd">2</span>-3.1: New USB device strings: <span style="color:#00688b">Mfr</span>=<span style="color:#b452cd">1</span>, <span style="color:#00688b">Product</span>=<span style="color:#b452cd">2</span>, <span style="color:#00688b">SerialNumber</span>=<span style="color:#b452cd">3</span>  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.671620] usb <span style="color:#b452cd">2</span>-3.1: Product: FT230X Basic UART  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.671622] usb <span style="color:#b452cd">2</span>-3.1: Manufacturer: FTDI  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.671624] usb <span style="color:#b452cd">2</span>-3.1: SerialNumber: DJ00LL3D  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.675291] ftdi_sio <span style="color:#b452cd">2</span>-3.1:1.0: FTDI USB Serial Device converter detected  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.675344] usb <span style="color:#b452cd">2</span>-3.1: Detected FT-X  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu kernel: [ <span style="color:#b452cd">5046</span>.675737] usb <span style="color:#b452cd">2</span>-3.1: FTDI USB Serial Device converter now attached to ttyUSB0  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu mtp-probe: checking bus <span style="color:#b452cd">2</span>, device <span style="color:#b452cd">14</span>: <span style="color:#cd5555">&#34;/sys/devices/pci0000:00/0000:00:14.0/usb2/2-3/2-3.1&#34;</span>  
+Apr <span style="color:#b452cd">23</span> <span style="color:#b452cd">12</span>:01:54 OEDEV-Ubuntu mtp-probe: bus: <span style="color:#b452cd">2</span>, device: <span style="color:#b452cd">14</span> was not an MTP device  </code></pre></div></li>
 </ul>
 
-<p>[code lang=shell]<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.576063] usb 2-3.1: new full-speed USB device number 14 using xhci_hcd<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671613] usb 2-3.1: New USB device found, idVendor=0403, idProduct=6015<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671617] usb 2-3.1: New USB device strings: Mfr=1, Product=2, SerialNumber=3<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671620] usb 2-3.1: Product: FT230X Basic UART<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671622] usb 2-3.1: Manufacturer: FTDI<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671624] usb 2-3.1: SerialNumber: DJ00LL3D<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675291] ftdi_sio 2-3.1:1.0: FTDI USB Serial Device converter detected<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675344] usb 2-3.1: Detected FT-X<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675737] usb 2-3.1: FTDI USB Serial Device converter now attached to ttyUSB0<br />
-Apr 23 12:01:54 OEDEV-Ubuntu mtp-probe: checking bus 2, device 14: &ldquo;/sys/devices/pci0000:00/0000:00:14.0/usb2/2-<sup>3</sup>&frasl;<sub>2</sub>-3.1&rdquo;<br />
-Apr 23 12:01:54 OEDEV-Ubuntu mtp-probe: bus: 2, device: 14 was not an MTP device<br />
-[/code]</p>
-
 <p>Ta thấy từ log trên có đoạn:</p>
-
-<p>[code lang=text]<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671613] usb 2-3.1: New USB device found, idVendor=0403, idProduct=6015<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671613] usb 2-3.1: New USB device found, idVendor=0403, idProduct=6015  </code></pre></div>
 <p>Chính dòng này đang chứa id của <strong>Vendor</strong> và <strong>Product</strong>:<br />
 Cụ thể: <strong>idVendor</strong> = 0403, <strong>idProduct</strong> = 6015</p>
 
@@ -144,11 +132,7 @@ Manufacturer: FTDI<br />
 SerialNumber: DJ00LL3D</p>
 
 <p>Ở đây, từ log trên ta cũng biết được một thông tin quan trọng khác là thiết bị đã chạy hay chưa.</p>
-
-<p>[code lang=text]<br />
-Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675737] usb 2-3.1: FTDI USB Serial Device converter now attached to ttyUSB0<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675737] usb 2-3.1: FTDI USB Serial Device converter now attached to ttyUSB0  </code></pre></div>
 <p>Chính dòng này đã cho ta biết được là thiết bị đã chạy được.<br />
 Vì sao?<br />
 Nó đã được attached vào vị trí <strong>/dev/ttyUSB0</strong> để cho phép các ứng dụng khác sử dụng.<br />
@@ -162,19 +146,15 @@ biết được có một thiết bị được cắm vào.</p>
 
 <p>lsusb là câu lệnh liệt kê tất cả các thiết bị usb hiện có, kể cả thiết bị chưa sử dụng được.<br />
 Output của nó kiểu như sau:</p>
-
-<p>[code lang=text]<br />
-$ lsusb<br />
-Bus 001 Device 002: ID 8087:8001 Intel Corp.<br />
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
-Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub<br />
-Bus 002 Device 009: ID 064e:c231 Suyin Corp.<br />
-Bus 002 Device 005: ID 8087:07dc Intel Corp.<br />
-Bus 002 Device 013: ID 1f55:0004<br />
-Bus 002 Device 014: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)<br />
-Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ lsusb  
+Bus 001 Device 002: ID 8087:8001 Intel Corp.  
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub  
+Bus 002 Device 009: ID 064e:c231 Suyin Corp.  
+Bus 002 Device 005: ID 8087:07dc Intel Corp.  
+Bus 002 Device 013: ID 1f55:0004  
+Bus 002 Device 014: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)  
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  </code></pre></div>
 <p>2 giá trị được ngăn cách bởi <strong>:</strong> phía sau <strong>ID</strong> chính là id của <strong>Vendor</strong> và <strong>Product</strong>.</p>
 
 <p>Nếu bản linux của bạn hỗ trợ lsusb, bạn có thể dễ dàng xác định bằng cách<br />
@@ -182,32 +162,24 @@ so sánh đầu ra của câu lệnh <strong>lsusb</strong> trước và sau khi
 
 <p>Ví dụ:<br />
 Trước khi cắm thiết bị, output của <strong>lsusb</strong> là:</p>
-
-<p>[code lang=text]<br />
-$ lsusb<br />
-Bus 001 Device 002: ID 8087:8001 Intel Corp.<br />
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
-Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub<br />
-Bus 002 Device 009: ID 064e:c231 Suyin Corp.<br />
-Bus 002 Device 005: ID 8087:07dc Intel Corp.<br />
-Bus 002 Device 013: ID 1f55:0004<br />
-Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ lsusb  
+Bus 001 Device 002: ID 8087:8001 Intel Corp.  
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub  
+Bus 002 Device 009: ID 064e:c231 Suyin Corp.  
+Bus 002 Device 005: ID 8087:07dc Intel Corp.  
+Bus 002 Device 013: ID 1f55:0004  
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  </code></pre></div>
 <p>Sau khi cắm thiết bị, output của <strong>lsusb</strong> là:</p>
-
-<p>[code lang=text]<br />
-$ lsusb<br />
-Bus 001 Device 002: ID 8087:8001 Intel Corp.<br />
-Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
-Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub<br />
-Bus 002 Device 009: ID 064e:c231 Suyin Corp.<br />
-Bus 002 Device 005: ID 8087:07dc Intel Corp.<br />
-Bus 002 Device 013: ID 1f55:0004<br />
-Bus 002 Device 014: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)<br />
-Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ lsusb  
+Bus 001 Device 002: ID 8087:8001 Intel Corp.  
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub  
+Bus 002 Device 009: ID 064e:c231 Suyin Corp.  
+Bus 002 Device 005: ID 8087:07dc Intel Corp.  
+Bus 002 Device 013: ID 1f55:0004  
+Bus 002 Device 014: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)  
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  </code></pre></div>
 <p>Như ta đã thấy, thiết bị mà ta vừa xác đinh ở trên chỉ xuất hiện ở lệnh <strong>lsusb</strong> sau.</p>
 
 <h2 id="4-tìm-source-code-từ-thông-tin-vendor-product">4. Tìm source code từ thông tin Vendor, Product</h2>
@@ -224,60 +196,45 @@ idProduct = 6015</p>
 <p>Ta cần tìm source của driver cho thiết bị này trong source của kernel.</p>
 
 <p>Ta tải bạn kernel statble mới nhất tại <a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.12.tar.xz">https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.12.tar.xz</a>, và giải nén:</p>
-
-<p>[code lang=shell]<br />
-$ cd linux-4.10.8/<br />
-$ ls<br />
-arch COPYING Documentation fs ipc kernel Makefile modules.order README security tools vmlinux<br />
-block CREDITS drivers include Kbuild lib mm Module.symvers samples sound usr vmlinux.o<br />
-certs crypto firmware init Kconfig MAINTAINERS modules.builtin net scripts System.map virt<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> linux-4.10.8/  
+$ ls  
+arch COPYING Documentation fs ipc kernel Makefile modules.order README security tools vmlinux  
+block CREDITS drivers include Kbuild lib mm Module.symvers samples sound usr vmlinux.o  
+certs crypto firmware init Kconfig MAINTAINERS modules.builtin net scripts System.map virt  </code></pre></div>
 <p>Ta tìm source driver cho thiết bị trên như sau:</p>
 
 <ul>
-<li>Tìm theo vendor id:</li>
+<li><p>Tìm theo vendor id:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ grep -n -R 0x0403 drivers/usb  
+drivers/usb/serial/ipaq.c:66: { USB_DEVICE(0x045E, 0x0403) }, /* Windows Powered Pocket PC <span style="color:#b452cd">2002</span> */  
+drivers/usb/serial/cp210x.c:203: { USB_DEVICE(0x1FB9, 0x0403) }, /* Lake Shore Model 475A Gaussmeter */  
+drivers/usb/serial/ftdi_sio.h:449: * <span style="color:#b452cd">8</span> idVendor <span style="color:#b452cd">2</span> 0x0403 Vendor ID  
+drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID 0x0403 /* Vendor Id */  
+drivers/usb/serial/ftdi_sio_ids.h:47: * OpenRD Base, Client use VID 0x0403  
+drivers/usb/serial/ftdi_sio_ids.h:233: * Almost all of these devices use FTDI<span style="color:#a61717;background-color:#e3d2d2">&#39;</span>s vendor ID (0x0403).  
+drivers/usb/serial/ftdi_sio_ids.h:346: * Hameg HO820 and HO870 interface (using VID 0x0403)  
+drivers/usb/serial/ftdi_sio_ids.h:1352: * MJS Gadgets HD Radio / XM Radio / Sirius Radio interfaces (using VID 0x0403)  
+drivers/usb/serial/ftdi_sio_ids.h:1373: * Segway Robotic Mobility Platform USB interface (using VID 0x0403)  
+drivers/usb/misc/ftdi-elan.c:86:#define USB_FTDI_ELAN_VENDOR_ID 0x0403
+
+$ grep -n -R 0x6015 drivers/usb  
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */  </code></pre></div></li>
 </ul>
-
-<p>[code lang=shell]<br />
-$ grep -n -R 0x0403 drivers/usb<br />
-drivers/usb/serial/ipaq.c:66: { USB_DEVICE(0x045E, 0x0403) }, /* Windows Powered Pocket PC 2002 */<br />
-drivers/usb/serial/cp210x.c:203: { USB_DEVICE(0x1FB9, 0x0403) }, /* Lake Shore Model 475A Gaussmeter */<br />
-drivers/usb/serial/ftdi_sio.h:449: * 8 idVendor 2 0x0403 Vendor ID<br />
-drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID 0x0403 /* Vendor Id */<br />
-drivers/usb/serial/ftdi_sio_ids.h:47: * OpenRD Base, Client use VID 0x0403<br />
-drivers/usb/serial/ftdi_sio_ids.h:233: * Almost all of these devices use FTDI&rsquo;s vendor ID (0x0403).<br />
-drivers/usb/serial/ftdi_sio_ids.h:346: * Hameg HO820 and HO870 interface (using VID 0x0403)<br />
-drivers/usb/serial/ftdi_sio_ids.h:1352: * MJS Gadgets HD Radio / XM Radio / Sirius Radio interfaces (using VID 0x0403)<br />
-drivers/usb/serial/ftdi_sio_ids.h:1373: * Segway Robotic Mobility Platform USB interface (using VID 0x0403)<br />
-drivers/usb/misc/ftdi-elan.c:86:#define USB_FTDI_ELAN_VENDOR_ID 0x0403</p>
-
-<p>$ grep -n -R 0x6015 drivers/usb<br />
-drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */<br />
-[/code]</p>
 
 <p>Nếu ta đã biết về lập trình C, thì thường giá trị hardcode như 0403, 0615 sẽ được định nghĩa<br />
 và sử dụng định nghĩa đó ở những nơi khác chứ không sử dụng trực tiếp giá trị.</p>
 
 <p>Từ kết quả ở trên ta thấy có 2 dòng <strong>define</strong> cho giá trị <strong>0x0403</strong> và <strong>0x6015</strong><br />
 cùng ở file <strong>drivers/usb/serial/ftdi_sio_ids.h</strong>. Đó là</p>
-
-<p>[code lang=text]<br />
-drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID 0x0403 /* Vendor Id */<br />
-drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) *<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID 0x0403 /* Vendor Id */  
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) *  </code></pre></div>
 <p>Ta hiểu rằng, 2 giá trị trên sẽ được sử dụng bằng tên đại diện <strong>FTDI_VID</strong> và <strong>FTDO_FTX_PID</strong> ở những nơi khác.</p>
 
 <p>Ta tiếp tục tìm, vì một nhà sản xuất sẽ có rất nhiều thiết bị.<br />
 Vì thế ta nên tìm thiết bị để có kết quả chính xác hơn. Trong trường hợp này là <strong>FTDO_FTX_PID</strong></p>
-
-<p>[code lang=text]<br />
-$ grep -n -R FTDI_FTX_PID<br />
-drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */<br />
-drivers/usb/serial/ftdi_sio.c:177: { USB_DEVICE(FTDI_VID, FTDI_FTX_PID) },<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ grep -n -R FTDI_FTX_PID  
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */  
+drivers/usb/serial/ftdi_sio.c:177: { USB_DEVICE(FTDI_VID, FTDI_FTX_PID) },  </code></pre></div>
 <p>Và đây, source cho driver của thiết bị nằm ở <strong>drivers/usb/serial/ftdi_sio.c</strong>.</p>
 
 <h2 id="5-tham-khảo">5. Tham khảo</h2>
@@ -327,7 +284,7 @@ Có lẽ không chỗ nào tốt hơn chính là tài liệu (hoặc sách) do n
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

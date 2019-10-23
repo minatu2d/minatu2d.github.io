@@ -75,7 +75,7 @@ Ví dụ như giải quyết vấn đề gì. Quá trình Train là đi tìm cá
 
 <p>Thôi, tạm note nội dung tóm tắt từng tuần ra đây cho đỡ quên. Và cũng đỡ phải nhớ.</p>
 
-<h2 id="1-tuần-1-giới-thiêu">1. Tuần 1 : Giới thiêu</h2>
+<h2 id="tuần-1-giới-thiêu">Tuần 1 : Giới thiêu</h2>
 
 <p>Lướt sóng qua một chút về Machine Learning.<br />
 - Supervised Learning là gì.<br />
@@ -85,11 +85,11 @@ Ví dụ như giải quyết vấn đề gì. Quá trình Train là đi tìm cá
 
 <p>Bắt đầu từ bài toán tìm <em>f(x)</em> thoả mãn : <em>y = f(x)</em>, biết rằng <em>x=x1</em> thì <em>y=y1</em>, <em>x=x2</em> thì <em>y=y2</em>, etc&hellip; . Biết thêm rằng nữa f(x) có dạng : <em>ax + b</em>.<br />
 Mình nhớ không nhầm với bài toán trên, cách giải là coi a,b là biến, thay các giá trị x1, x2, y1, y2.. đã biết vào rồi giải. Cộng trừ nhân chia gì đó chắc sẽ ra thôi.<br />
-Khi tìm được a,b rồi thì cho x=x3 thì hỏi y bằng bao nhiêu chẳng hạn thì quá đơn giản rồi. **Luôn luôn bằng, luôn luôn chính xác*.</p>
+Khi tìm được a,b rồi thì cho x=x3 thì hỏi y bằng bao nhiêu chẳng hạn thì quá đơn giản rồi. *<em>Luôn luôn bằng, luôn luôn chính xác</em>.</p>
 
 <p>Nhưng trong Machine Learning thì hơi khác một chút. Nó cũng giống việc giải phương trình là đi tìm a,b nhưng không phải để đúng với mọi điều kiện dạng x=x1 thì y phải bằng y1, x=x2 thì b phải bằng y2.</p>
 
-<p>Giả sử sau khi tìm được a,b rồi, với <em>x=x1</em> nó tìm ra <em>y1_p=ax1 + b</em>, với <em>x=x2</em> nó tìm ra<br />
+<p>Giả sử sau khi tìm được a,b rồi, với <em>x=x1</em> nó tìm ra _y1<em>p=ax1 + b</em>, với <em>x=x2</em> nó tìm ra<br />
 y2_p. Các giá trị này chỉ y1_p, y2_p chỉ cần gần gần y1, y2 đã cho là được. Vì sao lại thế, vì nhiệm vụ của nó là đoán một quy luật sát với tất cả các điểm có dạng **(x1, y1), (x2, y2) thôi, chứ không phải đoán chính xác tất cả. Sau đó với quy luật đoán được, nó thực hiện đoán tốt với các điểm x3, x4 chưa biết.</p>
 
 <p>Cái đoán để tìm ra quy luật hay chính là hàm số đó người ta gọi là <strong>fit</strong>.<br />
@@ -99,8 +99,8 @@ Quá trình kiểm tra quy luật với những dữ liệu chưa có lúc <stro
 
 <p>Tiếp theo, nó giới thiệu về <strong>Cost Function</strong>, tức là hàm <strong>trả giá có sự sai khác khi đoán</strong>.<br />
 Dùng luôn ví dụ ở trên, cái giá phải trả chính là sự sai khác giữa giá trị đoán và giá trị mong muốn. Giữa y1 và y1_p, y2 và y2_p etc.<br />
-Người ta hay dùng khoảng cách Eclide ( hay gọi là Norm-2) để tính <strong>cái giá ** này.<br />
-Mục đích trong quá trình train là làm cho **cái giá phải trả</strong> là nhỏ nhất.<br />
+Người ta hay dùng khoảng cách Eclide ( hay gọi là Norm-2) để tính **cái giá ** này.<br />
+Mục đích trong quá trình train là làm cho <strong>cái giá phải trả</strong> là nhỏ nhất.<br />
 Hay tối thiểu hoá hàm <strong>Cost Function</strong>.</p>
 
 <p>Tiếp nữa, đến Gradient Descent, là một phương pháp để tối thiểu hoá <strong>Cost Function</strong> nó ở trên.<br />
@@ -116,7 +116,7 @@ Tức là sau khi tính được Gradient (dựa trên đạo hàm) tại một 
 <p>Phần cuối của tuần, là ôn lại ( thực ra với mình nó như mới rồi vì thì Toán xong môn nào mình thường xoá hết dữ liệu môn đó bằng một trận AOE ) về đại số, ma trận.<br />
 Mình ôn để biết mấy khái niệm về Inverse, Transpose, Matrix vậy thôi. Học như lần đầu có khác, cái gì cũng thú vị VKL :))</p>
 
-<h2 id="2-tuần-2-linear-regression-with-multiple-variables">2. Tuần 2 : Linear Regression With Multiple Variables</h2>
+<h2 id="tuần-2-linear-regression-with-multiple-variables">Tuần 2 : Linear Regression With Multiple Variables</h2>
 
 <p>Nói về Linear Regression with Multiple Variables với các khái niệm tương ứng với One Variable ở tuần 1.<br />
 Đừng tưởng tượng đến đồ thị làm gì, khó VKL.</p>
@@ -217,7 +217,7 @@ Trong khóa học có giới thiệu về <strong>Overfitting</strong>, rồi <s
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

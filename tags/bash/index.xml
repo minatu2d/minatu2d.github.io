@@ -17,7 +17,7 @@
       <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</guid>
-      <description>Thực hiện 3 phép tập hợp trên bash Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
+      <description>Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
 Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.
 Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krumins chủ trang http://www.catonmat.net/
 1. Phép giao Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.</description>
@@ -29,10 +29,10 @@ Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krum
       <pubDate>Fri, 03 Nov 2017 06:31:11 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</guid>
-      <description>&lt;p&gt;&lt;h2&gt;Một số thứ hữu ích khi viết sử dụng command, viết script trong bash&lt;/h2&gt;
-&lt;p&gt;Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên &lt;a href=&#34;https://github.com/jlevy/the-art-of-command-line&#34;&gt;The art of command line&lt;/a&gt; và mình cũng đã dịch thử (chưa được review) ở&lt;br /&gt;
-&lt;a href=&#34;https://github.com/minatu2d/the-art-of-command-line/blob/master/README-vi.md&#34;&gt;Nghệ thuật sử dụng dòng lệnh&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên The art of command line và mình cũng đã dịch thử (chưa được review) ở
+Nghệ thuật sử dụng dòng lệnh
+1. Hạn chế gõ lại câu lệnh cho dù là rất ngắn Hãy sử dụng chức năng tìm đoạn đang gõ trong history để làm giảm công gõ lại
+Hai chức năng tìm xuôi và tìm ngược được bash cung cấp rồi.</description>
     </item>
     
     <item>

@@ -17,22 +17,8 @@
       <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</guid>
-      <description>Ví dụ cơ bản với pthread trên Linux 1. Tạo và dừng thread Source code gốc lấy từ link
-[code lang=c]
-/******************************************************************************
-* FILE: hello.c
-* DESCRIPTION:
-* Chuong trinh demo thao tac tao thread, tat thread
-* AUTHOR: Blaise Barney
-* LAST REVISED: 08/09/11
-*
-* TRANSLATE to Vietnamese by Minatu
-* COMPILE CMD : $gcc -o hello hello.c -lpthread
-******************************************************************************/
-//
-#include 
-#include 
-#include</description>
+      <description>1. Tạo và dừng thread Source code gốc lấy từ link
+/****************************************************************************** * FILE: hello.c * DESCRIPTION: * Chuong trinh demo thao tac tao thread, tat thread * AUTHOR: Blaise Barney * LAST REVISED: 08/09/11 * * TRANSLATE to Vietnamese by Minatu * COMPILE CMD : $gcc -o hello hello.c -lpthread ******************************************************************************/ // #include &amp;lt;pthread.h&amp;gt;#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;#define NUM_THREADS 5  void *PrintHello(void *threadid) { long tid; tid = (long)threadid; printf(&amp;#34;Hello World!</description>
     </item>
     
     <item>

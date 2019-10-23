@@ -64,11 +64,7 @@
 		</header><div class="content post__content clearfix">
 			
 
-<h2 id="lệnh-mov-trong-assembly">Lệnh MOV trong Assembly</h2>
-
 <p><strong>Link gốc</strong>: <a href="http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html">http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html</a></p>
-
-<p>#Lệnh MOV</p>
 
 <h2 id="1-lệnh-mov">1. Lệnh MOV</h2>
 
@@ -80,28 +76,18 @@ bởi vì <strong>BỘ NHỚ ĐƯỢC TRUY CẬP THEO BUS (20bit hoặc 32bit), 
 <p>`</p>
 
 <p>Lệnh MOV có 2 tham số, được gọi là <strong>Operand</strong>, nó giống như bên dưới đây:</p>
-
-<p>[code lang=&ldquo;C&rdquo;]<br />
-MOV DEST, SOURCE<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#008b45">MOV</span> <span style="color:#00688b">DEST</span>, <span style="color:#00688b">SOURCE</span>  </code></pre></div>
 <p>Lệnh này theo cú pháp Intel nha.<br />
 Chuyển (Copy) dữ liệu từ <strong>SRC</strong> đến <strong>DEST</strong><br />
 <strong>SRC</strong>, <strong>DEST</strong>: là địa chỉ thanh ghi hoặc bộ nhớ, bỏ trường hợp cả 2 là bộ nhớ.</p>
 
 <p>Một số ví dụ:</p>
-
-<p>[code lang=&ldquo;C&rdquo;]<br />
-MOV AX, BX : Copy nội dung từ thanh ghi BX sang thanh ghi AX<br />
-MOV AL,10 : Lưu giá trị 10 vào thanh ghi AL<br />
-[/code]</p>
-
-<p>`</p>
-
-<p><code>Một số chú ý:  
-- Không thể chuyển dữ liệu giữa bộ nhớ với nhau.  
-- Nguồn và đích chuyển dữ liệu phải có cùng kích thước  
-- Không thể chuyển giá giá trị vào thanh ghi segment</code></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#008b45">MOV</span> <span style="color:#00688b">AX</span>, <span style="color:#00688b">BX</span> : <span style="color:#00688b">Copy</span> <span style="color:#00688b">nội</span> <span style="color:#00688b">dung</span> <span style="color:#00688b">từ</span> <span style="color:#00688b">thanh</span> <span style="color:#00688b">ghi</span> <span style="color:#00688b">BX</span> <span style="color:#00688b">sang</span> <span style="color:#00688b">thanh</span> <span style="color:#00688b">ghi</span> <span style="color:#00688b">AX</span>  
+<span style="color:#00688b">MOV</span> <span style="color:#00688b">AL</span>,<span style="color:#b452cd">10</span> : <span style="color:#00688b">Lưu</span> <span style="color:#00688b">giá</span> <span style="color:#00688b">trị</span> <span style="color:#b452cd">10</span> <span style="color:#00688b">vào</span> <span style="color:#00688b">thanh</span> <span style="color:#00688b">ghi</span> <span style="color:#00688b">AL</span>  </code></pre></div>
+<p><code>Một số chú ý</code>:<br />
+- Không thể chuyển dữ liệu giữa bộ nhớ với nhau.<br />
+- Nguồn và đích chuyển dữ liệu phải có cùng kích thước<br />
+- Không thể chuyển giá giá trị vào thanh ghi segment`</p>
 
 		</div>
 		<footer class="post__footer">
@@ -150,7 +136,7 @@ MOV AL,10 : Lưu giá trị 10 vào thanh ghi AL<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

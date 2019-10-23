@@ -62,12 +62,13 @@
 			<h1 class="post__title">Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</h1>
 			
 		</header><div class="content post__content clearfix">
-			
-
-<p><em>Tham khảo</em><br />
+			<p><em>Tham khảo</em><br />
 - Sách : AT&amp;T Assembly Language, Richard Blum</p>
 
-<h2 id="1-ngôn-ngữ-assembly-là-gì">1. Ngôn ngữ Assembly là gì?</h2>
+<ol>
+<li>Ngôn ngữ Assembly là gì?
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
+</ol>
 
 <ul>
 <li>Ở mức thấp nhất, Process chỉ hiểu <strong>instruction code</strong></li>
@@ -82,7 +83,10 @@
 <li>Bởi vậy, để để lập trình với <strong>Assembly</strong> cho 1 Processor nào đó, ta cũng cần <strong>Assembler</strong> tương ứng cho Processor đó.</li>
 </ul>
 
-<h2 id="2-intel-asm-và-at-t-asm-và-arm">2. Intel ASM và AT&amp;T ASM và ARM</h2>
+<ol>
+<li>Intel ASM và AT&amp;T ASM và ARM
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
+</ol>
 
 <ul>
 <li>Các bộ xử lý cùng kiến trúc thường ít có thay đổi về <strong>Assembly Language</strong>, tuy nhiên 2 kiến trúc khác nhau thì thường có <strong>Assembly Language</strong> khác nhau</li>
@@ -108,7 +112,10 @@ offset. <strong>AT&amp;T</strong> sử dụng <em>ljmp $section, $offset</em>, t
 </ul>
 </blockquote>
 
-<h2 id="3-asm-trên-linux">3. ASM trên Linux</h2>
+<ol>
+<li>ASM trên Linux
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
+</ol>
 
 <p>Để lập trình ASM trên Linux, ta sử dụng những công cụ sau:</p>
 
@@ -137,171 +144,146 @@ Cho phép xem instruction code và mã dịch ngược về ASM của nó.</p></
 Là công cụ đánh giá performance của phần mềm trong Linux. Nó cho phép xác định hàm nào tốn nhiều thời gian xử lý nhất. Từ đó, ta có thể tập trung cải tiến để tăng hiệu năng.</p></li>
 </ul>
 
-<h2 id="4-một-chương-trình-assembly-đơn-giản">4. Một chương trình Assembly đơn giản</h2>
+<ol>
+<li>Một chương trình Assembly đơn giản
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
+</ol>
 
 <p>Chương trình sau sẽ lấy tên của CPU và hiển thị ra dòng **The processor Vendor ID is XXXX **</p>
 
 <ul>
-<li>Source code</li>
+<li><p>Source code</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#1e889b">#Author : Richard Blum  
+</span><span style="color:#1e889b">#cpuid.s Sample program to extract the processor Vendor ID  
+</span><span style="color:#1e889b"></span>.section .data  
+output:  
+.ascii <span style="color:#a61717;background-color:#e3d2d2">“</span>The processor Vendor ID is <span style="color:#a61717;background-color:#e3d2d2">‘</span>xxxxxxxxxxxx<span style="color:#a61717;background-color:#e3d2d2">’\\</span>n<span style="color:#a61717;background-color:#e3d2d2">”</span>  
+.section .text  
+.globl _start  
+_start:  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0</span>, %eax  
+cpuid  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span>output, %edi  
+movl %ebx, <span style="color:#b452cd">28</span>(%edi)  
+movl %edx, <span style="color:#b452cd">32</span>(%edi)  
+movl %ecx, <span style="color:#b452cd">36</span>(%edi)  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">4</span>, %eax  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">1</span>, %ebx  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span>output, %ecx  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">42</span>, %edx  
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0x80</span>  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">1</span>, %eax  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0</span>, %ebx  
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0x80</span>  
+</code></pre></div></li>
 </ul>
-
-<p>[code lang=cpp]<br />
-#Author : Richard Blum<br />
-#cpuid.s Sample program to extract the processor Vendor ID<br />
-.section .data<br />
-output:<br />
-.ascii “The processor Vendor ID is ‘xxxxxxxxxxxx’\n”<br />
-.section .text<br />
-.globl _start<br />
-_start:<br />
-movl $0, %eax<br />
-cpuid<br />
-movl $output, %edi<br />
-movl %ebx, 28(%edi)<br />
-movl %edx, 32(%edi)<br />
-movl %ecx, 36(%edi)<br />
-movl $4, %eax<br />
-movl $1, %ebx<br />
-movl $output, %ecx<br />
-movl $42, %edx<br />
-int $0x80<br />
-movl $1, %eax<br />
-movl $0, %ebx<br />
-int $0x80<br />
-[/code]</p>
 
 <p>Lưu lại và đặt tên là <strong>cpuid.s</strong>:<br />
 - Biên dịch bằng Assembler:</p>
-
-<p>[code lang=bash]<br />
-$as -o cpuid.o cpuid.s<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$as</span> -o cpuid.o cpuid.s  </code></pre></div>
 <p>Output: <strong>cpuid.o</strong></p>
 
 <ul>
-<li>Link để tạo file chạy:</li>
+<li><p>Link để tạo file chạy:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ld -o cpuid cpuid.o  </code></pre></div></li>
 </ul>
-
-<p>[code lang=bash]<br />
-ld -o cpuid cpuid.o<br />
-[/code]</p>
 
 <p>Output: <strong>cpuid</strong></p>
 
 <ul>
-<li>Chạy</li>
+<li><p>Chạy</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./cpuid  
+The processor Vendor ID is <span style="color:#cd5555">&#39;GenuineIntel&#39;</span>  </code></pre></div></li>
+
+<li><p>Debug<br />
+Ta cần biên dịch với option khác thì mới debug được.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$as</span> -o cpuid.o cpuid.s  
+ld -o cpuid cpuid.o  </code></pre></div></li>
 </ul>
-
-<p>[code lang=bash]<br />
-$ ./cpuid<br />
-The processor Vendor ID is &lsquo;GenuineIntel&rsquo;<br />
-[/code]</p>
-
-<ul>
-<li>Debug<br />
-Ta cần biên dịch với option khác thì mới debug được.</li>
-</ul>
-
-<p>[code lang=bash]<br />
-$as -o cpuid.o cpuid.s<br />
-ld -o cpuid cpuid.o<br />
-[/code]</p>
 
 <p>Ta sẽ đặt break point ở <strong>_start</strong> và xem thử vị trí dừng:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ gdb ./cpuid  
+GNU gdb (Ubuntu <span style="color:#b452cd">7</span>.11-0ubuntu1) <span style="color:#b452cd">7</span>.11  
+Copyright (C) <span style="color:#b452cd">2016</span> Free Software Foundation, Inc.  
+License GPLv3+: GNU GPL version <span style="color:#b452cd">3</span> or later &lt;http://gnu.org/licenses/gpl.html&gt;  
+This is free software: you are free to change and redistribute it.  
+There is NO WARRANTY, to the extent permitted by law. Type <span style="color:#cd5555">&#34;show copying&#34;</span>  
+and <span style="color:#cd5555">&#34;show warranty&#34;</span> <span style="color:#8b008b;font-weight:bold">for</span> details.  
+This GDB was configured as <span style="color:#cd5555">&#34;i686-linux-gnu&#34;</span>.  
+Type <span style="color:#cd5555">&#34;show configuration&#34;</span> <span style="color:#8b008b;font-weight:bold">for</span> configuration details.  
+For bug reporting instructions, please see:  
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.  
+Find the GDB manual and other documentation resources online at:  
+&lt;http://www.gnu.org/software/gdb/documentation/&gt;.  
+For help, <span style="color:#658b00">type</span> <span style="color:#cd5555">&#34;help&#34;</span>.  
+Type <span style="color:#cd5555">&#34;apropos word&#34;</span> to search <span style="color:#8b008b;font-weight:bold">for</span> commands related to <span style="color:#cd5555">&#34;word&#34;</span>...  
+Reading symbols from ./cpuid...done.  
+(gdb) b *_start  
+Breakpoint <span style="color:#b452cd">1</span> at 0x8048074: file cpuid.s, line <span style="color:#b452cd">10</span>.  
+(gdb) r  
+Starting program: /home/osboxes/code/asm/cpuid
 
-<p>[code lang=bash]<br />
-$ gdb ./cpuid<br />
-GNU gdb (Ubuntu 7.11-0ubuntu1) 7.11<br />
-Copyright &copy; 2016 Free Software Foundation, Inc.<br />
-License GPLv3+: GNU GPL version 3 or later <a href="http://gnu.org/licenses/gpl.html">http://gnu.org/licenses/gpl.html</a><br />
-This is free software: you are free to change and redistribute it.<br />
-There is NO WARRANTY, to the extent permitted by law. Type &ldquo;show copying&rdquo;<br />
-and &ldquo;show warranty&rdquo; for details.<br />
-This GDB was configured as &ldquo;i686-linux-gnu&rdquo;.<br />
-Type &ldquo;show configuration&rdquo; for configuration details.<br />
-For bug reporting instructions, please see:<br />
-<a href="http://www.gnu.org/software/gdb/bugs/">http://www.gnu.org/software/gdb/bugs/</a>.<br />
-Find the GDB manual and other documentation resources online at:<br />
-<a href="http://www.gnu.org/software/gdb/documentation/">http://www.gnu.org/software/gdb/documentation/</a>.<br />
-For help, type &ldquo;help&rdquo;.<br />
-Type &ldquo;apropos word&rdquo; to search for commands related to &ldquo;word&rdquo;&hellip;<br />
-Reading symbols from ./cpuid&hellip;done.<br />
-(gdb) b *_start<br />
-Breakpoint 1 at 0x8048074: file cpuid.s, line 10.<br />
-(gdb) r<br />
-Starting program: /home/osboxes/code/asm/cpuid</p>
-
-<p>Breakpoint 1, _start () at cpuid.s:10<br />
-10 movl $0, %eax<br />
-(gdb) l<br />
-5 .section .text<br />
-6 .globl _start<br />
-7 _start:<br />
-8 # Using $0 for value 0<br />
-9 # Using %eax for register EAX<br />
-10 movl $0, %eax<br />
-11 cpuid<br />
-12 movl $output, %edi<br />
-13 movl %ebx, 28(%edi)<br />
-14 movl %edx, 32(%edi)<br />
-[/code]</p>
-
+Breakpoint <span style="color:#b452cd">1</span>, _start () at cpuid.s:10  
+<span style="color:#b452cd">10</span> movl <span style="color:#00688b">$0</span>, %eax  
+(gdb) l  
+<span style="color:#b452cd">5</span> .section .text  
+<span style="color:#b452cd">6</span> .globl _start  
+<span style="color:#b452cd">7</span> _start:  
+<span style="color:#b452cd">8</span> <span style="color:#228b22"># Using $0 for value 0</span>  
+<span style="color:#b452cd">9</span> <span style="color:#228b22"># Using %eax for register EAX</span>  
+<span style="color:#b452cd">10</span> movl <span style="color:#00688b">$0</span>, %eax  
+<span style="color:#b452cd">11</span> cpuid  
+<span style="color:#b452cd">12</span> movl <span style="color:#00688b">$output</span>, %edi  
+<span style="color:#b452cd">13</span> movl %ebx, <span style="color:#b452cd">28</span>(%edi)  
+<span style="color:#b452cd">14</span> movl %edx, <span style="color:#b452cd">32</span>(%edi)  </code></pre></div>
 <ul>
-<li>Dissassemler:<br />
-Cho <strong>cpuid.o</strong>:</li>
+<li><p>Dissassemler:<br />
+Cho <strong>cpuid.o</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ objdump -d cpuid.o
+
+cpuid.o: file format elf32-i386
+
+Disassembly of section .text:
+
+<span style="color:#b452cd">00000000</span> :  
+<span style="color:#b452cd">0</span>: b8 <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%eax  
+<span style="color:#b452cd">5</span>: 0f a2 cpuid  
+<span style="color:#b452cd">7</span>: bf <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%edi  
+c: <span style="color:#b452cd">89</span> 5f 1c mov %ebx,0x1c(%edi)  
+f: <span style="color:#b452cd">89</span> <span style="color:#b452cd">57</span> <span style="color:#b452cd">20</span> mov %edx,0x20(%edi)  
+<span style="color:#b452cd">12</span>: <span style="color:#b452cd">89</span> 4f <span style="color:#b452cd">24</span> mov %ecx,0x24(%edi)  
+<span style="color:#b452cd">15</span>: b8 <span style="color:#b452cd">04</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x4,%eax  
+1a: bb <span style="color:#b452cd">01</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x1,%ebx  
+1f: b9 <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%ecx  
+<span style="color:#b452cd">24</span>: ba 2a <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x2a,%edx  
+<span style="color:#b452cd">29</span>: <span style="color:#658b00">cd</span> <span style="color:#b452cd">80</span> int <span style="color:#00688b">$0</span>x80  
+2b: b8 <span style="color:#b452cd">01</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x1,%eax  
+<span style="color:#b452cd">30</span>: bb <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%ebx  
+<span style="color:#b452cd">35</span>: <span style="color:#658b00">cd</span> <span style="color:#b452cd">80</span> int <span style="color:#00688b">$0</span>x80  </code></pre></div></li>
 </ul>
 
-<p>[code lang=bash]<br />
-$ objdump -d cpuid.o</p>
-
-<p>cpuid.o: file format elf32-i386</p>
-
-<p>Disassembly of section .text:</p>
-
-<p>00000000 :<br />
-0: b8 00 00 00 00 mov $0x0,%eax<br />
-5: 0f a2 cpuid<br />
-7: bf 00 00 00 00 mov $0x0,%edi<br />
-c: 89 5f 1c mov %ebx,0x1c(%edi)<br />
-f: 89 57 20 mov %edx,0x20(%edi)<br />
-12: 89 4f 24 mov %ecx,0x24(%edi)<br />
-15: b8 04 00 00 00 mov $0x4,%eax<br />
-1a: bb 01 00 00 00 mov $0x1,%ebx<br />
-1f: b9 00 00 00 00 mov $0x0,%ecx<br />
-24: ba 2a 00 00 00 mov $0x2a,%edx<br />
-29: cd 80 int $0x80<br />
-2b: b8 01 00 00 00 mov $0x1,%eax<br />
-30: bb 00 00 00 00 mov $0x0,%ebx<br />
-35: cd 80 int $0x80<br />
-[/code]</p>
-
 <p>Cho <strong>cpuid</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ objdump -d cpuid
 
-<p>[code lang=bash]<br />
-$ objdump -d cpuid</p>
+cpuid: file format elf32-i386
 
-<p>cpuid: file format elf32-i386</p>
+Disassembly of section .text:
 
-<p>Disassembly of section .text:</p>
-
-<p>08048074 :<br />
-8048074: b8 00 00 00 00 mov $0x0,%eax<br />
-8048079: 0f a2 cpuid<br />
-804807b: bf ab 90 04 08 mov $0x80490ab,%edi<br />
-8048080: 89 5f 1c mov %ebx,0x1c(%edi)<br />
-8048083: 89 57 20 mov %edx,0x20(%edi)<br />
-8048086: 89 4f 24 mov %ecx,0x24(%edi)<br />
-8048089: b8 04 00 00 00 mov $0x4,%eax<br />
-804808e: bb 01 00 00 00 mov $0x1,%ebx<br />
-8048093: b9 ab 90 04 08 mov $0x80490ab,%ecx<br />
-8048098: ba 2a 00 00 00 mov $0x2a,%edx<br />
-804809d: cd 80 int $0x80<br />
-804809f: b8 01 00 00 00 mov $0x1,%eax<br />
-80480a4: bb 00 00 00 00 mov $0x0,%ebx<br />
-80480a9: cd 80 int $0x80<br />
-[/code]</p>
-
+<span style="color:#b452cd">08048074</span> :  
+<span style="color:#b452cd">8048074</span>: b8 <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%eax  
+<span style="color:#b452cd">8048079</span>: 0f a2 cpuid  
+804807b: bf ab <span style="color:#b452cd">90</span> <span style="color:#b452cd">04</span> <span style="color:#b452cd">08</span> mov <span style="color:#00688b">$0</span>x80490ab,%edi  
+<span style="color:#b452cd">8048080</span>: <span style="color:#b452cd">89</span> 5f 1c mov %ebx,0x1c(%edi)  
+<span style="color:#b452cd">8048083</span>: <span style="color:#b452cd">89</span> <span style="color:#b452cd">57</span> <span style="color:#b452cd">20</span> mov %edx,0x20(%edi)  
+<span style="color:#b452cd">8048086</span>: <span style="color:#b452cd">89</span> 4f <span style="color:#b452cd">24</span> mov %ecx,0x24(%edi)  
+<span style="color:#b452cd">8048089</span>: b8 <span style="color:#b452cd">04</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x4,%eax  
+804808e: bb <span style="color:#b452cd">01</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x1,%ebx  
+<span style="color:#b452cd">8048093</span>: b9 ab <span style="color:#b452cd">90</span> <span style="color:#b452cd">04</span> <span style="color:#b452cd">08</span> mov <span style="color:#00688b">$0</span>x80490ab,%ecx  
+<span style="color:#b452cd">8048098</span>: ba 2a <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x2a,%edx  
+804809d: <span style="color:#658b00">cd</span> <span style="color:#b452cd">80</span> int <span style="color:#00688b">$0</span>x80  
+804809f: b8 <span style="color:#b452cd">01</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x1,%eax  
+80480a4: bb <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%ebx  
+80480a9: <span style="color:#658b00">cd</span> <span style="color:#b452cd">80</span> int <span style="color:#00688b">$0</span>x80  </code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -350,7 +332,7 @@ $ objdump -d cpuid</p>
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

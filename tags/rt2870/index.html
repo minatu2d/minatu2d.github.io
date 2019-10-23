@@ -71,10 +71,7 @@
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh source, ta thực hiện build tạo image có có tên là rpi-basic-image thông qua lệnh:
-[code lang=&ldquo;shell&rdquo;]
-$bitbake rpi-basic-image
-[/code]
-Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
+$bitbake rpi-basic-image  Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
 rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)
 	</div>
 </article>
@@ -83,21 +80,13 @@ rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)
 
 			</div>
 			
-<aside class="sidebar"><div class="widget-search widget">
-	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
-		<label>
-			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
-		</label>
-		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
-	</form>
-</div>
+<aside class="sidebar">
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-2015/">Bắt đầu về Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</a></li>
@@ -235,7 +224,7 @@ rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

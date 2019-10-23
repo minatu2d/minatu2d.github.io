@@ -73,21 +73,13 @@ Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ 
 </ol>
 
 <p>Một số distro khi được cài đặt, đã bao gồm <strong>GDB</strong> rồi. Có thể kiểm tra bằng command dưới đây:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$gdb &ndash;version<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$gdb --version  </code></pre></div>
 <p>Dưới đây, sẽ đưa ra hướng dẫn cách cài đặt GDB trên máy sử dụng để debug. Nó có thể là máy chạy <strong>target program</strong>, có thể không.</p>
 
 <h3 id="1-cài-đặt-trên-debian-debian-based-distro">1. Cài đặt trên Debian (Debian-based distro)</h3>
 
 <p>Debian 8.x chưa được cài mặc định GDB, hãy sử dụng command sau để cài nó:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-#aptitude install gdb<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">#aptitude install gdb  </code></pre></div>
 <p>Chú ý rằng, ở đây phải sử dụng quyền <strong><em>root</em></strong> hoặc <strong><em>sudo</em></strong>.<br />
 Trên một số bản Debian như 8.x thì hoàn toàn có thể dùng cách cài đặt như Ubuntu được.</p>
 
@@ -95,39 +87,19 @@ Trên một số bản Debian như 8.x thì hoàn toàn có thể dùng cách c�
 
 <p>Trên các bản Ubuntu gần đây như <a href="http://releases.ubuntu.com/trusty/ubuntu-14.04.4-desktop-i386.manifest">14.04</a>, <a href="http://releases.ubuntu.com/xenial/ubuntu-16.04-desktop-i386.manifest">16.04</a> <strong>GDB</strong> đều được được cài mặc định.<br />
 Hoặc nếu chưa được cài, thì hãy chạy command sau để cài nó :</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$sudo apt-get install gdb<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$sudo apt-get install gdb  </code></pre></div>
 <h3 id="2-cài-đặt-trên-centos-fedora">2. Cài đặt trên CentOS, Fedora</h3>
 
 <p>Trên CentOS, Fedora, ta cài bằng lệnh sau dưới quyền root.</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-#yum install gdb<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">#yum install gdb  </code></pre></div>
 <p>Nếu có đĩa DVD cài đặt, có thể tải gói cài từ DVD bằng lệnh sau:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-#yum install &ndash;disablerepo=\* &ndash;enablerepo=c7-media install gdb<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">#yum install --disablerepo=\\* --enablerepo=c7-media install gdb  </code></pre></div>
 <h3 id="3-cài-đặt-trên-raspbian">3. Cài đặt trên Raspbian</h3>
 
 <p>Raspbian dựa trên Debian, có thể cài theo cách cài trên Ubuntu hoặc Debian đều được.</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-#aptitude install gdb<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">#aptitude install gdb  </code></pre></div>
 <p>hoặc</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$sudo apt-get install gdb<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$sudo apt-get install gdb  </code></pre></div>
 <h3 id="4-cài-đặt-từ-source-code">4. Cài đặt từ source code</h3>
 
 <p>Ta có thể tải một bản gdb bất kì tại <a href="ftp://sourceware.org/pub/gdb/releases/">đây</a> để tiến hành cài đặt.</p>
@@ -140,95 +112,67 @@ Thực hiện với quyền root nhiều khi còn phát sinh vấn đề.</p>
 <h4 id="4-1-tạo-thư-mục-để-build">4.1. Tạo thư mục để build</h4>
 
 <p>Command:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$ #1. Creating local directory<br />
-$pwd<br />
-/home/oedev<br />
-$mkdir gdb<br />
-$cd gdb<br />
-$pwd<br />
-/home/oedev/gdb<br />
-$mkdir gdb_install<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$ #1. Creating local directory  
+$pwd  
+/home/oedev  
+$mkdir gdb  
+$cd gdb  
+$pwd  
+/home/oedev/gdb  
+$mkdir gdb_install  </code></pre></div>
 <p>Ta sẽ cài đặt <strong>GDB</strong> vào *<strong>gdb_install</strong>.</p>
 
 <h4 id="4-2-tải-source-code">4.2. Tải source code</h4>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$ #2. Download source code<br />
-$wget <a href="ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz">ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz</a><br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$ #2. Download source code  
+$wget ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz  </code></pre></div>
 <h4 id="4-3-giải-nén-source-code">4.3. Giải nén source code</h4>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$ #3. Extrating the source code<br />
-$tar -xzvf gdb-7.11.1.tar.gz<br />
-$ls<br />
-gdb-7.11.1 gdb-7.11.1.tar.gz<br />
-$cd gdb-7.11.1<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$ #3. Extrating the source code  
+$tar -xzvf gdb-7.11.1.tar.gz  
+$ls  
+gdb-7.11.1 gdb-7.11.1.tar.gz  
+$cd gdb-7.11.1  </code></pre></div>
 <h4 id="4-4-cấu-hình-configure">4.4. Cấu hình (Configure)</h4>
 
 <p>Khi ta chỉ chạy GDB trên chính máy hiện tại, và debug các chương trình chạy trên máy này thôi thì command đơn giản là :</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$./configure &ndash;prefix=/home/oedev/gdb/gdb_install<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$./configure --prefix=/home/oedev/gdb/gdb_install  </code></pre></div>
 <p>Sẽ mất vài giây để chạy xong.</p>
 
 <h4 id="4-5-biên-dịch-compiling">4.5. Biên dịch (Compiling)</h4>
 
 <p>Sau khi <strong>configure</strong>, thì sẽ là <strong>make</strong>:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$make<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$make  </code></pre></div>
 <p>Cần 5-10 phút để build xong.</p>
 
 <h4 id="4-6-cài-đặt-installing">4.6. Cài đặt (Installing)</h4>
 
 <p>Vì ta đã cấu hình đường dẫn ở bước configure rồi nên ở đây, chỉ cần chạy lệnh sau là <strong>GDB</strong> sẽ được cài đặt vào được dẫn đó (không cần quyền root):</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$make install<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$make install  </code></pre></div>
 <p>Kiểm tra thư mục cài đặt</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-oedev@OEDEV-Ubuntu:~/gdb/gdb_install$ tree -L 2<br />
-.<br />
-├── bin<br />
-│   ├── gcore<br />
-│   ├── gdb<br />
-│   └── gdbserver<br />
-├── include<br />
-│   ├── ansidecl.h<br />
-│   ├── bfd.h<br />
-│   ├── bfdlink.h<br />
-│   ├── dis-asm.h<br />
-│   ├── gdb<br />
-│   ├── plugin-api.h<br />
-│   └── symcat.h<br />
-├── lib<br />
-│   ├── libbfd.a<br />
-│   ├── libbfd.la<br />
-│   ├── libinproctrace.so<br />
-│   ├── libopcodes.a<br />
-│   └── libopcodes.la<br />
-└── share<br />
-├── gdb<br />
-├── info<br />
-├── locale<br />
-└── man<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">oedev@OEDEV-Ubuntu:~/gdb/gdb_install$ tree -L 2  
+.  
+├── bin  
+│   ├── gcore  
+│   ├── gdb  
+│   └── gdbserver  
+├── include  
+│   ├── ansidecl.h  
+│   ├── bfd.h  
+│   ├── bfdlink.h  
+│   ├── dis-asm.h  
+│   ├── gdb  
+│   ├── plugin-api.h  
+│   └── symcat.h  
+├── lib  
+│   ├── libbfd.a  
+│   ├── libbfd.la  
+│   ├── libinproctrace.so  
+│   ├── libopcodes.a  
+│   └── libopcodes.la  
+└── share  
+├── gdb  
+├── info  
+├── locale  
+└── man  </code></pre></div>
 <p>Giờ ta có thể sử dụng các file trong thư mục bin rồi.<br />
 Ta chủ yếu sử dụng 2 file là <strong>bin/gdb</strong> và <strong>bin/gdbserver</strong>.<br />
 Chi tiết sẽ được nói trong các bài tiếp theo.</p>
@@ -281,7 +225,7 @@ Chi tiết sẽ được nói trong các bài tiếp theo.</p>
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

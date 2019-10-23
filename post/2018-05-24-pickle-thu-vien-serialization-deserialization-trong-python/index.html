@@ -65,7 +65,7 @@
 			
 
 <p>Gần đây khi chạy thử một vài thuật toán Deep Learning, đặc biệt là các thuật toán cung cấp source code sử dụng thư viện Caffe, có gặp một vài vấn đề liên quan đến module <strong>Pickle</strong> trong Python.<br />
-Thực ra, bình thường cũng không định viết gì cả. Nhưng chợt nhớ ra mình cũng quan tâm đến chủ đề <strong>Serialization/Deserialization</strong> này. Nó có vai trò giống như <a href="https://lazytrick.wordpress.com/2016/11/12/asn-1-la-gi-tai-sao-no-quan-trong/">ASN.1</a> mà có tìm hiểu hồi trước, hay phổ biến nhất của thể loại này là <strong>Protocol Buffer</strong> của Google, hay <strong>Apache Thrift</strong>. Thế là note lại cái để quên nó đi.</p>
+Thực ra, bình thường cũng không định viết gì cả. Nhưng chợt nhớ ra mình cũng quan tâm đến chủ đề <strong>Serialization/Deserialization</strong> này. Nó có vai trò giống như <a href="../2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong">ASN.1</a> mà có tìm hiểu hồi trước, hay phổ biến nhất của thể loại này là <strong>Protocol Buffer</strong> của Google, hay <strong>Apache Thrift</strong>. Thế là note lại cái để quên nó đi.</p>
 
 <h2 id="1-pickle-chuyển-đổi-một-đối-tượng-python-sang-dạng-binary-và-ngược-lại">1. Pickle - Chuyển đổi một đối tượng Python sang dạng binary và ngược lại</h2>
 
@@ -78,6 +78,8 @@ Dữ liệu được ghi ra phải là Python Object, và chỉ có thể đọc
 </ul>
 
 <h2 id="2-pickle-là-không-secure">2. Pickle - là không secure</h2>
+
+<hr />
 
 <p>Mặc định, nó sẽ import tất cả các module có trong dữ liệu từ file được load lên.<br />
 Thế này thì vãi quá.<br />
@@ -132,7 +134,7 @@ Bởi vậy, người ta khuyên không nên cứ thế load vào một file pic
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

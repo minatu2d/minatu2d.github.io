@@ -18,7 +18,8 @@
       
       <guid>https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
       <description>Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
-Cách tìm source code driver cho thiết bị USB 1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Cách tìm source code driver cho thiết bị USB
+1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
 Đó là Vendor (nhà sản xuất), và Product (sản phẩm).</description>
     </item>
     

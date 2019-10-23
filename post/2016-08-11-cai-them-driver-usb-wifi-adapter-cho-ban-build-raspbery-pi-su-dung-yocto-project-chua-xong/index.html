@@ -65,11 +65,7 @@
 			
 
 <p>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh <strong>source</strong>, ta thực hiện build tạo image có có tên là <strong>rpi-basic-image</strong> thông qua lệnh:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$bitbake rpi-basic-image<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$bitbake rpi-basic-image  </code></pre></div>
 <p>Thực ra còn 2 image khác ta có thể build đó là <strong>rpi-hwup-image</strong> <strong>rpi-test-image</strong>. Ta có thể thấy 2 file bb cho 2 image ở thư mục <strong>meta-raspberrypi/recipes-core/images/</strong>.</p>
 
 <p><strong>rpi-hwup-image</strong> : là image nhỏ nhất (có dịp sẽ thử)<br />
@@ -105,24 +101,16 @@ Cách đơn giản nhát là thêm rcipy <strong>linux-firmware</strong> vào la
 Tuy nhiên, để cấu hình sử dụng được USB Wifi Client ta cần thêm một tập các tool về Wifi nữa. Nó nằm trong gói <strong>packagegroup-base-wifi</strong></p>
 
 <p>Xem lại <strong>meta-local</strong> ở bài[](<a href="https://lazytrick.wordpress.com/2016/08/06/them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/">https://lazytrick.wordpress.com/2016/08/06/them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</a>)</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-poky/meta-local/<br />
-├── conf<br />
-│ └── layer.conf<br />
-└── recipes-core<br />
-└── images<br />
-└── rpi-basic-image.bbappend<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">poky/meta-local/  
+├── conf  
+│ └── layer.conf  
+└── recipes-core  
+└── images  
+└── rpi-basic-image.bbappend  </code></pre></div>
 <p>Ta cần sửa lại <strong>rpi-basic-image.bbappend</strong> thành như sau:</p>
-
-<p>[code lang=&ldquo;python&rdquo;]<br />
-IMAGE_INSTALL += &quot;samba \<br />
-linux-firmware \<br />
-packagegroup-base-wifi<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"python"" data-lang=""python"">IMAGE_INSTALL += &amp;quot;samba \\  
+linux-firmware \\  
+packagegroup-base-wifi  </code></pre></div>
 <h5 id="2-build-từ-source-code">2. Build từ source code</h5>
 
 <p>Cách này sai lầm vì bản thân Driver đã có rồi chứ không phải chưa có như đã nghĩ lúc trước.<br />
@@ -178,7 +166,7 @@ Thứ còn thiếu là <strong>firmware</strong> cái sẽ được Driver tải
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

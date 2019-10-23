@@ -256,13 +256,13 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 
 <p>Bất cứ thông tin nào được UBIFS khi xuống thiết bị nhớ đều có CRC-32 checsum. UBIFS bảo vệ cả dữ liệu và meta-data bằng CRC. Mỗi khi meta-data được đọc, CRC phải được verified. CRC-32 khá mạnh trong việc kiểm tra dữ liệu dạng này. UBI subsystem cũng vậy nó verified mỗi meta-data.</p>
 
-<p>Mặc định, thì dữ liệu CRC sẽ không được verified nhằm tăng tốc độ đọc của hệ thống file. Nhưng UBIFS thì cho thực hiện việc verification này khi sư dụng tham số <strong><em>chk_data_crc</em></strong> lúc mount. Nó sẽ làm giảm tốc độ đọc xuống 1 chút nhưng tăng tính bảo toàn dữ liệu. Khi sử dụng đến mức verified này thì bạn hoàn toàn có thể yên tầm là bất cứ thông tin nào được đọc lên từ UBIFS sẽ được verified và mọi hỏng hóc đều được phát hiện.</p>
+<p>Mặc định, thì dữ liệu CRC sẽ không được verified nhằm tăng tốc độ đọc của hệ thống file. Nhưng UBIFS thì cho thực hiện việc verification này khi sư dụng tham số <strong>_chk_data<em>crc</em></strong> lúc mount. Nó sẽ làm giảm tốc độ đọc xuống 1 chút nhưng tăng tính bảo toàn dữ liệu. Khi sử dụng đến mức verified này thì bạn hoàn toàn có thể yên tầm là bất cứ thông tin nào được đọc lên từ UBIFS sẽ được verified và mọi hỏng hóc đều được phát hiện.</p>
 
 <p>Chú ý, hiện tại UBIFS không cho phép tắt CRC-32 khi ghi dữ liệu, bởi vì quá trình Recovery của UBIFS phụ thuộc vào nó. Quá trình Recovery sẽ đọc dữ liệu không &ldquo;sạch&rdquo; từ lần tắt cuối và &ldquo;replay&rdquo; lại nhật kí, UBIFS sẽ phải phát hiện các hỏng hóc, các file đâng ghi dở để loại bỏ chúng, và ở đây nó phụ thuộc vào CRC-32.</p>
 
-<p>Nói một cách khác, cho dù có &ldquo;tắt&rdquo; kiểm tra dữ liệu CRC đi nữa, thì bạn vẫn có CRC-32 checksum cho mỗi đoạn dữ liệu. Bất cứ khi nào bạn cảm thấy hệ thống file có dấu hiệu bị hỏng đâu đó, bạn có thể bật tham số <strong><em>chk_data_crc</em></strong> lên.</p>
+<p>Nói một cách khác, cho dù có &ldquo;tắt&rdquo; kiểm tra dữ liệu CRC đi nữa, thì bạn vẫn có CRC-32 checksum cho mỗi đoạn dữ liệu. Bất cứ khi nào bạn cảm thấy hệ thống file có dấu hiệu bị hỏng đâu đó, bạn có thể bật tham số <strong>_chk_data<em>crc</em></strong> lên.</p>
 
-<p>Chú ý quan trong: các phiên bản trước 2.6.39 sử dụng check dữ liệu CRC-32 mặc đinh và sử dụng tham số <strong><em>no_chk_data_crc</em></strong> khi muốn tắt nó.</p>
+<p>Chú ý quan trong: các phiên bản trước 2.6.39 sử dụng check dữ liệu CRC-32 mặc đinh và sử dụng tham số <strong>_no_chk_data<em>crc</em></strong> khi muốn tắt nó.</p>
 
 <h4 id="17-read-ahead-đọc-trước">17. Read-ahead (Đọc trước)</h4>
 
@@ -272,7 +272,7 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 
 <p>VFS read-ahead được thiết kết cho Hard Drives, nó phù hợp với Hard-drive hơn. Nhưng thiết bị nhớ raw flash rất khác so với Hard Drive. Nó không cần một thời gian điểm tìm điểm đọc &ldquo;seek time&rdquo; như Hard Drive làm vì thế những kĩ thuật như thế này không cần cho flash.</p>
 
-<p>Có thể nói rằng, VFS sẽ làm cho UBIFS trở lên chậm hơn thay vì cải tiến tốc độ của nó. Ví thế, UBIFS tắt VFS Read-ahead. Nhưng bên trong UBIFS có 1 cơ chế gần giống với &ldquo;read-ahead&rdquo;, được gọi là &ldquo;bulk-read&rdquo;. Bạn cũng thể sử dụng nó bằng cách thêm tham số <strong><em>bulk_read</em></strong> khi mount.</p>
+<p>Có thể nói rằng, VFS sẽ làm cho UBIFS trở lên chậm hơn thay vì cải tiến tốc độ của nó. Ví thế, UBIFS tắt VFS Read-ahead. Nhưng bên trong UBIFS có 1 cơ chế gần giống với &ldquo;read-ahead&rdquo;, được gọi là &ldquo;bulk-read&rdquo;. Bạn cũng thể sử dụng nó bằng cách thêm tham số <strong>_bulk<em>read</em></strong> khi mount.</p>
 
 <p>Một vài thiết bị nhớ flash cho phép đọc dữ liệu nhanh hơn nếu trước dữ liệu đó được đọc trước đó 1 hoặc 1 vài lần. Ví dụ, OneNAND có thể &ldquo;read-whilte-load&rdquo; nếu nó đọc nhiều trang NAND. Vì UBIFS có thể tận dụng khả năng này khi đọc một khối dữ liệu lớn, và đó chính xác là những gì &ldquo;bulk-read&rdquo; làm.</p>
 
@@ -305,11 +305,7 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 - no_builk_read - Không cho phép sử dụng bulk-read (đọc theo khối lớn)</p>
 
 <p>Ví dụ:</p>
-
-<p>[code lang=shell]<br />
-$ mount -o no_chk_data_crc /dev/ubi0_0 /mnt/ubifs<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mount -o no_chk_data_crc /dev/ubi0_0 /mnt/ubifs  </code></pre></div>
 <p>Mount hệ thống file UBIFS vào điểm <strong><em>/mnt/ubifs</em></strong>, không kiểm tra CRC data.<br />
 Ngoài ra, UBIFS còn có mode đồng bộ nữa. Nó sẽ hoạt động mà không có writeback, write-buffer. Chú ý rằng, <strong>atime</strong> không được UBIFS hỗ trợ.</p>
 
@@ -332,17 +328,13 @@ Ngoài ra, UBIFS còn có mode đồng bộ nữa. Nó sẽ hoạt động mà k
 <p>Giả sử tình huống như thế này, có X bytes dữ liệu &ldquo;dirty&rdquo; trong page cache. Chúng sẽ được đẩy ra thiết bị flash thôi, nhưng đến lúc đó thì vẫn nằm trên RAM. UBIFS sẽ cần <strong><em>X + O</em></strong> bytes trên thiết bị flash để ghi dữ liệu này, O ở đây là dữ liệu overhead (như index, các header, etc).</p>
 
 <p>Vấn đề ở đây là, UBIFS không thể tính chính xác X và O được, và nó &ldquo;bi quan&rdquo; rằng sẽ là tình huống xấu nhất. Bởi vậy, khi thực sự đẩy ra ngoài flash, nó có thể dùng số vùng trống ít hơn đã giả định. Dưới đây là 1 ví dụ như thế:</p>
-
-<p>[code lang=shell]<br />
-$ df<br />
-Filesystem 1K-blocks Used Available Use% Mounted on<br />
-ubi0:ubifs 49568 49568 0 100% /mnt/ubifs<br />
-$ sync<br />
-$ df<br />
-Filesystem 1K-blocks Used Available Use% Mounted on<br />
-ubi0:ubifs 49568 39164 7428 85% /mnt/ubifs<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ df  
+Filesystem 1K-blocks Used Available Use% Mounted on  
+ubi0:ubifs <span style="color:#b452cd">49568</span> <span style="color:#b452cd">49568</span> <span style="color:#b452cd">0</span> <span style="color:#b452cd">100</span>% /mnt/ubifs  
+$ sync  
+$ df  
+Filesystem 1K-blocks Used Available Use% Mounted on  
+ubi0:ubifs <span style="color:#b452cd">49568</span> <span style="color:#b452cd">39164</span> <span style="color:#b452cd">7428</span> <span style="color:#b452cd">85</span>% /mnt/ubifs  </code></pre></div>
 <p>Đầu tiên, <strong>df</strong> báo không còn vùng trống nữa, nhưng sau lệnh <strong>sync</strong>, nó lại báo còn <strong>15%</strong>, (éo đỡ được). Vì có rất nhiều dữ liệu &ldquo;dirty&rdquo; trong cache, nên UBIFS đã giả định là cần từng đó vùng trống trên Flash. Nhưng khi thực sự đẩy ra (vì có cả nén) nên nó không chiếm nhiều đến thế.</p>
 
 <p>Dưới đây là một số lý do chính giải thích tại sao UBIFS muốn nhiều vùng trống hơn đến lúc nó thực sự cần:<br />
@@ -439,7 +431,7 @@ ubi0:ubifs 49568 39164 7428 85% /mnt/ubifs<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

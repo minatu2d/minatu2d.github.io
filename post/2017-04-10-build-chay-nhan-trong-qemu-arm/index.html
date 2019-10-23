@@ -97,59 +97,43 @@ Giả sử ta sẽ thao tác một thư mục tên có tên <strong>qemu_arm_tes
 <h2 id="3-tải-về">3. Tải về</h2>
 
 <ul>
-<li>Linux kernel bản stable mới nhất<br />
+<li><p>Linux kernel bản stable mới nhất<br />
 Vào trang <a href="http://www.kernel.org/">http://www.kernel.org/</a>, rồi tải bản stable mới nhất<br />
-Hoặc lấy link rồi sử dụng wget như sau:</li>
-</ul>
+Hoặc lấy link rồi sử dụng wget như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.8.tar.xz  </code></pre></div></li>
 
-<p>[code lang=bash]<br />
-$ wget <a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.8.tar.xz">https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.8.tar.xz</a><br />
-[/code]</p>
-
-<ul>
-<li>Busybox bản stable mới nhất<br />
+<li><p>Busybox bản stable mới nhất<br />
 Vào trang <a href="http://busybox.net">http://busybox.net</a>, rồi tải bản stable mới nhất<br />
-Hoặc lấy link rồi sử dụng wget như sau:</li>
+Hoặc lấy link rồi sử dụng wget như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wget http://busybox.net/downloads/busybox-1.26.2.tar.bz2  </code></pre></div></li>
 </ul>
-
-<p>[code lang=text]<br />
-$ wget <a href="http://busybox.net/downloads/busybox-1.26.2.tar.bz2">http://busybox.net/downloads/busybox-1.26.2.tar.bz2</a><br />
-[/code]</p>
 
 <h2 id="4-cài-đặt">4. Cài đặt</h2>
 
+<hr />
+
 <ul>
-<li>Cài đặt cross-compiler chạy trên Linux, build code cho ARM<br />
+<li><p>Cài đặt cross-compiler chạy trên Linux, build code cho ARM<br />
 Có rất nhiều loại Toolchain dành cho ARM mà chúng ta có thể cài trên Linux.<br />
 Danh sách có thể tham khảo tại <a href="http://elinux.org/Toolchains">đây</a>.<br />
 Ở đây chúng ta sẽ sử dụng Linaro (ARM) vì cài đặt khá dễ dàng trên Ubuntu.<br />
-Câu lệnh như sau:</li>
+Câu lệnh như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$sudo</span> add-apt-repository ppa:linaro-maintainers/toolchain  
+<span style="color:#00688b">$sudo</span> apt-get install gcc-arm-linux-gnueabi  </code></pre></div></li>
 </ul>
-
-<p>[code lang=bash]<br />
-$sudo add-apt-repository ppa:linaro-maintainers/toolchain<br />
-$sudo apt-get install gcc-arm-linux-gnueabi<br />
-[/code]</p>
 
 <p>Sau khi cài đặt xong, ta có thể thấy các command sau:<br />
 <strong>arm-linux-gnueabi-gcc</strong>, <strong>arm-none-eabi-gcc</strong></p>
 
 <ul>
-<li>Cài đặt Qemu ARM để mô phỏng board <strong>vexpress-a9</strong><br />
+<li><p>Cài đặt Qemu ARM để mô phỏng board <strong>vexpress-a9</strong><br />
 Qemu thì quá nổi tiếng rồi, một phần mềm máy ảo là nền tảng cho hầu hết các công<br />
-nghệ ảo phần cứng ngày nay.</li>
+nghệ ảo phần cứng ngày nay.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$sudo</span> apt-get install qemu qemu-system-arm  </code></pre></div></li>
 </ul>
 
-<p>[code lang=bash]<br />
-$sudo apt-get install qemu qemu-system-arm<br />
-[/code]</p>
-
 <p>Để khởi động thử board <strong>vexpress-a9</strong></p>
-
-<p>[code lang=bash]<br />
-$qemu-system-arm -M vexpress-a9 -m 512<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$qemu</span>-system-arm -M vexpress-a9 -m <span style="color:#b452cd">512</span>  </code></pre></div>
 <p>Nếu lên được một màn hình windows rồi tắt là ok, chứng tỏ các tham số là tạm ổn.<br />
 Chỉ là máy chưa biết chạy cái gì thôi.</p>
 
@@ -160,23 +144,15 @@ Chỉ là máy chưa biết chạy cái gì thôi.</p>
 <h3 id="5-1-biên-dịch-kernel-từ-mainstream">5.1 Biên dịch Kernel từ MainStream</h3>
 
 <ul>
-<li>Giải nén kernel</li>
+<li><p>Giải nén kernel</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$unxz</span> linux-4.10.8.tar.xz  
+<span style="color:#00688b">$tar</span> -xvf linux-4.10.8.tar  </code></pre></div></li>
+
+<li><p>Cấu hình và build kernel bằng Toolchain ta đã cài ở trên</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cd</span> linux-4.10.8  
+<span style="color:#00688b">$make</span> <span style="color:#00688b">ARCH</span>=arm <span style="color:#00688b">CROSS_COMPILE</span>=arm-linux-gnueabi- vexpress_defconfig  
+<span style="color:#00688b">$make</span> <span style="color:#00688b">ARCH</span>=arm <span style="color:#00688b">CROSS_COMPILE</span>=arm-linux-gnueabi- all  </code></pre></div></li>
 </ul>
-
-<p>[code lang=bash]<br />
-$unxz linux-4.10.8.tar.xz<br />
-$tar -xvf linux-4.10.8.tar<br />
-[/code]</p>
-
-<ul>
-<li>Cấu hình và build kernel bằng Toolchain ta đã cài ở trên</li>
-</ul>
-
-<p>[code lang=bash]<br />
-$cd linux-4.10.8<br />
-$make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- vexpress_defconfig<br />
-$make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- all<br />
-[/code]</p>
 
 <p>Khi khi quá trình build kết thúc, bạn sẽ thấy nhân được tạo trong<br />
 đường dẫn <em>linux-4.10.8/arch/arm/boot/zImage</em>.<br />
@@ -185,30 +161,18 @@ Chốc nữa ta sẽ khởi động bằng <em>zImage</em> đó.</p>
 <h3 id="5-2-biên-dịch-busybox-từ-mainstream">5.2 Biên dịch Busybox từ MainStream</h3>
 
 <ul>
-<li>Giải nén</li>
+<li><p>Giải nén</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$bzip2</span> -d -k busybox-1.26.2.tar.bz2  </code></pre></div></li>
+
+<li><p>Cấu hình và build Busybox bằng Toolchain đã cài ở trên<br />
+Sử dụng cấu hình mặc định</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$cd busybox-1.26.2  
+$make ARCH=arm CROSS_COMPLIE=arm-linux-gnueabi- defconfig  </code></pre></div></li>
 </ul>
-
-<p>[code lang=bash]<br />
-$bzip2 -d -k busybox-1.26.2.tar.bz2<br />
-[/code]</p>
-
-<ul>
-<li>Cấu hình và build Busybox bằng Toolchain đã cài ở trên<br />
-Sử dụng cấu hình mặc định</li>
-</ul>
-
-<p>[code lang=text]<br />
-$cd busybox-1.26.2<br />
-$make ARCH=arm CROSS_COMPLIE=arm-linux-gnueabi- defconfig<br />
-[/code]</p>
 
 <p>Chúng ta sẽ không sử dụng shared library (tức là không có run-tim loader-linker)<br />
 vì thế phải sửa cấu hình build của Busybox để chỉ hỗ trợ buildstatic thôi.</p>
-
-<p>[code lang=bash]<br />
-$make ARCH=arm CROSS_COMPLIE=arm-linux-gnueabi- menuconfig<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$make</span> <span style="color:#00688b">ARCH</span>=arm <span style="color:#00688b">CROSS_COMPLIE</span>=arm-linux-gnueabi- menuconfig  </code></pre></div>
 <p>Chú ý là, có thể phải cài thư viện <em>libcurses-dev</em> thì mới chạy được<br />
 giao diện cấu hình.</p>
 
@@ -216,19 +180,11 @@ giao diện cấu hình.</p>
 <em>Busybox Settings &gt; Build Options &gt; Build BusyBox as a static binary (no shared libs)</em></p>
 
 <p>Sau đó build Busybox bằng câu lệnh sau:</p>
-
-<p>[code lang=bash]<br />
-$make ARCH=arm CROSS_COMPLIE=arm-linux-gnueabi- install<br />
-[/code]</p>
-
-<p>Kết quả build sẽ nằm ở thư mục <em>_install</em>.<br />
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$make</span> <span style="color:#00688b">ARCH</span>=arm <span style="color:#00688b">CROSS_COMPLIE</span>=arm-linux-gnueabi- install  </code></pre></div>
+<p>Kết quả build sẽ nằm ở thư mục _<em>install</em>.<br />
 Nội dung thư mục này sẽ như sau:</p>
-
-<p>[code lang=bash]<br />
-_install$ ls<br />
-bin linuxrc sbin usr<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">_install$ ls  
+bin linuxrc sbin usr  </code></pre></div>
 <h2 id="6-tạo-file-system-chứa-busybox">6. Tạo file system chứa Busybox</h2>
 
 <p>Như đã nói ở trên, ta cần một file system để chứa ứng dụng phía user-space.<br />
@@ -242,96 +198,62 @@ Tuy nhiên, ta cần một vài file cấu hình cho <strong>init proram</strong
 <p>Được dẫn của <strong>init program</strong> trong file system có thể được chỉ định trong tham<br />
 số khởi động kernel.Nếu không được chỉ định thì nó sẽ tìm theo thức tự sau:<br />
 Theo source code từ <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/init/main.c#n990">kernel/init/main.c:990</a></p>
-
-<p>[code lang=cpp]<br />
-if (!try_to_run_init_process(&ldquo;/sbin/init&rdquo;) ||<br />
-!try_to_run_init_process(&ldquo;/etc/init&rdquo;) ||<br />
-!try_to_run_init_process(&ldquo;/bin/init&rdquo;) ||<br />
-!try_to_run_init_process(&ldquo;/bin/sh&rdquo;))<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#8b008b;font-weight:bold">if</span> (!try_to_run_init_process(<span style="color:#cd5555">&#34;/sbin/init&#34;</span>) ||  
+!try_to_run_init_process(<span style="color:#cd5555">&#34;/etc/init&#34;</span>) ||  
+!try_to_run_init_process(<span style="color:#cd5555">&#34;/bin/init&#34;</span>) ||  
+!try_to_run_init_process(<span style="color:#cd5555">&#34;/bin/sh&#34;</span>))  
+</code></pre></div>
 <p>Busybox là một tập các utility của Linux, nó cũng có một <strong>init program</strong> nằm ở <em>/sbin/init</em> luôn. Ta có thể xem trong nội dung thư mục *_install** ở trên.</p>
 
 <p>Trong bài này, ta sẽ tham khảo ví dụ tạo file system của Busybox cho đĩa mềm (floppy disk).<br />
 Cụ thể sẽ làm như sau:<br />
 Tại thư mục source của <em>Busybox</em>:</p>
-
-<p>[code lang=cpp]<br />
-$cd examples/bootfloopy<br />
-$ls<br />
-bootfloppy.txt etc mkrootfs.sh quickstart.txt<br />
-display.txt mkdevs.sh mksyslinux.sh syslinux.cfg<br />
-[/code]</p>
-
-<p>Ta sẽ sử dụng thư mục <em>etc</em> và thư mục <em>_install</em> (được tạo khi build Busybox)<br />
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#a61717;background-color:#e3d2d2">$</span>cd examples/bootfloopy  
+<span style="color:#a61717;background-color:#e3d2d2">$</span>ls  
+bootfloppy.txt etc mkrootfs.sh quickstart.txt  
+display.txt mkdevs.sh mksyslinux.sh syslinux.cfg  
+</code></pre></div>
+<p>Ta sẽ sử dụng thư mục <em>etc</em> và thư mục _<em>install</em> (được tạo khi build Busybox)<br />
 để tạo file system.</p>
 
 <p>Đầu tiên, tạo thư mục chứa nội dung toàn bộ file system:</p>
-
-<p>[code lang=shell]<br />
-$mkdir rootfs_content<br />
-$cp -fR busybox-1.26.2/examples/etc rootfs_content<br />
-$cp -fR busybox-1.26.2/_install/* rootfs_content<br />
-$ls rootfs_content<br />
-bin etc linuxrc sbin usr<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$mkdir</span> rootfs_content  
+<span style="color:#00688b">$cp</span> -fR busybox-1.26.2/examples/etc rootfs_content  
+<span style="color:#00688b">$cp</span> -fR busybox-1.26.2/_install/* rootfs_content  
+<span style="color:#00688b">$ls</span> rootfs_content  
+bin etc linuxrc sbin usr  </code></pre></div>
 <p>Ta sẽ tạo thêm một vài thư mục phụ nữa:</p>
-
-<p>[code lang=shell]<br />
-$cd rootfs_content<br />
-$mkdir dev home mnt proc root sys tmp var<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cd</span> rootfs_content  
+<span style="color:#00688b">$mkdir</span> dev home mnt proc root sys tmp var  </code></pre></div>
 <p>Cuối cùng ta có cấu trúc thư mục như sau:</p>
-
-<p>[code lang=text]<br />
-├── bin<br />
-├── dev<br />
-├── etc<br />
-├── home<br />
-├── linuxrc -&gt; bin/busybox<br />
-├── mnt<br />
-├── proc<br />
-├── root<br />
-├── sbin<br />
-├── sys<br />
-├── tmp<br />
-├── usr<br />
-└── var<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">├── bin  
+├── dev  
+├── etc  
+├── home  
+├── linuxrc -&gt; bin/busybox  
+├── mnt  
+├── proc  
+├── root  
+├── sbin  
+├── sys  
+├── tmp  
+├── usr  
+└── var  </code></pre></div>
 <p>Ta cần sửa một chút file cấu hình của <strong>init program</strong>.<br />
 Nó nằm ở <em>/etc/inittab</em>, sửa nội dung thành như sau:</p>
-
-<p>[code lang=text]<br />
-::sysinit:/etc/init.d/rcS<br />
-::respawn:-/bin/sh<br />
-::ctrlaltdel:/bin/umount -a -r<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">::sysinit:/etc/init.d/rcS  
+::respawn:-/bin/sh  
+::ctrlaltdel:/bin/umount -a -r  </code></pre></div>
 <p>Giờ ta sẽ tạo file system từ thư mục <strong>rootfs_content</strong> ở trên.<br />
 Đầu tiên, tạo một file system ext3 trống:</p>
-
-<p>[code lang=shell]<br />
-$dd if=/dev/zero of=BusyBoxRootFS.ext3 bs=1M count=32<br />
-$mkfs.ext3 BusyBoxRootFS.ext3<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$dd</span> <span style="color:#8b008b;font-weight:bold">if</span>=/dev/zero <span style="color:#00688b">of</span>=BusyBoxRootFS.ext3 <span style="color:#00688b">bs</span>=1M <span style="color:#00688b">count</span>=<span style="color:#b452cd">32</span>  
+<span style="color:#00688b">$mkfs</span>.ext3 BusyBoxRootFS.ext3  </code></pre></div>
 <p>Sau đó, mount file system vừa tạo trong file <em>BusyBoxRootFS.ext3</em><br />
 vào để tạo nội dung cho nó (nhớ phải có tham số -o nha):</p>
-
-<p>[code lang=text]<br />
-$sudo mount -t ext3 BusyBoxRootFS.ext3 tmpfs/ -o loop<br />
-$cp -fR rootfs_content/* tmpfs/<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$sudo mount -t ext3 BusyBoxRootFS.ext3 tmpfs/ -o loop  
+$cp -fR rootfs_content/* tmpfs/  </code></pre></div>
 <p>Cuối cùng là <em>umount</em> nó:</p>
-
-<p>[code lang=shell]<br />
-$umount tmpfs<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$umount</span> tmpfs  </code></pre></div>
 <p>Giờ file hệ thống chứa các ứng dụng user-space nằm trong file system bên trong file <em>BusyboxRootFS.ext3</em> rồi.</p>
 
 <h2 id="7-chạy">7. Chạy</h2>
@@ -342,16 +264,12 @@ $umount tmpfs<br />
 <strong>file system</strong> : đã tạo</p>
 
 <p>Giờ ta sẽ chạy, câu lệnh như sau:</p>
-
-<p>[code lang=text]<br />
-$qemu-system-arm -M vexpress-a9 \<br />
--dtb linux-4.10.8/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \<br />
--kernel linux-4.10.8/arch/arm/boot/zImage \<br />
--append &ldquo;root=/dev/mmcblk0 console=ttyAMA0&rdquo; \<br />
--sd BusyBoxRootFS.ext3 \<br />
--serial stdio<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$qemu-system-arm -M vexpress-a9 \\  
+\-dtb linux-4.10.8/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \\  
+\-kernel linux-4.10.8/arch/arm/boot/zImage \\  
+\-append &#34;root=/dev/mmcblk0 console=ttyAMA0&#34; \\  
+\-sd BusyBoxRootFS.ext3 \\  
+\-serial stdio  </code></pre></div>
 <p><img src="{{ site.baseurl }}/assets/qemu_arm.png" alt="QEMU" /></p>
 
 <p>Trên cửa sổ dòng lệnh sẽ hiện ra <em>terminal</em> của máy Qemu:</p>
@@ -359,12 +277,8 @@ $qemu-system-arm -M vexpress-a9 \<br />
 <p>Cùng với một màn hình có chim cánh cụt:</p>
 
 <p>Ta kiểm tra máy đang chạy bằng</p>
-
-<p>[code lang=text]<br />
-#uname -a<br />
-#cat /proc/cpuinfo<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">#uname -a  
+#cat /proc/cpuinfo  </code></pre></div>
 <p>Sẽ thấy máy chạy là ARM, và phiên bản nhân là 4.10.8 (mới nhất)</p>
 
 <h2 id="8-tham-khảo">8. Tham khảo</h2>
@@ -427,7 +341,7 @@ $qemu-system-arm -M vexpress-a9 \<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

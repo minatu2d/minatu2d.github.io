@@ -67,11 +67,7 @@
 <p>Ta đã có bài giới thiệu về <a href="https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/">4 Stage khi Compiling</a> rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.</p>
 
 <p>Trong compile thông thường dạng</p>
-
-<p>[code lang=bash]<br />
-$gcc -o HelloWorld HelloWorld.c<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -o HelloWorld HelloWorld.c  </code></pre></div>
 <p>Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.</p>
 
 <p>Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</p>
@@ -83,17 +79,9 @@ $gcc -o HelloWorld HelloWorld.c<br />
 <p>Đầu vào: <strong>HelloWorld.c</strong><br />
 Đầu ra: <strong>HelloWorld.i</strong><br />
 Câu lệnh thực hiện:</p>
-
-<p>[code lang=shell]<br />
-$gcc -E HelloWorld.c -o HelloWorld.i<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -E HelloWorld.c -o HelloWorld.i  </code></pre></div>
 <p>Hoặc bằng câu lệnh <strong>cpp</strong>:</p>
-
-<p>[code lang=shell]<br />
-$cpp HelloWorld.c -o HelloWorld.i<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cpp</span> HelloWorld.c -o HelloWorld.i  </code></pre></div>
 <p>File <strong>HelloWorld.i</strong> khá dài so với <strong>HelloWorld.c</strong>.</p>
 
 <p>Về ý nghĩa, file <strong>HelloWorld.i</strong> vẫn là một file source C như bao file Source Code C khác mà thôi, chứ hoàn toàn chưa chuyển sang dạng khác.</p>
@@ -105,11 +93,7 @@ $cpp HelloWorld.c -o HelloWorld.i<br />
 <p>Đầu vào: <strong>HelloWorld.i</strong><br />
 Đầu ra: <strong>HelloWorld.s</strong><br />
 Câu lệnh thực hiện:</p>
-
-<p>[code lang=shell]<br />
-$gcc -S HelloWorld.i -o HelloWorld.i<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -S HelloWorld.i -o HelloWorld.i  </code></pre></div>
 <h3 id="3-thực-hiện-stage-3-compiling-to-machine-code">3. Thực hiện Stage 3 (Compiling to Machine Code)</h3>
 
 <p>Bước này sẽ chuyển Assembly Code sang mã máy mà chương trình sẽ chạy:</p>
@@ -118,11 +102,7 @@ $gcc -S HelloWorld.i -o HelloWorld.i<br />
 Đầu ra:<strong>HelloWorld.o</strong></p>
 
 <p>Câu lệnh thực hiện:</p>
-
-<p>[code lang=shell]<br />
-$as HelloWorld.s -o HelloWorld.o<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$as</span> HelloWorld.s -o HelloWorld.o  </code></pre></div>
 <p><strong>as</strong> chính là Assembler, một trình biên dịch Assembly.</p>
 
 <h3 id="4-thực-hiện-stage-4-linking">4. Thực hiện Stage 4 (Linking)</h3>
@@ -130,56 +110,36 @@ $as HelloWorld.s -o HelloWorld.o<br />
 <p>Linker trong Linux là <strong>ld</strong> hay tên đầy đủ là GNU Linker. Xem thêm ở <a href="https://linux.die.net/man/1/ld">man ld</a></p>
 
 <ul>
-<li><strong>Lần 1</strong>: Ta thấy 3 stage ở trên thực hiện không mấy khó khăn gì.<br />
+<li><p><strong>Lần 1</strong>: Ta thấy 3 stage ở trên thực hiện không mấy khó khăn gì.<br />
 Cùng dạng câu lệnh như thế mà thực hiện thì sao.<br />
-Đây là kết quả:</li>
-</ul>
+Đây là kết quả:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ld HelloWorld.o -o HelloWorld  
+ld: warning: cannot find entry symbol _start; defaulting to 00000000004000b0  
+HelloWorld.o: In <span style="color:#8b008b;font-weight:bold">function</span> <span style="color:#cd5555">\`</span>main<span style="color:#cd5555">&#39;:  
+</span><span style="color:#cd5555">HelloWorld.c:(.text+0xa): undefined reference to \`puts&#39;</span>  </code></pre></div></li>
 
-<p>[code lang=bash]<br />
-$ ld HelloWorld.o -o HelloWorld<br />
-ld: warning: cannot find entry symbol _start; defaulting to 00000000004000b0<br />
-HelloWorld.o: In function `main&rsquo;:<br />
-HelloWorld.c:(.text+0xa): undefined reference to `puts&rsquo;<br />
-[/code]</p>
-
-<ul>
-<li><strong>Lần 2</strong>: Đọc một chút về <strong>Linker</strong> trong man page.<br />
+<li><p><strong>Lần 2</strong>: Đọc một chút về <strong>Linker</strong> trong man page.<br />
 Và hiểu ra một chút rằng, chương trình C ta viết sử dụng hàm <strong>printf</strong>, hàm này không phải ta tự viết.<br />
 Người mới học vẫn gọi là <strong>hàm chuẩn</strong>, hầu như không quan tâm nó đến từ đâu.<br />
 Nhưng ta đang làm manual mà. Bản thân ngôn ngữ C không bao gồm một thư viện, hay hàm nào cả.<br />
 Vậy hàm <strong>printf</strong> lấy từ đâu, ta phải chỉ cho <strong>Linker</strong> biết. Đó là thư viện <strong>libc</strong>, chứa những hàm cơ bản mà chúng ta bảo là chuẩn cho Linux.<br />
 Tham khảo ví dụ trong <a href="//linux.die.net/man/1/ld">man page</a>),<br />
-ta thực hiện lại việc link bằng command:</li>
+ta thực hiện lại việc link bằng command:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ld -o HelloWorld /lib/crt0.o HelloWorld.o -lc  
+ld: cannot find /lib/crt0.o: No such file or directory  </code></pre></div></li>
 </ul>
-
-<p>[code lang=bash]<br />
-$ ld -o HelloWorld /lib/crt0.o HelloWorld.o -lc<br />
-ld: cannot find /lib/crt0.o: No such file or directory<br />
-[/code]</p>
 
 <p>Lỗi trên do không có file.<br />
 Bỏ <strong>/lib/crt0.o</strong> đi thì sao:</p>
-
-<p>[code lang=bash]<br />
-$ ld -o HelloWorld HelloWorld.o -lc<br />
-ld: warning: cannot find entry symbol _start; defaulting to 0000000000400260<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ld -o HelloWorld HelloWorld.o -lc  
+ld: warning: cannot find entry symbol _start; defaulting to <span style="color:#b452cd">0000000000400260</span>  </code></pre></div>
 <p>Lỗi trên <strong>entry_point</strong> (địa chỉ hàm mà CPU sẽ nhảy vào đầu tiên để bắt đầu thực hiện chương trình) chưa được khai báo.<br />
 Sửa như sau:</p>
-
-<p>[code lang=bash]<br />
-$ld -o HelloWorld HelloWorld.o -lc &ndash;entry main<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$ld</span> -o HelloWorld HelloWorld.o -lc --entry main  </code></pre></div>
 <p>Câu lệnh thành công, file <strong>HelloWorld</strong> được tạo ra.<br />
 Tuy nhiên, khi chạy thì:</p>
-
-<p>[code lang=bash]<br />
-./HelloWorld<br />
-bash: ./HelloWorld: No such file or directory<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./HelloWorld  
+bash: ./HelloWorld: No such file or directory  </code></pre></div>
 <p>Lỗi trên là không có file nào như thế. WTF, lỗi gì lạ vậy, rõ ràng là có mà.</p>
 
 <ul>
@@ -187,93 +147,70 @@ bash: ./HelloWorld: No such file or directory<br />
 </ul>
 
 <p>Kiểm tra như sau:</p>
-
-<p>[code lang=bash]<br />
-$ readelf -l HelloWorld|grep interpreter<br />
-[Requesting program interpreter: /lib/ld64.so.1]<br />
-$ ls /lib/ld64.so.1<br />
-ls: cannot access &lsquo;/lib/ld64.so.1&rsquo;: No such file or directory<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ readelf -l HelloWorld|grep interpreter  
+[Requesting program interpreter: /lib/ld64.so.1]  
+$ ls /lib/ld64.so.1  
+ls: cannot access <span style="color:#cd5555">&#39;/lib/ld64.so.1&#39;</span>: No such file or directory  </code></pre></div>
 <p>Kiểm tra dynamic loader linker từ file kết quả được build &ldquo;không manual&rdquo;.</p>
 
 <p>Tức là bằng câu lệnh:</p>
-
-<p>[code lang=bash]<br />
-$gcc -o HelloWorld_auto HelloWorld.c<br />
-$ readelf -l HelloWorld_auto |grep interpreter<br />
-[Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -o HelloWorld_auto HelloWorld.c  
+$ readelf -l HelloWorld_auto |grep interpreter  
+[Requesting program interpreter: /lib64/ld-linux-x86-64.so.2]  </code></pre></div>
 <p>Ta thử &ldquo;ép buộc&rdquo; sử dụng dynamic loader linker hiện có thì sao.</p>
-
-<p>[code lang=bash]<br />
-$ /lib64/ld-linux-x86-64.so.2 ./HelloWorld<br />
-Hello World<br />
-Segmentation fault (core dumped)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ /lib64/ld-linux-x86-64.so.2 ./HelloWorld  
+Hello World  
+Segmentation fault (core dumped)  </code></pre></div>
 <p>Chạy được nhưng bị <em>Segmentation fault</em>.<br />
 Ta không nên tìm hiểu sâu ở đây nữa.</p>
 
 <ul>
-<li><strong>Lần 4</strong>: Ta tự hỏi, <strong>GCC</strong> đã thực hiện quá trình <strong>linking</strong> khi tạo ra file <strong>HelloWorld_auto</strong> ở trên như thế nào?<br />
+<li><p><strong>Lần 4</strong>: Ta tự hỏi, <strong>GCC</strong> đã thực hiện quá trình <strong>linking</strong> khi tạo ra file <strong>HelloWorld_auto</strong> ở trên như thế nào?<br />
 Thật may, sau một hồi hỏi thầy GG.<br />
-Ta có thể thấy được toàn bộ tham số của câu lệnh biên dịch ở trên bằng tham số <strong>-v</strong> vào câu lệnh biên dịch.</li>
+Ta có thể thấy được toàn bộ tham số của câu lệnh biên dịch ở trên bằng tham số <strong>-v</strong> vào câu lệnh biên dịch.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -v -o HelloWorld_auto HelloWorld.c  </code></pre></div></li>
 </ul>
-
-<p>[code lang=bash]<br />
-$gcc -v -o HelloWorld_auto HelloWorld.c<br />
-[/code]</p>
 
 <p>Kết quả từ câu lệnh trên khá rắc rối, (có lẽ cần 1 bài khác để nói kĩ hơn về nó).<br />
 Tuy nhiên ta chỉ quan tâm đến đoạn tham số của <strong>collect2</strong> (chính là Linker mà <strong>GCC</strong> sử dụng cho ngôn ngữ C) mà thôi.<br />
 Nó như thế này:</p>
-
-<p>[code lang=bash]<br />
-<br />COLLECT_GCC_OPTIONS=&lsquo;-v&rsquo; &lsquo;-o&rsquo; &lsquo;HelloWorld_auto&rsquo; &lsquo;-mtune=generic&rsquo; &lsquo;-march=x86-64&rsquo;<br />
-/usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccy1PInh.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s &ndash;sysroot=/ &ndash;build-id &ndash;eh-frame-hdr -m elf_x86_64 &ndash;hash-style=gnu &ndash;as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o HelloWorld_auto /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. /tmp/ccocGwHc.o -lgcc &ndash;as-needed -lgcc_s &ndash;no-as-needed -lc -lgcc &ndash;as-needed -lgcc_s &ndash;no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">&lt;br /&gt;COLLECT_GCC_OPTIONS=<span style="color:#cd5555">&#39;-v&#39;</span> <span style="color:#cd5555">&#39;-o&#39;</span> <span style="color:#cd5555">&#39;HelloWorld_auto&#39;</span> <span style="color:#cd5555">&#39;-mtune=generic&#39;</span> <span style="color:#cd5555">&#39;-march=x86-64&#39;</span>  
+/usr/lib/gcc/x86_64-linux-gnu/5/collect2 -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-fresolution=/tmp/ccy1PInh.res -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro -o HelloWorld_auto /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. /tmp/ccocGwHc.o -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o  </code></pre></div>
 <p>Nhìn nản luôn, edit lại chút cho &ldquo;rắc rối hơn&rdquo;</p>
-
-<p>[code lang=bash]<br />
-COLLECT_GCC_OPTIONS=&lsquo;-v&rsquo; &lsquo;-o&rsquo; &lsquo;HelloWorld_auto&rsquo; &lsquo;-mtune=generic&rsquo; &lsquo;-march=x86-64&rsquo;<br />
-/usr/lib/gcc/x86_64-linux-gnu/5/collect2<br />
--plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so<br />
--plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper<br />
--plugin-opt=-fresolution=/tmp/ccy1PInh.res<br />
--plugin-opt=-pass-through=-lgcc<br />
--plugin-opt=-pass-through=-lgcc_s<br />
--plugin-opt=-pass-through=-lc<br />
--plugin-opt=-pass-through=-lgcc<br />
--plugin-opt=-pass-through=-lgcc_s<br />
---sysroot=/<br />
---build-id<br />
---eh-frame-hdr<br />
--m elf_x86_64<br />
---hash-style=gnu<br />
---as-needed<br />
--dynamic-linker /lib64/ld-linux-x86-64.so.2<br />
--z relro<br />
--o HelloWorld_auto<br />
-/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o<br />
-/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o<br />
-/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o<br />
--L/usr/lib/gcc/x86_64-linux-gnu/5<br />
--L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu<br />
--L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu<br />
--L/lib/../lib -L/usr/lib/x86_64-linux-gnu<br />
--L/usr/lib/../lib<br />
--L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. /tmp/ccocGwHc.o<br />
--lgcc<br />
---as-needed -lgcc_s &ndash;no-as-needed<br />
--lc -lgcc<br />
---as-needed -lgcc_s &ndash;no-as-needed<br />
-/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o<br />
-/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">COLLECT_GCC_OPTIONS</span>=<span style="color:#cd5555">&#39;-v&#39;</span> <span style="color:#cd5555">&#39;-o&#39;</span> <span style="color:#cd5555">&#39;HelloWorld_auto&#39;</span> <span style="color:#cd5555">&#39;-mtune=generic&#39;</span> <span style="color:#cd5555">&#39;-march=x86-64&#39;</span>  
+/usr/lib/gcc/x86_64-linux-gnu/5/collect2  
+<span style="color:#cd5555">\-</span>plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so  
+<span style="color:#cd5555">\-</span>plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper  
+<span style="color:#cd5555">\-</span>plugin-opt=-fresolution=/tmp/ccy1PInh.res  
+<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lgcc  
+<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lgcc_s  
+<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lc  
+<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lgcc  
+<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lgcc_s  
+<span style="color:#cd5555">\-</span>-sysroot=/  
+<span style="color:#cd5555">\-</span>-build-id  
+<span style="color:#cd5555">\-</span>-eh-frame-hdr  
+<span style="color:#cd5555">\-</span>m elf_x86_64  
+<span style="color:#cd5555">\-</span>-hash-style=gnu  
+<span style="color:#cd5555">\-</span>-as-needed  
+<span style="color:#cd5555">\-</span>dynamic-linker /lib64/ld-linux-x86-64.so.2  
+<span style="color:#cd5555">\-</span>z relro  
+<span style="color:#cd5555">\-</span>o HelloWorld_auto  
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o  
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o  
+/usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o  
+<span style="color:#cd5555">\-</span>L/usr/lib/gcc/x86_64-linux-gnu/5  
+<span style="color:#cd5555">\-</span>L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu  
+<span style="color:#cd5555">\-</span>L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu  
+<span style="color:#cd5555">\-</span>L/lib/../lib -L/usr/lib/x86_64-linux-gnu  
+<span style="color:#cd5555">\-</span>L/usr/lib/../lib  
+<span style="color:#cd5555">\-</span>L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. /tmp/ccocGwHc.o  
+<span style="color:#cd5555">\-</span>lgcc  
+<span style="color:#cd5555">\-</span>-as-needed -lgcc_s --no-as-needed  
+<span style="color:#cd5555">\-</span>lc -lgcc  
+<span style="color:#cd5555">\-</span>-as-needed -lgcc_s --no-as-needed  
+/usr/lib/gcc/x86_64-linux-gnu/5/crtend.o  
+/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o  </code></pre></div>
 <p>Ồ, dù không thể hiểu hết các tham số nhưng ta cũng thấy một số tham số sau:</p>
 
 <ol>
@@ -283,36 +220,23 @@ COLLECT_GCC_OPTIONS=&lsquo;-v&rsquo; &lsquo;-o&rsquo; &lsquo;HelloWorld_auto&rsq
 </ol>
 
 <p>Ok, ta thử chạy manual <strong>Linker</strong> với mớ tham số ở trên xem sao (nhớ xóa tham số <strong>-o HelloWorld_auto</strong> nữa.</p>
-
-<p>[code lang=bash]<br />
-ld -o HelloWorld HelloWorld.o -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s &ndash;sysroot=/ &ndash;build-id &ndash;eh-frame-hdr -m elf_x86_64 &ndash;hash-style=gnu &ndash;as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -lgcc &ndash;as-needed -lgcc_s &ndash;no-as-needed -lc -lgcc &ndash;as-needed -lgcc_s &ndash;no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ld -o HelloWorld HelloWorld.o -plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so -plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s -plugin-opt=-pass-through=-lc -plugin-opt=-pass-through=-lgcc -plugin-opt=-pass-through=-lgcc_s --sysroot=/ --build-id --eh-frame-hdr -m elf_x86_64 --hash-style=gnu --as-needed -dynamic-linker /lib64/ld-linux-x86-64.so.2 -z relro /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o -L/usr/lib/gcc/x86_64-linux-gnu/5 -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu -L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu -L/lib/../lib -L/usr/lib/x86_64-linux-gnu -L/usr/lib/../lib -lgcc --as-needed -lgcc_s --no-as-needed -lc -lgcc --as-needed -lgcc_s --no-as-needed /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o  </code></pre></div>
 <p>Và đây là <strong>HelloWorld</strong>:</p>
-
-<p>[code lang=bash]<br />
-$./HelloWorld<br />
-Hello World<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$./HelloWorld  
+Hello World  </code></pre></div>
 <h3 id="5-tham-số-cho-gcc">5. Tham số cho GCC</h3>
 
 <p>Nếu muốn xem các file kết quả trung gian từ 3 Stage đầu, ta có thể thêm tham số <strong>--save-temps</strong> khi biên dịch.</p>
-
-<p>[code lang=bash]<br />
-$gcc &ndash;save-temps -o HelloWorld HelloWorld.c<br />
-$ls -lia<br />
-total 52<br />
-5097125 drwxrwxr-x 2 oedev oedev 4096 1月 8 15:09 .<br />
-5097103 drwxrwxr-x 3 oedev oedev 4096 1月 8 15:09 ..<br />
-4990864 -rwxrwxr-x 1 oedev oedev 8608 1月 8 15:09 HelloWorld<br />
-4990859 -rw-rw-r&ndash; 1 oedev oedev 70 1月 8 15:09 HelloWorld.c<br />
-4990861 -rw-rw-r&ndash; 1 oedev oedev 17121 1月 8 15:09 HelloWorld.i<br />
-4990863 -rw-rw-r&ndash; 1 oedev oedev 1504 1月 8 15:09 HelloWorld.o<br />
-4990862 -rw-rw-r&ndash; 1 oedev oedev 460 1月 8 15:09 HelloWorld.s</p>
-
-<p>[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> --save-temps -o HelloWorld HelloWorld.c  
+<span style="color:#00688b">$ls</span> -lia  
+total <span style="color:#b452cd">52</span>  
+<span style="color:#b452cd">5097125</span> drwxrwxr-x <span style="color:#b452cd">2</span> oedev oedev <span style="color:#b452cd">4096</span> 1月 <span style="color:#b452cd">8</span> <span style="color:#b452cd">15</span>:09 .  
+<span style="color:#b452cd">5097103</span> drwxrwxr-x <span style="color:#b452cd">3</span> oedev oedev <span style="color:#b452cd">4096</span> 1月 <span style="color:#b452cd">8</span> <span style="color:#b452cd">15</span>:09 ..  
+<span style="color:#b452cd">4990864</span> -rwxrwxr-x <span style="color:#b452cd">1</span> oedev oedev <span style="color:#b452cd">8608</span> 1月 <span style="color:#b452cd">8</span> <span style="color:#b452cd">15</span>:09 HelloWorld  
+<span style="color:#b452cd">4990859</span> -rw-rw-r-- <span style="color:#b452cd">1</span> oedev oedev <span style="color:#b452cd">70</span> 1月 <span style="color:#b452cd">8</span> <span style="color:#b452cd">15</span>:09 HelloWorld.c  
+<span style="color:#b452cd">4990861</span> -rw-rw-r-- <span style="color:#b452cd">1</span> oedev oedev <span style="color:#b452cd">17121</span> 1月 <span style="color:#b452cd">8</span> <span style="color:#b452cd">15</span>:09 HelloWorld.i  
+<span style="color:#b452cd">4990863</span> -rw-rw-r-- <span style="color:#b452cd">1</span> oedev oedev <span style="color:#b452cd">1504</span> 1月 <span style="color:#b452cd">8</span> <span style="color:#b452cd">15</span>:09 HelloWorld.o  
+<span style="color:#b452cd">4990862</span> -rw-rw-r-- <span style="color:#b452cd">1</span> oedev oedev <span style="color:#b452cd">460</span> 1月 <span style="color:#b452cd">8</span> <span style="color:#b452cd">15</span>:09 HelloWorld.s</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -363,7 +287,7 @@ total 52<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

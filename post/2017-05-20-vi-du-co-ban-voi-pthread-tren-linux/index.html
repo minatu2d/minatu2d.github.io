@@ -64,78 +64,63 @@
 		</header><div class="content post__content clearfix">
 			
 
-<h2 id="ví-dụ-cơ-bản-với-pthread-trên-linux">Ví dụ cơ bản với pthread trên Linux</h2>
-
 <h2 id="1-tạo-và-dừng-thread">1. Tạo và dừng thread</h2>
 
 <p>Source code gốc lấy từ <a href="https://computing.llnl.gov/tutorials/pthreads/samples/hello.c">link</a></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#228b22">/******************************************************************************
+</span><span style="color:#228b22"> * FILE: hello.c
+</span><span style="color:#228b22"> * DESCRIPTION:
+</span><span style="color:#228b22"> * Chuong trinh demo thao tac tao thread, tat thread
+</span><span style="color:#228b22"> * AUTHOR: Blaise Barney
+</span><span style="color:#228b22"> * LAST REVISED: 08/09/11
+</span><span style="color:#228b22"> *
+</span><span style="color:#228b22"> * TRANSLATE to Vietnamese by Minatu
+</span><span style="color:#228b22"> * COMPILE CMD : $gcc -o hello hello.c -lpthread
+</span><span style="color:#228b22"> ******************************************************************************/</span>
+<span style="color:#228b22">//
+</span><span style="color:#228b22"></span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;pthread.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;stdio.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;stdlib.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#define NUM_THREADS 5
+</span><span style="color:#1e889b"></span>
+<span style="color:#00688b;font-weight:bold">void</span> *<span style="color:#008b45">PrintHello</span>(<span style="color:#00688b;font-weight:bold">void</span> *threadid) {
+  <span style="color:#00688b;font-weight:bold">long</span> tid;
+  tid = (<span style="color:#00688b;font-weight:bold">long</span>)threadid;
+  printf(<span style="color:#cd5555">&#34;Hello World! Thread #%ld o day !!!n&#34;</span>, tid);
+  pthread_exit(<span style="color:#658b00">NULL</span>);
+}
 
-<p>[code lang=c]<br />
-/******************************************************************************<br />
-* FILE: hello.c<br />
-* DESCRIPTION:<br />
-* Chuong trinh demo thao tac tao thread, tat thread<br />
-* AUTHOR: Blaise Barney<br />
-* LAST REVISED: 08/09/11<br />
-*<br />
-* TRANSLATE to Vietnamese by Minatu<br />
-* COMPILE CMD : $gcc -o hello hello.c -lpthread<br />
-******************************************************************************/<br />
-//<br />
-#include <pthread.h><br />
-#include <stdio.h><br />
-#include <stdlib.h><br />
-#define NUM_THREADS 5</p>
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span> *argv[]) {
+  pthread_t threads[NUM_THREADS];
+  <span style="color:#00688b;font-weight:bold">int</span> rc;
+  <span style="color:#00688b;font-weight:bold">long</span> tId;
 
-<p>void *PrintHello(void *threadid)<br />
-{<br />
-long tid;<br />
-tid = (long)threadid;<br />
-printf(&ldquo;Hello World! Thread #%ld o day !!!\n&rdquo;, tid);<br />
-pthread_exit(NULL);<br />
-}</p>
+  <span style="color:#8b008b;font-weight:bold">for</span> (tId = <span style="color:#b452cd">0</span>; tId &lt; NUM_THREADS; tId++) {
+    printf(<span style="color:#cd5555">&#34; Ham main() : Thread Main : Tao...thread moi: %ldn&#34;</span>, tId);
+    rc = pthread_create(&amp;threads[tId], <span style="color:#658b00">NULL</span>, PrintHello, (<span style="color:#00688b;font-weight:bold">void</span> *)tId);
+    <span style="color:#8b008b;font-weight:bold">if</span> (rc) {
+      printf(<span style="color:#cd5555">&#34;ERROR; loi khi chay pthread_create(), ma loi: %dn&#34;</span>, rc);
+      exit(-<span style="color:#b452cd">1</span>);
+    }
+  }
 
-<p>int main(int argc, char *argv[])<br />
-{<br />
-pthread_t threads[NUM_THREADS];<br />
-int rc;<br />
-long tId;</p>
-
-<p>for(tId = 0; tId &lt; NUM_THREADS; tId++){<br />
-printf(&rdquo; Ham main() : Thread Main : Tao&hellip;thread moi: %ld\n&rdquo;, tId);<br />
-rc = pthread_create(<br />
-&amp;threads[tId],<br />
-NULL,<br />
-PrintHello,<br />
-(void *)tId);<br />
-if (rc){<br />
-printf(&ldquo;ERROR; loi khi chay pthread_create(), ma loi: %d\n&rdquo;, rc);<br />
-exit(-1);<br />
-}<br />
-}</p>
-
-<p>/* Last thing that main() should do */<br />
-pthread_exit(NULL);<br />
-}<br />
-[/code]</p>
-
+  <span style="color:#228b22">/* Last thing that main() should do */</span>
+  pthread_exit(<span style="color:#658b00">NULL</span>);
+}
+}  </code></pre></div>
 <p>Kết quả sau khi biên dịch và chạy:</p>
-
-<p>[code lang=shell]<br />
-oedev@OEDEV-Ubuntu:code$ gcc -o hello hello.c -lpthread<br />
-oedev@OEDEV-Ubuntu:code$ ./hello<br />
-Ham main() : Thread Main : Tao&hellip;thread moi: 0<br />
-Ham main() : Thread Main : Tao&hellip;thread moi: 1<br />
-Hello World! Thread #0 o day !!!<br />
-Ham main() : Thread Main : Tao&hellip;thread moi: 2<br />
-Hello World! Thread #1 o day !!!<br />
-Ham main() : Thread Main : Tao&hellip;thread moi: 3<br />
-Ham main() : Thread Main : Tao&hellip;thread moi: 4<br />
-Hello World! Thread #2 o day !!!<br />
-Hello World! Thread #3 o day !!!<br />
-Hello World! Thread #4 o day !!!<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OEDEV-Ubuntu:code$ gcc -o hello hello.c -lpthread  
+oedev@OEDEV-Ubuntu:code$ ./hello  
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">0</span>  
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">1</span>  
+Hello World! Thread <span style="color:#228b22">#0 o day !!!</span>  
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">2</span>  
+Hello World! Thread <span style="color:#228b22">#1 o day !!!</span>  
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">3</span>  
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">4</span>  
+Hello World! Thread <span style="color:#228b22">#2 o day !!!</span>  
+Hello World! Thread <span style="color:#228b22">#3 o day !!!</span>  
+Hello World! Thread <span style="color:#228b22">#4 o day !!!</span>  </code></pre></div>
 <p>Như ta thấy, các thread được tạo và chạy hàm <code>PrintHello</code> rồi hiển thị giá trị <code>tId</code><br />
 được truyền khi tạo trong nội dung của nó.<br />
 Ta chú ý ở đây, thông tin hiện ra màn hình có thể không theo <strong>thứ tự đâu</strong>.<br />
@@ -143,15 +128,11 @@ Tức là có thể dù thread 1 được tạo trước thread 2 nhưng chưa c
 của nó sẽ ra trước thread 2.</p>
 
 <p>Nói kĩ hơn về các hàm sử dụng ở trên:</p>
-
-<p>[code lang=c]<br />
-rc = pthread_create(<br />
-&amp;threads[tId],<br />
-NULL,<br />
-PrintHello,<br />
-(void *)tId);<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rc = pthread_create(  
+&amp;threads[tId],  
+<span style="color:#658b00">NULL</span>,  
+PrintHello,  
+(<span style="color:#00688b;font-weight:bold">void</span> *)tId);  </code></pre></div>
 <p>Trong đó,<br />
 - Tham số thứ nhất: <code>&amp;amp;threads[tId]</code> : Chứa các thông tin của thread sau khi được tạo.<br />
 Bất cứ thao tác nào liên quan đến thread này đều thông qua biến này.</p>
@@ -170,11 +151,7 @@ Trong trường hợp này hàm <code>PrintHello</code> nhận tham số <code>v
 </ul>
 
 <p>Tiếp theo đến</p>
-
-<p>[code lang=c]<br />
-pthread_exit(NULL);<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">pthread_exit(<span style="color:#658b00">NULL</span>);  </code></pre></div>
 <ul>
 <li>Tham số của hàm này ở đây được sử dụng để truyền ra cho một thread khác đang đợi bằng <code>join</code><br />
 nó kết thúc, trong trường hợp này không sử dụng nên giá trị nó là NULL.</li>
@@ -198,40 +175,31 @@ Ta có thể lấy đường dẫn của terminal ta đang sử dụng bằng l�
 Giả sử 4 terminal của chúng ta có đường dẫn tương ứng là:<br />
 <code>/dev/pts/15</code> đến <code>/dev/pts/17</code></p></li>
 
-<li><p>Ta sẽ sửa lại hàm <code>PrintHello</code> ở trên như sau:</p></li>
+<li><p>Ta sẽ sửa lại hàm <code>PrintHello</code> ở trên như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#8b008b;font-weight:bold">const</span> <span style="color:#00688b;font-weight:bold">char</span> *TERMINAL_DEV_FILES[] = {
+<span style="color:#cd5555">&#34;/dev/pts/19&#34;</span>, <span style="color:#cd5555">&#34;/dev/pts/19&#34;</span>, <span style="color:#cd5555">&#34;/dev/pts/20&#34;</span>, <span style="color:#cd5555">&#34;/dev/pts/20&#34;</span>, <span style="color:#cd5555">&#34;/dev/pts/21&#34;</span>,
+};
+
+<span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">PrintHello</span>(<span style="color:#00688b;font-weight:bold">void</span> *threadid) {
+FILE *fo = <span style="color:#658b00">NULL</span>;
+<span style="color:#00688b;font-weight:bold">long</span> count = <span style="color:#b452cd">0</span>;
+<span style="color:#00688b;font-weight:bold">long</span> tid;
+tid = (<span style="color:#00688b;font-weight:bold">long</span>)threadid;
+fo = fopen(TERMINAL_DEV_FILES[tid], <span style="color:#cd5555">&#34;a&#34;</span>);
+<span style="color:#8b008b;font-weight:bold">if</span> (fo != <span style="color:#658b00">NULL</span>) {
+count = <span style="color:#b452cd">0</span>;
+<span style="color:#8b008b;font-weight:bold">while</span> (<span style="color:#b452cd">1</span>) {
+  fprintf(fo, <span style="color:#cd5555">&#34;Thread %ld : %ldn&#34;</span>, tid + <span style="color:#b452cd">1</span>, ++count);
+  <span style="color:#8b008b;font-weight:bold">if</span> (count == <span style="color:#b452cd">100</span>)
+    <span style="color:#8b008b;font-weight:bold">break</span>;
+  sleep(<span style="color:#b452cd">3</span>);
+}
+}
+fclose(fo);
+printf(<span style="color:#cd5555">&#34;Bye!!!! Thread #%ld o day !!!n&#34;</span>, tid);
+pthread_exit(<span style="color:#658b00">NULL</span>);
+}</code></pre></div></li>
 </ul>
-
-<p>[code lang=c]<br />
-const char* TERMINAL_DEV_FILES[] = {<br />
-&rdquo;/dev/pts/19&rdquo;,<br />
-&rdquo;/dev/pts/19&rdquo;,<br />
-&rdquo;/dev/pts/20&rdquo;,<br />
-&rdquo;/dev/pts/20&rdquo;,<br />
-&rdquo;/dev/pts/21&rdquo;,<br />
-};</p>
-
-<p>void PrintHello(void *threadid)<br />
-{<br />
-FILE *fo = NULL;<br />
-long count = 0;<br />
-long tid;<br />
-tid = (long)threadid;<br />
-fo = fopen(TERMINAL_DEV_FILES[tid], &ldquo;a&rdquo;);<br />
-if (fo != NULL)<br />
-{<br />
-count = 0;<br />
-while (1)<br />
-{<br />
-fprintf(fo,&ldquo;Thread %ld : %ld\n&rdquo;,tid + 1, ++count) ;<br />
-if (count == 100) break;<br />
-sleep(3);<br />
-}<br />
-}<br />
-fclose(fo);<br />
-printf(&ldquo;Bye!!!! Thread #%ld o day !!!\n&rdquo;, tid);<br />
-pthread_exit(NULL);<br />
-}<br />
-[/code]</p>
 
 <p>Giử sử thread chính sẽ được chạy từ một terminal khác.<br />
 Kết quả sẽ như sau:<br />
@@ -285,7 +253,7 @@ Kết quả sẽ như sau:<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

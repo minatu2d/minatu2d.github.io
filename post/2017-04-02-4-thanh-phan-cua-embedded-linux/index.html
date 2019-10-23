@@ -77,7 +77,10 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
 
 <p>Bài này chỉ nói về các thành phần mà người ta phải nghĩ đến khi phát triển một ứng dụng trên một phần cứng mới. Tất nhiên, hầu hết chúng ta sẽ phát triển ứng dụng, ít động đến những phần đó. Nhưng có một hiểu biết tổng quan sẽ rất thú vị.</p>
 
-<h2 id="1-toolchain-compiler-linker-sysroot">1. Toolchain - compiler, linker, sysroot&hellip;</h2>
+<ol>
+<li>Toolchain - compiler, linker, sysroot&hellip;
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
+</ol>
 
 <p><strong>Tại sao lại phải quan tâm đến toolchain ngay từ đầu, và toolchain là cái gì?</strong></p>
 
@@ -161,7 +164,10 @@ Kiểu như chức năng A chưa fixed được các chức năng B, C, D chưa 
 - Tracer..<br />
 - Plugin cho Eclipse&hellip;</p>
 
-<h2 id="2-bootloader-sống-vì-kernel-hy-sinh-để-kernel-sống">2. Bootloader - sống vì kernel, hy sinh để kernel sống</h2>
+<ol>
+<li>Bootloader - sống vì kernel, hy sinh để kernel sống
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
+</ol>
 
 <p><strong>Tại sao lại cần bootloader, và bootloader là cái gì</strong></p>
 
@@ -216,7 +222,10 @@ Kiểu như thế này</p>
 - Hỗ trợ cả load kernel qua network nữa.<br />
 - Hỗ trợ cơ chế truyền tham số cho kernel bằng device tree khi boot kernel.</p>
 
-<h2 id="3-kernel-hệ-điều-hành-bắt-đầu-từ-đây">3. Kernel - hệ điều hành bắt đầu từ đây</h2>
+<ol>
+<li>Kernel - hệ điều hành bắt đầu từ đây
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
+</ol>
 
 <p>Kernel - Thành phần quan trọng nhất của hệ thống, chứa bộ lập lịch các tiến trình, quản lý bộ nhớ, quản lý thiết bị&hellip;etc.</p>
 
@@ -245,7 +254,10 @@ Các BSP này có thể được cung cấp qua các bản Patch.</p>
 Đó là, dạng load được vào kernel là dạng binary, đã số là mã nguồn mở, nhưng có một số kernel module được sử dụng kèm theo thiết bị lại ở dạng mã nguồn đóng, và chúng sẽ không được quản lý trên main stream.<br />
 Cần chú ý cái này khi sử dụng kernel module dạng này trong các sản phẩm thương mại.</p>
 
-<h2 id="4-user-space-applications-với-user-đây-là-hệ-thống">4. User-space applications - với user đây là hệ thống</h2>
+<ol>
+<li>User-space applications - với user đây là hệ thống
+&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
+</ol>
 
 <p>Là các ứng dụng từ init đến các ứng dụng đồ họa ta dùng.<br />
 Đây là một phần quan trọng và không thể thiếu của hệ thống.<br />
@@ -336,7 +348,7 @@ Không chỉ có 1 chương trình <em>init program</em>. Mỗi lớp hệ thố
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

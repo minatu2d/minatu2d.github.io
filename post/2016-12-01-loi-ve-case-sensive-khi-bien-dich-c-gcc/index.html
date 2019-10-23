@@ -76,98 +76,74 @@ Vấn đề được trình bày bên dưới.</p>
 <h3 id="1-cấu-trúc-source-ví-dụ">1. Cấu trúc source ví dụ</h3>
 
 <p>Giả sử có source như này:</p>
-
-<p>[code lang=&ldquo;bash&rdquo;]<br />
-.<br />
-├── hello<br />
-├── hello.c<br />
-├── inc_lowercase<br />
-│ └── abc.h<br />
-└── inc_uppercase<br />
-└── Abc.h<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"bash"" data-lang=""bash"">.  
+├── hello  
+├── hello.c  
+├── inc_lowercase  
+│ └── abc.h  
+└── inc_uppercase  
+└── Abc.h  </code></pre></div>
 <p><strong>hello.c</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"c"" data-lang=""c"">$ cat hello.c  
+#include  
+#include&amp;quot;Abc.h&amp;quot;  
+#include&amp;quot;abc.h&amp;quot;
 
-<p>[code lang=&ldquo;c&rdquo;]<br />
-$ cat hello.c<br />
-#include<br />
-#include&quot;Abc.h&quot;<br />
-#include&quot;abc.h&quot;</p>
+int main(int argc, char* argv[])  
+{  
+abc_t var1;  
+Abc_t var2;
 
-<p>int main(int argc, char* argv[])<br />
-{<br />
-abc_t var1;<br />
-Abc_t var2;</p>
+var1.x = 0;  
+var2 = 3;
 
-<p>var1.x = 0;<br />
-var2 = 3;</p>
-
-<p>printf(&quot;OMG Hello world %d %ldn&quot;,var1.x, var2);<br />
-return 0;<br />
-}<br />
-[/code]</p>
-
+printf(&amp;quot;OMG Hello world %d %ldn&amp;quot;,var1.x, var2);  
+return 0;  
+}  </code></pre></div>
 <p><strong>inc_lowercase/abc.h</strong>:</p>
-
-<p>[code lang=&ldquo;c&rdquo;]<br />
-typedef struct _abc_<br />
-{<br />
-int x;<br />
-}abc_t;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"c"" data-lang=""c"">typedef struct _abc_  
+{  
+int x;  
+}abc_t;  </code></pre></div>
 <p><strong>inc_uppercase/Abc.h</strong>:</p>
-
-<p>[code lang=&ldquo;c&rdquo;]<br />
-typedef long int Abc_t;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"c"" data-lang=""c"">typedef long int Abc_t;  </code></pre></div>
 <h3 id="2-so-sánh-thử">2. So sánh thử</h3>
 
 <h4 id="2-1-thư-mục-source-nằm-trên-home-của-vmware">2.1 Thư mục source nằm trên <strong><em>home</em></strong> của VMWare</h4>
 
 <p>Kết quả: Build ngon, chạy tốt:</p>
-
-<p>[code lang=&ldquo;bash&rdquo;]<br />
-$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase<br />
-$ ./hello<br />
-OMG Hello world 0 3<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"bash"" data-lang=""bash"">$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase  
+$ ./hello  
+OMG Hello world 0 3  </code></pre></div>
 <h4 id="2-1-thư-mục-source-nằm-trên-thư-mục-chia-sẻ-giữa-vmware-chạy-linux-với-host-chạy-windows-thông-qua-vmhgfs">2.1 Thư mục source nằm trên thư mục chia sẻ giữa VMWare (chạy Linux) với Host (chạy Windows) thông qua <strong>vmhgfs</strong>:</h4>
 
 <p>Giả sử ta để source ở <em>/mnt/hgfs</em> :</p>
 
 <p>Kết quả: Build lỗi, đương nhiên là không chạy được.</p>
-
-<p>[code lang=&ldquo;bash&rdquo;]<br />
-duser@192.168.70.225:/mnt/hgfs$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase<br />
-In file included from hello.c:3:0:<br />
-abc.h:1:16: error: redefinition of ‘struct _abc_’<br />
-typedef struct _abc_<br />
-^<br />
-In file included from hello.c:2:0:<br />
-Abc.h:1:16: note: originally defined here<br />
-typedef struct _abc_<br />
-^<br />
-In file included from hello.c:3:0:<br />
-abc.h:4:2: error: conflicting types for ‘abc_t’<br />
-}abc_t;<br />
-^<br />
-In file included from hello.c:2:0:<br />
-Abc.h:4:2: note: previous declaration of ‘abc_t’ was here<br />
-}abc_t;<br />
-^<br />
-hello.c: In function ‘main’:<br />
-hello.c:8:2: error: unknown type name ‘Abc_t’<br />
-Abc_t var2;<br />
-^<br />
-hello.c:13:2: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 3 has type ‘int’ [-Wformat=]<br />
-printf(&quot;OMG Hello world %d %ldn&quot;,var1.x, var2);<br />
-^<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"bash"" data-lang=""bash"">duser@192.168.70.225:/mnt/hgfs$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase  
+In file included from hello.c:3:0:  
+abc.h:1:16: error: redefinition of ‘struct _abc_’  
+typedef struct _abc_  
+^  
+In file included from hello.c:2:0:  
+Abc.h:1:16: note: originally defined here  
+typedef struct _abc_  
+^  
+In file included from hello.c:3:0:  
+abc.h:4:2: error: conflicting types for ‘abc_t’  
+}abc_t;  
+^  
+In file included from hello.c:2:0:  
+Abc.h:4:2: note: previous declaration of ‘abc_t’ was here  
+}abc_t;  
+^  
+hello.c: In function ‘main’:  
+hello.c:8:2: error: unknown type name ‘Abc_t’  
+Abc_t var2;  
+^  
+hello.c:13:2: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 3 has type ‘int’ [-Wformat=]  
+printf(&amp;quot;OMG Hello world %d %ldn&amp;quot;,var1.x, var2);  
+^  </code></pre></div>
 <p>Ta thấy các lỗi ở đây khá là &ldquo;lạ&rdquo;, nào là <strong>redefine</strong>, nào là <strong>unkown type name</strong>.<br />
 <strong>Nếu gặp lỗi này lần đầu thì không phải ai cũng lý giải được. :(</strong></p>
 
@@ -230,7 +206,7 @@ Có vẻ như <strong>hgfs</strong> coi 2 file header trên với cùng 1 tên <
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

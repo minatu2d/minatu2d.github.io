@@ -19,10 +19,7 @@
       <guid>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
       <description>Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
 Trong compile thông thường dạng
-[code lang=bash]
-$gcc -o HelloWorld HelloWorld.c
-[/code]
-Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+$gcc -o HelloWorld HelloWorld.c  Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
 Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</description>
     </item>
     

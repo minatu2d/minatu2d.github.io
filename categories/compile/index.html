@@ -90,7 +90,7 @@ việc build, chạy Kernel trên board vexpress-a9 mô phỏng bằng Qemu.
 		Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
 từ Free Electrons tại Embedded Linux Conference 2016.
 So sánh giữa Buildroot và OpenEmbedded/Yocto Project
-1. Điểm chung  Đều là build-system cho Embedded Linux.
+ Điểm chung &mdash;&mdash;&mdash;&mdash;&ndash;   Đều là build-system cho Embedded Linux.
 Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
 Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.
 	</div>
@@ -106,10 +106,7 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ
 	<div class="content list__excerpt post__content clearfix">
 		Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
 Trong compile thông thường dạng
-[code lang=bash]
-$gcc -o HelloWorld HelloWorld.c
-[/code]
-Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+$gcc -o HelloWorld HelloWorld.c  Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
 Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.
 	</div>
 </article><article class="list__item post">
@@ -126,11 +123,7 @@ Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu t
 Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
 Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
 HelloWorld.c
-[code lang=cpp]
-#include
-int main()
-{
-print(&ldquo;Hello World \n&rdquo;);
+#include int main() { print(&#34;Hello World \\n&#34;); return 0; }  Kết quả chạy:
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -174,15 +167,7 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
 		Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
 Giả sử ta có một cấu trúc sau:
-[code lang=&ldquo;C&rdquo;]
-#include 
-typedef struct
-{
-uin8_t mem1;
-uin8_t mem2;
-uin32_t mem3;
-}ST_FOOL_1;
-typedef struct
+#include &lt;stdint.h&gt; typedef struct { uin8_t mem1; uin8_t mem2; uin32_t mem3; }ST_FOOL_1; typedef struct { uin8_t mem1; uin8_t mem2; uin8_t mem3; uin8_t mem4; uin8_t mem5; }ST_FOOL_2;  Cấu trúc ST_FOOL_1 sẽ được miêu tả trong 6 byte?
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -244,21 +229,13 @@ Trong giới hạn, tôi sẽ nói về việc sử dụng CMake để build m�
 
 			</div>
 			
-<aside class="sidebar"><div class="widget-search widget">
-	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
-		<label>
-			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
-		</label>
-		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
-	</form>
-</div>
+<aside class="sidebar">
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-2015/">Bắt đầu về Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</a></li>
@@ -396,7 +373,7 @@ Trong giới hạn, tôi sẽ nói về việc sử dụng CMake để build m�
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

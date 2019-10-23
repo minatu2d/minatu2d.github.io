@@ -87,10 +87,10 @@ thiết bị sẽ được lưu trữ không đổi (persistently)trên hệ th�
 (root filesystem) (chúng luôn không đổi qua mỗi lần reboot), và không có quá trình<br />
 tự động thêm, xóa những file thiết bị này khi phần được thêm, gỡ từ hệ thống. Buildroot<br />
 cho phép tạo ra một tập các file thiết bị này sử dụng <em>bảng thiết bị</em> (device table),<br />
-mặc định chúng sẽ nằm ở <em>system/device_table_dev.txt</em> trong source code của Buildroot.<br />
+mặc định chúng sẽ nằm ở _system/device_table<em>dev.txt</em> trong source code của Buildroot.<br />
 File này sẽ được sử dụng khi Buildroot tạo ảnh hệ thống file cuối cùng<br />
 (final root filesystem image), vì thế nó sẽ không xuất hiện trong thư mục<br />
-<em>output/target</em>. Tùy chọn <em>BR2_ROOTFS_STATIC_DEVICE_TABLE</em> cho phép thay đổi bảng<br />
+<em>output/target</em>. Tùy chọn _BR2_ROOTFS_STATIC_DEVICE<em>TABLE</em> cho phép thay đổi bảng<br />
 thiết bị mặc định mà Buildroot sẽ sử dụng. Bạn có thể tạo bảng thiết bị của riêng<br />
 cho dự án của mình.</li>
 
@@ -102,7 +102,7 @@ cho các file thiết bị xuất hiện hoặc không xuất hiện tương ứ
 cứng được thêm hay được rút khỏi hệ thống. Hệ thống file này sẽ không được bảo<br />
 toàn sau mỗi lần reboot, đơn giản vì nó được thay đổi động bởi kernel. Khi muốn<br />
 sử dụng <em>devtmpfs</em>, trong cấu hình kernel, các tham số sau phải được bật:<br />
-<em>CONFIG_DEVTMPFS</em> và <em>CONFIG_DEVTMPFS_MOUNT</em>. Khi Buildroot thực hiện việc build<br />
+_CONFIG<em>DEVTMPFS</em> và _CONFIG_DEVTMPFS<em>MOUNT</em>. Khi Buildroot thực hiện việc build<br />
 Linux kernel cho hệ thống của bạn thì nó sẽ đảm bảo chắc chắn 2 option trên được<br />
 bật. Còn khi bạn tự build Linux kernel bên ngoài Buildroot, bạn phải có trách nhiệm<br />
 bật 2 option đó (Nếu không làm thế, hệ thống sau khi build sẽ không khởi động được<br />
@@ -110,7 +110,7 @@ bật 2 option đó (Nếu không làm thế, hệ thống sau khi build sẽ kh
 
 <li><p>Solution 3: <strong>Động sử dụng devtmpfs + mdev</strong><br />
 Cách này vẫn dựa trên hệ thống file ảo <em>devtmpfs</em> đã nói ở trên (vì thế để sử dụng<br />
-được thì phải bật 2 option: <em>CONFIG_DEVTMPFS</em> và <em>CONFIG_DEVTMPFS_MOUNT</em>) khi<br />
+được thì phải bật 2 option: _CONFIG<em>DEVTMPFS</em> và _CONFIG_DEVTMPFS<em>MOUNT</em>) khi<br />
 cấu hình Linux kernel, và nó thêm một tiện ích phía userspace, đó là <em>mdev</em> phía<br />
 trên của <em>devtmpfs</em>.　<em>mdev</em> là một chương trình, một phần của Busybox, chương trình<br />
 này sẽ được kernel gọi mỗi khi 1 thiết bị được thêm hoặc loại bỏ khỏi hệ thống.<br />
@@ -191,7 +191,7 @@ thực hiện bởi <em>udev</em> cung cấp từ chính <em>systemd</em>.</p>
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

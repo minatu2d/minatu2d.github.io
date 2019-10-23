@@ -136,16 +136,16 @@ Mình; Ok.
 <p>Tức là càng tách biệt 3 phần Model (việc truy cập data base) + View ( Phần hiển thị cho người dụng) + Control (phần xử lý các nghiệp vụ gì đó dựa trên đầu vào dữ liệu, đầu ra là kết quả hiện thị ra view).</p>
 
 <p>Với CGI plain mỗi controller, ta sẽ dùng 1 lệnh if</p>
-<div class="highlight"><pre class="chroma"><code class="language-perl" data-lang="perl"><span class="n">actionValue</span> <span class="o">=</span> <span class="nn">cgi</span> <span class="o">-&gt;</span> <span class="n">query</span><span class="p">(</span><span class="s">&#34;action&#34;</span><span class="p">)</span>
-<span class="k">if</span> <span class="p">(</span><span class="n">action</span> <span class="o">==</span> <span class="s">&#34;action1&#34;</span><span class="p">)</span> <span class="p">{</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">actionValue = <span style="color:#008b45;text-decoration:underline">cgi</span> -&gt; query(<span style="color:#cd5555">&#34;action&#34;</span>)
+<span style="color:#8b008b;font-weight:bold">if</span> (action == <span style="color:#cd5555">&#34;action1&#34;</span>) {
 
-<span class="sr">//</span><span class="o">&lt;</span><span class="n">Xử</span> <span class="n">lý</span> <span class="mi">1</span><span class="o">&gt;</span>
+<span style="color:#1c7e71">//</span>&lt;Xử lý <span style="color:#b452cd">1</span>&gt;
 
-<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="p">(</span><span class="n">action</span> <span class="o">==</span> <span class="s">&#34;action2&#34;</span><span class="p">)</span> <span class="p">{</span>
+} <span style="color:#8b008b;font-weight:bold">else</span> <span style="color:#8b008b;font-weight:bold">if</span> (action == <span style="color:#cd5555">&#34;action2&#34;</span>) {
 
-<span class="sr">//</span><span class="o">&lt;</span><span class="n">Xử</span> <span class="n">lý</span> <span class="mi">2</span><span class="o">&gt;</span>
+<span style="color:#1c7e71">//</span>&lt;Xử lý <span style="color:#b452cd">2</span>&gt;
 
-<span class="p">}</span></code></pre></div>
+}</code></pre></div>
 <p>Phần database mình chưa động đến &lt;Để bổ sung sau vậy&gt;</p>
 
 <p>Phần View, làm sao để chuyển cái output là giá trị đến người dùng 1 cách dễ hiểu nhất.</p>
@@ -155,9 +155,9 @@ Mình; Ok.
 <p>template = HTMLTemplate -&gt; Load(&ldquo;abc.tpl&rdquo;)// Miễn là text file thôi, kiểu gì cũng ok.</p>
 
 <p>Ta được đối tượng HTMLTemplate,</p>
-<div class="highlight"><pre class="chroma"><code class="language-perl" data-lang="perl"><span class="nn">template</span> <span class="o">-&gt;</span> <span class="n">param</span><span class="p">(</span><span class="s">&#34;VAR1&#34;</span><span class="p">,</span> <span class="n">realValu1</span><span class="p">)</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#008b45;text-decoration:underline">template</span> -&gt; param(<span style="color:#cd5555">&#34;VAR1&#34;</span>, realValu1)
 
-<span class="nn">template</span> <span class="o">-&gt;</span> <span class="n">param</span><span class="p">(</span><span class="s">&#34;VAR2&#34;</span><span class="p">,</span> <span class="n">realValu2</span><span class="p">)</span></code></pre></div>
+<span style="color:#008b45;text-decoration:underline">template</span> -&gt; param(<span style="color:#cd5555">&#34;VAR2&#34;</span>, realValu2)</code></pre></div>
 <p>các biến VAR1, VAR2 được định nghĩa bên trong trong file template kia.</p>
 
 <p>Chuyển qua CGI Application, hầu hết các xử lý đều không đổi.</p>
@@ -205,7 +205,7 @@ Mình; Ok.
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

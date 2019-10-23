@@ -23,10 +23,10 @@ https://stackoverflow.com/questions/14319347/variables-in-ruby-on-rails  3. Mode
     
     <item>
       <title>Bắt đầu về Docker</title>
-      <link>https://blog.lazytrick.com/post/2019-02-06-2015/</link>
+      <link>https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/</link>
       <pubDate>Wed, 06 Feb 2019 07:26:15 +0900</pubDate>
       
-      <guid>https://blog.lazytrick.com/post/2019-02-06-2015/</guid>
+      <guid>https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/</guid>
       <description>Docker, là công nghệ rất nổi và có ảnh hưởng đến hầu hết developer.
 Được coi là một công nghệ ảo hóa ở mức hệ điều hành khi so với các phương pháp ảo hóa phần cứng khác.
 Theo mình hỏi, kĩ thuật để làm việc này không mới, nó dựa trên kĩ thuật chroot có được sử dụng từ khá lâu trong linux.
@@ -84,7 +84,7 @@ Dù mình biết Machine Learning nặng về Toán, đặc biệt Toán Tối �
       <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</guid>
-      <description>Thực hiện 3 phép tập hợp trên bash Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
+      <description>Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
 Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.
 Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krumins chủ trang http://www.catonmat.net/
 1. Phép giao Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.</description>
@@ -96,10 +96,10 @@ Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krum
       <pubDate>Fri, 03 Nov 2017 06:31:11 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</guid>
-      <description>&lt;p&gt;&lt;h2&gt;Một số thứ hữu ích khi viết sử dụng command, viết script trong bash&lt;/h2&gt;
-&lt;p&gt;Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên &lt;a href=&#34;https://github.com/jlevy/the-art-of-command-line&#34;&gt;The art of command line&lt;/a&gt; và mình cũng đã dịch thử (chưa được review) ở&lt;br /&gt;
-&lt;a href=&#34;https://github.com/minatu2d/the-art-of-command-line/blob/master/README-vi.md&#34;&gt;Nghệ thuật sử dụng dòng lệnh&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;/p&gt;</description>
+      <description>Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên The art of command line và mình cũng đã dịch thử (chưa được review) ở
+Nghệ thuật sử dụng dòng lệnh
+1. Hạn chế gõ lại câu lệnh cho dù là rất ngắn Hãy sử dụng chức năng tìm đoạn đang gõ trong history để làm giảm công gõ lại
+Hai chức năng tìm xuôi và tìm ngược được bash cung cấp rồi.</description>
     </item>
     
     <item>
@@ -108,22 +108,8 @@ Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krum
       <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</guid>
-      <description>Ví dụ cơ bản với pthread trên Linux 1. Tạo và dừng thread Source code gốc lấy từ link
-[code lang=c]
-/******************************************************************************
-* FILE: hello.c
-* DESCRIPTION:
-* Chuong trinh demo thao tac tao thread, tat thread
-* AUTHOR: Blaise Barney
-* LAST REVISED: 08/09/11
-*
-* TRANSLATE to Vietnamese by Minatu
-* COMPILE CMD : $gcc -o hello hello.c -lpthread
-******************************************************************************/
-//
-#include 
-#include 
-#include</description>
+      <description>1. Tạo và dừng thread Source code gốc lấy từ link
+/****************************************************************************** * FILE: hello.c * DESCRIPTION: * Chuong trinh demo thao tac tao thread, tat thread * AUTHOR: Blaise Barney * LAST REVISED: 08/09/11 * * TRANSLATE to Vietnamese by Minatu * COMPILE CMD : $gcc -o hello hello.c -lpthread ******************************************************************************/ // #include &amp;lt;pthread.h&amp;gt;#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;#define NUM_THREADS 5  void *PrintHello(void *threadid) { long tid; tid = (long)threadid; printf(&amp;#34;Hello World!</description>
     </item>
     
     <item>
@@ -132,10 +118,12 @@ Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krum
       <pubDate>Sun, 14 May 2017 08:43:10 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</guid>
-      <description>So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;amp;T và Intel Link gốc:
+      <description>Link gốc:
 http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm
 Người dịch:
-Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụng,nhất là bây giờ đã là năm 2017. Có quá nhiều thứ hiệu quả và nhanh hơn. Tuy nhiên, khi cần tìm hiểu ở mức hệ điều hành, rồi driver thiết bị, thì việc đọc được Assembly là rất hữu ích.</description>
+Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụng,nhất là bây giờ đã là năm 2017. Có quá nhiều thứ hiệu quả và nhanh hơn. Tuy nhiên, khi cần tìm hiểu ở mức hệ điều hành, rồi driver thiết bị, thì việc đọc được Assembly là rất hữu ích.
+Nội dung
+Cú pháp ASM giữa Intel và AT&amp;amp;T có rất nhiều điềm khác nhau rõ rệt.</description>
     </item>
     
     <item>
@@ -144,8 +132,7 @@ Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụ
       <pubDate>Sun, 14 May 2017 07:59:46 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-05-14-lenh-mov-trong-assembly/</guid>
-      <description>Lệnh MOV trong Assembly Link gốc: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html
-#Lệnh MOV
+      <description>Link gốc: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html
 1. Lệnh MOV Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.
 Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó. Nói là chức năng sao chép thôi, chứ thực sự nó bao hàm sao chép, truyền dữ liệu. Đó có thể là từ bộ nhớ (các loại RAM) vào thanh ghi, từ thanh ghi vào bộ nhớ, từ một giá trị nào đó xuống thanh ghi hoặc bộ nhớ chẳng hạn.</description>
     </item>
@@ -157,7 +144,8 @@ Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó.
       
       <guid>https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
       <description>Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
-Cách tìm source code driver cho thiết bị USB 1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Cách tìm source code driver cho thiết bị USB
+1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
 Đó là Vendor (nhà sản xuất), và Product (sản phẩm).</description>
     </item>
     
@@ -246,7 +234,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
       <guid>https://blog.lazytrick.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
       <description>Tham khảo
 - Sách : AT&amp;amp;T Assembly Language, Richard Blum
-1. Ngôn ngữ Assembly là gì?  Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</description>
+ Ngôn ngữ Assembly là gì? &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-   Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</description>
     </item>
     
     <item>
@@ -258,7 +246,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
       <description>Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
 từ Free Electrons tại Embedded Linux Conference 2016.
 So sánh giữa Buildroot và OpenEmbedded/Yocto Project
-1. Điểm chung  Đều là build-system cho Embedded Linux.
+ Điểm chung &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;   Đều là build-system cho Embedded Linux.
 Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
 Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.</description>
     </item>
@@ -285,10 +273,7 @@ device files (hay các file thiết bị), cho phép ứng dụng phía user tru
       <guid>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
       <description>Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
 Trong compile thông thường dạng
-[code lang=bash]
-$gcc -o HelloWorld HelloWorld.c
-[/code]
-Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+$gcc -o HelloWorld HelloWorld.c  Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
 Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</description>
     </item>
     
@@ -302,11 +287,7 @@ Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu t
 Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
 Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
 HelloWorld.c
-[code lang=cpp]
-#include
-int main()
-{
-print(&amp;ldquo;Hello World \n&amp;rdquo;);</description>
+#include int main() { print(&amp;#34;Hello World \\n&amp;#34;); return 0; }  Kết quả chạy:</description>
     </item>
     
     <item>
@@ -400,15 +381,7 @@ Nội dung bài này sẽ giới thiệu sơ qua về ASN.</description>
       <description>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
 Giả sử ta có một cấu trúc sau:
-[code lang=&amp;ldquo;C&amp;rdquo;]
-#include 
-typedef struct
-{
-uin8_t mem1;
-uin8_t mem2;
-uin32_t mem3;
-}ST_FOOL_1;
-typedef struct</description>
+#include &amp;lt;stdint.h&amp;gt; typedef struct { uin8_t mem1; uin8_t mem2; uin32_t mem3; }ST_FOOL_1; typedef struct { uin8_t mem1; uin8_t mem2; uin8_t mem3; uin8_t mem4; uin8_t mem5; }ST_FOOL_2;  Cấu trúc ST_FOOL_1 sẽ được miêu tả trong 6 byte?</description>
     </item>
     
     <item>
@@ -528,10 +501,7 @@ Như ta đã biết, khi một thiết bị USB được cắm vào máy (Host),
       
       <guid>https://blog.lazytrick.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</guid>
       <description>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh source, ta thực hiện build tạo image có có tên là rpi-basic-image thông qua lệnh:
-[code lang=&amp;ldquo;shell&amp;rdquo;]
-$bitbake rpi-basic-image
-[/code]
-Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
+$bitbake rpi-basic-image  Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
 rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)</description>
     </item>
     

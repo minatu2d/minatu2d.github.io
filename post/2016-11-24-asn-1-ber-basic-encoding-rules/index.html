@@ -158,20 +158,14 @@ Cụ thể như sau:</p>
 <p><img src="{{ site.baseurl }}/assets/pic_6.png" alt="" /></p>
 
 <p><em>Ví dụ</em>: Số điện thoại với định nghĩa và hiện thực tương ứng như bên dưới đây là một ví dụ cho 2 lần <strong>TLV</strong>.</p>
-
-<p>[code lang=cpp]<br />
-TelephoneNumber ::= [1] NumericString<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= [<span style="color:#b452cd">1</span>] NumericString  
+</code></pre></div>
 <p><img src="{{ site.baseurl }}/assets/pic_8.png" alt="pic_8" /></p>
 
 <p>Khi muốn bỏ biểu diễn phần <strong>T</strong> đi, <strong>BER</strong> sử dụng từ khóa <strong>IMPLICIT</strong> trong định nghĩa của ASN.1.<br />
 *Thế mới biết, từ khóa này ban đầu dành cho <strong>BER</strong></p>
-
-<p>[code lang=cpp]<br />
-TelephoneNumber ::= [1] IMPLICIT NumericString<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= [<span style="color:#b452cd">1</span>] IMPLICIT NumericString  
+</code></pre></div>
 <p><img src="{{ site.baseurl }}/assets/pic_9.png" alt="pic_9" /></p>
 
 <p>Ngược lại với <strong>IMPLICIT</strong>, sử dụng <strong>EXPLICIT</strong> sẽ phải sử dụng <strong>TLV</strong> cho phần dữ liệu <strong>V</strong>.</p>
@@ -332,7 +326,7 @@ Với kiểu cấu trúc, được biểu diễn bằng một dãy kiểu cơ b�
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

@@ -71,11 +71,8 @@
 <p>ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.</p>
 
 <p>Ví dụ, khi muốn biểu diễn số điện thoại (<strong>TelephoneNumber</strong>), trong trường đã có kiểu dành cho chuỗi kí tự số (<strong>NumericString</strong>) thì ta chỉ việc viết như sau:</p>
-
-<p>[code lang=cpp]<br />
-TelephoneNumber ::= NumericString<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= NumericString  
+</code></pre></div>
 <ol>
 <li>Các kiểu cơ bản</li>
 <li>Kiểu cấu trúc</li>
@@ -156,15 +153,11 @@ Có thể sử dụng bất cứ dữ liệu nào. Kiểu ngoài (<strong>EXTERN
 <h3 id="2-kiểu-có-cấu-trúc">2. Kiểu có cấu trúc</h3>
 
 <p>Khi kết hợp các kiểu dữ liệu cơ bản với nhau, ta sẽ có <strong>Kiểu có cấu trúc</strong>. Ví dụ: thông tin mô tả 1 người như tên, số điện thoại, số fax trong danh bạ có thể được định nghĩa như sau:</p>
-
-<p>[code lang=c]<br />
-TelephoneNumberRecord ::= SET {<br />
-name VisibleString,<br />
-tel TelephoneNumber,<br />
-fax TelephoneNumber<br />
-}<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">TelephoneNumberRecord ::= SET {  
+name VisibleString,  
+tel TelephoneNumber,  
+fax TelephoneNumber  
+}  </code></pre></div>
 <p>Khi định nghĩa kiểu có cấu trúc, ta sẽ sử dụng thêm các định nghĩa sau:</p>
 
 <p>Kiểu lựa chọn</p>
@@ -245,44 +238,32 @@ Ví dụ: Ở bên dưới kiểu dữ liệu được định nghĩa có địa
 <p>ASN.1 có 4 nhóm thẻ:</p>
 
 <ul>
-<li>Lớp phổ biến :</li>
+<li><p>Lớp phổ biến :</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[UNIVERSAL &lt;số&gt;]  </code></pre></div></li>
 </ul>
-
-<p>[code lang=c]<br />
-[UNIVERSAL <số>]<br />
-[/code]</p>
 
 <p>Lớp này được sử dụng để chỉ các dữ liệu phổ biến, và chỉ được sử dụng trong các tài liệu ASN.1 chuẩn.<br />
 Bao gồm :kiểu số nguyên, kiểu byte (octet), kiểu số thực, và kiểu liệt kê. (Enum).</p>
 
 <ul>
-<li>Lớp ứng dụng</li>
+<li><p>Lớp ứng dụng</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[APPLICATION &lt;số&gt;]  </code></pre></div></li>
 </ul>
-
-<p>[code lang=c]<br />
-[APPLICATION <số>]<br />
-[/code]</p>
 
 <p>Lớp này được sử dụng để chỉ các kiểu dữ liệu sử dụng trong một số ứng dụng cụ thể.</p>
 
 <ul>
-<li>Lớp ngữ cảnh</li>
+<li><p>Lớp ngữ cảnh</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[&lt;số&gt;]  </code></pre></div></li>
 </ul>
-
-<p>[code lang=c]<br />
-[<số>]<br />
-[/code]</p>
 
 <p>Chỉ có ý nghĩa trong định nghĩa hiện tại thôi.<br />
 Lớp này được sử dụng nhiều nhất.</p>
 
 <ul>
-<li>Lớp riêng</li>
+<li><p>Lớp riêng</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">[PRIVATE &lt;số&gt;]  </code></pre></div></li>
 </ul>
-
-<p>[code lang=c]<br />
-[PRIVATE <số>]<br />
-[/code]</p>
 
 <p>Giới hạn sử dụng trong phạm vi một nhóm các công ty, tổ chức cụ thể. Có có trường hợp sử dụng lớp này khi muốn các protocol có sẵn trong các dự án cá nhân.</p>
 
@@ -415,19 +396,11 @@ Lớp này được sử dụng nhiều nhất.</p>
 <p>Kiểu bộ phận, tức là giới hạn một kiểu đã có để tạo ra kiểu mới.<br />
 Tức là kiểu mới sẽ là con của kiểu cũ.<br />
 Cú pháp định nghĩa như sau:</p>
-
-<p>[code lang=c]<br />
-<Tên kiểu mới> ::= <Kiểu cũ đã có> ( <mô tả giới hạn> )<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">&lt;Tên kiểu mới&gt; ::= &lt;Kiểu cũ <span style="color:#a61717;background-color:#e3d2d2">đã</span> có&gt; ( &lt;mô tả giới hạn&gt; )  </code></pre></div>
 <p>Với kiểu <strong>SET OF</strong> và <strong>SEQUENCE OF</strong>, nếu phần mô tả giới hạn ở phía sau <strong>OF</strong> sẽ gây ra khó hiểu. Vì thế, để tránh điều đó <strong>OF</strong> sẽ được viết sau giới hạn.</p>
 
 <p><em>Ví dụ</em>: dưới đây mô tả một một tập hợp gồm 50 phần tử, mỗi phần tử là một chuỗi có độ dài từ 1-10 kí tự.</p>
-
-<p>[code lang=c]<br />
-MemberList ::= SET SIZE(1..50) OF String(SIZE(1..10))<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">MemberList ::= SET SIZE(<span style="color:#b452cd">1..50</span>) OF String(SIZE(<span style="color:#b452cd">1..10</span>))  </code></pre></div>
 <p>Phần <strong>SIZE</strong> đầu tiên là để giới hạn cho <strong>SET</strong>, phần <strong>SIZE</strong> sau là để giới hạn cho <strong>String</strong>.</p>
 
 <p>Thông thường, có 2 cách để giới hạn cho ASN.1, đó là giới hạn bằng kiểu bộ phận và giới hạn kiểu thông thường. Kiểu thông thường ở đây là giới hạn khi hiện thực.</p>
@@ -437,50 +410,32 @@ MemberList ::= SET SIZE(1..50) OF String(SIZE(1..10))<br />
 <h5 id="phép-hợp-union-đối-với-tập-hợp">Phép hợp (UNION) (đối với tập hợp)</h5>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-<giới hạn 1>|<giới hạn 2><br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">&lt;giới hạn <span style="color:#b452cd">1</span>&gt;|&lt;giới hạn <span style="color:#b452cd">2</span>&gt;  
+</code></pre></div>
 <p><em>Ví dụ</em>:</p>
-
-<p>[code lang=cpp]<br />
-PrimeNumbers ::= INTEGER ( 2 | 3 | 5 | 7 | 11 | 13 )<br />
-PushButtonDial ::= IA5String (&ldquo;0&rdquo;|&ldquo;1&rdquo;|&ldquo;2&rdquo;|&ldquo;3&rdquo;|&ldquo;4&rdquo;|&ldquo;5&rdquo;|&ldquo;6&rdquo;|&ldquo;7&rdquo;|&ldquo;8&rdquo;|&ldquo;9&rdquo;|&rdquo;*&rdquo;|&ldquo;#&rdquo;)<br />
--- PushButtonDial là chuỗi 1 kí tự<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">PrimeNumbers ::= INTEGER ( <span style="color:#b452cd">2</span> | <span style="color:#b452cd">3</span> | <span style="color:#b452cd">5</span> | <span style="color:#b452cd">7</span> | <span style="color:#b452cd">11</span> | <span style="color:#b452cd">13</span> )  
+PushButtonDial ::= IA5String (<span style="color:#cd5555">&#34;0&#34;</span>|<span style="color:#cd5555">&#34;1&#34;</span>|<span style="color:#cd5555">&#34;2&#34;</span>|<span style="color:#cd5555">&#34;3&#34;</span>|<span style="color:#cd5555">&#34;4&#34;</span>|<span style="color:#cd5555">&#34;5&#34;</span>|<span style="color:#cd5555">&#34;6&#34;</span>|<span style="color:#cd5555">&#34;7&#34;</span>|<span style="color:#cd5555">&#34;8&#34;</span>|<span style="color:#cd5555">&#34;9&#34;</span>|<span style="color:#cd5555">&#34;*&#34;</span>|<span style="color:#cd5555">&#34;#&#34;</span>)  
+<span style="color:#a61717;background-color:#e3d2d2">\</span>-- PushButtonDial là chuỗi <span style="color:#b452cd">1</span> kí tự  
+</code></pre></div>
 <h5 id="phép-giao-intersection-đối-với-tập-hợp">Phép giao (INTERSECTION) (đối với tập hợp)</h5>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-<giới hạn 1>^<giới hạn 2><br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">&lt;giới hạn <span style="color:#b452cd">1</span>&gt;^&lt;giới hạn <span style="color:#b452cd">2</span>&gt;  
+</code></pre></div>
 <p><em>Ví dụ</em>:</p>
-
-<p>[code lang=cpp]<br />
-Example1 ::= INTEGER((1..10) ^ (5..15))<br />
-Example1 ::= INTEGER(1..10)(5..15)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Example1 ::= INTEGER((<span style="color:#b452cd">1..10</span>) ^ (<span style="color:#b452cd">5..15</span>))  
+Example1 ::= INTEGER(<span style="color:#b452cd">1..10</span>)(<span style="color:#b452cd">5..15</span>)  
+</code></pre></div>
 <h5 id="phép-loại-trừ-except">Phép loại trừ (EXCEPT)</h5>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-<giới hạn 1> EXCEPT <giới hạn 2><br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">&lt;giới hạn <span style="color:#b452cd">1</span>&gt; EXCEPT &lt;giới hạn <span style="color:#b452cd">2</span>&gt;  
+</code></pre></div>
 <h6 id="phép-loại-trừ-đảo-all-except">Phép loại trừ đảo (ALL EXCEPT)</h6>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-<giới hạn 1> ALL EXCEPT <giới hạn 2><br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">&lt;giới hạn <span style="color:#b452cd">1</span>&gt; ALL EXCEPT &lt;giới hạn <span style="color:#b452cd">2</span>&gt;  
+</code></pre></div>
 <h5 id="định-nghĩa-tập-giá-trị">Định nghĩa tập giá trị</h5>
 
 <p>Lấy một tập giá trị cụ thể từ một kiểu đã có sẵn.</p>
@@ -488,88 +443,60 @@ Example1 ::= INTEGER(1..10)(5..15)<br />
 <h5 id="kiểu-chứa-trong">Kiểu chứa trong</h5>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-INCLUDES <Kiểu đã có><br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">INCLUDES &lt;Kiểu <span style="color:#a61717;background-color:#e3d2d2">đã</span> có&gt;  
+</code></pre></div>
 <p>Có cùng giá trị với kiểu đã có.<br />
 Từ 1994, cho phép không cần viết INCLUDES</p>
 
 <h5 id="khoảng-giá-trị">Khoảng giá trị</h5>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-<Giới hạn dưới>..<Giới hạn trên><br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">&lt;Giới hạn dưới&gt;..&lt;Giới hạn trên&gt;  
+</code></pre></div>
 <p>Lấy ra một khoảng giá trị từ một tập đã có.<br />
 Nếu không muốn chỉ định giới hạn dưới, hãy sử dụng <strong>MIN</strong>.<br />
 Nếu không muốn chỉ định giới hạn trên, hãy sử dụng <strong>MAX</strong>.</p>
 
 <p><em>Ví dụ</em>:</p>
-
-<p>[code lang=cpp]<br />
-Interval ::= INTEGER (0..12)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Interval ::= INTEGER (<span style="color:#b452cd">0..12</span>)  
+</code></pre></div>
 <h5 id="giới-hạn-bằng-kích-thước-size">Giới hạn bằng kích thước (SIZE)</h5>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-SIZE(<Giới hạn>)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">SIZE(&lt;Giới hạn&gt;)  
+</code></pre></div>
 <p>Giới hạn được sử dụng trong trường hợp này là độ dài bit (BIT STRING), độ dài byte (OCTET), độ dài chuỗi (STRING), số phần từ mảng (SET OF hoặc SEQUENCE OF):</p>
 
 <p><em>Ví dụ</em>:</p>
-
-<p>[code lang=text]<br />
-name ::= PrintableString (SIZE (1..20)),<br />
-Matrix ::= SEQUENCE SIZE (6) OF SEQUENCE SIZE (6) OF INTEGER(-100..100)<br />
--- Matrix có kích thước 6x6 phần tử,<br />
--- mỗi phần từ là giá trị nguyên nằm trong khoảng 100~100<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">name ::= PrintableString (SIZE (1..20)),  
+Matrix ::= SEQUENCE SIZE (6) OF SEQUENCE SIZE (6) OF INTEGER(-100..100)  
+\-- Matrix có kích thước 6x6 phần tử,  
+\-- mỗi phần từ là giá trị nguyên nằm trong khoảng 100~100  </code></pre></div>
 <h5 id="giới-hạn-các-kí-tự-alphabet">Giới hạn các kí tự Alphabet</h5>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-FROM <một kiểu khác><br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">FROM &lt;một kiểu khác&gt;  
+</code></pre></div>
 <p>Cách giới hạn này chỉ sử dụng cho chuỗi kí tự, được sử dụng để chỉ định tập giá trị được phép sử dụng trong chuỗi.</p>
-
-<p>[code lang=cpp]<br />
-CapitalLettersAndSpaces ::=<br />
-PrintableString (FROM (&ldquo;A&rdquo;..&ldquo;Z&rdquo;|&rdquo; &ldquo;))<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">CapitalLettersAndSpaces ::=  
+PrintableString (FROM (<span style="color:#cd5555">&#34;A&#34;</span>..<span style="color:#cd5555">&#34;Z&#34;</span>|<span style="color:#cd5555">&#34; &#34;</span>))  
+</code></pre></div>
 <h5 id="giới-hạn-bên-trong">Giới hạn bên trong</h5>
 
 <p>Cú pháp:</p>
-
-<p>[code lang=cpp]<br />
-WITH COMPONENTS <Kiểu đã có><br />
-WITH COMPONENTS {<Giới hạn>, <Giới hạn>, <Giới hạn>}<br />
-WITH COMPONENTS {&hellip;, <Giới hạn>}<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">WITH COMPONENTS &lt;Kiểu <span style="color:#a61717;background-color:#e3d2d2">đã</span> có&gt;  
+WITH COMPONENTS {&lt;Giới hạn&gt;, &lt;Giới hạn&gt;, &lt;Giới hạn&gt;}  
+WITH COMPONENTS {..., &lt;Giới hạn&gt;}  
+</code></pre></div>
 <p>Sử dụng để giới hạn phần tử bên trong một kiểu cấu trúc.<br />
 Câu khai báo đầu tiên sử dụng kiểu đã có làm cấu trúc luôn và giới hạn số phần cho cấu trúc đó.<br />
 Câu khai báo thứ hai, ba sử dụng cho cấu trúc được tạo thành từ nhiều kiểu khác nhau.</p>
 
 <p><em>Ví dụ</em>:<br />
 Địa chỉ (Address) có từ 3~6 dòng, mỗi dòng có 1~32 kí tự.</p>
-
-<p>[code lang=cpp]<br />
-TextBlock ::= SEQUENCE OF VisibleString<br />
-Address ::= TextBlock (SIZE (3..6))(WITH COMPONENT (SIZE (1..32)))<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TextBlock ::= SEQUENCE OF VisibleString  
+Address ::= TextBlock (SIZE (<span style="color:#b452cd">3..6</span>))(WITH COMPONENT (SIZE (<span style="color:#b452cd">1..32</span>)))  
+</code></pre></div>
 <h3 id="5-quy-ước-mở-rộng-extension-mark">5. Quy ước mở rộng (Extension mark)</h3>
 
 <p>Gần giống với cách biểu diễn giới hạn ở phía trên, chỉ khác là có thêm dấu 3 chấm (&hellip;), để biểu thị rằng tương lai có khả năng mở rộng.<br />
@@ -577,43 +504,37 @@ Trường hợp giới hạn cả phần mở rộng này, thì sau dấu 3 ch�
 Có thể viết nhiều lần dấu 3 chấm để miêu tả giới hạn trên nhiều đoạn khác nhau (Tuy nhiên, qua mỗi bản ASN.1 thì điều này có thể không giống nhau).</p>
 
 <p><em>Ví dụ</em>:</p>
-
-<p>[code lang=cpp]<br />
-A ::= INTEGER (0..10, &hellip;)<br />
-A ::= INTEGER (0..10, &hellip;, 12)<br />
-RadioButton ::= ENUMERATED { button1, button2, button3, &hellip; }<br />
-RadioButton ::= ENUMERATED { button1, button2, button3, &hellip;, button4, button5 }<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">A ::= INTEGER (<span style="color:#b452cd">0..10</span>, ...)  
+A ::= INTEGER (<span style="color:#b452cd">0..10</span>, ..., <span style="color:#b452cd">12</span>)  
+RadioButton ::= ENUMERATED { button1, button2, button3, ... }  
+RadioButton ::= ENUMERATED { button1, button2, button3, ..., button4, button5 }  
+</code></pre></div>
 <p>Khi dùng <strong>SEQUENCE</strong>, <strong>SET</strong>, <strong>CHOICE</strong>, trongtrường hợp sử dụng nhiều dấu mở rộng, ASN.1 cho phép có thể sử dụng dấu ngoặc vuông để biểu diễn khi thêm dấu mở rộng vào một định nghĩa đã mở rộng.</p>
 
 <p><em>Ví dụ</em>:</p>
-
-<p>[code lang=cpp]<br />
-Dimensions ::= SET { x INTEGER,<br />
-y INTEGER,<br />
-&hellip;,<br />
-[[z INTEGER]] } &ndash; version 2<br />
-Afters ::= CHOICE { cheese IA5String,<br />
-dessert IA5String,<br />
-&hellip;,<br />
-[[ coffee NULL ]] } &ndash; version 2<br />
-Afters ::= CHOICE { cheese IA5String,<br />
-dessert IA5String,<br />
-&hellip;,<br />
-[[ coffee NULL,<br />
-tea NULL ]] , &ndash; version 2<br />
-[[ cognac IA5String ]] } &ndash; version 3<br />
-Type ::= SEQUENCE { component1 INTEGER,<br />
-component2 BOOLEAN, &ndash; version 1<br />
-&hellip; }<br />
-Type ::= SEQUENCE { component1 INTEGER,<br />
-component2 BOOLEAN,<br />
-&hellip;,<br />
-[[ component3 REAL ]], &ndash; version 2<br />
-&hellip; }<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Dimensions ::= SET { x INTEGER,  
+y INTEGER,  
+...,  
+[[z INTEGER]] } -- version <span style="color:#b452cd">2</span>  
+Afters ::= CHOICE { cheese IA5String,  
+dessert IA5String,  
+...,  
+[[ coffee <span style="color:#658b00">NULL</span> ]] } -- version <span style="color:#b452cd">2</span>  
+Afters ::= CHOICE { cheese IA5String,  
+dessert IA5String,  
+...,  
+[[ coffee <span style="color:#658b00">NULL</span>,  
+tea <span style="color:#658b00">NULL</span> ]] , -- version <span style="color:#b452cd">2</span>  
+[[ cognac IA5String ]] } -- version <span style="color:#b452cd">3</span>  
+Type ::= SEQUENCE { component1 INTEGER,  
+component2 BOOLEAN, -- version <span style="color:#b452cd">1</span>  
+... }  
+Type ::= SEQUENCE { component1 INTEGER,  
+component2 BOOLEAN,  
+...,  
+[[ component3 REAL ]], -- version <span style="color:#b452cd">2</span>  
+... }  
+</code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -661,7 +582,7 @@ component2 BOOLEAN,<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

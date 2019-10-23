@@ -68,25 +68,21 @@
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về <strong>Data Structure Aligment</strong>.</p>
 
 <p>Giả sử ta có một cấu trúc sau:</p>
-
-<p>[code lang=&ldquo;C&rdquo;]<br />
-#include <stdint.h><br />
-typedef struct<br />
-{<br />
-uin8_t mem1;<br />
-uin8_t mem2;<br />
-uin32_t mem3;<br />
-}ST_FOOL_1;<br />
-typedef struct<br />
-{<br />
-uin8_t mem1;<br />
-uin8_t mem2;<br />
-uin8_t mem3;<br />
-uin8_t mem4;<br />
-uin8_t mem5;<br />
-}ST_FOOL_2;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"C"" data-lang=""C"">#include &lt;stdint.h&gt;  
+typedef struct  
+{  
+uin8_t mem1;  
+uin8_t mem2;  
+uin32_t mem3;  
+}ST_FOOL_1;  
+typedef struct  
+{  
+uin8_t mem1;  
+uin8_t mem2;  
+uin8_t mem3;  
+uin8_t mem4;  
+uin8_t mem5;  
+}ST_FOOL_2;  </code></pre></div>
 <p>Cấu trúc <strong>ST_FOOL_1</strong> sẽ được miêu tả trong 6 byte?<br />
 Cấu trúc <strong>ST_FOOL_2</strong> sẽ được miêu tả trong 5 byte?<br />
 Tùy theo tham số trong quá trình &ldquo;Data structure alignment&rdquo;, mà cấu trúc trên sẽ được chứa trong số bộ nhớ cần thiết khác nhau.</p>
@@ -96,44 +92,36 @@ Tùy theo tham số trong quá trình &ldquo;Data structure alignment&rdquo;, m�
 <p>Khi có thay đổi về &ldquo;data structure aligment&rdquo; (ta tạm gọi là kích thước để nhóm), kết quả của <strong>sizeof()</strong> sẽ bị thay được phản ánh, và ngược lại từ kết quả của <strong>sizeof()</strong> ta sẽ đoán được trình biên dịch đã sử kích thước bao nhiêu.</p>
 
 <p>Ta có ví dụ như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"C"" data-lang=""C"">#include&lt;stdio.h&gt;  
+#include&lt;stdint.h&gt;  
+typedef struct  
+{  
+uint8_t mem1;  
+uint8_t mem2;  
+uint32_t mem6;  
+}ST_FOOL_1;
 
-<p>[code lang=&ldquo;C&rdquo;]<br />
-#include<stdio.h><br />
-#include<stdint.h><br />
-typedef struct<br />
-{<br />
-uint8_t mem1;<br />
-uint8_t mem2;<br />
-uint32_t mem6;<br />
-}ST_FOOL_1;</p>
+typedef struct  
+{  
+uint8_t mem1;  
+uint8_t mem2;  
+uint8_t mem3;  
+uint8_t mem4;  
+uint8_t mem5;  
+}ST_FOOL_2;
 
-<p>typedef struct<br />
-{<br />
-uint8_t mem1;<br />
-uint8_t mem2;<br />
-uint8_t mem3;<br />
-uint8_t mem4;<br />
-uint8_t mem5;<br />
-}ST_FOOL_2;</p>
+int main()  
+{  
+printf(&#34;Sizeof(ST_FOOL_1) =%ld\\n&#34;,sizeof(ST_FOOL_1));  
+printf(&#34;Sizeof(ST_FOOL_2) =%ld\\n&#34;,sizeof(ST_FOOL_2));
 
-<p>int main()<br />
-{<br />
-printf(&ldquo;Sizeof(ST_FOOL_1) =%ld\n&rdquo;,sizeof(ST_FOOL_1));<br />
-printf(&ldquo;Sizeof(ST_FOOL_2) =%ld\n&rdquo;,sizeof(ST_FOOL_2));</p>
-
-<p>return 0;<br />
-}<br />
-[/code]</p>
-
+return 0;  
+}  </code></pre></div>
 <p>Ta lưu vào file <strong>sizeof_result.c</strong>, sau đó biên dịch và chạy được kết quả sau:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$gcc -o sizeof_result sizeof_result.c<br />
-$./sizeof_result<br />
-Sizeof(ST_FOOL_1) =8<br />
-Sizeof(ST_FOOL_2) =5<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$gcc -o sizeof_result sizeof_result.c  
+$./sizeof_result  
+Sizeof(ST_FOOL_1) =8  
+Sizeof(ST_FOOL_2) =5  </code></pre></div>
 <p>\=&gt; <strong>Sizeof(ST_FOOL_1)</strong> = 8, vậy GCC đã sử dụng Block 4 byte để &ldquo;aligment&rdquo; cho cấu trúc rồi.<br />
 Vậy nếu Block 4 bytes, thì tại sao ST_FOOL_2 không nhảy lên 8 byte?<br />
 Câu trả lời là khi và chỉ khi trình biên dịch không thể chứa member tiếp theo, nó sẽ bỏ qua một vài byte trống để nhảy đến Block 4 byte tiếp theo.<br />
@@ -144,250 +132,222 @@ Kích thước sẽ được tính đến bị trí mà member cuối cùng vớ
 <p>Ta sẽ sử dụng chỉ thị dịch <strong>pack</strong> (chi tiết ở <a href="https://gcc.gnu.org/onlinedocs/gcc-4.4.4/gcc/Structure_002dPacking-Pragmas.html">đây</a> :</p>
 
 <p>Cách sử dụng:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"C"" data-lang=""C"">#include&lt;stdio.h&gt;  
+#include&lt;stdint.h&gt;
 
-<p>[code lang=&ldquo;C&rdquo;]<br />
-#include<stdio.h><br />
-#include<stdint.h></p>
+#pragma pack(1) // phải là lũy thừa của 2, tức là 1,2,4,8..  
+typedef struct  
+{  
+uint8_t mem1;  
+uint8_t mem2;  
+uint32_t mem6;  
+}ST_FOOL_1;
 
-<p>#pragma pack(1) // phải là lũy thừa của 2, tức là 1,2,4,8..<br />
-typedef struct<br />
-{<br />
-uint8_t mem1;<br />
-uint8_t mem2;<br />
-uint32_t mem6;<br />
-}ST_FOOL_1;</p>
+typedef struct  
+{  
+uint8_t mem1;  
+uint8_t mem2;  
+uint8_t mem3;  
+uint8_t mem4;  
+uint8_t mem5;  
+}ST_FOOL_2;
 
-<p>typedef struct<br />
-{<br />
-uint8_t mem1;<br />
-uint8_t mem2;<br />
-uint8_t mem3;<br />
-uint8_t mem4;<br />
-uint8_t mem5;<br />
-}ST_FOOL_2;</p>
+int main()  
+{  
+printf(&#34;Sizeof(ST_FOOL_1) =%ld\\n&#34;,sizeof(ST_FOOL_1));  
+printf(&#34;Sizeof(ST_FOOL_2) =%ld\\n&#34;,sizeof(ST_FOOL_2));
 
-<p>int main()<br />
-{<br />
-printf(&ldquo;Sizeof(ST_FOOL_1) =%ld\n&rdquo;,sizeof(ST_FOOL_1));<br />
-printf(&ldquo;Sizeof(ST_FOOL_2) =%ld\n&rdquo;,sizeof(ST_FOOL_2));</p>
-
-<p>return 0;<br />
-}<br />
-[/code]</p>
-
+return 0;  
+}  </code></pre></div>
 <p>Ta sẽ có kết quả như sau:<br />
 - <strong>pack(1)</strong>:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$./sizeof_result<br />
-Sizeof(ST_FOOL_1) =6<br />
-Sizeof(ST_FOOL_2) =5<br />
-[/code]<br />
-- <strong>pack(2)</strong>:<br />
-[code lang=&ldquo;shell&rdquo;]<br />
-$./sizeof_result<br />
-Sizeof(ST_FOOL_1) =6<br />
-Sizeof(ST_FOOL_2) =5<br />
-[/code]<br />
-- <strong>pack(4)</strong>:<br />
-[code lang=&ldquo;shell&rdquo;]<br />
-$./sizeof_result<br />
-Sizeof(ST_FOOL_1) =8<br />
-Sizeof(ST_FOOL_2) =5<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$./sizeof_result  
+Sizeof(ST_FOOL_1) =6  
+Sizeof(ST_FOOL_2) =5  </code></pre></div>
+<p>- <strong>pack(2)</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$./sizeof_result  
+Sizeof(ST_FOOL_1) =6  
+Sizeof(ST_FOOL_2) =5  </code></pre></div>
+<p>- <strong>pack(4)</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$./sizeof_result  
+Sizeof(ST_FOOL_1) =8  
+Sizeof(ST_FOOL_2) =5  </code></pre></div>
 <h4 id="2-khi-sử-dụng-casting-con-trỏ">2. Khi sử dụng Casting con trỏ</h4>
 
 <p>Sử dụng casting pointer giữa mảng và cấu trúc là một cách để convert (chuyển đổi) nội dung giữa 1 biến cấu trúc và mảng.</p>
 
 <p>Giả sử một ứng dụng truyền nhận sử dụng command chẳng hạn, bên gửi sẽ chuyển command sang mảng byte, rồi gửi đi. Phía nhận sẽ làm ngược lại.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">uint8_t arrData[<span style="color:#b452cd">100</span>];
 
-<p>[code lang=C]<br />
-uint8_t arrData[100];</p>
-
-<p>ST_FOOL *pFool = (ST_FOOL*)&amp;arrData[0];</p>
-
-<p>[/code]</p>
-
+ST_FOOL *pFool = (ST_FOOL*)&amp;arrData[<span style="color:#b452cd">0</span>];</code></pre></div>
 <p>Trở lại với ví dụ ở phía trên, giả sử ta có cấu trúc command giống như <strong>ST_FOOL_1</strong>, <strong>ST_FOOL_2</strong> đã định nghĩa ở trên.</p>
 
 <p>Với source như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;stdio.h&gt;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;stdint.h&gt;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;string.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
+{  
+uint8_t mem1;  
+uint8_t mem2;  
+uint32_t mem6;  
+}ST_FOOL_1;
 
-<p>[code lang=C]<br />
-#include<stdio.h><br />
-#include<stdint.h><br />
-#include<string.h></p>
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
+{  
+uint8_t mem1;  
+uint8_t mem2;  
+uint8_t mem3;  
+uint8_t mem4;  
+uint8_t mem5;  
+}ST_FOOL_2;
 
-<p>typedef struct<br />
-{<br />
-uint8_t mem1;<br />
-uint8_t mem2;<br />
-uint32_t mem6;<br />
-}ST_FOOL_1;</p>
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>()  
+{  
+<span style="color:#00688b;font-weight:bold">int</span> i = <span style="color:#b452cd">0</span>;
 
-<p>typedef struct<br />
-{<br />
-uint8_t mem1;<br />
-uint8_t mem2;<br />
-uint8_t mem3;<br />
-uint8_t mem4;<br />
-uint8_t mem5;<br />
-}ST_FOOL_2;</p>
+printf(<span style="color:#cd5555">&#34;====Structure --&gt; Array====</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+uint8_t outputArr[<span style="color:#b452cd">16</span>];
 
-<p>int main()<br />
-{<br />
-int i = 0;</p>
+memset(outputArr, <span style="color:#b452cd">0x00</span>, <span style="color:#8b008b;font-weight:bold">sizeof</span>(outputArr));  
+ST_FOOL_1 *pFool_1 = (ST_FOOL_1*)&amp;outputArr[<span style="color:#b452cd">0</span>];  
+pFool_1-&gt;mem1 = <span style="color:#b452cd">0x12</span>;  
+pFool_1-&gt;mem2 = <span style="color:#b452cd">0x34</span>;  
+pFool_1-&gt;mem6 = <span style="color:#b452cd">0x56789AB</span>;
 
-<p>printf(&ldquo;====Structure &ndash;&gt; Array====\n&rdquo;);<br />
-uint8_t outputArr[16];</p>
+printf(<span style="color:#cd5555">&#34;pFool_1 :</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;.mem1 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_1-&gt;mem1);  
+printf(<span style="color:#cd5555">&#34;.mem2 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_1-&gt;mem2);  
+printf(<span style="color:#cd5555">&#34;.mem6 = 0x%08X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_1-&gt;mem6);
 
-<p>memset(outputArr, 0x00, sizeof(outputArr));<br />
-ST_FOOL_1 *pFool_1 = (ST_FOOL_1*)&amp;outputArr[0];<br />
-pFool_1-&gt;mem1 = 0x12;<br />
-pFool_1-&gt;mem2 = 0x34;<br />
-pFool_1-&gt;mem6 = 0x56789AB;</p>
+printf(<span style="color:#cd5555">&#34;Output array(hex) :</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+<span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; <span style="color:#8b008b;font-weight:bold">sizeof</span>(ST_FOOL_1); i ++)  
+{  
+printf (<span style="color:#cd5555">&#34;%02X &#34;</span>,outputArr[i]);  
+}  
+printf(<span style="color:#cd5555">&#34;</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);
 
-<p>printf(&ldquo;pFool_1 :\n&rdquo;);<br />
-printf(&ldquo;.mem1 = 0x%02X\n&rdquo;,pFool_1-&gt;mem1);<br />
-printf(&ldquo;.mem2 = 0x%02X\n&rdquo;,pFool_1-&gt;mem2);<br />
-printf(&ldquo;.mem6 = 0x%08X\n&rdquo;,pFool_1-&gt;mem6);</p>
+memset(outputArr, <span style="color:#b452cd">0x00</span>, <span style="color:#8b008b;font-weight:bold">sizeof</span>(outputArr));  
+ST_FOOL_2 *pFool_2 = (ST_FOOL_2*)&amp;outputArr[<span style="color:#b452cd">0</span>];  
+pFool_2-&gt;mem1 = <span style="color:#b452cd">0x12</span>;  
+pFool_2-&gt;mem2 = <span style="color:#b452cd">0x34</span>;  
+pFool_2-&gt;mem3 = <span style="color:#b452cd">0x56</span>;  
+pFool_2-&gt;mem4 = <span style="color:#b452cd">0x78</span>;  
+pFool_2-&gt;mem5 = <span style="color:#b452cd">0x90</span>;
 
-<p>printf(&ldquo;Output array(hex) :\n&rdquo;);<br />
-for (i = 0; i &lt; sizeof(ST_FOOL_1); i ++)<br />
-{<br />
-printf (&ldquo;%02X &ldquo;,outputArr[i]);<br />
-}<br />
-printf(&rdquo;\n\n&rdquo;);</p>
+printf(<span style="color:#cd5555">&#34;pFool_2 :</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;.mem1 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_2-&gt;mem1);  
+printf(<span style="color:#cd5555">&#34;.mem2 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_2-&gt;mem2);  
+printf(<span style="color:#cd5555">&#34;.mem3 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_2-&gt;mem3);  
+printf(<span style="color:#cd5555">&#34;.mem4 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_2-&gt;mem4);  
+printf(<span style="color:#cd5555">&#34;.mem5 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_2-&gt;mem5);
 
-<p>memset(outputArr, 0x00, sizeof(outputArr));<br />
-ST_FOOL_2 *pFool_2 = (ST_FOOL_2*)&amp;outputArr[0];<br />
-pFool_2-&gt;mem1 = 0x12;<br />
-pFool_2-&gt;mem2 = 0x34;<br />
-pFool_2-&gt;mem3 = 0x56;<br />
-pFool_2-&gt;mem4 = 0x78;<br />
-pFool_2-&gt;mem5 = 0x90;</p>
+printf(<span style="color:#cd5555">&#34;Output array (hex):</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+<span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; <span style="color:#8b008b;font-weight:bold">sizeof</span>(ST_FOOL_2); i ++)  
+{  
+printf (<span style="color:#cd5555">&#34;%02X &#34;</span>,outputArr[i]);  
+}  
+printf(<span style="color:#cd5555">&#34;</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);
 
-<p>printf(&ldquo;pFool_2 :\n&rdquo;);<br />
-printf(&ldquo;.mem1 = 0x%02X\n&rdquo;,pFool_2-&gt;mem1);<br />
-printf(&ldquo;.mem2 = 0x%02X\n&rdquo;,pFool_2-&gt;mem2);<br />
-printf(&ldquo;.mem3 = 0x%02X\n&rdquo;,pFool_2-&gt;mem3);<br />
-printf(&ldquo;.mem4 = 0x%02X\n&rdquo;,pFool_2-&gt;mem4);<br />
-printf(&ldquo;.mem5 = 0x%02X\n&rdquo;,pFool_2-&gt;mem5);</p>
+printf(<span style="color:#cd5555">&#34;====Array --&gt; Structure===</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+uint8_t inputArr[<span style="color:#b452cd">16</span>] = {  
+<span style="color:#b452cd">0x01</span>, <span style="color:#b452cd">0x02</span>, <span style="color:#b452cd">0x03</span>, <span style="color:#b452cd">0x04</span>, <span style="color:#b452cd">0x05</span>, <span style="color:#b452cd">0x06</span>, <span style="color:#b452cd">0x07</span>, <span style="color:#b452cd">0x08</span>,  
+<span style="color:#b452cd">0x09</span>, <span style="color:#b452cd">0x10</span>, <span style="color:#b452cd">0x11</span>, <span style="color:#b452cd">0x12</span>, <span style="color:#b452cd">0x13</span>, <span style="color:#b452cd">0x14</span>, <span style="color:#b452cd">0x15</span>, <span style="color:#b452cd">0x16</span>  
+};
 
-<p>printf(&ldquo;Output array (hex):\n&rdquo;);<br />
-for (i = 0; i &lt; sizeof(ST_FOOL_2); i ++)<br />
-{<br />
-printf (&ldquo;%02X &ldquo;,outputArr[i]);<br />
-}<br />
-printf(&rdquo;\n\n&rdquo;);</p>
+printf(<span style="color:#cd5555">&#34;Input array:</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+<span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; <span style="color:#b452cd">16</span>; i ++)  
+{  
+printf (<span style="color:#cd5555">&#34;%02X &#34;</span>,inputArr[i]);  
+}  
+printf(<span style="color:#cd5555">&#34;</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);
 
-<p>printf(&ldquo;====Array &ndash;&gt; Structure===\n&rdquo;);<br />
-uint8_t inputArr[16] = {<br />
-0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,<br />
-0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16<br />
-};</p>
+ST_FOOL_1 *pFool_3 = (ST_FOOL_1*)&amp;inputArr[<span style="color:#b452cd">0</span>];  
+printf(<span style="color:#cd5555">&#34;pFool_3 :</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;.mem1 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_3-&gt;mem1);  
+printf(<span style="color:#cd5555">&#34;.mem2 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_3-&gt;mem2);  
+printf(<span style="color:#cd5555">&#34;.mem6 = 0x%08X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_3-&gt;mem6);
 
-<p>printf(&ldquo;Input array:\n&rdquo;);<br />
-for (i = 0; i &lt; 16; i ++)<br />
-{<br />
-printf (&ldquo;%02X &ldquo;,inputArr[i]);<br />
-}<br />
-printf(&rdquo;\n&rdquo;);</p>
+printf(<span style="color:#cd5555">&#34;</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);
 
-<p>ST_FOOL_1 *pFool_3 = (ST_FOOL_1*)&amp;inputArr[0];<br />
-printf(&ldquo;pFool_3 :\n&rdquo;);<br />
-printf(&ldquo;.mem1 = 0x%02X\n&rdquo;,pFool_3-&gt;mem1);<br />
-printf(&ldquo;.mem2 = 0x%02X\n&rdquo;,pFool_3-&gt;mem2);<br />
-printf(&ldquo;.mem6 = 0x%08X\n&rdquo;,pFool_3-&gt;mem6);</p>
+ST_FOOL_2 *pFool_4 = (ST_FOOL_2*)&amp;inputArr[<span style="color:#b452cd">0</span>];  
+printf(<span style="color:#cd5555">&#34;pFool_4 :</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;.mem1 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_4-&gt;mem1);  
+printf(<span style="color:#cd5555">&#34;.mem2 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_4-&gt;mem2);  
+printf(<span style="color:#cd5555">&#34;.mem3 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_4-&gt;mem3);  
+printf(<span style="color:#cd5555">&#34;.mem4 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_4-&gt;mem4);  
+printf(<span style="color:#cd5555">&#34;.mem5 = 0x%02X</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,pFool_4-&gt;mem5);
 
-<p>printf(&rdquo;\n&rdquo;);</p>
-
-<p>ST_FOOL_2 *pFool_4 = (ST_FOOL_2*)&amp;inputArr[0];<br />
-printf(&ldquo;pFool_4 :\n&rdquo;);<br />
-printf(&ldquo;.mem1 = 0x%02X\n&rdquo;,pFool_4-&gt;mem1);<br />
-printf(&ldquo;.mem2 = 0x%02X\n&rdquo;,pFool_4-&gt;mem2);<br />
-printf(&ldquo;.mem3 = 0x%02X\n&rdquo;,pFool_4-&gt;mem3);<br />
-printf(&ldquo;.mem4 = 0x%02X\n&rdquo;,pFool_4-&gt;mem4);<br />
-printf(&ldquo;.mem5 = 0x%02X\n&rdquo;,pFool_4-&gt;mem5);</p>
-
-<p>return 0;<br />
-}<br />
-[/code]</p>
-
+<span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+}  </code></pre></div>
 <p>Ta sẽ kiểm tra các kết quả với các trường hợp aligment khác nhau.<br />
 - Khi không sử dụng <strong>pack</strong>, kết quả sẽ như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\=</span>===Structure --&gt; <span style="color:#00688b">Array</span>====  
+pFool_1 :  
+.mem1 = 0x12  
+.mem2 = 0x34  
+.mem6 = 0x056789AB  
+Output array(hex) :  
+<span style="color:#b452cd">12</span> <span style="color:#b452cd">34</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> AB <span style="color:#b452cd">89</span> <span style="color:#b452cd">67</span> <span style="color:#b452cd">05</span> // <span style="color:#b452cd">2</span> byte 0x00 0x00 bị để trống
 
-<p>[code lang=shell]<br />
-\====Structure &ndash;&gt; Array====<br />
-pFool_1 :<br />
-.mem1 = 0x12<br />
-.mem2 = 0x34<br />
-.mem6 = 0x056789AB<br />
-Output array(hex) :<br />
-12 34 00 00 AB 89 67 05 // 2 byte 0x00 0x00 bị để trống</p>
+pFool_2 :  
+.mem1 = 0x12  
+.mem2 = 0x34  
+.mem3 = 0x56  
+.mem4 = 0x78  
+.mem5 = 0x90  
+Output array (hex):  
+<span style="color:#b452cd">12</span> <span style="color:#b452cd">34</span> <span style="color:#b452cd">56</span> <span style="color:#b452cd">78</span> <span style="color:#b452cd">90</span> // dữ liệu đúng
 
-<p>pFool_2 :<br />
-.mem1 = 0x12<br />
-.mem2 = 0x34<br />
-.mem3 = 0x56<br />
-.mem4 = 0x78<br />
-.mem5 = 0x90<br />
-Output array (hex):<br />
-12 34 56 78 90 // dữ liệu đúng</p>
+<span style="color:#cd5555">\=</span>===Array --&gt; <span style="color:#00688b">Structure</span>===  
+Input array:  
+<span style="color:#b452cd">01</span> <span style="color:#b452cd">02</span> <span style="color:#b452cd">03</span> <span style="color:#b452cd">04</span> <span style="color:#b452cd">05</span> <span style="color:#b452cd">06</span> <span style="color:#b452cd">07</span> <span style="color:#b452cd">08</span> <span style="color:#b452cd">09</span> <span style="color:#b452cd">10</span> <span style="color:#b452cd">11</span> <span style="color:#b452cd">12</span> <span style="color:#b452cd">13</span> <span style="color:#b452cd">14</span> <span style="color:#b452cd">15</span> <span style="color:#b452cd">16</span>  
+pFool_3 :  
+.mem1 = 0x01  
+.mem2 = 0x02  
+.mem6 = 0x08070605// <span style="color:#b452cd">2</span> byte 0x03 0x04 bị mất
 
-<p>\====Array &ndash;&gt; Structure===<br />
-Input array:<br />
-01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16<br />
-pFool_3 :<br />
-.mem1 = 0x01<br />
-.mem2 = 0x02<br />
-.mem6 = 0x08070605// 2 byte 0x03 0x04 bị mất</p>
-
-<p>pFool_4 :<br />
-.mem1 = 0x01<br />
-.mem2 = 0x02<br />
-.mem3 = 0x03<br />
-.mem4 = 0x04<br />
-.mem5 = 0x05<br />
-[/code]</p>
-
+pFool_4 :  
+.mem1 = 0x01  
+.mem2 = 0x02  
+.mem3 = 0x03  
+.mem4 = 0x04  
+.mem5 = 0x05  </code></pre></div>
 <ul>
-<li>Khi sử dụng <strong>pack(1)</strong>:</li>
+<li><p>Khi sử dụng <strong>pack(1)</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#a61717;background-color:#e3d2d2">\</span>====Structure --&gt; Array====  
+pFool_1 :  
+.mem1 = <span style="color:#b452cd">0x12</span>  
+.mem2 = <span style="color:#b452cd">0x34</span>  
+.mem6 = <span style="color:#b452cd">0x056789AB</span>  
+Output array(hex) :  
+<span style="color:#b452cd">12</span> <span style="color:#b452cd">34</span> AB <span style="color:#b452cd">89</span> <span style="color:#b452cd">67</span> <span style="color:#b452cd">05</span> <span style="color:#228b22">// các member được sếp sát nhau
+</span><span style="color:#228b22"></span>
+pFool_2 :  
+.mem1 = <span style="color:#b452cd">0x12</span>  
+.mem2 = <span style="color:#b452cd">0x34</span>  
+.mem3 = <span style="color:#b452cd">0x56</span>  
+.mem4 = <span style="color:#b452cd">0x78</span>  
+.mem5 = <span style="color:#b452cd">0x90</span>  
+Output array (hex):  
+<span style="color:#b452cd">12</span> <span style="color:#b452cd">34</span> <span style="color:#b452cd">56</span> <span style="color:#b452cd">78</span> <span style="color:#b452cd">90</span>
+
+<span style="color:#a61717;background-color:#e3d2d2">\</span>====Array --&gt; Structure===  
+Input array:  
+<span style="color:#b452cd">01</span> <span style="color:#b452cd">02</span> <span style="color:#b452cd">03</span> <span style="color:#b452cd">04</span> <span style="color:#b452cd">05</span> <span style="color:#b452cd">06</span> <span style="color:#b452cd">07</span> <span style="color:#b452cd">08</span> <span style="color:#b452cd">09</span> <span style="color:#b452cd">10</span> <span style="color:#b452cd">11</span> <span style="color:#b452cd">12</span> <span style="color:#b452cd">13</span> <span style="color:#b452cd">14</span> <span style="color:#b452cd">15</span> <span style="color:#b452cd">16</span>  
+pFool_3 :  
+.mem1 = <span style="color:#b452cd">0x01</span>  
+.mem2 = <span style="color:#b452cd">0x02</span>  
+.mem6 = <span style="color:#b452cd">0x06050403</span><span style="color:#228b22">// các member được đẩy sát nhau
+</span><span style="color:#228b22"></span>
+pFool_4 :  
+.mem1 = <span style="color:#b452cd">0x01</span>  
+.mem2 = <span style="color:#b452cd">0x02</span>  
+.mem3 = <span style="color:#b452cd">0x03</span>  
+.mem4 = <span style="color:#b452cd">0x04</span>  
+.mem5 = <span style="color:#b452cd">0x05</span>  </code></pre></div></li>
 </ul>
-
-<p>[code lang=C]<br />
-\====Structure &ndash;&gt; Array====<br />
-pFool_1 :<br />
-.mem1 = 0x12<br />
-.mem2 = 0x34<br />
-.mem6 = 0x056789AB<br />
-Output array(hex) :<br />
-12 34 AB 89 67 05 // các member được sếp sát nhau</p>
-
-<p>pFool_2 :<br />
-.mem1 = 0x12<br />
-.mem2 = 0x34<br />
-.mem3 = 0x56<br />
-.mem4 = 0x78<br />
-.mem5 = 0x90<br />
-Output array (hex):<br />
-12 34 56 78 90</p>
-
-<p>\====Array &ndash;&gt; Structure===<br />
-Input array:<br />
-01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16<br />
-pFool_3 :<br />
-.mem1 = 0x01<br />
-.mem2 = 0x02<br />
-.mem6 = 0x06050403// các member được đẩy sát nhau</p>
-
-<p>pFool_4 :<br />
-.mem1 = 0x01<br />
-.mem2 = 0x02<br />
-.mem3 = 0x03<br />
-.mem4 = 0x04<br />
-.mem5 = 0x05<br />
-[/code]</p>
 
 <h3 id="3-kết-luận">3. Kết luận:</h3>
 
@@ -395,17 +355,13 @@ pFool_3 :<br />
 Hoặc ta nên chỉ rõ sử dụng <strong>pack(1)</strong>, <strong>pack(2)</strong> hoặc <strong>pack(4)</strong>. Thường là 1 hoặc 4.</p>
 
 <p>Ví dụ với trường hợp cấu trúc <strong>ST_FOOL_1</strong> ở trên, ta có thể viết lại như sau để đảm bảo không có byte trống khi convert.</p>
-
-<p>[code lang=C]<br />
-typedef struct<br />
-{<br />
-uint8_t mem1;<br />
-uint8_t mem2;<br />
-uint8_t padding[2];<br />
-uint32_t mem6;<br />
-}ST_FOOL_1;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
+{  
+uint8_t mem1;  
+uint8_t mem2;  
+uint8_t padding[<span style="color:#b452cd">2</span>];  
+uint32_t mem6;  
+}ST_FOOL_1;  </code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -456,7 +412,7 @@ uint32_t mem6;<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

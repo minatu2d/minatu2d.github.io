@@ -76,7 +76,7 @@ https://stackoverflow.com/questions/14319347/variables-in-ruby-on-rails  3. Mode
 </article><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="/post/2019-02-06-2015/" rel="bookmark">
+			<a href="/post/2019-02-06-bat-dau-ve-docker/" rel="bookmark">
 			Bắt đầu về Docker
 			</a>
 		</h3>
@@ -155,7 +155,7 @@ Dù mình biết Machine Learning nặng về Toán, đặc biệt Toán Tối �
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Thực hiện 3 phép tập hợp trên bash Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
+		Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
 Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.
 Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krumins chủ trang http://www.catonmat.net/
 1. Phép giao Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.
@@ -170,10 +170,10 @@ Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krum
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><h2>Một số thứ hữu ích khi viết sử dụng command, viết script trong bash</h2>
-<p>Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên <a href="https://github.com/jlevy/the-art-of-command-line">The art of command line</a> và mình cũng đã dịch thử (chưa được review) ở<br />
-<a href="https://github.com/minatu2d/the-art-of-command-line/blob/master/README-vi.md">Nghệ thuật sử dụng dòng lệnh</a></p>
-<p></p>
+		Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên The art of command line và mình cũng đã dịch thử (chưa được review) ở
+Nghệ thuật sử dụng dòng lệnh
+1. Hạn chế gõ lại câu lệnh cho dù là rất ngắn Hãy sử dụng chức năng tìm đoạn đang gõ trong history để làm giảm công gõ lại
+Hai chức năng tìm xuôi và tìm ngược được bash cung cấp rồi.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -185,22 +185,8 @@ Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krum
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Ví dụ cơ bản với pthread trên Linux 1. Tạo và dừng thread Source code gốc lấy từ link
-[code lang=c]
-/******************************************************************************
-* FILE: hello.c
-* DESCRIPTION:
-* Chuong trinh demo thao tac tao thread, tat thread
-* AUTHOR: Blaise Barney
-* LAST REVISED: 08/09/11
-*
-* TRANSLATE to Vietnamese by Minatu
-* COMPILE CMD : $gcc -o hello hello.c -lpthread
-******************************************************************************/
-//
-#include 
-#include 
-#include
+		1. Tạo và dừng thread Source code gốc lấy từ link
+/****************************************************************************** * FILE: hello.c * DESCRIPTION: * Chuong trinh demo thao tac tao thread, tat thread * AUTHOR: Blaise Barney * LAST REVISED: 08/09/11 * * TRANSLATE to Vietnamese by Minatu * COMPILE CMD : $gcc -o hello hello.c -lpthread ******************************************************************************/ // #include &lt;pthread.h&gt;#include &lt;stdio.h&gt;#include &lt;stdlib.h&gt;#define NUM_THREADS 5  void *PrintHello(void *threadid) { long tid; tid = (long)threadid; printf(&#34;Hello World!
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -212,10 +198,12 @@ Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krum
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel Link gốc:
+		Link gốc:
 http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm
 Người dịch:
 Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụng,nhất là bây giờ đã là năm 2017. Có quá nhiều thứ hiệu quả và nhanh hơn. Tuy nhiên, khi cần tìm hiểu ở mức hệ điều hành, rồi driver thiết bị, thì việc đọc được Assembly là rất hữu ích.
+Nội dung
+Cú pháp ASM giữa Intel và AT&amp;T có rất nhiều điềm khác nhau rõ rệt.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -227,8 +215,7 @@ Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụ
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Lệnh MOV trong Assembly Link gốc: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html
-#Lệnh MOV
+		Link gốc: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html
 1. Lệnh MOV Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.
 Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó. Nói là chức năng sao chép thôi, chứ thực sự nó bao hàm sao chép, truyền dữ liệu. Đó có thể là từ bộ nhớ (các loại RAM) vào thanh ghi, từ thanh ghi vào bộ nhớ, từ một giá trị nào đó xuống thanh ghi hoặc bộ nhớ chẳng hạn.
 	</div>
@@ -243,7 +230,8 @@ Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó.
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
-Cách tìm source code driver cho thiết bị USB 1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Cách tìm source code driver cho thiết bị USB
+1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
 Đó là Vendor (nhà sản xuất), và Product (sản phẩm).
 	</div>
 </article><article class="list__item post">
@@ -353,7 +341,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
 	<div class="content list__excerpt post__content clearfix">
 		Tham khảo
 - Sách : AT&amp;T Assembly Language, Richard Blum
-1. Ngôn ngữ Assembly là gì?  Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.
+ Ngôn ngữ Assembly là gì? &mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-   Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -368,7 +356,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
 		Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
 từ Free Electrons tại Embedded Linux Conference 2016.
 So sánh giữa Buildroot và OpenEmbedded/Yocto Project
-1. Điểm chung  Đều là build-system cho Embedded Linux.
+ Điểm chung &mdash;&mdash;&mdash;&mdash;&ndash;   Đều là build-system cho Embedded Linux.
 Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
 Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.
 	</div>
@@ -383,21 +371,13 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ
 
 			</div>
 			
-<aside class="sidebar"><div class="widget-search widget">
-	<form class="widget-search__form" role="search" method="get" action="https://google.com/search">
-		<label>
-			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
-		</label>
-		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
-	</form>
-</div>
+<aside class="sidebar">
 <div class="widget-recent widget">
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
 			<li class="widget__item"><a class="widget__link" href="/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-2015/">Bắt đầu về Docker</a></li>
+			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</a></li>
@@ -535,7 +515,7 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

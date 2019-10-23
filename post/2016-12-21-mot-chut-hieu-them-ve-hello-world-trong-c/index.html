@@ -76,56 +76,42 @@ một chương trình sẽ được chạy 2 cách dưới đây</p>
 <li>Không yêu cầu bất cứ một thư viện run-time nào.</li>
 <li>Kernel cứ thế load vào, rồi nhảy đến vị trí của Program Entry là chạy.</li>
 <li>Có kích thước lớn</li>
-<li>Để build được nó thì các thư viện phụ thuộc khi build cũng phải có phiên bản static.<br />
-Lấy ví dụ <strong>HelloWorld</strong></li>
+
+<li><p>Để build được nó thì các thư viện phụ thuộc khi build cũng phải có phiên bản static.<br />
+Lấy ví dụ <strong>HelloWorld</strong></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">int main(int argc, char *args[])  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>{  
+printf(<span style="color:#cd5555">&#34;Hello, Ajinomoto </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+<span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+}  </code></pre></div></li>
 </ul>
 
-<p>[code lang=c]<br />
-#include<br />
-int main(int argc, char *args[])<br />
-{<br />
-printf(&ldquo;Hello, Ajinomoto \n&rdquo;);<br />
-return 0;<br />
-}<br />
-[/code]</p>
-
 <p>Khi build tĩnh bằng (hầu như phải có <strong>-static</strong>)</p>
-
-<p>[code lang=shell]<br />
-gcc -o helloworld_static helloworld.c -static<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gcc -o helloworld_static helloworld.c -static  </code></pre></div>
 <p>Kích thước file chạy sẽ như sau:</p>
-
-<p>[code lang=shell]<br />
-$ ls -liah helloworld_static<br />
-2910638 -rwxrwxr-x 1 duser duser 717K Dec 9 13:37 helloworld_static<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ls -liah helloworld_static  
+<span style="color:#b452cd">2910638</span> -rwxrwxr-x <span style="color:#b452cd">1</span> duser duser 717K Dec <span style="color:#b452cd">9</span> <span style="color:#b452cd">13</span>:37 helloworld_static  </code></pre></div>
 <p><strong>717KB</strong> cho HelloWorld trên Ubuntu 14.04</p>
 
 <p>Kiểm tra bằng <strong>objdump</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ objdump -p helloworld_static
 
-<p>[code lang=shell]<br />
-$ objdump -p helloworld_static</p>
+helloworld_static: file format elf32-i386
 
-<p>helloworld_static: file format elf32-i386</p>
-
-<p>Program Header:<br />
-LOAD off 0x00000000 vaddr 0x08048000 paddr 0x08048000 align 2**12<br />
-filesz 0x000a0c77 memsz 0x000a0c77 flags r-x<br />
-LOAD off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align 2**12<br />
-filesz 0x00001040 memsz 0x000023c4 flags rw-<br />
-NOTE off 0x000000f4 vaddr 0x080480f4 paddr 0x080480f4 align 2**2<br />
-filesz 0x00000044 memsz 0x00000044 flags r&ndash;<br />
-TLS off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align 2**2<br />
-filesz 0x00000010 memsz 0x00000028 flags r&ndash;<br />
-STACK off 0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**4<br />
-filesz 0x00000000 memsz 0x00000000 flags rw-<br />
-RELRO off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align 2**0<br />
-filesz 0x000000c0 memsz 0x000000c0 flags r&ndash;<br />
-[/code]</p>
-
+Program Header:  
+LOAD off 0x00000000 vaddr 0x08048000 paddr 0x08048000 align <span style="color:#b452cd">2</span>**12  
+filesz 0x000a0c77 memsz 0x000a0c77 flags r-x  
+LOAD off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align <span style="color:#b452cd">2</span>**12  
+filesz 0x00001040 memsz 0x000023c4 flags rw-  
+NOTE off 0x000000f4 vaddr 0x080480f4 paddr 0x080480f4 align <span style="color:#b452cd">2</span>**2  
+filesz 0x00000044 memsz 0x00000044 flags r--  
+TLS off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align <span style="color:#b452cd">2</span>**2  
+filesz 0x00000010 memsz 0x00000028 flags r--  
+STACK off 0x00000000 vaddr 0x00000000 paddr 0x00000000 align <span style="color:#b452cd">2</span>**4  
+filesz 0x00000000 memsz 0x00000000 flags rw-  
+RELRO off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align <span style="color:#b452cd">2</span>**0  
+filesz 0x000000c0 memsz 0x000000c0 flags r--  </code></pre></div>
 <p>Nhìn có vẻ khó hiểu, như chỉ để ý thấy chỉ có phần <strong>Program Header</strong> mà không còn phần nào khác.</p>
 
 <h3 id="2-chương-trình-là-động">2. Chương trình là động</h3>
@@ -140,77 +126,65 @@ tức là nếu yêu cầu loader-linker /lib/ld-linux.so.2 mà môi trường c
 </ul>
 
 <p>Tiếp tục thử với <strong>Hello World</strong></p>
-
-<p>[code lang=shell]<br />
-gcc -o helloworld helloworld.c<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gcc -o helloworld helloworld.c  </code></pre></div>
 <p>Kiểm tra kích thước file chạy:</p>
-
-<p>[code lang=shell]<br />
-$ ls -liah helloworld_dynamic<br />
-2910636 -rwxrwxr-x 1 duser duser 7.2K Dec 9 13:37 helloworld_dynamic<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ls -liah helloworld_dynamic  
+<span style="color:#b452cd">2910636</span> -rwxrwxr-x <span style="color:#b452cd">1</span> duser duser <span style="color:#b452cd">7</span>.2K Dec <span style="color:#b452cd">9</span> <span style="color:#b452cd">13</span>:37 helloworld_dynamic  </code></pre></div>
 <p><strong>7.2K</strong> cho <strong>HelloWorld</strong></p>
 
 <p>Kiểm tra bằng <strong>objdump</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ objdump -p helloworld_dynamic
 
-<p>[code lang=shell]<br />
-$ objdump -p helloworld_dynamic</p>
+helloworld_dynamic: file format elf32-i386
 
-<p>helloworld_dynamic: file format elf32-i386</p>
+Program Header:  
+PHDR off 0x00000034 vaddr 0x08048034 paddr 0x08048034 align <span style="color:#b452cd">2</span>**2  
+filesz 0x00000120 memsz 0x00000120 flags r-x  
+INTERP off 0x00000154 vaddr 0x08048154 paddr 0x08048154 align <span style="color:#b452cd">2</span>**0  
+filesz 0x00000013 memsz 0x00000013 flags r--  
+LOAD off 0x00000000 vaddr 0x08048000 paddr 0x08048000 align <span style="color:#b452cd">2</span>**12  
+filesz 0x000005c0 memsz 0x000005c0 flags r-x  
+LOAD off 0x00000f08 vaddr 0x08049f08 paddr 0x08049f08 align <span style="color:#b452cd">2</span>**12  
+filesz 0x00000118 memsz 0x0000011c flags rw-  
+DYNAMIC off 0x00000f14 vaddr 0x08049f14 paddr 0x08049f14 align <span style="color:#b452cd">2</span>**2  
+filesz 0x000000e8 memsz 0x000000e8 flags rw-  
+NOTE off 0x00000168 vaddr 0x08048168 paddr 0x08048168 align <span style="color:#b452cd">2</span>**2  
+filesz 0x00000044 memsz 0x00000044 flags r--  
+EH_FRAME off 0x000004e4 vaddr 0x080484e4 paddr 0x080484e4 align <span style="color:#b452cd">2</span>**2  
+filesz 0x0000002c memsz 0x0000002c flags r--  
+STACK off 0x00000000 vaddr 0x00000000 paddr 0x00000000 align <span style="color:#b452cd">2</span>**4  
+filesz 0x00000000 memsz 0x00000000 flags rw-  
+RELRO off 0x00000f08 vaddr 0x08049f08 paddr 0x08049f08 align <span style="color:#b452cd">2</span>**0  
+filesz 0x000000f8 memsz 0x000000f8 flags r--
 
-<p>Program Header:<br />
-PHDR off 0x00000034 vaddr 0x08048034 paddr 0x08048034 align 2**2<br />
-filesz 0x00000120 memsz 0x00000120 flags r-x<br />
-INTERP off 0x00000154 vaddr 0x08048154 paddr 0x08048154 align 2**0<br />
-filesz 0x00000013 memsz 0x00000013 flags r&ndash;<br />
-LOAD off 0x00000000 vaddr 0x08048000 paddr 0x08048000 align 2**12<br />
-filesz 0x000005c0 memsz 0x000005c0 flags r-x<br />
-LOAD off 0x00000f08 vaddr 0x08049f08 paddr 0x08049f08 align 2**12<br />
-filesz 0x00000118 memsz 0x0000011c flags rw-<br />
-DYNAMIC off 0x00000f14 vaddr 0x08049f14 paddr 0x08049f14 align 2**2<br />
-filesz 0x000000e8 memsz 0x000000e8 flags rw-<br />
-NOTE off 0x00000168 vaddr 0x08048168 paddr 0x08048168 align 2**2<br />
-filesz 0x00000044 memsz 0x00000044 flags r&ndash;<br />
-EH_FRAME off 0x000004e4 vaddr 0x080484e4 paddr 0x080484e4 align 2**2<br />
-filesz 0x0000002c memsz 0x0000002c flags r&ndash;<br />
-STACK off 0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**4<br />
-filesz 0x00000000 memsz 0x00000000 flags rw-<br />
-RELRO off 0x00000f08 vaddr 0x08049f08 paddr 0x08049f08 align 2**0<br />
-filesz 0x000000f8 memsz 0x000000f8 flags r&ndash;</p>
+Dynamic Section:  
+NEEDED libc.so.6  
+INIT 0x080482b0  
+FINI 0x080484b4  
+INIT_ARRAY 0x08049f08  
+INIT_ARRAYSZ 0x00000004  
+FINI_ARRAY 0x08049f0c  
+FINI_ARRAYSZ 0x00000004  
+GNU_HASH 0x080481ac  
+STRTAB 0x0804821c  
+SYMTAB 0x080481cc  
+STRSZ 0x0000004a  
+SYMENT 0x00000010  
+DEBUG 0x00000000  
+PLTGOT 0x0804a000  
+PLTRELSZ 0x00000018  
+PLTREL 0x00000011  
+JMPREL 0x08048298  
+REL 0x08048290  
+RELSZ 0x00000008  
+RELENT 0x00000008  
+VERNEED 0x08048270  
+VERNEEDNUM 0x00000001  
+VERSYM 0x08048266
 
-<p>Dynamic Section:<br />
-NEEDED libc.so.6<br />
-INIT 0x080482b0<br />
-FINI 0x080484b4<br />
-INIT_ARRAY 0x08049f08<br />
-INIT_ARRAYSZ 0x00000004<br />
-FINI_ARRAY 0x08049f0c<br />
-FINI_ARRAYSZ 0x00000004<br />
-GNU_HASH 0x080481ac<br />
-STRTAB 0x0804821c<br />
-SYMTAB 0x080481cc<br />
-STRSZ 0x0000004a<br />
-SYMENT 0x00000010<br />
-DEBUG 0x00000000<br />
-PLTGOT 0x0804a000<br />
-PLTRELSZ 0x00000018<br />
-PLTREL 0x00000011<br />
-JMPREL 0x08048298<br />
-REL 0x08048290<br />
-RELSZ 0x00000008<br />
-RELENT 0x00000008<br />
-VERNEED 0x08048270<br />
-VERNEEDNUM 0x00000001<br />
-VERSYM 0x08048266</p>
-
-<p>Version References:<br />
-required from libc.so.6:<br />
-0x0d696910 0x00 02 GLIBC_2.0<br />
-[/code]</p>
-
+Version References:  
+required from libc.so.6:  
+0x0d696910 0x00 <span style="color:#b452cd">02</span> GLIBC_2.0  </code></pre></div>
 <h3 id="3-hiển-thị-thông-về-loader-linker">3. Hiển thị thông về loader-linker</h3>
 
 <p>Khi chương trình động được chạy, một loader-linker sẽ được kernel gọi lên để load và link các thư viện động.<br />
@@ -221,50 +195,42 @@ Search Path này được cấu thành từ nhiều loại như: từ các path 
 
 <p>Một cách để xem các thông tin debug của loader-linker này:<br />
 Giả sử với <strong>HelloWorld</strong> ở trên:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#00688b">LD_DEBUG</span>=<span style="color:#658b00">help</span> ./helloworld_dynamic  
+Valid options <span style="color:#8b008b;font-weight:bold">for</span> the LD_DEBUG environment variable are:
 
-<p>[code lang=shell]<br />
-$ LD_DEBUG=help ./helloworld_dynamic<br />
-Valid options for the LD_DEBUG environment variable are:</p>
+libs display library search paths  
+reloc display relocation processing  
+files display progress <span style="color:#8b008b;font-weight:bold">for</span> input file  
+symbols display symbol table processing  
+bindings display information about symbol binding  
+versions display version dependencies  
+scopes display scope information  
+all all previous options combined  
+statistics display relocation statistics  
+unused determined unused DSOs  
+<span style="color:#658b00">help</span> display this <span style="color:#658b00">help</span> message and <span style="color:#658b00">exit</span>
 
-<p>libs display library search paths<br />
-reloc display relocation processing<br />
-files display progress for input file<br />
-symbols display symbol table processing<br />
-bindings display information about symbol binding<br />
-versions display version dependencies<br />
-scopes display scope information<br />
-all all previous options combined<br />
-statistics display relocation statistics<br />
-unused determined unused DSOs<br />
-help display this help message and exit</p>
-
-<p>To direct the debugging output into a file instead of standard output<br />
-a filename can be specified using the LD_DEBUG_OUTPUT environment variable.<br />
-[/code]</p>
-
+To direct the debugging output into a file instead of standard output  
+a filename can be specified using the LD_DEBUG_OUTPUT environment variable.  </code></pre></div>
 <p>Trên là Help, ta thử với <strong>libs</strong> sẽ có kết quả như sau:</p>
-
-<p>[code lang=shell]<br />
-$ LD_DEBUG=libs ./helloworld_dynamic<br />
-7066: find library=libc.so.6 [0]; searching<br />
-7066: search cache=/etc/ld.so.cache<br />
-7066: trying file=/lib/i386-linux-gnu/libc.so.6<br />
-7066:<br />
-7066:<br />
-7066: calling init: /lib/i386-linux-gnu/libc.so.6<br />
-7066:<br />
-7066:<br />
-7066: initialize program: ./helloworld_dynamic<br />
-7066:<br />
-7066:<br />
-7066: transferring control: ./helloworld_dynamic<br />
-7066:<br />
-Hello, Ajinomoto<br />
-7066:<br />
-7066: calling fini: ./helloworld_dynamic [0]<br />
-7066:<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#00688b">LD_DEBUG</span>=libs ./helloworld_dynamic  
+<span style="color:#b452cd">7066</span>: find <span style="color:#00688b">library</span>=libc.so.6 [<span style="color:#b452cd">0</span>]; searching  
+<span style="color:#b452cd">7066</span>: search <span style="color:#00688b">cache</span>=/etc/ld.so.cache  
+<span style="color:#b452cd">7066</span>: trying <span style="color:#00688b">file</span>=/lib/i386-linux-gnu/libc.so.6  
+<span style="color:#b452cd">7066</span>:  
+<span style="color:#b452cd">7066</span>:  
+<span style="color:#b452cd">7066</span>: calling init: /lib/i386-linux-gnu/libc.so.6  
+<span style="color:#b452cd">7066</span>:  
+<span style="color:#b452cd">7066</span>:  
+<span style="color:#b452cd">7066</span>: initialize program: ./helloworld_dynamic  
+<span style="color:#b452cd">7066</span>:  
+<span style="color:#b452cd">7066</span>:  
+<span style="color:#b452cd">7066</span>: transferring control: ./helloworld_dynamic  
+<span style="color:#b452cd">7066</span>:  
+Hello, Ajinomoto  
+<span style="color:#b452cd">7066</span>:  
+<span style="color:#b452cd">7066</span>: calling fini: ./helloworld_dynamic [<span style="color:#b452cd">0</span>]  
+<span style="color:#b452cd">7066</span>:  </code></pre></div>
 <p>doime 09-12-2016</p>
 
 		</div>
@@ -317,7 +283,7 @@ Hello, Ajinomoto<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

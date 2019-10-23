@@ -238,14 +238,14 @@ There are 7 program headers, starting at offset 52</p>
 
 <pre><code>printf(&quot;&gt; &quot;);
 
-line\[0\]=0;
-fgets( line, MAX\_STRING, stdin);
+line[0]=0;
+fgets( line, MAX_STRING, stdin);
 
 if (!strncmp(line, &quot;bye&quot;, 3)) break;
 
 sscanf( line, &quot;%s %s %f&quot;, lib, method, &amp;argument);
 
-invoke\_method( lib, method, argument );
+invoke_method( lib, method, argument );
 </code></pre>
 
 <p>}</p>
@@ -300,7 +300,7 @@ mtj@camus:~/dl$</p>
 
 <p>Relocation section &lsquo;.rela.dyn&rsquo; at offset 0x7b0 contains 2 entries:
  Offset Info Type Sym. Value Sym. Name + Addend
-000000601ff8 000700000006 R_X86_64_GLOB_DAT 0000000000000000 __gmon_start__ + 0
+000000601ff8 000700000006 R_X86_64_GLOB_DAT 0000000000000000 <strong>gmon_start</strong> + 0
 000000602080 001300000005 R_X86_64_COPY 0000000000602080 stdin + 0</p>
 
 <p>Relocation section &lsquo;.rela.plt&rsquo; at offset 0x7e0 contains 11 entries:
@@ -310,7 +310,7 @@ mtj@camus:~/dl$</p>
 000000602028 000400000007 R_X86_64_JUMP_SLO 0000000000000000 printf + 0
 000000602030 000500000007 R_X86_64_JUMP_SLO 0000000000000000 __libc_start_main + 0
 000000602038 000600000007 R_X86_64_JUMP_SLO 0000000000000000 fgets + 0
-000000602040 000700000007 R_X86_64_JUMP_SLO 0000000000000000 __gmon_start__ + 0
+000000602040 000700000007 R_X86_64_JUMP_SLO 0000000000000000 <strong>gmon_start</strong> + 0
 000000602048 000800000007 R_X86_64_JUMP_SLO 0000000000000000 dlopen + 0
 000000602050 000900000007 R_X86_64_JUMP_SLO 0000000000000000 __isoc99_sscanf + 0
 000000602058 000a00000007 R_X86_64_JUMP_SLO 0000000000000000 dlclose + 0
@@ -380,7 +380,7 @@ mtj@camus:~/dl$</p>
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

@@ -20,15 +20,7 @@
       <description>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
 Giả sử ta có một cấu trúc sau:
-[code lang=&amp;ldquo;C&amp;rdquo;]
-#include 
-typedef struct
-{
-uin8_t mem1;
-uin8_t mem2;
-uin32_t mem3;
-}ST_FOOL_1;
-typedef struct</description>
+#include &amp;lt;stdint.h&amp;gt; typedef struct { uin8_t mem1; uin8_t mem2; uin32_t mem3; }ST_FOOL_1; typedef struct { uin8_t mem1; uin8_t mem2; uin8_t mem3; uin8_t mem4; uin8_t mem5; }ST_FOOL_2;  Cấu trúc ST_FOOL_1 sẽ được miêu tả trong 6 byte?</description>
     </item>
     
   </channel>

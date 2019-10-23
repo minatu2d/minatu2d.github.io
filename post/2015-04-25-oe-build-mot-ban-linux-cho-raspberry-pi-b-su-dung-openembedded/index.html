@@ -95,19 +95,19 @@
 <h4 id="2-1-lấy-source">2.1 Lấy source</h4>
 
 <p>Đầu tiên chúng ta lấy source của poky và meta layer dành cho Raspberry PI.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">mkdir yocto
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir yocto
 
-<span class="nb">cd</span> yocto
+<span style="color:#658b00">cd</span> yocto
 
 git clone -b dylan git://git.yoctoproject.org/poky.git
 
-<span class="nb">cd</span> poky
+<span style="color:#658b00">cd</span> poky
 
 git clone -b dylan git://git.yoctoproject.org/meta-raspberrypi</code></pre></div>
 <h3 id="2-2-thiết-lập-biến-môi-trường">2.2 Thiết lập biến môi trường</h3>
 
 <p>Chạy lệnh sau để setup một số biến môi trường</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">. oe-init-build-env build</code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">. oe-init-build-env build</code></pre></div>
 <p>Nhất định phải có dấu cách sau dấu &ldquo;.&rdquo; . (Dấu này đại diện cho lệnh <code>source</code>)</p>
 
 <p>Sau khi chạy xong lệnh trên và succecced.</p>
@@ -119,15 +119,15 @@ git clone -b dylan git://git.yoctoproject.org/meta-raspberrypi</code></pre></div
 <p>Chúng sẽ edit 1 file cấu hình để giúp bitbake sử dụng CPU của PC chúng ta build tốt hơn.</p>
 
 <p>Giúp tiết kiệm thời gian build.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Edit conf/local.conf
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Edit conf/local.conf
 
-<span class="nv">BB_NUMBER_THREADS</span> <span class="o">=</span> <span class="s2">&#34;9&#34;</span>
+<span style="color:#00688b">BB_NUMBER_THREADS</span> = <span style="color:#cd5555">&#34;9&#34;</span>
 
-<span class="nv">PARALLEL_MAKE</span> <span class="o">=</span> <span class="s2">&#34;-j 9&#34;</span>
+<span style="color:#00688b">PARALLEL_MAKE</span> = <span style="color:#cd5555">&#34;-j 9&#34;</span>
 
-MACHINE ?<span class="o">=</span> <span class="s2">&#34;raspberrypi&#34;</span>
+MACHINE ?= <span style="color:#cd5555">&#34;raspberrypi&#34;</span>
 
-<span class="nv">GPU_MEM</span> <span class="o">=</span> <span class="s2">&#34;16&#34;</span></code></pre></div>
+<span style="color:#00688b">GPU_MEM</span> = <span style="color:#cd5555">&#34;16&#34;</span></code></pre></div>
 <p>Trường nào không có thì bỏ qua, kết quả cuối cùng không thay đổi tuy nhiên, nếu cấu hình chính xác</p>
 
 <p>với thông tin của máy sẽ giúp quá trình build nhanh hơn.</p>
@@ -135,19 +135,19 @@ MACHINE ?<span class="o">=</span> <span class="s2">&#34;raspberrypi&#34;</span>
 <p>Cuối cùng, để OE build một image cho Raspberry PI, ta cần thêm lớp của RPI vào danh sách các lớp</p>
 
 <p>mà OE có thể biết.</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Edit conf/bblayers
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Edit conf/bblayers
 
-BBLAYERS ?<span class="o">=</span> <span class="s2">&#34; \
-</span><span class="s2">
-</span><span class="s2">poky/meta \
-</span><span class="s2">
-</span><span class="s2">poky/meta-yocto \
-</span><span class="s2">
-</span><span class="s2">poky/meta-yocto-bsp \
-</span><span class="s2">
-</span><span class="s2">poky/meta-raspberrypi \
-</span><span class="s2">
-</span><span class="s2">&#34;</span></code></pre></div>
+BBLAYERS ?= <span style="color:#cd5555">&#34; \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">poky/meta \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">poky/meta-yocto \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">poky/meta-yocto-bsp \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">poky/meta-raspberrypi \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">&#34;</span></code></pre></div>
 <p>Giờ là lệnh build, có 2 option cho file image. Đó là <strong>rpi-basic-image</strong> và <strong>rpi-hwup-image</strong>.</p>
 
 <p>Cả 2 đều là minimal image. Nhưng <strong>rpi-basic-image</strong> có sẵn ssh-server-dropbear và splash</p>
@@ -157,7 +157,7 @@ BBLAYERS ?<span class="o">=</span> <span class="s2">&#34; \
 <p>Chúng ta sẽ build <strong>rpi-basic-image</strong></p>
 
 <p>Lệnh build như sau</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="sb">`</span>bitbake rpi-basic-image<span class="sb">`</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#cd5555">`</span>bitbake rpi-basic-image<span style="color:#cd5555">`</span></code></pre></div>
 <p>Quá trình build này phụ thuộc vào perform của máy và tốc độ mạng.</p>
 
 <p>Có thể mất cả tiếng đồng hồ.</p>
@@ -196,7 +196,7 @@ BBLAYERS ?<span class="o">=</span> <span class="s2">&#34; \
 <p>Kiểm tra lại log hệ thống để xem, PI đã nhận dạng được thiết bị này chưa.</p>
 
 <p>Log như hình sau, ở đây t sử dụng lệnh</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash"><span class="sb">`</span>tail -f /var/log/messages <span class="sb">`</span></code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#cd5555">`</span>tail -f /var/log/messages <span style="color:#cd5555">`</span></code></pre></div>
 <p>Ta sẽ thấy log dưới đây khi cắm wire dongle vào PI.</p>
 
 <p><img src="{{ site.baseurl }}/assets/dsc_0086.jpg?w=300" alt="Featured image" /></p>
@@ -268,7 +268,7 @@ IMAGE_INSTALL_append = &ldquo; wpa-supplicant wireless-tools dhcp-client linux-f
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

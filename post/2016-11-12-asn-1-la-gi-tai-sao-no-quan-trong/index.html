@@ -102,16 +102,13 @@ Nội dung có vẻ được dịch từ <a href="https://en.wikipedia.org/wiki/
 <p>Từ giờ ta sẽ gọi là <strong>kí pháp ASN.1</strong>.</p>
 
 <p>Một ví dụ đơn giản của kí pháp ASN.1:</p>
-
-<p>[code lang=cpp]<br />
-TestModule DEFINITIONS ::= BEGIN &ndash; Định nghĩa một module<br />
-HinhChuNhat ::= SEQUENCE { &ndash; Tên của kiểu mô tả đối tượng Hình chữ nhật<br />
-chieuRong INTEGER, &ndash; Chiều rộng<br />
-chieuDai INTEGER, &ndash; Chiều dài<br />
-} &ndash; Kết thúc HinhChuNhat<br />
-END &ndash; Kết thúc TestModule<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TestModule DEFINITIONS ::= BEGIN -- <span style="color:#a61717;background-color:#e3d2d2">Đị</span>nh nghĩa một module  
+HinhChuNhat ::= SEQUENCE { -- Tên của kiểu mô tả <span style="color:#a61717;background-color:#e3d2d2">đố</span>i tượng Hình chữ nhật  
+chieuRong INTEGER, -- Chiều rộng  
+chieuDai INTEGER, -- Chiều dài  
+} -- Kết thúc HinhChuNhat  
+END -- Kết thúc TestModule  
+</code></pre></div>
 <p>Ta thấy nó trông giống định nghĩa một cấu trúc trong ngôn ngữ C thôi. Nhưng thực sự không hoàn toàn giống.<br />
 Ví dụ trên không cho biết một đối tượng <strong>HinhChuNhat</strong> được miêu tả như thế nào trên bộ nhớ.</p>
 
@@ -128,22 +125,19 @@ Như đã nói ở phần trên, ASN.1 tách phần định nghĩa với phần 
 Loại định dang thông thường nhất là <strong>BER</strong>, bổ sung thêm một số giới hạn vào sẽ có <strong>CER</strong> và <strong>DER</strong>, loại nhỏ nhất, compact nhất là <strong>PER</strong>.</p>
 
 <h3 id="3-làm-sao-để-sử-dụng-asn-1">3. Làm sao để sử dụng ASN.1</h3>
-
-<p>[code lang=cpp]<br />
-ASN.1 definitions<br />
-+<br />
-|<br />
-|<br />
-+&mdash;&mdash;&mdash;&ndash;v&mdash;&mdash;&mdash;&ndash;+<br />
-| |<br />
-| ASN.1 Compiler |<br />
-| |<br />
-+&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&ndash;+<br />
-|<br />
-v<br />
-Encoder/Decoder<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ASN<span style="color:#b452cd">.1</span> definitions  
++  
+|  
+|  
++-----------v-----------+  
+| |  
+| ASN<span style="color:#b452cd">.1</span> Compiler |  
+| |  
++-----------+-----------+  
+|  
+v  
+Encoder/Decoder  
+</code></pre></div>
 <p>Như ta đã nó ở trên ASN.1 chia làm 2: phần định nghĩa và phần đinh dạng dữ liệu thực tế.</p>
 
 <p>Để có thể sử dụng ASN.1 trong ứng dụng,</p>
@@ -217,7 +211,7 @@ Ta sẽ làm quen thực tế với open-source ASN.1 Compiler trong 1 bài ti�
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

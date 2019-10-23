@@ -98,9 +98,9 @@ Ví dụ: pthread_create_xXX, pthread_join; pthread_mutex_XXX, pthread_cond_XXX 
 <li><p>Điều đầu tiên người ta muốn biết luôn là làm thế nào để tạo thread sử dụng pthread, nó có nhiều tham số không. có dễ hiểu không. Cơ chế truyền xử ý của nó là gì? không biết có điều kiện gì khó khăn không???</p></li>
 
 <li><p>Để tạo thread sử dụng pthread, rất đơn giản, ta gọi hàm pthread_create ở bất kì đâu ta muốn gọi, chú ý sau khi chạy hàm này thì thread mới cũng sẽ chạy luôn, chứ không chờ được start đâu nhé.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_create</span><span class="p">(</span><span class="n">pthread_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="kr">thread</span><span class="p">,</span>  
-<span class="k">const</span> <span class="n">pthread_attr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">,</span>  
-<span class="kt">void</span> <span class="o">*</span><span class="p">(</span><span class="o">*</span><span class="n">start_routine</span><span class="p">)(</span><span class="kt">void</span><span class="o">*</span><span class="p">),</span> <span class="kt">void</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">arg</span><span class="p">);</span>  </code></pre></div></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_create</span>(pthread_t *<span style="color:#8b008b;font-weight:bold">restrict</span> <span style="color:#8b008b;font-weight:bold">thread</span>,  
+<span style="color:#8b008b;font-weight:bold">const</span> pthread_attr_t *<span style="color:#8b008b;font-weight:bold">restrict</span> attr,  
+<span style="color:#00688b;font-weight:bold">void</span> *(*start_routine)(<span style="color:#00688b;font-weight:bold">void</span>*), <span style="color:#00688b;font-weight:bold">void</span> *<span style="color:#8b008b;font-weight:bold">restrict</span> arg);  </code></pre></div></li>
 </ul>
 
 <p>Đây là nguyên mẫu từ sách giáo khoa (<a href="https://computing.llnl.gov/tutorials/pthreads/man/pthread_create.txt">https://computing.llnl.gov/tutorials/pthreads/man/pthread_create.txt</a>)<br />
@@ -137,35 +137,35 @@ Hàm này được chạy ngay sau khi kết thúc hàm tạo.<br /></li>
 <li>Nếu hàm này đuợc gọi trong thread ngoài main(), nó sẽ thực hiện việc dừng thread đang chạy.<br /></li>
 
 <li><p>Nếu hàm này đuợc gọi trong thread main(), nó sẽ đợi đến khi các thread con đuợc thoát tường mình rồi nó mới thoát.</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="cp">#include</span><span class="cpf">&lt;stdio.h&gt;</span><span class="cp">
-</span><span class="cp">#include</span><span class="cpf">&lt;pthread.h&gt;  </span><span class="cp">
-</span><span class="cp">#define NUM_THREADS 5
-</span><span class="cp"></span>
-<span class="kt">void</span> <span class="o">*</span><span class="nf">PrintHello</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">threadid</span><span class="p">)</span>  
-<span class="p">{</span>  
-<span class="kt">long</span> <span class="n">tid</span><span class="p">;</span>  
-<span class="n">tid</span> <span class="o">=</span> <span class="p">(</span><span class="kt">long</span><span class="p">)</span><span class="n">threadid</span><span class="p">;</span>  
-<span class="n">printf</span><span class="p">(</span><span class="s">&#34;Hello World! It&#39;s me, thread %ld!</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">tid</span><span class="p">);</span>  
-<span class="n">pthread_exit</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>  
-<span class="p">}</span>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;stdio.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;pthread.h&gt;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#define NUM_THREADS 5
+</span><span style="color:#1e889b"></span>
+<span style="color:#00688b;font-weight:bold">void</span> *<span style="color:#008b45">PrintHello</span>(<span style="color:#00688b;font-weight:bold">void</span> *threadid)  
+{  
+<span style="color:#00688b;font-weight:bold">long</span> tid;  
+tid = (<span style="color:#00688b;font-weight:bold">long</span>)threadid;  
+printf(<span style="color:#cd5555">&#34;Hello World! It&#39;s me, thread %ld!</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, tid);  
+pthread_exit(<span style="color:#658b00">NULL</span>);  
+}
 
-<span class="kt">int</span> <span class="nf">main</span> <span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">*</span><span class="n">argv</span><span class="p">[])</span>  
-<span class="p">{</span>  
-<span class="n">pthread_t</span> <span class="n">threads</span><span class="p">[</span><span class="n">NUM_THREADS</span><span class="p">];</span>  
-<span class="kt">int</span> <span class="n">rc</span><span class="p">;</span>  
-<span class="kt">long</span> <span class="n">t</span><span class="p">;</span>  
-<span class="k">for</span><span class="p">(</span><span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">NUM_THREADS</span><span class="p">;</span> <span class="n">t</span><span class="o">++</span><span class="p">){</span>  
-<span class="n">printf</span><span class="p">(</span><span class="s">&#34;In main: creating thread %ld</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">t</span><span class="p">);</span>  
-<span class="n">rc</span> <span class="o">=</span> <span class="n">pthread_create</span><span class="p">(</span><span class="o">&amp;</span><span class="n">threads</span><span class="p">[</span><span class="n">t</span><span class="p">],</span> <span class="nb">NULL</span><span class="p">,</span> <span class="n">PrintHello</span><span class="p">,</span> <span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="p">)</span><span class="n">t</span><span class="p">);</span>  
-<span class="k">if</span> <span class="p">(</span><span class="n">rc</span><span class="p">){</span>  
-<span class="n">printf</span><span class="p">(</span><span class="s">&#34;ERROR: return code from pthread_create() is %d</span><span class="se">\n</span><span class="s">&#34;</span><span class="p">,</span> <span class="n">rc</span><span class="p">);</span>  
-<span class="n">exit</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">);</span>  
-<span class="p">}</span>  
-<span class="p">}</span>
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span> (<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span> *argv[])  
+{  
+pthread_t threads[NUM_THREADS];  
+<span style="color:#00688b;font-weight:bold">int</span> rc;  
+<span style="color:#00688b;font-weight:bold">long</span> t;  
+<span style="color:#8b008b;font-weight:bold">for</span>(t=<span style="color:#b452cd">0</span>; t &lt; NUM_THREADS; t++){  
+printf(<span style="color:#cd5555">&#34;In main: creating thread %ld</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, t);  
+rc = pthread_create(&amp;threads[t], <span style="color:#658b00">NULL</span>, PrintHello, (<span style="color:#00688b;font-weight:bold">void</span> *)t);  
+<span style="color:#8b008b;font-weight:bold">if</span> (rc){  
+printf(<span style="color:#cd5555">&#34;ERROR: return code from pthread_create() is %d</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, rc);  
+exit(-<span style="color:#b452cd">1</span>);  
+}  
+}
 
-<span class="cm">/* Last thing that main() should do */</span>  
-<span class="n">pthread_exit</span><span class="p">(</span><span class="nb">NULL</span><span class="p">);</span>  
-<span class="p">}</span>  </code></pre></div></li>
+<span style="color:#228b22">/* Last thing that main() should do */</span>  
+pthread_exit(<span style="color:#658b00">NULL</span>);  
+}  </code></pre></div></li>
 </ul>
 
 <h4 id="3-2-dừng-bắt-buộc-để-sau-viết-tiếp">3.2 Dừng bắt buộc (Để sau viết tiếp)</h4>
@@ -206,8 +206,8 @@ Hay ở trên từ bước <em>Read balance</em> đển bước <em>Update Balan
 <h5 id="4-1-1-tạo-hủy-mutex">4.1.1 Tạo, hủy mutex</h5>
 
 <p>Hàm tạo:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_mutex_init</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">,</span>  
-<span class="k">const</span> <span class="n">pthread_mutexattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_mutex_init</span>(pthread_mutex_t *<span style="color:#8b008b;font-weight:bold">restrict</span> mutex,  
+<span style="color:#8b008b;font-weight:bold">const</span> pthread_mutexattr_t *<span style="color:#8b008b;font-weight:bold">restrict</span> attr);  </code></pre></div>
 <p>Ta thấy tham số ở đây là địa chỉ biến ta sử dụng làm mutex và attr.<br />
 Nếu attr là NULL thì mutex sẽ được khởi tạo với thuộc tính mặc định.</p>
 
@@ -219,18 +219,18 @@ Nếu attr là NULL thì mutex sẽ được khởi tạo với thuộc tính m�
 
 <p>Thực hiện init nhiều lần cùng 1 biến là 1 thao tác mà kết quả không xác định.<br />
 Hàm hủy:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_mutex_destroy</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_mutex_destroy</span>(pthread_mutex_t *mutex);  </code></pre></div>
 <p>Tham số là địa chỉ của 1 biến mutex mà ta đã init trước đó.</p>
 
 <h5 id="4-1-2-sử-dụng-mutex">4.1.2. Sử dụng mutex</h5>
 
 <p><em>Hàm lock:</em></p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_mutex_lock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_mutex_lock</span>(pthread_mutex_t *mutex);  </code></pre></div>
 <p>Hàm sẽ lock mutex được truyền trong tham số.<br />
 Nếu mutex nó định lock đang ở trạng thái bị lock rồi thì nó sẽ đợi đến khi mutex này được gỡ lock.</p>
 
 <p><em>Hàm unlock:</em></p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_mutex_unlock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_mutex_unlock</span>(pthread_mutex_t *mutex);  </code></pre></div>
 <p>Hàm này thực hiện gỡ lock cho một mutex mà nó đã lock.<br />
 Nếu có thread nào đang bị block vì cố gắng lock mutex này, thì một trong số đó sẽ có quyền lock mutex đó.</p>
 
@@ -239,7 +239,7 @@ Nếu ta không muốn bị block mà muốn chuyển qua xử lý tiếp theo t
 Hàm dưới đây là giải pháp.</p>
 
 <p><em>Hàm trylock</em></p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_mutex_trylock</span><span class="p">(</span><span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="n">mutex</span><span class="p">);</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_mutex_trylock</span>(pthread_mutex_t *mutex);  </code></pre></div>
 <p>Hàm này có nhiệm vụ chính giống hàm Lock nhưng chỉ khác 1 điểm là nếu mutex đó đang bị lock thì nó sẽ trả về ngay mà không đợi đến khi mutex đó được unlock nữa.</p>
 
 <h4 id="4-2-biến-điều-kiện">4.2 Biến điều kiện</h4>
@@ -255,15 +255,15 @@ Hàm dưới đây là giải pháp.</p>
 <h5 id="4-2-1-tạo-hủy-biến-điều-kiện">4.2.1 Tạo, hủy biến điều kiện</h5>
 
 <p>Hàm tạo:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_cond_init</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>  
-<span class="k">const</span> <span class="n">pthread_condattr_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">attr</span><span class="p">);</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_cond_init</span>(pthread_cond_t *<span style="color:#8b008b;font-weight:bold">restrict</span> cond,  
+<span style="color:#8b008b;font-weight:bold">const</span> pthread_condattr_t *<span style="color:#8b008b;font-weight:bold">restrict</span> attr);  </code></pre></div>
 <ul>
 <li>Hàm này sẽ khởi tạo một biến điều kiện với một giá trị attr được truyền.<br /></li>
 <li>Nếu attr bằng NULL thì biến điều kiện sẽ được khởi tạo với các attr mặc định.</li>
 </ul>
 
 <p>Hàm hủy:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_cond_destroy</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_cond_destroy</span>(pthread_cond_t *cond);  </code></pre></div>
 <ul>
 <li>Hàm này sẽ hủy biến điều kiện được truyền qua tham số.<br /></li>
 <li>Ta có thể initialize lại biến này để sử dụng như mới. Còn tác thao tác khác nhằm sử dụng lại giá trị trước khi hủy đều không xác định kết quả.</li>
@@ -273,11 +273,11 @@ Hàm dưới đây là giải pháp.</p>
 
 <p>Có 2 thao tác được sử dụng cho biến điều kiện: đợi và signal (báo hiệu)<br />
 Hàm đợi:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_cond_timedwait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>  
-  <span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">,</span>  
-  <span class="k">const</span> <span class="k">struct</span> <span class="n">timespec</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">abstime</span><span class="p">);</span>  
-<span class="kt">int</span> <span class="nf">pthread_cond_wait</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">cond</span><span class="p">,</span>  
-<span class="n">pthread_mutex_t</span> <span class="o">*</span><span class="kr">restrict</span> <span class="n">mutex</span><span class="p">);</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_cond_timedwait</span>(pthread_cond_t *<span style="color:#8b008b;font-weight:bold">restrict</span> cond,  
+  pthread_mutex_t *<span style="color:#8b008b;font-weight:bold">restrict</span> mutex,  
+  <span style="color:#8b008b;font-weight:bold">const</span> <span style="color:#8b008b;font-weight:bold">struct</span> timespec *<span style="color:#8b008b;font-weight:bold">restrict</span> abstime);  
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_cond_wait</span>(pthread_cond_t *<span style="color:#8b008b;font-weight:bold">restrict</span> cond,  
+pthread_mutex_t *<span style="color:#8b008b;font-weight:bold">restrict</span> mutex);  </code></pre></div>
 <ul>
 <li>Cả 2 hàm này sẽ block trên biến điều kiện.<br /></li>
 <li>Hàm này phải được gọi bên trong 1 đoạn xử lý từ lock 1 mutex đến unlock mutex đó.<br /></li>
@@ -286,8 +286,8 @@ Hàm đợi:</p>
 
 <li><p>Hàm này sẽ tự động release mutex đang bị khóa để một đoạn xử lý khác đang cố gắng block mutex có thể chạy tiếp.<br />
 Hàm phát tín hiệu:</p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="kt">int</span> <span class="nf">pthread_cond_broadcast</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>  
-<span class="kt">int</span> <span class="nf">pthread_cond_signal</span><span class="p">(</span><span class="n">pthread_cond_t</span> <span class="o">*</span><span class="n">cond</span><span class="p">);</span>  </code></pre></div></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_cond_broadcast</span>(pthread_cond_t *cond);  
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_cond_signal</span>(pthread_cond_t *cond);  </code></pre></div></li>
 
 <li><p>Cả 2 hàm đều sẽ unblock (cho thread bị dừng được chạy tiếp) các thread đang bị blocked bởi biến điều kiện truyền vào qua tham số.</p></li>
 
@@ -315,33 +315,33 @@ Hàm phát tín hiệu:</p>
 <p>Ai cũng biết kết quả của lệnh này là in ra màn hình danh sách các process đang chạy.<br />
 Ta có thể sử dụng 1 trong các tham số sau để biết có bao nhiêu thread được đang được chạy từ 1 process.<br />
 <strong>-Lf</strong> (có thể khác nhau trên mỗi hệ thống)</p>
-<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">% ps -Lf  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">% ps -Lf  
 UID PID PPID LWP C NLWP STIME TTY TIME CMD  
-blaise <span class="m">22529</span> <span class="m">28240</span> <span class="m">22529</span> <span class="m">0</span> <span class="m">5</span> <span class="m">11</span>:31 pts/53 <span class="m">00</span>:00:00 a.out  
-blaise <span class="m">22529</span> <span class="m">28240</span> <span class="m">22530</span> <span class="m">99</span> <span class="m">5</span> <span class="m">11</span>:31 pts/53 <span class="m">00</span>:01:24 a.out  
-blaise <span class="m">22529</span> <span class="m">28240</span> <span class="m">22531</span> <span class="m">99</span> <span class="m">5</span> <span class="m">11</span>:31 pts/53 <span class="m">00</span>:01:24 a.out  
-blaise <span class="m">22529</span> <span class="m">28240</span> <span class="m">22532</span> <span class="m">99</span> <span class="m">5</span> <span class="m">11</span>:31 pts/53 <span class="m">00</span>:01:24 a.out  
-blaise <span class="m">22529</span> <span class="m">28240</span> <span class="m">22533</span> <span class="m">99</span> <span class="m">5</span> <span class="m">11</span>:31 pts/53 <span class="m">00</span>:01:24 a.out  </code></pre></div>
+blaise <span style="color:#b452cd">22529</span> <span style="color:#b452cd">28240</span> <span style="color:#b452cd">22529</span> <span style="color:#b452cd">0</span> <span style="color:#b452cd">5</span> <span style="color:#b452cd">11</span>:31 pts/53 <span style="color:#b452cd">00</span>:00:00 a.out  
+blaise <span style="color:#b452cd">22529</span> <span style="color:#b452cd">28240</span> <span style="color:#b452cd">22530</span> <span style="color:#b452cd">99</span> <span style="color:#b452cd">5</span> <span style="color:#b452cd">11</span>:31 pts/53 <span style="color:#b452cd">00</span>:01:24 a.out  
+blaise <span style="color:#b452cd">22529</span> <span style="color:#b452cd">28240</span> <span style="color:#b452cd">22531</span> <span style="color:#b452cd">99</span> <span style="color:#b452cd">5</span> <span style="color:#b452cd">11</span>:31 pts/53 <span style="color:#b452cd">00</span>:01:24 a.out  
+blaise <span style="color:#b452cd">22529</span> <span style="color:#b452cd">28240</span> <span style="color:#b452cd">22532</span> <span style="color:#b452cd">99</span> <span style="color:#b452cd">5</span> <span style="color:#b452cd">11</span>:31 pts/53 <span style="color:#b452cd">00</span>:01:24 a.out  
+blaise <span style="color:#b452cd">22529</span> <span style="color:#b452cd">28240</span> <span style="color:#b452cd">22533</span> <span style="color:#b452cd">99</span> <span style="color:#b452cd">5</span> <span style="color:#b452cd">11</span>:31 pts/53 <span style="color:#b452cd">00</span>:01:24 a.out  </code></pre></div>
 <p>Ở đây ta thấy, process 22529 tạo ra 5 thread từ 22529 đến 22533.<br />
 <strong>-T</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="o">%</span> <span class="n">ps</span> <span class="o">-</span><span class="n">T</span>  
-<span class="n">PID</span> <span class="n">SPID</span> <span class="n">TTY</span> <span class="n">TIME</span> <span class="n">CMD</span>  
-<span class="mi">22529</span> <span class="mi">22529</span> <span class="n">pts</span><span class="o">/</span><span class="mi">53</span> <span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span> <span class="n">a</span><span class="p">.</span><span class="n">out</span>  
-<span class="mi">22529</span> <span class="mi">22530</span> <span class="n">pts</span><span class="o">/</span><span class="mi">53</span> <span class="mo">00</span><span class="o">:</span><span class="mo">01</span><span class="o">:</span><span class="mi">49</span> <span class="n">a</span><span class="p">.</span><span class="n">out</span>  
-<span class="mi">22529</span> <span class="mi">22531</span> <span class="n">pts</span><span class="o">/</span><span class="mi">53</span> <span class="mo">00</span><span class="o">:</span><span class="mo">01</span><span class="o">:</span><span class="mi">49</span> <span class="n">a</span><span class="p">.</span><span class="n">out</span>  
-<span class="mi">22529</span> <span class="mi">22532</span> <span class="n">pts</span><span class="o">/</span><span class="mi">53</span> <span class="mo">00</span><span class="o">:</span><span class="mo">01</span><span class="o">:</span><span class="mi">49</span> <span class="n">a</span><span class="p">.</span><span class="n">out</span>  
-<span class="mi">22529</span> <span class="mi">22533</span> <span class="n">pts</span><span class="o">/</span><span class="mi">53</span> <span class="mo">00</span><span class="o">:</span><span class="mo">01</span><span class="o">:</span><span class="mi">49</span> <span class="n">a</span><span class="p">.</span><span class="n">out</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">% ps -T  
+PID SPID TTY TIME CMD  
+<span style="color:#b452cd">22529</span> <span style="color:#b452cd">22529</span> pts/<span style="color:#b452cd">53</span> <span style="color:#b452cd">00</span>:<span style="color:#b452cd">00</span>:<span style="color:#b452cd">00</span> a.out  
+<span style="color:#b452cd">22529</span> <span style="color:#b452cd">22530</span> pts/<span style="color:#b452cd">53</span> <span style="color:#b452cd">00</span>:<span style="color:#b452cd">01</span>:<span style="color:#b452cd">49</span> a.out  
+<span style="color:#b452cd">22529</span> <span style="color:#b452cd">22531</span> pts/<span style="color:#b452cd">53</span> <span style="color:#b452cd">00</span>:<span style="color:#b452cd">01</span>:<span style="color:#b452cd">49</span> a.out  
+<span style="color:#b452cd">22529</span> <span style="color:#b452cd">22532</span> pts/<span style="color:#b452cd">53</span> <span style="color:#b452cd">00</span>:<span style="color:#b452cd">01</span>:<span style="color:#b452cd">49</span> a.out  
+<span style="color:#b452cd">22529</span> <span style="color:#b452cd">22533</span> pts/<span style="color:#b452cd">53</span> <span style="color:#b452cd">00</span>:<span style="color:#b452cd">01</span>:<span style="color:#b452cd">49</span> a.out  </code></pre></div>
 <p>Ta cũng thấy kết quả tương tự ở đây.</p>
 
 <p><strong>-Lm</strong></p>
-<div class="highlight"><pre class="chroma"><code class="language-c" data-lang="c"><span class="o">%</span> <span class="n">ps</span> <span class="o">-</span><span class="n">Lm</span>  
-<span class="n">PID</span> <span class="n">LWP</span> <span class="n">TTY</span> <span class="n">TIME</span> <span class="n">CMD</span>  
-<span class="mi">22529</span> <span class="o">-</span> <span class="n">pts</span><span class="o">/</span><span class="mi">53</span> <span class="mo">00</span><span class="o">:</span><span class="mi">18</span><span class="o">:</span><span class="mi">56</span> <span class="n">a</span><span class="p">.</span><span class="n">out</span>  
-<span class="o">-</span> <span class="mi">22529</span> <span class="o">-</span> <span class="mo">00</span><span class="o">:</span><span class="mo">00</span><span class="o">:</span><span class="mo">00</span> <span class="o">-</span>  
-<span class="o">-</span> <span class="mi">22530</span> <span class="o">-</span> <span class="mo">00</span><span class="o">:</span><span class="mo">04</span><span class="o">:</span><span class="mi">44</span> <span class="o">-</span>  
-<span class="o">-</span> <span class="mi">22531</span> <span class="o">-</span> <span class="mo">00</span><span class="o">:</span><span class="mo">04</span><span class="o">:</span><span class="mi">44</span> <span class="o">-</span>  
-<span class="o">-</span> <span class="mi">22532</span> <span class="o">-</span> <span class="mo">00</span><span class="o">:</span><span class="mo">04</span><span class="o">:</span><span class="mi">44</span> <span class="o">-</span>  
-<span class="o">-</span> <span class="mi">22533</span> <span class="o">-</span> <span class="mo">00</span><span class="o">:</span><span class="mo">04</span><span class="o">:</span><span class="mi">44</span> <span class="o">-</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">% ps -Lm  
+PID LWP TTY TIME CMD  
+<span style="color:#b452cd">22529</span> - pts/<span style="color:#b452cd">53</span> <span style="color:#b452cd">00</span>:<span style="color:#b452cd">18</span>:<span style="color:#b452cd">56</span> a.out  
+- <span style="color:#b452cd">22529</span> - <span style="color:#b452cd">00</span>:<span style="color:#b452cd">00</span>:<span style="color:#b452cd">00</span> -  
+- <span style="color:#b452cd">22530</span> - <span style="color:#b452cd">00</span>:<span style="color:#b452cd">04</span>:<span style="color:#b452cd">44</span> -  
+- <span style="color:#b452cd">22531</span> - <span style="color:#b452cd">00</span>:<span style="color:#b452cd">04</span>:<span style="color:#b452cd">44</span> -  
+- <span style="color:#b452cd">22532</span> - <span style="color:#b452cd">00</span>:<span style="color:#b452cd">04</span>:<span style="color:#b452cd">44</span> -  
+- <span style="color:#b452cd">22533</span> - <span style="color:#b452cd">00</span>:<span style="color:#b452cd">04</span>:<span style="color:#b452cd">44</span> -  </code></pre></div>
 <p>Ta cũng thấy kết quả tương tự ở đây.</p>
 
 <ul>
@@ -430,7 +430,7 @@ blaise <span class="m">22529</span> <span class="m">28240</span> <span class="m"
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

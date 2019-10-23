@@ -96,20 +96,16 @@ Vì thế, kiểu <strong>UNALIGED</strong> thường sẽ nhỏ hơn <strong>AL
 Nếu giá trị nhỏ nhất <strong>N_MIN</strong> và giá trị lớn nhất <strong>N_MAX</strong> đã được biết (trong định nghĩa ASN.1) thì ta phải biểu diễn giá trị <strong>N-NMIN</strong>, tức là khi <strong>N=N_MIN</strong> thì giá trị <strong>0</strong> được biểu diễn.<br />
 Nếu <strong>N_MIN</strong>\=<strong>N_MAX</strong> thì chỉ có 1 giá trị, không cần phải biểu diễn gì nữa (được khuyết luôn, biết rồi không cần cho vào tốn chỗ).<br />
 Khoảng giá trị thực tế sẽ biểu diễn sẽ &gt;=0, sử dụng số không dấu, và sử dụng số bit nhỏ nhất để biểu diễn khoảng giá trị từ <strong>N-N_MIN</strong> đến <strong>N_MAX</strong>.</p>
-
-<p>[code lang=c]<br />
-Số bit cần để biểu diễn = log2(N_MAX - N_MIN + 1)<br />
-Không làm tròn, bỏ phần thập phân.<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Số bit cần <span style="color:#a61717;background-color:#e3d2d2">để</span> biểu diễn = log2(N_MAX - N_MIN + <span style="color:#b452cd">1</span>)  
+Không làm tròn, bỏ phần thập phân.  </code></pre></div>
 <p>a. Với <strong>UNALIGNED</strong>, các bit bị dư ra ở Octet cuối sẽ được sử dụng để biểu diễn các thành phần tiếp theo.</p>
 
 <p>b. Với <strong>ALIGNED</strong>, tùy thuộc vào khoảng khoảng giá trị <strong>range</strong> = N_MAX - N_MIN + 1 mà cách biểu diễn sẽ thay đổi.</p>
 
 <blockquote>
 <ol>
-<li><strong>range 2. **range = 256</strong>: Sử dụng 1 Octet để biểu diễn.</li>
-<li><strong>257&lt;=range 4. **range &gt;= 65537</strong>: Biểu diễn theo dạng độ dài thay đổi. Số Octet L và rồi L Octet. <strong>L = log256(N - N_MIN)</strong>. Định dạng của L Octet này được nói phía dưới.</li>
+<li>**range 2. <strong>range = 256</strong>: Sử dụng 1 Octet để biểu diễn.</li>
+<li>**257&lt;=range 4. <strong>range &gt;= 65537</strong>: Biểu diễn theo dạng độ dài thay đổi. Số Octet L và rồi L Octet. <strong>L = log256(N - N_MIN)</strong>. Định dạng của L Octet này được nói phía dưới.</li>
 </ol>
 </blockquote>
 
@@ -175,24 +171,17 @@ c. Trường hợp <strong>ALIGNED</strong>:</p>
 
 <p>Các phạm vi biểu diễn có thể của tập số nguyên sẽ bao gồm:<br />
 - Chỉ có 1 giá trị</p>
-
-<p>[code lang=cpp]<br />
-Two ::= INTEGER (2)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Two ::= INTEGER (<span style="color:#b452cd">2</span>)  
+</code></pre></div>
 <ul>
-<li>Khoảng giá trị có một đầu hữu hạn (cận trên hoặc cận dưới), và một đầu vô hạn (cận trên hoặc cận dưới), ta sẽ sử dụng <strong>MIN</strong>, <strong>MAX</strong> trong trường hợp này.</li>
-</ul>
+<li><p>Khoảng giá trị có một đầu hữu hạn (cận trên hoặc cận dưới), và một đầu vô hạn (cận trên hoặc cận dưới), ta sẽ sử dụng <strong>MIN</strong>, <strong>MAX</strong> trong trường hợp này.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">From3to15 ::= INTEGER (<span style="color:#b452cd">3..15</span>)  
+PositiveOrZeroNumber ::= Number (<span style="color:#b452cd">0.</span>.MAX)  
+</code></pre></div></li>
 
-<p>[code lang=cpp]<br />
-From3to15 ::= INTEGER (3..15)<br />
-PositiveOrZeroNumber ::= Number (0..MAX)<br />
-[/code]</p>
+<li><p>Tập giá trị chứa trong một tập có sẵn, quan hệ thuộc.</p></li>
 
-<ul>
-<li>Tập giá trị chứa trong một tập có sẵn, quan hệ thuộc.</li>
-<li>Tập giá trị là kết quả của các phép tập hợp như: Hợp, Giao, Loại trừ, Loại trừ đảo.
-<br /></li>
+<li><p>Tập giá trị là kết quả của các phép tập hợp như: Hợp, Giao, Loại trừ, Loại trừ đảo.</p></li>
 </ul>
 
 <p>Số nguyên sẽ được biểu diễn theo các bước mô tả dưới đây:</p>
@@ -249,17 +238,13 @@ Khi biểu diễn số nguyên, ta mới chỉ cần để ý đến cận trên
 <p>Khi biểu diễn, những điều kiện sau đây sẽ được tính đến.</p>
 
 <ul>
-<li>Kích thước: Giới hạn về đọ dài. Cũng giống với kiểu số nguyên, giá trị về mặt độ dài có thể thay đổi tùy theo định nghĩa độ dài cố định, hoặc định nghĩa khoảng độ dài.<br />
-Ví dụ</li>
-</ul>
+<li><p>Kích thước: Giới hạn về đọ dài. Cũng giống với kiểu số nguyên, giá trị về mặt độ dài có thể thay đổi tùy theo định nghĩa độ dài cố định, hoặc định nghĩa khoảng độ dài.<br />
+Ví dụ</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Exactly31BitsString ::= BIT STRING (SIZE (<span style="color:#b452cd">31</span>))  
+StringOf31BitsAtTheMost ::= BIT STRING (SIZE (<span style="color:#b452cd">0..31</span>))  
+</code></pre></div></li>
 
-<p>[code lang=cpp]<br />
-Exactly31BitsString ::= BIT STRING (SIZE (31))<br />
-StringOf31BitsAtTheMost ::= BIT STRING (SIZE (0..31))<br />
-[/code]</p>
-
-<ul>
-<li>Giới hạn được tạo bằng các phép tập hợp như phép giao, phép hợp, phép loại trừ, phép loại trừ đảo.</li>
+<li><p>Giới hạn được tạo bằng các phép tập hợp như phép giao, phép hợp, phép loại trừ, phép loại trừ đảo.</p></li>
 </ul>
 
 <p>**</p>
@@ -333,18 +318,15 @@ Với trường hợp <em>Preamble</em> bằng 0, ta đến tiếp bước 4. C�
 <p>Khi biểu diễn giá trị kiểu mảng, ta cần xem xét các yếu tố sau:</p>
 
 <ul>
-<li>Kích thước: Giới hạn độ dài<br />
-Ví dụ:</li>
-</ul>
+<li><p>Kích thước: Giới hạn độ dài<br />
+Ví dụ:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">ListOf5Strings ::= SEQUENCE (SIZE (<span style="color:#b452cd">5</span>)) OF PrintableString  
+ListOf5StringsOf5Characters ::=SEQUENCE (SIZE (<span style="color:#b452cd">5</span>)) OF PrintableString (SIZE (<span style="color:#b452cd">5</span>))  
+</code></pre></div></li>
 
-<p>[code lang=cpp]<br />
-ListOf5Strings ::= SEQUENCE (SIZE (5)) OF PrintableString<br />
-ListOf5StringsOf5Characters ::=SEQUENCE (SIZE (5)) OF PrintableString (SIZE (5))<br />
-[/code]</p>
+<li><p>Kết quả của cá phép tập hợp: hợp, giao, loại trừ</p></li>
 
-<ul>
-<li>Kết quả của cá phép tập hợp: hợp, giao, loại trừ</li>
-<li>Dấu mở rộng: chỉ định các vị trí có thể sử dụng trong tương lai.</li>
+<li><p>Dấu mở rộng: chỉ định các vị trí có thể sử dụng trong tương lai.</p></li>
 </ul>
 
 <ol>
@@ -398,27 +380,21 @@ Nếu chỉ có 1 lựa chọn, thì index không cần biểu diễn.</p></li>
 <p>Xét đến một số yếu tố sau:</p>
 
 <ul>
-<li>Kế thừa từ kiểu Alphabet</li>
-</ul>
+<li><p>Kế thừa từ kiểu Alphabet</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">Morse ::= PrintableString (FROM (<span style="color:#cd5555">&#34;.&#34;</span>|<span style="color:#cd5555">&#34;-&#34;</span>|<span style="color:#cd5555">&#34; &#34;</span>))  
+IDCardNumber ::=NumericString (FROM (<span style="color:#cd5555">&#34;0&#34;</span>..<span style="color:#cd5555">&#34;9&#34;</span>))  
+PushButtonDialSequence ::=IA5String (FROM (<span style="color:#cd5555">&#34;0&#34;</span>..<span style="color:#cd5555">&#34;9&#34;</span>|<span style="color:#cd5555">&#34;*&#34;</span>|<span style="color:#cd5555">&#34;#&#34;</span>))  
+</code></pre></div></li>
 
-<p>[code lang=cpp]<br />
-Morse ::= PrintableString (FROM (&ldquo;.&rdquo;|&ldquo;-&rdquo;|&rdquo; &ldquo;))<br />
-IDCardNumber ::=NumericString (FROM (&ldquo;0&rdquo;..&ldquo;9&rdquo;))<br />
-PushButtonDialSequence ::=IA5String (FROM (&ldquo;0&rdquo;..&ldquo;9&rdquo;|&rdquo;*&rdquo;|&ldquo;#&rdquo;))<br />
-[/code]</p>
+<li><p>Kích thước: giới hạn độ dài</p></li>
 
-<ul>
-<li>Kích thước: giới hạn độ dài</li>
-<li>Phép chứa trong : Kết hợp từ những kiểu khác nhau.</li>
-</ul>
+<li><p>Phép chứa trong : Kết hợp từ những kiểu khác nhau.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">LongWeekEnd ::= Day (WeekEnd|monday)  
+</code></pre></div></li>
 
-<p>[code lang=cpp]<br />
-LongWeekEnd ::= Day (WeekEnd|monday)<br />
-[/code]</p>
+<li><p>Các phép tập hơn: giao, hợp, loại trừ, loại trừ đảo</p></li>
 
-<ul>
-<li>Các phép tập hơn: giao, hợp, loại trừ, loại trừ đảo</li>
-<li>Dấu mở rộng: dấu mở rộng trong sử dụng trong tương lai.</li>
+<li><p>Dấu mở rộng: dấu mở rộng trong sử dụng trong tương lai.</p></li>
 </ul>
 
 <p>Quá trình sẽ được thực hiện theo các bước sau:</p>
@@ -487,7 +463,7 @@ LongWeekEnd ::= Day (WeekEnd|monday)<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

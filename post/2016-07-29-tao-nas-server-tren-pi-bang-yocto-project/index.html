@@ -83,42 +83,24 @@ Do vậy, bài này sẽ tập trung vào tạo bản basic <strong>rpi-basic-im
 <p>À, cần ít nhất khoảng 30GB trước khi thực hiện các bước này, một mạng có tốc độ tốt sẽ giúp giảm thời gian hoàn thành các bước bên dưới còn nửa ngày chẳng hạn :)))</p>
 
 <ul>
-<li>Trước khi bắt đầu, ta nên cài các gói cần thiết như dưới để đỡ phải cài lúc gặp lỗi:</li>
+<li><p>Trước khi bắt đầu, ta nên cài các gói cần thiết như dưới để đỡ phải cài lúc gặp lỗi:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \\  
+build-essential chrpath socat libsdl1.2-dev xterm  </code></pre></div></li>
+
+<li><p>Tạo thư mục cần build, hiện tại <strong>krogoth</strong> đang là bản mới nhất:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$mkdir raspberrpi\_krogoth  </code></pre></div></li>
+
+<li><p>Tải các Poky, như cách mọi người vẫn làm với <strong>git</strong> :</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$cd raspberrpi\_krogoth  
+$  
+$git clone -b krogoth git://git.yoctoproject.org/poky.git  </code></pre></div></li>
+
+<li><p>Như ta đã nói ở phần đầu, Poky là một bản phân phối Linux của Yocto Project, mặc định của nó không hỗ trợ RPI (chỉ có Texas Instruments Beaglebone - beaglebone và Freescale MPC8315E-RDB - mpc8315e-rdb mà thôi, xem thêm tại <a href="http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/README.hardware?h=krogoth">đây</a>). Vì thế, ta phải tải phần hỗ trợ liên quan đến bo mạch (BSP) của RPI<br />
+<strong>jethro</strong> là bản mới nhất</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$cd poky  
+$  
+$git clone -b jethro git://git.yoctoproject.org/meta-raspberrypi  </code></pre></div></li>
 </ul>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \<br />
-build-essential chrpath socat libsdl1.2-dev xterm<br />
-[/code]</p>
-
-<ul>
-<li>Tạo thư mục cần build, hiện tại <strong>krogoth</strong> đang là bản mới nhất:</li>
-</ul>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$mkdir raspberrpi_krogoth<br />
-[/code]</p>
-
-<ul>
-<li>Tải các Poky, như cách mọi người vẫn làm với <strong>git</strong> :</li>
-</ul>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$cd raspberrpi_krogoth<br />
-$<br />
-$git clone -b krogoth git://git.yoctoproject.org/poky.git<br />
-[/code]</p>
-
-<ul>
-<li>Như ta đã nói ở phần đầu, Poky là một bản phân phối Linux của Yocto Project, mặc định của nó không hỗ trợ RPI (chỉ có Texas Instruments Beaglebone - beaglebone và Freescale MPC8315E-RDB - mpc8315e-rdb mà thôi, xem thêm tại <a href="http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/README.hardware?h=krogoth">đây</a>). Vì thế, ta phải tải phần hỗ trợ liên quan đến bo mạch (BSP) của RPI<br />
-<strong>jethro</strong> là bản mới nhất</li>
-</ul>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$cd poky<br />
-$<br />
-$git clone -b jethro git://git.yoctoproject.org/meta-raspberrypi<br />
-[/code]</p>
 
 <p>Đến đây, ta đã được 1 nửa về mặt thao tác phải làm, nhưng chỉ mới <sup>1</sup>&frasl;<sub>10</sub> về mặt thời gian phải đợi. Xin hãy từ từ :))</p>
 
@@ -126,19 +108,11 @@ $git clone -b jethro git://git.yoctoproject.org/meta-raspberrypi<br />
 - Thiết lập các biến môi trường<br />
 Do poky đã cung cấp sẵn script thiết lập các biến này rồi.<br />
 Ta chỉ cần chạy.</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$source poky/oe-init-build-env build<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$source poky/oe-init-build-env build  </code></pre></div>
 <p>(có thể không cần <strong>buid</strong> ở cuối)<br />
 Sau khi chạy xong lệnh trên, đường dẫn sẽ tự động chuyển về thư mục build của Yocto. Ta bắt đầu làm mọi thứ từ đây.<br />
 Nó có dạng kiểu như thế này:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">oedev@OEDEV-Ubuntu:~/raspberrypi\_krogoth/build$  </code></pre></div>
 <ul>
 <li>Poky chia các gói phần mềm thành các layer (lớp), gói hỗ trợ RPI cũng vậy, vì không được hỗ trợ mặc định nên ta phải thêm vào bằng cách:</li>
 </ul>
@@ -146,25 +120,21 @@ oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$<br />
 <p>Mở file <strong>build/conf/bblayers.conf</strong> bằng <em>nano</em>, <em>vi</em> hoặc bất cứ editor nào.<br />
 Rồi thêm đường dẫn đến gói hỗ trợ bo mạch RPI.<br />
 Sau khi sửa, nó sẽ có nội dung kiểu như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">oedev@OEDEV-Ubuntu:~/raspberrypi\_krogoth/build$ cat conf/bblayers.conf
 
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ cat conf/bblayers.conf</p>
+\# POKY\_BBLAYERS\_CONF\_VERSION is increased each time build/conf/bblayers.conf  
+\# changes incompatibly  
+POKY\_BBLAYERS\_CONF\_VERSION = &amp;amp;quot;2&amp;amp;quot;
 
-<p># POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf<br />
-# changes incompatibly<br />
-POKY_BBLAYERS_CONF_VERSION = &amp;quot;2&amp;quot;</p>
+BBPATH = &amp;amp;quot;${TOPDIR}&amp;amp;quot;  
+BBFILES ?= &amp;amp;quot;&amp;amp;quot;
 
-<p>BBPATH = &amp;quot;${TOPDIR}&amp;quot;<br />
-BBFILES ?= &amp;quot;&amp;quot;</p>
-
-<p>BBLAYERS ?= &amp;quot; \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-poky \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi \ # mới thêm vào<br />
-&amp;quot;<br />
-[/code]</p>
-
+BBLAYERS ?= &amp;amp;quot; \\  
+/home/oedev/raspberrypi\_krogoth/poky/meta \\  
+/home/oedev/raspberrypi\_krogoth/poky/meta-poky \\  
+/home/oedev/raspberrypi\_krogoth/poky/meta-yocto-bsp \\  
+/home/oedev/raspberrypi\_krogoth/poky/meta-raspberrypi \\ # mới thêm vào  
+&amp;amp;quot;  </code></pre></div>
 <ul>
 <li>Tiếp theo, ta phải thay đổi Target Machine,</li>
 </ul>
@@ -174,81 +144,58 @@ BBFILES ?= &amp;quot;&amp;quot;</p>
 <p>Raspberry PI không được hỗ trợ mặc định nên ta phải thêm nó vào.</p>
 
 <p>Mở file <strong>build/conf/local.conf </strong>và sửa như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">....  
+#MACHINE ?= &#34;qemuarm64&#34;  
+#MACHINE ?= &#34;qemumips&#34;  
+#MACHINE ?= &#34;qemumips64&#34;  
+#MACHINE ?= &#34;qemuppc&#34;  
+#MACHINE ?= &#34;qemux86&#34;  
+#MACHINE ?= &#34;qemux86-64&#34;  
+#  
+\# There are also the following hardware board target machines included for  
+\# demonstration purposes:  
+#  
+#MACHINE ?= &#34;beaglebone&#34;  
+#MACHINE ?= &#34;genericx86&#34;  
+#MACHINE ?= &#34;genericx86-64&#34;  
+#MACHINE ?= &#34;mpc8315e-rdb&#34;  
+#MACHINE ?= &#34;edgerouter&#34;  
+#  
+\# This sets the default machine to be qemux86 if no other machine is selected:  
+MACHINE ??= &#34;qemux86&#34;
 
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-&hellip;.<br />
-#MACHINE ?= &ldquo;qemuarm64&rdquo;<br />
-#MACHINE ?= &ldquo;qemumips&rdquo;<br />
-#MACHINE ?= &ldquo;qemumips64&rdquo;<br />
-#MACHINE ?= &ldquo;qemuppc&rdquo;<br />
-#MACHINE ?= &ldquo;qemux86&rdquo;<br />
-#MACHINE ?= &ldquo;qemux86-64&rdquo;</p>
-
-<p># There are also the following hardware board target machines included for<br />
-# demonstration purposes:</p>
-
-<p>#MACHINE ?= &ldquo;beaglebone&rdquo;<br />
-#MACHINE ?= &ldquo;genericx86&rdquo;<br />
-#MACHINE ?= &ldquo;genericx86-64&rdquo;<br />
-#MACHINE ?= &ldquo;mpc8315e-rdb&rdquo;<br />
-#MACHINE ?= &ldquo;edgerouter&rdquo;</p>
-
-<p># This sets the default machine to be qemux86 if no other machine is selected:<br />
-MACHINE ??= &ldquo;qemux86&rdquo;</p>
-
-<p># Thêm vào cho RaspberryPI<br />
-MACHINE ?= &ldquo;raspberrypi&rdquo;<br />
-&hellip;.<br />
-[/code]</p>
-
+\# Thêm vào cho RaspberryPI  
+MACHINE ?= &#34;raspberrypi&#34;  
+....  </code></pre></div>
 <ul>
-<li>Giờ bắt đầu build và bỏ máy, ở phần chạy lệnh <strong>source</strong> phía trên, ta có thể thấy một đoạn được hiện ra với hướng dẫn kiểu <strong>bitbake XXX</strong>.<br />
-Ta cũng làm tương tự như vậy</li>
+<li><p>Giờ bắt đầu build và bỏ máy, ở phần chạy lệnh <strong>source</strong> phía trên, ta có thể thấy một đoạn được hiện ra với hướng dẫn kiểu <strong>bitbake XXX</strong>.<br />
+Ta cũng làm tương tự như vậy</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$bitbake rpi-basic-image  </code></pre></div></li>
 </ul>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-$bitbake rpi-basic-image<br />
-[/code]</p>
 
 <p>Bước này sẽ thực hiện việc tải các source cần thiết, thực hiện các sửa, thực hiện tạo compiler, build source, rồi tạo image.<br />
 <strong>rpi-basic-image</strong> : là 1 một images mà framework có thể tạo, ta có thể xem danh sách các images khác bằng đường dẫn bên dưới đây:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky/meta-raspberrypi$ ls recipes-core/images/<br />
-rpi-basic-image.bb rpi-hwup-image.bb rpi-test-image.bb<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">oedev@OEDEV-Ubuntu:~/raspberrypi\_krogoth/poky/meta-raspberrypi$ ls recipes-core/images/  
+rpi-basic-image.bb rpi-hwup-image.bb rpi-test-image.bb  </code></pre></div>
 <p>Trong quá trình thực hiện, có thể gặp phải lỗi kiểu như sau:</p>
 
 <p>Error.01 : Việc tải bị timeout: chỉ có cách thực hiện lại một vài lần<br />
 Tức là chạy lại câu lệnh <strong>bitbake rpi-basic-image</strong> ở phía trên.<br />
 Error.02 : Không tìm thấy file <strong>mkknlimg</strong>:<br />
 Lỗi sẽ hiện ra kiểu như thế này:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-DEBUG: Executing shell function do_rpiboot_mkimage<br />
-/build/tmp/sysroots/x86_64-linux/usr/lib/rpi-mkimage/mkknlimg: not found<br />
-WARNING: exit code 127 from a shell command.<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">DEBUG: Executing shell function do\_rpiboot\_mkimage  
+/build/tmp/sysroots/x86\_64-linux/usr/lib/rpi-mkimage/mkknlimg: not found  
+WARNING: exit code 127 from a shell command.  </code></pre></div>
 <p>Đây là lỗi đường dẫn, hãy sửa bằng cách:</p>
-
-<p>[code lang=&ldquo;shell&rdquo;]<br />
-#Tìm kiếm mkknlimg xem có ở đâu đó không.<br />
-$ locate mkknlimg<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">#Tìm kiếm mkknlimg xem có ở đâu đó không.  
+$ locate mkknlimg  </code></pre></div>
 <p>Sẽ có kết quả dạng:<br />
 <em>&hellip;/tmp/sysroots/x86_64-linux/usr/libexec/mkknlimg</em><br />
 Ta đi sửa cho đúng là ok.<br />
 Mở file <em>poky/meta-raspberrypi/recipes-kernel/linux/linux-raspberrypi.inc</em><br />
 Tìm đến hàm <em>do_rpiboot_mkimage()</em> sửa thành như sau:</p>
-
-<p>[code lang=&ldquo;python&rdquo;]<br />
-#Comment dòng cũ này: ${STAGING_DIR_NATIVE}/usr/lib/rpi-mkimage/mkknlimg &hellip;<br />
-${STAGING_DIR_NATIVE}/usr/libexec/mkknlimg &hellip;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"python"" data-lang=""python"">#Comment dòng cũ này: ${STAGING\_DIR\_NATIVE}/usr/lib/rpi-mkimage/mkknlimg ...  
+${STAGING\_DIR\_NATIVE}/usr/libexec/mkknlimg ...  </code></pre></div>
 <p>Error.03 : Việc tải <strong>bcm2835-bootfiles</strong> dường như bị đứng lại, thực ra không phải vậy, nó nặng đến 3GB, nếu đường truyền chậm thì rất có thể phải đợi rất lâu, ta có cả giác nó không hề làm việc. Nhưng hãy cố gắng đợi nha. :))</p>
 
 <p>Error.04 : Lỗi khi kiểm tra check sum của image được build ra, lỗi này được sửa bằng cách thêm 1 dòng vào file dưới đây:</p>
@@ -256,13 +203,9 @@ ${STAGING_DIR_NATIVE}/usr/libexec/mkknlimg &hellip;<br />
 <p><em>poky/meta-raspberrypi/classes/sdcard_image-rpi.bbclass</em></p>
 
 <p>Nội dung đoạn thêm sẽ như thế này:</p>
-
-<p>[code lang=&ldquo;python&rdquo;]<br />
-IMAGEDATESTAMP = &amp;quot;${@time.strftime(&lsquo;%Y.%m.%d&rsquo;,time.gmtime())}&amp;quot;<br />
-#Nội dung thêm vào:<br />
-IMAGE_CMD_rpi-sdimg[vardepsexclude] = &amp;quot;IMAGEDATESTAMP&amp;quot;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"python"" data-lang=""python"">IMAGEDATESTAMP = &amp;amp;quot;${@time.strftime(&#39;%Y.%m.%d&#39;,time.gmtime())}&amp;amp;quot;  
+#Nội dung thêm vào:  
+IMAGE\_CMD\_rpi-sdimg[vardepsexclude] = &amp;amp;quot;IMAGEDATESTAMP&amp;amp;quot;  </code></pre></div>
 <p>Sau khi thực hiện xong bước build images, ta sẽ thu được images trong thư mục<br />
 <strong>build/tmp/deploy/images/raspberrypi</strong> với tên <strong>rpi-basic-image-raspberrypi.rpi-sdimg</strong>.</p>
 
@@ -321,7 +264,7 @@ IMAGE_CMD_rpi-sdimg[vardepsexclude] = &amp;quot;IMAGEDATESTAMP&amp;quot;<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

@@ -62,62 +62,51 @@
 			<h1 class="post__title">Một số thứ khi sử dụng command, viết script trong bash</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p><h2>Một số thứ hữu ích khi viết sử dụng command, viết script trong bash</h2>
+			
+
 <p>Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên <a href="https://github.com/jlevy/the-art-of-command-line">The art of command line</a> và mình cũng đã dịch thử (chưa được review) ở<br />
 <a href="https://github.com/minatu2d/the-art-of-command-line/blob/master/README-vi.md">Nghệ thuật sử dụng dòng lệnh</a></p>
-<p></p>
 
-<p></p>
-<h2>1. Hạn chế gõ lại câu lệnh cho dù là rất ngắn</h2>
+<h2 id="1-hạn-chế-gõ-lại-câu-lệnh-cho-dù-là-rất-ngắn">1. Hạn chế gõ lại câu lệnh cho dù là rất ngắn</h2>
+
 <p>Hãy sử dụng chức năng tìm đoạn đang gõ trong history để làm giảm công gõ lại<br />
 Hai chức năng tìm xuôi và tìm ngược được bash cung cấp rồi.<br />
 Chỉ việc gán phím tắt là sử dụng được thôi.<br />
 Cách làm được miêu tả trong bài <a href="https://lazytrick.wordpress.com/2017/04/02/phim-tat-cho-bash/">Phím tắt cho bash</a>.<br />
 Đơn giản là thêm đoạn sau vào <code>~/.bashrc</code></p>
-<p>[code lang=shell]<br /></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># Add some shortcut key for quickly search history commands</span>  
+<span style="color:#228b22"># e -&gt; Alt key</span>  
+<span style="color:#228b22"># C -&gt; Ctrl key</span>  
+<span style="color:#658b00">bind</span> <span style="color:#cd5555">&#39;&#34;\\ep&#34;: history-search-backward&#39;</span>  
+<span style="color:#228b22"># Use Alt + p</span>  
+<span style="color:#658b00">bind</span> <span style="color:#cd5555">&#39;&#34;\\en&#34;: history-search-forward&#39;</span>  
+<span style="color:#228b22"># Use Alt + n</span>  </code></pre></div>
+<h2 id="2-sử-dụng-xargs-để-biến-mọi-thứ-thành-tham-số">2. Sử dụng <strong>xargs</strong> để biến mọi thứ thành tham số</h2>
 
-<h1 id="add-some-shortcut-key-for-quickly-search-history-commands-br">Add some shortcut key for quickly search history commands<br /></h1>
+<hr />
 
-<h1 id="e-gt-alt-key-br">e -&gt; Alt key<br /></h1>
-
-<h1 id="c-gt-ctrl-key-br">C -&gt; Ctrl key<br /></h1>
-
-<p>bind &#039;&quot;\ep&quot;: history-search-backward&#039;<br /></p>
-
-<h1 id="use-alt-p-br">Use Alt + p<br /></h1>
-
-<p>bind &#039;&quot;\en&quot;: history-search-forward&#039;<br /></p>
-
-<h1 id="use-alt-n-br">Use Alt + n<br /></h1>
-
-<p>[/code]</p>
-<h2>2. Sử dụng <strong>xargs</strong> để biến mọi thứ thành tham số</h2>
 <p><code>args</code> để biến mọi thứ thành tham số cho lệnh khác.<br />
 Ví dụ muốn thực hiện tạo bản backup (thêm đuôi <em>_backup</em> chẳng hạn) cho các file <code>.txt</code> trong thư mục chẳng hạn.</p>
-<p>[code lang=shell]<br />
-$ls *.txt|xargs -I hello cp hello hello_backup<br />
-[/code]</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello cp hello hello<span style="color:#cd5555">\_</span>backup  </code></pre></div>
 <p>Khi muốn tạo một lệnh phức tạp sử dụng tham số được lấy từ <code>xargs</code>, hoặc không chắc chắn về câu lệnh thì hãy in toàn bộ đoạn câu lệnh ra bằng cách đặt trong lệnh <code>echo</code><br />
 Ví dụ với đoạn backup ở trên:</p>
-<p>[code lang=shell]<br />
-$ls *.txt|xargs -I hello echo &#039;cp hello hello_backup&#039;<br />
-[/code]</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#39;cp hello hello\_backup&#39;</span>  </code></pre></div>
 <p>Ta sẽ có danh sách các câu lệnh định viết được hiển thị ra màn hình.<br />
 Vì thế có thể dễ dàng kiểm tra xem câu lệnh đã viết đúng chưa, hoặc thử thực hiện một câu mẫu xem kết quả như mong muốn không rồi mới thực hiện thực sự.<br />
 Với mình, mình thường viết như này:</p>
-<p>[code lang=shell]<br />
-$ls <em>.txt|xargs -I hello echo &#039;cp hello hello_backup &amp;&amp; echo &quot;Finished hello&quot;&#039; &gt; tmp_script.sh<br />
-[/code]</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.txt|xargs -I hello <span style="color:#658b00">echo</span> <span style="color:#cd5555">&#39;cp hello hello\_backup &amp;&amp; echo &#34;Finished hello&#34;&#39;</span> &gt; tmp<span style="color:#cd5555">\_</span>script.sh  </code></pre></div>
 <p>Sau đó mình sẽ có scipt tên là <code>tmp_script</code> chứa những câu lệnh định chạy.<br />
 Giờ lấy một câu trong đó chạy thử, nếu ok thì chạy script đó là xong.</p>
-<h2>3. Hãy thiết lập header cẩn thận cho bash script</h2>
+
+<h2 id="3-hãy-thiết-lập-header-cẩn-thận-cho-bash-script">3. Hãy thiết lập header cẩn thận cho bash script</h2>
+
+<hr />
+
 <p>Ta biết rằng, đã là script thì các lệnh được chạy lần lượt đến khi phải dừng thì thôi.<br />
 Nếu viết những script mà thực hiện các thao tác quan trọng như move, xóa, sửa, hay nói chung là có thể làm mất dữ liệu quan trọng mà ta dính phải những lỗi cơ bản liên quan đến tên file, tham số thì sẽ gây thiệt hại và một sự mất công không hề nhỏ.<br />
 Để tránh những lỗi đó trong bài tham khảo ở trên có đưa ra một cấu hình khi thực hiện script.</p>
-<p>[code lang=shell]<br />
-set -euo pipefail<br />
-trap &quot;echo &#039;Trapped: Script failed: see failed command above&#039;&quot; ERR<br />
-[/code]</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#658b00">set</span> -euo pipefail  
+<span style="color:#658b00">trap</span> <span style="color:#cd5555">&#34;echo &#39;Trapped: Script failed: see failed command above&#39;&#34;</span> ERR  </code></pre></div>
 <p>Theo kinh nghiệm của mình, <strong>đoạn trên nên được đặt ở phần đầu mẫu khi viết bash script.</strong><br />
 Giải thích đoạn trên:<br />
 <code>set -e</code> : dừng khi bất cứ câu lệnh nào trong script trả về lỗi khác 0 (lỗi thường được quy định là nonzero)<br />
@@ -125,36 +114,39 @@ Giải thích đoạn trên:<br />
 <code>set -o pipefail</code> : dừng lại khi gặp lỗi liên quan đến pipe<br />
 <code>trap</code> : chạy đoạn lệnh khi script gặp lỗi, đoạn trên là dừng và thông báo là có lỗi đó.<br />
 Ngoài ra, có thể thêm <code>set -x</code> nếu muốn debug script, tức là mỗi câu lệnh được hiển thị ra màn hình ngay trước khi nó được thực hiện (bao gồm các giá trị biến, tham số truyền cho nó)</p>
-<h2>4. Biết về giới hạn <strong>128K</strong></h2>
+
+<h2 id="4-biết-về-giới-hạn-128k">4. Biết về giới hạn <strong>128K</strong></h2>
+
+<hr />
+
 <p>Chính là độ dài tối đa của một câu lệnh.<br />
 Có thể bạn sẽ tự hỏi, mấy ai viết nổi câu lệnh dài từng đó.<br />
 Nếu viết bằng tay, thì đúng là như thế.<br />
-Nhưng ở đây nói đến độ dài câu lệnh sau khi được phân giải hết các giá trị mở rộng như <code></em></code>, <code>..</code>, <code>?</code>, etc.<br />
+Nhưng ở đây nói đến độ dài câu lệnh sau khi được phân giải hết các giá trị mở rộng như <code>*</code>, <code>..</code>, <code>?</code>, etc.<br />
 Chắc chắn bạn quen với câu lệnh dạng:</p>
-<p>[code lang=shell]<br />
-$ls <em>.html<br />
-[/code]</p>
-<p>Độ dài khi ta gõ ở đây là 6 + 1 (kí trự cuối chuỗi) = 7, nhưng độ dài thực sự khi được thực hiện thì không hẳn như thế vì bash (các interpreter cũng thế) sẽ thực hiện thao tác mở rộng để thay thế kí tự <code></em></code> ở trên.<br />
-Câu lệnh được chạy sẽ có dạng <code>ls file1.html file2.html &hellip;</code><br />
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ls</span> *.html  </code></pre></div>
+<p>Độ dài khi ta gõ ở đây là 6 + 1 (kí trự cuối chuỗi) = 7, nhưng độ dài thực sự khi được thực hiện thì không hẳn như thế vì bash (các interpreter cũng thế) sẽ thực hiện thao tác mở rộng để thay thế kí tự <code>*</code> ở trên.<br />
+Câu lệnh được chạy sẽ có dạng <code>ls file1.html file2.html ...</code><br />
 Nếu trong thư mục bạn thực hiện lệnh trên có 20K files, mà mỗi file dài chừng 7 kí tự, tức là ngoài đuôi html nó chỉ cần có thêm 3 kí tự nữa thôi thì, đã mất 140K kí tự để đặt chúng cạnh nhau rồi.<br />
 Khi đó sẽ có lỗi <code>Argument list too long</code> xảy ra.<br />
 Khi thực hiện với lượng file lớn, tốt nhất không nên dùng những kí tự mở kiểu này khi duyệt file.<br />
 Hãy sử dụng câu lệnh <code>find</code> để thay thế vì nó thích hợp hơn.</p>
-<h2>5. Xử lý với các tên file bắt đầu bằng kí tự <strong>-</strong> (minus)</h2>
+
+<h2 id="5-xử-lý-với-các-tên-file-bắt-đầu-bằng-kí-tự-minus">5. Xử lý với các tên file bắt đầu bằng kí tự <strong>-</strong> (minus)</h2>
+
+<hr />
+
 <p>Giả sử khi truyền một file vào câu lệnh, mà tên file lại bắt đầu bằng <strong>-</strong> thì có thể gây lỗi.<br />
 Đó là vì bash bị hiểu kí tự <strong>-</strong> là bắt đầu của options.<br />
 Ví dụ bạn không thể mở file có tên <code>-abc.txt</code> bằng câu lệnh sau được:</p>
-<p>[code lang=shell]<br />
-$vi -abc.txt<br />
-[/code]</p>
-<p>Nó sẽ hiện lỗi <code>Unknown option argument: &ldquo;-abc.txt&rdquo;</code><br />
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$vi</span> -abc.txt  </code></pre></div>
+<p>Nó sẽ hiện lỗi <code>Unknown option argument: &quot;-abc.txt&quot;</code><br />
 Để giải quyết cái này, ta chỉ cần thêm đường dẫn cho tên file là được.<br />
 Bất cứ đường dẫn nào đều ok.<br />
 Ví dụ, câu lệnh dưới đây sẽ ok.</p>
-<p>[code lang=shell]<br />
-$vi ./-abc.txt<br />
-[/code]</p>
-<p>Những tên file có kí tự ** -** (trước - là space) cũng vậy. Vì thế, trong trường hợp truyền một biến chứa tên file cho một câu lệnh nên đặt bên trong một cặp nháy kép.</p></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$vi</span> ./-abc.txt  </code></pre></div>
+<p>Những tên file có kí tự ** -** (trước - là space) cũng vậy. Vì thế, trong trường hợp truyền một biến chứa tên file cho một câu lệnh nên đặt bên trong một cặp nháy kép.</p>
+
 		</div>
 		<footer class="post__footer">
 			
@@ -203,7 +195,7 @@ $vi ./-abc.txt<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

@@ -34,7 +34,7 @@ việc build, chạy Kernel trên board vexpress-a9 mô phỏng bằng Qemu.
       <description>Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
 từ Free Electrons tại Embedded Linux Conference 2016.
 So sánh giữa Buildroot và OpenEmbedded/Yocto Project
-1. Điểm chung  Đều là build-system cho Embedded Linux.
+ Điểm chung &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;   Đều là build-system cho Embedded Linux.
 Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
 Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.</description>
     </item>
@@ -47,10 +47,7 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ
       <guid>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
       <description>Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
 Trong compile thông thường dạng
-[code lang=bash]
-$gcc -o HelloWorld HelloWorld.c
-[/code]
-Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+$gcc -o HelloWorld HelloWorld.c  Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
 Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</description>
     </item>
     
@@ -64,11 +61,7 @@ Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu t
 Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
 Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
 HelloWorld.c
-[code lang=cpp]
-#include
-int main()
-{
-print(&amp;ldquo;Hello World \n&amp;rdquo;);</description>
+#include int main() { print(&amp;#34;Hello World \\n&amp;#34;); return 0; }  Kết quả chạy:</description>
     </item>
     
     <item>
@@ -103,15 +96,7 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
       <description>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
 Giả sử ta có một cấu trúc sau:
-[code lang=&amp;ldquo;C&amp;rdquo;]
-#include 
-typedef struct
-{
-uin8_t mem1;
-uin8_t mem2;
-uin32_t mem3;
-}ST_FOOL_1;
-typedef struct</description>
+#include &amp;lt;stdint.h&amp;gt; typedef struct { uin8_t mem1; uin8_t mem2; uin32_t mem3; }ST_FOOL_1; typedef struct { uin8_t mem1; uin8_t mem2; uin8_t mem3; uin8_t mem4; uin8_t mem5; }ST_FOOL_2;  Cấu trúc ST_FOOL_1 sẽ được miêu tả trong 6 byte?</description>
     </item>
     
     <item>

@@ -42,10 +42,7 @@ Bài này sẽ dịch lại trang, để hiểu qua về Firmware trong Linux Ke
       
       <guid>https://blog.lazytrick.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</guid>
       <description>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh source, ta thực hiện build tạo image có có tên là rpi-basic-image thông qua lệnh:
-[code lang=&amp;ldquo;shell&amp;rdquo;]
-$bitbake rpi-basic-image
-[/code]
-Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
+$bitbake rpi-basic-image  Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
 rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)</description>
     </item>
     

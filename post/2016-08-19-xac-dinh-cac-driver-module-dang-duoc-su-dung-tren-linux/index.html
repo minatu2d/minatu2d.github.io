@@ -82,27 +82,15 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
 <h5 id="1-driver-về-network">1. Driver về Network</h5>
 
 <p>Các card mạng hiện có sẽ nằm dưới đường dẫn <strong>/sys/class/net/</strong>.</p>
-
-<p>[code lang=shell]<br />
-$ ls /sys/class/net/<br />
-eth0 eth1 eth2 lo<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ls /sys/class/net/  
+eth0 eth1 eth2 lo  </code></pre></div>
 <p>Đây chính là các card mạng mà ta vẫn thấy khi sử sụng</p>
-
-<p>[code lang=shell]<br />
-$ifconfig -a<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ifconfig</span> -a  </code></pre></div>
 <p>Để xác định Driver đang điều khiển các card mạng ở trên, ta làm như sau:</p>
 
 <p>Với <strong>eth0</strong> chẳng hạn:</p>
-
-<p>[code lang=shell]<br />
-$ basename `readlink /sys/class/net/eth0/device/driver/module`<br />
-e1000<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ basename <span style="color:#cd5555">\`</span>readlink /sys/class/net/eth0/device/driver/module<span style="color:#cd5555">\`</span>  
+e1000  </code></pre></div>
 <p>Kết quả <strong>e100</strong> đó chính là tên Driver đang được sử dụng để điều khiển card mạng <strong>eth0</strong></p>
 
 <h5 id="2-driver-cho-thiết-bị-pci">2. Driver cho thiết bị PCI</h5>
@@ -112,137 +100,89 @@ Mỗi thiết bị PCI được phân biệt bởi <strong>VendorID</strong> (m�
 Xác định driver của thiết bị PCI sẽ phức tạp hơn 1 chút.</p>
 
 <p>Đầu tiên, liệt kê tất cả các thiết bị PCI có trong máy (có thể có những thiết bị chưa chạy)</p>
-
-<p>[code lang=shell]<br />
-$lspci<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$lspci</span>  </code></pre></div>
 <p>Kết quả câu lệnh trên sẽ cho ta một danh sách thiết bị. Giả sử trong đó có thiết bị sau:</p>
-
-<p>[code lang=shell]<br />
-06:04.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8139/<br />
-8139C/8139C+ (rev 10)<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#b452cd">06</span>:04.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8139/  
+8139C/8139C+ (rev <span style="color:#b452cd">10</span>)  </code></pre></div>
 <p>Hãy để ý chuỗi <strong>06:04.0</strong> vì ta sẽ sử dụng nó để tìm kiếm trong <strong>/sys/</strong></p>
 
 <p>Xem danh sách các thiết bị có trong <strong>/sys/</strong>:</p>
-
-<p>[code lang=shell]<br />
-$ cd /sys/bus/pci/devices/<br />
-$ ls<br />
-0000:00:00.0 0000:00:1d.0 0000:00:1e.0 0000:00:1f.3 0000:06:03.3<br />
-0000:00:02.0 0000:00:1d.1 0000:00:1f.0 0000:06:03.0 0000:06:03.4<br />
-0000:00:02.1 0000:00:1d.2 0000:00:1f.1 0000:06:03.1 0000:06:04.0<br />
-0000:00:1b.0 0000:00:1d.7 0000:00:1f.2 0000:06:03.2 0000:06:05.0<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> /sys/bus/pci/devices/  
+$ ls  
+<span style="color:#b452cd">0000</span>:00:00.0 <span style="color:#b452cd">0000</span>:00:1d.0 <span style="color:#b452cd">0000</span>:00:1e.0 <span style="color:#b452cd">0000</span>:00:1f.3 <span style="color:#b452cd">0000</span>:06:03.3  
+<span style="color:#b452cd">0000</span>:00:02.0 <span style="color:#b452cd">0000</span>:00:1d.1 <span style="color:#b452cd">0000</span>:00:1f.0 <span style="color:#b452cd">0000</span>:06:03.0 <span style="color:#b452cd">0000</span>:06:03.4  
+<span style="color:#b452cd">0000</span>:00:02.1 <span style="color:#b452cd">0000</span>:00:1d.2 <span style="color:#b452cd">0000</span>:00:1f.1 <span style="color:#b452cd">0000</span>:06:03.1 <span style="color:#b452cd">0000</span>:06:04.0  
+<span style="color:#b452cd">0000</span>:00:1b.0 <span style="color:#b452cd">0000</span>:00:1d.7 <span style="color:#b452cd">0000</span>:00:1f.2 <span style="color:#b452cd">0000</span>:06:03.2 <span style="color:#b452cd">0000</span>:06:05.0  </code></pre></div>
 <p>Ta thấy <strong>06:04.0</strong> cũng xuất hiện trong kết quả trên, vào đó xem sao:</p>
-
-<p>[code lang=shell]<br />
-$ cd 0000:06:04.0<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> <span style="color:#b452cd">0000</span>:06:04.0  </code></pre></div>
 <p>Trong <strong>0000:06:04.0</strong>, có khá nhiều file, nhưng ta chỉ quan tâm đến 2 giá trị.<br />
 Đó là <strong>Vendor</strong> và <strong>Device</strong>, chính là VendorID, và DeviceID mà ta cần tìm.</p>
-
-<p>[code lang=shell]<br />
-$ cat vendor<br />
-0x10ec<br />
-$ cat device<br />
-0x8139<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat vendor  
+0x10ec  
+$ cat device  
+0x8139  </code></pre></div>
 <p>Từ 2 giá trị đã tìm được ở trên, ta sẽ tìm Driver thông qua source của Kernel.</p>
 
 <p>Bằng VendorID:</p>
-
-<p>[code lang=shell]<br />
-$ cd ~/linux/linux-2.6.17.8/<br />
-$ grep -i 0x10ec include/linux/pci_ids.h<br />
-#define PCI_VENDOR_ID_REALTEK 0x10ec<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
+$ grep -i 0x10ec include/linux/pci_ids.h  
+<span style="color:#228b22">#define PCI_VENDOR_ID_REALTEK 0x10ec</span>  </code></pre></div>
 <p>Bằng DeviceID:</p>
-
-<p>[code lang=shell]<br />
-$ cd ~/linux/linux-2.6.17.8/<br />
-$ grep -i 0x8139 include/linux/pci_ids.h<br />
-#define PCI_DEVICE_ID_REALTEK_8139 0x8139<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
+$ grep -i 0x8139 include/linux/pci_ids.h  
+<span style="color:#228b22">#define PCI_DEVICE_ID_REALTEK_8139 0x8139</span>  </code></pre></div>
 <p>Ta thấy rằng <strong>PCI_VENDOR_ID_REALTEK</strong>, <strong>PCI_DEVICE_ID_REALTEK_8139</strong> là định nghĩa liên quan đến thiết bị ta cần tìm.</p>
 
 <p>Tiếp tục tìm kiếm trong source code của nhân để xem có driver cho thiết bị của ta không.</p>
-
-<p>[code lang=shell]<br />
-$ grep -Rl PCI_VENDOR_ID_REALTEK *<br />
-include/linux/pci_ids.h<br />
-drivers/net/r8169.c<br />
-drivers/net/8139too.c<br />
-drivers/net/8139cp.c<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ grep -Rl PCI_VENDOR_ID_REALTEK *  
+include/linux/pci_ids.h  
+drivers/net/r8169.c  
+drivers/net/8139too.c  
+drivers/net/8139cp.c  </code></pre></div>
 <p>Mỗi Driver PCI sẽ chưa danh sách các thiết bị mà nó hỗ trợ. Vì thế.<br />
 Ngoài file .h đầu tiên ta vừa thấy ở trên, ta lần lượt xem 3 file .c để xem thiết bị của chúng ta có được hỗ trợ không.</p>
 
 <p>Đầu tiên,<br />
 <strong>drivers/net/r8169.c</strong><br />
 Có 1 đoạn định nghĩa như sau:</p>
-
-<p>[code lang=C]<br />
-static struct pci_device_id rtl8169_pci_tbl[] = {<br />
-{ PCI_DEVICE(PCI_VENDOR_ID_REALTEK, 0x8169), },<br />
-{ PCI_DEVICE(PCI_VENDOR_ID_REALTEK, 0x8129), },<br />
-{ PCI_DEVICE(PCI_VENDOR_ID_DLINK, 0x4300), },<br />
-{ PCI_DEVICE(0x16ec, 0x0116), },<br />
-{ PCI_VENDOR_ID_LINKSYS, 0x1032, PCI_ANY_ID, 0x0024, },<br />
-{0,},<br />
-};<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8b008b;font-weight:bold">static</span> <span style="color:#8b008b;font-weight:bold">struct</span> pci_device_id rtl8169_pci_tbl[] = {  
+{ PCI_DEVICE(PCI_VENDOR_ID_REALTEK, <span style="color:#b452cd">0x8169</span>), },  
+{ PCI_DEVICE(PCI_VENDOR_ID_REALTEK, <span style="color:#b452cd">0x8129</span>), },  
+{ PCI_DEVICE(PCI_VENDOR_ID_DLINK, <span style="color:#b452cd">0x4300</span>), },  
+{ PCI_DEVICE(<span style="color:#b452cd">0x16ec</span>, <span style="color:#b452cd">0x0116</span>), },  
+{ PCI_VENDOR_ID_LINKSYS, <span style="color:#b452cd">0x1032</span>, PCI_ANY_ID, <span style="color:#b452cd">0x0024</span>, },  
+{<span style="color:#b452cd">0</span>,},  
+};  </code></pre></div>
 <p>Tham số tư 2 sau, VendorID là Device. Không thấy có DeviceID (0x8139) cho thiết bị của chúng.<br />
 -&gt; Driver này không hỗ trợ thiết bị ta đang tìm rồi.</p>
 
 <p>Thứ 2,<br />
 <strong>drivers/net/8139too.c</strong><br />
 Có đoạn sau sử dụng định nghĩa Vendor</p>
-
-<p>[code lang=C]<br />
-if (pdev-&gt;vendor == PCI_VENDOR_ID_REALTEK &amp;&amp;<br />
-pdev-&gt;device == PCI_DEVICE_ID_REALTEK_8139 &amp;&amp; pci_rev &gt;= 0x20) {<br />
-dev_info(&amp;pdev-&gt;dev,<br />
-&ldquo;This (id %04x:%04x rev %02x) is an enhanced 8139C+ chip\n&rdquo;,<br />
-pdev-&gt;vendor, pdev-&gt;device, pci_rev);<br />
-dev_info(&amp;pdev-&gt;dev,<br />
-&ldquo;Use the \&ldquo;8139cp\&rdquo; driver for improved performance and<br />
-stability.\n&rdquo;);<br />
-}<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8b008b;font-weight:bold">if</span> (pdev-&gt;vendor == PCI_VENDOR_ID_REALTEK &amp;&amp;  
+pdev-&gt;device == PCI_DEVICE_ID_REALTEK_8139 &amp;&amp; pci_rev &gt;= <span style="color:#b452cd">0x20</span>) {  
+dev_info(&amp;pdev-&gt;dev,  
+<span style="color:#cd5555">&#34;This (id %04x:%04x rev %02x) is an enhanced 8139C+ chip</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,  
+pdev-&gt;vendor, pdev-&gt;device, pci_rev);  
+dev_info(&amp;pdev-&gt;dev,  
+<span style="color:#cd5555">&#34;Use the </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">&#34;</span><span style="color:#b452cd">8139</span>cp<span style="color:#a61717;background-color:#e3d2d2">\\</span><span style="color:#cd5555">&#34; driver for improved performance and  </span>
+stability.<span style="color:#a61717;background-color:#e3d2d2">\\</span>n<span style="color:#cd5555">&#34;);  </span>
+}  </code></pre></div>
 <p>Đoạn comment sau có ý rằng nên dùng Driver 8139cp cho DeviceID 8139.<br />
 Ồ, nó đây chăng.</p>
-
-<p>[code lang=C]<br />
-Use the 8139cp driver for improved performance and<br />
-stability.<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">Use the <span style="color:#b452cd">8139</span>cp driver <span style="color:#8b008b;font-weight:bold">for</span> improved performance and  
+stability.  </code></pre></div>
 <p>Thứ 3,<br />
 <strong>drivers/net/8139cp.c</strong><br />
 Có đoạn code sau:</p>
-
-<p>[code lang=C]<br />
-static struct pci_device_id cp_pci_tbl[] = {<br />
-{ PCI_VENDOR_ID_REALTEK, PCI_DEVICE_ID_REALTEK_8139,<br />
-PCI_ANY_ID, PCI_ANY_ID, 0, 0, },<br />
-{ PCI_VENDOR_ID_TTTECH, PCI_DEVICE_ID_TTTECH_MC322,<br />
-PCI_ANY_ID, PCI_ANY_ID, 0, 0, },<br />
-{ },<br />
-};<br />
-MODULE_DEVICE_TABLE(pci, cp_pci_tbl);<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8b008b;font-weight:bold">static</span> <span style="color:#8b008b;font-weight:bold">struct</span> pci_device_id cp_pci_tbl[] = {  
+{ PCI_VENDOR_ID_REALTEK, PCI_DEVICE_ID_REALTEK_8139,  
+PCI_ANY_ID, PCI_ANY_ID, <span style="color:#b452cd">0</span>, <span style="color:#b452cd">0</span>, },  
+{ PCI_VENDOR_ID_TTTECH, PCI_DEVICE_ID_TTTECH_MC322,  
+PCI_ANY_ID, PCI_ANY_ID, <span style="color:#b452cd">0</span>, <span style="color:#b452cd">0</span>, },  
+{ },  
+};  
+MODULE_DEVICE_TABLE(pci, cp_pci_tbl);  </code></pre></div>
 <p>Đúng nó đây rồi, cùng VendorID, Device mà chúng ta đang tìm luôn.</p>
 
 <p>Vậy là ta đã biết Driver nào support thiết bị của chúng ta ở trên.</p>
@@ -251,16 +191,12 @@ MODULE_DEVICE_TABLE(pci, cp_pci_tbl);<br />
 
 <p>Tác giả Kroah cũng đưa ra các step để thực hiện việc tìm Driver cho thiết bị PCI như sau:<br />
 1. Xác định PCI bus ID của thiết bị muốn tìm driver, sử dụng câu lệnh <strong><em>lspci</em></strong>.<br />
-2. Chuyển vào đường dẫn thư mục <strong><em>/sys/bus/pci/devices/0000:<bus\_id></em></strong>, với <strong><em>bus_id</em></strong> là PCI bus ID tìm được ở Bước 1.<br />
+2. Chuyển vào đường dẫn thư mục <strong>_/sys/bus/pci/devices/0000:<bus_id>_</strong>, với <strong>_bus<em>id</em></strong> là PCI bus ID tìm được ở Bước 1.<br />
 3. Xác định giá trị ID của vendor và device trong thư mục chuyển vào ở Bước 2.<br />
-4. Tìm trong file <strong><em><kernel source>/include/linux/pci_ids.h</em></strong>, xem có định nghĩa nào cho giá trị của ID của PCI vendor và device mà ta đã xác định được ở Bước 3 không.<br />
+4. Tìm trong file <strong>_<kernel source>/include/linux/pci<em>ids.h</em></strong>, xem có định nghĩa nào cho giá trị của ID của PCI vendor và device mà ta đã xác định được ở Bước 3 không.<br />
 5. Tìm tất cả những file chưa tham chiếu đến các định nghĩa tìm được ở Bước 4. Vendor và DeviceId thường sẽ nằm trong 1 cấu trúc của thiết bị PCI, có tên là <strong>struct pci_device_id</strong>. Thường mỗi file .c sẽ tương ứng là 1 Driver.<br />
 6. Tìm trong <strong><em>Makefiles</em></strong> cấu hình source của kernel xem có định nghĩa nào dạng <strong>CONFIG_</strong> cho driver ta cần build không. Ta có thể tìm bằng lệnh dưới đây:</p>
-
-<p>[code lang=shell]<br />
-$ find -type f -name Makefile | xargs grep DRIVER_NAME<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ find -type f -name Makefile | xargs grep DRIVER_NAME  </code></pre></div>
 <p>7.Tìm đến giá trị <strong>CONFIG_</strong> trong kernel để cho phép driver được build khi build lại kernel.</p>
 
 <h5 id="3-thiết-bị-usb">3. Thiết bị USB</h5>
@@ -271,11 +207,7 @@ $ find -type f -name Makefile | xargs grep DRIVER_NAME<br />
 1. Xác định ID USB vendor và product ID của thiết bị bạn muốn tìm Driver. Sử dụng câu lệnh <strong>lsusb</strong> ở trước và sau khi thiết bị được cắm vào máy.<br />
 2. Tìm trong source code của kernel xem có ID của vendor và product của thiết bị ta đã tìm ở Bước 1 không. Cả Vendor ID và Product ID sẽ nằm trong 1 cấu trúc mô tả thiết bị USB, có tên là <strong>struct usb_device_id</strong>. Từ đó xác định được Driver phải build để hỗ trợ thiết bị.<br />
 3. Tìm trong Makefiles xem có định nghĩa <strong>CONFIG_</strong> cho Driver ở Bước 2 không, sử dụng câu lệnh:</p>
-
-<p>[code lang=shell]<br />
-$ find -type f -name Makefile | xargs grep DRIVER_NAME<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ find -type f -name Makefile | xargs grep DRIVER_NAME  </code></pre></div>
 <p>4.Mở lại cấu hình build kernel và bật các định nghĩa tìm được ở Bước 3.</p>
 
 		</div>
@@ -325,7 +257,7 @@ $ find -type f -name Makefile | xargs grep DRIVER_NAME<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

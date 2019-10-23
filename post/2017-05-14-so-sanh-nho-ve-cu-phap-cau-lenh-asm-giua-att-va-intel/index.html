@@ -64,8 +64,6 @@
 		</header><div class="content post__content clearfix">
 			
 
-<h2 id="so-sánh-nhỏ-về-cú-pháp-câu-lệnh-asm-giữa-at-t-và-intel">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</h2>
-
 <p><strong>Link gốc</strong>:<br />
 <a href="http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm">http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm</a></p>
 
@@ -85,19 +83,15 @@ Còn cú pháp AT&amp;T:<br />
 
 <p>Cú pháp Intel sử dụng hậu tố &lsquo;h&rsquo; sau giá trị cơ số 16, &lsquo;b&rsquo; sau giá trị cơ số 2.<br />
 Nếu giá trị đầu tiên của giá trị cơ số 16 là chữ thì nó phải được theo sao bằng tiền tố 0.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#228b22">// Intex Syntax  
+</span><span style="color:#228b22"></span>mov eax,<span style="color:#b452cd">1</span>  
+mov ebx,<span style="color:#b452cd">0ff</span>h  
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#b452cd">80</span>h
 
-<p>[code lang=C]<br />
-// Intex Syntax<br />
-mov eax,1<br />
-mov ebx,0ffh<br />
-int 80h</p>
-
-<p>// AT&amp;T Syntax<br />
-movl $1,%eax<br />
-movl $0xff,%ebx<br />
-int $0x80<br />
-[/code]</p>
-
+<span style="color:#228b22">// AT&amp;T Syntax  
+</span><span style="color:#228b22"></span>movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">1</span>,%eax  
+movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0xff</span>,%ebx  
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0x80</span>  </code></pre></div>
 <h2 id="2-về-chiều-của-toán-tử-direction-of-operands">2. Về chiều của toán tử (Direction of Operands)</h2>
 
 <p>Chiều của toán tử theo cú pháp Intel ngược với cú pháp AT&amp;T.<br />
@@ -108,17 +102,13 @@ Trong cú pháp AT&amp;T thì ngược lại. Đầu tiên là nguồn, thứ 2 
 Có một chú ý về <a href="https://lazytrick.wordpress.com/2017/05/14/lenh-mov-trong-assembly/">lệnh MOV</a> về giá trị đích, nguồn do người dịch tổng hợp</p>
 
 <p>Ví dụ:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#228b22">//Intex Syntax  
+</span><span style="color:#228b22"></span>instr dest,source  
+mov eax,[ecx]
 
-<p>[code lang=c]<br />
-//Intex Syntax<br />
-instr dest,source<br />
-mov eax,[ecx]</p>
-
-<p>//AT&amp;T Syntax<br />
-instr source,dest<br />
-movl (%ecx),%eax<br />
-[/code]</p>
-
+<span style="color:#228b22">//AT&amp;T Syntax  
+</span><span style="color:#228b22"></span>instr source,dest  
+movl (%ecx),%eax  </code></pre></div>
 <h2 id="3-cách-chỉ-định-bộ-nhớ-memory-operands">3. Cách chỉ định bộ nhớ (Memory Operands)</h2>
 
 <p>Cách chỉ định địa chỉ cũng khác nhau.<br />
@@ -126,17 +116,13 @@ Trong cú pháp Intel, thanh ghi chứa địa chỉ được bao bởi 2 dấu 
 Trong cú pháp AT&amp;T, được bao bởi 3 dấu ngoặc đơn <code>()</code>.</p>
 
 <p>Ví dụ:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#228b22">//Intex Syntax  
+</span><span style="color:#228b22"></span>mov eax,[ebx]  
+mov eax,[ebx+<span style="color:#b452cd">3</span>]
 
-<p>[code lang=c]<br />
-//Intex Syntax<br />
-mov eax,[ebx]<br />
-mov eax,[ebx+3]</p>
-
-<p>//AT&amp;T Syntax<br />
-movl (%ebx),%eax<br />
-movl 3(%ebx),%e<br />
-[/code]</p>
-
+<span style="color:#228b22">//AT&amp;T Syntax  
+</span><span style="color:#228b22"></span>movl (%ebx),%eax  
+movl <span style="color:#b452cd">3</span>(%ebx),%e  </code></pre></div>
 <p>Kiểu của AT&amp;T có vẻ phức tạo hơn kiểu của Intel.<br />
 Kiểu Intel, cách viết sẽ có dạng sau: <code>segreg[base+index * scale + disp]</code><br />
 Kiểu AT&amp;T, sẽ là: <code>%segreg:disp(base,index,scale)</code></p>
@@ -146,23 +132,19 @@ Kiểu AT&amp;T, sẽ là: <code>%segreg:disp(base,index,scale)</code></p>
 Giá trị mặc định của <code>Scale</code> là .</p>
 
 <p>Ví dụ:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#228b22">//Intel Syntax  
+</span><span style="color:#228b22"></span>instr foo,segreg:[base+index*scale+disp]  
+mov eax,[ebx+<span style="color:#b452cd">20</span>h]  
+add eax,[ebx+ecx*<span style="color:#b452cd">2</span>h  
+lea eax,[ebx+ecx]  
+sub eax,[ebx+ecx*<span style="color:#b452cd">4</span>h-<span style="color:#b452cd">20</span>h]
 
-<p>[code lang=c]<br />
-//Intel Syntax<br />
-instr foo,segreg:[base+index*scale+disp]<br />
-mov eax,[ebx+20h]<br />
-add eax,[ebx+ecx*2h<br />
-lea eax,[ebx+ecx]<br />
-sub eax,[ebx+ecx*4h-20h]</p>
-
-<p>//AT&amp;T Syntax<br />
-instr %segreg:disp(base,index,scale),foo<br />
-movl 0x20(%ebx),%eax<br />
-addl (%ebx,%ecx,0x2),%eax<br />
-leal (%ebx,%ecx),%eax<br />
-subl -0x20(%ebx,%ecx,0x4),%eax<br />
-[/code]</p>
-
+<span style="color:#228b22">//AT&amp;T Syntax  
+</span><span style="color:#228b22"></span>instr %segreg:disp(base,index,scale),foo  
+movl <span style="color:#b452cd">0x20</span>(%ebx),%eax  
+addl (%ebx,%ecx,<span style="color:#b452cd">0x2</span>),%eax  
+leal (%ebx,%ecx),%eax  
+subl -<span style="color:#b452cd">0x20</span>(%ebx,%ecx,<span style="color:#b452cd">0x4</span>),%eax  </code></pre></div>
 <p>Như bạn cũng thấy, kiểu AT&amp;T khá khó hiểu.<br />
 Cách viết <code>[base + index*scale + disp] trong dễ hiểu hơn nhiều cách viết</code>disp(base, index, scale)`</p>
 
@@ -175,32 +157,24 @@ Cú pháp AT&amp;T sử dụng hậu tố gợi nhớ cho câu lệnh để ám 
 <code>b</code> nghĩa là <code>byte</code><br />
 Cú pháp Intel thì lại sử dụng hậu tố gợi nhớ cho bộ nhớ, phía địa chỉ.<br />
 ví dụ:</p>
-
-<p>[code lang=C]<br />
-byte ptr<br />
-word ptr<br />
-dword ptr<br />
-// word tương ứng với &ldquo;long&rdquo;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">byte ptr  
+word ptr  
+dword ptr  
+// word tương <span style="color:#a61717;background-color:#e3d2d2">ứ</span>ng với <span style="color:#cd5555">&#34;long&#34;</span>  </code></pre></div>
 <p>Nó tương tự giống định nghĩa kiểu dữ liệu trongC.</p>
 
 <p>Ví dụ so sanh:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#228b22">//Intel Syntax  
+</span><span style="color:#228b22"></span>mov al,bl  
+mov ax,bx  
+mov eax,ebx  
+mov eax, dword ptr [ebx]
 
-<p>[code lang=c]<br />
-//Intel Syntax<br />
-mov al,bl<br />
-mov ax,bx<br />
-mov eax,ebx<br />
-mov eax, dword ptr [ebx]</p>
-
-<p>//AT&amp;T Syntax<br />
-movb %bl,%al<br />
-movw %bx,%ax<br />
-movl %ebx,%eax<br />
-movl (%ebx),%eax<br />
-[/code]</p>
-
+<span style="color:#228b22">//AT&amp;T Syntax  
+</span><span style="color:#228b22"></span>movb %bl,%al  
+movw %bx,%ax  
+movl %ebx,%eax  
+movl (%ebx),%eax  </code></pre></div>
 		</div>
 		<footer class="post__footer">
 			
@@ -248,7 +222,7 @@ movl (%ebx),%eax<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

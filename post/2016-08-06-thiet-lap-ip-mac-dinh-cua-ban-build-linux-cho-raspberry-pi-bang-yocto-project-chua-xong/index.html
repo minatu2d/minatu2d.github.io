@@ -69,11 +69,7 @@ Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một
 Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.</p>
 
 <p>Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</p>
-
-<p>[code lang=shell]<br />
-$source poky/oe-init-build-env build<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  </code></pre></div>
 <h5 id="gán-ip-tĩnh-cho-bản-build">Gán IP tĩnh cho bản build</h5>
 
 <h6 id="1-cách-1-thay-đổi-trong-rootfs-đã-không-thực-hiện-được-bỏ-qua-và-đến-cách-2-bên-dưới">1. Cách 1: Thay đổi trong <strong>rootfs</strong> (Đã không thực hiện được - bỏ qua và đến cách 2 bên dưới)</h6>
@@ -87,88 +83,75 @@ $source poky/oe-init-build-env build<br />
 <p>Từ 2 thông tin trên, Yocto có gì liên quan đến 2 thứ trên.</p>
 
 <ol>
-<li>Đầu thay đổi <strong>/etc/network/interfaces</strong> có trong rootfs mặc định<br />
-Từ thư mục <strong>build</strong>, ta tìm bằng câu lệnh sau:</li>
+<li><p>Đầu thay đổi <strong>/etc/network/interfaces</strong> có trong rootfs mặc định<br />
+Từ thư mục <strong>build</strong>, ta tìm bằng câu lệnh sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ locate /etc/network/interfaces  
+/etc/network/interfaces  
+/etc/network/interfaces.d  
+/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/image/etc/network/interfaces  
+/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/package/etc/network/interfaces  
+/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/packages-split/init-ifupdown/etc/network/interfaces  
+/home/oedev/raspberrypi_krogoth/build/tmp/work/raspberrypi-poky-linux-gnueabi/rpi-basic-image/1.0-r0/rootfs/etc/network/interfaces  </code></pre></div></li>
 </ol>
-
-<p>[code lang=shell]<br />
-oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ locate /etc/network/interfaces<br />
-/etc/network/interfaces<br />
-/etc/network/interfaces.d<br />
-/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/image/etc/network/interfaces<br />
-/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/package/etc/network/interfaces<br />
-/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/packages-split/init-ifupdown/etc/network/interfaces<br />
-/home/oedev/raspberrypi_krogoth/build/tmp/work/raspberrypi-poky-linux-gnueabi/rpi-basic-image/1.0-r0/rootfs/etc/network/interfaces<br />
-[/code]</p>
 
 <p>Ta thấy có 1 kết quả là <strong><em>&hellip;rpi-basic-image/1.0-r0/rootfs/etc/network/interfaces</em></strong>.<br />
 Ôi, chính em nó đây rồi.<br />
 Rồi xơi thôi.</p>
 
 <ul>
-<li>Mở file trên ra và sửa thành như sau, tất nhiên nhớ copy ra trước khi sửa nha.</li>
-</ul>
+<li><p>Mở file trên ra và sửa thành như sau, tất nhiên nhớ copy ra trước khi sửa nha.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\#</span> /etc/network/interfaces -- configuration file <span style="color:#8b008b;font-weight:bold">for</span> ifup(<span style="color:#b452cd">8</span>), ifdown(<span style="color:#b452cd">8</span>)
 
-<p>[code lang=shell]<br />
-# /etc/network/interfaces &ndash; configuration file for ifup(8), ifdown(8)</p>
+<span style="color:#cd5555">\#</span> The loopback interface  
+auto lo  
+iface lo inet loopback
 
-<p># The loopback interface<br />
-auto lo<br />
-iface lo inet loopback</p>
+<span style="color:#cd5555">\#</span> Wireless interfaces  
+iface wlan0 inet dhcp  
+wireless_mode managed  
+wireless_essid any  
+wpa-driver wext  
+wpa-conf /etc/wpa_supplicant.conf
 
-<p># Wireless interfaces<br />
-iface wlan0 inet dhcp<br />
-wireless_mode managed<br />
-wireless_essid any<br />
-wpa-driver wext<br />
-wpa-conf /etc/wpa_supplicant.conf</p>
+iface atml0 inet dhcp
 
-<p>iface atml0 inet dhcp</p>
+<span style="color:#cd5555">\#</span> Wired or wireless interfaces  
+auto eth0  
+#  
+<span style="color:#cd5555">\#</span> Modify START  
+#  
+<span style="color:#228b22">#iface eth0 inet dhcp</span>  
+iface eth0 inet static  
+address <span style="color:#b452cd">192</span>.168.1.100  
+netmask <span style="color:#b452cd">255</span>.255.255.0  
+network <span style="color:#b452cd">192</span>.168.1.1  
+gateway <span style="color:#b452cd">192</span>.168.1.1  
+#  
+<span style="color:#cd5555">\#</span> Modify END  
+#
 
-<p># Wired or wireless interfaces<br />
-auto eth0</p>
+iface eth1 inet dhcp
 
-<p># Modify START</p>
+<span style="color:#cd5555">\#</span> Ethernet/RNDIS gadget (g_ether)  
+<span style="color:#cd5555">\#</span> ... or on host side, usbnet and random hwaddr  
+iface usb0 inet static  
+address <span style="color:#b452cd">192</span>.168.7.2  
+netmask <span style="color:#b452cd">255</span>.255.255.0  
+gateway <span style="color:#b452cd">192</span>.168.0.1  
+broadcast <span style="color:#b452cd">192</span>.168.0.255
 
-<p>#iface eth0 inet dhcp<br />
-iface eth0 inet static<br />
-address 192.168.1.100<br />
-netmask 255.255.255.0<br />
-network 192.168.1.1<br />
-gateway 192.168.1.1</p>
+<span style="color:#cd5555">\#</span> Bluetooth networking  
+iface bnep0 inet dhcp  </code></pre></div></li>
 
-<p># Modify END<br />
-#</p>
-
-<p>iface eth1 inet dhcp</p>
-
-<p># Ethernet/RNDIS gadget (g_ether)<br />
-# &hellip; or on host side, usbnet and random hwaddr<br />
-iface usb0 inet static<br />
-address 192.168.7.2<br />
-netmask 255.255.255.0<br />
-gateway 192.168.0.1<br />
-broadcast 192.168.0.255</p>
-
-<p># Bluetooth networking<br />
-iface bnep0 inet dhcp<br />
-[/code]</p>
-
-<ul>
-<li>Cuối cùng, build lại image.<br />
+<li><p>Cuối cùng, build lại image.<br />
 Nếu chỉ chạy <strong>bitbake rpi-basic-image</strong> thì sẽ không có ảnh mới được tạo.<br />
 Vì thay đổi trên <strong>rootfs</strong> không làm cho bitbake hiểu được.<br />
 Bitbake chỉ chú ý đến các thay đổi trên layer, hoặc recipes thôi.<br />
-vì thế ta phải ép bitbake build tích hợp lại rootfs để tạo ra ảnh mới.</li>
-</ul>
+vì thế ta phải ép bitbake build tích hợp lại rootfs để tạo ra ảnh mới.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ bitbake rpi-basic-image -c rootfs -f  </code></pre></div></li>
 
-<p>[code lang=shell]<br />
-oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ bitbake rpi-basic-image -c rootfs -f<br />
-[/code]</p>
-
-<ul>
-<li>Sau đó ghi file image được build ra từ đường dẫn <strong>build/tmp/deploy/images/raspberrypi/</strong> vào thẻ nhớ và kiểm chứng nào.<br />
-Một số hình ảnh thực tế</li>
+<li><p>Sau đó ghi file image được build ra từ đường dẫn <strong>build/tmp/deploy/images/raspberrypi/</strong> vào thẻ nhớ và kiểm chứng nào.<br />
+Một số hình ảnh thực tế</p></li>
 </ul>
 
 <p>Cách làm này không ổn, vì mình đã hiểu sai về cách tạo ảnh của bitbake.<br />
@@ -179,109 +162,89 @@ Các rootfs được tạo mới từ các package khác chứ không phải có
 <p>Qua đọc mailing list của cộng đồng người dùng Yocto, mình đã nhận ra rằng, mọi thay đổi từ các file cấu hình, cài đặt phần mềm mới nên thực hiện thông qua các gia vị (recipe) chứ không nên thực hiện thay đổi rootfs.</p>
 
 <p>Câu trả lời cho hầu hết các trường hợp muốn setup file cấu hình mặc định khi build ảnh nằm ở <a href="https://lists.yoctoproject.org/pipermail/yocto/2016-July/031004.html">đây</a>. Có đoạn như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">FYI there is a shortcut to creating these - the &#34;recipetool appendfile&#34;  
+command. For example, say you have your desired custom inittab file locally as  
+&#34;myinittab&#34; and you want the bbappend to be created in meta-mylayer then you  
+would run:
 
-<p>[code lang=text]<br />
-FYI there is a shortcut to creating these - the &ldquo;recipetool appendfile&rdquo;<br />
-command. For example, say you have your desired custom inittab file locally as<br />
-&ldquo;myinittab&rdquo; and you want the bbappend to be created in meta-mylayer then you<br />
-would run:</p>
+recipetool appendfile meta-mylayer /etc/inittab myinittab
 
-<p>recipetool appendfile meta-mylayer /etc/inittab myinittab</p>
+This will automatically determine which recipe is providing the file and how  
+to overwrite it with your version. You do need to have built that recipe for  
+this to work, but then that will already be the case if you have built the  
+image beforehand.
 
-<p>This will automatically determine which recipe is providing the file and how<br />
-to overwrite it with your version. You do need to have built that recipe for<br />
-this to work, but then that will already be the case if you have built the<br />
-image beforehand.</p>
+Cheers,  
+Paul
 
-<p>Cheers,<br />
-Paul</p>
+\--
 
-<p>--</p>
-
-<p>Paul Eggleton<br />
-Intel Open Source Technology Centre<br />
-[/code]</p>
-
+Paul Eggleton  
+Intel Open Source Technology Centre  </code></pre></div>
 <p>Áp dụng với trường hợp của <strong>/etc/network/interface</strong>:<br />
 Ta sẽ thực hiện sửa layer <strong>meta-local</strong> với mục đích sẽ thay thế file <strong>/etc/network/interface</strong> mặc định trong rootfs bằng file của chúng ta.</p>
 
 <p>Đầu tiên, từ thư mục <strong>BUILD</strong> (biến môi trường là <strong>BUILDIRR</strong>tạo một file sẽ thay thế, ta copy 1 bản từ file mặc định và edit nó:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\#</span> /etc/network/interfaces -- configuration file <span style="color:#8b008b;font-weight:bold">for</span> ifup(<span style="color:#b452cd">8</span>), ifdown(<span style="color:#b452cd">8</span>)
 
-<p>[code lang=shell]<br />
-# /etc/network/interfaces &ndash; configuration file for ifup(8), ifdown(8)</p>
+<span style="color:#cd5555">\#</span> The loopback interface  
+auto lo  
+iface lo inet loopback
 
-<p># The loopback interface<br />
-auto lo<br />
-iface lo inet loopback</p>
+<span style="color:#cd5555">\#</span> Wireless interfaces  
+iface wlan0 inet dhcp  
+wireless_mode managed  
+wireless_essid any  
+wpa-driver wext  
+wpa-conf /etc/wpa_supplicant.conf
 
-<p># Wireless interfaces<br />
-iface wlan0 inet dhcp<br />
-wireless_mode managed<br />
-wireless_essid any<br />
-wpa-driver wext<br />
-wpa-conf /etc/wpa_supplicant.conf</p>
+iface atml0 inet dhcp
 
-<p>iface atml0 inet dhcp</p>
+<span style="color:#cd5555">\#</span> Wired or wireless interfaces  
+auto eth0  
+#  
+<span style="color:#cd5555">\#</span> Modify START  
+#  
+<span style="color:#228b22">#iface eth0 inet dhcp</span>  
+iface eth0 inet static  
+address <span style="color:#b452cd">192</span>.168.0.100  
+netmask <span style="color:#b452cd">255</span>.255.255.0  
+gateway <span style="color:#b452cd">192</span>.168.0.1  
+broadcast <span style="color:#b452cd">192</span>.168.0.255  
+#  
+<span style="color:#cd5555">\#</span> Modify END  
+#  
+iface eth1 inet dhcp
 
-<p># Wired or wireless interfaces<br />
-auto eth0</p>
+<span style="color:#cd5555">\#</span> Ethernet/RNDIS gadget (g_ether)  
+<span style="color:#cd5555">\#</span> ... or on host side, usbnet and random hwaddr  
+iface usb0 inet static  
+address <span style="color:#b452cd">192</span>.168.7.2  
+netmask <span style="color:#b452cd">255</span>.255.255.0  
+network <span style="color:#b452cd">192</span>.168.7.0  
+gateway <span style="color:#b452cd">192</span>.168.7.1
 
-<p># Modify START</p>
-
-<p>#iface eth0 inet dhcp<br />
-iface eth0 inet static<br />
-address 192.168.0.100<br />
-netmask 255.255.255.0<br />
-gateway 192.168.0.1<br />
-broadcast 192.168.0.255</p>
-
-<p># Modify END</p>
-
-<p>iface eth1 inet dhcp</p>
-
-<p># Ethernet/RNDIS gadget (g_ether)<br />
-# &hellip; or on host side, usbnet and random hwaddr<br />
-iface usb0 inet static<br />
-address 192.168.7.2<br />
-netmask 255.255.255.0<br />
-network 192.168.7.0<br />
-gateway 192.168.7.1</p>
-
-<p># Bluetooth networking<br />
-iface bnep0 inet dhcp<br />
-[/code]</p>
-
+<span style="color:#cd5555">\#</span> Bluetooth networking  
+iface bnep0 inet dhcp  </code></pre></div>
 <p>Sau đó ta thực hiện lệnh sau để thêm vào recipe <strong>init-ifupdown</strong></p>
-
-<p>[code lang=shell]<br />
-$ recipetool appendfile ../poky/meta-local /etc/network/interfaces ./interface<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ recipetool appendfile ../poky/meta-local /etc/network/interfaces ./interface  </code></pre></div>
 <p>Sau khi thực hiện xong, ta sẽ thấy recipe <strong>init-ifupdown</strong> được thêm vào <strong>meta-local</strong>, cũng như <strong>bbappend</strong> file cũng được thêm vào luôn.<br />
 Đây là nội dung của <strong>meta-local</strong> sau đó:</p>
-
-<p>[code lang=shell]<br />
-../poky/meta-local/<br />
-├── conf<br />
-│   └── layer.conf<br />
-└── recipes-core<br />
-├── images<br />
-│   └── rpi-basic-image.bbappend<br />
-└── init-ifupdown<br />
-├── init-ifupdown<br />
-│   └── interfaces<br />
-└── init-ifupdown_1.0.bbappend<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">../poky/meta-local/  
+├── conf  
+│   └── layer.conf  
+└── recipes-core  
+├── images  
+│   └── rpi-basic-image.bbappend  
+└── init-ifupdown  
+├── init-ifupdown  
+│   └── interfaces  
+└── init-ifupdown_1.0.bbappend  </code></pre></div>
 <p>Như vậy ta thấy rằng, <strong>recipetool</strong> tự động thêm vào 1 <strong>recipe</strong> đã có trước đó.</p>
 
 <p>Giờ ta tiến hành build lại ảnh cho RPI là xong:<br />
 Vẫn câu lệnh quen thuộc từ thư mục <strong>build</strong>:</p>
-
-<p>[code lang=shell]<br />
-$bitbake rpi-basic-image<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$bitbake</span> rpi-basic-image  </code></pre></div>
 <p>Trong kết quả có thể xuất hiện 2 lỗi về <strong>hash mismatch</strong>, cái này không sao hết. File ảnh mới vẫn được tạo, mọi thứ vẫn chạy bình thường.</p>
 
 <h6 id="3-thực-hiện-thêm-action-vào-bước-tạo-rootfs">3. Thực hiện thêm action vào bước tạo rootfs</h6>
@@ -336,7 +299,7 @@ $bitbake rpi-basic-image<br />
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>

@@ -71,11 +71,7 @@
 <p>Trong bài này, sẽ trình bày cách đưa <strong>Samba</strong> vào bản phân phối Linux đã được build ở bài trước.</p>
 
 <p>Trước khi bắt đầu các thao tác dưới đây, ta cần thiết lập các biến môi trường cần thiết bằng câu lệnh từ bài trước:</p>
-
-<p>[code lang=shell]<br />
-$source poky/oe-init-build-env build<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  </code></pre></div>
 <p>Thư mục <strong>build</strong> sẽ ở ngoài thư mục <strong>poky</strong></p>
 
 <h5 id="thêm-samba-server-vào-bản-build">Thêm samba server vào bản build</h5>
@@ -97,114 +93,91 @@ Nó là 1 <strong>recipes</strong> (file chứa kịch bản download source đ
 <p>Ta bắt đầu quá trình thêm ngay bây giờ<br />
 - Đầu tiên, ta phải tải layer trên về thư mục <strong>poky</strong>, giống như cách tải BSP ở <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">bài trước</a>, phiên bản mới nhất của <strong>meta-openembedded</strong> là <strong>krogoth</strong>.<br />
 Ta sẽ thực hiện các câu lệnh để tải về như dưới đây:</p>
-
-<p>[code lang=shell]<br />
-oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky$ pwd<br />
-/home/oedev/raspberrypi_krogoth/poky<br />
-oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky$ git clone -b krogoth git://github.com/openembedded/meta-openembedded.git<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky$ <span style="color:#658b00">pwd</span>  
+/home/oedev/raspberrypi_krogoth/poky  
+oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky$ git clone -b krogoth git://github.com/openembedded/meta-openembedded.git  </code></pre></div>
 <p>Không mất quá thời gian để tải, ta sẽ có thư mục <strong>meta-openembedded</strong> nằm bên dưới <strong>Poky</strong>, tức là cùng thư mục với <strong>meta-raspberrypi</strong> đã tải ở phần trên.</p>
 
 <ul>
-<li>Giờ ta phải thêm layer chứa <strong>samba server</strong> vào<br />
+<li><p>Giờ ta phải thêm layer chứa <strong>samba server</strong> vào<br />
 Để thêm layer, ta sẽ thực hiện giống như đã thêm với layer BSP ở trên thôi:<br />
 Mở file <strong>build/conf/bblayers.conf</strong> và thêm đường dẫn của layer networking.<br />
-Tuy nhiên, ta sẽ gặp lỗi ngay vì chỉ thêm networking sẽ không đủ, vì trong file mô tả của layer networking (đường dẫn <strong>meta-networking/conf/layer.conf</strong>) có nội dung như sau:</li>
+Tuy nhiên, ta sẽ gặp lỗi ngay vì chỉ thêm networking sẽ không đủ, vì trong file mô tả của layer networking (đường dẫn <strong>meta-networking/conf/layer.conf</strong>) có nội dung như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">\<span style="color:#228b22"># We have a conf and classes directory, add to BBPATH  </span>
+BBPATH .= <span style="color:#cd5555">&#34;:${LAYERDIR}&#34;</span>
+
+\<span style="color:#228b22"># We have a packages directory, add to BBFILES  </span>
+BBFILES += <span style="color:#cd5555">&#34;${LAYERDIR}/recipes-*/*/*.bb </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">  </span>
+<span style="color:#a61717;background-color:#e3d2d2">$</span>{LAYERDIR}/recipes-*/*/*.bbappend<span style="color:#cd5555">&#34;</span>
+
+BBFILE_COLLECTIONS += <span style="color:#cd5555">&#34;networking-layer&#34;</span>  
+BBFILE_PATTERN_networking-layer := <span style="color:#cd5555">&#34;^${LAYERDIR}/&#34;</span>  
+BBFILE_PRIORITY_networking-layer = <span style="color:#cd5555">&#34;5&#34;</span>
+
+\<span style="color:#228b22"># This should only be incremented on significant changes that will  </span>
+\<span style="color:#228b22"># cause compatibility issues with other layers  </span>
+LAYERVERSION_networking-layer = <span style="color:#cd5555">&#34;1&#34;</span>
+
+LAYERDEPENDS_networking-layer = <span style="color:#cd5555">&#34;core&#34;</span>  
+LAYERDEPENDS_networking-layer += <span style="color:#cd5555">&#34;openembedded-layer&#34;</span>  
+LAYERDEPENDS_networking-layer += <span style="color:#cd5555">&#34;meta-python&#34;</span>
+
+LICENSE_PATH += <span style="color:#cd5555">&#34;${LAYERDIR}/licenses&#34;</span>
+
+\<span style="color:#228b22"># used by waf-samba.bbclass  </span>
+WAF_CROSS_ANSWERS_PATH = <span style="color:#cd5555">&#34;${LAYERDIR}/files/waf-cross-answers&#34;</span>  </code></pre></div></li>
 </ul>
-
-<p>[code lang=python]<br />
-# We have a conf and classes directory, add to BBPATH<br />
-BBPATH .= &ldquo;:${LAYERDIR}&rdquo;</p>
-
-<p># We have a packages directory, add to BBFILES<br />
-BBFILES += &ldquo;${LAYERDIR}/recipes-*/*/*.bb \<br />
-${LAYERDIR}/recipes-*/*/*.bbappend&rdquo;</p>
-
-<p>BBFILE_COLLECTIONS += &ldquo;networking-layer&rdquo;<br />
-BBFILE_PATTERN_networking-layer := &ldquo;^${LAYERDIR}/&rdquo;<br />
-BBFILE_PRIORITY_networking-layer = &ldquo;5&rdquo;</p>
-
-<p># This should only be incremented on significant changes that will<br />
-# cause compatibility issues with other layers<br />
-LAYERVERSION_networking-layer = &ldquo;1&rdquo;</p>
-
-<p>LAYERDEPENDS_networking-layer = &ldquo;core&rdquo;<br />
-LAYERDEPENDS_networking-layer += &ldquo;openembedded-layer&rdquo;<br />
-LAYERDEPENDS_networking-layer += &ldquo;meta-python&rdquo;</p>
-
-<p>LICENSE_PATH += &ldquo;${LAYERDIR}/licenses&rdquo;</p>
-
-<p># used by waf-samba.bbclass<br />
-WAF_CROSS_ANSWERS_PATH = &ldquo;${LAYERDIR}/files/waf-cross-answers&rdquo;<br />
-[/code]</p>
 
 <p>Ta sẽ thấy 3 dòng có chữ LAYERDEPENDS, hay là các layer mà layer này phụ thuộc.<br />
 Tức là để build được layer này, ta phải build cả 2 layer kia nữa.</p>
 
 <p>Vì thế, ta phải sửa file <strong>build/conf/bblayers.conf</strong> thành như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\#</span> POKY_BBLAYERS_CONF_VERSION is increased each <span style="color:#658b00">time</span> build/conf/bblayers.conf  
+<span style="color:#cd5555">\#</span> changes incompatibly  
+<span style="color:#00688b">POKY_BBLAYERS_CONF_VERSION</span> = <span style="color:#cd5555">&#34;2&#34;</span>
 
-<p>[code lang=shell]<br />
-# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf<br />
-# changes incompatibly<br />
-POKY_BBLAYERS_CONF_VERSION = &ldquo;2&rdquo;</p>
+<span style="color:#00688b">BBPATH</span> = <span style="color:#cd5555">&#34;</span><span style="color:#cd5555">${</span><span style="color:#00688b">TOPDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span>  
+BBFILES ?= <span style="color:#cd5555">&#34;&#34;</span>
 
-<p>BBPATH = &ldquo;${TOPDIR}&rdquo;<br />
-BBFILES ?= &ldquo;&rdquo;</p>
-
-<p>BBLAYERS ?= &ldquo; \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-poky \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-python \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-oe \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-networking \<br />
-/home/oedev/raspberrypi_krogoth/poky/meta-local \<br />
-[/code]</p>
-
+BBLAYERS ?= <span style="color:#cd5555">&#34; \\  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta \\  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-poky \\  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp \\  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi \\  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-python \\  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-oe \\  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-networking \\  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-local \\  </span></code></pre></div>
 <ul>
 <li>Tiếp theo, thêm <strong>samba server</strong> vào ảnh:<br />
-Theo tài liệu [Yocto Project Development Manual] (<a href="http://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html">http://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html</a>), có 2 cách để thêm vào image. Thứ nhất là, thêm vào biến <strong>IMAGE_INSTALL_append</strong> có trong file <strong>build/conf/local.conf</strong>. Cách thứ 2, tạo một layer mới, là layer sau cùng được build, layer chỉ chứa gói phần mềm <strong>samba</strong> mà thôi.<br />
+Theo tài liệu <a href="http://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html">Yocto Project Development Manual</a>, có 2 cách để thêm vào image. Thứ nhất là, thêm vào biến <strong>IMAGE_INSTALL_append</strong> có trong file <strong>build/conf/local.conf</strong>. Cách thứ 2, tạo một layer mới, là layer sau cùng được build, layer chỉ chứa gói phần mềm <strong>samba</strong> mà thôi.<br />
 Cách thứ 2 sẽ ít ảnh hưởng hơn cách thứ nhất vì ta không phải động đến file có sẵn là <strong>local.conf</strong>. Vì thế, ta sẽ làm theo cách 2.</li>
 </ul>
 
 <p>Tạo cây thư mục với đường dẫn như sau:</p>
-
-<p>[code lang=shell]<br />
-poky/meta-local/<br />
-├── conf<br />
-│   └── layer.conf<br />
-└── recipes-core<br />
-└── images<br />
-└── rpi-basic-image.bbappend<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">poky/meta-local/  
+├── conf  
+│   └── layer.conf  
+└── recipes-core  
+└── images  
+└── rpi-basic-image.bbappend  </code></pre></div>
 <p>Trong đó:<br />
 <strong>layer.conf</strong>: là file cấu hình layer <strong>local</strong> này, có có mẫu chung rồi.<br />
 trong trường này, ta sẽ sử dụng nội dung sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\#</span> We have a conf and classes directory, add to BBPATH  
+BBPATH .= <span style="color:#cd5555">&#34;:</span><span style="color:#cd5555">${</span><span style="color:#00688b">LAYERDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span>
 
-<p>[code lang=shell]<br />
-# We have a conf and classes directory, add to BBPATH<br />
-BBPATH .= &ldquo;:${LAYERDIR}&rdquo;</p>
+<span style="color:#cd5555">\#</span> We have recipes-* directories, add to BBFILES  
+<span style="color:#00688b">BBFILES</span> += <span style="color:#cd5555">&#34;</span><span style="color:#cd5555">${</span><span style="color:#00688b">LAYERDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">/recipes-*/*/*.bb </span><span style="color:#cd5555">${</span><span style="color:#00688b">LAYERDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">/recipes*/*/*.bbappend&#34;</span>
 
-<p># We have recipes-* directories, add to BBFILES<br />
-BBFILES += &ldquo;${LAYERDIR}/recipes-*/*/*.bb ${LAYERDIR}/recipes*/*/*.bbappend&rdquo;</p>
-
-<p>BBFILE_COLLECTIONS += &ldquo;local&rdquo;<br />
-BBFILE_PATTERN_local = &ldquo;^${LAYERDIR}/&rdquo;<br />
-BBFILE_PRIORITY_local = &ldquo;7&rdquo;<br />
-[/code]</p>
-
+<span style="color:#00688b">BBFILE_COLLECTIONS</span> += <span style="color:#cd5555">&#34;local&#34;</span>  
+<span style="color:#00688b">BBFILE_PATTERN_local</span> = <span style="color:#cd5555">&#34;^</span><span style="color:#cd5555">${</span><span style="color:#00688b">LAYERDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">/&#34;</span>  
+<span style="color:#00688b">BBFILE_PRIORITY_local</span> = <span style="color:#cd5555">&#34;7&#34;</span>  </code></pre></div>
 <p>Ta nên để <strong>PRIOIRTY</strong> càng cao càng tốt, tức là độ ưu tiên thấp khi build.</p>
 
 <p><strong>rpi-basic-image.bbappend</strong> sẽ có nội dung như sau:</p>
-
-<p>[code lang=shell]<br />
-IMAGE_INSTALL += &ldquo;samba \<br />
-&rdquo;<br />
-[/code]</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">IMAGE_INSTALL</span> += <span style="color:#cd5555">&#34;samba \\  
+</span><span style="color:#cd5555">&#34;</span>  </code></pre></div>
 <ul>
 <li>Cuối cùng ta thực hiện lại lệnh build ảnh như đã build ở phần 1 thôi.<br />
 Sau khi thực hiện xong, ta sẽ có file ảnh mới với kích thước lớn hơn hẳn<br />
@@ -261,7 +234,7 @@ Sau khi thực hiện xong, ta sẽ có file ảnh mới với kích thước l�
 		
 		<div class="footer__copyright">
 			&copy; 2019 Lazytrick.
-			<span class="footer__copyright-credits">Markdown to HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng Theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>
