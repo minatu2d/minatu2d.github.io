@@ -70,17 +70,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là <strong>target program</strong>.<br />
-Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:</p>
-<ol>
-<li>GDB và <strong>target program</strong> cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</li>
-<li>GDB và <strong>target program</strong> không cùng trên 1 máy : Tức là GDB sẽ chạy trên 1 máy để debug 1 chương trình chạy trên máy khác thông qua Serial hoặc Network. Cái này hay thấy khi phát triển ứng dụng nhúng. Xem thêm tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</li>
-</ol>
-<p>Một số distro khi được cài đặt, đã bao gồm <strong>GDB</strong> rồi. Có thể kiểm tra bằng command dưới đây:</p>
-<p>[code lang="shell"]<br />
-$gdb --version<br />
-[/code]</p>
-<p>
+		Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
+ GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.
 	</div>
 </article>
 </main>
@@ -94,7 +86,7 @@ $gdb --version<br />
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

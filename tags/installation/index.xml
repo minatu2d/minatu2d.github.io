@@ -2,32 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Installation on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/installation/</link>
+    <link>https://blog.lazytrick.com/tags/installation/</link>
     <description>Recent content in Installation on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Tue, 20 Sep 2016 08:42:17 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/installation/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/installation/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Cài đặt GDB (02 - Cài đặt)</title>
-      <link>https://minatu2d.github.io/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
+      <link>https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
       <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
-      <description>&lt;p&gt;Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là &lt;strong&gt;target program&lt;/strong&gt;.&lt;br /&gt;
-Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;GDB và &lt;strong&gt;target program&lt;/strong&gt; cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.&lt;/li&gt;
-&lt;li&gt;GDB và &lt;strong&gt;target program&lt;/strong&gt; không cùng trên 1 máy : Tức là GDB sẽ chạy trên 1 máy để debug 1 chương trình chạy trên máy khác thông qua Serial hoặc Network. Cái này hay thấy khi phát triển ứng dụng nhúng. Xem thêm tại &lt;a href=&#34;https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/&#34;&gt;đây&lt;/a&gt;.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;Một số distro khi được cài đặt, đã bao gồm &lt;strong&gt;GDB&lt;/strong&gt; rồi. Có thể kiểm tra bằng command dưới đây:&lt;/p&gt;
-&lt;p&gt;[code lang=&#34;shell&#34;]&lt;br /&gt;
-$gdb --version&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
+      <description>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
+ GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</description>
     </item>
     
   </channel>

@@ -62,17 +62,35 @@
 			<h1 class="post__title">Thiết lập IP mặc định của bản build Linux cho Raspberry PI bằng Yocto Project</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h5>Gán IP tĩnh cho bản build</h5>
-<h6>1. Cách 1: Thay đổi trong <strong>rootfs</strong> (Đã không thực hiện được - bỏ qua và đến cách 2 bên dưới)</h6>
+			
+
+<p>Để tiếp tục customize bản OS được build trong bài <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">trước</a>.<br />
+Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.<br />
+Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.</p>
+
+<p>Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</p>
+
+<p>[code lang=shell]<br />
+$source poky/oe-init-build-env build<br />
+[/code]</p>
+
+<h5 id="gán-ip-tĩnh-cho-bản-build">Gán IP tĩnh cho bản build</h5>
+
+<h6 id="1-cách-1-thay-đổi-trong-rootfs-đã-không-thực-hiện-được-bỏ-qua-và-đến-cách-2-bên-dưới">1. Cách 1: Thay đổi trong <strong>rootfs</strong> (Đã không thực hiện được - bỏ qua và đến cách 2 bên dưới)</h6>
+
 <p>Về cơ bản, để tạo được một bản build linux, thì chắc chắn đâu đó phải có 1 <strong>rootfs</strong> (rootfs là gì được giải thích tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</p>
+
 <p>Và ta cũng biết rằng, để setup IP cho một máy chạy Linux (những bản dựa trên Debian/Ubuntu), ta sẽ hỏi google và tìm được link <a href="http://www.cyberciti.biz/faq/linux-configure-a-static-ip-address-tutorial/">này</a>.</p>
+
 <p>Ta cần vào <strong>/etc/netwwork/interface</strong> rồi edit lại đoạn setup <strong>eth0</strong> với mạng có dây mặc định, <strong>wlan0</strong> với mạng không dây mặc định.</p>
+
 <p>Từ 2 thông tin trên, Yocto có gì liên quan đến 2 thứ trên.</p>
+
 <ol>
 <li>Đầu thay đổi <strong>/etc/network/interfaces</strong> có trong rootfs mặc định<br />
 Từ thư mục <strong>build</strong>, ta tìm bằng câu lệnh sau:</li>
 </ol>
+
 <p>[code lang=shell]<br />
 oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ locate /etc/network/interfaces<br />
 /etc/network/interfaces<br />
@@ -82,49 +100,60 @@ oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ locate /etc/network/interfaces<b
 /home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/packages-split/init-ifupdown/etc/network/interfaces<br />
 /home/oedev/raspberrypi_krogoth/build/tmp/work/raspberrypi-poky-linux-gnueabi/rpi-basic-image/1.0-r0/rootfs/etc/network/interfaces<br />
 [/code]</p>
-<p>Ta thấy có 1 kết quả là <strong><em>...rpi-basic-image/1.0-r0/rootfs/etc/network/interfaces</em></strong>.<br />
+
+<p>Ta thấy có 1 kết quả là <strong><em>&hellip;rpi-basic-image/1.0-r0/rootfs/etc/network/interfaces</em></strong>.<br />
 Ôi, chính em nó đây rồi.<br />
 Rồi xơi thôi.</p>
+
 <ul>
 <li>Mở file trên ra và sửa thành như sau, tất nhiên nhớ copy ra trước khi sửa nha.</li>
 </ul>
+
 <p>[code lang=shell]<br />
-# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)</p>
+# /etc/network/interfaces &ndash; configuration file for ifup(8), ifdown(8)</p>
+
 <p># The loopback interface<br />
 auto lo<br />
 iface lo inet loopback</p>
+
 <p># Wireless interfaces<br />
 iface wlan0 inet dhcp<br />
 wireless_mode managed<br />
 wireless_essid any<br />
 wpa-driver wext<br />
 wpa-conf /etc/wpa_supplicant.conf</p>
+
 <p>iface atml0 inet dhcp</p>
+
 <p># Wired or wireless interfaces<br />
-auto eth0<br />
-#<br />
-# Modify START<br />
-#<br />
-#iface eth0 inet dhcp<br />
+auto eth0</p>
+
+<p># Modify START</p>
+
+<p>#iface eth0 inet dhcp<br />
 iface eth0 inet static<br />
 address 192.168.1.100<br />
 netmask 255.255.255.0<br />
 network 192.168.1.1<br />
-gateway 192.168.1.1<br />
-#<br />
-# Modify END<br />
+gateway 192.168.1.1</p>
+
+<p># Modify END<br />
 #</p>
+
 <p>iface eth1 inet dhcp</p>
+
 <p># Ethernet/RNDIS gadget (g_ether)<br />
-# ... or on host side, usbnet and random hwaddr<br />
+# &hellip; or on host side, usbnet and random hwaddr<br />
 iface usb0 inet static<br />
 address 192.168.7.2<br />
 netmask 255.255.255.0<br />
 gateway 192.168.0.1<br />
 broadcast 192.168.0.255</p>
+
 <p># Bluetooth networking<br />
 iface bnep0 inet dhcp<br />
 [/code]</p>
+
 <ul>
 <li>Cuối cùng, build lại image.<br />
 Nếu chỉ chạy <strong>bitbake rpi-basic-image</strong> thì sẽ không có ảnh mới được tạo.<br />
@@ -132,100 +161,131 @@ Vì thay đổi trên <strong>rootfs</strong> không làm cho bitbake hiểu đ�
 Bitbake chỉ chú ý đến các thay đổi trên layer, hoặc recipes thôi.<br />
 vì thế ta phải ép bitbake build tích hợp lại rootfs để tạo ra ảnh mới.</li>
 </ul>
+
 <p>[code lang=shell]<br />
 oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ bitbake rpi-basic-image -c rootfs -f<br />
 [/code]</p>
+
 <ul>
 <li>Sau đó ghi file image được build ra từ đường dẫn <strong>build/tmp/deploy/images/raspberrypi/</strong> vào thẻ nhớ và kiểm chứng nào.<br />
 Một số hình ảnh thực tế</li>
 </ul>
+
 <p>Cách làm này không ổn, vì mình đã hiểu sai về cách tạo ảnh của bitbake.<br />
-Các rootfs được tạo mới từ các package khác chứ không phải có từ rootfs có sẵn để mình có thể tìm thấy được. Vì thế, rootfs sẽ được lấy từ 1 file nén ở đâu để làm base. Sau đó thực hiện thêm &quot;gia vị&quot; bằng các &quot;recipe&quot; trên cái base đó.</p>
-<h6>2. Ghi đè <strong>/etc/interface</strong> bằng thêm vào recipes đã có sẵn</h6>
+Các rootfs được tạo mới từ các package khác chứ không phải có từ rootfs có sẵn để mình có thể tìm thấy được. Vì thế, rootfs sẽ được lấy từ 1 file nén ở đâu để làm base. Sau đó thực hiện thêm &ldquo;gia vị&rdquo; bằng các &ldquo;recipe&rdquo; trên cái base đó.</p>
+
+<h6 id="2-ghi-đè-etc-interface-bằng-thêm-vào-recipes-đã-có-sẵn">2. Ghi đè <strong>/etc/interface</strong> bằng thêm vào recipes đã có sẵn</h6>
+
 <p>Qua đọc mailing list của cộng đồng người dùng Yocto, mình đã nhận ra rằng, mọi thay đổi từ các file cấu hình, cài đặt phần mềm mới nên thực hiện thông qua các gia vị (recipe) chứ không nên thực hiện thay đổi rootfs.</p>
+
 <p>Câu trả lời cho hầu hết các trường hợp muốn setup file cấu hình mặc định khi build ảnh nằm ở <a href="https://lists.yoctoproject.org/pipermail/yocto/2016-July/031004.html">đây</a>. Có đoạn như sau:</p>
+
 <p>[code lang=text]<br />
-FYI there is a shortcut to creating these - the &quot;recipetool appendfile&quot;<br />
+FYI there is a shortcut to creating these - the &ldquo;recipetool appendfile&rdquo;<br />
 command. For example, say you have your desired custom inittab file locally as<br />
-&quot;myinittab&quot; and you want the bbappend to be created in meta-mylayer then you<br />
+&ldquo;myinittab&rdquo; and you want the bbappend to be created in meta-mylayer then you<br />
 would run:</p>
+
 <p>recipetool appendfile meta-mylayer /etc/inittab myinittab</p>
+
 <p>This will automatically determine which recipe is providing the file and how<br />
 to overwrite it with your version. You do need to have built that recipe for<br />
 this to work, but then that will already be the case if you have built the<br />
 image beforehand.</p>
+
 <p>Cheers,<br />
 Paul</p>
-<p>-- </p>
+
+<p>--</p>
+
 <p>Paul Eggleton<br />
 Intel Open Source Technology Centre<br />
 [/code]</p>
+
 <p>Áp dụng với trường hợp của <strong>/etc/network/interface</strong>:<br />
 Ta sẽ thực hiện sửa layer <strong>meta-local</strong> với mục đích sẽ thay thế file <strong>/etc/network/interface</strong> mặc định trong rootfs bằng file của chúng ta.</p>
+
 <p>Đầu tiên, từ thư mục <strong>BUILD</strong> (biến môi trường là <strong>BUILDIRR</strong>tạo một file sẽ thay thế, ta copy 1 bản từ file mặc định và edit nó:</p>
+
 <p>[code lang=shell]<br />
-# /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)</p>
+# /etc/network/interfaces &ndash; configuration file for ifup(8), ifdown(8)</p>
+
 <p># The loopback interface<br />
 auto lo<br />
 iface lo inet loopback</p>
+
 <p># Wireless interfaces<br />
 iface wlan0 inet dhcp<br />
-    wireless_mode managed<br />
-    wireless_essid any<br />
-    wpa-driver wext<br />
-    wpa-conf /etc/wpa_supplicant.conf</p>
+wireless_mode managed<br />
+wireless_essid any<br />
+wpa-driver wext<br />
+wpa-conf /etc/wpa_supplicant.conf</p>
+
 <p>iface atml0 inet dhcp</p>
+
 <p># Wired or wireless interfaces<br />
-auto eth0<br />
-#<br />
-# Modify START<br />
-#<br />
-#iface eth0 inet dhcp<br />
+auto eth0</p>
+
+<p># Modify START</p>
+
+<p>#iface eth0 inet dhcp<br />
 iface eth0 inet static<br />
 address 192.168.0.100<br />
 netmask 255.255.255.0<br />
 gateway 192.168.0.1<br />
-broadcast 192.168.0.255<br />
-#<br />
-# Modify END<br />
-#<br />
-iface eth1 inet dhcp</p>
+broadcast 192.168.0.255</p>
+
+<p># Modify END</p>
+
+<p>iface eth1 inet dhcp</p>
+
 <p># Ethernet/RNDIS gadget (g_ether)<br />
-# ... or on host side, usbnet and random hwaddr<br />
+# &hellip; or on host side, usbnet and random hwaddr<br />
 iface usb0 inet static<br />
-    address 192.168.7.2<br />
-    netmask 255.255.255.0<br />
-    network 192.168.7.0<br />
-    gateway 192.168.7.1</p>
+address 192.168.7.2<br />
+netmask 255.255.255.0<br />
+network 192.168.7.0<br />
+gateway 192.168.7.1</p>
+
 <p># Bluetooth networking<br />
 iface bnep0 inet dhcp<br />
 [/code]</p>
+
 <p>Sau đó ta thực hiện lệnh sau để thêm vào recipe <strong>init-ifupdown</strong></p>
+
 <p>[code lang=shell]<br />
 $ recipetool appendfile ../poky/meta-local /etc/network/interfaces ./interface<br />
 [/code]</p>
+
 <p>Sau khi thực hiện xong, ta sẽ thấy recipe <strong>init-ifupdown</strong> được thêm vào <strong>meta-local</strong>, cũng như <strong>bbappend</strong> file cũng được thêm vào luôn.<br />
 Đây là nội dung của <strong>meta-local</strong> sau đó:</p>
+
 <p>[code lang=shell]<br />
 ../poky/meta-local/<br />
 ├── conf<br />
 │   └── layer.conf<br />
 └── recipes-core<br />
-    ├── images<br />
-    │   └── rpi-basic-image.bbappend<br />
-    └── init-ifupdown<br />
-        ├── init-ifupdown<br />
-        │   └── interfaces<br />
-        └── init-ifupdown_1.0.bbappend<br />
+├── images<br />
+│   └── rpi-basic-image.bbappend<br />
+└── init-ifupdown<br />
+├── init-ifupdown<br />
+│   └── interfaces<br />
+└── init-ifupdown_1.0.bbappend<br />
 [/code]</p>
+
 <p>Như vậy ta thấy rằng, <strong>recipetool</strong> tự động thêm vào 1 <strong>recipe</strong> đã có trước đó.</p>
+
 <p>Giờ ta tiến hành build lại ảnh cho RPI là xong:<br />
 Vẫn câu lệnh quen thuộc từ thư mục <strong>build</strong>:</p>
+
 <p>[code lang=shell]<br />
 $bitbake rpi-basic-image<br />
 [/code]</p>
+
 <p>Trong kết quả có thể xuất hiện 2 lỗi về <strong>hash mismatch</strong>, cái này không sao hết. File ảnh mới vẫn được tạo, mọi thứ vẫn chạy bình thường.</p>
-<h6>3. Thực hiện thêm action vào bước tạo rootfs</h6>
+
+<h6 id="3-thực-hiện-thêm-action-vào-bước-tạo-rootfs">3. Thực hiện thêm action vào bước tạo rootfs</h6>
+
 <p>(chưa thực hiện)</p>
 
 		</div>

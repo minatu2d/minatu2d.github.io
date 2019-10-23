@@ -62,56 +62,76 @@
 			<h1 class="post__title">Bộ nhớ Flash</h1>
 			
 		</header><div class="content post__content clearfix">
-			loại chip nhớ này. Đó là</p>
+			
+
+<p>Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.</p>
+
+<h5 id="lập-trình-với-bộ-nhớ-flash">Lập trình với bộ nhớ Flash</h5>
+
+<p>Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn <strong>0xFF</strong> thôi.</p>
+
+<h5 id="serial-flash">Serial Flash</h5>
+
+<p>Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất. Vì giao tiếp được bằng các chuẩn Serial như SPI, I2C nên nó dễ dàng ghép nối với các chip trên board.</p>
+
+<h5 id="nand-và-nor">NAND và NOR</h5>
+
+<p>Có 2 điểm khác biệt giữa 2 loại chip nhớ này. Đó là</p>
+
 <ul>
 <li>Kết nối giữa memory cell khác nhau. Trong NOR, các phần tử nhớ kết nối song song với nhau, nên cho phép lập trình với từng cái. Còn NAND thì được kết nối dạng nối tiếp</li>
 <li>Giao diện để đọc, ghi khác nhau (NOR cho phép đọc Random-Access, NAND chỉ cho phép đọc theo Page)</li>
 </ul>
+
 <p>Bảng so sánh giữa NAND và NOR</p>
-<table class="wikitable">
-<tbody>
-<tr>
-<th>Attribute</th>
-<th>NAND</th>
-<th>NOR</th>
-</tr>
-<tr>
-<td>Main Application</td>
-<td>File Storage</td>
-<td>Code execution</td>
-</tr>
-<tr>
-<td>Storage capacity</td>
-<td>High</td>
-<td>Low</td>
-</tr>
-<tr>
-<td>Cost per bit</td>
-<td>Better</td>
-<td>.</td>
-</tr>
-<tr>
-<td>Active Power</td>
-<td>Better</td>
-<td>.</td>
-</tr>
-<tr>
-<td>Standby Power</td>
-<td>.</td>
-<td>Better</td>
-</tr>
-<tr>
-<td>Write Speed</td>
-<td>Good</td>
-<td>.</td>
-</tr>
-<tr>
-<td>Read Speed</td>
-<td>.</td>
-<td>Good</td>
-</tr>
-</tbody>
-</table>
+
+<p>Attribute</p>
+
+<p>NAND</p>
+
+<p>NOR</p>
+
+<p>Main Application</p>
+
+<p>File Storage</p>
+
+<p>Code execution</p>
+
+<p>Storage capacity</p>
+
+<p>High</p>
+
+<p>Low</p>
+
+<p>Cost per bit</p>
+
+<p>Better</p>
+
+<p>.</p>
+
+<p>Active Power</p>
+
+<p>Better</p>
+
+<p>.</p>
+
+<p>Standby Power</p>
+
+<p>.</p>
+
+<p>Better</p>
+
+<p>Write Speed</p>
+
+<p>Good</p>
+
+<p>.</p>
+
+<p>Read Speed</p>
+
+<p>.</p>
+
+<p>Good</p>
 
 		</div>
 		<footer class="post__footer">

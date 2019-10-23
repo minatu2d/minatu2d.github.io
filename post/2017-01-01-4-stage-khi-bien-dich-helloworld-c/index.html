@@ -62,58 +62,115 @@
 			<h1 class="post__title">4 Stage khi biên dịch HelloWorld.c</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h2>1. 4 Stage khi compiling</h2>
+			
+
+<p>Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.<br />
+Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.<br />
+Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.</p>
+
+<p>HelloWorld.c</p>
+
+<p>[code lang=cpp]<br />
+#include<br />
+int main()<br />
+{<br />
+print(&ldquo;Hello World \n&rdquo;);<br />
+return 0;<br />
+}<br />
+[/code]</p>
+
+<p>Kết quả chạy:</p>
+
+<p>[code lang=shell]<br />
+$./HelloWorld<br />
+HelloWorld<br />
+[/code]</p>
+
+<h2 id="1-4-stage-khi-compiling">1. 4 Stage khi compiling</h2>
+
 <p>Để chuyển từ 1 file source code <strong>HelloWorld.c</strong> ở trên sang dạng chạy được <strong>HelloWorld</strong> bằng GCC sẽ có 4 stages sau.<br />
 Kết quả của Stage trước là sẽ là đầu vào của Stage sau.</p>
-<p><img class="alignnone size-full wp-image-1745" src="{{ site.baseurl }}/assets/compiling_4_stage.png" alt="compiling_4_stage" width="756" height="490" /></p>
+
+<p><img src="{{ site.baseurl }}/assets/compiling_4_stage.png" alt="compiling_4_stage" /></p>
+
 <p>Khi chúng ta gõ</p>
+
 <p>[code lang=shell]<br />
 $gcc -o HelloWorld HelloWorld.c<br />
 [/code]</p>
+
 <p>Thì chỉ kết quả của Stage sẽ được giữ lại, kết quả của các Stage trung gian không được lưu lại.</p>
-<h2>2. Chi tiết mỗi Stage</h2>
-<h3>2.1 Stage 1 : Preprocessing (Tiền xử lý)</h3>
+
+<h2 id="2-chi-tiết-mỗi-stage">2. Chi tiết mỗi Stage</h2>
+
+<h3 id="2-1-stage-1-preprocessing-tiền-xử-lý">2.1 Stage 1 : Preprocessing (Tiền xử lý)</h3>
+
 <p>Ở Stage này, các tiền xử lý (bắt đầu băng dấu #) được xử lý. Ví dụ các chỉ thị dịch #ifdef, #if, #include sẽ được thay thế hết.<br />
 Do vậy, các lỗi về sai đường dẫn file header sẽ được phát hiện. Kết quả các đoạn chị thị dịch #ifdef, #elif cũng sẽ được đưa ra.</p>
+
 <p>Để hiển thị kết quả đầu ra của Stage này, ta có thể sử dụng command sau:</p>
+
 <p>Khi sử dụng <strong>gcc</strong>:</p>
+
 <p>[code lang=shell]<br />
 $gcc -E HelloWorld.c &gt; HelloWorld.i<br />
 [/code]</p>
+
 <p>Hoặc sử dụng <strong>cpp</strong> (C Preprocessor)</p>
+
 <p>[code lang=shell]<br />
 $cpp HelloWorld.c &gt; HelloWorld.i<br />
 [/code]</p>
-<h3>2.2 Stage 2 : Biên dịch sang mã Assembly</h3>
+
+<h3 id="2-2-stage-2-biên-dịch-sang-mã-assembly">2.2 Stage 2 : Biên dịch sang mã Assembly</h3>
+
 <p>Ở Stage này, kết quả từ Stage 1 sẽ được biên dịch thành source code trong ngôn ngữ Assembly.<br />
 Để hiển thị đầu ra của Stage này, ta sử dụng command sau:</p>
+
 <p>[code lang=shell]<br />
 $gcc -S HelloWorld.c<br />
 [/code]</p>
+
 <p>Ta sẽ được file <strong>HelloWorld.s</strong> trong thư mục hiện tại.</p>
-<h3>2.3 Stage 3 : Biên dịch sang mã máy</h3>
+
+<h3 id="2-3-stage-3-biên-dịch-sang-mã-máy">2.3 Stage 3 : Biên dịch sang mã máy</h3>
+
 <p>Ở Stage này, GCC sẽ biên dịch kết của từ Stage 2 (Assembly Code) sang dạng mã máy.<br />
 Tức là GCC sẽ phải biết môi trường mà nó sẽ compile cho là gì. (Môi trường chạy hay Host)</p>
+
 <p>Để lấy kết quả đầu ra của Stage này, ta sử dụng command sau:</p>
+
 <p>[code lang=shell]<br />
 $gcc -c HelloWorld.c<br />
 [/code]</p>
+
 <p>Ta sẽ được file <strong>HelloWorld.o</strong> nằm ở thư mục hiện tại.</p>
-<h3>2.4 Stage 4 : Link để tạo file chạy được</h3>
+
+<h3 id="2-4-stage-4-link-để-tạo-file-chạy-được">2.4 Stage 4 : Link để tạo file chạy được</h3>
+
 <p>Ta đã có kết quả từ Stage là các file <strong>.o</strong>.<br />
 Từ mỗi file <strong>.c</strong> sẽ tạo ra 1 file <strong>.o</strong>.</p>
+
 <p>Đó chỉ là các file rời rạc, hay các file object hay module.</p>
+
 <p>Để có 1 chương trình chạy được, ta cần liên kết hay là <strong>Link</strong> các file object lại.</p>
+
 <p>Quá trình link về cơ bản, sẽ lấy nội dung (là hàm hoặc biến) rồi xếp lại theo một thứ tự để máy tính có thể hiểu và chạy được.</p>
+
 <p>Có 2 loại link : Link tĩnh (các file <strong>.o</strong> và <strong>.a</strong>), và Link động (các file <strong>.so</strong>).</p>
+
 <p>Đàu ra Link tĩnh là một file chứa toàn bộ mã máy kể cả các hàm thư viện chuẩn, chỉ cần load lên bộ nhớ là có thể chạy được. Vì thế kích thước thường rất lớn.</p>
+
 <p>Ta có thể sử dụng command sau:</p>
+
 <p>[code lang=shell]<br />
 $gcc -static -o HelloWorld HelloWorld.c<br />
 [/code]</p>
+
 <p>Đầu ra của Link động là một file không chứa toàn bộ mã của các thư viện phụ thuộc. Nó có thể yêu cầu kernel load khi thực sự được chạy hoặc được gọi. Vì thế, kích thước file thường nhỏ.</p>
+
 <p>GCC sẽ mặc định sử dụng Link động nên ta có thể sử dụng command sau:</p>
+
 <p>[code lang=shell]<br />
 $gcc -o HelloWorld HelloWorld.c<br />
 [/code]</p>

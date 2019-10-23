@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>thread on Lazytrick</title>
-    <link>https://minatu2d.github.io/categories/thread/</link>
+    <link>https://blog.lazytrick.com/categories/thread/</link>
     <description>Recent content in thread on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Wed, 06 Apr 2016 15:26:51 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/categories/thread/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/categories/thread/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Ví dụ minh họa sử dụng pthread</title>
-      <link>https://minatu2d.github.io/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</link>
+      <link>https://blog.lazytrick.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</link>
       <pubDate>Wed, 06 Apr 2016 15:26:51 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</guid>
-      <description>&lt;p&gt;Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.&lt;/p&gt;
-&lt;p&gt;Mục đích ban đầu nói đến ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2015/07/16/dung-pthread-theo-cac-da-nen-tang-den-muc-nao/&#34;&gt;Cơ bản về pthread&lt;/a&gt;, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</description>
+      <guid>https://blog.lazytrick.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</guid>
+      <description>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.
+Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</description>
     </item>
     
     <item>
       <title>Cơ bản về pthread</title>
-      <link>https://minatu2d.github.io/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</link>
+      <link>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</link>
       <pubDate>Thu, 16 Jul 2015 23:18:38 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
+      <guid>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
       <description>&lt;p&gt;Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.&lt;/p&gt;
 
 &lt;p&gt;Khi gặp những ứng dụng chạy đa nền tảng mình mới thấy quảng cáo chỉ miêu tả rất nhỏ thôi. Các dự án thực tế luôn có cực kì nhiều vấn đề. Nó không phải là hello world mà chỉ bằng vài click là đa nền tảng được. Ta biết rằng, những thư viện như Qt hỗ trợ rất nhiều. Nhưng thông thường các dự án chỉ dùng 1 phần thôi, còn lại họ tự viết hoặc sử dụng lại ở đâu đó. Vì vậy, nếu nói một dự án pure Qt thì đương nhiên dễ dàng chuyển đổi giữa các platform. Còn một dự án không phải là pure Qt thì rất nhiều vấn đề phát sinh.&lt;/p&gt;

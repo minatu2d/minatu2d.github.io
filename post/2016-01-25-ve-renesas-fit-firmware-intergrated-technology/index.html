@@ -62,14 +62,31 @@
 			<h1 class="post__title">Về Renesas FIT - Firmware Intergrated Technology</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
+			
+
+<p>Kinh nghiệm lập trình với Microcontroller chưa nhiều, chỉ mới 3 năm không liên tục. Nhưng cũng thấy phần nào được một ít gọi là cái hay của một công nghệ (thực ra cứ gọi là công nghệ thôi, chứ nhiều lúc công nghệ với kĩ thuật cũng khá gần nhau). Đó là FIT  viết tắt của Firmware Intergration Technology (FIT) của Renesas.</p>
+
+<p>Theo những gì Renesas cung cấp, công nghệ này được sử dụng trong các dòng Chip RX từ RX63M, RX64M&hellip;RX113).</p>
+
+<p>Trong bài sẽ đi giới thiệu khái quát về FIT.</p>
+
+<ol>
+<li>FIT là gì?</li>
+<li>Đặt trưng của FIT</li>
+<li>Môi trường phát triển cho FIT</li>
+<li>Các thành phần phần mềm sử dụng trong FIT</li>
+</ol>
+
 <hr />
-<p>&nbsp;</p>
-<h3>1. FIT là gì?</h3>
-<h3></h3>
-<p><span style="line-height:1.7;">FIT - Firmware Intergration Technology (đọc là FIT) là một khái niệm hoàn toàn mới để nhấn mạnh vào việc đơn giản hóa việc "ráp" (embedding) các driver thiết bị ngoại vi, mô đun chức năng của phần mềm, vì thế, nó nâng cao khả năng chuyển đổi môi trường chạy "portability" giữa các dòng Microcontroller RX, nhằm mục đích giảm nhẹ quá trình phá</span><span style="line-height:1.7;">t triển ứng dụng</span><span style="line-height:1.7;">, quản lý các tài nguyên phần mềm khi sử dụng dòng RX trong phát triển ứng dụng.</span></p>
-<h3>2. Đặt trưng của FIT</h3>
+
+<h3 id="1-fit-là-gì">1. FIT là gì?</h3>
+
+<p>FIT - Firmware Intergration Technology (đọc là FIT) là một khái niệm hoàn toàn mới để nhấn mạnh vào việc đơn giản hóa việc &ldquo;ráp&rdquo; (embedding) các driver thiết bị ngoại vi, mô đun chức năng của phần mềm, vì thế, nó nâng cao khả năng chuyển đổi môi trường chạy &ldquo;portability&rdquo; giữa các dòng Microcontroller RX, nhằm mục đích giảm nhẹ quá trình phát triển ứng dụng, quản lý các tài nguyên phần mềm khi sử dụng dòng RX trong phát triển ứng dụng.</p>
+
+<h3 id="2-đặt-trưng-của-fit">2. Đặt trưng của FIT</h3>
+
 <p>FIT sẽ định nghĩa một cách rò ràng như dưới đây cho mỗi source code ví dụ ( cả middleware và drivers) liên quan đến thiết bị thuộc dòng RX:</p>
+
 <ul>
 <li>Các thiết lập khởi tạo cho MCU</li>
 <li>Làm thế nào định nghĩa một mạch đích</li>
@@ -77,33 +94,46 @@
 <li>Tên của các hàm</li>
 <li>Giao diện với ứng dụng</li>
 </ul>
-<p><!--more-->Đây là những định nghĩa thiết yếu để phát triển ứng dụng trên bất cứ Microcontroller nào. Nếu theo cách thông thường, ta sẽ có rất nhiều source code khác nhau, và cần phải thay đổi sample khi "ráp" chúng với ứng dụng. Với FIT, vì đã định nghĩa những rule cho những thông tin này, nên mỗi source sample có thể được "ráp" với ứng dụng một cách dễ dàng. Theo cách đó, mỗi driver thiết bị ngoại vi, middeware support FIT sẽ có những giao diện đồng nhất với phía ứng dụng. Điều này sẽ rất có lợi khi porting giữa các RX Microcontroller.</p>
-<h3>3. Môi trường phát triển cho FIT</h3>
-<p>E2Studio là một IDE dựa trên mã nguồn mở Eclipse, có một giao diện thân thiện kiểu WYSIWYG giúp việc "ráp" các module FIT một cách dễ dàng. FIT modules cũng được hỗ trợ bở CS+, một IDE do Renesas tự phát triển.</p>
-<h3>4. Các thành phần phần mềm sử dụng trong FIT</h3>
+
+<p>Đây là những định nghĩa thiết yếu để phát triển ứng dụng trên bất cứ Microcontroller nào. Nếu theo cách thông thường, ta sẽ có rất nhiều source code khác nhau, và cần phải thay đổi sample khi &ldquo;ráp&rdquo; chúng với ứng dụng. Với FIT, vì đã định nghĩa những rule cho những thông tin này, nên mỗi source sample có thể được &ldquo;ráp&rdquo; với ứng dụng một cách dễ dàng. Theo cách đó, mỗi driver thiết bị ngoại vi, middeware support FIT sẽ có những giao diện đồng nhất với phía ứng dụng. Điều này sẽ rất có lợi khi porting giữa các RX Microcontroller.</p>
+
+<h3 id="3-môi-trường-phát-triển-cho-fit">3. Môi trường phát triển cho FIT</h3>
+
+<p>E2Studio là một IDE dựa trên mã nguồn mở Eclipse, có một giao diện thân thiện kiểu WYSIWYG giúp việc &ldquo;ráp&rdquo; các module FIT một cách dễ dàng. FIT modules cũng được hỗ trợ bở CS+, một IDE do Renesas tự phát triển.</p>
+
+<h3 id="4-các-thành-phần-phần-mềm-sử-dụng-trong-fit">4. Các thành phần phần mềm sử dụng trong FIT</h3>
+
 <p>FIT bao gồm 1 gói hỗ trợ Board chạy MCU (Board Support Package - BSP), các module chức năng và driver thiết bị ngoại vi, module middleware và module dành cho giao diện với ứng dụng.</p>
+
 <ul>
 <li>BSP : thực hiện việc thiết lập các thông số khởi tạo cho MCU, thiết lập Clock, thiết lập Board.</li>
 <li>Các module chức năng và driver cho thiết bị ngoại vi: là những driver, cái điều khiển các chức năng dành cho thiết bị ngoại vi của RX Microcontroller.</li>
 <li>Middleware Modules: Là những phần mềm phổ biến nằm giữa driver và ứng dụng, ví dụ như TCP/IP Stack và FileSystem.</li>
 <li>Module giao diện với ứng dụng: là giao diện (API) mà ứng dụng sẽ gọi để thực hiện các chức năng mong muốn, ví dụ như giao diện theo chuẩn POSIX API chẳng hạn.</li>
 </ul>
-<p><img class="alignnone size-full wp-image-366" src="{{ site.baseurl }}/assets/fit1.jpg" alt="fit1" width="620" height="380" /></p>
-<p>&nbsp;</p>
+
+<p><img src="{{ site.baseurl }}/assets/fit1.jpg" alt="fit1" /></p>
+
 <p>Dưới đây là một so sánh giữa FIT và non-FIT:</p>
-<p><img class="alignnone size-full wp-image-367" src="{{ site.baseurl }}/assets/fit01.jpg" alt="fit01" width="620" height="207" /></p>
-<h3>5. Việc phát triển</h3>
+
+<p><img src="{{ site.baseurl }}/assets/fit01.jpg" alt="fit01" /></p>
+
+<h3 id="5-việc-phát-triển">5. Việc phát triển</h3>
+
 <p>Khi sử dụng các dòng chíp hỗ trợ FIT, developer có thể tải rất nhiều source code cho mỗi thiết bị trên trang chủ của Renesas.</p>
+
 <p>Source code này được chia ra làm các module, gọi là các FIT Module.</p>
+
 <p>Mỗi module thường bao gồm 3 phần:</p>
+
 <ul>
-<li>Tài liệu mô tả (ví dụ SPI, I2C...). Trong tài liệu mô tả sẽ có hướng dẫn chi tiết làm thế nào để add module đó vào Project chưa source code của ứng dụng (Cho IDE E2Studio và CS+), các API cung cấp cho ứng dụng, các options để compile thành công. Mọi thứ đều được giải thích chi tiết</li>
+<li>Tài liệu mô tả (ví dụ SPI, I2C&hellip;). Trong tài liệu mô tả sẽ có hướng dẫn chi tiết làm thế nào để add module đó vào Project chưa source code của ứng dụng (Cho IDE E2Studio và CS+), các API cung cấp cho ứng dụng, các options để compile thành công. Mọi thứ đều được giải thích chi tiết</li>
 <li>Một thư mục source code, sẽ có 2 thư mục. Thư mục thứ nhất chứa source về các xử lý chính của chức năng đó. Thư mục thứ 2 là file config. File này được sử dụng đẻ cấu hình module tương ứng.</li>
 </ul>
-<p>&nbsp;</p>
+
 <p><em>*Tương quan :</em> Công nghệ FIT này có tư tưởng khá giống với mô hình sử dụng trong OpenEmbedded. Khác là OpenEmbedded giúp lắp ráp các thành phần phần mềm để tạo ra một bản build như mong muốn. còn FIT tạo ra một Firmware. FIT định nghĩa clear từ đâu, còn BitBake thì sinh ra cho việc tương thích những thứ có sẵn.</p>
+
 <p>Hmm, thực ra cũng khá giống nhau đấy chứ nhỉ.</p>
-<p>&nbsp;</p>
 
 		</div>
 		<footer class="post__footer">

@@ -70,12 +70,8 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>PER</strong> là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng <strong>TLV</strong> như <strong>BER</strong>, <strong>PER</strong> sử dụng <em>Preamble</em> (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là <strong>PLV</strong>.</p>
-<p>Đơn vị biểu diễn của <strong>PER</strong> không phải Octet mà là Bit. Mỗi phần tử sẽ thuộc 1 trong 3 loại sau:<br />
-1. Trường dư bit, tức là dãy bit không thể biểu diễn bằng một số nguyên các Octet.<br />
-2. Trường nguyên bit, có thể biểu diễn bằng một số nguyên các Octet.<br />
-3. Danh sách trường, chứa cả các thành phần là nguyên bit và dư bit.</p>
-<p>
+		PER là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng TLV như BER, PER sử dụng Preamble (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là PLV.
+Đơn vị biểu diễn của PER không phải Octet mà là Bit.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -87,10 +83,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.</p>
-<p>Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào <strong>BER</strong>, và tạo ra <strong>CER</strong> và <strong>DER</strong>.</p>
-<p>Sự khác nhau chủ yếu giữa <strong>CER</strong> và <strong>DER</strong> là về biểu diễn trường độ dài. <strong>Length(L)</strong>. Trong khi <strong>DER</strong> sử dụng một định dạng với độ dài cố định, thì <strong>CER</strong> sử dụng định dạng với độ dài không có định,<br />
-
+		Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.
+Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào BER, và tạo ra CER và DER.
+Sự khác nhau chủ yếu giữa CER và DER là về biểu diễn trường độ dài.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -102,15 +97,13 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp tục về <a href="https://lazytrick.wordpress.com/tag/asn1/">ASN.1</a>.</p>
-<p>Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)</p>
-<p>Ta sẽ tiếp tục nói về hiện thực dữ liệu.<br />
-Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</strong>, <strong>CER/DER</strong>, và <strong>PER</strong>.</p>
-<p>Trong đó:<br />
-<strong>BER</strong> : Basic Encoding Rules<br />
-<strong>CER/DER</strong> : Canonical Encoding Rules/Distinguished Encoding Rules<br />
-<strong>PER</strong> : Packet Encoding Rules</p>
-<p>
+		Tiếp tục về ASN.1.
+Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)
+Ta sẽ tiếp tục nói về hiện thực dữ liệu.
+Các phương thức để hiện thực dữ liệu gồm có: BER, CER/DER, và PER.
+Trong đó:
+BER : Basic Encoding Rules
+CER/DER : Canonical Encoding Rules/Distinguished Encoding Rules
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -122,21 +115,9 @@ Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</str
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp theo loạt bài về ASN.1, bài này sẽ "dịch" tài liệu của anh <a href="http://www5d.biglobe.ne.jp/~stssk/mail.html">Isida So</a> nói về cú pháp cơ bản của ASN.1.</p>
-<p>Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.</p>
-<p>ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.</p>
-<p>Ví dụ, khi muốn biểu diễn số điện thoại (<strong>TelephoneNumber</strong>), trong trường đã có kiểu dành cho chuỗi kí tự số (<strong>NumericString</strong>) thì ta chỉ việc viết như sau:</p>
-<p>[code lang=cpp]<br />
-TelephoneNumber ::= NumericString<br />
-[/code]</p>
-<ol>
-<li>Các kiểu cơ bản</li>
-<li>Kiểu cấu trúc</li>
-<li>Thẻ (Tag)</li>
-<li>Kiểu bộ phận</li>
-<li>Quy ước mở rộng (Kí hiệu mở rộng)</li>
-</ol>
-<p>
+		Tiếp theo loạt bài về ASN.1, bài này sẽ &ldquo;dịch&rdquo; tài liệu của anh Isida So nói về cú pháp cơ bản của ASN.1.
+Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.
+ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -148,17 +129,10 @@ TelephoneNumber ::= NumericString<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.</p>
-<p>Google tiếng Việt thấy khá ít thông tin về ASN.1.<br />
-Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.</p>
-<p>Nội dung bài này sẽ giới thiệu sơ qua về ASN.1.<br />
-Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http://www5d.biglobe.ne.jp/~stssk/asn1/index.html">Ishida So</a></p>
-<ol>
-<li>ASN.1 là gì?</li>
-<li>Một số ứng dụng</li>
-<li>Làm sao để sử dụng ASN.1</li>
-</ol>
-<p>
+		Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.
+Google tiếng Việt thấy khá ít thông tin về ASN.1.
+Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.
+Nội dung bài này sẽ giới thiệu sơ qua về ASN.
 	</div>
 </article>
 </main>
@@ -172,7 +146,7 @@ Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http:/
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

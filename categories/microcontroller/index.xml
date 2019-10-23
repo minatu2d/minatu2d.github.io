@@ -2,31 +2,23 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Microcontroller on Lazytrick</title>
-    <link>https://minatu2d.github.io/categories/microcontroller/</link>
+    <link>https://blog.lazytrick.com/categories/microcontroller/</link>
     <description>Recent content in Microcontroller on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Mon, 25 Jan 2016 14:31:47 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/categories/microcontroller/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/categories/microcontroller/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Về Renesas FIT - Firmware Intergrated Technology</title>
-      <link>https://minatu2d.github.io/post/2016-01-25-ve-renesas-fit-firmware-intergrated-technology/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-25-ve-renesas-fit-firmware-intergrated-technology/</link>
       <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-25-ve-renesas-fit-firmware-intergrated-technology/</guid>
-      <description>&lt;p&gt;Kinh nghiệm lập trình với Microcontroller chưa nhiều, chỉ mới 3 năm không liên tục. Nhưng cũng thấy phần nào được một ít gọi là cái hay của một công nghệ (thực ra cứ gọi là công nghệ thôi, chứ nhiều lúc công nghệ với kĩ thuật cũng khá gần nhau). Đó là FIT  viết tắt của Firmware Intergration Technology (FIT) của Renesas.&lt;/p&gt;
-&lt;p&gt;Theo những gì Renesas cung cấp, công nghệ này được sử dụng trong các dòng Chip RX từ RX63M, RX64M...RX113).&lt;/p&gt;
-&lt;p&gt;Trong bài sẽ đi giới thiệu khái quát về FIT.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;FIT là gì?&lt;/li&gt;
-&lt;li&gt;Đặt trưng của FIT&lt;/li&gt;
-&lt;li&gt;Môi trường phát triển cho FIT&lt;/li&gt;
-&lt;li&gt;Các thành phần phần mềm sử dụng trong FIT&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-01-25-ve-renesas-fit-firmware-intergrated-technology/</guid>
+      <description>Kinh nghiệm lập trình với Microcontroller chưa nhiều, chỉ mới 3 năm không liên tục. Nhưng cũng thấy phần nào được một ít gọi là cái hay của một công nghệ (thực ra cứ gọi là công nghệ thôi, chứ nhiều lúc công nghệ với kĩ thuật cũng khá gần nhau). Đó là FIT viết tắt của Firmware Intergration Technology (FIT) của Renesas.
+Theo những gì Renesas cung cấp, công nghệ này được sử dụng trong các dòng Chip RX từ RX63M, RX64M&amp;hellip;RX113).</description>
     </item>
     
   </channel>

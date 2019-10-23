@@ -62,67 +62,110 @@
 			<h1 class="post__title">ASN.1 là gì? Tại sao nó quan trọng.</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h3>1. ASN.1 là gì?</h3>
+			
+
+<p>Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.</p>
+
+<p>Google tiếng Việt thấy khá ít thông tin về ASN.1.<br />
+Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.</p>
+
+<p>Nội dung bài này sẽ giới thiệu sơ qua về ASN.1.<br />
+Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http://www5d.biglobe.ne.jp/~stssk/asn1/index.html">Ishida So</a></p>
+
+<ol>
+<li>ASN.1 là gì?</li>
+<li>Một số ứng dụng</li>
+<li>Làm sao để sử dụng ASN.1</li>
+</ol>
+
+<h3 id="1-asn-1-là-gì">1. ASN.1 là gì?</h3>
+
 <p>Tìm kiếm trên google sẽ thấy <a href="http://laptrinh.vn/d/3211-gioi-thieu-ve-asn1.html">bài viết</a> từ 2013 của tác giả <a href="http://laptrinh.vn/m/2-mrdatnh.html">Mr.datnh</a> trên diền đàn <a href="http://laptrinh.vn">http://laptrinh.vn</a>.<br />
-Nội dung có vẻ được dịch từ <a href="https://en.wikipedia.org/wiki/Abstract_Syntax_Notation_One">wikipedia</a> nhưng có vẻ hơi lủng củng, mình sẽ dịch lại để nó "lủng củng" hơn nữa.</p>
+Nội dung có vẻ được dịch từ <a href="https://en.wikipedia.org/wiki/Abstract_Syntax_Notation_One">wikipedia</a> nhưng có vẻ hơi lủng củng, mình sẽ dịch lại để nó &ldquo;lủng củng&rdquo; hơn nữa.</p>
+
 <p>Trên wikipedia viết:</p>
-<blockquote><p>
-  Abstract Syntax Notation One (ASN.1) is a standard and notation that describes rules and structures for representing, encoding, transmitting, and decoding data in telecommunications and computer networking. The formal rules enable representation of objects that are independent of machine-specific encoding techniques. Formal notation makes it possible to automate the task of validating whether a specific instance of data representation abides by the specifications. In other words, software tools can be used for the validation.[1]</p>
-<p>  ASN.1 is a joint standard of the International Organization for Standardization (ISO), International Electrotechnical Commission (IEC), and International Telecommunication Union Telecommunication Standardization Sector ITU-T, originally defined in 1984 as part of CCITT X.409:1984. ASN.1 moved to its own standard, X.208, in 1988 due to wide applicability. The substantially revised 1995 version is covered by the X.680 series. The latest revision of the X.680 series of recommendations is the 5.0 Edition, published in 2015.
-</p></blockquote>
+
+<blockquote>
+<p>Abstract Syntax Notation One (ASN.1) is a standard and notation that describes rules and structures for representing, encoding, transmitting, and decoding data in telecommunications and computer networking. The formal rules enable representation of objects that are independent of machine-specific encoding techniques. Formal notation makes it possible to automate the task of validating whether a specific instance of data representation abides by the specifications. In other words, software tools can be used for the validation.[1]</p>
+
+<p>ASN.1 is a joint standard of the International Organization for Standardization (ISO), International Electrotechnical Commission (IEC), and International Telecommunication Union Telecommunication Standardization Sector ITU-T, originally defined in 1984 as part of CCITT X.409:1984. ASN.1 moved to its own standard, X.208, in 1988 due to wide applicability. The substantially revised 1995 version is covered by the X.680 series. The latest revision of the X.680 series of recommendations is the 5.0 Edition, published in 2015.</p>
+</blockquote>
+
 <p>Mình sẽ dịch lại như sau:</p>
-<blockquote><p>
-  Kí pháp trừu tượng một (Abstract Syntax Notation One) (viết tắt là ASN.1) là một bộ các tiêu chuẩn và kí hiệu miêu tả các quy tắc và cấu trúc cho biểu diễn, mã hóa (encoding), truyền đi và giải mã dữ liệu, thường được sử dụng trong viễn thông, và mạng thiết tị tính toán (computer networking). Các quy tắc chính thức này cho phép biểu diễn một đối tượng bất kì mà không phụ thuộc vào máy hoặc kĩ thuật mã hóa cụ thể nào. Kí pháp này cũng cho phép thực hiện một cách tuần tự để biết được một đoạn dữ liệu nào đó có tuân theo quy tắc cụ thể không. Hay nói cách khác, người ta có thể dùng phần mềm để thực hiện việc kiểm tra này.</p>
-<p>  ASN.1 một chuẩn được thống nhất giữa ISO, IEC, và ITU-T. Ban đầu được mô tả là một phần của chuẩn CCITT X.409:1984 năm 1984. ASN.1 được chuyển thành một chuẩn riêng, tên là X.208 vào năm 1998 cho phép sử dụng rộng rãi. Đến năm 1995, chuẩn này nằm trong X.680. Và phiên bản mới nhất là 5.0 của X.680 được đưa ra năm 2015.
-</p></blockquote>
+
+<blockquote>
+<p>Kí pháp trừu tượng một (Abstract Syntax Notation One) (viết tắt là ASN.1) là một bộ các tiêu chuẩn và kí hiệu miêu tả các quy tắc và cấu trúc cho biểu diễn, mã hóa (encoding), truyền đi và giải mã dữ liệu, thường được sử dụng trong viễn thông, và mạng thiết tị tính toán (computer networking). Các quy tắc chính thức này cho phép biểu diễn một đối tượng bất kì mà không phụ thuộc vào máy hoặc kĩ thuật mã hóa cụ thể nào. Kí pháp này cũng cho phép thực hiện một cách tuần tự để biết được một đoạn dữ liệu nào đó có tuân theo quy tắc cụ thể không. Hay nói cách khác, người ta có thể dùng phần mềm để thực hiện việc kiểm tra này.</p>
+
+<p>ASN.1 một chuẩn được thống nhất giữa ISO, IEC, và ITU-T. Ban đầu được mô tả là một phần của chuẩn CCITT X.409:1984 năm 1984. ASN.1 được chuyển thành một chuẩn riêng, tên là X.208 vào năm 1998 cho phép sử dụng rộng rãi. Đến năm 1995, chuẩn này nằm trong X.680. Và phiên bản mới nhất là 5.0 của X.680 được đưa ra năm 2015.</p>
+</blockquote>
+
 <p>Từ giờ ta sẽ gọi là <strong>kí pháp ASN.1</strong>.</p>
+
 <p>Một ví dụ đơn giản của kí pháp ASN.1:</p>
+
 <p>[code lang=cpp]<br />
-TestModule DEFINITIONS ::= BEGIN     -- Định nghĩa một module<br />
-    HinhChuNhat ::= SEQUENCE {     -- Tên của kiểu mô tả đối tượng Hình chữ nhật<br />
-        chieuRong INTEGER, -- Chiều rộng<br />
-        chieuDai INTEGER,  -- Chiều dài<br />
-    }                              -- Kết thúc HinhChuNhat<br />
-END                                -- Kết thúc TestModule<br />
+TestModule DEFINITIONS ::= BEGIN &ndash; Định nghĩa một module<br />
+HinhChuNhat ::= SEQUENCE { &ndash; Tên của kiểu mô tả đối tượng Hình chữ nhật<br />
+chieuRong INTEGER, &ndash; Chiều rộng<br />
+chieuDai INTEGER, &ndash; Chiều dài<br />
+} &ndash; Kết thúc HinhChuNhat<br />
+END &ndash; Kết thúc TestModule<br />
 [/code]</p>
+
 <p>Ta thấy nó trông giống định nghĩa một cấu trúc trong ngôn ngữ C thôi. Nhưng thực sự không hoàn toàn giống.<br />
 Ví dụ trên không cho biết một đối tượng <strong>HinhChuNhat</strong> được miêu tả như thế nào trên bộ nhớ.</p>
+
 <p><strong>Ví dụ</strong>: đối tượng <em>hinhA</em> có kiểu là <strong>HinhChuNhat</strong> với <em>chieuRong</em> = 20, <em>chieuDai</em> = 30 ta cũng chưa thể biết được đối tượng <em>hinhA</em> đó được biểu diễn trên bộ nhớ ra sao, <em>chieuRong</em>, <em>chieuDai</em> sẽ được biểu diễn bằng mấy byte khi cả đối tượng <em>hinhA</em> được biểu diễn.</p>
+
 <p>Còn trong ngôn ngữ C chẳng hạn, khi ta định nghĩa một cấu trúc. Ngay từ lúc biên dịch, ta đã biết được mỗi biến kiểu cấu trúc đó, mỗi trường được biểu diễn như thế nào trên bộ nhớ rồi. Tham khảo thêm ở bài về <a href="https://lazytrick.wordpress.com/2016/10/26/data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/">Data Structure Aligment</a></p>
-<h3>2. Một số ứng dụng của ASN.1</h3>
+
+<h3 id="2-một-số-ứng-dụng-của-asn-1">2. Một số ứng dụng của ASN.1</h3>
+
 <p>Là ngôn ngữ để định nghĩa các giao thức truyền thông.<br />
 Nó được sử dụng ở rất nhiều nơi như: Chữ kí số, LDAP, Kerberos.<br />
 Có thể coi ASN.1 có vai trò giống như XML (và các công nghệ tương tự) nhưng nó có trước và được ứng dụng từ khá lâu rồi.<br />
 Như đã nói ở phần trên, ASN.1 tách phần định nghĩa với phần định dạng dữ liệu thực tế ra.<br />
 Loại định dang thông thường nhất là <strong>BER</strong>, bổ sung thêm một số giới hạn vào sẽ có <strong>CER</strong> và <strong>DER</strong>, loại nhỏ nhất, compact nhất là <strong>PER</strong>.</p>
-<h3>3. Làm sao để sử dụng ASN.1</h3>
+
+<h3 id="3-làm-sao-để-sử-dụng-asn-1">3. Làm sao để sử dụng ASN.1</h3>
+
 <p>[code lang=cpp]<br />
-      ASN.1 definitions<br />
-            +<br />
-            |<br />
-            |<br />
-+-----------v-----------+<br />
-|                       |<br />
-|   ASN.1 Compiler      |<br />
-|                       |<br />
-+-----------+-----------+<br />
-            |<br />
-            v<br />
-      Encoder/Decoder<br />
+ASN.1 definitions<br />
++<br />
+|<br />
+|<br />
++&mdash;&mdash;&mdash;&ndash;v&mdash;&mdash;&mdash;&ndash;+<br />
+| |<br />
+| ASN.1 Compiler |<br />
+| |<br />
++&mdash;&mdash;&mdash;&ndash;+&mdash;&mdash;&mdash;&ndash;+<br />
+|<br />
+v<br />
+Encoder/Decoder<br />
 [/code]</p>
+
 <p>Như ta đã nó ở trên ASN.1 chia làm 2: phần định nghĩa và phần đinh dạng dữ liệu thực tế.</p>
+
 <p>Để có thể sử dụng ASN.1 trong ứng dụng,</p>
-<h4>a. ASN.1 definitions</h4>
+
+<h4 id="a-asn-1-definitions">a. ASN.1 definitions</h4>
+
 <p>Chứa định nghĩa của toàn bộ các đối tượng sẽ sử dụng ASN.1 trong ứng dụng.</p>
-<h4>b. Encoder/Decoder</h4>
+
+<h4 id="b-encoder-decoder">b. Encoder/Decoder</h4>
+
 <p>Đây là source code hoặc binary (ở dạng thư viện.a hoặc .so kèm them các file header) chứa các hàm Encode/Decode dữ liệu.<br />
 Thông thường các kiểu đã được định nghĩa sẽ xuất hiện một structure tương ứng trong các file header kèm theo.</p>
+
 <p>Encode: lấy input là một biến cấu trúc (Structure của ngôn ngữ C chẳng hạn), sinh ra output là một mảng byte.</p>
+
 <p>Decode: lấy đầu vào là một mảng byte, sinh ra output là một biến cấu trúc, cái đã dùng để Encode ở bước trên.</p>
+
 <p>Bên gửi dữ liệu sẽ Encode và quẳng vào đường truyền.<br />
 Bên nhận dữ liệu sẽ Decode dứ liệu nhận được thành cấu trúc có thể sử dụng ở phía ứng dụng lớp trên.</p>
-<h4>c. ASN.1 Compiler</h4>
+
+<h4 id="c-asn-1-compiler">c. ASN.1 Compiler</h4>
+
 <p>Là phần mềm sẽ đọc file định nghĩa ASN.1 (file text) rồi sinh ra bộ Encoder/Decoder (các hàm sử dụng để Encoding/Decoding) cho tất cả các kiểu được định trong file đầu vào.<br />
 Compiler có khá ít sản phẩm opensource, các sản phẩm closed-source bán với gía rất là đắt.<br />
 Ta sẽ làm quen thực tế với open-source ASN.1 Compiler trong 1 bài tiếp của Serial này.</p>

@@ -62,15 +62,24 @@
 			<h1 class="post__title">Về /dev trong Embedded Linux</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h2>6.2 /dev management</h2>
+			
+
+<p>Đây là nội dung <strong>pick up</strong> từ <a href="https://buildroot.org/downloads/manual/manual.html">manual</a> của Buildroot.</p>
+
+<p>Nó mô tả khá rõ về <strong>/dev</strong> trong hệ thống Linux, cùng<br />
+với các giải pháp dành cho hệ thống Embedded Linux.</p>
+
+<h2 id="6-2-dev-management">6.2 /dev management</h2>
+
 <p>Trên 1 hệ thống Linux, thư mục <em>/dev</em> chứa các file đặc biệt, được gọi là<br />
 <em>device files</em> (hay các file thiết bị), cho phép ứng dụng phía user truy cập<br />
 đến các thiết bị phần cứng mà Linux kernel quản lý. Nếu không có những file đặc<br />
 biệt này, ứng dụng phía user không thể sử dụng được các thiết bị phần cứng, thậm<br />
 chí chú có được Linux kernel nhận ra một cách đúng đắn đi chăng nữa.</p>
+
 <p>Dưới <em>System configuration</em> của Buildroot, có <em>/dev management</em>, có 4 giải pháp<br />
 khác nhau để hangle thư mục <em>/dev</em> này:</p>
+
 <ul>
 <li>Solution 1: <strong>Tĩnh sử dụng bảng thiết bị</strong><br />
 Đây là cách khá cũ để handle các file thiết bị trong Linux. Bằng cách này, các file<br />
@@ -84,9 +93,9 @@ File này sẽ được sử dụng khi Buildroot tạo ảnh hệ thống file 
 <em>output/target</em>. Tùy chọn <em>BR2_ROOTFS_STATIC_DEVICE_TABLE</em> cho phép thay đổi bảng<br />
 thiết bị mặc định mà Buildroot sẽ sử dụng. Bạn có thể tạo bảng thiết bị của riêng<br />
 cho dự án của mình.</li>
-<li>
-<p>Solution 2: <strong>Động chỉ sử dụng devtmpfs thôi</strong><br />
-<em>devtmpfs</em> là một hệ thống file "ảo" (chỉ nằm trên RAM) trong Linux kernel, được<br />
+
+<li><p>Solution 2: <strong>Động chỉ sử dụng devtmpfs thôi</strong><br />
+<em>devtmpfs</em> là một hệ thống file &ldquo;ảo&rdquo; (chỉ nằm trên RAM) trong Linux kernel, được<br />
 được vào ở phiên bản kernel 2.6.32 (nếu bạn sử dụng kernel cũ hơn, thì không thể<br />
 sử dụng option này). Khi được mount vào <em>/dev</em> hệ thống file ảo này sẽ tự động làm<br />
 cho các file thiết bị xuất hiện hoặc không xuất hiện tương ứng với thiết bị phần<br />
@@ -97,9 +106,9 @@ sử dụng <em>devtmpfs</em>, trong cấu hình kernel, các tham số sau ph�
 Linux kernel cho hệ thống của bạn thì nó sẽ đảm bảo chắc chắn 2 option trên được<br />
 bật. Còn khi bạn tự build Linux kernel bên ngoài Buildroot, bạn phải có trách nhiệm<br />
 bật 2 option đó (Nếu không làm thế, hệ thống sau khi build sẽ không khởi động được<br />
-đâu)</p>
-</li>
-<li>Solution 3: <strong>Động sử dụng devtmpfs + mdev</strong><br />
+đâu)</p></li>
+
+<li><p>Solution 3: <strong>Động sử dụng devtmpfs + mdev</strong><br />
 Cách này vẫn dựa trên hệ thống file ảo <em>devtmpfs</em> đã nói ở trên (vì thế để sử dụng<br />
 được thì phải bật 2 option: <em>CONFIG_DEVTMPFS</em> và <em>CONFIG_DEVTMPFS_MOUNT</em>) khi<br />
 cấu hình Linux kernel, và nó thêm một tiện ích phía userspace, đó là <em>mdev</em> phía<br />
@@ -113,19 +122,22 @@ load tự động kernel modules khi thiết bị xuất hiện trên hệ thố
 vai trò quan trọng nếu bạn có thiết bị yêu cầu firmware để hoạt động được, nó sẽ<br />
 chịu trách nhiệm đẩy nội dung chuyển nội dung firmware cho kernel. <em>mdev</em> là phiên<br />
 <em>nhẹ nhàng</em> của <em>udev</em>. Thông tin chi tiết về <em>mdev</em> và cú pháp file cấu hình có<br />
-thể xem tại <a href="http://git.busybox.net/busybox/tree/docs/mdev.txt">đây</a></li>
-<li>Solution 4: <strong>Động sử dụng devtmpfs + eudev</strong><br />
+thể xem tại <a href="http://git.busybox.net/busybox/tree/docs/mdev.txt">đây</a></p></li>
+
+<li><p>Solution 4: <strong>Động sử dụng devtmpfs + eudev</strong><br />
 Cách này cũng tiếp tục dựa trên hệ thống file ảo <em>devtmpfs</em> đã nói ở trên, nhưng<br />
 thêm một ứng dụng chạy daemon (ngầm) bên trên <em>devtmpfs</em>, đó là <em>eudev</em>. <em>eudev</em><br />
 là ứng dụng chạy ngầm nhận lời gọi từ kernel khi một thiết bị được thêm hoặc loại<br />
 bỏ khỏi hệ thống. Nó <em>nặng</em> hơn so với <em>mdev</em>, nhưng cung cấp tính mềm dẻo tốt hơn.<br />
 <em>eudev</em> là một phiên bản chạy độc lập của <em>udev</em> - chính là ứng dụng chạy ngầm phía<br />
 userspace được sử dụng trong hầu hết các bản phân phối Linux desktop. Hiện tại nó<br />
-cũng là 1 phần của <em>systemd</em> nữa.</li>
+cũng là 1 phần của <em>systemd</em> nữa.</p></li>
 </ul>
+
 <p>Các developer của Buildroot khuyến nghị sử dụng <strong>Solution 2</strong> (Động chỉ sử dụng<br />
 devtmpfs). Nếu bạn cần phía userspace được thông báo khi có sự kiện thêm/loại bỏ<br />
 thiết bị hoặc firmware khi cần, thì <strong>Solution 3</strong> là một lựa chọn tốt.</p>
+
 <p>Có 1 chú ý ở đây, nếu <em>systemd</em> được chọn làm <em>init system</em>, thì <em>/dev</em> sẽ được<br />
 thực hiện bởi <em>udev</em> cung cấp từ chính <em>systemd</em>.</p>
 

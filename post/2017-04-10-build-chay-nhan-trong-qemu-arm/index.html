@@ -62,35 +62,62 @@
 			<h1 class="post__title">Build, chạy nhân Linux trong QEMU ARM</h1>
 			
 		</header><div class="content post__content clearfix">
-			</li>
-<li>
-<p>Để chạy Linux trên các board sử dụng chip ARM, ta cần 2 điều kiện<br />
+			
+
+<p>Chạy một bản Linux tối giản trên Qemu ARM</p>
+
+<p>Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa<br />
+các thành phần của một hệ thống Linux thông qua<br />
+việc build, chạy Kernel trên board <strong>vexpress-a9</strong> mô phỏng bằng Qemu.</p>
+
+<p>Đó là Kernel, Root file system, Busybox, Init.</p>
+
+<hr />
+
+<h2 id="1-chém-chút-về-quá-trình-khởi-động-của-linux">1. &ldquo;Chém&rdquo; chút về quá trình khởi động của Linux</h2>
+
+<ul>
+<li><p>Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.<br />
+Giai đoạn đầu là load kernel lên RAM và chạy<br />
+Giai đoạn thứ hai là kernle sẽ tự động mount hệ thống file<br />
+rồi các ứng dụng trên hệ thống file được mount.<br />
+Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải có 2 giai đoạn ở trên.</p></li>
+
+<li><p>Để chạy Linux trên các board sử dụng chip ARM, ta cần 2 điều kiện<br />
 Thứ nhất, kernel hỗ trợ board.<br />
 Thứ hai, ta phải có hoặc tạo file device tree chứa thông tin<br />
-các device mà kernel có thể truy cập được khi kernel chạy</p>
-</li>
+các device mà kernel có thể truy cập được khi kernel chạy</p></li>
 </ul>
-<h2>2. Chuẩn bị môi trường</h2>
+
+<h2 id="2-chuẩn-bị-môi-trường">2. Chuẩn bị môi trường</h2>
+
 <p>Ubuntu 16.04 LTS hoặc các môi trường Linux tương tự và tương đối mới<br />
 Giả sử ta sẽ thao tác một thư mục tên có tên <strong>qemu_arm_test</strong> trong HOME</p>
-<h2>3. Tải về</h2>
+
+<h2 id="3-tải-về">3. Tải về</h2>
+
 <ul>
 <li>Linux kernel bản stable mới nhất<br />
 Vào trang <a href="http://www.kernel.org/">http://www.kernel.org/</a>, rồi tải bản stable mới nhất<br />
 Hoặc lấy link rồi sử dụng wget như sau:</li>
 </ul>
+
 <p>[code lang=bash]<br />
-$ wget https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.8.tar.xz<br />
+$ wget <a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.8.tar.xz">https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.8.tar.xz</a><br />
 [/code]</p>
+
 <ul>
 <li>Busybox bản stable mới nhất<br />
 Vào trang <a href="http://busybox.net">http://busybox.net</a>, rồi tải bản stable mới nhất<br />
 Hoặc lấy link rồi sử dụng wget như sau:</li>
 </ul>
+
 <p>[code lang=text]<br />
-$ wget http://busybox.net/downloads/busybox-1.26.2.tar.bz2<br />
+$ wget <a href="http://busybox.net/downloads/busybox-1.26.2.tar.bz2">http://busybox.net/downloads/busybox-1.26.2.tar.bz2</a><br />
 [/code]</p>
-<h2>4. Cài đặt</h2>
+
+<h2 id="4-cài-đặt">4. Cài đặt</h2>
+
 <ul>
 <li>Cài đặt cross-compiler chạy trên Linux, build code cho ARM<br />
 Có rất nhiều loại Toolchain dành cho ARM mà chúng ta có thể cài trên Linux.<br />
@@ -98,110 +125,149 @@ Danh sách có thể tham khảo tại <a href="http://elinux.org/Toolchains">đ
 Ở đây chúng ta sẽ sử dụng Linaro (ARM) vì cài đặt khá dễ dàng trên Ubuntu.<br />
 Câu lệnh như sau:</li>
 </ul>
+
 <p>[code lang=bash]<br />
 $sudo add-apt-repository ppa:linaro-maintainers/toolchain<br />
 $sudo apt-get install gcc-arm-linux-gnueabi<br />
 [/code]</p>
+
 <p>Sau khi cài đặt xong, ta có thể thấy các command sau:<br />
 <strong>arm-linux-gnueabi-gcc</strong>, <strong>arm-none-eabi-gcc</strong></p>
+
 <ul>
 <li>Cài đặt Qemu ARM để mô phỏng board <strong>vexpress-a9</strong><br />
 Qemu thì quá nổi tiếng rồi, một phần mềm máy ảo là nền tảng cho hầu hết các công<br />
 nghệ ảo phần cứng ngày nay.</li>
 </ul>
+
 <p>[code lang=bash]<br />
 $sudo apt-get install qemu qemu-system-arm<br />
 [/code]</p>
+
 <p>Để khởi động thử board <strong>vexpress-a9</strong></p>
+
 <p>[code lang=bash]<br />
 $qemu-system-arm -M vexpress-a9 -m 512<br />
 [/code]</p>
+
 <p>Nếu lên được một màn hình windows rồi tắt là ok, chứng tỏ các tham số là tạm ổn.<br />
 Chỉ là máy chưa biết chạy cái gì thôi.</p>
-<h2>5. Biên dịch</h2>
+
+<h2 id="5-biên-dịch">5. Biên dịch</h2>
+
 <p>Ta sẽ tiến hành build kernel rồi Busybox</p>
-<h3>5.1 Biên dịch Kernel từ MainStream</h3>
+
+<h3 id="5-1-biên-dịch-kernel-từ-mainstream">5.1 Biên dịch Kernel từ MainStream</h3>
+
 <ul>
 <li>Giải nén kernel</li>
 </ul>
+
 <p>[code lang=bash]<br />
 $unxz linux-4.10.8.tar.xz<br />
 $tar -xvf linux-4.10.8.tar<br />
 [/code]</p>
+
 <ul>
 <li>Cấu hình và build kernel bằng Toolchain ta đã cài ở trên</li>
 </ul>
+
 <p>[code lang=bash]<br />
 $cd linux-4.10.8<br />
 $make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- vexpress_defconfig<br />
 $make ARCH=arm CROSS_COMPILE=arm-linux-gnueabi- all<br />
 [/code]</p>
+
 <p>Khi khi quá trình build kết thúc, bạn sẽ thấy nhân được tạo trong<br />
 đường dẫn <em>linux-4.10.8/arch/arm/boot/zImage</em>.<br />
 Chốc nữa ta sẽ khởi động bằng <em>zImage</em> đó.</p>
-<h3>5.2 Biên dịch Busybox từ MainStream</h3>
+
+<h3 id="5-2-biên-dịch-busybox-từ-mainstream">5.2 Biên dịch Busybox từ MainStream</h3>
+
 <ul>
 <li>Giải nén</li>
 </ul>
+
 <p>[code lang=bash]<br />
 $bzip2 -d -k busybox-1.26.2.tar.bz2<br />
 [/code]</p>
+
 <ul>
 <li>Cấu hình và build Busybox bằng Toolchain đã cài ở trên<br />
 Sử dụng cấu hình mặc định</li>
 </ul>
+
 <p>[code lang=text]<br />
 $cd busybox-1.26.2<br />
 $make ARCH=arm CROSS_COMPLIE=arm-linux-gnueabi- defconfig<br />
 [/code]</p>
+
 <p>Chúng ta sẽ không sử dụng shared library (tức là không có run-tim loader-linker)<br />
 vì thế phải sửa cấu hình build của Busybox để chỉ hỗ trợ buildstatic thôi.</p>
+
 <p>[code lang=bash]<br />
 $make ARCH=arm CROSS_COMPLIE=arm-linux-gnueabi- menuconfig<br />
 [/code]</p>
+
 <p>Chú ý là, có thể phải cài thư viện <em>libcurses-dev</em> thì mới chạy được<br />
 giao diện cấu hình.</p>
+
 <p>Sau đó chỉnh sửa ở đường dẫn sau:<br />
 <em>Busybox Settings &gt; Build Options &gt; Build BusyBox as a static binary (no shared libs)</em></p>
+
 <p>Sau đó build Busybox bằng câu lệnh sau:</p>
+
 <p>[code lang=bash]<br />
 $make ARCH=arm CROSS_COMPLIE=arm-linux-gnueabi- install<br />
 [/code]</p>
+
 <p>Kết quả build sẽ nằm ở thư mục <em>_install</em>.<br />
 Nội dung thư mục này sẽ như sau:</p>
+
 <p>[code lang=bash]<br />
 _install$ ls<br />
 bin linuxrc sbin usr<br />
 [/code]</p>
-<h2>6. Tạo file system chứa Busybox</h2>
+
+<h2 id="6-tạo-file-system-chứa-busybox">6. Tạo file system chứa Busybox</h2>
+
 <p>Như đã nói ở trên, ta cần một file system để chứa ứng dụng phía user-space.<br />
 Ít nhất phải có <strong>init program</strong>, là chương trình đầu tiên mà kernel sẽ chạy.<br />
 Process của chương trình này luôn là 1, và cha của mọi tiến trình trong Linux.</p>
+
 <p>Vậy, một file system tối thiệu liệu cần những gì.<br />
 Thật may mắn, kết quả sau khi build Busybox đã cho ta gần như đủ 1 file system rồi.<br />
 Tuy nhiên, ta cần một vài file cấu hình cho <strong>init proram</strong> nữa.</p>
+
 <p>Được dẫn của <strong>init program</strong> trong file system có thể được chỉ định trong tham<br />
 số khởi động kernel.Nếu không được chỉ định thì nó sẽ tìm theo thức tự sau:<br />
 Theo source code từ <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/tree/init/main.c#n990">kernel/init/main.c:990</a></p>
+
 <p>[code lang=cpp]<br />
-if (!try_to_run_init_process(&quot;/sbin/init&quot;) ||<br />
-!try_to_run_init_process(&quot;/etc/init&quot;) ||<br />
-!try_to_run_init_process(&quot;/bin/init&quot;) ||<br />
-!try_to_run_init_process(&quot;/bin/sh&quot;))<br />
+if (!try_to_run_init_process(&ldquo;/sbin/init&rdquo;) ||<br />
+!try_to_run_init_process(&ldquo;/etc/init&rdquo;) ||<br />
+!try_to_run_init_process(&ldquo;/bin/init&rdquo;) ||<br />
+!try_to_run_init_process(&ldquo;/bin/sh&rdquo;))<br />
 [/code]</p>
+
 <p>Busybox là một tập các utility của Linux, nó cũng có một <strong>init program</strong> nằm ở <em>/sbin/init</em> luôn. Ta có thể xem trong nội dung thư mục *_install** ở trên.</p>
+
 <p>Trong bài này, ta sẽ tham khảo ví dụ tạo file system của Busybox cho đĩa mềm (floppy disk).<br />
 Cụ thể sẽ làm như sau:<br />
 Tại thư mục source của <em>Busybox</em>:</p>
+
 <p>[code lang=cpp]<br />
 $cd examples/bootfloopy<br />
 $ls<br />
 bootfloppy.txt etc mkrootfs.sh quickstart.txt<br />
 display.txt mkdevs.sh mksyslinux.sh syslinux.cfg<br />
 [/code]</p>
+
 <p>Ta sẽ sử dụng thư mục <em>etc</em> và thư mục <em>_install</em> (được tạo khi build Busybox)<br />
 để tạo file system.</p>
+
 <p>Đầu tiên, tạo thư mục chứa nội dung toàn bộ file system:</p>
+
 <p>[code lang=shell]<br />
 $mkdir rootfs_content<br />
 $cp -fR busybox-1.26.2/examples/etc rootfs_content<br />
@@ -209,12 +275,16 @@ $cp -fR busybox-1.26.2/_install/* rootfs_content<br />
 $ls rootfs_content<br />
 bin etc linuxrc sbin usr<br />
 [/code]</p>
+
 <p>Ta sẽ tạo thêm một vài thư mục phụ nữa:</p>
+
 <p>[code lang=shell]<br />
 $cd rootfs_content<br />
 $mkdir dev home mnt proc root sys tmp var<br />
 [/code]</p>
+
 <p>Cuối cùng ta có cấu trúc thư mục như sau:</p>
+
 <p>[code lang=text]<br />
 ├── bin<br />
 ├── dev<br />
@@ -230,61 +300,82 @@ $mkdir dev home mnt proc root sys tmp var<br />
 ├── usr<br />
 └── var<br />
 [/code]</p>
+
 <p>Ta cần sửa một chút file cấu hình của <strong>init program</strong>.<br />
 Nó nằm ở <em>/etc/inittab</em>, sửa nội dung thành như sau:</p>
+
 <p>[code lang=text]<br />
 ::sysinit:/etc/init.d/rcS<br />
 ::respawn:-/bin/sh<br />
 ::ctrlaltdel:/bin/umount -a -r<br />
 [/code]</p>
+
 <p>Giờ ta sẽ tạo file system từ thư mục <strong>rootfs_content</strong> ở trên.<br />
 Đầu tiên, tạo một file system ext3 trống:</p>
+
 <p>[code lang=shell]<br />
 $dd if=/dev/zero of=BusyBoxRootFS.ext3 bs=1M count=32<br />
 $mkfs.ext3 BusyBoxRootFS.ext3<br />
 [/code]</p>
+
 <p>Sau đó, mount file system vừa tạo trong file <em>BusyBoxRootFS.ext3</em><br />
 vào để tạo nội dung cho nó (nhớ phải có tham số -o nha):</p>
+
 <p>[code lang=text]<br />
 $sudo mount -t ext3 BusyBoxRootFS.ext3 tmpfs/ -o loop<br />
 $cp -fR rootfs_content/* tmpfs/<br />
 [/code]</p>
+
 <p>Cuối cùng là <em>umount</em> nó:</p>
+
 <p>[code lang=shell]<br />
 $umount tmpfs<br />
 [/code]</p>
+
 <p>Giờ file hệ thống chứa các ứng dụng user-space nằm trong file system bên trong file <em>BusyboxRootFS.ext3</em> rồi.</p>
-<h2>7. Chạy</h2>
+
+<h2 id="7-chạy">7. Chạy</h2>
+
 <p>Ta kiểm tra lại những thức đã làm trước khi chạy<br />
 <strong>qemu-system-arm</strong> : đã cài<br />
 <strong>kernel</strong> : đã build<br />
 <strong>file system</strong> : đã tạo</p>
+
 <p>Giờ ta sẽ chạy, câu lệnh như sau:</p>
+
 <p>[code lang=text]<br />
 $qemu-system-arm -M vexpress-a9 \<br />
 -dtb linux-4.10.8/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \<br />
 -kernel linux-4.10.8/arch/arm/boot/zImage \<br />
--append &quot;root=/dev/mmcblk0 console=ttyAMA0&quot; \<br />
+-append &ldquo;root=/dev/mmcblk0 console=ttyAMA0&rdquo; \<br />
 -sd BusyBoxRootFS.ext3 \<br />
 -serial stdio<br />
 [/code]</p>
+
 <p><img src="{{ site.baseurl }}/assets/qemu_arm.png" alt="QEMU" /></p>
+
 <p>Trên cửa sổ dòng lệnh sẽ hiện ra <em>terminal</em> của máy Qemu:</p>
+
 <p>Cùng với một màn hình có chim cánh cụt:</p>
+
 <p>Ta kiểm tra máy đang chạy bằng</p>
+
 <p>[code lang=text]<br />
 #uname -a<br />
 #cat /proc/cpuinfo<br />
 [/code]</p>
+
 <p>Sẽ thấy máy chạy là ARM, và phiên bản nhân là 4.10.8 (mới nhất)</p>
-<h2>8. Tham khảo</h2>
+
+<h2 id="8-tham-khảo">8. Tham khảo</h2>
+
 <ol>
-<li>Learning from you blog - https://learningfromyoublog.wordpress.com/</li>
-<li>Free Embedded - https://learningfromyoublog.wordpress.com/</li>
-<li>Busybox - https://www.busybox.net/</li>
-<li>BusyBox simplifies embedded Linux systems - https://www.ibm.com/developerworks/library/l-busybox/</li>
-<li>Linux stable - https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/</li>
-<li>QEMU System ARM - https://qemu.weilnetz.de/doc/qemu-doc.html#ARM-System-emulator</li>
+<li>Learning from you blog - <a href="https://learningfromyoublog.wordpress.com/">https://learningfromyoublog.wordpress.com/</a></li>
+<li>Free Embedded - <a href="https://learningfromyoublog.wordpress.com/">https://learningfromyoublog.wordpress.com/</a></li>
+<li>Busybox - <a href="https://www.busybox.net/">https://www.busybox.net/</a></li>
+<li>BusyBox simplifies embedded Linux systems - <a href="https://www.ibm.com/developerworks/library/l-busybox/">https://www.ibm.com/developerworks/library/l-busybox/</a></li>
+<li>Linux stable - <a href="https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/">https://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git/</a></li>
+<li>QEMU System ARM - <a href="https://qemu.weilnetz.de/doc/qemu-doc.html#ARM-System-emulator">https://qemu.weilnetz.de/doc/qemu-doc.html#ARM-System-emulator</a></li>
 </ol>
 
 		</div>

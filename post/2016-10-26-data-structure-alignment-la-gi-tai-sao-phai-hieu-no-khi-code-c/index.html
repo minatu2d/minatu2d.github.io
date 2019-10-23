@@ -62,215 +62,270 @@
 			<h1 class="post__title">&#34;Data structure alignment&#34; là gì? Tại sao phải hiểu nó khi code C.</h1>
 			
 		</header><div class="content post__content clearfix">
-			Giả sử ta có một cấu trúc sau:</p>
-<p>[code lang="C"]<br />
-#include &lt;stdint.h&gt;<br />
+			
+
+<p>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.<br />
+Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về <strong>Data Structure Aligment</strong>.</p>
+
+<p>Giả sử ta có một cấu trúc sau:</p>
+
+<p>[code lang=&ldquo;C&rdquo;]<br />
+#include <stdint.h><br />
 typedef struct<br />
 {<br />
-        uin8_t mem1;<br />
-        uin8_t mem2;<br />
-        uin32_t mem3;<br />
+uin8_t mem1;<br />
+uin8_t mem2;<br />
+uin32_t mem3;<br />
 }ST_FOOL_1;<br />
 typedef struct<br />
 {<br />
-        uin8_t mem1;<br />
-        uin8_t mem2;<br />
-        uin8_t mem3;<br />
-        uin8_t mem4;<br />
-        uin8_t mem5;<br />
+uin8_t mem1;<br />
+uin8_t mem2;<br />
+uin8_t mem3;<br />
+uin8_t mem4;<br />
+uin8_t mem5;<br />
 }ST_FOOL_2;<br />
 [/code]</p>
+
 <p>Cấu trúc <strong>ST_FOOL_1</strong> sẽ được miêu tả trong 6 byte?<br />
 Cấu trúc <strong>ST_FOOL_2</strong> sẽ được miêu tả trong 5 byte?<br />
-Tùy theo tham số trong quá trình "Data structure alignment", mà cấu trúc trên sẽ được chứa trong số bộ nhớ cần thiết khác nhau.</p>
-<h4>1. Về Sizeof</h4>
-<p>Khi có thay đổi về "data structure aligment" (ta tạm gọi là kích thước để nhóm), kết quả của <strong>sizeof()</strong> sẽ bị thay được phản ánh, và ngược lại từ kết quả của <strong>sizeof()</strong> ta sẽ đoán được trình biên dịch đã sử kích thước bao nhiêu.</p>
+Tùy theo tham số trong quá trình &ldquo;Data structure alignment&rdquo;, mà cấu trúc trên sẽ được chứa trong số bộ nhớ cần thiết khác nhau.</p>
+
+<h4 id="1-về-sizeof">1. Về Sizeof</h4>
+
+<p>Khi có thay đổi về &ldquo;data structure aligment&rdquo; (ta tạm gọi là kích thước để nhóm), kết quả của <strong>sizeof()</strong> sẽ bị thay được phản ánh, và ngược lại từ kết quả của <strong>sizeof()</strong> ta sẽ đoán được trình biên dịch đã sử kích thước bao nhiêu.</p>
+
 <p>Ta có ví dụ như sau:</p>
-<p>[code lang="C"]<br />
-#include&lt;stdio.h&gt;<br />
-#include&lt;stdint.h&gt;<br />
+
+<p>[code lang=&ldquo;C&rdquo;]<br />
+#include<stdio.h><br />
+#include<stdint.h><br />
 typedef struct<br />
 {<br />
-    uint8_t mem1;<br />
-    uint8_t mem2;<br />
-    uint32_t mem6;<br />
+uint8_t mem1;<br />
+uint8_t mem2;<br />
+uint32_t mem6;<br />
 }ST_FOOL_1;</p>
+
 <p>typedef struct<br />
 {<br />
-    uint8_t mem1;<br />
-    uint8_t mem2;<br />
-    uint8_t mem3;<br />
-    uint8_t mem4;<br />
-    uint8_t mem5;<br />
+uint8_t mem1;<br />
+uint8_t mem2;<br />
+uint8_t mem3;<br />
+uint8_t mem4;<br />
+uint8_t mem5;<br />
 }ST_FOOL_2;</p>
+
 <p>int main()<br />
 {<br />
-    printf(&quot;Sizeof(ST_FOOL_1) =%ld\n&quot;,sizeof(ST_FOOL_1));<br />
-    printf(&quot;Sizeof(ST_FOOL_2) =%ld\n&quot;,sizeof(ST_FOOL_2));</p>
-<p>    return 0;<br />
+printf(&ldquo;Sizeof(ST_FOOL_1) =%ld\n&rdquo;,sizeof(ST_FOOL_1));<br />
+printf(&ldquo;Sizeof(ST_FOOL_2) =%ld\n&rdquo;,sizeof(ST_FOOL_2));</p>
+
+<p>return 0;<br />
 }<br />
 [/code]</p>
+
 <p>Ta lưu vào file <strong>sizeof_result.c</strong>, sau đó biên dịch và chạy được kết quả sau:</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $gcc -o sizeof_result sizeof_result.c<br />
 $./sizeof_result<br />
 Sizeof(ST_FOOL_1) =8<br />
 Sizeof(ST_FOOL_2) =5<br />
 [/code]</p>
-<p>=&gt; <strong>Sizeof(ST_FOOL_1)</strong> = 8, vậy GCC đã sử dụng Block 4 byte để "aligment" cho cấu trúc rồi.<br />
+
+<p>\=&gt; <strong>Sizeof(ST_FOOL_1)</strong> = 8, vậy GCC đã sử dụng Block 4 byte để &ldquo;aligment&rdquo; cho cấu trúc rồi.<br />
 Vậy nếu Block 4 bytes, thì tại sao ST_FOOL_2 không nhảy lên 8 byte?<br />
 Câu trả lời là khi và chỉ khi trình biên dịch không thể chứa member tiếp theo, nó sẽ bỏ qua một vài byte trống để nhảy đến Block 4 byte tiếp theo.<br />
 Kích thước sẽ được tính đến bị trí mà member cuối cùng với tới.</p>
+
 <p>Giờ ta thay đổi Block 4 bytes thành các giá trị khác để xem sự thay đổi của <strong>sizeof()</strong> như thế nào.</p>
+
 <p>Ta sẽ sử dụng chỉ thị dịch <strong>pack</strong> (chi tiết ở <a href="https://gcc.gnu.org/onlinedocs/gcc-4.4.4/gcc/Structure_002dPacking-Pragmas.html">đây</a> :</p>
+
 <p>Cách sử dụng:</p>
-<p>[code lang="C"]<br />
-#include&lt;stdio.h&gt;<br />
-#include&lt;stdint.h&gt;</p>
+
+<p>[code lang=&ldquo;C&rdquo;]<br />
+#include<stdio.h><br />
+#include<stdint.h></p>
+
 <p>#pragma pack(1) // phải là lũy thừa của 2, tức là 1,2,4,8..<br />
 typedef struct<br />
 {<br />
-    uint8_t mem1;<br />
-    uint8_t mem2;<br />
-    uint32_t mem6;<br />
+uint8_t mem1;<br />
+uint8_t mem2;<br />
+uint32_t mem6;<br />
 }ST_FOOL_1;</p>
+
 <p>typedef struct<br />
 {<br />
-    uint8_t mem1;<br />
-    uint8_t mem2;<br />
-    uint8_t mem3;<br />
-    uint8_t mem4;<br />
-    uint8_t mem5;<br />
+uint8_t mem1;<br />
+uint8_t mem2;<br />
+uint8_t mem3;<br />
+uint8_t mem4;<br />
+uint8_t mem5;<br />
 }ST_FOOL_2;</p>
+
 <p>int main()<br />
 {<br />
-    printf(&quot;Sizeof(ST_FOOL_1) =%ld\n&quot;,sizeof(ST_FOOL_1));<br />
-    printf(&quot;Sizeof(ST_FOOL_2) =%ld\n&quot;,sizeof(ST_FOOL_2));</p>
-<p>    return 0;<br />
+printf(&ldquo;Sizeof(ST_FOOL_1) =%ld\n&rdquo;,sizeof(ST_FOOL_1));<br />
+printf(&ldquo;Sizeof(ST_FOOL_2) =%ld\n&rdquo;,sizeof(ST_FOOL_2));</p>
+
+<p>return 0;<br />
 }<br />
 [/code]</p>
+
 <p>Ta sẽ có kết quả như sau:<br />
 - <strong>pack(1)</strong>:</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $./sizeof_result<br />
 Sizeof(ST_FOOL_1) =6<br />
 Sizeof(ST_FOOL_2) =5<br />
 [/code]<br />
 - <strong>pack(2)</strong>:<br />
-[code lang="shell"]<br />
+[code lang=&ldquo;shell&rdquo;]<br />
 $./sizeof_result<br />
 Sizeof(ST_FOOL_1) =6<br />
 Sizeof(ST_FOOL_2) =5<br />
 [/code]<br />
 - <strong>pack(4)</strong>:<br />
-[code lang="shell"]<br />
+[code lang=&ldquo;shell&rdquo;]<br />
 $./sizeof_result<br />
 Sizeof(ST_FOOL_1) =8<br />
 Sizeof(ST_FOOL_2) =5<br />
 [/code]</p>
-<h4>2. Khi sử dụng Casting con trỏ</h4>
+
+<h4 id="2-khi-sử-dụng-casting-con-trỏ">2. Khi sử dụng Casting con trỏ</h4>
+
 <p>Sử dụng casting pointer giữa mảng và cấu trúc là một cách để convert (chuyển đổi) nội dung giữa 1 biến cấu trúc và mảng.</p>
+
 <p>Giả sử một ứng dụng truyền nhận sử dụng command chẳng hạn, bên gửi sẽ chuyển command sang mảng byte, rồi gửi đi. Phía nhận sẽ làm ngược lại.</p>
+
 <p>[code lang=C]<br />
 uint8_t arrData[100];</p>
+
 <p>ST_FOOL *pFool = (ST_FOOL*)&amp;arrData[0];</p>
+
 <p>[/code]</p>
+
 <p>Trở lại với ví dụ ở phía trên, giả sử ta có cấu trúc command giống như <strong>ST_FOOL_1</strong>, <strong>ST_FOOL_2</strong> đã định nghĩa ở trên.</p>
+
 <p>Với source như sau:</p>
+
 <p>[code lang=C]<br />
-#include&lt;stdio.h&gt;<br />
-#include&lt;stdint.h&gt;<br />
-#include&lt;string.h&gt;</p>
+#include<stdio.h><br />
+#include<stdint.h><br />
+#include<string.h></p>
+
 <p>typedef struct<br />
 {<br />
-    uint8_t mem1;<br />
-    uint8_t mem2;<br />
-    uint32_t mem6;<br />
+uint8_t mem1;<br />
+uint8_t mem2;<br />
+uint32_t mem6;<br />
 }ST_FOOL_1;</p>
+
 <p>typedef struct<br />
 {<br />
-    uint8_t mem1;<br />
-    uint8_t mem2;<br />
-    uint8_t mem3;<br />
-    uint8_t mem4;<br />
-    uint8_t mem5;<br />
+uint8_t mem1;<br />
+uint8_t mem2;<br />
+uint8_t mem3;<br />
+uint8_t mem4;<br />
+uint8_t mem5;<br />
 }ST_FOOL_2;</p>
+
 <p>int main()<br />
 {<br />
-    int i = 0;</p>
-<p>    printf(&quot;====Structure --&gt; Array====\n&quot;);<br />
-    uint8_t outputArr[16];</p>
-<p>    memset(outputArr, 0x00, sizeof(outputArr));<br />
-    ST_FOOL_1 *pFool_1 = (ST_FOOL_1*)&amp;outputArr[0];<br />
-    pFool_1-&gt;mem1 = 0x12;<br />
-    pFool_1-&gt;mem2 = 0x34;<br />
-    pFool_1-&gt;mem6 = 0x56789AB;</p>
-<p>    printf(&quot;pFool_1 :\n&quot;);<br />
-    printf(&quot;.mem1 = 0x%02X\n&quot;,pFool_1-&gt;mem1);<br />
-    printf(&quot;.mem2 = 0x%02X\n&quot;,pFool_1-&gt;mem2);<br />
-    printf(&quot;.mem6 = 0x%08X\n&quot;,pFool_1-&gt;mem6);</p>
-<p>    printf(&quot;Output array(hex) :\n&quot;);<br />
-    for (i = 0; i &lt; sizeof(ST_FOOL_1); i ++)<br />
-    {<br />
-        printf (&quot;%02X &quot;,outputArr[i]);<br />
-    }<br />
-    printf(&quot;\n\n&quot;);</p>
-<p>    memset(outputArr, 0x00, sizeof(outputArr));<br />
-    ST_FOOL_2 *pFool_2 = (ST_FOOL_2*)&amp;outputArr[0];<br />
-    pFool_2-&gt;mem1 = 0x12;<br />
-    pFool_2-&gt;mem2 = 0x34;<br />
-    pFool_2-&gt;mem3 = 0x56;<br />
-    pFool_2-&gt;mem4 = 0x78;<br />
-    pFool_2-&gt;mem5 = 0x90;</p>
-<p>    printf(&quot;pFool_2 :\n&quot;);<br />
-    printf(&quot;.mem1 = 0x%02X\n&quot;,pFool_2-&gt;mem1);<br />
-    printf(&quot;.mem2 = 0x%02X\n&quot;,pFool_2-&gt;mem2);<br />
-    printf(&quot;.mem3 = 0x%02X\n&quot;,pFool_2-&gt;mem3);<br />
-    printf(&quot;.mem4 = 0x%02X\n&quot;,pFool_2-&gt;mem4);<br />
-    printf(&quot;.mem5 = 0x%02X\n&quot;,pFool_2-&gt;mem5);</p>
-<p>    printf(&quot;Output array (hex):\n&quot;);<br />
-    for (i = 0; i &lt; sizeof(ST_FOOL_2); i ++)<br />
-    {<br />
-        printf (&quot;%02X &quot;,outputArr[i]);<br />
-    }<br />
-    printf(&quot;\n\n&quot;);</p>
-<p>    printf(&quot;====Array --&gt; Structure===\n&quot;);<br />
-    uint8_t inputArr[16] = {<br />
-        0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,<br />
-        0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16<br />
-        };</p>
-<p>    printf(&quot;Input array:\n&quot;);<br />
-    for (i = 0; i &lt; 16; i ++)<br />
-    {<br />
-        printf (&quot;%02X &quot;,inputArr[i]);<br />
-    }<br />
-    printf(&quot;\n&quot;);</p>
-<p>    ST_FOOL_1 *pFool_3 = (ST_FOOL_1*)&amp;inputArr[0];<br />
-    printf(&quot;pFool_3 :\n&quot;);<br />
-    printf(&quot;.mem1 = 0x%02X\n&quot;,pFool_3-&gt;mem1);<br />
-    printf(&quot;.mem2 = 0x%02X\n&quot;,pFool_3-&gt;mem2);<br />
-    printf(&quot;.mem6 = 0x%08X\n&quot;,pFool_3-&gt;mem6);</p>
-<p>    printf(&quot;\n&quot;);</p>
-<p>    ST_FOOL_2 *pFool_4 = (ST_FOOL_2*)&amp;inputArr[0];<br />
-    printf(&quot;pFool_4 :\n&quot;);<br />
-    printf(&quot;.mem1 = 0x%02X\n&quot;,pFool_4-&gt;mem1);<br />
-    printf(&quot;.mem2 = 0x%02X\n&quot;,pFool_4-&gt;mem2);<br />
-    printf(&quot;.mem3 = 0x%02X\n&quot;,pFool_4-&gt;mem3);<br />
-    printf(&quot;.mem4 = 0x%02X\n&quot;,pFool_4-&gt;mem4);<br />
-    printf(&quot;.mem5 = 0x%02X\n&quot;,pFool_4-&gt;mem5);</p>
-<p>    return 0;<br />
+int i = 0;</p>
+
+<p>printf(&ldquo;====Structure &ndash;&gt; Array====\n&rdquo;);<br />
+uint8_t outputArr[16];</p>
+
+<p>memset(outputArr, 0x00, sizeof(outputArr));<br />
+ST_FOOL_1 *pFool_1 = (ST_FOOL_1*)&amp;outputArr[0];<br />
+pFool_1-&gt;mem1 = 0x12;<br />
+pFool_1-&gt;mem2 = 0x34;<br />
+pFool_1-&gt;mem6 = 0x56789AB;</p>
+
+<p>printf(&ldquo;pFool_1 :\n&rdquo;);<br />
+printf(&ldquo;.mem1 = 0x%02X\n&rdquo;,pFool_1-&gt;mem1);<br />
+printf(&ldquo;.mem2 = 0x%02X\n&rdquo;,pFool_1-&gt;mem2);<br />
+printf(&ldquo;.mem6 = 0x%08X\n&rdquo;,pFool_1-&gt;mem6);</p>
+
+<p>printf(&ldquo;Output array(hex) :\n&rdquo;);<br />
+for (i = 0; i &lt; sizeof(ST_FOOL_1); i ++)<br />
+{<br />
+printf (&ldquo;%02X &ldquo;,outputArr[i]);<br />
+}<br />
+printf(&rdquo;\n\n&rdquo;);</p>
+
+<p>memset(outputArr, 0x00, sizeof(outputArr));<br />
+ST_FOOL_2 *pFool_2 = (ST_FOOL_2*)&amp;outputArr[0];<br />
+pFool_2-&gt;mem1 = 0x12;<br />
+pFool_2-&gt;mem2 = 0x34;<br />
+pFool_2-&gt;mem3 = 0x56;<br />
+pFool_2-&gt;mem4 = 0x78;<br />
+pFool_2-&gt;mem5 = 0x90;</p>
+
+<p>printf(&ldquo;pFool_2 :\n&rdquo;);<br />
+printf(&ldquo;.mem1 = 0x%02X\n&rdquo;,pFool_2-&gt;mem1);<br />
+printf(&ldquo;.mem2 = 0x%02X\n&rdquo;,pFool_2-&gt;mem2);<br />
+printf(&ldquo;.mem3 = 0x%02X\n&rdquo;,pFool_2-&gt;mem3);<br />
+printf(&ldquo;.mem4 = 0x%02X\n&rdquo;,pFool_2-&gt;mem4);<br />
+printf(&ldquo;.mem5 = 0x%02X\n&rdquo;,pFool_2-&gt;mem5);</p>
+
+<p>printf(&ldquo;Output array (hex):\n&rdquo;);<br />
+for (i = 0; i &lt; sizeof(ST_FOOL_2); i ++)<br />
+{<br />
+printf (&ldquo;%02X &ldquo;,outputArr[i]);<br />
+}<br />
+printf(&rdquo;\n\n&rdquo;);</p>
+
+<p>printf(&ldquo;====Array &ndash;&gt; Structure===\n&rdquo;);<br />
+uint8_t inputArr[16] = {<br />
+0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08,<br />
+0x09, 0x10, 0x11, 0x12, 0x13, 0x14, 0x15, 0x16<br />
+};</p>
+
+<p>printf(&ldquo;Input array:\n&rdquo;);<br />
+for (i = 0; i &lt; 16; i ++)<br />
+{<br />
+printf (&ldquo;%02X &ldquo;,inputArr[i]);<br />
+}<br />
+printf(&rdquo;\n&rdquo;);</p>
+
+<p>ST_FOOL_1 *pFool_3 = (ST_FOOL_1*)&amp;inputArr[0];<br />
+printf(&ldquo;pFool_3 :\n&rdquo;);<br />
+printf(&ldquo;.mem1 = 0x%02X\n&rdquo;,pFool_3-&gt;mem1);<br />
+printf(&ldquo;.mem2 = 0x%02X\n&rdquo;,pFool_3-&gt;mem2);<br />
+printf(&ldquo;.mem6 = 0x%08X\n&rdquo;,pFool_3-&gt;mem6);</p>
+
+<p>printf(&rdquo;\n&rdquo;);</p>
+
+<p>ST_FOOL_2 *pFool_4 = (ST_FOOL_2*)&amp;inputArr[0];<br />
+printf(&ldquo;pFool_4 :\n&rdquo;);<br />
+printf(&ldquo;.mem1 = 0x%02X\n&rdquo;,pFool_4-&gt;mem1);<br />
+printf(&ldquo;.mem2 = 0x%02X\n&rdquo;,pFool_4-&gt;mem2);<br />
+printf(&ldquo;.mem3 = 0x%02X\n&rdquo;,pFool_4-&gt;mem3);<br />
+printf(&ldquo;.mem4 = 0x%02X\n&rdquo;,pFool_4-&gt;mem4);<br />
+printf(&ldquo;.mem5 = 0x%02X\n&rdquo;,pFool_4-&gt;mem5);</p>
+
+<p>return 0;<br />
 }<br />
 [/code]</p>
+
 <p>Ta sẽ kiểm tra các kết quả với các trường hợp aligment khác nhau.<br />
 - Khi không sử dụng <strong>pack</strong>, kết quả sẽ như sau:</p>
+
 <p>[code lang=shell]<br />
-====Structure --&gt; Array====<br />
+\====Structure &ndash;&gt; Array====<br />
 pFool_1 :<br />
 .mem1 = 0x12<br />
 .mem2 = 0x34<br />
 .mem6 = 0x056789AB<br />
 Output array(hex) :<br />
 12 34 00 00 AB 89 67 05 // 2 byte 0x00 0x00 bị để trống</p>
+
 <p>pFool_2 :<br />
 .mem1 = 0x12<br />
 .mem2 = 0x34<br />
@@ -279,13 +334,15 @@ Output array(hex) :<br />
 .mem5 = 0x90<br />
 Output array (hex):<br />
 12 34 56 78 90 // dữ liệu đúng</p>
-<p>====Array --&gt; Structure===<br />
+
+<p>\====Array &ndash;&gt; Structure===<br />
 Input array:<br />
 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16<br />
 pFool_3 :<br />
 .mem1 = 0x01<br />
 .mem2 = 0x02<br />
 .mem6 = 0x08070605// 2 byte 0x03 0x04 bị mất</p>
+
 <p>pFool_4 :<br />
 .mem1 = 0x01<br />
 .mem2 = 0x02<br />
@@ -293,17 +350,20 @@ pFool_3 :<br />
 .mem4 = 0x04<br />
 .mem5 = 0x05<br />
 [/code]</p>
+
 <ul>
 <li>Khi sử dụng <strong>pack(1)</strong>:</li>
 </ul>
+
 <p>[code lang=C]<br />
-====Structure --&gt; Array====<br />
+\====Structure &ndash;&gt; Array====<br />
 pFool_1 :<br />
 .mem1 = 0x12<br />
 .mem2 = 0x34<br />
 .mem6 = 0x056789AB<br />
 Output array(hex) :<br />
 12 34 AB 89 67 05 // các member được sếp sát nhau</p>
+
 <p>pFool_2 :<br />
 .mem1 = 0x12<br />
 .mem2 = 0x34<br />
@@ -311,14 +371,16 @@ Output array(hex) :<br />
 .mem4 = 0x78<br />
 .mem5 = 0x90<br />
 Output array (hex):<br />
-12 34 56 78 90 </p>
-<p>====Array --&gt; Structure===<br />
+12 34 56 78 90</p>
+
+<p>\====Array &ndash;&gt; Structure===<br />
 Input array:<br />
 01 02 03 04 05 06 07 08 09 10 11 12 13 14 15 16<br />
 pFool_3 :<br />
 .mem1 = 0x01<br />
 .mem2 = 0x02<br />
 .mem6 = 0x06050403// các member được đẩy sát nhau</p>
+
 <p>pFool_4 :<br />
 .mem1 = 0x01<br />
 .mem2 = 0x02<br />
@@ -326,17 +388,21 @@ pFool_3 :<br />
 .mem4 = 0x04<br />
 .mem5 = 0x05<br />
 [/code]</p>
-<h3>3. Kết luận:</h3>
+
+<h3 id="3-kết-luận">3. Kết luận:</h3>
+
 <p>Khi viết một cấu trúc mà ta có ý định sử dụng nó cho việc casting sang kiểu Array hoặc từ kiểu Array ta nên chú ý đặc điểm này, thông thường <strong>pack(4)</strong> được sử dụng mặc định, vì thế ta nên sắp xếp các member trong cấu trúc sao cho chứa đủ trong mỗi 4 byte.<br />
 Hoặc ta nên chỉ rõ sử dụng <strong>pack(1)</strong>, <strong>pack(2)</strong> hoặc <strong>pack(4)</strong>. Thường là 1 hoặc 4.</p>
+
 <p>Ví dụ với trường hợp cấu trúc <strong>ST_FOOL_1</strong> ở trên, ta có thể viết lại như sau để đảm bảo không có byte trống khi convert.</p>
+
 <p>[code lang=C]<br />
 typedef struct<br />
 {<br />
-    uint8_t mem1;<br />
-    uint8_t mem2;<br />
-        uint8_t padding[2];<br />
-    uint32_t mem6;<br />
+uint8_t mem1;<br />
+uint8_t mem2;<br />
+uint8_t padding[2];<br />
+uint32_t mem6;<br />
 }ST_FOOL_1;<br />
 [/code]</p>
 

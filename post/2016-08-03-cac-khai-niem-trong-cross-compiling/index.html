@@ -62,41 +62,77 @@
 			<h1 class="post__title">Phân biệt Build vs Host vs Target</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h3>1. Diễn giải từ tài liệu của Autotools.</h3>
+			
+
+<p>Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.<br />
+Với người mới, hiểu rõ khái niệm là rất quan trọng.</p>
+
+<p>Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là <strong>Host Enviroment</strong>, <strong>Build Enviroment</strong>, và <strong>Target Enviroment</strong>. Có thể dịch nôm na là <strong>Môi trường chủ</strong>, <strong>Môi trường biên dịch</strong>, và <strong>Môi trường chạy đích</strong>.<br />
+Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.</p>
+
+<p>Trước khi bắt đầu với các ví dụ, ta nên xem qua một số nguồn diễn giải 3 khái niệm này.</p>
+
+<h3 id="1-diễn-giải-từ-tài-liệu-của-autotools">1. Diễn giải từ tài liệu của Autotools.</h3>
+
 <p>Trong link diễn giải về <strong>Canonical System</strong> (Hệ thống quy chuẩn) sử dụng trong <a href="https://autotools.io/index.html">Autotools</a>, có đoạn sau:</p>
-<blockquote><p>
-When using autoconf, there are three system definitions (or machine definitions) that are used to identify the “actors” in the build process; each definition relates to a similarly-named variable which will be illustrated in detail later. These three definitions are:</p>
+
+<blockquote>
+<p>When using autoconf, there are three system definitions (or machine definitions) that are used to identify the “actors” in the build process; each definition relates to a similarly-named variable which will be illustrated in detail later. These three definitions are:</p>
+
 <p>host (CHOST)</p>
-<p>    The system that is going to run the software once it is built, which is the main actor. Once the software has been built, it will execute on this particular system. </p>
+
+<p>The system that is going to run the software once it is built, which is the main actor. Once the software has been built, it will execute on this particular system.</p>
+
 <p>build (CBUILD)</p>
-<p>    The system where the build process is being executed. For most uses this would be the same as the host system, but in case of cross-compilation the two obviously differ. </p>
+
+<p>The system where the build process is being executed. For most uses this would be the same as the host system, but in case of cross-compilation the two obviously differ.</p>
+
 <p>target (CTARGET)</p>
-<p>    The system against which the software being built will run on. This actor only exists, or rather has a meaning, when the software being built may interact specifically with a system that differs from the one it's being executed on (our host). This is the case for compilers, debuggers, profilers and analyzers and other tools in general.
-</p></blockquote>
+
+<p>The system against which the software being built will run on. This actor only exists, or rather has a meaning, when the software being built may interact specifically with a system that differs from the one it&rsquo;s being executed on (our host). This is the case for compilers, debuggers, profilers and analyzers and other tools in general.</p>
+</blockquote>
+
 <p>Dịch nôm na là :</p>
-<p>Khi sử dụng autoconf, có 3 định nghĩa hệ thống (hoặc có hiểu là định nghĩa máy) được sử dụng để chỉ rõ các "actor" (tác nhân) trong quá trình build, mỗi định nghĩa sẽ có liên quan đến những giá trị biến có tên tương tự được trình ở phần sau. 3 định nghĩa này là:</p>
+
+<p>Khi sử dụng autoconf, có 3 định nghĩa hệ thống (hoặc có hiểu là định nghĩa máy) được sử dụng để chỉ rõ các &ldquo;actor&rdquo; (tác nhân) trong quá trình build, mỗi định nghĩa sẽ có liên quan đến những giá trị biến có tên tương tự được trình ở phần sau. 3 định nghĩa này là:</p>
+
 <p>host (<strong>CHOST</strong>)<br />
 Đây là hệ thống mà phần mềm mà ta đang muốn build sẽ chạy trên đó. Khi phần mềm được build rồi, thì nó chỉ chạy trên hệ thống như thế này mà thôi.</p>
+
 <p>build (<strong>CBUILD</strong>)<br />
 Đây là hệ thống mà quá trình build sẽ chạy trên đó. Hầu hết sẽ cùng hệ thống với host, nhưng trong trường hợp cross-compilation (biên dịch chéo) 2 hệ thống này lại khác nhau.</p>
+
 <p>target (<strong>CTARGET</strong>)<br />
 Cũng là hệ thống mà phần mềm đang muốn build sẽ chạy trên đó. Nhưng tác nhân này chỉ tồn tại, đúng hơn là có ý nghĩa khi phần mềm đang được build có thể tương tác với một hệ thống khác cái hệ thống nó đang chạy trên (host). Đây là trường hợp khi build <strong>compilers</strong> (trình biên dịch), <strong>debuggers</strong> (trình gỡ rối), <strong>profilers</strong> (trình đánh giá) and <strong>analyzers</strong> (trình phân tích) hoặc các tool khác tương tự.</p>
-<h3>2. Diễn giải từ GNU GCC</h3>
+
+<h3 id="2-diễn-giải-từ-gnu-gcc">2. Diễn giải từ GNU GCC</h3>
+
 <p>Trong tài liệu về miêu tả các khái niệm sử dụng trong <a href="https://gcc.gnu.org/onlinedocs/gccint/index.html#Top">GNU GCC</a> có một đoạn giản thích về các <a href="https://gcc.gnu.org/onlinedocs/gccint/Configure-Terms.html#Configure-Terms">Configure Term</a> (các khái niệm khi cấu hình), có đoạn sau:</p>
-<blockquote><p>
-There are three system names that the build knows about: the machine you are building on (build), the machine that you are building for (host), and the machine that GCC will produce code for (target). When you configure GCC, you specify these with --build=, --host=, and --target=.</p>
+
+<blockquote>
+<p>There are three system names that the build knows about: the machine you are building on (build), the machine that you are building for (host), and the machine that GCC will produce code for (target). When you configure GCC, you specify these with &ndash;build=, &ndash;host=, and &ndash;target=.</p>
+
 <p>Specifying the host without specifying the build should be avoided, as configure may (and once did) assume that the host you specify is also the build, which may not be true.</p>
-<p>If build, host, and target are all the same, this is called a native. If build and host are the same but target is different, this is called a cross. If build, host, and target are all different this is called a canadian (for obscure reasons dealing with Canada's political party and the background of the person working on the build at that time). If host and target are the same, but build is different, you are using a cross-compiler to build a native for a different system. Some people call this a host-x-host, crossed native, or cross-built native. If build and target are the same, but host is different, you are using a cross compiler to build a cross compiler that produces code for the machine you're building on. This is rare, so there is no common way of describing it. There is a proposal to call this a crossback.
-</p></blockquote>
+
+<p>If build, host, and target are all the same, this is called a native. If build and host are the same but target is different, this is called a cross. If build, host, and target are all different this is called a canadian (for obscure reasons dealing with Canada&rsquo;s political party and the background of the person working on the build at that time). If host and target are the same, but build is different, you are using a cross-compiler to build a native for a different system. Some people call this a host-x-host, crossed native, or cross-built native. If build and target are the same, but host is different, you are using a cross compiler to build a cross compiler that produces code for the machine you&rsquo;re building on. This is rare, so there is no common way of describing it. There is a proposal to call this a crossback.</p>
+</blockquote>
+
 <p>Dịch nôm na như sau:</p>
-<p>Có 3 tên hệ thống mà quá trình build phải biết: máy mà bạn đang chạy build trên đó (build), máy mà bạn đang build phần mềm cho nó (host), và cái máy mà GCC sẽ tạo mã cho nó (target). Khi cấu hình GCC, bạn sẽ chỉ ra 3 tên thống này bằng các tham số <strong>--build=, --host=, and --target=</strong>.</p>
+
+<p>Có 3 tên hệ thống mà quá trình build phải biết: máy mà bạn đang chạy build trên đó (build), máy mà bạn đang build phần mềm cho nó (host), và cái máy mà GCC sẽ tạo mã cho nó (target). Khi cấu hình GCC, bạn sẽ chỉ ra 3 tên thống này bằng các tham số <strong>--build=, &ndash;host=, and &ndash;target=</strong>.</p>
+
 <p>Tránh chỉ định hệ thống host mà không chỉ định rõ hệ thống build, khi đó quá trình configure có thể giả định rằng hệ host cũng là hệ build, và có thể không đúng với bạn mong muốn.</p>
+
 <p>Nếu hệ thống <strong>build</strong>, <strong>host</strong>, và <strong>target</strong> giống nhau, thì cái này gọi là <strong>native</strong>. Nếu hệ <strong>build</strong> và <strong>host</strong> giống nhau nhưng hệ thống <strong>target</strong> lại khác, thì cái này gọi là <strong>cross</strong>.</p>
+
 <p>Nếu hệ thống <strong>build</strong>, <strong>host</strong>, và <strong>target</strong> hoàn toàn khác nhau thì cái này gọi là canadian (có 1 lý do khá khó hiểu liên quan đến một Đảng chính trị ở Canada và những background của những người làm việc ở thời gian đó).</p>
+
 <p>Nếu hệ thống <strong>host</strong> và <strong>target</strong> are giống nhau, nhưng hệ thống <strong>build</strong> thì khác, thì tức là bạn đang sử dụng một <strong>cross-compiler</strong> (trình biên dịch chéo) để tạo <strong>native code</strong> cho một hệ thống khác. Một số người gọi cái này là <strong>host-x-host</strong>, <strong>crossed native</strong>, hoặc <strong>cross-built native</strong>.</p>
+
 <p>Nếu hệ thống build và <strong>target</strong> giống nhau, nhưng hệ thống <strong>host</strong> thì khác, thì có nghĩa là bạn đang sử dụng <strong>cross compiler</strong> (trình biên dịch chéo) để build một trình <strong>cross compiler</strong> (trình biên dịch chéo khác) cái mà sẽ sinh code cho hệ thống mà bạn đang build trên đó. Trường hợp này rất hiếm, cho nên không được miêu tả ở đây. Nhiều khi nó được gọi là crossback.</p>
+
 <p>OK, nếu đến đây mà bạn đã phân biệt được <strong>Build-Host-Target</strong> rồi thì không cần xem các ví dụ nữa.</p>
+
 <ol>
 <li>Build GDB để debug trên RaspberryPI</li>
 </ol>

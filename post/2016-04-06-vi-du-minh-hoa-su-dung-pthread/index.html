@@ -62,59 +62,75 @@
 			<h1 class="post__title">Ví dụ minh họa sử dụng pthread</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
+			<p>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.</p>
+
+<p>Mục đích ban đầu nói đến ở bài <a href="https://lazytrick.wordpress.com/2015/07/16/dung-pthread-theo-cac-da-nen-tang-den-muc-nao/">Cơ bản về pthread</a>, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</p>
+
 <p>1 . Hello world</p>
-<p>[code lang="C"]<br />
+
+<p>[code lang=&ldquo;C&rdquo;]<br />
 /*<br />
-* p_hello.c -- a hello program (in pthread)<br />
+* p_hello.c &ndash; a hello program (in pthread)<br />
 */<br />
 #include<br />
 #include<br />
 #include<br />
-#include &amp;lt;sys/types.h&amp;gt;<br />
+#include &lt;sys/types.h&gt;<br />
 #include</p>
+
 <p>#define MAX_THREAD 1000<br />
-#define CURRENT_TERMINAL_CMD &amp;quot;tty&amp;quot;</p>
+#define CURRENT_TERMINAL_CMD &quot;tty&quot;</p>
+
 <p>typedef struct {<br />
 int id;<br />
 char *terminal;<br />
 } parm;</p>
+
 <p>void *hello(void *arg)<br />
 {<br />
 parm *p=(parm *)arg;<br />
-FILE *fo = fopen(p-&amp;gt;terminal, &amp;quot;wt&amp;quot;);<br />
+FILE *fo = fopen(p-&gt;terminal, &quot;wt&quot;);<br />
 if (fo == NULL)<br />
 {<br />
-printf(&amp;quot;Using stdout as output terminal\n&amp;quot;);<br />
-printf(&amp;quot;[Node %d] : Hello các anh\n&amp;quot;, p-&amp;gt;id);<br />
-sleep (p-&amp;gt;id * 2);<br />
-printf(&amp;quot;[Node %d] : Em kết thúc đây...\n&amp;quot;,p-&amp;gt;id);<br />
+printf(&quot;Using stdout as output terminal\n&quot;);<br />
+printf(&quot;[Node %d] : Hello các anh\n&quot;, p-&gt;id);<br />
+sleep (p-&gt;id * 2);<br />
+printf(&quot;[Node %d] : Em kết thúc đây&hellip;\n&quot;,p-&gt;id);<br />
 return ;<br />
 }</p>
-<p>fprintf(fo,&amp;quot;Using %s as output terminal\n&amp;quot;,p-&amp;gt;terminal);<br />
-fprintf(fo,&amp;quot;[Node %d] : Hello các anh\n&amp;quot;, p-&amp;gt;id);<br />
-sleep (p-&amp;gt;id * 2);<br />
-fprintf(fo,&amp;quot;[Node %d] : Em kết thúc đây...\n&amp;quot;,p-&amp;gt;id);</p>
+
+<p>fprintf(fo,&quot;Using %s as output terminal\n&quot;,p-&gt;terminal);<br />
+fprintf(fo,&quot;[Node %d] : Hello các anh\n&quot;, p-&gt;id);<br />
+sleep (p-&gt;id * 2);<br />
+fprintf(fo,&quot;[Node %d] : Em kết thúc đây&hellip;\n&quot;,p-&gt;id);</p>
+
 <p>fclose(fo);</p>
+
 <p>return (NULL);<br />
 }</p>
+
 <p>int getCurrentTerminal(char *terminal)<br />
 {<br />
 int retVal = 0;</p>
-<p>FILE *ttyCmdFo = popen(CURRENT_TERMINAL_CMD,&amp;quot;r&amp;quot;);<br />
+
+<p>FILE *ttyCmdFo = popen(CURRENT_TERMINAL_CMD,&quot;r&quot;);<br />
 if (ttyCmdFo == NULL)<br />
 {<br />
 retVal = -1;<br />
 return retVal;<br />
 }</p>
-<p>if (fscanf(ttyCmdFo,&amp;quot;%s&amp;quot;,terminal) != 0)<br />
+
+<p>if (fscanf(ttyCmdFo,&quot;%s&quot;,terminal) != 0)<br />
 {<br />
 retVal = -1;<br />
 return retVal;<br />
 }</p>
-<p>printf(&amp;quot;Terminal :%s&amp;quot;,terminal);</p>
+
+<p>printf(&quot;Terminal :%s&quot;,terminal);</p>
+
 <p>return retVal;<br />
 }</p>
+
 <p>typedef char T_TERM_NAME[100];<br />
 void main(int argc, char* argv[]) {<br />
 int n,i;<br />
@@ -123,24 +139,31 @@ parm *p;<br />
 char currentTerminal[100];<br />
 T_TERM_NAME terminals[10];<br />
 char tmpTerm[100];</p>
+
 <p>if (argc != 2)<br />
 {<br />
-printf (&amp;quot;Usage: %s n\n N là số threads được tạo, xin nhập lại đi.\n&amp;quot;,argv[0]);<br />
+printf (&quot;Usage: %s n\n N là số threads được tạo, xin nhập lại đi.\n&quot;,argv[0]);<br />
 exit(1);<br />
 }</p>
+
 <p>n=atoi(argv[1]);</p>
-<p>if ((n &amp;lt; 1) || (n &amp;gt; MAX_THREAD))<br />
+
+<p>if ((n &lt; 1) || (n &gt; MAX_THREAD))<br />
 {<br />
-printf (&amp;quot;Số lượng thread phải &amp;gt;=1 và &amp;lt; %d.\n&amp;quot;, MAX_THREAD);<br />
+printf (&quot;Số lượng thread phải &gt;=1 và &lt; %d.\n&quot;, MAX_THREAD);<br />
 exit(1);<br />
 }</p>
+
 <p>threads=(pthread_t *)malloc(n*sizeof(*threads));</p>
+
 <p>p=(parm *)malloc(sizeof(parm)*n);</p>
+
 <p>/* Tạo và bắt đầu các threads */<br />
-getCurrentTerminal(&amp;amp;currentTerminal[0]);</p>
-<p>for (i=0; i&amp;lt;n; i++)<br />
+getCurrentTerminal(&amp;currentTerminal[0]);</p>
+
+<p>for (i=0; i&lt;n; i++)<br />
 {<br />
-printf(&amp;quot;Đầu ra của thread %d (default =%s) : &amp;quot;,i, currentTerminal);<br />
+printf(&quot;Đầu ra của thread %d (default =%s) : &quot;,i, currentTerminal);<br />
 gets(tmpTerm);<br />
 if (strlen(tmpTerm) == 0)<br />
 {<br />
@@ -151,27 +174,33 @@ else<br />
 strcpy(terminals[i], tmpTerm);<br />
 }<br />
 }</p>
+
 <p>#if 0<br />
-for (i=0; i&amp;lt;n; i++)<br />
+for (i=0; i&lt;n; i++)<br />
 {<br />
-printf(&amp;quot;Thread : %s\n&amp;quot;,terminals[i]);<br />
+printf(&quot;Thread : %s\n&quot;,terminals[i]);<br />
 }<br />
 #endif</p>
-<p>for (i=0; i&amp;lt;n; i++)<br />
+
+<p>for (i=0; i&lt;n; i++)<br />
 {<br />
 p[i].id=i;<br />
 p[i].terminal = terminals[i];<br />
-pthread_create(&amp;amp;threads[i], NULL, hello, (void *)(p+i));<br />
+pthread_create(&amp;threads[i], NULL, hello, (void *)(p+i));<br />
 }</p>
+
 <p>/* Đợt để các thread được tạo cùng kết thúc. */</p>
-<p>for (i=0; i&amp;lt;n; i++)<br />
+
+<p>for (i=0; i&lt;n; i++)<br />
 {<br />
-printf(&amp;quot;[Main] : Đang đợi [Node %d] kết thúc \n&amp;quot;,i);<br />
+printf(&quot;[Main] : Đang đợi [Node %d] kết thúc \n&quot;,i);<br />
 pthread_join(threads[i],NULL);<br />
-printf(&amp;quot;[Main] : [Node %d] đã kết thúc\n&amp;quot;,i);<br />
+printf(&quot;[Main] : [Node %d] đã kết thúc\n&quot;,i);<br />
 }</p>
+
 <p>free(p);<br />
 }</p>
+
 <p>[/code]</p>
 
 		</div>

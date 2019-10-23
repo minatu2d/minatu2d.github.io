@@ -70,10 +70,8 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.</p>
-<p>Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver... Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.</p>
-<p>Gần đây, do chạy thử các Sample trên môi trường Non-OS, rồi OS. Nên vỡ ra được một số điều. Tất nhiên chưa được kiểm chứng kĩ lượng, đây chỉ là sự ghép các kiến thức rời rạc, rồi nắn cho nó nghe có vẻ logic. Không sao, cứ đưa ra dự đoán, chúng sẽ được kiểm chứng bằng trải nghiệm thực tế trong công việc.</p>
-<p>Cái NORTi (một hệ điều hành implement các API cho RTOS của iTRON Project)
+		Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.
+Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver&hellip; Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -85,19 +83,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.</p>
-<p>Mô tả ngắn gọn ở đây để sau đỡ quên vậy:</p>
-<p>ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC...) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.</p>
-<p>Về chức năng, mình đang có một tín hiệu VGA, nhưng do không hiểu các khái niệm về đầu ra, đầu vào của chip này nên cũng mất một thời gian mới rõ được.</p>
-<p>Bài này sẽ note lại một số keyword xuất hiện trong Datasheet của ADV7401.</p>
-<ol>
-<li>Video Decoding là quá trình làm gì.</li>
-<li>Graphic Digitization là quá trình làm gì.</li>
-<li>720p, 1080i nói lên điều gì.</li>
-<li>VGA, SXGA nói lên điều gì.</li>
-<li>Một số keyword khác, có tìm hiểu nhưng không liên quan.</li>
-</ol>
-<p>
+		MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.
+Mô tả ngắn gọn ở đây để sau đỡ quên vậy:
+ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&hellip;) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -109,13 +97,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.</p>
-<p>Giờ xin dịch lại bài này một cách khái quát nhất.</p>
-<p>Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).</p>
-<p>Về nguyên tắc, từ khi cắm 1 thiết bị USB bất kì cắm vào cổng, cần trải qua 3 giai đoạn giao tiếp giữa máy tính và thiết bị để có thể hiểu nhau. Đó là Reset (về điện đóm), Configured (load các driver tương ứng), Sử dụng được (khi chúng di chuyển được con chuột, hoặc gõ được phím).</p>
-<p>Trong bài này giới thiệu dữ liệu trao đổi giữa HID Driver (nằm trên máy tính) và HID Device (hay về mặt phần mềm là Firmware chạy trên Device). Mà cụ thể nói về "HID Report Descriptor", cái được HID Device gửi lên HID Driver để báo cho Driver biết HID Device có những dữ liệu gì mà Driver có thể hỏi được, được tổ chức như thế nào.</p>
-<p>Link : <a href="http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/">http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/</a></p>
-<p>Một USB HID Report là một trong những descriptor (đặc tả) mà Host yêu cầu từ thiết bị USB. Thiết bị USB sẽ trả lời yêu cầu này bằng các Report. Nhưng Report này sẽ nói cho Host biết các dữ liệu trong quá trình sử dụng mà Device gửi lên nên được hiểu như thế nào. Trong bài này, tác giả Frank-Zhang(Sony Engineer) đã giới thiệu theo từng ví dụ.
+		Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.
+Giờ xin dịch lại bài này một cách khái quát nhất.
+Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -127,13 +111,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.</p>
-<h5>Lập trình với bộ nhớ Flash</h5>
-<p>Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn <strong>0xFF</strong> thôi.</p>
-<h5>Serial Flash</h5>
-<p>Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất. Vì giao tiếp được bằng các chuẩn Serial như SPI, I2C nên nó dễ dàng ghép nối với các chip trên board.</p>
-<h5>NAND và NOR</h5>
-<p>Có 2 điểm khác biệt giữa 2
+		Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.
+Lập trình với bộ nhớ Flash Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn 0xFF thôi.
+Serial Flash Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -157,11 +137,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.</p>
-<p>Link gốc tại <a href="http://www.beyondlogic.org/usbnutshell/usb1.shtml">http://www.beyondlogic.org/usbnutshell/usb1.shtml</a></p>
-<h4>Tóm tắt về USB</h4>
-<h5>Hiểu chuẩn USB để sử dụng trong phát triển</h5>
-<p>
+		USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.
+Link gốc tại http://www.beyondlogic.org/usbnutshell/usb1.shtml
+Tóm tắt về USB Hiểu chuẩn USB để sử dụng trong phát triển Nếu bạn là người bắt đầu công việc phát triển sử dụng USB, thì quả thật nó không dễ dàng gì.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -275,7 +253,7 @@ III. Test thử trên Linux.</p>
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

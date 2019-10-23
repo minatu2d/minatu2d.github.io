@@ -62,126 +62,149 @@
 			<h1 class="post__title">Cờ Retain và QoS trong message PUBLISH</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h3>1. Trường QoS (Byte:0, Bit : 2-1, Size:2 bit)</h3>
-<p>&nbsp;</p>
+			
+
+<p>Giao thức MQTT dựa trên mô hình publisher/subscriber (nhà cung cấp/người sử dụng), publisher có dữ liệu trên một lĩnh nào đó (được đại diện bằng các topic), phía subscriber (người mong muốn thông tin) sẽ mong muốn thông tin trên môt lĩnh vực nào đó (cũng được miêu tả bằng topic). Môt anh trung gian ở giữa sẽ nhận từ rất nhiều anh cung cấp trên rất nhiều lĩnh vực, sau đó xem xét, thông tin phù hợp để gửi đến những người sử dụng mà anh trung gian này biết.</p>
+
+<p>Message PUBLISH được gửi từ publisher đến server (hay broker, hay chính là anh trung gian) để cung cấp thông tin.</p>
+
+<p>Bài này nói về 2 trường của message PUBLISH, đó là QoS và Retain. Và 2 trường này tuy nằm ở phần <strong>header cố định</strong> (có trên mọi message). Về trường QoS chỉ được sử dụng ở 3 Message, trong đó PUBLISH (dùng cả 3 level 0, 1, 2), SUBSCRIBE và UNSUBSCRIBE (chỉ dùng level 1). Bài này chỉ nói về message PUBLISH thôi.</p>
+
+<ol>
+<li>Trường QoS</li>
+<li>Trường Retain</li>
+<li>Ví dụ thực tế với mosquitto</li>
+</ol>
+
+<h3 id="1-trường-qos-byte-0-bit-2-1-size-2-bit">1. Trường QoS (Byte:0, Bit : 2-1, Size:2 bit)</h3>
+
 <p>Trường này sẽ dùng để miêu tả mong muốn mà Publisher muốn server đảm bảo việc truyền message đến các subscriber. Có 3 mức độ mà subscriber có thể yêu cầu.</p>
+
 <p><em>00b</em> -&gt; cùng lắm là 1 lần. không sử dụng thêm phương thức đảm bảo độ tin cậy nào khác mà tin tưởng vào TCP/IP luôn, cho chiều gửi của PUBLISH.</p>
+
 <p>Như bảng sau:</p>
-<table class="flow">
-<thead>
-<tr>
-<th align="center">Publisher (bên cung cấp)</th>
-<th align="center">Message và hướng gửi</th>
-<th align="center">Server</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>QoS = 0</td>
-<td align="center">PUBLISH<br />
-<code>----------&gt;</code></td>
-<td><b>Hành động :</b></p>
-<p>Đẩy message đến các Subscribers hiện tại.</td>
-</tr>
-</tbody>
-</table>
-<p>&nbsp;</p>
-<p><em>01b </em>-&gt; Ít nhất 1 lần, khi Server nhận được message này. Nó thực hiện lần lượt 3 bước " lưu trữ tạm thời message vừa nhận được, gửi message nhận được đến các subscriber hiện tại, cuối cùng xóa message đã lưu. Sau khi thực hiện được bước cuối cùng (xóa message), nó sẽ gửi PUBACK (PUBLISH ACK) về phía Publisher đã gửi gói PUBLISH để thông báo rằng việc chuyển đi đã kết thúc. Nếu phía Publisher sau một thời gian nhất định không nhận được PUBACK nó sẽ coi như bị timeout và gửi lại gói PUBLISH này (với trường DUP được set 1)</p>
+
+<p>Publisher (bên cung cấp)</p>
+
+<p>Message và hướng gửi</p>
+
+<p>Server</p>
+
+<p>QoS = 0</p>
+
+<p>PUBLISH<br />
+<code>----------&gt;</code></p>
+
+<p><strong>Hành động :</strong></p>
+
+<p>Đẩy message đến các Subscribers hiện tại.</p>
+
+<p><em>01b</em> -&gt; Ít nhất 1 lần, khi Server nhận được message này. Nó thực hiện lần lượt 3 bước &ldquo; lưu trữ tạm thời message vừa nhận được, gửi message nhận được đến các subscriber hiện tại, cuối cùng xóa message đã lưu. Sau khi thực hiện được bước cuối cùng (xóa message), nó sẽ gửi PUBACK (PUBLISH ACK) về phía Publisher đã gửi gói PUBLISH để thông báo rằng việc chuyển đi đã kết thúc. Nếu phía Publisher sau một thời gian nhất định không nhận được PUBACK nó sẽ coi như bị timeout và gửi lại gói PUBLISH này (với trường DUP được set 1)</p>
+
 <p>Như bảng sau:</p>
-<table class="flow">
-<thead>
-<tr>
-<th align="center">Subscriber(bên cung cấp)</th>
-<th align="center">Message và hướng gửi</th>
-<th align="center">Server</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>QoS = 1<br />
+
+<p>Subscriber(bên cung cấp)</p>
+
+<p>Message và hướng gửi</p>
+
+<p>Server</p>
+
+<p>QoS = 1<br />
 DUP = 0<br />
-Message ID = x<b>Hành động:</b> Lưu tạm thời message sẽ gửi</td>
-<td align="center">PUBLISH<br />
-<code>----------&gt;</code></td>
-<td><b>Hành động:</b></p>
+Message ID = x<strong>Hành động:</strong> Lưu tạm thời message sẽ gửi</p>
+
+<p>PUBLISH<br />
+<code>----------&gt;</code></p>
+
+<p><strong>Hành động:</strong></p>
+
 <ul>
 <li>Lưu trữ message</li>
 <li>Đẩy các message đến các Subscribers</li>
 <li>Xóa message</li>
 </ul>
-</td>
-</tr>
-<tr>
-<td><b>Hành động:</b> Hủy message đã lưu</td>
-<td align="center">PUBACK<br />
-<code>&lt;----------</code></td>
-<td></td>
-</tr>
-</tbody>
-</table>
+
+<p><strong>Hành động:</strong> Hủy message đã lưu</p>
+
+<p>PUBACK<br />
+<code>&lt;----------</code></p>
+
 <p>Phía Server (broker) khi nhận được gói PUBLISH (có trường DUP được set 1), nó sẽ thực hiện các hành động như ở trên. (chính vì thế, có thể xảy ra tình trạng 1 subscriber nhận cùng 1 nội dung đến 2 lần)</p>
+
 <p><em>10b</em> -&gt; Chính xác một lần, có nghĩa là các message được gửi lên từ Publisher qua gói PUBLISH sẽ chuyển đến các Subscriber đúng 1 lần. Ở mức QoS này (mức cao nhất), sẽ không cho phép việc chuyển lặp lại message.</p>
+
 <p>Có 2 kịch bản khi sử dụng level này, phía Server (broker) sẽ tùy chọn implement option nào.</p>
+
 <p>Luồng chuyển message được miêu ta như bảng sau:</p>
-<table class="flow">
-<thead>
-<tr>
-<th align="center">Client (bên cung cấp)</th>
-<th align="center">Message and hướng gửi</th>
-<th align="center">Server</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>QoS = 2<br />
+
+<p>Client (bên cung cấp)</p>
+
+<p>Message and hướng gửi</p>
+
+<p>Server</p>
+
+<p>QoS = 2<br />
 DUP = 0<br />
-Message ID = x<b>Hành động:</b> Lưu message</td>
-<td align="center">PUBLISH<br />
-<code>----------&gt;</code></td>
-<td><b>Hành động:</b> Lưu message</p>
-<p align="center"><i>hoặc</i></p>
-<p><b>Hành động:</b></p>
+Message ID = x<strong>Hành động:</strong> Lưu message</p>
+
+<p>PUBLISH<br />
+<code>----------&gt;</code></p>
+
+<p><strong>Hành động:</strong> Lưu message</p>
+
+<p><em>hoặc</em></p>
+
+<p><strong>Hành động:</strong></p>
+
 <ul>
 <li>Lưu message ID</li>
 <li>Chuyển message đến các subsriber</li>
 </ul>
-</td>
-</tr>
-<tr>
-<td></td>
-<td align="center">PUBREC<br />
-<code>&lt;----------</code></td>
-<td>Message ID = x</td>
-</tr>
-<tr>
-<td>Message ID = x</td>
-<td align="center">PUBREL<br />
-<code>----------&gt;</code></td>
-<td><b>Hành động:</b></p>
+
+<p>PUBREC<br />
+<code>&lt;----------</code></p>
+
+<p>Message ID = x</p>
+
+<p>Message ID = x</p>
+
+<p>PUBREL<br />
+<code>----------&gt;</code></p>
+
+<p><strong>Hành động:</strong></p>
+
 <ul>
 <li>Chuyển message đến các subscriber</li>
 <li>Xóa message</li>
 </ul>
-<p align="center"><i>or</i></p>
-<p><b>Action:</b> Xóa message</td>
-</tr>
-<tr>
-<td><b>Hành động:</b> Quên message đã lưu</td>
-<td align="center">PUBCOMP<br />
-<code>&lt;----------</code></td>
-<td>Message ID = x</td>
-</tr>
-</tbody>
-</table>
-<h3>2. Trường Retain (Byte:0, Bit:0)</h3>
+
+<p><em>or</em></p>
+
+<p><strong>Action:</strong> Xóa message</p>
+
+<p><strong>Hành động:</strong> Quên message đã lưu</p>
+
+<p>PUBCOMP<br />
+<code>&lt;----------</code></p>
+
+<p>Message ID = x</p>
+
+<h3 id="2-trường-retain-byte-0-bit-0">2. Trường Retain (Byte:0, Bit:0)</h3>
+
 <p>Chỉ được sử dụng ở PUBLISH. Mục đich để báo với Server biết nên giữ lại message sau khi chuyển đến các Subscriber hiện tại. Message giữ lại sẽ được sử dụng để gửi đến các Subsriber mới subsriber topic mà message này thuộc về.</p>
+
 <p>Trường này sẽ có tác dụng trong trường hợp khi mà Publisher cần thông báo đến các Subsribers mới biết về sự tồn tại của nó. Nó giống như là để lại dấu vết.</p>
-<p>Tuy nhiên, đối với các Subsriber đang kết nối đến Server thì trường Retain này sẽ không được Set. Điều này giúp Subscriber phân biệt được đâu là message "mới toanh", đâu mà message được giữ từ trước đó.</p>
+
+<p>Tuy nhiên, đối với các Subsriber đang kết nối đến Server thì trường Retain này sẽ không được Set. Điều này giúp Subscriber phân biệt được đâu là message &ldquo;mới toanh&rdquo;, đâu mà message được giữ từ trước đó.</p>
+
 <p>Các message phải được lưu lại ngay cả khi khởi động lại server.</p>
+
 <p>Để xóa message đã yêu cầu lưu lại, Publisher chỉ cần gửi một message cùng topic nhưng với trường payload bằng 0.</p>
-<h3>3. Ví dụ thực tế với mosquitto</h3>
+
+<h3 id="3-ví-dụ-thực-tế-với-mosquitto">3. Ví dụ thực tế với mosquitto</h3>
+
 <p>Ta sẽ thực nghiệm với mosquitto</p>
+
 <ul>
 <li>Trường QoS : level = 00b</li>
 <li>Trường QoS : level = 01b</li>

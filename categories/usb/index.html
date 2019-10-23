@@ -70,18 +70,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ở bài <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm driver cho Linux</a> cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.</p>
-<h2>Cách tìm source code driver cho thiết bị USB</h2>
-<h2>1. Nói qua về thiết bị USB</h2>
-<ul>
-<li>Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.<br />
-Đó là <strong>Vendor</strong> (nhà sản xuất), và <strong>Product</strong> (sản phẩm).<br />
-Thông tin về <strong>Vendor</strong> được mô tả bằng một id, trong source thường là <strong>idVendor</strong>.<br />
-Thông tin về <strong>Product</strong> cũng được mô tả bằng một id, trong source thường là <strong>idProduct</strong>.<br />
-2 thông tin trên sẽ xác định duy nhất một loại thiết bị.<br />
-Thông tin về id của mỗi Vendor, Product được đăng kí với tổ chức hỗ trợ USB.</li>
-</ul>
-<p>
+		Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
+Cách tìm source code driver cho thiết bị USB 1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Đó là Vendor (nhà sản xuất), và Product (sản phẩm).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -93,17 +84,8 @@ Thông tin về id của mỗi Vendor, Product được đăng kí với tổ ch
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.</p>
-<p>Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây. Ngoài ra, nó cũng quy định chặt hơn cho từng Request từ phía Host.</p>
-<ul>
-<li>Yêu cầu thông tin chuẩn của thiết bị (Standard Device request) mà không có dữ liệu (hay DATA Stage) thì phải hoàn thành trong vòng 50ms.</li>
-<li>Nếu yêu cầu có dữ liệu kèm theo (có DATA stage) thì dữ liệu phải được trao đổi sau ít nhất 500ms sau request được gửi đến.
-<ul>
-<li>Mỗi gói dữ liệu phải gửi trong 500ms sau khi gói trước được gửi</li>
-<li>Thông báo trạng thái (Status Stage) phải hoàn thành trong vòng 50ms sau khi gửi gói tin cuối cùng.</li>
-</ul>
-</li>
-<li>Lệnh SetAddresss (có chưa phần Data) phải được thực hiện và trả lại Status trong vòng 50ms. Phía thiết bị có 2ms để thực hiện thay địa chỉ trước khi request tiếp theo được gửi đến.
+		Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.
+Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -115,16 +97,9 @@ Thông tin về id của mỗi Vendor, Product được đăng kí với tổ ch
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.</p>
-<p>Các đặc tả phổ biết nhất bao gồm:</p>
-<ul>
-<li>Miêu tả thiết bị (Device Descriptors)</li>
-<li>Miêu tả các cấu hình (Configuration Descriptors)</li>
-<li>Miêu tả giao diện (Interface Descriptors)</li>
-<li>Miêu tả điểm đầu cuối (EndPoint Descriptors)</li>
-<li>Các chuỗi sử dụng trong các miêu tả trên.</li>
-</ul>
-<p>
+		Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.
+Các đặc tả phổ biết nhất bao gồm:
+ Miêu tả thiết bị (Device Descriptors) Miêu tả các cấu hình (Configuration Descriptors) Miêu tả giao diện (Interface Descriptors) Miêu tả điểm đầu cuối (EndPoint Descriptors) Các chuỗi sử dụng trong các miêu tả trên.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -136,12 +111,12 @@ Thông tin về id của mỗi Vendor, Product được đăng kí với tổ ch
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint</strong></p>
-<p>Control Transfer</p>
-<p>Interrupt Transfer</p>
-<p>Isochronous Transfer</p>
-<p>Bulk Transfer</p>
-<p>
+		Đặc tả USB định nghĩa 4 loại Transfer/EndPoint
+Control Transfer
+Interrupt Transfer
+Isochronous Transfer
+Bulk Transfer
+Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp). Độ dài mỗi packet trong dạng truyền control ở mỗi speed lại khác nhau.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -153,12 +128,7 @@ Thông tin về id của mỗi Vendor, Product được đăng kí với tổ ch
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ "nguy hiểm", nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi. Trong thực tế, hầu hết USB Controller I.C.s sẽ lo hết mấy tầng dưới rồi. Hay nói cách khác, mấy tầng đó nhà phát triển cũng không thấy được.</p>
-<p>Mỗi USB Transaction bao gồm</p>
-<ul>
-<li>SMột packet chứa Token (Giống như Header cho biết cái gì sẽ đến tiếp sau đó) - luôn có</li>
-<li>Một packet chứa dữ liệu (có thể không có) , (chứa payload)</li>
-<li>Một packet chứa trạng thái (được sử dụng để thông báo trạng thái truyền và cung cấp cơ chế kiểm soát lỗi nữa)
+		Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &ldquo;nguy hiểm&rdquo;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -170,22 +140,9 @@ Thông tin về id của mỗi Vendor, Product được đăng kí với tổ ch
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.</p>
-<p>Đầu kết nối (Connectors)</p>
-<p>Mọi thiết bị có một upstream "chảy"đến host, và mọi host có một downstream "chảy" thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs. Có 2 loại connector phổ biến là type A và type B. Như hình bên dưới đây:</p>
-<table width="60%">
-<tbody>
-<tr>
-<td width="50%"><img src="{{ site.baseurl }}/assets/contypea.gif" alt="" /></td>
-<td width="50%"><img src="{{ site.baseurl }}/assets/contypeb.gif" alt="" /></td>
-</tr>
-<tr>
-<td>Type A USB Connector</td>
-<td>Type B USB Connector</td>
-</tr>
-</tbody>
-</table>
-<p>
+		Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.
+Đầu kết nối (Connectors)
+Mọi thiết bị có một upstream &ldquo;chảy&rdquo;đến host, và mọi host có một downstream &ldquo;chảy&rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -213,7 +170,7 @@ Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập 
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

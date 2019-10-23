@@ -62,47 +62,86 @@
 			<h1 class="post__title">Cài đặt GDB (02 - Cài đặt)</h1>
 			
 		</header><div class="content post__content clearfix">
-			Dưới đây, sẽ đưa ra hướng dẫn cách cài đặt GDB trên máy sử dụng để debug. Nó có thể là máy chạy <strong>target program</strong>, có thể không.</p>
-<h3>1. Cài đặt trên Debian (Debian-based distro)</h3>
+			
+
+<p>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là <strong>target program</strong>.<br />
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:</p>
+
+<ol>
+<li>GDB và <strong>target program</strong> cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</li>
+<li>GDB và <strong>target program</strong> không cùng trên 1 máy : Tức là GDB sẽ chạy trên 1 máy để debug 1 chương trình chạy trên máy khác thông qua Serial hoặc Network. Cái này hay thấy khi phát triển ứng dụng nhúng. Xem thêm tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</li>
+</ol>
+
+<p>Một số distro khi được cài đặt, đã bao gồm <strong>GDB</strong> rồi. Có thể kiểm tra bằng command dưới đây:</p>
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
+$gdb &ndash;version<br />
+[/code]</p>
+
+<p>Dưới đây, sẽ đưa ra hướng dẫn cách cài đặt GDB trên máy sử dụng để debug. Nó có thể là máy chạy <strong>target program</strong>, có thể không.</p>
+
+<h3 id="1-cài-đặt-trên-debian-debian-based-distro">1. Cài đặt trên Debian (Debian-based distro)</h3>
+
 <p>Debian 8.x chưa được cài mặc định GDB, hãy sử dụng command sau để cài nó:</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 #aptitude install gdb<br />
 [/code]</p>
+
 <p>Chú ý rằng, ở đây phải sử dụng quyền <strong><em>root</em></strong> hoặc <strong><em>sudo</em></strong>.<br />
 Trên một số bản Debian như 8.x thì hoàn toàn có thể dùng cách cài đặt như Ubuntu được.</p>
-<h3>2. Cài đặt trên Ubuntu (Ubuntu-based distro)</h3>
+
+<h3 id="2-cài-đặt-trên-ubuntu-ubuntu-based-distro">2. Cài đặt trên Ubuntu (Ubuntu-based distro)</h3>
+
 <p>Trên các bản Ubuntu gần đây như <a href="http://releases.ubuntu.com/trusty/ubuntu-14.04.4-desktop-i386.manifest">14.04</a>, <a href="http://releases.ubuntu.com/xenial/ubuntu-16.04-desktop-i386.manifest">16.04</a> <strong>GDB</strong> đều được được cài mặc định.<br />
 Hoặc nếu chưa được cài, thì hãy chạy command sau để cài nó :</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $sudo apt-get install gdb<br />
 [/code]</p>
-<h3>2. Cài đặt trên CentOS, Fedora</h3>
+
+<h3 id="2-cài-đặt-trên-centos-fedora">2. Cài đặt trên CentOS, Fedora</h3>
+
 <p>Trên CentOS, Fedora, ta cài bằng lệnh sau dưới quyền root.</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 #yum install gdb<br />
 [/code]</p>
+
 <p>Nếu có đĩa DVD cài đặt, có thể tải gói cài từ DVD bằng lệnh sau:</p>
-<p>[code lang="shell"]<br />
-#yum install --disablerepo=\* --enablerepo=c7-media install gdb<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
+#yum install &ndash;disablerepo=\* &ndash;enablerepo=c7-media install gdb<br />
 [/code]</p>
-<h3>3. Cài đặt trên Raspbian</h3>
+
+<h3 id="3-cài-đặt-trên-raspbian">3. Cài đặt trên Raspbian</h3>
+
 <p>Raspbian dựa trên Debian, có thể cài theo cách cài trên Ubuntu hoặc Debian đều được.</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 #aptitude install gdb<br />
 [/code]</p>
+
 <p>hoặc</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $sudo apt-get install gdb<br />
 [/code]</p>
-<h3>4. Cài đặt từ source code</h3>
+
+<h3 id="4-cài-đặt-từ-source-code">4. Cài đặt từ source code</h3>
+
 <p>Ta có thể tải một bản gdb bất kì tại <a href="ftp://sourceware.org/pub/gdb/releases/">đây</a> để tiến hành cài đặt.</p>
+
 <p>Ở đây, bản mới nhất là <strong>7.11.1</strong> để build, cài đặt.<br />
 Chú ý là, ta có thể cài đặt <strong>GDB</strong> trên 1 đường dẫn bất kì của user đang sử dụng mà không cần phải cài vào các đường dẫn mặc định như <strong>/usr/bin</strong>, hay <strong>/usr/local/bin</strong>, etc.<br />
 Và quá trình này không cần phải là <strong>root</strong>.<br />
 Thực hiện với quyền root nhiều khi còn phát sinh vấn đề.</p>
-<h4>4.1. Tạo thư mục để build</h4>
+
+<h4 id="4-1-tạo-thư-mục-để-build">4.1. Tạo thư mục để build</h4>
+
 <p>Command:</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $ #1. Creating local directory<br />
 $pwd<br />
 /home/oedev<br />
@@ -112,39 +151,57 @@ $pwd<br />
 /home/oedev/gdb<br />
 $mkdir gdb_install<br />
 [/code]</p>
+
 <p>Ta sẽ cài đặt <strong>GDB</strong> vào *<strong>gdb_install</strong>.</p>
-<h4>4.2. Tải source code</h4>
-<p>[code lang="shell"]<br />
+
+<h4 id="4-2-tải-source-code">4.2. Tải source code</h4>
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $ #2. Download source code<br />
-$wget ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz<br />
+$wget <a href="ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz">ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz</a><br />
 [/code]</p>
-<h4>4.3. Giải nén source code</h4>
-<p>[code lang="shell"]<br />
+
+<h4 id="4-3-giải-nén-source-code">4.3. Giải nén source code</h4>
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $ #3. Extrating the source code<br />
 $tar -xzvf gdb-7.11.1.tar.gz<br />
 $ls<br />
 gdb-7.11.1 gdb-7.11.1.tar.gz<br />
 $cd gdb-7.11.1<br />
 [/code]</p>
-<h4>4.4. Cấu hình (Configure)</h4>
+
+<h4 id="4-4-cấu-hình-configure">4.4. Cấu hình (Configure)</h4>
+
 <p>Khi ta chỉ chạy GDB trên chính máy hiện tại, và debug các chương trình chạy trên máy này thôi thì command đơn giản là :</p>
-<p>[code lang="shell"]<br />
-$./configure --prefix=/home/oedev/gdb/gdb_install<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
+$./configure &ndash;prefix=/home/oedev/gdb/gdb_install<br />
 [/code]</p>
+
 <p>Sẽ mất vài giây để chạy xong.</p>
-<h4>4.5. Biên dịch (Compiling)</h4>
+
+<h4 id="4-5-biên-dịch-compiling">4.5. Biên dịch (Compiling)</h4>
+
 <p>Sau khi <strong>configure</strong>, thì sẽ là <strong>make</strong>:</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $make<br />
 [/code]</p>
+
 <p>Cần 5-10 phút để build xong.</p>
-<h4>4.6. Cài đặt (Installing)</h4>
+
+<h4 id="4-6-cài-đặt-installing">4.6. Cài đặt (Installing)</h4>
+
 <p>Vì ta đã cấu hình đường dẫn ở bước configure rồi nên ở đây, chỉ cần chạy lệnh sau là <strong>GDB</strong> sẽ được cài đặt vào được dẫn đó (không cần quyền root):</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 $make install<br />
 [/code]</p>
+
 <p>Kiểm tra thư mục cài đặt</p>
-<p>[code lang="shell"]<br />
+
+<p>[code lang=&ldquo;shell&rdquo;]<br />
 oedev@OEDEV-Ubuntu:~/gdb/gdb_install$ tree -L 2<br />
 .<br />
 ├── bin<br />
@@ -171,6 +228,7 @@ oedev@OEDEV-Ubuntu:~/gdb/gdb_install$ tree -L 2<br />
 ├── locale<br />
 └── man<br />
 [/code]</p>
+
 <p>Giờ ta có thể sử dụng các file trong thư mục bin rồi.<br />
 Ta chủ yếu sử dụng 2 file là <strong>bin/gdb</strong> và <strong>bin/gdbserver</strong>.<br />
 Chi tiết sẽ được nói trong các bài tiếp theo.</p>

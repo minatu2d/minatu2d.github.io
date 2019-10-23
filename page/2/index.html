@@ -69,10 +69,12 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đây là nội dung <strong>pick up</strong> từ <a href="https://buildroot.org/downloads/manual/manual.html">manual</a> của Buildroot.</p>
-<p>Nó mô tả khá rõ về <strong>/dev</strong> trong hệ thống Linux, cùng<br />
-với các giải pháp dành cho hệ thống Embedded Linux.</p>
-<p>
+		Đây là nội dung pick up từ manual của Buildroot.
+Nó mô tả khá rõ về /dev trong hệ thống Linux, cùng
+với các giải pháp dành cho hệ thống Embedded Linux.
+6.2 /dev management Trên 1 hệ thống Linux, thư mục /dev chứa các file đặc biệt, được gọi là
+device files (hay các file thiết bị), cho phép ứng dụng phía user truy cập
+đến các thiết bị phần cứng mà Linux kernel quản lý.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -84,14 +86,13 @@ với các giải pháp dành cho hệ thống Embedded Linux.</p>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ta đã có bài giới thiệu về <a href="https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/">4 Stage khi Compiling</a> rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.</p>
-<p>Trong compile thông thường dạng</p>
-<p>[code lang=bash]<br />
-$gcc -o HelloWorld HelloWorld.c<br />
-[/code]</p>
-<p>Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.</p>
-<p>Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</p>
-<p>
+		Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
+Trong compile thông thường dạng
+[code lang=bash]
+$gcc -o HelloWorld HelloWorld.c
+[/code]
+Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -103,24 +104,15 @@ $gcc -o HelloWorld HelloWorld.c<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.<br />
-Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.<br />
-Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.</p>
-<p>HelloWorld.c</p>
-<p>[code lang=cpp]<br />
-#include<br />
-int main()<br />
-{<br />
-print(&quot;Hello World \n&quot;);<br />
-return 0;<br />
-}<br />
-[/code]</p>
-<p>Kết quả chạy:</p>
-<p>[code lang=shell]<br />
-$./HelloWorld<br />
-HelloWorld<br />
-[/code]</p>
-<p>
+		Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.
+Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
+Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
+HelloWorld.c
+[code lang=cpp]
+#include
+int main()
+{
+print(&ldquo;Hello World \n&rdquo;);
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -132,10 +124,10 @@ HelloWorld<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.</p>
-<p>Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì<br />
-một chương trình sẽ được chạy 2 cách dưới đây</p>
-<p>
+		Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.
+Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì
+một chương trình sẽ được chạy 2 cách dưới đây
+1. Chương trình hoàn toàn là tĩnh  Không có symbol nào cần phải được (resolved) trước khi chạy. Không yêu cầu bất cứ một thư viện run-time nào.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -147,10 +139,9 @@ một chương trình sẽ được chạy 2 cách dưới đây</p>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch <strong>GCC</strong> lên đó.<br />
-Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.<br />
-Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.<br />
-
+		Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch GCC lên đó.
+Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.
+Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -162,12 +153,8 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>PER</strong> là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng <strong>TLV</strong> như <strong>BER</strong>, <strong>PER</strong> sử dụng <em>Preamble</em> (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là <strong>PLV</strong>.</p>
-<p>Đơn vị biểu diễn của <strong>PER</strong> không phải Octet mà là Bit. Mỗi phần tử sẽ thuộc 1 trong 3 loại sau:<br />
-1. Trường dư bit, tức là dãy bit không thể biểu diễn bằng một số nguyên các Octet.<br />
-2. Trường nguyên bit, có thể biểu diễn bằng một số nguyên các Octet.<br />
-3. Danh sách trường, chứa cả các thành phần là nguyên bit và dư bit.</p>
-<p>
+		PER là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng TLV như BER, PER sử dụng Preamble (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là PLV.
+Đơn vị biểu diễn của PER không phải Octet mà là Bit.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -179,10 +166,9 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.</p>
-<p>Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào <strong>BER</strong>, và tạo ra <strong>CER</strong> và <strong>DER</strong>.</p>
-<p>Sự khác nhau chủ yếu giữa <strong>CER</strong> và <strong>DER</strong> là về biểu diễn trường độ dài. <strong>Length(L)</strong>. Trong khi <strong>DER</strong> sử dụng một định dạng với độ dài cố định, thì <strong>CER</strong> sử dụng định dạng với độ dài không có định,<br />
-
+		Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.
+Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào BER, và tạo ra CER và DER.
+Sự khác nhau chủ yếu giữa CER và DER là về biểu diễn trường độ dài.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -194,15 +180,13 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp tục về <a href="https://lazytrick.wordpress.com/tag/asn1/">ASN.1</a>.</p>
-<p>Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)</p>
-<p>Ta sẽ tiếp tục nói về hiện thực dữ liệu.<br />
-Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</strong>, <strong>CER/DER</strong>, và <strong>PER</strong>.</p>
-<p>Trong đó:<br />
-<strong>BER</strong> : Basic Encoding Rules<br />
-<strong>CER/DER</strong> : Canonical Encoding Rules/Distinguished Encoding Rules<br />
-<strong>PER</strong> : Packet Encoding Rules</p>
-<p>
+		Tiếp tục về ASN.1.
+Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)
+Ta sẽ tiếp tục nói về hiện thực dữ liệu.
+Các phương thức để hiện thực dữ liệu gồm có: BER, CER/DER, và PER.
+Trong đó:
+BER : Basic Encoding Rules
+CER/DER : Canonical Encoding Rules/Distinguished Encoding Rules
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -214,21 +198,9 @@ Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</str
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp theo loạt bài về ASN.1, bài này sẽ "dịch" tài liệu của anh <a href="http://www5d.biglobe.ne.jp/~stssk/mail.html">Isida So</a> nói về cú pháp cơ bản của ASN.1.</p>
-<p>Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.</p>
-<p>ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.</p>
-<p>Ví dụ, khi muốn biểu diễn số điện thoại (<strong>TelephoneNumber</strong>), trong trường đã có kiểu dành cho chuỗi kí tự số (<strong>NumericString</strong>) thì ta chỉ việc viết như sau:</p>
-<p>[code lang=cpp]<br />
-TelephoneNumber ::= NumericString<br />
-[/code]</p>
-<ol>
-<li>Các kiểu cơ bản</li>
-<li>Kiểu cấu trúc</li>
-<li>Thẻ (Tag)</li>
-<li>Kiểu bộ phận</li>
-<li>Quy ước mở rộng (Kí hiệu mở rộng)</li>
-</ol>
-<p>
+		Tiếp theo loạt bài về ASN.1, bài này sẽ &ldquo;dịch&rdquo; tài liệu của anh Isida So nói về cú pháp cơ bản của ASN.1.
+Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.
+ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -240,17 +212,10 @@ TelephoneNumber ::= NumericString<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.</p>
-<p>Google tiếng Việt thấy khá ít thông tin về ASN.1.<br />
-Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.</p>
-<p>Nội dung bài này sẽ giới thiệu sơ qua về ASN.1.<br />
-Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http://www5d.biglobe.ne.jp/~stssk/asn1/index.html">Ishida So</a></p>
-<ol>
-<li>ASN.1 là gì?</li>
-<li>Một số ứng dụng</li>
-<li>Làm sao để sử dụng ASN.1</li>
-</ol>
-<p>
+		Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.
+Google tiếng Việt thấy khá ít thông tin về ASN.1.
+Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.
+Nội dung bài này sẽ giới thiệu sơ qua về ASN.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -262,9 +227,18 @@ Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http:/
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.<br />
-Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về <strong>Data Structure Aligment</strong>.</p>
-<p>
+		Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
+Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
+Giả sử ta có một cấu trúc sau:
+[code lang=&ldquo;C&rdquo;]
+#include 
+typedef struct
+{
+uin8_t mem1;
+uin8_t mem2;
+uin32_t mem3;
+}ST_FOOL_1;
+typedef struct
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -276,9 +250,9 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trong bài số <a href="https://lazytrick.wordpress.com/2016/09/19/gdb-co-the-lam-gi/">02</a>, ta đã nói đến những việc mà GDB có thể giúp chúng ta.</p>
-<p>Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số <strong>-g</strong> khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.<br />
-
+		Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
+Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
+Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -290,17 +264,9 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là <strong>target program</strong>.<br />
-Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:</p>
-<ol>
-<li>GDB và <strong>target program</strong> cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</li>
-<li>GDB và <strong>target program</strong> không cùng trên 1 máy : Tức là GDB sẽ chạy trên 1 máy để debug 1 chương trình chạy trên máy khác thông qua Serial hoặc Network. Cái này hay thấy khi phát triển ứng dụng nhúng. Xem thêm tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</li>
-</ol>
-<p>Một số distro khi được cài đặt, đã bao gồm <strong>GDB</strong> rồi. Có thể kiểm tra bằng command dưới đây:</p>
-<p>[code lang="shell"]<br />
-$gdb --version<br />
-[/code]</p>
-<p>
+		Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
+ GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -312,11 +278,9 @@ $gdb --version<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trước khi nói về chủ đề chính là "GDB có thể làm gì". GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.</p>
-<h4>1. Phầm mềm Debugger sinh ra giải quyết cái gì?</h4>
-<p>Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.<br />
-Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế. Những cái đó người ta gọi là <strong>BUG</strong>.</p>
-<p>Một điều nữa, khi đã biên dịch (ở đây không xét đến ngôn ngữ thông dịch nhé), các code mà con người viết ra sẽ trở thành mã nhị phân.
+		Trước khi nói về chủ đề chính là &ldquo;GDB có thể làm gì&rdquo;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.
+1. Phầm mềm Debugger sinh ra giải quyết cái gì? Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.
+Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -328,22 +292,9 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！</p>
-<p>Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với "siêu lười" như mình, loạt về <a href="https://lazytrick.wordpress.com/category/usb/">USB Basic</a> dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.</p>
-<p>Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).</p>
-<p>Nội dung sẽ như sau:</p>
-<ol>
-<li>GDB có thể làm gì?</li>
-<li>Cài đặt GDB</li>
-<li>GDB dòng lệnh cơ bản</li>
-<li>GDB trên Eclipse IDE</li>
-<li>GDB trên QtCreator</li>
-<li>GDB làm việc như thế nào?</li>
-<li>GDB Server giải quyết vấn đề gì</li>
-<li>GDB trên Visual Studio 2015</li>
-<li>GDB trên Eclipse IDE, QtCreator khi sử dụng với GDB Server</li>
-</ol>
-<p>
+		Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！
+Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với &ldquo;siêu lười&rdquo; như mình, loạt về USB Basic dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.
+Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -355,11 +306,9 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>AWK</strong> : 1 trong 3 tool (cùng với <strong>grep</strong> và <strong>sed</strong>) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.</p>
-<p>Sau một hồi tìm hiểu <strong>awk</strong> trên <a href="http://www.tutorialspoint.com/awk/index.htm">TutorialPoint</a>.</p>
-<p><strong>awk</strong> là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng. AWK cung cấp hẳn 1 ngôn ngữ để so khớp input cũng như xuất output. Ngôn ngữ này cực kì giống ngôn ngữ C, nên rất dễ làm quen. Nó cung cấp 1 cơ chế matching mạnh là regular express nữa cho xử lý input.</p>
-<p><strong>Khi làm việc với AWK, ta hãy hiểu rằng, từng line trong input sẽ được thực hiện qua đoạn script mà ta cung cấp cho Awk.</strong></p>
-<p>
+		AWK : 1 trong 3 tool (cùng với grep và sed) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.
+Sau một hồi tìm hiểu awk trên TutorialPoint.
+awk là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -375,7 +324,7 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
  Khi kernel được build, các tham số sau phải được bật (ENABLE)
 CONFIG_FW_LOADER : Cho phép load firmware
 CONFIG_EXTRA_FIRMWARE &gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa các firmware. Các firmware phải được copy vào thư mục CONFIG_EXTRA_FIRMWARE_DIR đã set ở trên.  Một số điều lưu ý liên quan đến firmware:
-  Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,
+ Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -387,10 +336,8 @@ CONFIG_EXTRA_FIRMWARE &gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa cá
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>Patch</strong>, hay người ta vẫn gọi là các bản vá, víu gì đó. Cũng thấy khái niệm này từ lâu rồi. Nhưng chưa bao giờ phát sinh nhu cầu sử dụng vì đa số các dự án mình từng làm đều dùng Server SVN tập trung. Mọi thay đổi đều có quản lý chặt chẽ, cũng ít khi rẽ quá nhiều nhánh (branch).<br />
-Gần đây, bắt buộc phải nghĩ đến việc sử dụng 2 tool này vì phải update source trên máy thật (một board mạch) chỉ hỗ trợ truyền Serial. :((<br />
-Sau nhiều lần truyền source, dù đã nén bằng <strong><em>tar</em></strong>, cũng mất đến 20-30 phút, mình không thể chịu nổi nữa. Thế là hỏi thầy google. Thấy có 2 command khá thông dụng để giải quyết vấn đề này.</p>
-<p>
+		Patch, hay người ta vẫn gọi là các bản vá, víu gì đó. Cũng thấy khái niệm này từ lâu rồi. Nhưng chưa bao giờ phát sinh nhu cầu sử dụng vì đa số các dự án mình từng làm đều dùng Server SVN tập trung. Mọi thay đổi đều có quản lý chặt chẽ, cũng ít khi rẽ quá nhiều nhánh (branch).
+Gần đây, bắt buộc phải nghĩ đến việc sử dụng 2 tool này vì phải update source trên máy thật (một board mạch) chỉ hỗ trợ truyền Serial.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -402,9 +349,9 @@ Sau nhiều lần truyền source, dù đã nén bằng <strong><em>tar</em></st
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.<br />
-Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là <strong>Firmware</strong>.<br />
-
+		Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.
+Mình thấy ngoài Driver, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là Firmware.
+Bài này sẽ dịch lại trang, để hiểu qua về Firmware trong Linux Kernel.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -416,10 +363,9 @@ Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trong quá trình tìm cách cài đặt driver cho <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">bản build Raspberry PI</a> sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách <strong>Linux in A Nutshell</strong> (link tại <a href="http://files.kroah.com/lkn/">đây</a> ) của pro này.</p>
-<p>Chương 7, chương mà tác giả đặc biệt "tự hào", nói về Customize một Linux Kernel.<br />
-Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.<br />
-
+		Trong quá trình tìm cách cài đặt driver cho bản build Raspberry PI sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách Linux in A Nutshell (link tại đây ) của pro này.
+Chương 7, chương mà tác giả đặc biệt &ldquo;tự hào&rdquo;, nói về Customize một Linux Kernel.
+Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.
 	</div>
 </article>
 </main>
@@ -438,7 +384,7 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

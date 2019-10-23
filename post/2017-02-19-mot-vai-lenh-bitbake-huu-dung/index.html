@@ -62,87 +62,81 @@
 			<h1 class="post__title">Một vài lệnh Bitbake hữu dụng</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<div class="j-rte-table">
-<table class="jiveBorder tablesorter" border="1">
-<thead>
-<tr>
-<th class="header" valign="middle"><strong>Lệnh Bitbake</strong></th>
-<th class="header" valign="middle"><strong>Miêu tả<br />
-</strong></th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td colspan="1"><em>bitbake &lt;image&gt;</em></td>
-<td colspan="1"><em>Nấu ra 1 "ảnh" (Image) </em>(Thêm tham số <em>-k đ</em>ể cho phép chạy đến hết kẻ cả có lỗi thực thi)</td>
-</tr>
-<tr>
-<td><em>bitbake &lt;package&gt; -c &lt;task&gt;</em></td>
-<td><code>Thực hiện 1 task của package nào đó. Tên các task mặc định thường có</code><code>: </code><code><em>fetch, </em></code><em><code>unpack</code></em>, <em><code>patch</code></em>, <em><code>configure</code></em>, <em><code>compile</code></em>, <em><code>install</code></em>, <em><code>package</code></em>, <em><code>package_write</code></em>, and <em><code>build.</code></em></p>
-<p>Ví dụ<em>: </em>Để "ép" bitbake compile lại kernel và <em>build lại ảnh cho board imx, ta sẽ sử dụng</em> :</p>
-<p><em>$ bitbake  </em><em>linux-imx </em><em>-f -c compile</em></p>
-<p><em>$ bitbake linux-imx<br />
-</em></td>
-</tr>
-<tr>
-<td><em><span class="mce_paste_marker">bitbake </span><span class="mce_paste_marker">&lt;image &gt; </span></em><span class="mce_paste_marker"><em>-g -u depexp</em><br />
-</span></td>
-<td>Hiển thị các package phụ thuộc của 1 Image.</p>
+			<p>Có một vài lệnh hữu dụng được cộng đồng sử dụng board NXP chia sẻ, mình sẽ note ở đây cho dễ tìm vậy. Link tại <a href="https://community.nxp.com/docs/DOC-94953">đây</a>.</p>
+
+<p><strong>Lệnh Bitbake</strong></p>
+
+<p>**Miêu tả<br />
+**</p>
+
+<p><em>bitbake <image></em></p>
+
+<p><em>Nấu ra 1 &ldquo;ảnh&rdquo; (Image) </em>(Thêm tham số _-k đ_ể cho phép chạy đến hết kẻ cả có lỗi thực thi)</p>
+
+<p><em>bitbake <package> -c <task></em></p>
+
+<p><code>Thực hiện 1 task của package nào đó. Tên các task mặc định thường có</code><code>:</code> <code>_fetch,_</code> <em><code>unpack</code></em>, <em><code>patch</code></em>, <em><code>configure</code></em>, <em><code>compile</code></em>, <em><code>install</code></em>, <em><code>package</code></em>, <em><code>package_write</code></em>, and <em><code>build.</code></em></p>
+
+<p>Ví dụ<em>:</em> Để &ldquo;ép&rdquo; bitbake compile lại kernel và _build lại ảnh cho board imx, ta sẽ sử dụng_ :</p>
+
+<p><em>$ bitbake</em> <em>linux-imx</em> <em>-f -c compile</em></p>
+
+<p>_$ bitbake linux-imx<br />
+_</p>
+
+<p><em>bitbake <image ></em> <em>-g -u depexp</em></p>
+
+<p>Hiển thị các package phụ thuộc của 1 Image.</p>
+
 <p>Ví dụ: Để hiển thị toàn bộ các pakage phụ thuộc của fsl-image-gui</p>
+
 <p><em>$ bitbake fsl-image-gui -g -u depexp</em></p>
-<p>&nbsp;</p>
-<p>Chú ý: Lệnh này sẽ mở  một UI window, vì thế cần thực hiện lệnh này trên 1 console của Desktop (chứ không phải console ảo hoặc remote, hoặ serial đâu nha).</td>
-</tr>
-<tr>
-<td><em>bitbake &lt;package&gt; -c  devshell</em></td>
-<td>Mở một shell mới với tất cả các biến cần thiết cho package được chỉ định.</td>
-</tr>
-<tr>
-<td><i>toaster</i></td>
-<td>Giao diện web cho Bitbake.</td>
-</tr>
-<tr>
-<td><em>bitbake &lt;package&gt; -c listtasks</em></td>
-<td>Hiển thị tất cả các task của 1 package.</td>
-</tr>
-<tr>
-<td><em>bitbake virtual/kernel </em><em>-c menuconfig</em></td>
-<td>Cấu hình lại kernel</td>
-</tr>
-<tr>
-<td>bitbake &lt;image&gt; -c fetchall</td>
-<td>Thực hiện tải source cho Image được chỉ định</td>
-</tr>
-<tr>
-<td>bitbake-layers show-layers</td>
-<td>Hiển thị các layers</td>
-</tr>
-<tr>
-<td>bitbake-layers show-recipes "*-image-*"</td>
-<td>Hiển thị các Image hiện có. Nếu không các kí tự star trong "*-images-*", nó sẽ show ra tất cả các Recipe hiện có đấy.</td>
-</tr>
-<tr>
-<td>bitbake -g &lt;<em>image&gt;</em> &amp;&amp; cat pn-depends.dot | grep -v -e '-native' | grep -v digraph | grep -v -e '-image' | awk '{print $1}' | sort | uniq</td>
-<td>Hiển thị tất cả các Package cua 1 Image</td>
-</tr>
-<tr>
-<td>bitbake -g &lt;<em>pkg&gt;</em> &amp;&amp; cat pn-depends.dot | grep -v -e '-native' | grep -v digraph | grep -v -e '-image' | awk '{print $1}' | sort | uniq</td>
-<td>Hiện thị tất cả các phụ thuộc của 1 Package</td>
-</tr>
-<tr>
-<td>bitbake –v <em>&lt;image&gt;</em> 2&gt;&amp;1 | tee <em>image_</em>build.log</td>
-<td>In kết quả ra màn hình console và lưu vào cả file nữa.</td>
-</tr>
-<tr>
-<td>bitbake -s | grep <em>&lt;pkg&gt;</em></td>
-<td>Kiểm tra xem 1 package hiện có trong bản build hiện tại không.</td>
-</tr>
-</tbody>
-</table>
-</div>
-<p>&nbsp;</p>
-<p>&nbsp;</p>
+
+<p>Chú ý: Lệnh này sẽ mở  một UI window, vì thế cần thực hiện lệnh này trên 1 console của Desktop (chứ không phải console ảo hoặc remote, hoặ serial đâu nha).</p>
+
+<p><em>bitbake <package> -c  devshell</em></p>
+
+<p>Mở một shell mới với tất cả các biến cần thiết cho package được chỉ định.</p>
+
+<p><em>toaster</em></p>
+
+<p>Giao diện web cho Bitbake.</p>
+
+<p><em>bitbake <package> -c listtasks</em></p>
+
+<p>Hiển thị tất cả các task của 1 package.</p>
+
+<p><em>bitbake virtual/kernel</em> <em>-c menuconfig</em></p>
+
+<p>Cấu hình lại kernel</p>
+
+<p>bitbake <image> -c fetchall</p>
+
+<p>Thực hiện tải source cho Image được chỉ định</p>
+
+<p>bitbake-layers show-layers</p>
+
+<p>Hiển thị các layers</p>
+
+<p>bitbake-layers show-recipes &ldquo;*-image-*&ldquo;</p>
+
+<p>Hiển thị các Image hiện có. Nếu không các kí tự star trong &rdquo;*-images-*&rdquo;, nó sẽ show ra tất cả các Recipe hiện có đấy.</p>
+
+<p>bitbake -g &lt;<em>image&gt;</em> &amp;&amp; cat pn-depends.dot | grep -v -e &lsquo;-native&rsquo; | grep -v digraph | grep -v -e &lsquo;-image&rsquo; | awk &lsquo;{print $1}&rsquo; | sort | uniq</p>
+
+<p>Hiển thị tất cả các Package cua 1 Image</p>
+
+<p>bitbake -g &lt;<em>pkg&gt;</em> &amp;&amp; cat pn-depends.dot | grep -v -e &lsquo;-native&rsquo; | grep -v digraph | grep -v -e &lsquo;-image&rsquo; | awk &lsquo;{print $1}&rsquo; | sort | uniq</p>
+
+<p>Hiện thị tất cả các phụ thuộc của 1 Package</p>
+
+<p>bitbake –v <em><image></em> 2&gt;&amp;1 | tee _image__build.log</p>
+
+<p>In kết quả ra màn hình console và lưu vào cả file nữa.</p>
+
+<p>bitbake -s | grep <em><pkg></em></p>
+
+<p>Kiểm tra xem 1 package hiện có trong bản build hiện tại không.</p>
 
 		</div>
 		<footer class="post__footer">

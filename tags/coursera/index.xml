@@ -2,54 +2,48 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CourserA on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/coursera/</link>
+    <link>https://blog.lazytrick.com/tags/coursera/</link>
     <description>Recent content in CourserA on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Thu, 24 May 2018 00:30:01 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/coursera/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/coursera/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</title>
-      <link>https://minatu2d.github.io/post/2018-05-24-__trashed/</link>
+      <link>https://blog.lazytrick.com/post/2018-05-24-__trashed/</link>
       <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2018-05-24-__trashed/</guid>
-      <description>&lt;p&gt;Tiếp theo &lt;a href=&#34;https://lazytrick.wordpress.com/2018/05/23/khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/&#34;&gt;bài trước&lt;/a&gt; trong loạt note về Khóa học online về Machine Learning đầu tiên.&lt;/p&gt;
-&lt;h2&gt;Tuần 6 : Lời khuyên khi ứng áp dụng Machine Learning.&lt;/h2&gt;
-&lt;p&gt;Kiến thúc trong phần này không phải nói về thuật toán, mà là kĩ năng, rồi những thứ cần chú ý khi áp dụng Machine Learning. Và tất nhiên của khi áp dụng Deep Learning nữa.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2018-05-24-__trashed/</guid>
+      <description>Tiếp theo bài trước trong loạt note về Khóa học online về Machine Learning đầu tiên.
+Tuần 6 : Lời khuyên khi ứng áp dụng Machine Learning. Kiến thúc trong phần này không phải nói về thuật toán, mà là kĩ năng, rồi những thứ cần chú ý khi áp dụng Machine Learning. Và tất nhiên của khi áp dụng Deep Learning nữa.
+Khi áp dụng Machine Learning để giải quyết vấn đề, thì một 2 việc được lặp đi lắm lại là :</description>
     </item>
     
     <item>
       <title>Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</title>
-      <link>https://minatu2d.github.io/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</link>
+      <link>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</link>
       <pubDate>Wed, 23 May 2018 07:55:50 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</guid>
-      <description>&lt;p&gt;Tiếp theo &lt;a href=&#34;https://lazytrick.wordpress.com/2018/05/23/khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/&#34; target=&#34;_blank&#34;&gt;bài trước&lt;/a&gt; trong loạt note về khóa học online đầu tiên về Machine Learning.&lt;/p&gt;
-&lt;h2&gt;Tuần 4 : Neurtal Networks : Biểu diễn&lt;/h2&gt;
-&lt;p&gt;Như đã biết, khi nói về dữ liệu, ta thường nói đến một loạt đặc trưng.&lt;br /&gt;
-Ví dụ: người thì có chiều cao, cân nặng, sở thích, etc.&lt;br /&gt;
-Và ta cũng đã biết về tạo cá đặc trưng đa thức khi các đặc trưng bậc 1 không đủ để miêu tả tốt dữ liệu.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</guid>
+      <description>Tiếp theo bài trước trong loạt note về khóa học online đầu tiên về Machine Learning.
+Tuần 4 : Neurtal Networks : Biểu diễn Như đã biết, khi nói về dữ liệu, ta thường nói đến một loạt đặc trưng.
+Ví dụ: người thì có chiều cao, cân nặng, sở thích, etc.
+Và ta cũng đã biết về tạo cá đặc trưng đa thức khi các đặc trưng bậc 1 không đủ để miêu tả tốt dữ liệu.</description>
     </item>
     
     <item>
       <title>Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</title>
-      <link>https://minatu2d.github.io/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</link>
+      <link>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</link>
       <pubDate>Wed, 23 May 2018 02:18:56 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</guid>
-      <description>&lt;p&gt;Cuối cùng cũng kết thúc khoá học Online đầu tiên về Machine Learnning.&lt;br /&gt;
-Do tiếng Anh cùi, nên dù nhìn sub liên tục nhưng vẫn vô số lần tua lại để xem.&lt;br /&gt;
-Khoá học rất hay, thầy Andrew NG giảng khá kĩ các khái niệm quan trọng.&lt;br /&gt;
-Dù mình biết Machine Learning nặng về Toán, đặc biệt Toán Tối ưu như machinelearningcoban.com viết, nhưng khoá này không tập trung vào những cái đó.&lt;br /&gt;
-Nó tập trung vào việc Intuition - Trực giác về Machine Learning.&lt;br /&gt;
-Ví dụ như giải quyết vấn đề gì. Quá trình Train là đi tìm cái gì. Quá trình Test làm gì. Rồi cách đánh giá một mô hình Machine Learning.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</guid>
+      <description>Cuối cùng cũng kết thúc khoá học Online đầu tiên về Machine Learnning.
+Do tiếng Anh cùi, nên dù nhìn sub liên tục nhưng vẫn vô số lần tua lại để xem.
+Khoá học rất hay, thầy Andrew NG giảng khá kĩ các khái niệm quan trọng.
+Dù mình biết Machine Learning nặng về Toán, đặc biệt Toán Tối ưu như machinelearningcoban.com viết, nhưng khoá này không tập trung vào những cái đó.</description>
     </item>
     
   </channel>

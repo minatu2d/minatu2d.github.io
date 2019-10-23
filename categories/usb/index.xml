@@ -2,130 +2,87 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>USB on Lazytrick</title>
-    <link>https://minatu2d.github.io/categories/usb/</link>
+    <link>https://blog.lazytrick.com/categories/usb/</link>
     <description>Recent content in USB on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Sun, 23 Apr 2017 04:10:05 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/categories/usb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/categories/usb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Tìm source code của USB Driver trên Linux</title>
-      <link>https://minatu2d.github.io/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
+      <link>https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
       <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
-      <description>&lt;p&gt;Ở bài &lt;a href=&#34;https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/&#34;&gt;Tìm driver cho Linux&lt;/a&gt; cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.&lt;/p&gt;
-&lt;h2&gt;Cách tìm source code driver cho thiết bị USB&lt;/h2&gt;
-&lt;h2&gt;1. Nói qua về thiết bị USB&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.&lt;br /&gt;
-Đó là &lt;strong&gt;Vendor&lt;/strong&gt; (nhà sản xuất), và &lt;strong&gt;Product&lt;/strong&gt; (sản phẩm).&lt;br /&gt;
-Thông tin về &lt;strong&gt;Vendor&lt;/strong&gt; được mô tả bằng một id, trong source thường là &lt;strong&gt;idVendor&lt;/strong&gt;.&lt;br /&gt;
-Thông tin về &lt;strong&gt;Product&lt;/strong&gt; cũng được mô tả bằng một id, trong source thường là &lt;strong&gt;idProduct&lt;/strong&gt;.&lt;br /&gt;
-2 thông tin trên sẽ xác định duy nhất một loại thiết bị.&lt;br /&gt;
-Thông tin về id của mỗi Vendor, Product được đăng kí với tổ chức hỗ trợ USB.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
+      <description>Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
+Cách tìm source code driver cho thiết bị USB 1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Đó là Vendor (nhà sản xuất), và Product (sản phẩm).</description>
     </item>
     
     <item>
       <title>USB cho dev (Chap.06 – Các gói tin Setup)</title>
-      <link>https://minatu2d.github.io/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</link>
+      <link>https://blog.lazytrick.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</link>
       <pubDate>Sat, 23 Jul 2016 05:46:28 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</guid>
-      <description>&lt;p&gt;Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.&lt;/p&gt;
-&lt;p&gt;Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây. Ngoài ra, nó cũng quy định chặt hơn cho từng Request từ phía Host.&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Yêu cầu thông tin chuẩn của thiết bị (Standard Device request) mà không có dữ liệu (hay DATA Stage) thì phải hoàn thành trong vòng 50ms.&lt;/li&gt;
-&lt;li&gt;Nếu yêu cầu có dữ liệu kèm theo (có DATA stage) thì dữ liệu phải được trao đổi sau ít nhất 500ms sau request được gửi đến.
-&lt;ul&gt;
-&lt;li&gt;Mỗi gói dữ liệu phải gửi trong 500ms sau khi gói trước được gửi&lt;/li&gt;
-&lt;li&gt;Thông báo trạng thái (Status Stage) phải hoàn thành trong vòng 50ms sau khi gửi gói tin cuối cùng.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/li&gt;
-&lt;li&gt;Lệnh SetAddresss (có chưa phần Data) phải được thực hiện và trả lại Status trong vòng 50ms. Phía thiết bị có 2ms để thực hiện thay địa chỉ trước khi request tiếp theo được gửi đến.</description>
+      <guid>https://blog.lazytrick.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</guid>
+      <description>Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.
+Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây.</description>
     </item>
     
     <item>
       <title>USB cho dev (Chap.05 – Đặc tả thiết bị)</title>
-      <link>https://minatu2d.github.io/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</link>
+      <link>https://blog.lazytrick.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</link>
       <pubDate>Mon, 18 Jul 2016 09:19:07 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</guid>
-      <description>&lt;p&gt;Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.&lt;/p&gt;
-&lt;p&gt;Các đặc tả phổ biết nhất bao gồm:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Miêu tả thiết bị (Device Descriptors)&lt;/li&gt;
-&lt;li&gt;Miêu tả các cấu hình (Configuration Descriptors)&lt;/li&gt;
-&lt;li&gt;Miêu tả giao diện (Interface Descriptors)&lt;/li&gt;
-&lt;li&gt;Miêu tả điểm đầu cuối (EndPoint Descriptors)&lt;/li&gt;
-&lt;li&gt;Các chuỗi sử dụng trong các miêu tả trên.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</guid>
+      <description>Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.
+Các đặc tả phổ biết nhất bao gồm:
+ Miêu tả thiết bị (Device Descriptors) Miêu tả các cấu hình (Configuration Descriptors) Miêu tả giao diện (Interface Descriptors) Miêu tả điểm đầu cuối (EndPoint Descriptors) Các chuỗi sử dụng trong các miêu tả trên.</description>
     </item>
     
     <item>
       <title>USB cho dev (Chap.04 - Các loại Endpoint)</title>
-      <link>https://minatu2d.github.io/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</link>
+      <link>https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</link>
       <pubDate>Sat, 26 Mar 2016 03:11:25 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
-      <description>&lt;p&gt;&lt;strong&gt;Đặc tả USB định nghĩa 4 loại Transfer/EndPoint&lt;/strong&gt;&lt;/p&gt;
-&lt;p&gt;Control Transfer&lt;/p&gt;
-&lt;p&gt;Interrupt Transfer&lt;/p&gt;
-&lt;p&gt;Isochronous Transfer&lt;/p&gt;
-&lt;p&gt;Bulk Transfer&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
+      <description>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint
+Control Transfer
+Interrupt Transfer
+Isochronous Transfer
+Bulk Transfer
+Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp). Độ dài mỗi packet trong dạng truyền control ở mỗi speed lại khác nhau.</description>
     </item>
     
     <item>
       <title>USB cho dev (Chap.03 - Giao thức)</title>
-      <link>https://minatu2d.github.io/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</link>
+      <link>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</link>
       <pubDate>Mon, 21 Mar 2016 15:19:47 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</guid>
-      <description>&lt;p&gt;Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &#34;nguy hiểm&#34;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi. Trong thực tế, hầu hết USB Controller I.C.s sẽ lo hết mấy tầng dưới rồi. Hay nói cách khác, mấy tầng đó nhà phát triển cũng không thấy được.&lt;/p&gt;
-&lt;p&gt;Mỗi USB Transaction bao gồm&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;SMột packet chứa Token (Giống như Header cho biết cái gì sẽ đến tiếp sau đó) - luôn có&lt;/li&gt;
-&lt;li&gt;Một packet chứa dữ liệu (có thể không có) , (chứa payload)&lt;/li&gt;
-&lt;li&gt;Một packet chứa trạng thái (được sử dụng để thông báo trạng thái truyền và cung cấp cơ chế kiểm soát lỗi nữa)</description>
+      <guid>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</guid>
+      <description>Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &amp;ldquo;nguy hiểm&amp;rdquo;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi.</description>
     </item>
     
     <item>
       <title>USB cho Dev (Chp.02 - Phần cứng)</title>
-      <link>https://minatu2d.github.io/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</link>
+      <link>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</link>
       <pubDate>Mon, 21 Mar 2016 02:17:04 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
-      <description>&lt;p&gt;Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.&lt;/p&gt;
-&lt;p&gt;Đầu kết nối (Connectors)&lt;/p&gt;
-&lt;p&gt;Mọi thiết bị có một upstream &#34;chảy&#34;đến host, và mọi host có một downstream &#34;chảy&#34; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs. Có 2 loại connector phổ biến là type A và type B. Như hình bên dưới đây:&lt;/p&gt;
-&lt;table width=&#34;60%&#34;&gt;
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td width=&#34;50%&#34;&gt;&lt;img src=&#34;{{ site.baseurl }}/assets/contypea.gif&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;
-&lt;td width=&#34;50%&#34;&gt;&lt;img src=&#34;{{ site.baseurl }}/assets/contypeb.gif&#34; alt=&#34;&#34; /&gt;&lt;/td&gt;
-&lt;/tr&gt;
-&lt;tr&gt;
-&lt;td&gt;Type A USB Connector&lt;/td&gt;
-&lt;td&gt;Type B USB Connector&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
+      <description>Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.
+Đầu kết nối (Connectors)
+Mọi thiết bị có một upstream &amp;ldquo;chảy&amp;rdquo;đến host, và mọi host có một downstream &amp;ldquo;chảy&amp;rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.</description>
     </item>
     
     <item>
       <title>[USB]Các khái niệm về USB</title>
-      <link>https://minatu2d.github.io/post/2015-12-22-usbcac-khai-niem-ve-usb/</link>
+      <link>https://blog.lazytrick.com/post/2015-12-22-usbcac-khai-niem-ve-usb/</link>
       <pubDate>Tue, 22 Dec 2015 16:41:13 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2015-12-22-usbcac-khai-niem-ve-usb/</guid>
+      <guid>https://blog.lazytrick.com/post/2015-12-22-usbcac-khai-niem-ve-usb/</guid>
       <description>Kết nối USB, chắc chắn ai cũng biết. Mỗi người đểu sở hữu ít nhất một thiết bị có kết nối này.
 Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập trình giống như người dùng vẫn hiểu về nó.
 Đúng là với người dùng cuối, một thiết bị có kết nối thì khả năng có nó có thể kết với máy tính như smartphone, máy nghe nhạc, bộ sạc&amp;hellip;.</description>

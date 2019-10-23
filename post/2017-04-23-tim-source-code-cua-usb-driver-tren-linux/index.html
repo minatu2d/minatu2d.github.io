@@ -62,35 +62,56 @@
 			<h1 class="post__title">Tìm source code của USB Driver trên Linux</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
+			
+
+<p>Ở bài <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm driver cho Linux</a> cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.</p>
+
+<h2 id="cách-tìm-source-code-driver-cho-thiết-bị-usb">Cách tìm source code driver cho thiết bị USB</h2>
+
+<h2 id="1-nói-qua-về-thiết-bị-usb">1. Nói qua về thiết bị USB</h2>
+
 <ul>
-<li>Driver không phải là tất cả để một thiết bị cắm vào hoạt động.<br />
+<li><p>Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.<br />
+Đó là <strong>Vendor</strong> (nhà sản xuất), và <strong>Product</strong> (sản phẩm).<br />
+Thông tin về <strong>Vendor</strong> được mô tả bằng một id, trong source thường là <strong>idVendor</strong>.<br />
+Thông tin về <strong>Product</strong> cũng được mô tả bằng một id, trong source thường là <strong>idProduct</strong>.<br />
+2 thông tin trên sẽ xác định duy nhất một loại thiết bị.<br />
+Thông tin về id của mỗi Vendor, Product được đăng kí với tổ chức hỗ trợ USB.</p></li>
+
+<li><p>Driver không phải là tất cả để một thiết bị cắm vào hoạt động.<br />
 Nhiều thiết bị để hoạt động được thì còn cần thêm một cái là <strong>firmware</strong> nữa.<br />
 Firmware chứa mã chương trình mà driver sẽ tống vào thiết bị.<br />
 Sau khi thiết bị chạy được bằng firmware đó rồi.<br />
 Thì giao tiếp phía sau sẽ là giữa <strong>firmware</strong> và <strong>driver</strong>.<br />
 <strong>Firmware</strong> thường chứa những đoạn chương trình không thể công khai của Vendor.<br />
-Vì thế, cách này thường được dùng để giữ những tài sản công nghệ của họ.</li>
+Vì thế, cách này thường được dùng để giữ những tài sản công nghệ của họ.</p></li>
 </ul>
-<h2>2. Lấy thông tin Vendor, Product từ /var/log/syslog</h2>
+
+<h2 id="2-lấy-thông-tin-vendor-product-từ-var-log-syslog">2. Lấy thông tin Vendor, Product từ /var/log/syslog</h2>
+
 <ul>
 <li>Như ta đã biết, linux có một hệ thống file log, chứa những thông tin trong<br />
 quá trình hoạt động của nhân, các phần mềm, dịch vụ. Nó thường nằm ở <em>/var/log/</em><br />
 Trong trường hợp này, ta chỉ quan tâm đến log của nhân, ta sẽ xem file <em>/var/log/syslog/</em><br />
 Câu lệnh để xem ở chế độ <em>live</em> là:</li>
 </ul>
+
 <p>[code lang=shell]<br />
 $tail -f /var/log/syslog<br />
 [/code]</p>
+
 <ul>
-<li>Để quan sát được toàn bộ log của quá trình từ lúc cắm thiết bị đến lúc dùng được<br />
+<li><p>Để quan sát được toàn bộ log của quá trình từ lúc cắm thiết bị đến lúc dùng được<br />
 ta sẽ bật lệnh xem log ở trên ở một terminal khác cho tiện.<br />
 Nếu không, ta phải xem lại file log ở trên và tìm ra được tương ứng cho thiết bị.</p>
-<p>Để dễ hiểu hơn, ta sẽ lấy ví dụ về thiết bị cụ thể:</li>
-<li>Thiết bị là USB-Serial Converter, có giao tiếp bằng USB.<br />
+
+<p>Để dễ hiểu hơn, ta sẽ lấy ví dụ về thiết bị cụ thể:</p></li>
+
+<li><p>Thiết bị là USB-Serial Converter, có giao tiếp bằng USB.<br />
 Ta cùng xem sẽ lấy được thông tin gì từ log của thiết bị này:<br />
-Đoạn log ta lấy được như như sau:</li>
+Đoạn log ta lấy được như như sau:</p></li>
 </ul>
+
 <p>[code lang=shell]<br />
 Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.576063] usb 2-3.1: new full-speed USB device number 14 using xhci_hcd<br />
 Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671613] usb 2-3.1: New USB device found, idVendor=0403, idProduct=6015<br />
@@ -101,35 +122,47 @@ Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671624] usb 2-3.1: SerialNumber: DJ0
 Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675291] ftdi_sio 2-3.1:1.0: FTDI USB Serial Device converter detected<br />
 Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675344] usb 2-3.1: Detected FT-X<br />
 Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675737] usb 2-3.1: FTDI USB Serial Device converter now attached to ttyUSB0<br />
-Apr 23 12:01:54 OEDEV-Ubuntu mtp-probe: checking bus 2, device 14: &quot;/sys/devices/pci0000:00/0000:00:14.0/usb2/2-3/2-3.1&quot;<br />
+Apr 23 12:01:54 OEDEV-Ubuntu mtp-probe: checking bus 2, device 14: &ldquo;/sys/devices/pci0000:00/0000:00:14.0/usb2/2-<sup>3</sup>&frasl;<sub>2</sub>-3.1&rdquo;<br />
 Apr 23 12:01:54 OEDEV-Ubuntu mtp-probe: bus: 2, device: 14 was not an MTP device<br />
 [/code]</p>
+
 <p>Ta thấy từ log trên có đoạn:</p>
+
 <p>[code lang=text]<br />
 Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671613] usb 2-3.1: New USB device found, idVendor=0403, idProduct=6015<br />
 [/code]</p>
+
 <p>Chính dòng này đang chứa id của <strong>Vendor</strong> và <strong>Product</strong>:<br />
 Cụ thể: <strong>idVendor</strong> = 0403, <strong>idProduct</strong> = 6015</p>
+
 <p>Về cơ bản, thông tin đến đây là đủ để tìm driver trong source của nhân rồi.<br />
- Ngoài ra bạn cũng sẽ thấy một số thông tin về Vendor cũng như thiết bị trong log ở trên:</p>
+Ngoài ra bạn cũng sẽ thấy một số thông tin về Vendor cũng như thiết bị trong log ở trên:</p>
+
 <p>Ví dụ:<br />
 Product: FT230X Basic UART<br />
 Manufacturer: FTDI<br />
 SerialNumber: DJ00LL3D</p>
+
 <p>Ở đây, từ log trên ta cũng biết được một thông tin quan trọng khác là thiết bị đã chạy hay chưa.</p>
+
 <p>[code lang=text]<br />
 Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675737] usb 2-3.1: FTDI USB Serial Device converter now attached to ttyUSB0<br />
 [/code]</p>
+
 <p>Chính dòng này đã cho ta biết được là thiết bị đã chạy được.<br />
 Vì sao?<br />
 Nó đã được attached vào vị trí <strong>/dev/ttyUSB0</strong> để cho phép các ứng dụng khác sử dụng.<br />
- Tức là ta có một cổng COM giống như trên windows rồi.<br />
+Tức là ta có một cổng COM giống như trên windows rồi.<br />
 Nhưng vì ở Linux thì mọi thứ là file nên cổng com cũng là một file.</p>
+
 <p>Nếu không có bước này thì ta có thể coi như thiết bị chưa dùng được cho dù kernel đã nhận<br />
 biết được có một thiết bị được cắm vào.</p>
-<h2>3. Lấy thông tin Vendor, Product từ lsusb</h2>
+
+<h2 id="3-lấy-thông-tin-vendor-product-từ-lsusb">3. Lấy thông tin Vendor, Product từ lsusb</h2>
+
 <p>lsusb là câu lệnh liệt kê tất cả các thiết bị usb hiện có, kể cả thiết bị chưa sử dụng được.<br />
 Output của nó kiểu như sau:</p>
+
 <p>[code lang=text]<br />
 $ lsusb<br />
 Bus 001 Device 002: ID 8087:8001 Intel Corp.<br />
@@ -141,11 +174,15 @@ Bus 002 Device 013: ID 1f55:0004<br />
 Bus 002 Device 014: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)<br />
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
 [/code]</p>
+
 <p>2 giá trị được ngăn cách bởi <strong>:</strong> phía sau <strong>ID</strong> chính là id của <strong>Vendor</strong> và <strong>Product</strong>.</p>
+
 <p>Nếu bản linux của bạn hỗ trợ lsusb, bạn có thể dễ dàng xác định bằng cách<br />
 so sánh đầu ra của câu lệnh <strong>lsusb</strong> trước và sau khi cắm một thiết bị vào máy.</p>
+
 <p>Ví dụ:<br />
 Trước khi cắm thiết bị, output của <strong>lsusb</strong> là:</p>
+
 <p>[code lang=text]<br />
 $ lsusb<br />
 Bus 001 Device 002: ID 8087:8001 Intel Corp.<br />
@@ -156,7 +193,9 @@ Bus 002 Device 005: ID 8087:07dc Intel Corp.<br />
 Bus 002 Device 013: ID 1f55:0004<br />
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
 [/code]</p>
+
 <p>Sau khi cắm thiết bị, output của <strong>lsusb</strong> là:</p>
+
 <p>[code lang=text]<br />
 $ lsusb<br />
 Bus 001 Device 002: ID 8087:8001 Intel Corp.<br />
@@ -168,64 +207,86 @@ Bus 002 Device 013: ID 1f55:0004<br />
 Bus 002 Device 014: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)<br />
 Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub<br />
 [/code]</p>
+
 <p>Như ta đã thấy, thiết bị mà ta vừa xác đinh ở trên chỉ xuất hiện ở lệnh <strong>lsusb</strong> sau.</p>
-<h2>4. Tìm source code từ thông tin Vendor, Product</h2>
+
+<h2 id="4-tìm-source-code-từ-thông-tin-vendor-product">4. Tìm source code từ thông tin Vendor, Product</h2>
+
 <p>Giả định rằng ta đã có id của <strong>Vendor</strong> hay <strong>idVendor</strong> và id của Product hay <strong>idProduct</strong><br />
 Ta tiếp tục sử dụng thiết bị ở trên:</p>
+
 <p>Product: FT230X Basic UART<br />
 Manufacturer: FTDI<br />
 SerialNumber: DJ00LL3D<br />
 idVendor = 0403<br />
 idProduct = 6015</p>
+
 <p>Ta cần tìm source của driver cho thiết bị này trong source của kernel.</p>
+
 <p>Ta tải bạn kernel statble mới nhất tại <a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.12.tar.xz">https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.12.tar.xz</a>, và giải nén:</p>
+
 <p>[code lang=shell]<br />
 $ cd linux-4.10.8/<br />
 $ ls<br />
-arch   COPYING  Documentation  fs       ipc      kernel       Makefile         modules.order   README   security    tools  vmlinux<br />
-block  CREDITS  drivers        include  Kbuild   lib          mm               Module.symvers  samples  sound       usr    vmlinux.o<br />
-certs  crypto   firmware       init     Kconfig  MAINTAINERS  modules.builtin  net             scripts  System.map  virt<br />
+arch COPYING Documentation fs ipc kernel Makefile modules.order README security tools vmlinux<br />
+block CREDITS drivers include Kbuild lib mm Module.symvers samples sound usr vmlinux.o<br />
+certs crypto firmware init Kconfig MAINTAINERS modules.builtin net scripts System.map virt<br />
 [/code]</p>
+
 <p>Ta tìm source driver cho thiết bị trên như sau:</p>
+
 <ul>
 <li>Tìm theo vendor id:</li>
 </ul>
+
 <p>[code lang=shell]<br />
 $ grep -n -R 0x0403 drivers/usb<br />
-drivers/usb/serial/ipaq.c:66:   { USB_DEVICE(0x045E, 0x0403) }, /* Windows Powered Pocket PC 2002 */<br />
-drivers/usb/serial/cp210x.c:203:        { USB_DEVICE(0x1FB9, 0x0403) }, /* Lake Shore Model 475A Gaussmeter */<br />
-drivers/usb/serial/ftdi_sio.h:449: * 8  idVendor        2       0x0403  Vendor ID<br />
-drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID   0x0403  /* Vendor Id */<br />
+drivers/usb/serial/ipaq.c:66: { USB_DEVICE(0x045E, 0x0403) }, /* Windows Powered Pocket PC 2002 */<br />
+drivers/usb/serial/cp210x.c:203: { USB_DEVICE(0x1FB9, 0x0403) }, /* Lake Shore Model 475A Gaussmeter */<br />
+drivers/usb/serial/ftdi_sio.h:449: * 8 idVendor 2 0x0403 Vendor ID<br />
+drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID 0x0403 /* Vendor Id */<br />
 drivers/usb/serial/ftdi_sio_ids.h:47: * OpenRD Base, Client use VID 0x0403<br />
-drivers/usb/serial/ftdi_sio_ids.h:233: * Almost all of these devices use FTDI&#039;s vendor ID (0x0403).<br />
+drivers/usb/serial/ftdi_sio_ids.h:233: * Almost all of these devices use FTDI&rsquo;s vendor ID (0x0403).<br />
 drivers/usb/serial/ftdi_sio_ids.h:346: * Hameg HO820 and HO870 interface (using VID 0x0403)<br />
 drivers/usb/serial/ftdi_sio_ids.h:1352: * MJS Gadgets HD Radio / XM Radio / Sirius Radio interfaces (using VID 0x0403)<br />
 drivers/usb/serial/ftdi_sio_ids.h:1373: * Segway Robotic Mobility Platform USB interface (using VID 0x0403)<br />
 drivers/usb/misc/ftdi-elan.c:86:#define USB_FTDI_ELAN_VENDOR_ID 0x0403</p>
+
 <p>$ grep -n -R 0x6015 drivers/usb<br />
-drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID   0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */<br />
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */<br />
 [/code]</p>
+
 <p>Nếu ta đã biết về lập trình C, thì thường giá trị hardcode như 0403, 0615 sẽ được định nghĩa<br />
 và sử dụng định nghĩa đó ở những nơi khác chứ không sử dụng trực tiếp giá trị.</p>
+
 <p>Từ kết quả ở trên ta thấy có 2 dòng <strong>define</strong> cho giá trị <strong>0x0403</strong> và <strong>0x6015</strong><br />
 cùng ở file <strong>drivers/usb/serial/ftdi_sio_ids.h</strong>. Đó là</p>
+
 <p>[code lang=text]<br />
-drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID   0x0403  /* Vendor Id */<br />
-drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID   0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) *<br />
+drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID 0x0403 /* Vendor Id */<br />
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) *<br />
 [/code]</p>
+
 <p>Ta hiểu rằng, 2 giá trị trên sẽ được sử dụng bằng tên đại diện <strong>FTDI_VID</strong> và <strong>FTDO_FTX_PID</strong> ở những nơi khác.</p>
+
 <p>Ta tiếp tục tìm, vì một nhà sản xuất sẽ có rất nhiều thiết bị.<br />
 Vì thế ta nên tìm thiết bị để có kết quả chính xác hơn. Trong trường hợp này là <strong>FTDO_FTX_PID</strong></p>
+
 <p>[code lang=text]<br />
 $ grep -n -R FTDI_FTX_PID<br />
-drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID   0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */<br />
-drivers/usb/serial/ftdi_sio.c:177:      { USB_DEVICE(FTDI_VID, FTDI_FTX_PID) },<br />
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */<br />
+drivers/usb/serial/ftdi_sio.c:177: { USB_DEVICE(FTDI_VID, FTDI_FTX_PID) },<br />
 [/code]</p>
+
 <p>Và đây, source cho driver của thiết bị nằm ở <strong>drivers/usb/serial/ftdi_sio.c</strong>.</p>
-<h2>5. Tham khảo</h2>
+
+<h2 id="5-tham-khảo">5. Tham khảo</h2>
+
 <p>Để biết thêm về cách tạo, đọc một driver (đặc biệt của usb) trong linux.<br />
 Có lẽ không chỗ nào tốt hơn chính là tài liệu (hoặc sách) do người viết (maintain) những driver đó.</p>
+
 <p>Thực sự nên đọc cuốn sách Linux Device Driver 3rd Edition (hoàn toàn free) của chính những maintainer tại địa chỉ <a href="https://lwn.net/Kernel/LDD3/">https://lwn.net/Kernel/LDD3/</a></p>
+
 <p>Một cuốn nữa (và cũng free) nên đọc là Linux in A Nutshell (link tại <a href="http://files.kroah.com/lkn/">http://files.kroah.com/lkn/</a> ) cũng của một maintainer chính cho nhân Linux.</p>
 
 		</div>

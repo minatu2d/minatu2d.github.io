@@ -62,73 +62,101 @@
 			<h1 class="post__title">ASN.1 - Cú pháp cơ bản</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
+			
+
+<p>Tiếp theo loạt bài về ASN.1, bài này sẽ &ldquo;dịch&rdquo; tài liệu của anh <a href="http://www5d.biglobe.ne.jp/~stssk/mail.html">Isida So</a> nói về cú pháp cơ bản của ASN.1.</p>
+
+<p>Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.</p>
+
+<p>ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.</p>
+
+<p>Ví dụ, khi muốn biểu diễn số điện thoại (<strong>TelephoneNumber</strong>), trong trường đã có kiểu dành cho chuỗi kí tự số (<strong>NumericString</strong>) thì ta chỉ việc viết như sau:</p>
+
+<p>[code lang=cpp]<br />
+TelephoneNumber ::= NumericString<br />
+[/code]</p>
+
+<ol>
+<li>Các kiểu cơ bản</li>
+<li>Kiểu cấu trúc</li>
+<li>Thẻ (Tag)</li>
+<li>Kiểu bộ phận</li>
+<li>Quy ước mở rộng (Kí hiệu mở rộng)</li>
+</ol>
+
 <p>Ta sẽ đi vào từng phần.</p>
-<h3>1. Các kiểu cơ bản</h3>
+
+<h3 id="1-các-kiểu-cơ-bản">1. Các kiểu cơ bản</h3>
+
 <p>Các kiểu dữ liệu không thể phân tách thêm được nữa như số, chuỗi kí tự được gọi là các kiểu cơ bản. Nó sẽ gồm những kiểu cơ bản như sau:(không đầy đủ):</p>
-<table border="1">
-<tbody>
-<tr>
-<td>Kiểu lựa chọn</p>
-<p>(<b>CHOICE</b>)</td>
-<td>Chọn 1 kiểu từ nhiều kiểu</p>
-<pre><b>Credit-card ::= SEQUENCE { number NumericString (SIZE (20)),
-  expiry-date NumericString (SIZE (6)) -- MMYYYY -- }</b></pre>
-</td>
-</tr>
-<tr>
-<td>Kiểu sếp tuần tự</p>
-<p>(<b>SEQUENCE</b>)</td>
-<td>Nhiều kiểu được đặt theo một thứ tự nhất định</p>
-<pre><b>Point ::= SEQUENCE { x INTEGER, y INTEGER }</b></pre>
-</td>
-</tr>
-<tr>
-<td>Kiểu mảng</p>
-<p>(<b>SEQUENCE OF</b>)</td>
-<td>Giống như kiểu mảng, các phần tử cùng 1 kiểu và có thứ tự</p>
-<pre><b>Line ::= SEQUENCE OF Point</b></pre>
-</td>
-</tr>
-<tr>
-<td>Kiểu tập hợp hỗn hợp</p>
-<p>(<b>SET</b>)</td>
-<td>Tập hợp nhiều kiểu và không có thứ tự gì hết.</p>
-<pre><b>Human ::= SET { name PrintableString, age INTEGER}</b></pre>
-</td>
-</tr>
-<tr>
-<td>Kiểu tập hợp đồng nhất</p>
-<p>(<b>SET-OF</b>)</td>
-<td>Tập hợp nhiều phần tử cùng kiểu</p>
-<pre><b>PrimeNumber ::= SET OF INTEGER</b></pre>
-</td>
-</tr>
-<tr>
-<td><b>Kiểu tùy ý</b></td>
-<td>Kiểu này có thể dùng bất cứ dữ nào.<br />
+
+<p>Kiểu lựa chọn</p>
+
+<p>(<strong>CHOICE</strong>)</p>
+
+<p>Chọn 1 kiểu từ nhiều kiểu</p>
+
+<p><strong>Credit-card ::= SEQUENCE { number NumericString (SIZE (20)),
+  expiry-date NumericString (SIZE (6)) &ndash; MMYYYY &ndash; }</strong></p>
+
+<p>Kiểu sếp tuần tự</p>
+
+<p>(<strong>SEQUENCE</strong>)</p>
+
+<p>Nhiều kiểu được đặt theo một thứ tự nhất định</p>
+
+<p><strong>Point ::= SEQUENCE { x INTEGER, y INTEGER }</strong></p>
+
+<p>Kiểu mảng</p>
+
+<p>(<strong>SEQUENCE OF</strong>)</p>
+
+<p>Giống như kiểu mảng, các phần tử cùng 1 kiểu và có thứ tự</p>
+
+<p><strong>Line ::= SEQUENCE OF Point</strong></p>
+
+<p>Kiểu tập hợp hỗn hợp</p>
+
+<p>(<strong>SET</strong>)</p>
+
+<p>Tập hợp nhiều kiểu và không có thứ tự gì hết.</p>
+
+<p><strong>Human ::= SET { name PrintableString, age INTEGER}</strong></p>
+
+<p>Kiểu tập hợp đồng nhất</p>
+
+<p>(<strong>SET-OF</strong>)</p>
+
+<p>Tập hợp nhiều phần tử cùng kiểu</p>
+
+<p><strong>PrimeNumber ::= SET OF INTEGER</strong></p>
+
+<p><strong>Kiểu tùy ý</strong></p>
+
+<p>Kiểu này có thể dùng bất cứ dữ nào.<br />
 Tuy nhiên, do gán vô điều kiện như thế sẽ dẫn đến không hiện thực hóa được.<br />
-Vì thế kiểu này không được khuyến khích dùng.</td>
-</tr>
-<tr>
-<td>Kiểu ngoài</p>
-<p>(<b>EXTERNAL</b>)</td>
-<td>Một khiểu được định nghĩa ở đâu đó.<br />
-Có thể sử dụng bất cứ dữ liệu nào. Kiểu ngoài (<b>EXTERNAL</b>) có thể được định nghĩa như ví dụ bên dưới đây.</p>
-<pre><b>EXTERNAL ::= [UNIVERSAL 8] IMPLICIT SEQUENCE {
+Vì thế kiểu này không được khuyến khích dùng.</p>
+
+<p>Kiểu ngoài</p>
+
+<p>(<strong>EXTERNAL</strong>)</p>
+
+<p>Một khiểu được định nghĩa ở đâu đó.<br />
+Có thể sử dụng bất cứ dữ liệu nào. Kiểu ngoài (<strong>EXTERNAL</strong>) có thể được định nghĩa như ví dụ bên dưới đây.</p>
+
+<p><strong>EXTERNAL ::= [UNIVERSAL 8] IMPLICIT SEQUENCE {
   direct-reference OBJECT IDENTIFIER OPTIONAL,
   indirect-reference INTEGER OPTIONAL,
   data-value-descriptor ObjectDescriptor OPTIONAL,
   encoding CHOICE {
     single-ASN1-type [0] ANY,
     octet-aligned [1] IMPLICIT OCTET STRING,
-    arbitrary [2] IMPLICIT BIT STRING }}</b></pre>
-</td>
-</tr>
-</tbody>
-</table>
-<h3>2. Kiểu có cấu trúc</h3>
+    arbitrary [2] IMPLICIT BIT STRING }}</strong></p>
+
+<h3 id="2-kiểu-có-cấu-trúc">2. Kiểu có cấu trúc</h3>
+
 <p>Khi kết hợp các kiểu dữ liệu cơ bản với nhau, ta sẽ có <strong>Kiểu có cấu trúc</strong>. Ví dụ: thông tin mô tả 1 người như tên, số điện thoại, số fax trong danh bạ có thể được định nghĩa như sau:</p>
+
 <p>[code lang=c]<br />
 TelephoneNumberRecord ::= SET {<br />
 name VisibleString,<br />
@@ -136,374 +164,454 @@ tel TelephoneNumber,<br />
 fax TelephoneNumber<br />
 }<br />
 [/code]</p>
+
 <p>Khi định nghĩa kiểu có cấu trúc, ta sẽ sử dụng thêm các định nghĩa sau:</p>
-<table border="1">
-<tbody>
-<tr>
-<td>Kiểu lựa chọn</p>
-<p>(<b>CHOICE</b>)</td>
-<td>Chọn 1 kiểu từ nhiều kiểu</p>
-<pre><b>Credit-card ::= SEQUENCE { number NumericString (SIZE (20)),
-  expiry-date NumericString (SIZE (6)) -- MMYYYY -- }</b></pre>
-</td>
-</tr>
-<tr>
-<td>Kiểu sếp tuần tự</p>
-<p>(<b>SEQUENCE</b>)</td>
-<td>Nhiều kiểu được đặt theo một thứ tự nhất định</p>
-<pre><b>Point ::= SEQUENCE { x INTEGER, y INTEGER }</b></pre>
-</td>
-</tr>
-<tr>
-<td>Kiểu mảng</p>
-<p>(<b>SEQUENCE OF</b>)</td>
-<td>Giống như kiểu mảng, các phần tử cùng 1 kiểu và có thứ tự</p>
-<pre><b>Line ::= SEQUENCE OF Point</b></pre>
-</td>
-</tr>
-<tr>
-<td>Kiểu tập hợp hỗn hợp</p>
-<p>(<b>SET</b>)</td>
-<td>Tập hợp nhiều kiểu và không có thứ tự gì hết.</p>
-<pre><b>Human ::= SET { name PrintableString, age INTEGER}</b></pre>
-</td>
-</tr>
-<tr>
-<td>Kiểu tập hợp đồng nhất</p>
-<p>(<b>SET-OF</b>)</td>
-<td>Tập hợp nhiều phần tử cùng kiểu</p>
-<pre><b>PrimeNumber ::= SET OF INTEGER</b></pre>
-</td>
-</tr>
-<tr>
-<td><b>Kiểu tùy ý</b></td>
-<td>Kiểu này có thể dùng bất cứ dữ nào.<br />
+
+<p>Kiểu lựa chọn</p>
+
+<p>(<strong>CHOICE</strong>)</p>
+
+<p>Chọn 1 kiểu từ nhiều kiểu</p>
+
+<p><strong>Credit-card ::= SEQUENCE { number NumericString (SIZE (20)),
+  expiry-date NumericString (SIZE (6)) &ndash; MMYYYY &ndash; }</strong></p>
+
+<p>Kiểu sếp tuần tự</p>
+
+<p>(<strong>SEQUENCE</strong>)</p>
+
+<p>Nhiều kiểu được đặt theo một thứ tự nhất định</p>
+
+<p><strong>Point ::= SEQUENCE { x INTEGER, y INTEGER }</strong></p>
+
+<p>Kiểu mảng</p>
+
+<p>(<strong>SEQUENCE OF</strong>)</p>
+
+<p>Giống như kiểu mảng, các phần tử cùng 1 kiểu và có thứ tự</p>
+
+<p><strong>Line ::= SEQUENCE OF Point</strong></p>
+
+<p>Kiểu tập hợp hỗn hợp</p>
+
+<p>(<strong>SET</strong>)</p>
+
+<p>Tập hợp nhiều kiểu và không có thứ tự gì hết.</p>
+
+<p><strong>Human ::= SET { name PrintableString, age INTEGER}</strong></p>
+
+<p>Kiểu tập hợp đồng nhất</p>
+
+<p>(<strong>SET-OF</strong>)</p>
+
+<p>Tập hợp nhiều phần tử cùng kiểu</p>
+
+<p><strong>PrimeNumber ::= SET OF INTEGER</strong></p>
+
+<p><strong>Kiểu tùy ý</strong></p>
+
+<p>Kiểu này có thể dùng bất cứ dữ nào.<br />
 Tuy nhiên, do gán vô điều kiện như thế sẽ dẫn đến không hiện thực hóa được.<br />
-Vì thế kiểu này không được khuyến khích dùng.</td>
-</tr>
-<tr>
-<td>Kiểu ngoài</p>
-<p>(<b>EXTERNAL</b>)</td>
-<td>Một khiểu được định nghĩa ở đâu đó.<br />
-Có thể sử dụng bất cứ dữ liệu nào. Kiểu ngoài (<b>EXTERNAL</b>) có thể được định nghĩa như ví dụ bên dưới đây.</p>
-<pre><b>EXTERNAL ::= [UNIVERSAL 8] IMPLICIT SEQUENCE {
+Vì thế kiểu này không được khuyến khích dùng.</p>
+
+<p>Kiểu ngoài</p>
+
+<p>(<strong>EXTERNAL</strong>)</p>
+
+<p>Một khiểu được định nghĩa ở đâu đó.<br />
+Có thể sử dụng bất cứ dữ liệu nào. Kiểu ngoài (<strong>EXTERNAL</strong>) có thể được định nghĩa như ví dụ bên dưới đây.</p>
+
+<p><strong>EXTERNAL ::= [UNIVERSAL 8] IMPLICIT SEQUENCE {
   direct-reference OBJECT IDENTIFIER OPTIONAL,
   indirect-reference INTEGER OPTIONAL,
   data-value-descriptor ObjectDescriptor OPTIONAL,
   encoding CHOICE {
     single-ASN1-type [0] ANY,
     octet-aligned [1] IMPLICIT OCTET STRING,
-    arbitrary [2] IMPLICIT BIT STRING }}</b></pre>
-</td>
-</tr>
-</tbody>
-</table>
+    arbitrary [2] IMPLICIT BIT STRING }}</strong></p>
+
 <p>Kiểu tập hợp(SET) hoặc sếp tuần tự có thể sử dụng <strong>OPTIONAL</strong> để mô một dữ liệu có thể được khuyết.</p>
-<h3>3. Thẻ (Tag)</h3>
+
+<h3 id="3-thẻ-tag">3. Thẻ (Tag)</h3>
+
 <p>Để tránh nhập nhằng trong định nghĩa kiểu, người ta sử dụng các Thẻ.<br />
 Đặt biệt, trong trường hợp kiểu lựa chọn（Tuổi và số năm học đều là số nguyên chẳng hạn）hoặc, trong kiểu sếp tuần tự (SEQUENCE OF) hoặc kiểu tập hợp, có các thành phần có thể khuyến.</p>
+
 <p>Để tránh nhập nhằng khi các thành phần đó bị khuyết, ta cũng sử dụng Thẻ (Tag).</p>
+
 <p>Thẻ được viết bên trong 1 ngoặc vuông (như bên dưới).<br />
 Ví dụ: Ở bên dưới kiểu dữ liệu được định nghĩa có địa chỉ, số điện thoại có thể khuyết.</p>
+
 <p>ASN.1 có 4 nhóm thẻ:</p>
+
 <ul>
 <li>Lớp phổ biến :</li>
 </ul>
+
 <p>[code lang=c]<br />
-[UNIVERSAL &lt;số&gt;]<br />
+[UNIVERSAL <số>]<br />
 [/code]</p>
+
 <p>Lớp này được sử dụng để chỉ các dữ liệu phổ biến, và chỉ được sử dụng trong các tài liệu ASN.1 chuẩn.<br />
 Bao gồm :kiểu số nguyên, kiểu byte (octet), kiểu số thực, và kiểu liệt kê. (Enum).</p>
+
 <ul>
 <li>Lớp ứng dụng</li>
 </ul>
+
 <p>[code lang=c]<br />
-[APPLICATION &lt;số&gt;]<br />
+[APPLICATION <số>]<br />
 [/code]</p>
+
 <p>Lớp này được sử dụng để chỉ các kiểu dữ liệu sử dụng trong một số ứng dụng cụ thể.</p>
+
 <ul>
 <li>Lớp ngữ cảnh</li>
 </ul>
+
 <p>[code lang=c]<br />
-[&lt;số&gt;]<br />
+[<số>]<br />
 [/code]</p>
+
 <p>Chỉ có ý nghĩa trong định nghĩa hiện tại thôi.<br />
 Lớp này được sử dụng nhiều nhất.</p>
+
 <ul>
 <li>Lớp riêng</li>
 </ul>
+
 <p>[code lang=c]<br />
-[PRIVATE &lt;số&gt;]<br />
+[PRIVATE <số>]<br />
 [/code]</p>
+
 <p>Giới hạn sử dụng trong phạm vi một nhóm các công ty, tổ chức cụ thể. Có có trường hợp sử dụng lớp này khi muốn các protocol có sẵn trong các dự án cá nhân.</p>
+
 <p><em>Chú ý</em>: Kiểu lựa chọn không sử dụng Thẻ.</p>
+
 <p>Sau đây là một số Thẻ của lớp Phổ biến:</p>
-<table border="1">
-<tbody>
-<tr>
-<td>Mã thẻ</td>
-<td>Kiểu</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 0]</td>
-<td>Sử dụng trong BER, dùng để đánh dấu kết thúc cho loại dữ liệu có độ dài thay đổi.</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 1]</td>
-<td>Kiểu logic (BOOLEAN)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 2]</td>
-<td>Kiểu số nguyên(INTEGER)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 3]</td>
-<td>Kiểu dãy bit(BIT STRING)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 4]</td>
-<td>Kiểu octet (byte)(OCTET STRING)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 5]</td>
-<td>Kiểu không có gì(NULL)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 6]</td>
-<td>Kiểu chỉ định đối tượng(OBJECT IDENTIFIER)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 7]</td>
-<td>Kiểu mô tả đối tượng - Object Descriptor</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 8]</td>
-<td>Kiểu ngoài(EXTERNAL), INSTANCE OF</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 9]</td>
-<td>Kiểu số thực(REAL)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 10]</td>
-<td>Kiểu liệt kê(ENUMERATED)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 11]</td>
-<td>EMBEDDED PDV</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 12]</td>
-<td>UTF8String</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 13]</td>
-<td>RELATIVE-OID</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 16]</td>
-<td>Kiểu sếp tuần tự(SEQUENCE), Kiểu mảng(SEQUENCE OF)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 17]</td>
-<td>Kiểu tập hợp hỗn hợp(SET), Kiểu tập hợp đồng nhất(SET-OF)</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 18]</td>
-<td>NumericString</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 19]</td>
-<td>PrintableString</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 20]</td>
-<td>TeletexString, T61String</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 21]</td>
-<td>VideotexString</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 22]</td>
-<td>IA5String</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 23]</td>
-<td>UTCTime</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 24]</td>
-<td>GeneralizedTime</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 25]</td>
-<td>GraphicString</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 26]</td>
-<td>VisibleString, ISO646String</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 27]</td>
-<td>GeneralString</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 28]</td>
-<td>UniversalString</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 29]</td>
-<td>CHARACTER STRING</td>
-</tr>
-<tr>
-<td>[UNIVERSAL 30]</td>
-<td>BMPString</td>
-</tr>
-</tbody>
-</table>
-<h3>4. Kiểu bộ phận</h3>
+
+<p>Mã thẻ</p>
+
+<p>Kiểu</p>
+
+<p>[UNIVERSAL 0]</p>
+
+<p>Sử dụng trong BER, dùng để đánh dấu kết thúc cho loại dữ liệu có độ dài thay đổi.</p>
+
+<p>[UNIVERSAL 1]</p>
+
+<p>Kiểu logic (BOOLEAN)</p>
+
+<p>[UNIVERSAL 2]</p>
+
+<p>Kiểu số nguyên(INTEGER)</p>
+
+<p>[UNIVERSAL 3]</p>
+
+<p>Kiểu dãy bit(BIT STRING)</p>
+
+<p>[UNIVERSAL 4]</p>
+
+<p>Kiểu octet (byte)(OCTET STRING)</p>
+
+<p>[UNIVERSAL 5]</p>
+
+<p>Kiểu không có gì(NULL)</p>
+
+<p>[UNIVERSAL 6]</p>
+
+<p>Kiểu chỉ định đối tượng(OBJECT IDENTIFIER)</p>
+
+<p>[UNIVERSAL 7]</p>
+
+<p>Kiểu mô tả đối tượng - Object Descriptor</p>
+
+<p>[UNIVERSAL 8]</p>
+
+<p>Kiểu ngoài(EXTERNAL), INSTANCE OF</p>
+
+<p>[UNIVERSAL 9]</p>
+
+<p>Kiểu số thực(REAL)</p>
+
+<p>[UNIVERSAL 10]</p>
+
+<p>Kiểu liệt kê(ENUMERATED)</p>
+
+<p>[UNIVERSAL 11]</p>
+
+<p>EMBEDDED PDV</p>
+
+<p>[UNIVERSAL 12]</p>
+
+<p>UTF8String</p>
+
+<p>[UNIVERSAL 13]</p>
+
+<p>RELATIVE-OID</p>
+
+<p>[UNIVERSAL 16]</p>
+
+<p>Kiểu sếp tuần tự(SEQUENCE), Kiểu mảng(SEQUENCE OF)</p>
+
+<p>[UNIVERSAL 17]</p>
+
+<p>Kiểu tập hợp hỗn hợp(SET), Kiểu tập hợp đồng nhất(SET-OF)</p>
+
+<p>[UNIVERSAL 18]</p>
+
+<p>NumericString</p>
+
+<p>[UNIVERSAL 19]</p>
+
+<p>PrintableString</p>
+
+<p>[UNIVERSAL 20]</p>
+
+<p>TeletexString, T61String</p>
+
+<p>[UNIVERSAL 21]</p>
+
+<p>VideotexString</p>
+
+<p>[UNIVERSAL 22]</p>
+
+<p>IA5String</p>
+
+<p>[UNIVERSAL 23]</p>
+
+<p>UTCTime</p>
+
+<p>[UNIVERSAL 24]</p>
+
+<p>GeneralizedTime</p>
+
+<p>[UNIVERSAL 25]</p>
+
+<p>GraphicString</p>
+
+<p>[UNIVERSAL 26]</p>
+
+<p>VisibleString, ISO646String</p>
+
+<p>[UNIVERSAL 27]</p>
+
+<p>GeneralString</p>
+
+<p>[UNIVERSAL 28]</p>
+
+<p>UniversalString</p>
+
+<p>[UNIVERSAL 29]</p>
+
+<p>CHARACTER STRING</p>
+
+<p>[UNIVERSAL 30]</p>
+
+<p>BMPString</p>
+
+<h3 id="4-kiểu-bộ-phận">4. Kiểu bộ phận</h3>
+
 <p>Kiểu bộ phận, tức là giới hạn một kiểu đã có để tạo ra kiểu mới.<br />
 Tức là kiểu mới sẽ là con của kiểu cũ.<br />
 Cú pháp định nghĩa như sau:</p>
+
 <p>[code lang=c]<br />
-&lt;Tên kiểu mới&gt; ::= &lt;Kiểu cũ đã có&gt; ( &lt;mô tả giới hạn&gt; )<br />
+<Tên kiểu mới> ::= <Kiểu cũ đã có> ( <mô tả giới hạn> )<br />
 [/code]</p>
+
 <p>Với kiểu <strong>SET OF</strong> và <strong>SEQUENCE OF</strong>, nếu phần mô tả giới hạn ở phía sau <strong>OF</strong> sẽ gây ra khó hiểu. Vì thế, để tránh điều đó <strong>OF</strong> sẽ được viết sau giới hạn.</p>
+
 <p><em>Ví dụ</em>: dưới đây mô tả một một tập hợp gồm 50 phần tử, mỗi phần tử là một chuỗi có độ dài từ 1-10 kí tự.</p>
+
 <p>[code lang=c]<br />
 MemberList ::= SET SIZE(1..50) OF String(SIZE(1..10))<br />
 [/code]</p>
+
 <p>Phần <strong>SIZE</strong> đầu tiên là để giới hạn cho <strong>SET</strong>, phần <strong>SIZE</strong> sau là để giới hạn cho <strong>String</strong>.</p>
+
 <p>Thông thường, có 2 cách để giới hạn cho ASN.1, đó là giới hạn bằng kiểu bộ phận và giới hạn kiểu thông thường. Kiểu thông thường ở đây là giới hạn khi hiện thực.</p>
+
 <p>Ở đây ta nó đến giới hạn bằng kiểu bộ phận thông qua các phép toán tập hợp và liệt kê.</p>
-<h5>Phép hợp (UNION) (đối với tập hợp)</h5>
+
+<h5 id="phép-hợp-union-đối-với-tập-hợp">Phép hợp (UNION) (đối với tập hợp)</h5>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-&lt;giới hạn 1&gt;|&lt;giới hạn 2&gt;<br />
+<giới hạn 1>|<giới hạn 2><br />
 [/code]</p>
+
 <p><em>Ví dụ</em>:</p>
+
 <p>[code lang=cpp]<br />
 PrimeNumbers ::= INTEGER ( 2 | 3 | 5 | 7 | 11 | 13 )<br />
-PushButtonDial ::= IA5String (&quot;0&quot;|&quot;1&quot;|&quot;2&quot;|&quot;3&quot;|&quot;4&quot;|&quot;5&quot;|&quot;6&quot;|&quot;7&quot;|&quot;8&quot;|&quot;9&quot;|&quot;*&quot;|&quot;#&quot;)<br />
+PushButtonDial ::= IA5String (&ldquo;0&rdquo;|&ldquo;1&rdquo;|&ldquo;2&rdquo;|&ldquo;3&rdquo;|&ldquo;4&rdquo;|&ldquo;5&rdquo;|&ldquo;6&rdquo;|&ldquo;7&rdquo;|&ldquo;8&rdquo;|&ldquo;9&rdquo;|&rdquo;*&rdquo;|&ldquo;#&rdquo;)<br />
 -- PushButtonDial là chuỗi 1 kí tự<br />
 [/code]</p>
-<h5>Phép giao (INTERSECTION) (đối với tập hợp)</h5>
+
+<h5 id="phép-giao-intersection-đối-với-tập-hợp">Phép giao (INTERSECTION) (đối với tập hợp)</h5>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-&lt;giới hạn 1&gt;^&lt;giới hạn 2&gt;<br />
+<giới hạn 1>^<giới hạn 2><br />
 [/code]</p>
+
 <p><em>Ví dụ</em>:</p>
+
 <p>[code lang=cpp]<br />
 Example1 ::= INTEGER((1..10) ^ (5..15))<br />
 Example1 ::= INTEGER(1..10)(5..15)<br />
 [/code]</p>
-<h5>Phép loại trừ (EXCEPT)</h5>
+
+<h5 id="phép-loại-trừ-except">Phép loại trừ (EXCEPT)</h5>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-&lt;giới hạn 1&gt; EXCEPT &lt;giới hạn 2&gt;<br />
+<giới hạn 1> EXCEPT <giới hạn 2><br />
 [/code]</p>
-<h6>Phép loại trừ đảo (ALL EXCEPT)</h6>
+
+<h6 id="phép-loại-trừ-đảo-all-except">Phép loại trừ đảo (ALL EXCEPT)</h6>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-&lt;giới hạn 1&gt; ALL EXCEPT &lt;giới hạn 2&gt;<br />
+<giới hạn 1> ALL EXCEPT <giới hạn 2><br />
 [/code]</p>
-<h5>Định nghĩa tập giá trị</h5>
+
+<h5 id="định-nghĩa-tập-giá-trị">Định nghĩa tập giá trị</h5>
+
 <p>Lấy một tập giá trị cụ thể từ một kiểu đã có sẵn.</p>
-<h5>Kiểu chứa trong</h5>
+
+<h5 id="kiểu-chứa-trong">Kiểu chứa trong</h5>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-INCLUDES &lt;Kiểu đã có&gt;<br />
+INCLUDES <Kiểu đã có><br />
 [/code]</p>
+
 <p>Có cùng giá trị với kiểu đã có.<br />
 Từ 1994, cho phép không cần viết INCLUDES</p>
-<h5>Khoảng giá trị</h5>
+
+<h5 id="khoảng-giá-trị">Khoảng giá trị</h5>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-&lt;Giới hạn dưới&gt;..&lt;Giới hạn trên&gt;<br />
+<Giới hạn dưới>..<Giới hạn trên><br />
 [/code]</p>
+
 <p>Lấy ra một khoảng giá trị từ một tập đã có.<br />
 Nếu không muốn chỉ định giới hạn dưới, hãy sử dụng <strong>MIN</strong>.<br />
 Nếu không muốn chỉ định giới hạn trên, hãy sử dụng <strong>MAX</strong>.</p>
+
 <p><em>Ví dụ</em>:</p>
+
 <p>[code lang=cpp]<br />
 Interval ::= INTEGER (0..12)<br />
 [/code]</p>
-<h5>Giới hạn bằng kích thước (SIZE)</h5>
+
+<h5 id="giới-hạn-bằng-kích-thước-size">Giới hạn bằng kích thước (SIZE)</h5>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-SIZE(&lt;Giới hạn&gt;)<br />
+SIZE(<Giới hạn>)<br />
 [/code]</p>
+
 <p>Giới hạn được sử dụng trong trường hợp này là độ dài bit (BIT STRING), độ dài byte (OCTET), độ dài chuỗi (STRING), số phần từ mảng (SET OF hoặc SEQUENCE OF):</p>
+
 <p><em>Ví dụ</em>:</p>
+
 <p>[code lang=text]<br />
 name ::= PrintableString (SIZE (1..20)),<br />
 Matrix ::= SEQUENCE SIZE (6) OF SEQUENCE SIZE (6) OF INTEGER(-100..100)<br />
 -- Matrix có kích thước 6x6 phần tử,<br />
 -- mỗi phần từ là giá trị nguyên nằm trong khoảng 100~100<br />
 [/code]</p>
-<h5>Giới hạn các kí tự Alphabet</h5>
+
+<h5 id="giới-hạn-các-kí-tự-alphabet">Giới hạn các kí tự Alphabet</h5>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-FROM &lt;một kiểu khác&gt;<br />
+FROM <một kiểu khác><br />
 [/code]</p>
+
 <p>Cách giới hạn này chỉ sử dụng cho chuỗi kí tự, được sử dụng để chỉ định tập giá trị được phép sử dụng trong chuỗi.</p>
+
 <p>[code lang=cpp]<br />
 CapitalLettersAndSpaces ::=<br />
-PrintableString (FROM (&quot;A&quot;..&quot;Z&quot;|&quot; &quot;))<br />
+PrintableString (FROM (&ldquo;A&rdquo;..&ldquo;Z&rdquo;|&rdquo; &ldquo;))<br />
 [/code]</p>
-<h5>Giới hạn bên trong</h5>
+
+<h5 id="giới-hạn-bên-trong">Giới hạn bên trong</h5>
+
 <p>Cú pháp:</p>
+
 <p>[code lang=cpp]<br />
-WITH COMPONENTS &lt;Kiểu đã có&gt;<br />
-WITH COMPONENTS {&lt;Giới hạn&gt;, &lt;Giới hạn&gt;, &lt;Giới hạn&gt;}<br />
-WITH COMPONENTS {..., &lt;Giới hạn&gt;}<br />
+WITH COMPONENTS <Kiểu đã có><br />
+WITH COMPONENTS {<Giới hạn>, <Giới hạn>, <Giới hạn>}<br />
+WITH COMPONENTS {&hellip;, <Giới hạn>}<br />
 [/code]</p>
+
 <p>Sử dụng để giới hạn phần tử bên trong một kiểu cấu trúc.<br />
 Câu khai báo đầu tiên sử dụng kiểu đã có làm cấu trúc luôn và giới hạn số phần cho cấu trúc đó.<br />
 Câu khai báo thứ hai, ba sử dụng cho cấu trúc được tạo thành từ nhiều kiểu khác nhau.</p>
+
 <p><em>Ví dụ</em>:<br />
 Địa chỉ (Address) có từ 3~6 dòng, mỗi dòng có 1~32 kí tự.</p>
+
 <p>[code lang=cpp]<br />
 TextBlock ::= SEQUENCE OF VisibleString<br />
 Address ::= TextBlock (SIZE (3..6))(WITH COMPONENT (SIZE (1..32)))<br />
 [/code]</p>
-<h3>5. Quy ước mở rộng (Extension mark)</h3>
-<p>Gần giống với cách biểu diễn giới hạn ở phía trên, chỉ khác là có thêm dấu 3 chấm (...), để biểu thị rằng tương lai có khả năng mở rộng.<br />
+
+<h3 id="5-quy-ước-mở-rộng-extension-mark">5. Quy ước mở rộng (Extension mark)</h3>
+
+<p>Gần giống với cách biểu diễn giới hạn ở phía trên, chỉ khác là có thêm dấu 3 chấm (&hellip;), để biểu thị rằng tương lai có khả năng mở rộng.<br />
 Trường hợp giới hạn cả phần mở rộng này, thì sau dấu 3 chấm, có thể viết thêm giới hạn vào.<br />
 Có thể viết nhiều lần dấu 3 chấm để miêu tả giới hạn trên nhiều đoạn khác nhau (Tuy nhiên, qua mỗi bản ASN.1 thì điều này có thể không giống nhau).</p>
+
 <p><em>Ví dụ</em>:</p>
+
 <p>[code lang=cpp]<br />
-A ::= INTEGER (0..10, ...)<br />
-A ::= INTEGER (0..10, ..., 12)<br />
-RadioButton ::= ENUMERATED { button1, button2, button3, ... }<br />
-RadioButton ::= ENUMERATED { button1, button2, button3, ..., button4, button5 }<br />
+A ::= INTEGER (0..10, &hellip;)<br />
+A ::= INTEGER (0..10, &hellip;, 12)<br />
+RadioButton ::= ENUMERATED { button1, button2, button3, &hellip; }<br />
+RadioButton ::= ENUMERATED { button1, button2, button3, &hellip;, button4, button5 }<br />
 [/code]</p>
+
 <p>Khi dùng <strong>SEQUENCE</strong>, <strong>SET</strong>, <strong>CHOICE</strong>, trongtrường hợp sử dụng nhiều dấu mở rộng, ASN.1 cho phép có thể sử dụng dấu ngoặc vuông để biểu diễn khi thêm dấu mở rộng vào một định nghĩa đã mở rộng.</p>
+
 <p><em>Ví dụ</em>:</p>
+
 <p>[code lang=cpp]<br />
 Dimensions ::= SET { x INTEGER,<br />
 y INTEGER,<br />
-...,<br />
-[[z INTEGER]] } -- version 2<br />
+&hellip;,<br />
+[[z INTEGER]] } &ndash; version 2<br />
 Afters ::= CHOICE { cheese IA5String,<br />
 dessert IA5String,<br />
-...,<br />
-[[ coffee NULL ]] } -- version 2<br />
+&hellip;,<br />
+[[ coffee NULL ]] } &ndash; version 2<br />
 Afters ::= CHOICE { cheese IA5String,<br />
 dessert IA5String,<br />
-...,<br />
+&hellip;,<br />
 [[ coffee NULL,<br />
-tea NULL ]] , -- version 2<br />
-[[ cognac IA5String ]] } -- version 3<br />
+tea NULL ]] , &ndash; version 2<br />
+[[ cognac IA5String ]] } &ndash; version 3<br />
 Type ::= SEQUENCE { component1 INTEGER,<br />
-component2 BOOLEAN, -- version 1<br />
-... }<br />
+component2 BOOLEAN, &ndash; version 1<br />
+&hellip; }<br />
 Type ::= SEQUENCE { component1 INTEGER,<br />
 component2 BOOLEAN,<br />
-...,<br />
-[[ component3 REAL ]], -- version 2<br />
-... }<br />
+&hellip;,<br />
+[[ component3 REAL ]], &ndash; version 2<br />
+&hellip; }<br />
 [/code]</p>
 
 		</div>

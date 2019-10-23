@@ -62,30 +62,45 @@
 			<h1 class="post__title">Lệnh MOV trong Assembly</h1>
 			
 		</header><div class="content post__content clearfix">
-			<h2>Lệnh MOV trong Assembly</h2>
-<p><strong>Link gốc</strong>: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html</p>
+			
+
+<h2 id="lệnh-mov-trong-assembly">Lệnh MOV trong Assembly</h2>
+
+<p><strong>Link gốc</strong>: <a href="http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html">http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html</a></p>
+
 <p>#Lệnh MOV</p>
-<h2>1. Lệnh MOV</h2>
+
+<h2 id="1-lệnh-mov">1. Lệnh MOV</h2>
+
 <p>Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.<br />
 Làm bất cứ cái gì, đều có bao gồm <code>sao chép</code> dữ liệu trong đó. Nói là chức năng <code>sao chép</code> thôi, chứ thực sự nó bao hàm sao chép, truyền dữ liệu. Đó có thể là từ bộ nhớ (các loại RAM) vào thanh ghi, từ thanh ghi vào bộ nhớ, từ một giá trị nào đó xuống thanh ghi hoặc bộ nhớ chẳng hạn.<br />
 Tuy nhiên hãy nhớ rằng <strong>KHÔNG THỂ CHUYỂN DỮ LIỆU TỪ BỘ NHỚ SANG BỐ NHỚ ĐƯỢC</strong>,<br />
-bởi vì <strong>BỘ NHỚ ĐƯỢC TRUY CẬP THEO BUS (20bit hoặc 32bit), MỖI LẦN TRUY CẬP BỘ NHỚ CHỈ CÓ THỂ TRUY CẬP MỘT ĐỊA CHỈ MÀ THÔI</strong><br />
-<code></p>
+bởi vì <strong>BỘ NHỚ ĐƯỢC TRUY CẬP THEO BUS (20bit hoặc 32bit), MỖI LẦN TRUY CẬP BỘ NHỚ CHỈ CÓ THỂ TRUY CẬP MỘT ĐỊA CHỈ MÀ THÔI</strong></p>
+
+<p>`</p>
+
 <p>Lệnh MOV có 2 tham số, được gọi là <strong>Operand</strong>, nó giống như bên dưới đây:</p>
-<p>[code lang="C"]<br />
+
+<p>[code lang=&ldquo;C&rdquo;]<br />
 MOV DEST, SOURCE<br />
 [/code]</p>
+
 <p>Lệnh này theo cú pháp Intel nha.<br />
 Chuyển (Copy) dữ liệu từ <strong>SRC</strong> đến <strong>DEST</strong><br />
 <strong>SRC</strong>, <strong>DEST</strong>: là địa chỉ thanh ghi hoặc bộ nhớ, bỏ trường hợp cả 2 là bộ nhớ.</p>
+
 <p>Một số ví dụ:</p>
-<p>[code lang="C"]<br />
+
+<p>[code lang=&ldquo;C&rdquo;]<br />
 MOV AX, BX : Copy nội dung từ thanh ghi BX sang thanh ghi AX<br />
-MOV AL,10  : Lưu giá trị 10 vào thanh ghi AL<br />
+MOV AL,10 : Lưu giá trị 10 vào thanh ghi AL<br />
 [/code]</p>
-<p>Một số chú ý:<br />
-- Không thể chuyển dữ liệu giữa bộ nhớ với nhau.<br />
-- Nguồn và đích chuyển dữ liệu phải có cùng kích thước<br />
+
+<p>`</p>
+
+<p><code>Một số chú ý:  
+- Không thể chuyển dữ liệu giữa bộ nhớ với nhau.  
+- Nguồn và đích chuyển dữ liệu phải có cùng kích thước  
 - Không thể chuyển giá giá trị vào thanh ghi segment</code></p>
 
 		</div>

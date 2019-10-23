@@ -62,28 +62,40 @@
 			<h1 class="post__title">Một chút về Driver cho USB Device trong Linux</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
+			<p>Trong loại bài dịch <a href="https://lazytrick.wordpress.com/2016/01/25/usb-driver-va-usb-device-firmware-se-viet/">trước đây</a> nói về USB, tôi có nhắc một chút đến việc load đúng driver thì phía Host làm thế nào?</p>
+
+<p>Như ta đã biết, khi một thiết bị USB được cắm vào máy (Host), phía Host sẽ thực hiện một loạt thao tác từ xác định nguồn (bus, hay self), lấy thông tin tốc độ, các thông tin về descriptor (thiết bị, giao diện, các Endpoint). Cuối cùng để sử dụng các tính năng chính mà thiết bị cung cấp, thì hệ điều hành phía Host, dù là Windows, hay Linux, hay MacOS sẽ phải load driver tương ứng với thiết bị.</p>
+
 <p>Để xác định đúng driver cần load, phía Host thường sử dụng 2 thông số. Đó là <strong>Product ID/Vendor ID</strong></p>
+
 <p>Trường hợp hệ điều hành Linux, hầu hết Driver cho thiết bị được tích hợp sẵn trong source của nhân. Tất nhiên, với mỗi cấu hình build khác nhau, người ta có thể biên dịch cùng hoặc bỏ qua.<br />
 Trong linux, mỗi driver sẽ cho Kernel biết một danh sách các thiết bị (mỗi thiết bị thường được đặc trưng bởi 2 thông số ở <strong>Product ID/Vendor ID</strong> đã nói phía trên).<br />
 Kernel sẽ lựa chọn driver phù hợp nhất.</p>
+
 <p>Như một tìm hiểu nhỏ, cho bài viết <a href="https://lazytrick.wordpress.com/2016/08/11/cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/">Cài thêm driver cho bản build Raspberry PI sử dụng Yocto</a>.</p>
+
 <p>Ta xét đến thiết bị USB-Wifi Adapter của Buffalo, link sản phẩm tại <a href="http://buffalo.jp/product/wireless-lan/client/wli-uc-gnm2/">đây</a>.</p>
+
 <p>Thiết bị chạy tốt trên Ubuntu, Raspbian vì thế ta có thể thấy các thông số của thiết bị tại log của 2 hệ điều hành này.<br />
 Từ đó ta thấy được:</p>
+
 <ol>
-<li>Thiết bị sử dụng chip không dây của Ralink (xem thêm tại https://en.wikipedia.org/wiki/Ralink)</li>
+<li>Thiết bị sử dụng chip không dây của Ralink (xem thêm tại <a href="https://en.wikipedia.org/wiki/Ralink">https://en.wikipedia.org/wiki/Ralink</a>)</li>
 <li>Trong source của nhân linux, dường như có 1 loạt thiết bị không dây Ralink đang được hỗ trợ.<br />
 Xem ở đây ta sẽ thấy: <a href="http://lxr.free-electrons.com/source/drivers/net/wireless/ralink/rt2x00/rt2800usb.c#L968">http://lxr.free-electrons.com/source/drivers/net/wireless/ralink/rt2x00/rt2800usb.c#L968</a></li>
 </ol>
+
 <p>Vậy thì tại sao bản build <strong>rpi-basic-image</strong> lại không có.???</p>
+
 <ol>
 <li>Trong log mà ta có được, có xuất hiện một dòng liên quan đến firmware request.<br />
 Vậy có quan hệ gì nữa Driver trong Kernel, module, và firmware??<br />
 Dường như kernel cho phép load firmware để hỗ trợ các driver mà nó sử dụng.</li>
 </ol>
+
 <p>Update 2016/09/06:<br />
 Từ kêt quả tìm hiểu về <a href="https://lazytrick.wordpress.com/2016/08/29/khai-niem-driver-va-firmware-trong-linux/">Driver và Firmware trong Linux</a>, <a href="https://lazytrick.wordpress.com/2016/09/05/qua-trinh-load-firmware-cua-driver-trong-linux/">Quá trình load firmware của Driver trong Linux</a>, <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm Driver cho Linux</a></p>
+
 <p>Ta có thể thấy rằng, với thiết bị USB Wifi Client của chúng ta, ta chỉ cần tạo thư mục <strong>/lib/firmware/</strong> và copy firmware còn thiếu vào là sẽ chạy được.<br />
 Tuy nhiên để tạo ra bản build chưa sẵn các firmware này thì ta phải thêm recipy <strong>linux-firmware</strong> vào image.</p>
 

@@ -62,9 +62,22 @@
 			<h1 class="post__title">Chuyển sang dùng VI(M)</h1>
 			
 		</header><div class="content post__content clearfix">
-			Vi thường xuất hiện trong những câu chuyện chém gió về những pro chưa từng gặp,<br />
-những hacker kiệt xuất, etc...Nào là pro toàn dùng Vim thôi, hay bọn hacker chắc<br />
-dùng Vim kinh lắm...<br />
+			
+
+<h2 id="chuyển-sang-dùng-vi">Chuyển sang dùng Vi</h2>
+
+<p>Vi - Editor khá nhiều tuổi, có lẽ còn nhiều tuổi hơn của mình.<br />
+Là editor phổ biến nhất trên hệ thống dòng lệnh Linux, Unix hoặc tương tự.<br />
+Có Linux, bạn gần như sẽ có thể dùng Vi. Mà Linux thì có ở rất rất nhiều nơi.<br />
+Có phải vì nó mặc định nên nó phổ biến???<br />
+Mình từng nghĩ vậy hoặc nghĩ chắc nó nhẹ nên người ta cài sẵn nó thôi<br />
+chứ chức năng hoặc độ tiện dụng chắc tệ lắm.<br />
+Vì thực ra, ở trường mình từng dùng 1, 2 lần thôi. Vì khi mới bắt đầu biết đến<br />
+Linux, thì nó cũng có giao diện đồ họa khá tiện rồi. Thầy giáo lại là một<br />
+emacs-fan nữa nên ít khi phải dùng Vi.<br />
+Vi thường xuất hiện trong những câu chuyện chém gió về những pro chưa từng gặp,<br />
+những hacker kiệt xuất, etc&hellip;Nào là pro toàn dùng Vim thôi, hay bọn hacker chắc<br />
+dùng Vim kinh lắm&hellip;<br />
 Đến gần đây, khi càng ngày càng muốn theo Embedded Linux, mình vẫn chưa sử dụng<br />
 Vi bao giờ vì đơn giản, mọi thứ mình đang dùng (Notepadplusplus, Eclipse) khá ổn.<br />
 Thế nhưng, từ giờ chắc phải suy nghĩ về việc học sử dụng nghiêm túc em Vim này.<br />
@@ -74,68 +87,87 @@ rồi lại copy vào.:)))<br />
 Nhưng không, mình đã lầm, Vim có nhiều thứ hơn mình nghĩ.<br />
 Mới đang ở giai đoạn bắt đầu sử dụng Vim như là editor chính, cả công việc lẫn ở nhà.<br />
 Nên cứ note tạm mấy cái mình thấy hữu ích và có thể xem đi xem lại thôi.</p>
-<h2>1. Chỉ gõ khi phải gõ</h2>
+
+<h2 id="1-chỉ-gõ-khi-phải-gõ">1. Chỉ gõ khi phải gõ</h2>
+
 <ul>
 <li>Vim có nhiều mode, nhưng có thể chia ra làm 2 mode phổ biến: Command mode và Edit mode</li>
 <li>Ở góc dưới trái của màn hình luôn hiển thị trạng thái hiện tại là mode nào.</li>
 <li>Command Mode: Nghĩa là các phím sẽ mang một ý nghĩa thực thi lệnh nào đó trên đơn vị là<br />
-kí tự, từ, hàng, hoặc liên quan đến chuyển mode. Ví dụ: xóa ở vị trí con trỏ "x", thêm dòng<br />
-mới là "o", ghi chuyển bằng "h", "j", "k", "l" chẳng hạn.</li>
+kí tự, từ, hàng, hoặc liên quan đến chuyển mode. Ví dụ: xóa ở vị trí con trỏ &ldquo;x&rdquo;, thêm dòng<br />
+mới là &ldquo;o&rdquo;, ghi chuyển bằng &ldquo;h&rdquo;, &ldquo;j&rdquo;, &ldquo;k&rdquo;, &ldquo;l&rdquo; chẳng hạn.</li>
 <li>Edit mode: Tức là mode bạn có thể gõ như các editor thông thường khác.<br />
 Thông thường khi mới chuyển sang, chúng ta thường chọn mode Edit luôn vì nó gần với hầu hết<br />
 các Editor khác.<br />
 Tuy nhiên, các đúng nên là: Chỉ thực sự cần chuyển Edit mode khi cần thôi, sau đó nên<br />
 trở về Command Mode</li>
 </ul>
-<h2>2. Các thao tác di chuyển</h2>
+
+<h2 id="2-các-thao-tác-di-chuyển">2. Các thao tác di chuyển</h2>
+
 <p><strong>hjkl : Trái dưới trên phải</strong>:<br />
 - Thay vì sử dụng các phím mũi tên:<br />
-Trong VIM việc di chuyển con trỏ được thực hiện bởi 4 phím "HJKL" trong Command Mode<br />
+Trong VIM việc di chuyển con trỏ được thực hiện bởi 4 phím &ldquo;HJKL&rdquo; trong Command Mode<br />
 - Tức là khi định di chuyển, ta nhớ nhấn Esc rồi sử dụng 4 phím kia.<br />
 - Cái này rất dễ quen thôi.</p>
+
 <p><strong>0-$ tương đương Home - End</strong><br />
 Di chuyển vể đầu, cuối dòng</p>
+
 <p><strong>Ctrl-u, Ctrl-d : Page Up - Page Down</strong><br />
 Chuyển trang sau hoặc trang trước</p>
+
 <p><strong>1-G(shift-g), 0-G(shift-g) : Đầu file, cuối file</strong><br />
 G (Shift-G) là lệnh nhảy dòng<br />
 1-G nhảy về dòng 1, tức là đầu file<br />
 0-G vì không có dòng 0, nên cái này được quy định nhảy về cuối file</p>
+
 <p><strong>f-chữ cái, hoặc F (shift-F)-chữ cái</strong><br />
 Để di chuyển nhanh đến từ có chứa chữ cái đầu nào đó<br />
 Ta có thể bấm f(forward), sau đó là chữ cái.<br />
 Cách này đặc biệt hữu dụng với những dòng mà dài hoặc rất dài<br />
 Sử dụng F (shift-f) nếu muốn nhảy theo chiều ngược lại.</p>
+
 <p><strong>w, b: di chuyển qua các từ</strong><br />
 Khi muốn di chuyển sang từ tiếp theo hoặc về từ trước đó<br />
 có thể sử dụng w và b.<br />
 Mình ít dùng 2 phím này</p>
-<p><strong>/ hoặc ? &lt;từ khóa&gt;: Để tìm kiếm</strong><br />
+
+<p><strong>/ hoặc ? <từ khóa>: Để tìm kiếm</strong><br />
 Tương đương với Ctrl + f ở hầu hết editor khác.<br />
 Tuy nhiên, mục từ khóa hỗ trợ biểu thức chính quy luôn.<br />
 Hay nói cách khác, chức năng tìm kiếm chính là 1 engine xử lý biểu thức<br />
 chính quy luôn.<br />
 Để dịch chuyển sang kết quả sau/trước sử dụng n và N(shift-n)</p>
-<h2>3. Một số thao tác cơ bản</h2>
-<h3>3.1 Bôi đen</h3>
+
+<h2 id="3-một-số-thao-tác-cơ-bản">3. Một số thao tác cơ bản</h2>
+
+<h3 id="3-1-bôi-đen">3.1 Bôi đen</h3>
+
 <p>Với mình, đây là thao tác phổ biến nhất. :))<br />
 <strong>Sử dụng Visual mode (V)</strong><br />
 Bấm phím v (nhỏ) trong Command Mode để chuyển sang Visual Mode<br />
 Sau khi chuyển sang rồi, sử dụng các phím di chuyển để tạo dùng bôi đen<br />
 Cái này tương tự việc ta giữ phím Shift trong các Editor khác.<br />
 Nhưng với VIM không cần giữ phím gì hết.</p>
+
 <p><strong>Sử dụng V (Shift-V)</strong><br />
 để đôi đen 1 dòng</p>
-<h3>3.2 Copy, Cut, Paste</h3>
+
+<h3 id="3-2-copy-cut-paste">3.2 Copy, Cut, Paste</h3>
+
 <p><strong>Bôi đen rồi p</strong><br />
 - Sau khi đã bôi đen, sử dụng<br />
 <em>Copy</em> -&gt; phím y<br />
 <em>Cut</em> -&gt; phím x<br />
 - Di chuyển rồi paste bằng : p</p>
+
 <p><strong>yyp : copy một dòng</strong><br />
 Câu lệnh thần thánh, tạo ra một dòng giống hệt dòng hiện tại.<br />
 Giải thích câu trên như sau: yy là copy dòng,p là paste ngay sau dòng hiện tại.</p>
-<h3>3.3 Xóa</h3>
+
+<h3 id="3-3-xóa">3.3 Xóa</h3>
+
 <p><strong>x : Xóa kí tự</strong><br />
 <strong>dd: Xóa cả dòng</strong><br />
 <strong>d$: Xóa đến cuối dòng</strong></p>

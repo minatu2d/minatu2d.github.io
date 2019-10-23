@@ -62,14 +62,22 @@
 			<h1 class="post__title">Lỗi về Case-sensive khi biên dịch C (gcc)</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
+			
+
+<p>Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch <strong>GCC</strong> lên đó.<br />
+Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.<br />
+Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.</p>
+
 <p>Vì 2 yêu cầu trên, mình thường bằng 1 cách nào đó setup một thư mục chung giữa 2 môi trường. Và cách phổ biến và có lẽ là đơn giản nhất là sử dụng module <strong>vmhgfs</strong> được cung cấp sẵn bở VMWare.<br />
 Với cách này, chúng ta dễ dàng chia sẻ 1 thư mục từ Host (máy Windows) với máy Guest (chạy Ubuntu chẳng hạn).<br />
 Nhưng gần đây, mình gặp 1 vấn đề với hệ thống file được <strong>vmhgfs</strong> hỗ trợ, khi build source trên thư mục chia sẻ với Host này.<br />
 Vấn đề được trình bày bên dưới.</p>
-<h3>1. Cấu trúc source ví dụ</h3>
+
+<h3 id="1-cấu-trúc-source-ví-dụ">1. Cấu trúc source ví dụ</h3>
+
 <p>Giả sử có source như này:</p>
-<p>[code lang="bash"]<br />
+
+<p>[code lang=&ldquo;bash&rdquo;]<br />
 .<br />
 ├── hello<br />
 ├── hello.c<br />
@@ -78,45 +86,62 @@ Vấn đề được trình bày bên dưới.</p>
 └── inc_uppercase<br />
 └── Abc.h<br />
 [/code]</p>
+
 <p><strong>hello.c</strong>:</p>
-<p>[code lang="c"]<br />
+
+<p>[code lang=&ldquo;c&rdquo;]<br />
 $ cat hello.c<br />
 #include<br />
-#include&amp;quot;Abc.h&amp;quot;<br />
-#include&amp;quot;abc.h&amp;quot;</p>
+#include&quot;Abc.h&quot;<br />
+#include&quot;abc.h&quot;</p>
+
 <p>int main(int argc, char* argv[])<br />
 {<br />
 abc_t var1;<br />
 Abc_t var2;</p>
+
 <p>var1.x = 0;<br />
 var2 = 3;</p>
-<p>printf(&amp;quot;OMG Hello world %d %ldn&amp;quot;,var1.x, var2);<br />
+
+<p>printf(&quot;OMG Hello world %d %ldn&quot;,var1.x, var2);<br />
 return 0;<br />
 }<br />
 [/code]</p>
+
 <p><strong>inc_lowercase/abc.h</strong>:</p>
-<p>[code lang="c"]<br />
+
+<p>[code lang=&ldquo;c&rdquo;]<br />
 typedef struct _abc_<br />
 {<br />
 int x;<br />
 }abc_t;<br />
 [/code]</p>
+
 <p><strong>inc_uppercase/Abc.h</strong>:</p>
-<p>[code lang="c"]<br />
+
+<p>[code lang=&ldquo;c&rdquo;]<br />
 typedef long int Abc_t;<br />
 [/code]</p>
-<h3>2. So sánh thử</h3>
-<h4>2.1 Thư mục source nằm trên <strong><em>home</em></strong> của VMWare</h4>
+
+<h3 id="2-so-sánh-thử">2. So sánh thử</h3>
+
+<h4 id="2-1-thư-mục-source-nằm-trên-home-của-vmware">2.1 Thư mục source nằm trên <strong><em>home</em></strong> của VMWare</h4>
+
 <p>Kết quả: Build ngon, chạy tốt:</p>
-<p>[code lang="bash"]<br />
+
+<p>[code lang=&ldquo;bash&rdquo;]<br />
 $ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase<br />
 $ ./hello<br />
 OMG Hello world 0 3<br />
 [/code]</p>
-<h4>2.1 Thư mục source nằm trên thư mục chia sẻ giữa VMWare (chạy Linux) với Host (chạy Windows) thông qua <strong>vmhgfs</strong>:</h4>
+
+<h4 id="2-1-thư-mục-source-nằm-trên-thư-mục-chia-sẻ-giữa-vmware-chạy-linux-với-host-chạy-windows-thông-qua-vmhgfs">2.1 Thư mục source nằm trên thư mục chia sẻ giữa VMWare (chạy Linux) với Host (chạy Windows) thông qua <strong>vmhgfs</strong>:</h4>
+
 <p>Giả sử ta để source ở <em>/mnt/hgfs</em> :</p>
+
 <p>Kết quả: Build lỗi, đương nhiên là không chạy được.</p>
-<p>[code lang="bash"]<br />
+
+<p>[code lang=&ldquo;bash&rdquo;]<br />
 duser@192.168.70.225:/mnt/hgfs$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase<br />
 In file included from hello.c:3:0:<br />
 abc.h:1:16: error: redefinition of ‘struct _abc_’<br />
@@ -139,15 +164,19 @@ hello.c:8:2: error: unknown type name ‘Abc_t’<br />
 Abc_t var2;<br />
 ^<br />
 hello.c:13:2: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 3 has type ‘int’ [-Wformat=]<br />
-printf(&amp;quot;OMG Hello world %d %ldn&amp;quot;,var1.x, var2);<br />
+printf(&quot;OMG Hello world %d %ldn&quot;,var1.x, var2);<br />
 ^<br />
 [/code]</p>
-<p>Ta thấy các lỗi ở đây khá là "lạ", nào là <strong>redefine</strong>, nào là <strong>unkown type name</strong>.<br />
+
+<p>Ta thấy các lỗi ở đây khá là &ldquo;lạ&rdquo;, nào là <strong>redefine</strong>, nào là <strong>unkown type name</strong>.<br />
 <strong>Nếu gặp lỗi này lần đầu thì không phải ai cũng lý giải được. :(</strong></p>
+
 <p>Vấn đề ở đây nằm ở <strong>/mnt/hgfs</strong>.<br />
 Có vẻ như <strong>hgfs</strong> không phân biệt <strong>Abc.h</strong> với <strong>abc.h</strong> nên khi GCC (dù chạy trên VM Ubuntu) đọc cái file này lên sẽ cùng 1 tên.</p>
+
 <p>Ở đây ta thấy lỗi <strong>typedef struct _abc</strong> thì có thể đoán được rằng <strong>abc.h</strong> đã được include trước.<br />
 Có vẻ như <strong>hgfs</strong> coi 2 file header trên với cùng 1 tên <strong>abc.h</strong>.</p>
+
 <p>Không chỉ có <strong>hgfs</strong> mà nhiều hệ thống file khác cũng giống như thế.</p>
 
 		</div>

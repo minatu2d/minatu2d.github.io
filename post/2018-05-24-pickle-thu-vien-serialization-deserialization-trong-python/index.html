@@ -62,8 +62,13 @@
 			<h1 class="post__title">Pickle - Thư viện Serialization/Deserialization trong Python</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h2>1. Pickle - Chuyển đổi một đối tượng Python sang dạng binary và ngược lại</h2>
+			
+
+<p>Gần đây khi chạy thử một vài thuật toán Deep Learning, đặc biệt là các thuật toán cung cấp source code sử dụng thư viện Caffe, có gặp một vài vấn đề liên quan đến module <strong>Pickle</strong> trong Python.<br />
+Thực ra, bình thường cũng không định viết gì cả. Nhưng chợt nhớ ra mình cũng quan tâm đến chủ đề <strong>Serialization/Deserialization</strong> này. Nó có vai trò giống như <a href="https://lazytrick.wordpress.com/2016/11/12/asn-1-la-gi-tai-sao-no-quan-trong/">ASN.1</a> mà có tìm hiểu hồi trước, hay phổ biến nhất của thể loại này là <strong>Protocol Buffer</strong> của Google, hay <strong>Apache Thrift</strong>. Thế là note lại cái để quên nó đi.</p>
+
+<h2 id="1-pickle-chuyển-đổi-một-đối-tượng-python-sang-dạng-binary-và-ngược-lại">1. Pickle - Chuyển đổi một đối tượng Python sang dạng binary và ngược lại</h2>
+
 <ul>
 <li>Sử dụng cách thức chuyển đổi riêng (chỉ dành riêng cho Python), không gắn với bất cứ một chuẩn chuyển đổi nào.</li>
 <li>Không có cơ chế định nghĩa dữ liệu tách biệt với việc mã hóa dữ liệu đó.<br />
@@ -71,7 +76,9 @@ Dữ liệu được ghi ra phải là Python Object, và chỉ có thể đọc
 <li>Có thể ghi ra/load vào hầu hết đối tượng của các kiểu dữ liệu phổ biến</li>
 <li>Các file pickle được ghi ra hoàn toàn có thể đọc được ở một môi trường Python khác. (Tất nhiên có tương thích về phiên bản protocol)</li>
 </ul>
-<h2>2. Pickle - là không secure</h2>
+
+<h2 id="2-pickle-là-không-secure">2. Pickle - là không secure</h2>
+
 <p>Mặc định, nó sẽ import tất cả các module có trong dữ liệu từ file được load lên.<br />
 Thế này thì vãi quá.<br />
 Bởi vậy, người ta khuyên không nên cứ thế load vào một file pickle không rõ nguồn gốc. vì éo ai biết nó load gì và sẽ chạy gì sau đó.</p>

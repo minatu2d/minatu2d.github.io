@@ -70,12 +70,8 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>PER</strong> là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng <strong>TLV</strong> như <strong>BER</strong>, <strong>PER</strong> sử dụng <em>Preamble</em> (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là <strong>PLV</strong>.</p>
-<p>Đơn vị biểu diễn của <strong>PER</strong> không phải Octet mà là Bit. Mỗi phần tử sẽ thuộc 1 trong 3 loại sau:<br />
-1. Trường dư bit, tức là dãy bit không thể biểu diễn bằng một số nguyên các Octet.<br />
-2. Trường nguyên bit, có thể biểu diễn bằng một số nguyên các Octet.<br />
-3. Danh sách trường, chứa cả các thành phần là nguyên bit và dư bit.</p>
-<p>
+		PER là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng TLV như BER, PER sử dụng Preamble (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là PLV.
+Đơn vị biểu diễn của PER không phải Octet mà là Bit.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -87,10 +83,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.</p>
-<p>Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào <strong>BER</strong>, và tạo ra <strong>CER</strong> và <strong>DER</strong>.</p>
-<p>Sự khác nhau chủ yếu giữa <strong>CER</strong> và <strong>DER</strong> là về biểu diễn trường độ dài. <strong>Length(L)</strong>. Trong khi <strong>DER</strong> sử dụng một định dạng với độ dài cố định, thì <strong>CER</strong> sử dụng định dạng với độ dài không có định,<br />
-
+		Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.
+Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào BER, và tạo ra CER và DER.
+Sự khác nhau chủ yếu giữa CER và DER là về biểu diễn trường độ dài.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -102,15 +97,13 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp tục về <a href="https://lazytrick.wordpress.com/tag/asn1/">ASN.1</a>.</p>
-<p>Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)</p>
-<p>Ta sẽ tiếp tục nói về hiện thực dữ liệu.<br />
-Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</strong>, <strong>CER/DER</strong>, và <strong>PER</strong>.</p>
-<p>Trong đó:<br />
-<strong>BER</strong> : Basic Encoding Rules<br />
-<strong>CER/DER</strong> : Canonical Encoding Rules/Distinguished Encoding Rules<br />
-<strong>PER</strong> : Packet Encoding Rules</p>
-<p>
+		Tiếp tục về ASN.1.
+Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)
+Ta sẽ tiếp tục nói về hiện thực dữ liệu.
+Các phương thức để hiện thực dữ liệu gồm có: BER, CER/DER, và PER.
+Trong đó:
+BER : Basic Encoding Rules
+CER/DER : Canonical Encoding Rules/Distinguished Encoding Rules
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -122,21 +115,9 @@ Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</str
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp theo loạt bài về ASN.1, bài này sẽ "dịch" tài liệu của anh <a href="http://www5d.biglobe.ne.jp/~stssk/mail.html">Isida So</a> nói về cú pháp cơ bản của ASN.1.</p>
-<p>Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.</p>
-<p>ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.</p>
-<p>Ví dụ, khi muốn biểu diễn số điện thoại (<strong>TelephoneNumber</strong>), trong trường đã có kiểu dành cho chuỗi kí tự số (<strong>NumericString</strong>) thì ta chỉ việc viết như sau:</p>
-<p>[code lang=cpp]<br />
-TelephoneNumber ::= NumericString<br />
-[/code]</p>
-<ol>
-<li>Các kiểu cơ bản</li>
-<li>Kiểu cấu trúc</li>
-<li>Thẻ (Tag)</li>
-<li>Kiểu bộ phận</li>
-<li>Quy ước mở rộng (Kí hiệu mở rộng)</li>
-</ol>
-<p>
+		Tiếp theo loạt bài về ASN.1, bài này sẽ &ldquo;dịch&rdquo; tài liệu của anh Isida So nói về cú pháp cơ bản của ASN.1.
+Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.
+ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -148,17 +129,10 @@ TelephoneNumber ::= NumericString<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.</p>
-<p>Google tiếng Việt thấy khá ít thông tin về ASN.1.<br />
-Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.</p>
-<p>Nội dung bài này sẽ giới thiệu sơ qua về ASN.1.<br />
-Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http://www5d.biglobe.ne.jp/~stssk/asn1/index.html">Ishida So</a></p>
-<ol>
-<li>ASN.1 là gì?</li>
-<li>Một số ứng dụng</li>
-<li>Làm sao để sử dụng ASN.1</li>
-</ol>
-<p>
+		Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.
+Google tiếng Việt thấy khá ít thông tin về ASN.1.
+Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.
+Nội dung bài này sẽ giới thiệu sơ qua về ASN.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -170,10 +144,8 @@ Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http:/
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project</a>.</p>
-<p>Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).</p>
-<p>Trong bài này, sẽ trình bày cách đưa <strong>Samba</strong> vào bản phân phối Linux đã được build ở bài trước.</p>
-<p>
+		Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project.
+Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -185,11 +157,7 @@ Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http:/
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><img class="  wp-image-533 aligncenter" src="{{ site.baseurl }}/assets/8gb-usb-flash-drive-rotation-2-0-usb-disk-model-pen-drive-memory-stick-8g-hot.jpg" alt="8GB-USB-Flash-Drive-Rotation-2-0-USB-DISK-Model-Pen-drive-memory-stick-8G-HOT.jpg" width="196" height="196" /></p>
-<p>Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). "USB Flash Memory" bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.</p>
-<p>Ở một số bài trước, tôi cũng viết về một số điểm chính của giao tiếp USB.</p>
-<p>Về cơ bản, phần mềm mà programer có thể viết cho USB hầu như được xác định từ sau bước tín hiệu. Tức là phía ứng dụng mức thấp (tức driver ấy) sẽ sử dụng các thanh và các ngắt được cung cấp để setup, nhận dữ liệu, gửi dữ liêu, phát hiện kết nối.</p>
-<p>
+		Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &ldquo;USB Flash Memory&rdquo; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -201,8 +169,8 @@ Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http:/
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Như ta đã biết trong bản gốc và bản tiếng Việt của giao thức MQTT, đơn vị truyền tin trong MQTT là message. Message chứa 2 phần cơ bản là Header (phần mô tả thuộc tính dữ liệu) và Payload (phần mô tả dữ liệu). Phần header chứa 2 phần nữa là Header có độ dài cố định và Header có độ dài thay đổi được.
-Hầu hết các trường của phần Header cố định đều khá dễ hiểu, duy chỉ có 1 trường tương đối khó hiểu.
+		Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.
+Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver&hellip; Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -214,13 +182,9 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.</p>
-<p>Giờ xin dịch lại bài này một cách khái quát nhất.</p>
-<p>Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).</p>
-<p>Về nguyên tắc, từ khi cắm 1 thiết bị USB bất kì cắm vào cổng, cần trải qua 3 giai đoạn giao tiếp giữa máy tính và thiết bị để có thể hiểu nhau. Đó là Reset (về điện đóm), Configured (load các driver tương ứng), Sử dụng được (khi chúng di chuyển được con chuột, hoặc gõ được phím).</p>
-<p>Trong bài này giới thiệu dữ liệu trao đổi giữa HID Driver (nằm trên máy tính) và HID Device (hay về mặt phần mềm là Firmware chạy trên Device). Mà cụ thể nói về "HID Report Descriptor", cái được HID Device gửi lên HID Driver để báo cho Driver biết HID Device có những dữ liệu gì mà Driver có thể hỏi được, được tổ chức như thế nào.</p>
-<p>Link : <a href="http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/">http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/</a></p>
-<p>Một USB HID Report là một trong những descriptor (đặc tả) mà Host yêu cầu từ thiết bị USB. Thiết bị USB sẽ trả lời yêu cầu này bằng các Report. Nhưng Report này sẽ nói cho Host biết các dữ liệu trong quá trình sử dụng mà Device gửi lên nên được hiểu như thế nào. Trong bài này, tác giả Frank-Zhang(Sony Engineer) đã giới thiệu theo từng ví dụ.
+		Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.
+Giờ xin dịch lại bài này một cách khái quát nhất.
+Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -244,11 +208,9 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.</p>
-<p>Link gốc tại <a href="http://www.beyondlogic.org/usbnutshell/usb1.shtml">http://www.beyondlogic.org/usbnutshell/usb1.shtml</a></p>
-<h4>Tóm tắt về USB</h4>
-<h5>Hiểu chuẩn USB để sử dụng trong phát triển</h5>
-<p>
+		USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.
+Link gốc tại http://www.beyondlogic.org/usbnutshell/usb1.shtml
+Tóm tắt về USB Hiểu chuẩn USB để sử dụng trong phát triển Nếu bạn là người bắt đầu công việc phát triển sử dụng USB, thì quả thật nó không dễ dàng gì.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -288,7 +250,7 @@ Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập 
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

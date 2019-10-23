@@ -62,76 +62,112 @@
 			<h1 class="post__title">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h2>1. Về tiền tố (Prefixes)</h2>
+			
+
+<h2 id="so-sánh-nhỏ-về-cú-pháp-câu-lệnh-asm-giữa-at-t-và-intel">So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</h2>
+
+<p><strong>Link gốc</strong>:<br />
+<a href="http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm">http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm</a></p>
+
+<p><strong>Người dịch</strong>:<br />
+Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụng,nhất là bây giờ đã là năm 2017. Có quá nhiều thứ hiệu quả và nhanh hơn. Tuy nhiên, khi cần tìm hiểu ở mức hệ điều hành, rồi driver thiết bị, thì việc đọc được Assembly là rất hữu ích.</p>
+
+<p><strong>Nội dung</strong></p>
+
+<p>Cú pháp ASM giữa Intel và AT&amp;T có rất nhiều điềm khác nhau rõ rệt. Điều này nhiều khi dẫn đến sự nhầm lẫn khi một người đã học một ASM của Intel trước rồi sang học ASM của AT&amp;T hoặc ngoặc lại. Bài này, chúng ta sẽ xem xét những cái khác biệt cơ bản đó.</p>
+
+<h2 id="1-về-tiền-tố-prefixes">1. Về tiền tố (Prefixes)</h2>
+
 <p>Cú pháp Intel thì không bất cứ tiền tố nào.<br />
 Còn cú pháp AT&amp;T:<br />
 - thanh ghi được theo sau tiền tố <strong>%</strong><br />
 - giá trị được theo sau tiền tố <strong>$</strong></p>
-<p>Cú pháp Intel sử dụng hậu tố 'h' sau giá trị cơ số 16, 'b' sau giá trị cơ số 2.<br />
+
+<p>Cú pháp Intel sử dụng hậu tố &lsquo;h&rsquo; sau giá trị cơ số 16, &lsquo;b&rsquo; sau giá trị cơ số 2.<br />
 Nếu giá trị đầu tiên của giá trị cơ số 16 là chữ thì nó phải được theo sao bằng tiền tố 0.</p>
+
 <p>[code lang=C]<br />
 // Intex Syntax<br />
-mov     eax,1<br />
-mov     ebx,0ffh<br />
-int     80h</p>
+mov eax,1<br />
+mov ebx,0ffh<br />
+int 80h</p>
+
 <p>// AT&amp;T Syntax<br />
-movl    $1,%eax<br />
-movl    $0xff,%ebx<br />
-int     $0x80<br />
+movl $1,%eax<br />
+movl $0xff,%ebx<br />
+int $0x80<br />
 [/code]</p>
-<h2>2. Về chiều của toán tử (Direction of Operands)</h2>
+
+<h2 id="2-về-chiều-của-toán-tử-direction-of-operands">2. Về chiều của toán tử (Direction of Operands)</h2>
+
 <p>Chiều của toán tử theo cú pháp Intel ngược với cú pháp AT&amp;T.<br />
 Trong cú pháp Intel, toán tử đầu tiên (hay tham số đầu tiên) là đích. Toán tử thứ 2 là nguồn.<br />
 Trong cú pháp AT&amp;T thì ngược lại. Đầu tiên là nguồn, thứ 2 là đích.</p>
+
 <p><strong>Tham khảo thêm</strong>:<br />
 Có một chú ý về <a href="https://lazytrick.wordpress.com/2017/05/14/lenh-mov-trong-assembly/">lệnh MOV</a> về giá trị đích, nguồn do người dịch tổng hợp</p>
+
 <p>Ví dụ:</p>
+
 <p>[code lang=c]<br />
 //Intex Syntax<br />
-instr   dest,source<br />
-mov     eax,[ecx]</p>
+instr dest,source<br />
+mov eax,[ecx]</p>
+
 <p>//AT&amp;T Syntax<br />
-instr   source,dest<br />
-movl    (%ecx),%eax<br />
+instr source,dest<br />
+movl (%ecx),%eax<br />
 [/code]</p>
-<h2>3. Cách chỉ định bộ nhớ (Memory Operands)</h2>
+
+<h2 id="3-cách-chỉ-định-bộ-nhớ-memory-operands">3. Cách chỉ định bộ nhớ (Memory Operands)</h2>
+
 <p>Cách chỉ định địa chỉ cũng khác nhau.<br />
 Trong cú pháp Intel, thanh ghi chứa địa chỉ được bao bởi 2 dấu ngoặc vuông <code>[]</code>.<br />
 Trong cú pháp AT&amp;T, được bao bởi 3 dấu ngoặc đơn <code>()</code>.</p>
+
 <p>Ví dụ:</p>
+
 <p>[code lang=c]<br />
 //Intex Syntax<br />
-mov     eax,[ebx]<br />
-mov     eax,[ebx+3]</p>
+mov eax,[ebx]<br />
+mov eax,[ebx+3]</p>
+
 <p>//AT&amp;T Syntax<br />
-movl    (%ebx),%eax<br />
-movl    3(%ebx),%e<br />
+movl (%ebx),%eax<br />
+movl 3(%ebx),%e<br />
 [/code]</p>
+
 <p>Kiểu của AT&amp;T có vẻ phức tạo hơn kiểu của Intel.<br />
 Kiểu Intel, cách viết sẽ có dạng sau: <code>segreg[base+index * scale + disp]</code><br />
 Kiểu AT&amp;T, sẽ là: <code>%segreg:disp(base,index,scale)</code></p>
+
 <p>Các giá trị <code>index/scale/disp/segreg</code> có thể bị lược bỏ.<br />
 <code>Scale</code> nếu không được chỉ định thì <code>index</code> phai được chỉ định.<br />
 Giá trị mặc định của <code>Scale</code> là .</p>
+
 <p>Ví dụ:</p>
+
 <p>[code lang=c]<br />
 //Intel Syntax<br />
-instr   foo,segreg:[base+index*scale+disp]<br />
-mov     eax,[ebx+20h]<br />
-add     eax,[ebx+ecx*2h<br />
-lea     eax,[ebx+ecx]<br />
-sub     eax,[ebx+ecx*4h-20h]</p>
+instr foo,segreg:[base+index*scale+disp]<br />
+mov eax,[ebx+20h]<br />
+add eax,[ebx+ecx*2h<br />
+lea eax,[ebx+ecx]<br />
+sub eax,[ebx+ecx*4h-20h]</p>
+
 <p>//AT&amp;T Syntax<br />
-instr   %segreg:disp(base,index,scale),foo<br />
-movl    0x20(%ebx),%eax<br />
-addl    (%ebx,%ecx,0x2),%eax<br />
-leal    (%ebx,%ecx),%eax<br />
-subl    -0x20(%ebx,%ecx,0x4),%eax<br />
+instr %segreg:disp(base,index,scale),foo<br />
+movl 0x20(%ebx),%eax<br />
+addl (%ebx,%ecx,0x2),%eax<br />
+leal (%ebx,%ecx),%eax<br />
+subl -0x20(%ebx,%ecx,0x4),%eax<br />
 [/code]</p>
+
 <p>Như bạn cũng thấy, kiểu AT&amp;T khá khó hiểu.<br />
 Cách viết <code>[base + index*scale + disp] trong dễ hiểu hơn nhiều cách viết</code>disp(base, index, scale)`</p>
-<h2>4. Về hậu tố</h2>
+
+<h2 id="4-về-hậu-tố">4. Về hậu tố</h2>
+
 <p>Cái này khác nhau nhiều đây.<br />
 Cú pháp AT&amp;T sử dụng hậu tố gợi nhớ cho câu lệnh để ám chỉ kích thước toán tử (DEST, SRC).<br />
 <code>l</code> nghĩa là <code>long</code><br />
@@ -139,25 +175,30 @@ Cú pháp AT&amp;T sử dụng hậu tố gợi nhớ cho câu lệnh để ám 
 <code>b</code> nghĩa là <code>byte</code><br />
 Cú pháp Intel thì lại sử dụng hậu tố gợi nhớ cho bộ nhớ, phía địa chỉ.<br />
 ví dụ:</p>
+
 <p>[code lang=C]<br />
 byte ptr<br />
 word ptr<br />
 dword ptr<br />
-// word tương ứng với &quot;long&quot;<br />
+// word tương ứng với &ldquo;long&rdquo;<br />
 [/code]</p>
+
 <p>Nó tương tự giống định nghĩa kiểu dữ liệu trongC.</p>
+
 <p>Ví dụ so sanh:</p>
+
 <p>[code lang=c]<br />
 //Intel Syntax<br />
-mov     al,bl<br />
-mov     ax,bx<br />
-mov     eax,ebx<br />
-mov     eax, dword ptr [ebx]</p>
+mov al,bl<br />
+mov ax,bx<br />
+mov eax,ebx<br />
+mov eax, dword ptr [ebx]</p>
+
 <p>//AT&amp;T Syntax<br />
-movb    %bl,%al<br />
-movw    %bx,%ax<br />
-movl    %ebx,%eax<br />
-movl    (%ebx),%eax<br />
+movb %bl,%al<br />
+movw %bx,%ax<br />
+movl %ebx,%eax<br />
+movl (%ebx),%eax<br />
 [/code]</p>
 
 		</div>

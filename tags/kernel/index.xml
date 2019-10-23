@@ -2,40 +2,38 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kernel on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/kernel/</link>
+    <link>https://blog.lazytrick.com/tags/kernel/</link>
     <description>Recent content in Kernel on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Thu, 19 Jan 2017 16:19:32 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Về /dev trong Embedded Linux</title>
-      <link>https://minatu2d.github.io/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
+      <link>https://blog.lazytrick.com/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
-      <description>&lt;p&gt;Đây là nội dung &lt;strong&gt;pick up&lt;/strong&gt; từ &lt;a href=&#34;https://buildroot.org/downloads/manual/manual.html&#34;&gt;manual&lt;/a&gt; của Buildroot.&lt;/p&gt;
-&lt;p&gt;Nó mô tả khá rõ về &lt;strong&gt;/dev&lt;/strong&gt; trong hệ thống Linux, cùng&lt;br /&gt;
-với các giải pháp dành cho hệ thống Embedded Linux.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
+      <description>Đây là nội dung pick up từ manual của Buildroot.
+Nó mô tả khá rõ về /dev trong hệ thống Linux, cùng
+với các giải pháp dành cho hệ thống Embedded Linux.
+6.2 /dev management Trên 1 hệ thống Linux, thư mục /dev chứa các file đặc biệt, được gọi là
+device files (hay các file thiết bị), cho phép ứng dụng phía user truy cập
+đến các thiết bị phần cứng mà Linux kernel quản lý.</description>
     </item>
     
     <item>
       <title>Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</title>
-      <link>https://minatu2d.github.io/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
+      <link>https://blog.lazytrick.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
       <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
-      <description>&lt;p&gt;Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.&lt;br /&gt;
-Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.&lt;br /&gt;
-Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề. Mà nếu không giải quyết được các vấn đề đó thì nội dung các bài khác sẽ không thể thực hiện được.&lt;br /&gt;
-Do vậy, bài này sẽ tập trung vào tạo bản basic &lt;strong&gt;rpi-basic-image&lt;/strong&gt; thôi.&lt;/p&gt;
-&lt;p&gt;Link tham khảo:&lt;br /&gt;
-&lt;a href=&#34;http://mickey-happygolucky.hatenablog.com/entry/2015/02/14/002035&#34;&gt;http://mickey-happygolucky.hatenablog.com/entry/2015/02/14/002035&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
+      <description>Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.
+Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.
+Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề.</description>
     </item>
     
   </channel>

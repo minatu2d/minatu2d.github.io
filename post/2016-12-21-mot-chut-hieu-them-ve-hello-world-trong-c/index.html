@@ -62,8 +62,15 @@
 			<h1 class="post__title">Một chút hiểu thêm về &#34;Hello World&#34; trong C.</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
-<h3>1. Chương trình hoàn toàn là tĩnh</h3>
+			
+
+<p>Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.</p>
+
+<p>Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì<br />
+một chương trình sẽ được chạy 2 cách dưới đây</p>
+
+<h3 id="1-chương-trình-hoàn-toàn-là-tĩnh">1. Chương trình hoàn toàn là tĩnh</h3>
+
 <ul>
 <li>Không có symbol nào cần phải được (resolved) trước khi chạy.</li>
 <li>Không yêu cầu bất cứ một thư viện run-time nào.</li>
@@ -72,44 +79,57 @@
 <li>Để build được nó thì các thư viện phụ thuộc khi build cũng phải có phiên bản static.<br />
 Lấy ví dụ <strong>HelloWorld</strong></li>
 </ul>
+
 <p>[code lang=c]<br />
 #include<br />
 int main(int argc, char *args[])<br />
 {<br />
-printf(&quot;Hello, Ajinomoto \n&quot;);<br />
+printf(&ldquo;Hello, Ajinomoto \n&rdquo;);<br />
 return 0;<br />
 }<br />
 [/code]</p>
+
 <p>Khi build tĩnh bằng (hầu như phải có <strong>-static</strong>)</p>
+
 <p>[code lang=shell]<br />
 gcc -o helloworld_static helloworld.c -static<br />
 [/code]</p>
+
 <p>Kích thước file chạy sẽ như sau:</p>
+
 <p>[code lang=shell]<br />
 $ ls -liah helloworld_static<br />
 2910638 -rwxrwxr-x 1 duser duser 717K Dec 9 13:37 helloworld_static<br />
 [/code]</p>
+
 <p><strong>717KB</strong> cho HelloWorld trên Ubuntu 14.04</p>
+
 <p>Kiểm tra bằng <strong>objdump</strong>:</p>
+
 <p>[code lang=shell]<br />
 $ objdump -p helloworld_static</p>
+
 <p>helloworld_static: file format elf32-i386</p>
+
 <p>Program Header:<br />
 LOAD off 0x00000000 vaddr 0x08048000 paddr 0x08048000 align 2**12<br />
 filesz 0x000a0c77 memsz 0x000a0c77 flags r-x<br />
 LOAD off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align 2**12<br />
 filesz 0x00001040 memsz 0x000023c4 flags rw-<br />
 NOTE off 0x000000f4 vaddr 0x080480f4 paddr 0x080480f4 align 2**2<br />
-filesz 0x00000044 memsz 0x00000044 flags r--<br />
+filesz 0x00000044 memsz 0x00000044 flags r&ndash;<br />
 TLS off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align 2**2<br />
-filesz 0x00000010 memsz 0x00000028 flags r--<br />
+filesz 0x00000010 memsz 0x00000028 flags r&ndash;<br />
 STACK off 0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**4<br />
 filesz 0x00000000 memsz 0x00000000 flags rw-<br />
 RELRO off 0x000a0f40 vaddr 0x080e9f40 paddr 0x080e9f40 align 2**0<br />
-filesz 0x000000c0 memsz 0x000000c0 flags r--<br />
+filesz 0x000000c0 memsz 0x000000c0 flags r&ndash;<br />
 [/code]</p>
+
 <p>Nhìn có vẻ khó hiểu, như chỉ để ý thấy chỉ có phần <strong>Program Header</strong> mà không còn phần nào khác.</p>
-<h3>2. Chương trình là động</h3>
+
+<h3 id="2-chương-trình-là-động">2. Chương trình là động</h3>
+
 <ul>
 <li>Chứa symbol cần được phân giải trước khi chạy.</li>
 <li>Hầu như các command trên Linux đều là dạng này.</li>
@@ -118,25 +138,34 @@ tức là nếu yêu cầu loader-linker /lib/ld-linux.so.2 mà môi trường c
 <li>Tên của thư viện phụ thuộc (không có đường dẫn) được ghi bên trong file chạy.</li>
 <li>Kích thước file chạy nhỏ.</li>
 </ul>
+
 <p>Tiếp tục thử với <strong>Hello World</strong></p>
+
 <p>[code lang=shell]<br />
 gcc -o helloworld helloworld.c<br />
 [/code]</p>
+
 <p>Kiểm tra kích thước file chạy:</p>
+
 <p>[code lang=shell]<br />
 $ ls -liah helloworld_dynamic<br />
 2910636 -rwxrwxr-x 1 duser duser 7.2K Dec 9 13:37 helloworld_dynamic<br />
 [/code]</p>
+
 <p><strong>7.2K</strong> cho <strong>HelloWorld</strong></p>
+
 <p>Kiểm tra bằng <strong>objdump</strong>:</p>
+
 <p>[code lang=shell]<br />
 $ objdump -p helloworld_dynamic</p>
+
 <p>helloworld_dynamic: file format elf32-i386</p>
+
 <p>Program Header:<br />
 PHDR off 0x00000034 vaddr 0x08048034 paddr 0x08048034 align 2**2<br />
 filesz 0x00000120 memsz 0x00000120 flags r-x<br />
 INTERP off 0x00000154 vaddr 0x08048154 paddr 0x08048154 align 2**0<br />
-filesz 0x00000013 memsz 0x00000013 flags r--<br />
+filesz 0x00000013 memsz 0x00000013 flags r&ndash;<br />
 LOAD off 0x00000000 vaddr 0x08048000 paddr 0x08048000 align 2**12<br />
 filesz 0x000005c0 memsz 0x000005c0 flags r-x<br />
 LOAD off 0x00000f08 vaddr 0x08049f08 paddr 0x08049f08 align 2**12<br />
@@ -144,13 +173,14 @@ filesz 0x00000118 memsz 0x0000011c flags rw-<br />
 DYNAMIC off 0x00000f14 vaddr 0x08049f14 paddr 0x08049f14 align 2**2<br />
 filesz 0x000000e8 memsz 0x000000e8 flags rw-<br />
 NOTE off 0x00000168 vaddr 0x08048168 paddr 0x08048168 align 2**2<br />
-filesz 0x00000044 memsz 0x00000044 flags r--<br />
+filesz 0x00000044 memsz 0x00000044 flags r&ndash;<br />
 EH_FRAME off 0x000004e4 vaddr 0x080484e4 paddr 0x080484e4 align 2**2<br />
-filesz 0x0000002c memsz 0x0000002c flags r--<br />
+filesz 0x0000002c memsz 0x0000002c flags r&ndash;<br />
 STACK off 0x00000000 vaddr 0x00000000 paddr 0x00000000 align 2**4<br />
 filesz 0x00000000 memsz 0x00000000 flags rw-<br />
 RELRO off 0x00000f08 vaddr 0x08049f08 paddr 0x08049f08 align 2**0<br />
-filesz 0x000000f8 memsz 0x000000f8 flags r--</p>
+filesz 0x000000f8 memsz 0x000000f8 flags r&ndash;</p>
+
 <p>Dynamic Section:<br />
 NEEDED libc.so.6<br />
 INIT 0x080482b0<br />
@@ -175,21 +205,27 @@ RELENT 0x00000008<br />
 VERNEED 0x08048270<br />
 VERNEEDNUM 0x00000001<br />
 VERSYM 0x08048266</p>
+
 <p>Version References:<br />
 required from libc.so.6:<br />
 0x0d696910 0x00 02 GLIBC_2.0<br />
 [/code]</p>
-<h3>3. Hiển thị thông về loader-linker</h3>
+
+<h3 id="3-hiển-thị-thông-về-loader-linker">3. Hiển thị thông về loader-linker</h3>
+
 <p>Khi chương trình động được chạy, một loader-linker sẽ được kernel gọi lên để load và link các thư viện động.<br />
 Gọi là loader-linker.<br />
 Thường sẽ có nằm ở <strong>/lib/ld.ABC.so</strong> hoặc tương tự như thế.<br />
 Loader-linker này sẽ tìm các thư viện được yêu cầu từ Search Path, sau đó link lại để tạo ra chương trình chạy.<br />
 Search Path này được cấu thành từ nhiều loại như: từ các path được đặt bên trong <strong>/etc/ld.conf.so</strong>, từ biến <strong>LD_LIBRARY_PATH</strong>, etc. Xem thêm tại: <a href="http://man7.org/linux/man-pages/man8/ld.so.8.html">ld.so</a></p>
+
 <p>Một cách để xem các thông tin debug của loader-linker này:<br />
 Giả sử với <strong>HelloWorld</strong> ở trên:</p>
+
 <p>[code lang=shell]<br />
 $ LD_DEBUG=help ./helloworld_dynamic<br />
 Valid options for the LD_DEBUG environment variable are:</p>
+
 <p>libs display library search paths<br />
 reloc display relocation processing<br />
 files display progress for input file<br />
@@ -201,10 +237,13 @@ all all previous options combined<br />
 statistics display relocation statistics<br />
 unused determined unused DSOs<br />
 help display this help message and exit</p>
+
 <p>To direct the debugging output into a file instead of standard output<br />
 a filename can be specified using the LD_DEBUG_OUTPUT environment variable.<br />
 [/code]</p>
+
 <p>Trên là Help, ta thử với <strong>libs</strong> sẽ có kết quả như sau:</p>
+
 <p>[code lang=shell]<br />
 $ LD_DEBUG=libs ./helloworld_dynamic<br />
 7066: find library=libc.so.6 [0]; searching<br />
@@ -225,6 +264,7 @@ Hello, Ajinomoto<br />
 7066: calling fini: ./helloworld_dynamic [0]<br />
 7066:<br />
 [/code]</p>
+
 <p>doime 09-12-2016</p>
 
 		</div>

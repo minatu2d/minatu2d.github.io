@@ -62,14 +62,28 @@
 			<h1 class="post__title">Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</h1>
 			
 		</header><div class="content post__content clearfix">
-			</li>
+			
+
+<p><em>Tham khảo</em><br />
+- Sách : AT&amp;T Assembly Language, Richard Blum</p>
+
+<h2 id="1-ngôn-ngữ-assembly-là-gì">1. Ngôn ngữ Assembly là gì?</h2>
+
+<ul>
+<li>Ở mức thấp nhất, Process chỉ hiểu <strong>instruction code</strong></li>
+<li><strong>Instruction Code</strong> là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element.</li>
+<li>Người ta hoàn toàn có thể viết chương trình bằng <strong>instruction code</strong>, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</li>
+<li>Việc sử dụng các ngôn ngữ bậc cao giúp việc viết chương trình dễ dàng hơn rất nhiều, vì trình biên dịch hoặc thông dịch đảm nhiệm việc chuyển mã ngôn ngữ bậc cao trực tiếp hoặc gián tiếp sang <strong>instruction code</strong> để chạy.</li>
+<li>Tuy nhiên, việc sinh <strong>instruction code</strong> của trình biên dịch/thông dịch không phải luôn luôn hiệu quả.</li>
 <li>Khi muốn động vào các kết quả được sinh ra từ trình biên dich/thông dịch ở trên, ta không khó có thể sử trực tiếp trên <strong>instruction code</strong>, một dạng dễ nhớ của các <strong>instruction code</strong> này được sinh ra để phục vụ việc này. Đó chính là <strong>Assembly Language</strong>.</li>
 <li>Vì gần như được chuyển sang <strong>instruction code</strong> của Processor nên <strong>Assemble Code</strong> gần như được gắn với Processor nào đó.</li>
 <li>Dù các lệnh của hầu hết bộ xử lý là tương tự nhau nhưng quy tắc gợi nhớ các mã <strong>Assembly</strong> dù chỉ khác nhau một chút thôi cũng khiến việc viết code cross-processor gần như là không thể rồi.</li>
 <li>Ta nói <strong>Assembly Language</strong> là nói đến 1 ngôn ngữ, nhưng thực chất mỗi Processor có 1 <strong>Assembly Language</strong> riêng của nó.</li>
 <li>Bởi vậy, để để lập trình với <strong>Assembly</strong> cho 1 Processor nào đó, ta cũng cần <strong>Assembler</strong> tương ứng cho Processor đó.</li>
 </ul>
-<h2>2. Intel ASM và AT&amp;T ASM và ARM</h2>
+
+<h2 id="2-intel-asm-và-at-t-asm-và-arm">2. Intel ASM và AT&amp;T ASM và ARM</h2>
+
 <ul>
 <li>Các bộ xử lý cùng kiến trúc thường ít có thay đổi về <strong>Assembly Language</strong>, tuy nhiên 2 kiến trúc khác nhau thì thường có <strong>Assembly Language</strong> khác nhau</li>
 <li><strong>ARM</strong> : Hiện tại chưa tìm hiểu được.</li>
@@ -77,59 +91,60 @@
 Về sự khác nhau của 2 loại này:<br />
 Hầu hết sự khác biệt xuất hiện ở một dài định dạng cụ thể. Nhưng những điểm khác nhau chính giữa <strong>Intel</strong> và <strong>AT&amp;T</strong> được đưa ra dưới đây:</li>
 </ul>
+
 <blockquote>
 <ul>
 <li><strong>AT&amp;T</strong> sử dụng <strong>$</strong> để kí hiệu, còn <strong>Intel</strong> thì không.<br />
-  Vì thế, khi biểu diễn giá trị <strong>4</strong>, AT&amp;T sẽ sử dụng <strong>$4</strong>, còn <strong>Intel</strong> thì<br />
-  đơn giản viết <strong>4</strong>.</li>
-<li>
-<p><strong>AT&amp;T</strong> sử dụng thứ tự về source (nguồn), destination (đích) ngược với <strong>Intel</strong>,<br />
-  Ví thế, để chuyển giá trị <strong>4</strong> vào thanh ghi <strong>EAX</strong>, <strong>AT&amp;T</strong> sẽ viết là<br />
-  <em>movl $4, %eax</em>, còn <strong>Intel</strong> lại viết là <em>mov eax, 4</em>.</p>
-</li>
-<li>
-<p>Ở Long calls và jumps cũng sử dụng cú pháp khác nhau để định nghĩa segment và<br />
-  offset. <strong>AT&amp;T</strong> sử dụng <em>ljmp $section, $offset</em>, trong khi đó Intel sử dụng<br />
-  <em>jmp section:offset</em></p>
-</li>
+Vì thế, khi biểu diễn giá trị <strong>4</strong>, AT&amp;T sẽ sử dụng <strong>$4</strong>, còn <strong>Intel</strong> thì<br />
+đơn giản viết <strong>4</strong>.</li>
+
+<li><p><strong>AT&amp;T</strong> sử dụng thứ tự về source (nguồn), destination (đích) ngược với <strong>Intel</strong>,<br />
+Ví thế, để chuyển giá trị <strong>4</strong> vào thanh ghi <strong>EAX</strong>, <strong>AT&amp;T</strong> sẽ viết là<br />
+<em>movl $4, %eax</em>, còn <strong>Intel</strong> lại viết là <em>mov eax, 4</em>.</p></li>
+
+<li><p>Ở Long calls và jumps cũng sử dụng cú pháp khác nhau để định nghĩa segment và<br />
+offset. <strong>AT&amp;T</strong> sử dụng <em>ljmp $section, $offset</em>, trong khi đó Intel sử dụng<br />
+<em>jmp section:offset</em></p></li>
 </ul>
 </blockquote>
-<h2>3. ASM trên Linux</h2>
+
+<h2 id="3-asm-trên-linux">3. ASM trên Linux</h2>
+
 <p>Để lập trình ASM trên Linux, ta sử dụng những công cụ sau:</p>
+
 <ul>
-<li>Assembler :<strong>as</strong><br />
+<li><p>Assembler :<strong>as</strong><br />
 Đây là <strong>GNU Assembler</strong>, là cross-platform assembler phổ biến nhất trên Linux.<br />
 Như đã nói ở trên, mỗi <strong>assemble language</strong> thường gắn liền với assembler của nó. Vậy thì cross-platform ở trên là ý gì. Có nghĩa là compiler này có khả năng biên dịch nhiều loại assembly code khác nhau.<br />
-Cùng 1 source nhưng nó có thể sinh ra nhiều loại instruction code tùy theo processor được chỉ đinh.</li>
-</ul>
-<li>
-<p>Linker :<strong>ld</strong><br />
+Cùng 1 source nhưng nó có thể sinh ra nhiều loại instruction code tùy theo processor được chỉ đinh.</p></li>
+
+<li><p>Linker :<strong>ld</strong><br />
 Ở ngôn ngữ C/C++ hầu như ít khi ta phải thao tác trực tiếp với linker. <strong>gcc</strong> thường sẽ làm tất rồi.<br />
 Nhưng đối với assembler thì không như thế, nó sẽ không tự động gọi linker đâu, ta phải tự gọi <strong>linker</strong> để tạo ra file chạy cho source chúng ta viết.<br />
-Và <strong>linker</strong> duy nhất sử dụng trên Linux chính là <strong>GNU Linker</strong>, hay <strong>ld</strong>.</p>
-</li>
-<li>
-<p>Debugger : <strong>gdb</strong><br />
-Chúng ta đã có 1 loại bài về <a href=""><strong>GDB</strong></a> rồi, <strong>gdb</strong> debug được mọi chương trình trong Linux dù chúng được viết bằng C/C++ hay bây giờ là Assembly đi nữa.</p>
-</li>
-<li>
-<p>C/C++ Compiler :<strong>gcc</strong><br />
-Thực ra không trực tiếp liên quan lắm. Nhưng như trong 1 bài nói về <a href=""><strong>Tìm hiểu thêm về biên dịch HelloWorl</strong></a>, ta cũng đề cập đến khả năng sinh Asssembly Code của <strong>gcc</strong> rồi.<br />
-Có thể chúng ta sẽ sử dụng <strong>gcc</strong> để sinh mã ASM rồi optimize chúng thay vì viết từ zero.</p>
-</li>
-<li>
-<p>Object code dissassembler (Dịch ngược asm):<strong>objdump</strong><br />
-Cho phép xem instruction code và mã dịch ngược về ASM của nó.</p>
-</li>
-<li>
-<p>Profiler : <strong>gprof</strong><br />
-Là công cụ đánh giá performance của phần mềm trong Linux. Nó cho phép xác định hàm nào tốn nhiều thời gian xử lý nhất. Từ đó, ta có thể tập trung cải tiến để tăng hiệu năng.</p>
-</li>
-<h2>4. Một chương trình Assembly đơn giản</h2>
+Và <strong>linker</strong> duy nhất sử dụng trên Linux chính là <strong>GNU Linker</strong>, hay <strong>ld</strong>.</p></li>
+
+<li><p>Debugger : <strong>gdb</strong><br />
+Chúng ta đã có 1 loại bài về <strong>GDB</strong> rồi, <strong>gdb</strong> debug được mọi chương trình trong Linux dù chúng được viết bằng C/C++ hay bây giờ là Assembly đi nữa.</p></li>
+
+<li><p>C/C++ Compiler :<strong>gcc</strong><br />
+Thực ra không trực tiếp liên quan lắm. Nhưng như trong 1 bài nói về <strong>Tìm hiểu thêm về biên dịch HelloWorl</strong>, ta cũng đề cập đến khả năng sinh Asssembly Code của <strong>gcc</strong> rồi.<br />
+Có thể chúng ta sẽ sử dụng <strong>gcc</strong> để sinh mã ASM rồi optimize chúng thay vì viết từ zero.</p></li>
+
+<li><p>Object code dissassembler (Dịch ngược asm):<strong>objdump</strong><br />
+Cho phép xem instruction code và mã dịch ngược về ASM của nó.</p></li>
+
+<li><p>Profiler : <strong>gprof</strong><br />
+Là công cụ đánh giá performance của phần mềm trong Linux. Nó cho phép xác định hàm nào tốn nhiều thời gian xử lý nhất. Từ đó, ta có thể tập trung cải tiến để tăng hiệu năng.</p></li>
+</ul>
+
+<h2 id="4-một-chương-trình-assembly-đơn-giản">4. Một chương trình Assembly đơn giản</h2>
+
 <p>Chương trình sau sẽ lấy tên của CPU và hiển thị ra dòng **The processor Vendor ID is XXXX **</p>
+
 <ul>
 <li>Source code</li>
 </ul>
+
 <p>[code lang=cpp]<br />
 #Author : Richard Blum<br />
 #cpuid.s Sample program to extract the processor Vendor ID<br />
@@ -154,56 +169,69 @@ movl $1, %eax<br />
 movl $0, %ebx<br />
 int $0x80<br />
 [/code]</p>
+
 <p>Lưu lại và đặt tên là <strong>cpuid.s</strong>:<br />
 - Biên dịch bằng Assembler:</p>
+
 <p>[code lang=bash]<br />
 $as -o cpuid.o cpuid.s<br />
 [/code]</p>
+
 <p>Output: <strong>cpuid.o</strong></p>
+
 <ul>
 <li>Link để tạo file chạy:</li>
 </ul>
+
 <p>[code lang=bash]<br />
 ld -o cpuid cpuid.o<br />
 [/code]</p>
+
 <p>Output: <strong>cpuid</strong></p>
+
 <ul>
 <li>Chạy</li>
 </ul>
+
 <p>[code lang=bash]<br />
 $ ./cpuid<br />
-The processor Vendor ID is &#039;GenuineIntel&#039;<br />
+The processor Vendor ID is &lsquo;GenuineIntel&rsquo;<br />
 [/code]</p>
+
 <ul>
 <li>Debug<br />
 Ta cần biên dịch với option khác thì mới debug được.</li>
 </ul>
+
 <p>[code lang=bash]<br />
 $as -o cpuid.o cpuid.s<br />
 ld -o cpuid cpuid.o<br />
 [/code]</p>
+
 <p>Ta sẽ đặt break point ở <strong>_start</strong> và xem thử vị trí dừng:</p>
+
 <p>[code lang=bash]<br />
 $ gdb ./cpuid<br />
 GNU gdb (Ubuntu 7.11-0ubuntu1) 7.11<br />
-Copyright (C) 2016 Free Software Foundation, Inc.<br />
-License GPLv3+: GNU GPL version 3 or later &lt;http://gnu.org/licenses/gpl.html&gt;<br />
+Copyright &copy; 2016 Free Software Foundation, Inc.<br />
+License GPLv3+: GNU GPL version 3 or later <a href="http://gnu.org/licenses/gpl.html">http://gnu.org/licenses/gpl.html</a><br />
 This is free software: you are free to change and redistribute it.<br />
-There is NO WARRANTY, to the extent permitted by law. Type &quot;show copying&quot;<br />
-and &quot;show warranty&quot; for details.<br />
-This GDB was configured as &quot;i686-linux-gnu&quot;.<br />
-Type &quot;show configuration&quot; for configuration details.<br />
+There is NO WARRANTY, to the extent permitted by law. Type &ldquo;show copying&rdquo;<br />
+and &ldquo;show warranty&rdquo; for details.<br />
+This GDB was configured as &ldquo;i686-linux-gnu&rdquo;.<br />
+Type &ldquo;show configuration&rdquo; for configuration details.<br />
 For bug reporting instructions, please see:<br />
-&lt;http://www.gnu.org/software/gdb/bugs/&gt;.<br />
+<a href="http://www.gnu.org/software/gdb/bugs/">http://www.gnu.org/software/gdb/bugs/</a>.<br />
 Find the GDB manual and other documentation resources online at:<br />
-&lt;http://www.gnu.org/software/gdb/documentation/&gt;.<br />
-For help, type &quot;help&quot;.<br />
-Type &quot;apropos word&quot; to search for commands related to &quot;word&quot;...<br />
-Reading symbols from ./cpuid...done.<br />
+<a href="http://www.gnu.org/software/gdb/documentation/">http://www.gnu.org/software/gdb/documentation/</a>.<br />
+For help, type &ldquo;help&rdquo;.<br />
+Type &ldquo;apropos word&rdquo; to search for commands related to &ldquo;word&rdquo;&hellip;<br />
+Reading symbols from ./cpuid&hellip;done.<br />
 (gdb) b *_start<br />
 Breakpoint 1 at 0x8048074: file cpuid.s, line 10.<br />
 (gdb) r<br />
 Starting program: /home/osboxes/code/asm/cpuid</p>
+
 <p>Breakpoint 1, _start () at cpuid.s:10<br />
 10 movl $0, %eax<br />
 (gdb) l<br />
@@ -218,14 +246,19 @@ Starting program: /home/osboxes/code/asm/cpuid</p>
 13 movl %ebx, 28(%edi)<br />
 14 movl %edx, 32(%edi)<br />
 [/code]</p>
+
 <ul>
 <li>Dissassemler:<br />
 Cho <strong>cpuid.o</strong>:</li>
 </ul>
+
 <p>[code lang=bash]<br />
 $ objdump -d cpuid.o</p>
+
 <p>cpuid.o: file format elf32-i386</p>
+
 <p>Disassembly of section .text:</p>
+
 <p>00000000 :<br />
 0: b8 00 00 00 00 mov $0x0,%eax<br />
 5: 0f a2 cpuid<br />
@@ -242,11 +275,16 @@ f: 89 57 20 mov %edx,0x20(%edi)<br />
 30: bb 00 00 00 00 mov $0x0,%ebx<br />
 35: cd 80 int $0x80<br />
 [/code]</p>
+
 <p>Cho <strong>cpuid</strong>:</p>
+
 <p>[code lang=bash]<br />
 $ objdump -d cpuid</p>
+
 <p>cpuid: file format elf32-i386</p>
+
 <p>Disassembly of section .text:</p>
+
 <p>08048074 :<br />
 8048074: b8 00 00 00 00 mov $0x0,%eax<br />
 8048079: 0f a2 cpuid<br />

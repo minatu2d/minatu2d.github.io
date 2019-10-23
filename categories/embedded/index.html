@@ -70,11 +70,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<h2>4 thành phần của Embedded Linux</h2>
-<p>Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)...cho đến các thiết bị gia dụng, gia đình.</p>
-<p>Khi sử dụng máy tính cá nhân, server ta dễ dàng "sờ" thấy được các thành phần của Linux như các tiến trình, shell..etc.<br />
-Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi. Ta thường chỉ quan tâm đến ứng dụng chạy trên đó thôi.</p>
-<p>Nhưng ở một mảng ứng dụng khác của Linux, nơi mà trên đó ta thường chỉ chạy 1 ứng dụng, rất khó thấy các thành phần bên trong, hầu như không thay đổi được...thì Linux như thế nào, nó giống với các bản phân phối ta vẫn gặp không.
+		4 thành phần của Embedded Linux Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)&hellip;cho đến các thiết bị gia dụng, gia đình.
+Khi sử dụng máy tính cá nhân, server ta dễ dàng &ldquo;sờ&rdquo; thấy được các thành phần của Linux như các tiến trình, shell..etc.
+Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -86,21 +84,12 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Bài này sẽ dịch lại <a href="http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf">Slide</a> thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni<br />
-từ Free Electrons tại Embedded Linux Conference 2016.</p>
-<p>So sánh giữa Buildroot và OpenEmbedded/Yocto Project</p>
-<h2>1. Điểm chung</h2>
-<ul>
-<li>Đều là build-system cho Embedded Linux.<br />
-Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.<br />
-Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
-<li>Đều được build từ source</li>
-<li>Sử dụng cross-compilation</li>
-<li>Rất actively trong cả dự án đang maintained và phát triển.</li>
-<li>Được sử dụng rộng dãi trong công nghiệp.</li>
-<li>Tài liệu tốt, nhiều khóa đào tạo.</li>
-<li>Sử dụng Free Software (phần mềm tự do)<br />
-
+		Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
+từ Free Electrons tại Embedded Linux Conference 2016.
+So sánh giữa Buildroot và OpenEmbedded/Yocto Project
+1. Điểm chung  Đều là build-system cho Embedded Linux.
+Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
+Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -116,7 +105,7 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
  Khi kernel được build, các tham số sau phải được bật (ENABLE)
 CONFIG_FW_LOADER : Cho phép load firmware
 CONFIG_EXTRA_FIRMWARE &gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa các firmware. Các firmware phải được copy vào thư mục CONFIG_EXTRA_FIRMWARE_DIR đã set ở trên.  Một số điều lưu ý liên quan đến firmware:
-  Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,
+ Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -128,9 +117,9 @@ CONFIG_EXTRA_FIRMWARE &gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa cá
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.<br />
-Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là <strong>Firmware</strong>.<br />
-
+		Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.
+Mình thấy ngoài Driver, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là Firmware.
+Bài này sẽ dịch lại trang, để hiểu qua về Firmware trong Linux Kernel.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -142,10 +131,9 @@ Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trong quá trình tìm cách cài đặt driver cho <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">bản build Raspberry PI</a> sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách <strong>Linux in A Nutshell</strong> (link tại <a href="http://files.kroah.com/lkn/">đây</a> ) của pro này.</p>
-<p>Chương 7, chương mà tác giả đặc biệt "tự hào", nói về Customize một Linux Kernel.<br />
-Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.<br />
-
+		Trong quá trình tìm cách cài đặt driver cho bản build Raspberry PI sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách Linux in A Nutshell (link tại đây ) của pro này.
+Chương 7, chương mà tác giả đặc biệt &ldquo;tự hào&rdquo;, nói về Customize một Linux Kernel.
+Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -157,8 +145,8 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trong loại bài dịch <a href="https://lazytrick.wordpress.com/2016/01/25/usb-driver-va-usb-device-firmware-se-viet/">trước đây</a> nói về USB, tôi có nhắc một chút đến việc load đúng driver thì phía Host làm thế nào?</p>
-<p>Như ta đã biết, khi một thiết bị USB được cắm vào máy (Host), phía Host sẽ thực hiện một loạt thao tác từ xác định nguồn (bus, hay self), lấy thông tin tốc độ, các thông tin về descriptor (thiết bị, giao diện, các Endpoint). Cuối cùng để sử dụng các tính năng chính mà thiết bị cung cấp, thì hệ điều hành phía Host, dù là Windows, hay Linux, hay MacOS sẽ phải load driver tương ứng với thiết bị.
+		Trong loại bài dịch trước đây nói về USB, tôi có nhắc một chút đến việc load đúng driver thì phía Host làm thế nào?
+Như ta đã biết, khi một thiết bị USB được cắm vào máy (Host), phía Host sẽ thực hiện một loạt thao tác từ xác định nguồn (bus, hay self), lấy thông tin tốc độ, các thông tin về descriptor (thiết bị, giao diện, các Endpoint).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -170,14 +158,12 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh <strong>source</strong>, ta thực hiện build tạo image có có tên là <strong>rpi-basic-image</strong> thông qua lệnh:</p>
-<p>[code lang="shell"]<br />
-$bitbake rpi-basic-image<br />
-[/code]</p>
-<p>Thực ra còn 2 image khác ta có thể build đó là <strong>rpi-hwup-image</strong> <strong>rpi-test-image</strong>. Ta có thể thấy 2 file bb cho 2 image ở thư mục <strong>meta-raspberrypi/recipes-core/images/</strong>.</p>
-<p><strong>rpi-hwup-image</strong> : là image nhỏ nhất (có dịp sẽ thử)<br />
-<strong>rpi-basic-image</strong>: là image ta vấn dùng đến bây giờ.<br />
-<strong>rpi-test-image</strong> : là image dùng cho việc test. (có dịp sẽ thử)
+		Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh source, ta thực hiện build tạo image có có tên là rpi-basic-image thông qua lệnh:
+[code lang=&ldquo;shell&rdquo;]
+$bitbake rpi-basic-image
+[/code]
+Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
+rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -189,14 +175,10 @@ $bitbake rpi-basic-image<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Để tiếp tục customize bản OS được build trong bài <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">trước</a>.<br />
-Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.<br />
-Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.</p>
-<p>Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</p>
-<p>[code lang=shell]<br />
-$source poky/oe-init-build-env build<br />
-[/code]</p>
-<p>
+		Để tiếp tục customize bản OS được build trong bài trước.
+Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.
+Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.
+Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -208,10 +190,8 @@ $source poky/oe-init-build-env build<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project</a>.</p>
-<p>Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).</p>
-<p>Trong bài này, sẽ trình bày cách đưa <strong>Samba</strong> vào bản phân phối Linux đã được build ở bài trước.</p>
-<p>
+		Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project.
+Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -223,12 +203,10 @@ $source poky/oe-init-build-env build<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.<br />
-Với người mới, hiểu rõ khái niệm là rất quan trọng.</p>
-<p>Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là <strong>Host Enviroment</strong>, <strong>Build Enviroment</strong>, và <strong>Target Enviroment</strong>. Có thể dịch nôm na là <strong>Môi trường chủ</strong>, <strong>Môi trường biên dịch</strong>, và <strong>Môi trường chạy đích</strong>.<br />
-Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.</p>
-<p>Trước khi bắt đầu với các ví dụ, ta nên xem qua một số nguồn diễn giải 3 khái niệm này.</p>
-<p>
+		Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.
+Với người mới, hiểu rõ khái niệm là rất quan trọng.
+Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là Host Enviroment, Build Enviroment, và Target Enviroment. Có thể dịch nôm na là Môi trường chủ, Môi trường biên dịch, và Môi trường chạy đích.
+Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -240,13 +218,9 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.<br />
-Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.<br />
-Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề. Mà nếu không giải quyết được các vấn đề đó thì nội dung các bài khác sẽ không thể thực hiện được.<br />
-Do vậy, bài này sẽ tập trung vào tạo bản basic <strong>rpi-basic-image</strong> thôi.</p>
-<p>Link tham khảo:<br />
-<a href="http://mickey-happygolucky.hatenablog.com/entry/2015/02/14/002035">http://mickey-happygolucky.hatenablog.com/entry/2015/02/14/002035</a></p>
-<p>
+		Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.
+Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.
+Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -258,16 +232,8 @@ Do vậy, bài này sẽ tập trung vào tạo bản basic <strong>rpi-basic-im
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Kinh nghiệm lập trình với Microcontroller chưa nhiều, chỉ mới 3 năm không liên tục. Nhưng cũng thấy phần nào được một ít gọi là cái hay của một công nghệ (thực ra cứ gọi là công nghệ thôi, chứ nhiều lúc công nghệ với kĩ thuật cũng khá gần nhau). Đó là FIT  viết tắt của Firmware Intergration Technology (FIT) của Renesas.</p>
-<p>Theo những gì Renesas cung cấp, công nghệ này được sử dụng trong các dòng Chip RX từ RX63M, RX64M...RX113).</p>
-<p>Trong bài sẽ đi giới thiệu khái quát về FIT.</p>
-<ol>
-<li>FIT là gì?</li>
-<li>Đặt trưng của FIT</li>
-<li>Môi trường phát triển cho FIT</li>
-<li>Các thành phần phần mềm sử dụng trong FIT</li>
-</ol>
-<p>
+		Kinh nghiệm lập trình với Microcontroller chưa nhiều, chỉ mới 3 năm không liên tục. Nhưng cũng thấy phần nào được một ít gọi là cái hay của một công nghệ (thực ra cứ gọi là công nghệ thôi, chứ nhiều lúc công nghệ với kĩ thuật cũng khá gần nhau). Đó là FIT viết tắt của Firmware Intergration Technology (FIT) của Renesas.
+Theo những gì Renesas cung cấp, công nghệ này được sử dụng trong các dòng Chip RX từ RX63M, RX64M&hellip;RX113).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -279,13 +245,9 @@ Do vậy, bài này sẽ tập trung vào tạo bản basic <strong>rpi-basic-im
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.</p>
-<h5>Lập trình với bộ nhớ Flash</h5>
-<p>Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn <strong>0xFF</strong> thôi.</p>
-<h5>Serial Flash</h5>
-<p>Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất. Vì giao tiếp được bằng các chuẩn Serial như SPI, I2C nên nó dễ dàng ghép nối với các chip trên board.</p>
-<h5>NAND và NOR</h5>
-<p>Có 2 điểm khác biệt giữa 2
+		Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.
+Lập trình với bộ nhớ Flash Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn 0xFF thôi.
+Serial Flash Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -379,7 +341,7 @@ Nào thế đủ rồi, ta đi vào phần chính.
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

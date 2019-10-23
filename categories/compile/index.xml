@@ -2,180 +2,157 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Compile on Lazytrick</title>
-    <link>https://minatu2d.github.io/categories/compile/</link>
+    <link>https://blog.lazytrick.com/categories/compile/</link>
     <description>Recent content in Compile on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Mon, 10 Apr 2017 14:07:48 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/categories/compile/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/categories/compile/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Build, chạy nhân Linux trong QEMU ARM</title>
-      <link>https://minatu2d.github.io/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
+      <link>https://blog.lazytrick.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
       <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
-      <description>&lt;p&gt;Chạy một bản Linux tối giản trên Qemu ARM&lt;/p&gt;
-&lt;p&gt;Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa&lt;br /&gt;
-các thành phần của một hệ thống Linux thông qua&lt;br /&gt;
-việc build, chạy Kernel trên board &lt;strong&gt;vexpress-a9&lt;/strong&gt; mô phỏng bằng Qemu.&lt;/p&gt;
-&lt;p&gt;Đó là Kernel, Root file system, Busybox, Init.&lt;/p&gt;
-&lt;hr /&gt;
-&lt;h2&gt;1. &#34;Chém&#34; chút về quá trình khởi động của Linux&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.&lt;br /&gt;
-Giai đoạn đầu là load kernel lên RAM và chạy&lt;br /&gt;
-Giai đoạn thứ hai là kernle sẽ tự động mount hệ thống file&lt;br /&gt;
-rồi các ứng dụng trên hệ thống file được mount.&lt;br /&gt;
-Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải có 2 giai đoạn ở trên.&lt;br /&gt;
-</description>
+      <guid>https://blog.lazytrick.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
+      <description>Chạy một bản Linux tối giản trên Qemu ARM
+Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa
+các thành phần của một hệ thống Linux thông qua
+việc build, chạy Kernel trên board vexpress-a9 mô phỏng bằng Qemu.
+Đó là Kernel, Root file system, Busybox, Init.
+1. &amp;ldquo;Chém&amp;rdquo; chút về quá trình khởi động của Linux  Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.</description>
     </item>
     
     <item>
       <title>So sánh giữa Buildroot và Yocto Project</title>
-      <link>https://minatu2d.github.io/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
+      <link>https://blog.lazytrick.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
       <pubDate>Fri, 20 Jan 2017 01:22:46 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
-      <description>&lt;p&gt;Bài này sẽ dịch lại &lt;a href=&#34;http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf&#34;&gt;Slide&lt;/a&gt; thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni&lt;br /&gt;
-từ Free Electrons tại Embedded Linux Conference 2016.&lt;/p&gt;
-&lt;p&gt;So sánh giữa Buildroot và OpenEmbedded/Yocto Project&lt;/p&gt;
-&lt;h2&gt;1. Điểm chung&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Đều là build-system cho Embedded Linux.&lt;br /&gt;
-Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.&lt;br /&gt;
-Bao gồm: filesystem, toolchain, kernel, bootloaders&lt;/li&gt;
-&lt;li&gt;Đều được build từ source&lt;/li&gt;
-&lt;li&gt;Sử dụng cross-compilation&lt;/li&gt;
-&lt;li&gt;Rất actively trong cả dự án đang maintained và phát triển.&lt;/li&gt;
-&lt;li&gt;Được sử dụng rộng dãi trong công nghiệp.&lt;/li&gt;
-&lt;li&gt;Tài liệu tốt, nhiều khóa đào tạo.&lt;/li&gt;
-&lt;li&gt;Sử dụng Free Software (phần mềm tự do)&lt;br /&gt;
-</description>
+      <guid>https://blog.lazytrick.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
+      <description>Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
+từ Free Electrons tại Embedded Linux Conference 2016.
+So sánh giữa Buildroot và OpenEmbedded/Yocto Project
+1. Điểm chung  Đều là build-system cho Embedded Linux.
+Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
+Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.</description>
     </item>
     
     <item>
       <title>Thực hiện 4 Stage khi Compile bằng tay (Manual)</title>
-      <link>https://minatu2d.github.io/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
+      <link>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
       <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
-      <description>&lt;p&gt;Ta đã có bài giới thiệu về &lt;a href=&#34;https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/&#34;&gt;4 Stage khi Compiling&lt;/a&gt; rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.&lt;/p&gt;
-&lt;p&gt;Trong compile thông thường dạng&lt;/p&gt;
-&lt;p&gt;[code lang=bash]&lt;br /&gt;
-$gcc -o HelloWorld HelloWorld.c&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;p&gt;Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.&lt;/p&gt;
-&lt;p&gt;Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
+      <description>Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
+Trong compile thông thường dạng
+[code lang=bash]
+$gcc -o HelloWorld HelloWorld.c
+[/code]
+Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</description>
     </item>
     
     <item>
       <title>4 Stage khi biên dịch HelloWorld.c</title>
-      <link>https://minatu2d.github.io/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
+      <link>https://blog.lazytrick.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
       <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
-      <description>&lt;p&gt;Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.&lt;br /&gt;
-Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.&lt;br /&gt;
-Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.&lt;/p&gt;
-&lt;p&gt;HelloWorld.c&lt;/p&gt;
-&lt;p&gt;[code lang=cpp]&lt;br /&gt;
-#include&lt;br /&gt;
-int main()&lt;br /&gt;
-{&lt;br /&gt;
-print(&amp;quot;Hello World \n&amp;quot;);&lt;br /&gt;
-return 0;&lt;br /&gt;
-}&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;p&gt;Kết quả chạy:&lt;/p&gt;
-&lt;p&gt;[code lang=shell]&lt;br /&gt;
-$./HelloWorld&lt;br /&gt;
-HelloWorld&lt;br /&gt;
-[/code]&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
+      <description>Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.
+Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
+Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
+HelloWorld.c
+[code lang=cpp]
+#include
+int main()
+{
+print(&amp;ldquo;Hello World \n&amp;rdquo;);</description>
     </item>
     
     <item>
       <title>Một chút hiểu thêm về &#34;Hello World&#34; trong C.</title>
-      <link>https://minatu2d.github.io/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
+      <link>https://blog.lazytrick.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
       <pubDate>Wed, 21 Dec 2016 05:31:09 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
-      <description>&lt;p&gt;Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.&lt;/p&gt;
-&lt;p&gt;Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì&lt;br /&gt;
-một chương trình sẽ được chạy 2 cách dưới đây&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
+      <description>Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.
+Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì
+một chương trình sẽ được chạy 2 cách dưới đây
+1. Chương trình hoàn toàn là tĩnh  Không có symbol nào cần phải được (resolved) trước khi chạy. Không yêu cầu bất cứ một thư viện run-time nào.</description>
     </item>
     
     <item>
       <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
-      <link>https://minatu2d.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <link>https://blog.lazytrick.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
       <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
-      <description>&lt;p&gt;Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch &lt;strong&gt;GCC&lt;/strong&gt; lên đó.&lt;br /&gt;
-Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.&lt;br /&gt;
-Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.&lt;br /&gt;
-</description>
+      <guid>https://blog.lazytrick.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <description>Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch GCC lên đó.
+Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.
+Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.</description>
     </item>
     
     <item>
       <title>&#34;Data structure alignment&#34; là gì? Tại sao phải hiểu nó khi code C.</title>
-      <link>https://minatu2d.github.io/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
+      <link>https://blog.lazytrick.com/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
       <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
-      <description>&lt;p&gt;Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.&lt;br /&gt;
-Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về &lt;strong&gt;Data Structure Aligment&lt;/strong&gt;.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
+      <description>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
+Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
+Giả sử ta có một cấu trúc sau:
+[code lang=&amp;ldquo;C&amp;rdquo;]
+#include 
+typedef struct
+{
+uin8_t mem1;
+uin8_t mem2;
+uin32_t mem3;
+}ST_FOOL_1;
+typedef struct</description>
     </item>
     
     <item>
       <title>Phân biệt Build vs Host vs Target</title>
-      <link>https://minatu2d.github.io/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
+      <link>https://blog.lazytrick.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
       <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
-      <description>&lt;p&gt;Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.&lt;br /&gt;
-Với người mới, hiểu rõ khái niệm là rất quan trọng.&lt;/p&gt;
-&lt;p&gt;Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là &lt;strong&gt;Host Enviroment&lt;/strong&gt;, &lt;strong&gt;Build Enviroment&lt;/strong&gt;, và &lt;strong&gt;Target Enviroment&lt;/strong&gt;. Có thể dịch nôm na là &lt;strong&gt;Môi trường chủ&lt;/strong&gt;, &lt;strong&gt;Môi trường biên dịch&lt;/strong&gt;, và &lt;strong&gt;Môi trường chạy đích&lt;/strong&gt;.&lt;br /&gt;
-Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.&lt;/p&gt;
-&lt;p&gt;Trước khi bắt đầu với các ví dụ, ta nên xem qua một số nguồn diễn giải 3 khái niệm này.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
+      <description>Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.
+Với người mới, hiểu rõ khái niệm là rất quan trọng.
+Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là Host Enviroment, Build Enviroment, và Target Enviroment. Có thể dịch nôm na là Môi trường chủ, Môi trường biên dịch, và Môi trường chạy đích.
+Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.</description>
     </item>
     
     <item>
       <title>2 cách sử dụng thư viện trong Linux</title>
-      <link>https://minatu2d.github.io/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
+      <link>https://blog.lazytrick.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
       <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
-      <description>&lt;p&gt;Mình đang gặp 1 vấn đề là 1 hàm &lt;em&gt;F1()&lt;/em&gt; trong thư viện động mình viết &lt;em&gt;(lib1.so)&lt;/em&gt; không hoạt động đúng như mong muốn. Trong hàm &lt;em&gt;F1()&lt;/em&gt;có gọi một loại hàm &lt;em&gt;F21(), F22(), F23()...F2n()&lt;/em&gt; từ 1 thư viện tĩnh &lt;em&gt;(lib2.a)&lt;/em&gt; khác.&lt;/p&gt;
-&lt;p&gt;Khi build không gặp lỗi,&lt;/p&gt;
-&lt;p&gt;Khi biên dịch thư viện động này với 1 file &lt;strong&gt;sample.c&lt;/strong&gt; để chưa &lt;strong&gt;main()&lt;/strong&gt; để chạy thử và gọi hàm &lt;em&gt;F1() &lt;/em&gt;từ thư viện động &lt;em&gt;lib1.so&lt;/em&gt;. Kết quả vẫn mong muốn.&lt;/p&gt;
-&lt;p&gt;Tuy nhiên, khi ném thư viện đó vào ứng dụng khác (mà mình không biết họ có sử dụng cùng cách làm với ví dụ của mình không) thì các hàm &lt;em&gt;F2x() &lt;/em&gt;có vẻ vẫn chạy nhưng kết quả không như mong muốn, và luôn đưa ra những kết quả giống nhau.&lt;/p&gt;
-&lt;p&gt;Tìm hiểu 1 chút về Dynamic Libraries, thì thấy có vẻ chưa hiểu kĩ lắm nên sẽ tìm 1 vài bài để dịch, đọc. Có thể chưa phải là đúng tutor cho đúng problem. Nhưng cứ dịch đã, hiểu được sẽ giải thích được và tìm ra được nguyên nhân ở trên.</description>
+      <guid>https://blog.lazytrick.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
+      <description>Mình đang gặp 1 vấn đề là 1 hàm F1() trong thư viện động mình viết (lib1.so) không hoạt động đúng như mong muốn. Trong hàm _F1()_có gọi một loại hàm F21(), F22(), F23()&amp;hellip;F2n() từ 1 thư viện tĩnh (lib2.a) khác.
+Khi build không gặp lỗi,
+Khi biên dịch thư viện động này với 1 file sample.c để chưa main() để chạy thử và gọi hàm _F1() _từ thư viện động lib1.</description>
     </item>
     
     <item>
       <title>CMake - Một ví dụ đơn giản</title>
-      <link>https://minatu2d.github.io/post/2015-08-16-cmake-mot-vi-du-don-gian/</link>
+      <link>https://blog.lazytrick.com/post/2015-08-16-cmake-mot-vi-du-don-gian/</link>
       <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2015-08-16-cmake-mot-vi-du-don-gian/</guid>
+      <guid>https://blog.lazytrick.com/post/2015-08-16-cmake-mot-vi-du-don-gian/</guid>
       <description>Trong bài tôi đã giới thiệu qua về CMake. Như ta đã biết nó cung cấp tính tăng giúp việc sinh ra Makefile một cách hiệu quả. Nhất là đối với các dự án phức tạp. Nó cũng cung cấp thêm các bộ sinh khác để sinh cấu trúc quản lý source cho các IDE khác nhau như Visual Studio, KDE.
 Trong giới hạn, tôi sẽ nói về việc sử dụng CMake để build một simple project trên cả Windows và Linux.</description>
     </item>
     
     <item>
       <title>CMake - Công cụ hỗ trợ việc build source trên nhiều platform.</title>
-      <link>https://minatu2d.github.io/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</link>
+      <link>https://blog.lazytrick.com/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</link>
       <pubDate>Sun, 02 Aug 2015 20:38:27 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</guid>
+      <guid>https://blog.lazytrick.com/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</guid>
       <description>Đuợc làm việc cùng những pro đầy kinh nghiệm thực sự rất thú vị, ngoài việc chia sẻ hiểu biết của mình, còn đuợc hóng nhiều kĩ năng sử dụng tool của các pro nữa. Mình thấy rằng, không có tool nào gọi là thần thành, mọi tool chỉ giúp tăng tốc độc với những người mới và không đủ thời gian để hiểu sâu. Còn với những người đã nhiều kinh nghiệm, họ sử dụng tool theo các điểm mạnh của chúng và kết hợp rất nhiều tool một cách nhịp nhàng sao cho công việc tiến hành nhanh nhất.</description>
     </item>
     

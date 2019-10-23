@@ -62,12 +62,35 @@
 			<h1 class="post__title">So sánh giữa Buildroot và Yocto Project</h1>
 			
 		</header><div class="content post__content clearfix">
-			</li>
+			
+
+<p>Bài này sẽ dịch lại <a href="http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf">Slide</a> thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni<br />
+từ Free Electrons tại Embedded Linux Conference 2016.</p>
+
+<p>So sánh giữa Buildroot và OpenEmbedded/Yocto Project</p>
+
+<h2 id="1-điểm-chung">1. Điểm chung</h2>
+
+<ul>
+<li>Đều là build-system cho Embedded Linux.<br />
+Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.<br />
+Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
+<li>Đều được build từ source</li>
+<li>Sử dụng cross-compilation</li>
+<li>Rất actively trong cả dự án đang maintained và phát triển.</li>
+<li>Được sử dụng rộng dãi trong công nghiệp.</li>
+<li>Tài liệu tốt, nhiều khóa đào tạo.</li>
+<li>Sử dụng Free Software (phần mềm tự do)<br />
+<br /></li>
 </ul>
-<h2>2. Khác nhau</h2>
-<h3>2.1 Về tư tưởng chung</h3>
+
+<h2 id="2-khác-nhau">2. Khác nhau</h2>
+
+<h3 id="2-1-về-tư-tưởng-chung">2.1 Về tư tưởng chung</h3>
+
 <ul>
 <li><strong>Buildroot</strong>:
+
 <ul>
 <li>Tập trung mạnh vào sự đơn giản</li>
 <li>Dễ sử dụng dễ hiểu và mở rộng</li>
@@ -77,16 +100,16 @@ kconfig, make</li>
 <li>Minimallist : phương trâm càng nhỏ càng tốt</li>
 <li>Không phụ thuộc vào mục đích sử dụng</li>
 <li>Cộng đồng mở, nhưng có vendor hoặc tổ chức nào quản lý</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>Yocto</strong>
+
 <ul>
 <li>Hỗ trợ nhiều kiến trúc phổ biến
+
 <ul>
 <li>OpenEmbedded: Chỉ hỗ trợ qemu</li>
 <li>Yocto Project : Thêm những nền tảng máy khác</li>
-</ul>
-</li>
+</ul></li>
 <li>Chỉ cung cấp core recipes, sử dụng <em>layer</em> để mở rộng và thêm gói<br />
 cũng như nền tảng phần cứng.</li>
 <li>Việc custom chỉ xảy ra ở các layer riêng biệt</li>
@@ -95,50 +118,54 @@ trường hợp sử dụng.</li>
 <li>Cộng đồng mở, nhưng vẫn được quản lý bởi Yocto Project Advisory Board,<br />
 vốn được tạo bởi các công ty tài trợ</li>
 <li>OpenEmbedded là một dự án cộng đồng độc lập</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.2. Về output</h2>
+
+<h2 id="2-2-về-output">2.2. Về output</h2>
+
 <ul>
 <li><strong>Buildroot</strong>
+
 <ul>
 <li>Ouput chính là một root filesystem image
+
 <ul>
 <li>Cũng có thể kèm toolchain, kernel image, bootloader đi kèm.</li>
-</ul>
-</li>
+</ul></li>
 <li>Hỗ trợ nhiều định dạng: ext2/3/4, ubifs, iso9660, etc.</li>
 <li>Không có gói binary, không có hệ thống quản lý gói
+
 <ul>
 <li>Nhiều người gọi là <strong>firmware generator</strong></li>
 <li>Không thể update qua các gói</li>
 <li>Cần update toàn bộ hệ thống, như Android.</li>
 <li>Không nên tin tưởng việc update 1 phần.</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li><strong>Yocto Project</strong>:
+
 <ul>
 <li>Tạo bản phân phố, đầu ra là một loại các package.
+
 <ul>
 <li>Hệ thống quản lý là tùy chọn cho hệ thống đích</li>
 <li>Có thể cài đặt, update chỉ 1 phần của hệ thống</li>
-</ul>
-</li>
+</ul></li>
 <li>Cũng có thể sinh **root filesystem images* thông qua cài đặt các tool tạo<br />
-image. Hỗ trợ: ext2/3/4, ubifs, iso9660, etc...cũng có cả VM Images,　vmdk, vdi<br />
+image. Hỗ trợ: ext2/3/4, ubifs, iso9660, etc&hellip;cũng có cả VM Images,　vmdk, vdi<br />
 qcow2</li>
 <li>Cuối cùng, có thể tạo ra 1 <em>disk image</em></li>
 <li>Cũng có thể sinh một <strong>SDK</strong> kèm theo image, cho phép app developer compile,<br />
 test ứng dụng của họ mà không cần tích hợp chúng trong quá trình build.<br />
 Nhưng SDK phải được đồng bộ với thay đổi của image.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.3. Cấu hình (Configuration)</h2>
+
+<h2 id="2-3-cấu-hình-configuration">2.3. Cấu hình (Configuration)</h2>
+
 <ul>
 <li><strong>Buildroot</strong>:
+
 <ul>
 <li>Sử dụng lại <em>kconfig</em> từ Linux kernel</li>
 <li>Giao diện đơn giản thông qua {menu,x,b,g} config</li>
@@ -147,51 +174,53 @@ Nhưng SDK phải được đồng bộ với thay đổi của image.</li>
 bootloader, user-space packages, etc.</li>
 <li>make menuconfig, make -&gt; đơn giản</li>
 <li>Build cùng một hệ thống cho nhiều máy khác nhau: sẽ hoàn toàn riêng biệt
+
 <ul>
 <li>Cần 1 tool để sinh defconfig từ nhiều fragements</li>
 <li>Có thể làm được những không quá dễ</li>
 <li>Quá trình build hoàn toàn tách biệt cho mỗi máy</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li><strong>Yocto Project</strong>:
+
 <ul>
 <li>Quá trình configuration được chia ra làm nhiều phần:
+
 <ul>
 <li>Distribution configuration: cấu hình gói general, toolchain, chọn libc.</li>
 <li>Machine configuration: định nghĩa architecture, đặc tính machine, BSP.</li>
 <li>Image recipe: Quy định package nào sẽ được cài dặt trên hệ thống đích</li>
 <li>Local configuration: bản phân phối với máy build luôn, có bao nhiêu thread<br />
 có thể sử dụng khi compiling, có hay không xóa bỏ code sau khi build.</li>
-</ul>
-</li>
+</ul></li>
 <li>Cần biêt về nhiều lớp khác nhau mới có thể sử dụng chúng.</li>
 <li>Cho phép build cùng 1 image cho nhiều máy hoặc nhiều distribution hoặc nhiều ảnh cho 1 máy</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.4. Layers (Lớp)</h2>
+
+<h2 id="2-4-layers-lớp">2.4. Layers (Lớp)</h2>
+
 <ul>
 <li><strong>Buildroot</strong>:
+
 <ul>
 <li>Không có khái niệm này</li>
 <li>Tất cả package được maintained từ các kho chính thức
+
 <ul>
 <li>Cho phép chất lượng rất tốt nhờ được review bởi experts</li>
-</ul>
-</li>
+</ul></li>
 <li>Sử dụng *BR2_EXTERNAL
+
 <ul>
 <li>Cho phép lưu trữ định nghĩa package, cấu hình và các thông tin khác.</li>
 <li>Chỉ có 1 <em>BR2_EXTERNAL</em></li>
 <li>Sử dụng cho các package custom hoặc proprietary package</li>
 <li>Chỉ có thể add, không cho phép override.</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li><strong>Yocto Project</strong>:
+
 <ul>
 <li>Cơ chế layer cho phép sửa/thêm package mới hoặc tạo ảnh mới</li>
 <li>Xóa bỏ sự ngăn cách giữa core build system, BSP và các chỉnh sửa</li>
@@ -201,28 +230,31 @@ recipes để handle những ứng dụng đặc trưng</li>
 base.</li>
 <li>Cần để ý chất lượng layer, việc review vẫn chưa có tính hệ thống</li>
 <li>OpenEmbedded Metadata Index đưa ra danh sách các layer, recipe, máy hiện<br />
-mà framework này hỗ trợ tại http://layers.openemdedded.org/layerindex</li>
+mà framework này hỗ trợ tại <a href="http://layers.openemdedded.org/layerindex">http://layers.openemdedded.org/layerindex</a></li>
 <li>Có cơ chế override cho phép điều chỉnh recipe dựa trên máy hoặc distro.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.5. Về toolchain</h2>
+
+<h2 id="2-5-về-toolchain">2.5. Về toolchain</h2>
+
 <ul>
 <li>Tự build toolchain, dựa trên gcc, lựa chọn được thư viện C Libraries<br />
 (glibc, uClibc, musl)</li>
 <li>Sử dụng các toolchain build sẵn từ bên ngoài:
+
 <ul>
 <li>Có vẻ bên Buildroot thì dễ dàng hơn vì nó có sẵn bên trong</li>
 <li>Chỉ thực sự support tốt với những layer từ các vendor trong Yocto Project</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>Buildroot</strong>: <em>không có trong slide</em></li>
 <li><strong>Yocto Project</strong> : <em>không có trong slide</em></li>
 </ul>
-<h2>2.6 Về mức độ phức tạp</h2>
+
+<h2 id="2-6-về-mức-độ-phức-tạp">2.6 Về mức độ phức tạp</h2>
+
 <ul>
-<li>
-<p><strong>Buildroot</strong>:</p>
+<li><p><strong>Buildroot</strong>:</p>
+
 <ul>
 <li>Được thiết kế đơn giản</li>
 <li>Mọi chức năng được đưa ra cho core đều phân tích trên tỉ số về<br />
@@ -230,16 +262,17 @@ tính hữu dụng/độ phức tạp.</li>
 <li>Core logic được viết hoàn toàn bằng make, có ít hơn 1000 dòng code nhưng chứa<br />
 đến 230 dòng comment rồi.</li>
 <li>Thực sự dễ dàng để hiểu cái gì sẽ được thực hiện, tại sao và làm thế nào<br />
-package được build </li>
+package được build</li>
 <li>Các shell script đơn giản thực hiện các nhiệm vụ như download, giải nén,<br />
 building, installing các thành phần phần mềm theo thứ tự.</li>
 <li>Tài liệu chi tiết, resource cũng như thảo luận dồi dào.</li>
 <li>1 giờ nói là đủ để miêu tả hết bên trong (ELCE 2014)</li>
 <li>Những feedback từ IRC: hơn hẳn Yocto, hầu hết đều ngạc nhiên về sự dễ dàng<br />
 của nó. Đó là thứ đầu tiên thu hút tôi.</li>
-</ul>
-</li>
-<li><strong>Yocto Project</strong>:
+</ul></li>
+
+<li><p><strong>Yocto Project</strong>:</p>
+
 <ul>
 <li>Có lẽ cần phải học cẩn thận hơn.</li>
 <li>Core là <strong>bitbake</strong>, một dự án tách biệt được viết trong python(60k line code)</li>
@@ -251,24 +284,26 @@ và shell script.</li>
 Ví dụ: Poky không nên được sử dụng cho sản phẩm, cấu hình chỉnh sửa distro/image<br />
 không nên đặt ở local.conf, hoặc xóa tmp/</li>
 <li>Nhiều người vẫn bị loạn khái niệm (Yocto Project, Poky, OpenEmbedded, bitbake)</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.7 Số lượng/sự đa dạng của package</h2>
+
+<h2 id="2-7-số-lượng-sự-đa-dạng-của-package">2.7 Số lượng/sự đa dạng của package</h2>
+
 <ul>
 <li><strong>Buildroot</strong>:
+
 <ul>
 <li>Có 1800+ packages</li>
 <li>Graphics: X.org, Wayland, Qt4/Qt5, Gtk2/Gtk3, EFL</li>
-<li>Multimedia: Gsstreamer 0.10/1.x, ffmpeg, Kodi, OpenGL support một lượng<br />
+<li>Multimedia: Gsstreamer 0.<sup>10</sup>&frasl;<sub>1</sub>.x, ffmpeg, Kodi, OpenGL support một lượng<br />
 lớn platform</li>
-<li>Ngôn ngữ: Python 2/3, PHP, Lua, Perl, Erlang, Mono, Ruby, Node.js</li>
+<li>Ngôn ngữ: Python <sup>2</sup>&frasl;<sub>3</sub>, PHP, Lua, Perl, Erlang, Mono, Ruby, Node.js</li>
 <li>Networking: Apache, Samba, Dovecot, Exim, CUPS, rất nhiều server tools</li>
 <li>Init System: Busybox (default), initsysv, systemd</li>
 <li>Không support 1 toolchal trên target</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>Yocto Project</strong>:
+
 <ul>
 <li>Hàng ngàn recipe: Khoảng 2200 trên oe-core, meta-openemdedded,<br />
 meta-qt5. Còn trên Metadata Index có khoảng 8400 (bao gồm cả trùng)</li>
@@ -276,45 +311,49 @@ meta-qt5. Còn trên Metadata Index có khoảng 8400 (bao gồm cả trùng)</l
 <li>Có nhiều layer cho ngôn ngữ hơn như: Java, Go, Rust, smalltalk</li>
 <li>Vẫn có cả layer cho Qt3</li>
 <li>Có thêm meta-virtualization (Docker, KVM, LXC, Xen) và meta-openstack layer</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.8 Cách quản lý phụ thuộc</h2>
+
+<h2 id="2-8-cách-quản-lý-phụ-thuộc">2.8 Cách quản lý phụ thuộc</h2>
+
 <ul>
 <li><strong>Buildroot</strong>:
+
 <ul>
 <li>Theo hướng tối giản hóa
+
 <ul>
 <li>Nếu 1 chức năng có thể được disabled, thì nó nên mặc định bị disabled.</li>
-</ul>
-</li>
+</ul></li>
 <li>Rất nhiều phụ thuộc tự động
+
 <ul>
 <li>Nếu bạn enable OpenSSL, bạn có thể tự động có được SSL Support cho tất<br />
 các các package khác mà bạn đã enabled và có sử dụng SSL Support</li>
-</ul>
-</li>
+</ul></li>
 <li>Có thể tạo ra một filesystem nhỏ mà không cần mất công gì nhiều.</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>Yocto Project</strong>:
+
 <ul>
 <li>Package configuration được thực hiện ở mức distribution
+
 <ul>
 <li>Enable OpenSSL sẽ bất tất cả các gói phụ thuộc của nó.</li>
 <li>Nhưng vẫn có thể disable riêng lẻ từng package trong đó</li>
 <li>Nhưng được cái nó lại chỉ enable cho tính năng cho từng gói</li>
-</ul>
-</li>
+</ul></li>
 <li>Mặc dù có thể sửa đổi ở mức machine, nhưng nên tránh điều này để portability</li>
 <li>Mỗi recipe có thể định nghĩa một tập các feature mặc định để tạo<br />
 ra một cấu hình mặc định cho riêng nó.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.9 Update và security</h2>
+
+<h2 id="2-9-update-và-security">2.9 Update và security</h2>
+
 <ul>
 <li><strong>Buildroot</strong>
+
 <ul>
 <li>Release sau mỗi 3 tháng: 2 tháng phát triển, 1 tháng để làm cho ổn định</li>
 <li>Mỗi lần release bao gồm cả security update và major update</li>
@@ -323,9 +362,9 @@ ra một cấu hình mặc định cho riêng nó.</li>
 User phải tự kiểm soát cái những package họ muốn.</li>
 <li>Script để đánh giá các lỗi CVE chưa được fixed trong Buildroot configuration<br />
 được đưa lên.</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>Yocto Project</strong>:
+
 <ul>
 <li>Release sau mỗi 6 tháng: 1 vào tháng 4, 1 vào tháng 10.</li>
 <li>Lập kế hoạch, roadmap được chi tiết và public</li>
@@ -334,12 +373,14 @@ User phải tự kiểm soát cái những package họ muốn.</li>
 Chúng sẽ nhận được các gói security và fixed quan trọng nhưng không có recipe<br />
 upgrade.</li>
 <li>Các bản release cũ sẽ được maintained bởi cộng đồng, gọi là thôi.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.10 Phát hiện và xử lý các thay đổi về cấu hình (detection of configuration changes)</h2>
+
+<h2 id="2-10-phát-hiện-và-xử-lý-các-thay-đổi-về-cấu-hình-detection-of-configuration-changes">2.10 Phát hiện và xử lý các thay đổi về cấu hình (detection of configuration changes)</h2>
+
 <ul>
 <li><strong>Buildroot</strong>:
+
 <ul>
 <li>Không cố gắng để smart</li>
 <li>Khi có 1 thay đổi trong cấu hình, nó không có gắng tìm ra xem có cái nào<br />
@@ -347,20 +388,20 @@ cần build lại hay không.</li>
 <li>Một khi package đã được build rồi, Buildroot sẽ không build lại nó nữa trừ<br />
 khi ban yêu cầu nó</li>
 <li>Khi có thay đổi lớn ở cấu hình, nó sẽ build lại hết.
+
 <ul>
 <li>Cái này có thể gây phiền toái với hệ thống lớn</li>
-</ul>
-</li>
+</ul></li>
 <li>Khi có thay đổi nhỏ thường sẽ được xử lý để không phải build lại toàn bộ
+
 <ul>
 <li>Cho dù là nhỏ thì cũng phải hiểu rõ cái đã thay đổi</li>
-</ul>
-</li>
+</ul></li>
 <li>Không có cách nào để chia sẻ những cái thực thi chung giữa các cấu hình khác<br />
 nhau. 1 Configure 1 build.</li>
-</ul>
-</li>
+</ul></li>
 <li><strong>Yocto Project</strong>:
+
 <ul>
 <li><strong>bitbake</strong> giữ một trạng thái gọi là <strong>shared State Cache</strong> (sstate-cache) cho<br />
 phép cải thiện việc builds.</li>
@@ -371,68 +412,70 @@ nhau sẽ nhanh hơn nhiều.</li>
 <li>Nó cũng có thể share trạng thái này giữa nhiều máy host khác nhau<br />
 (ví dụ: 1 build server và 1 developer machine). Là 1 cách tuyệt vời để tăng<br />
 tốc quá trình build full, vốn rât tốn thời gian.</li>
+</ul></li>
 </ul>
-</li>
-</ul>
-<h2>2.11 Kiến trúc hỗ trợ (architecture support)</h2>
+
+<h2 id="2-11-kiến-trúc-hỗ-trợ-architecture-support">2.11 Kiến trúc hỗ trợ (architecture support)</h2>
+
 <ul>
 <li><strong>Buildroot</strong>:
+
 <ul>
 <li>Một lượng lớn kiến trúc được support</li>
 <li>Có : ARM (64), MIPS, PowerPC(64), x86/x86-64</li>
 <li>Một số kiến trúc đặc trưng:
+
 <ul>
 <li>Xtensa, Blackfin, ARC, m68k, SPARC, Microblaze, NIOSII</li>
 <li>ARM no MMU, đặc biệt ARMv7-M1</li>
-</ul>
-</li>
+</ul></li>
 <li>Đóng góp từ các architecture vendors
+
 <ul>
 <li>MIPS bởi Imagination Technologies</li>
 <li>PowerPC64 bởi IBM</li>
 <li>ARC bởi Synopsys</li>
 <li>Blackfin bởi Analog Devices</li>
-</ul>
-</li>
-</ul>
-</li>
+</ul></li>
+</ul></li>
 <li><strong>Yocto Project</strong>:
+
 <ul>
 <li>Các kiến trúc chính: ARM, MIPS, PowerPC, x86 và 64-bit</li>
 <li>Trong các layer riêng rẽ:
+
 <ul>
 <li>Microblaze, NIOSII</li>
-</ul>
-</li>
+</ul></li>
 <li>Các silicon vendor main　BSP layer của họ:
+
 <ul>
 <li>meta-intel</li>
 <li>meta-altera (cả ARM và NIOSII)</li>
 <li>meta-atmel, meta-fsl, meta-ti</li>
 <li>meta-xilinx (cả ARM và Microblaze)</li>
-</ul>
-</li>
+</ul></li>
 <li>Từ cộng đồng:
+
 <ul>
 <li>meta-rockchip, meta-sunxi</li>
+</ul></li>
+</ul></li>
 </ul>
-</li>
-</ul>
-</li>
-</ul>
-<h2>2.12 Build tối giản</h2>
+
+<h2 id="2-12-build-tối-giản">2.12 Build tối giản</h2>
+
 <ul>
-<li>
-<p><strong>Buildroot</strong>:<br />
-Cho qemu_arm_versatile_defconfig sẽ mất 15 phút 25 giây, ảnh file là 2MB.</p>
-</li>
-<li>
-<p><strong>Yocto Project</strong>:<br />
+<li><p><strong>Buildroot</strong>:<br />
+Cho qemu_arm_versatile_defconfig sẽ mất 15 phút 25 giây, ảnh file là 2MB.</p></li>
+
+<li><p><strong>Yocto Project</strong>:<br />
 Build core-image-minimal cho qemuarm mất 50 phút 47 giây, ảnh file là 4.9M.<br />
-Nếu có sstate-cache tồn tại sẵn rồi, thì mát 1 phút 21 giây.</p>
-</li>
+Nếu có sstate-cache tồn tại sẵn rồi, thì mát 1 phút 21 giây.</p></li>
 </ul>
-<h2>2.13 Một số nội dung từ Q&amp;A của Buildroot</h2>
+
+<h2 id="2-13-một-số-nội-dung-từ-q-a-của-buildroot">2.13 Một số nội dung từ Q&amp;A của Buildroot</h2>
+
 <ul>
 <li>Không hỗ trợ complier trên target</li>
 <li>Không hỗ trợ các file header cho development trên target</li>

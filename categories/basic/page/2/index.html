@@ -70,17 +70,10 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.</p>
-<p>Google tiếng Việt thấy khá ít thông tin về ASN.1.<br />
-Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.</p>
-<p>Nội dung bài này sẽ giới thiệu sơ qua về ASN.1.<br />
-Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http://www5d.biglobe.ne.jp/~stssk/asn1/index.html">Ishida So</a></p>
-<ol>
-<li>ASN.1 là gì?</li>
-<li>Một số ứng dụng</li>
-<li>Làm sao để sử dụng ASN.1</li>
-</ol>
-<p>
+		Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.
+Google tiếng Việt thấy khá ít thông tin về ASN.1.
+Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.
+Nội dung bài này sẽ giới thiệu sơ qua về ASN.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -92,9 +85,18 @@ Bài viết tham khảo rất nhiều từ bài viết của anh <a href="http:/
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.<br />
-Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về <strong>Data Structure Aligment</strong>.</p>
-<p>
+		Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
+Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
+Giả sử ta có một cấu trúc sau:
+[code lang=&ldquo;C&rdquo;]
+#include 
+typedef struct
+{
+uin8_t mem1;
+uin8_t mem2;
+uin32_t mem3;
+}ST_FOOL_1;
+typedef struct
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -106,9 +108,9 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trong bài số <a href="https://lazytrick.wordpress.com/2016/09/19/gdb-co-the-lam-gi/">02</a>, ta đã nói đến những việc mà GDB có thể giúp chúng ta.</p>
-<p>Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số <strong>-g</strong> khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.<br />
-
+		Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
+Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
+Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -120,17 +122,9 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là <strong>target program</strong>.<br />
-Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:</p>
-<ol>
-<li>GDB và <strong>target program</strong> cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</li>
-<li>GDB và <strong>target program</strong> không cùng trên 1 máy : Tức là GDB sẽ chạy trên 1 máy để debug 1 chương trình chạy trên máy khác thông qua Serial hoặc Network. Cái này hay thấy khi phát triển ứng dụng nhúng. Xem thêm tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</li>
-</ol>
-<p>Một số distro khi được cài đặt, đã bao gồm <strong>GDB</strong> rồi. Có thể kiểm tra bằng command dưới đây:</p>
-<p>[code lang="shell"]<br />
-$gdb --version<br />
-[/code]</p>
-<p>
+		Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
+ GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -142,11 +136,9 @@ $gdb --version<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trước khi nói về chủ đề chính là "GDB có thể làm gì". GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.</p>
-<h4>1. Phầm mềm Debugger sinh ra giải quyết cái gì?</h4>
-<p>Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.<br />
-Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế. Những cái đó người ta gọi là <strong>BUG</strong>.</p>
-<p>Một điều nữa, khi đã biên dịch (ở đây không xét đến ngôn ngữ thông dịch nhé), các code mà con người viết ra sẽ trở thành mã nhị phân.
+		Trước khi nói về chủ đề chính là &ldquo;GDB có thể làm gì&rdquo;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.
+1. Phầm mềm Debugger sinh ra giải quyết cái gì? Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.
+Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -158,22 +150,9 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！</p>
-<p>Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với "siêu lười" như mình, loạt về <a href="https://lazytrick.wordpress.com/category/usb/">USB Basic</a> dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.</p>
-<p>Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).</p>
-<p>Nội dung sẽ như sau:</p>
-<ol>
-<li>GDB có thể làm gì?</li>
-<li>Cài đặt GDB</li>
-<li>GDB dòng lệnh cơ bản</li>
-<li>GDB trên Eclipse IDE</li>
-<li>GDB trên QtCreator</li>
-<li>GDB làm việc như thế nào?</li>
-<li>GDB Server giải quyết vấn đề gì</li>
-<li>GDB trên Visual Studio 2015</li>
-<li>GDB trên Eclipse IDE, QtCreator khi sử dụng với GDB Server</li>
-</ol>
-<p>
+		Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！
+Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với &ldquo;siêu lười&rdquo; như mình, loạt về USB Basic dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.
+Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -185,11 +164,9 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>AWK</strong> : 1 trong 3 tool (cùng với <strong>grep</strong> và <strong>sed</strong>) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.</p>
-<p>Sau một hồi tìm hiểu <strong>awk</strong> trên <a href="http://www.tutorialspoint.com/awk/index.htm">TutorialPoint</a>.</p>
-<p><strong>awk</strong> là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng. AWK cung cấp hẳn 1 ngôn ngữ để so khớp input cũng như xuất output. Ngôn ngữ này cực kì giống ngôn ngữ C, nên rất dễ làm quen. Nó cung cấp 1 cơ chế matching mạnh là regular express nữa cho xử lý input.</p>
-<p><strong>Khi làm việc với AWK, ta hãy hiểu rằng, từng line trong input sẽ được thực hiện qua đoạn script mà ta cung cấp cho Awk.</strong></p>
-<p>
+		AWK : 1 trong 3 tool (cùng với grep và sed) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.
+Sau một hồi tìm hiểu awk trên TutorialPoint.
+awk là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -201,10 +178,8 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>Patch</strong>, hay người ta vẫn gọi là các bản vá, víu gì đó. Cũng thấy khái niệm này từ lâu rồi. Nhưng chưa bao giờ phát sinh nhu cầu sử dụng vì đa số các dự án mình từng làm đều dùng Server SVN tập trung. Mọi thay đổi đều có quản lý chặt chẽ, cũng ít khi rẽ quá nhiều nhánh (branch).<br />
-Gần đây, bắt buộc phải nghĩ đến việc sử dụng 2 tool này vì phải update source trên máy thật (một board mạch) chỉ hỗ trợ truyền Serial. :((<br />
-Sau nhiều lần truyền source, dù đã nén bằng <strong><em>tar</em></strong>, cũng mất đến 20-30 phút, mình không thể chịu nổi nữa. Thế là hỏi thầy google. Thấy có 2 command khá thông dụng để giải quyết vấn đề này.</p>
-<p>
+		Patch, hay người ta vẫn gọi là các bản vá, víu gì đó. Cũng thấy khái niệm này từ lâu rồi. Nhưng chưa bao giờ phát sinh nhu cầu sử dụng vì đa số các dự án mình từng làm đều dùng Server SVN tập trung. Mọi thay đổi đều có quản lý chặt chẽ, cũng ít khi rẽ quá nhiều nhánh (branch).
+Gần đây, bắt buộc phải nghĩ đến việc sử dụng 2 tool này vì phải update source trên máy thật (một board mạch) chỉ hỗ trợ truyền Serial.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -216,9 +191,9 @@ Sau nhiều lần truyền source, dù đã nén bằng <strong><em>tar</em></st
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.<br />
-Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là <strong>Firmware</strong>.<br />
-
+		Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.
+Mình thấy ngoài Driver, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là Firmware.
+Bài này sẽ dịch lại trang, để hiểu qua về Firmware trong Linux Kernel.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -230,10 +205,9 @@ Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trong quá trình tìm cách cài đặt driver cho <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">bản build Raspberry PI</a> sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách <strong>Linux in A Nutshell</strong> (link tại <a href="http://files.kroah.com/lkn/">đây</a> ) của pro này.</p>
-<p>Chương 7, chương mà tác giả đặc biệt "tự hào", nói về Customize một Linux Kernel.<br />
-Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.<br />
-
+		Trong quá trình tìm cách cài đặt driver cho bản build Raspberry PI sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách Linux in A Nutshell (link tại đây ) của pro này.
+Chương 7, chương mà tác giả đặc biệt &ldquo;tự hào&rdquo;, nói về Customize một Linux Kernel.
+Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -245,11 +219,9 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, có thấy trên Board mạch phát triển của mình có xuất hiện 1 process là <strong>ubifs</strong>. Qua tìm hiểu mới biết rằng, em nó là <strong>UBIFS</strong>, được phát triển năm 2007 bởi <a href="http://www.nokia.com/">Nokia</a> với sự giúp đỡ của <a href="http://www.u-szeged.hu/">University of Szeged</a>, Hungary.</p>
-<p>Bắt đầu được đưa vào mainline của Linux 2.6.27 năm 2008.</p>
-<p>Hỏi thấy GG thấy được 1 <a href="https://kythuatmaytinh.wordpress.com/2008/05/26/h%E1%BB%87-th%E1%BB%91ng-file-flash-tren-linux/">bài giới thiệu chung về hệ thống file cho thiết bị nhớ Flash</a> của anh <a href="https://www.facebook.com/lddthao">Le Dinh Thao</a> trên blog <a href="https://kythuatmaytinh.wordpress.com/">kithuatmaytinh</a>.</p>
-<p>Trong bài có nói tới các vấn đề khi hệ thống sử dụng Flash gặp phải và có nói đến 2 hệ thống File khá triển vọng là <strong>LogFS</strong> và <strong>UBIFS</strong><br />
-
+		Gần đây, có thấy trên Board mạch phát triển của mình có xuất hiện 1 process là ubifs. Qua tìm hiểu mới biết rằng, em nó là UBIFS, được phát triển năm 2007 bởi Nokia với sự giúp đỡ của University of Szeged, Hungary.
+Bắt đầu được đưa vào mainline của Linux 2.6.27 năm 2008.
+Hỏi thấy GG thấy được 1 bài giới thiệu chung về hệ thống file cho thiết bị nhớ Flash của anh Le Dinh Thao trên blog kithuatmaytinh.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -261,12 +233,10 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.<br />
-Với người mới, hiểu rõ khái niệm là rất quan trọng.</p>
-<p>Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là <strong>Host Enviroment</strong>, <strong>Build Enviroment</strong>, và <strong>Target Enviroment</strong>. Có thể dịch nôm na là <strong>Môi trường chủ</strong>, <strong>Môi trường biên dịch</strong>, và <strong>Môi trường chạy đích</strong>.<br />
-Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.</p>
-<p>Trước khi bắt đầu với các ví dụ, ta nên xem qua một số nguồn diễn giải 3 khái niệm này.</p>
-<p>
+		Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.
+Với người mới, hiểu rõ khái niệm là rất quan trọng.
+Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là Host Enviroment, Build Enviroment, và Target Enviroment. Có thể dịch nôm na là Môi trường chủ, Môi trường biên dịch, và Môi trường chạy đích.
+Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -278,17 +248,8 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.</p>
-<p>Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây. Ngoài ra, nó cũng quy định chặt hơn cho từng Request từ phía Host.</p>
-<ul>
-<li>Yêu cầu thông tin chuẩn của thiết bị (Standard Device request) mà không có dữ liệu (hay DATA Stage) thì phải hoàn thành trong vòng 50ms.</li>
-<li>Nếu yêu cầu có dữ liệu kèm theo (có DATA stage) thì dữ liệu phải được trao đổi sau ít nhất 500ms sau request được gửi đến.
-<ul>
-<li>Mỗi gói dữ liệu phải gửi trong 500ms sau khi gói trước được gửi</li>
-<li>Thông báo trạng thái (Status Stage) phải hoàn thành trong vòng 50ms sau khi gửi gói tin cuối cùng.</li>
-</ul>
-</li>
-<li>Lệnh SetAddresss (có chưa phần Data) phải được thực hiện và trả lại Status trong vòng 50ms. Phía thiết bị có 2ms để thực hiện thay địa chỉ trước khi request tiếp theo được gửi đến.
+		Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.
+Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -300,16 +261,9 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.</p>
-<p>Các đặc tả phổ biết nhất bao gồm:</p>
-<ul>
-<li>Miêu tả thiết bị (Device Descriptors)</li>
-<li>Miêu tả các cấu hình (Configuration Descriptors)</li>
-<li>Miêu tả giao diện (Interface Descriptors)</li>
-<li>Miêu tả điểm đầu cuối (EndPoint Descriptors)</li>
-<li>Các chuỗi sử dụng trong các miêu tả trên.</li>
-</ul>
-<p>
+		Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.
+Các đặc tả phổ biết nhất bao gồm:
+ Miêu tả thiết bị (Device Descriptors) Miêu tả các cấu hình (Configuration Descriptors) Miêu tả giao diện (Interface Descriptors) Miêu tả điểm đầu cuối (EndPoint Descriptors) Các chuỗi sử dụng trong các miêu tả trên.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -321,11 +275,9 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mình đang gặp 1 vấn đề là 1 hàm <em>F1()</em> trong thư viện động mình viết <em>(lib1.so)</em> không hoạt động đúng như mong muốn. Trong hàm <em>F1()</em>có gọi một loại hàm <em>F21(), F22(), F23()...F2n()</em> từ 1 thư viện tĩnh <em>(lib2.a)</em> khác.</p>
-<p>Khi build không gặp lỗi,</p>
-<p>Khi biên dịch thư viện động này với 1 file <strong>sample.c</strong> để chưa <strong>main()</strong> để chạy thử và gọi hàm <em>F1() </em>từ thư viện động <em>lib1.so</em>. Kết quả vẫn mong muốn.</p>
-<p>Tuy nhiên, khi ném thư viện đó vào ứng dụng khác (mà mình không biết họ có sử dụng cùng cách làm với ví dụ của mình không) thì các hàm <em>F2x() </em>có vẻ vẫn chạy nhưng kết quả không như mong muốn, và luôn đưa ra những kết quả giống nhau.</p>
-<p>Tìm hiểu 1 chút về Dynamic Libraries, thì thấy có vẻ chưa hiểu kĩ lắm nên sẽ tìm 1 vài bài để dịch, đọc. Có thể chưa phải là đúng tutor cho đúng problem. Nhưng cứ dịch đã, hiểu được sẽ giải thích được và tìm ra được nguyên nhân ở trên.
+		Mình đang gặp 1 vấn đề là 1 hàm F1() trong thư viện động mình viết (lib1.so) không hoạt động đúng như mong muốn. Trong hàm _F1()_có gọi một loại hàm F21(), F22(), F23()&hellip;F2n() từ 1 thư viện tĩnh (lib2.a) khác.
+Khi build không gặp lỗi,
+Khi biên dịch thư viện động này với 1 file sample.c để chưa main() để chạy thử và gọi hàm _F1() _từ thư viện động lib1.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -337,12 +289,12 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint</strong></p>
-<p>Control Transfer</p>
-<p>Interrupt Transfer</p>
-<p>Isochronous Transfer</p>
-<p>Bulk Transfer</p>
-<p>
+		Đặc tả USB định nghĩa 4 loại Transfer/EndPoint
+Control Transfer
+Interrupt Transfer
+Isochronous Transfer
+Bulk Transfer
+Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp). Độ dài mỗi packet trong dạng truyền control ở mỗi speed lại khác nhau.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -354,12 +306,7 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ "nguy hiểm", nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi. Trong thực tế, hầu hết USB Controller I.C.s sẽ lo hết mấy tầng dưới rồi. Hay nói cách khác, mấy tầng đó nhà phát triển cũng không thấy được.</p>
-<p>Mỗi USB Transaction bao gồm</p>
-<ul>
-<li>SMột packet chứa Token (Giống như Header cho biết cái gì sẽ đến tiếp sau đó) - luôn có</li>
-<li>Một packet chứa dữ liệu (có thể không có) , (chứa payload)</li>
-<li>Một packet chứa trạng thái (được sử dụng để thông báo trạng thái truyền và cung cấp cơ chế kiểm soát lỗi nữa)
+		Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &ldquo;nguy hiểm&rdquo;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -371,22 +318,9 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.</p>
-<p>Đầu kết nối (Connectors)</p>
-<p>Mọi thiết bị có một upstream "chảy"đến host, và mọi host có một downstream "chảy" thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs. Có 2 loại connector phổ biến là type A và type B. Như hình bên dưới đây:</p>
-<table width="60%">
-<tbody>
-<tr>
-<td width="50%"><img src="{{ site.baseurl }}/assets/contypea.gif" alt="" /></td>
-<td width="50%"><img src="{{ site.baseurl }}/assets/contypeb.gif" alt="" /></td>
-</tr>
-<tr>
-<td>Type A USB Connector</td>
-<td>Type B USB Connector</td>
-</tr>
-</tbody>
-</table>
-<p>
+		Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.
+Đầu kết nối (Connectors)
+Mọi thiết bị có một upstream &ldquo;chảy&rdquo;đến host, và mọi host có một downstream &ldquo;chảy&rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -398,11 +332,7 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><img class="  wp-image-533 aligncenter" src="{{ site.baseurl }}/assets/8gb-usb-flash-drive-rotation-2-0-usb-disk-model-pen-drive-memory-stick-8g-hot.jpg" alt="8GB-USB-Flash-Drive-Rotation-2-0-USB-DISK-Model-Pen-drive-memory-stick-8G-HOT.jpg" width="196" height="196" /></p>
-<p>Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). "USB Flash Memory" bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.</p>
-<p>Ở một số bài trước, tôi cũng viết về một số điểm chính của giao tiếp USB.</p>
-<p>Về cơ bản, phần mềm mà programer có thể viết cho USB hầu như được xác định từ sau bước tín hiệu. Tức là phía ứng dụng mức thấp (tức driver ấy) sẽ sử dụng các thanh và các ngắt được cung cấp để setup, nhận dữ liệu, gửi dữ liêu, phát hiện kết nối.</p>
-<p>
+		Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &ldquo;USB Flash Memory&rdquo; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -414,8 +344,8 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Như ta đã biết trong bản gốc và bản tiếng Việt của giao thức MQTT, đơn vị truyền tin trong MQTT là message. Message chứa 2 phần cơ bản là Header (phần mô tả thuộc tính dữ liệu) và Payload (phần mô tả dữ liệu). Phần header chứa 2 phần nữa là Header có độ dài cố định và Header có độ dài thay đổi được.
-Hầu hết các trường của phần Header cố định đều khá dễ hiểu, duy chỉ có 1 trường tương đối khó hiểu.
+		Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.
+Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver&hellip; Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.
 	</div>
 </article>
 </main>
@@ -435,7 +365,7 @@ Hầu hết các trường của phần Header cố định đều khá dễ hi�
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

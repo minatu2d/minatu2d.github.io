@@ -62,62 +62,71 @@
 			<h1 class="post__title">CER/DER trong ASN.1 Encoding</h1>
 			
 		</header><div class="content post__content clearfix">
-			<br />
-Cụ thể, các điểm khác biệt được nêu dưới bảng sau:</p>
-<table border="1">
-<tbody>
-<tr>
-<td></td>
-<td>CER</td>
-<td>DER</td>
-</tr>
-<tr>
-<td>Trường độ dài</td>
-<td>Với kiểu cơ bản, độ dài =128 sẽ sử dụng<br />
-dạng dài. Còn kiểu cấu trúc, sử dụng dạng thay đổi được.</td>
-<td>Dù kiểu cơ bản, hay cấu trúc thì đều cùng 1 quy tắc, độ dài =128 thì sử dụng dạng dài.</td>
-</tr>
-<tr>
-<td>Kiểu logic</td>
-<td colspan="2">TRUE luôn được biểu diễn là 1.</td>
-</tr>
-<tr>
-<td>Kiểu dãy bit</td>
-<td colspan="2">Các bit không sử dụng được gán là 0.</p>
+			<p>Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.</p>
+
+<p>Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào <strong>BER</strong>, và tạo ra <strong>CER</strong> và <strong>DER</strong>.</p>
+
+<p>Sự khác nhau chủ yếu giữa <strong>CER</strong> và <strong>DER</strong> là về biểu diễn trường độ dài. <strong>Length(L)</strong>. Trong khi <strong>DER</strong> sử dụng một định dạng với độ dài cố định, thì <strong>CER</strong> sử dụng định dạng với độ dài không có định,</p>
+
+<p>Cụ thể, các điểm khác biệt được nêu dưới bảng sau:</p>
+
+<p>CER</p>
+
+<p>DER</p>
+
+<p>Trường độ dài</p>
+
+<p>Với kiểu cơ bản, độ dài =128 sẽ sử dụng<br />
+dạng dài. Còn kiểu cấu trúc, sử dụng dạng thay đổi được.</p>
+
+<p>Dù kiểu cơ bản, hay cấu trúc thì đều cùng 1 quy tắc, độ dài =128 thì sử dụng dạng dài.</p>
+
+<p>Kiểu logic</p>
+
+<p>TRUE luôn được biểu diễn là 1.</p>
+
+<p>Kiểu dãy bit</p>
+
+<p>Các bit không sử dụng được gán là 0.</p>
+
 <p>Với những dãy bit được định nghĩa thành 1 kiểu khác thì<br />
 các bit 0 phía sau sẽ được bỏ đi.</p>
+
 <p>Trường hợp có giới hạn về kích thước kiểu, thì các bit 0 chỉ tồn tại khi cần thiết thôi.</p>
-<p>Khi độ dài là 0, trường độ dài có giá trị 1, nội dung sẽ là 1 Octet toàn 0.</td>
-</tr>
-<tr>
-<td>Kiểu dãy bit</p>
+
+<p>Khi độ dài là 0, trường độ dài có giá trị 1, nội dung sẽ là 1 Octet toàn 0.</p>
+
+<p>Kiểu dãy bit</p>
+
 <p>Kiểu chuỗi Octet (byte)</p>
-<p>Kiểu chuỗi kí tự</td>
-<td>Nếu dưới 1000 Octet, sẽ được biểu diễn như kiểu Basic</p>
+
+<p>Kiểu chuỗi kí tự</p>
+
+<p>Nếu dưới 1000 Octet, sẽ được biểu diễn như kiểu Basic</p>
+
 <p>Nếu có từ 1000 Octet trở lên, sẽ được biểu diễn giống với kiểu Cấu trúc,<br />
-trừ đoạn cuối ra thì mỗi 1000 sẽ được biểu diễn.</td>
-<td>Được biểu diễn như kiểu cơ bản</td>
-</tr>
-<tr>
-<td>Kiểu tuần tự</p>
-<p>Kiểu tập hợp</td>
-<td colspan="2">Không hiện thực các giá trị mặc định.</td>
-</tr>
-<tr>
-<td rowspan="2">Kiểu tập hợp</td>
-<td colspan="2">Biểu diễn tương ứng cho từng thành phần theo thẻ (phổ biến, ứng dụng, đặc trưng ngữ cảnh, riêng)</td>
-</tr>
-<tr>
-<td>Sẽ biểu diễn theo thẻ nhỏ nhất trong số Thẻ của các phần tử lựa chọn.</td>
-<td>Trường hợp kiểu lựa chọn (không có Tag), sẽ biểu diễn theo phần tử được chọn<br />
-(tùy theo phần tử được chọn mà biểu diễn sẽ thay đổi theo).</td>
-</tr>
-<tr>
-<td>Kiểu tập hợp đồng nhất</td>
-<td colspan="2">Được biểu diễn theo thứ tự tăng dần của dãy Octet</td>
-</tr>
-</tbody>
-</table>
+trừ đoạn cuối ra thì mỗi 1000 sẽ được biểu diễn.</p>
+
+<p>Được biểu diễn như kiểu cơ bản</p>
+
+<p>Kiểu tuần tự</p>
+
+<p>Kiểu tập hợp</p>
+
+<p>Không hiện thực các giá trị mặc định.</p>
+
+<p>Kiểu tập hợp</p>
+
+<p>Biểu diễn tương ứng cho từng thành phần theo thẻ (phổ biến, ứng dụng, đặc trưng ngữ cảnh, riêng)</p>
+
+<p>Sẽ biểu diễn theo thẻ nhỏ nhất trong số Thẻ của các phần tử lựa chọn.</p>
+
+<p>Trường hợp kiểu lựa chọn (không có Tag), sẽ biểu diễn theo phần tử được chọn<br />
+(tùy theo phần tử được chọn mà biểu diễn sẽ thay đổi theo).</p>
+
+<p>Kiểu tập hợp đồng nhất</p>
+
+<p>Được biểu diễn theo thứ tự tăng dần của dãy Octet</p>
 
 		</div>
 		<footer class="post__footer">

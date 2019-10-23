@@ -62,28 +62,49 @@
 			<h1 class="post__title">AWK - Sử dụng cơ bản</h1>
 			
 		</header><div class="content post__content clearfix">
-			<br />
-AWK sẽ làm việc theo flow sau:</p>
-<p><img class="alignnone size-full wp-image-1257" src="{{ site.baseurl }}/assets/awk_workflow.png" alt="awk_workflow" width="600" height="530" /></p>
+			
+
+<p><strong>AWK</strong> : 1 trong 3 tool (cùng với <strong>grep</strong> và <strong>sed</strong>) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.</p>
+
+<p>Sau một hồi tìm hiểu <strong>awk</strong> trên <a href="http://www.tutorialspoint.com/awk/index.htm">TutorialPoint</a>.</p>
+
+<p><strong>awk</strong> là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng. AWK cung cấp hẳn 1 ngôn ngữ để so khớp input cũng như xuất output. Ngôn ngữ này cực kì giống ngôn ngữ C, nên rất dễ làm quen. Nó cung cấp 1 cơ chế matching mạnh là regular express nữa cho xử lý input.</p>
+
+<p><strong>Khi làm việc với AWK, ta hãy hiểu rằng, từng line trong input sẽ được thực hiện qua đoạn script mà ta cung cấp cho Awk.</strong></p>
+
+<p>AWK sẽ làm việc theo flow sau:</p>
+
+<p><img src="{{ site.baseurl }}/assets/awk_workflow.png" alt="awk_workflow" /></p>
+
 <p>[code lang=shell]<br />
-$awk &#039;BEGIN {} {} END {}&#039;<br />
+$awk &lsquo;BEGIN {} {} END {}&rsquo;<br />
 [/code]</p>
+
 <p>Có 3 khối : <strong>BEGIN</strong>, Body (không có từ khóa), <strong>END</strong>.</p>
+
 <p>Khối <strong>BEGIN</strong>: được thực hiện chỉ duy nhất 1 lần, trước khi bắt đầu đọc dữ liệu.<br />
 Khối <strong>END</strong>: được thực hiện chỉ duy nhất 1 lần, sau khi thực hiện xong phần xử lý chính.<br />
 Khối Body: không có từ khóa bắt đầu, được thực hiện với mỗi line dữ liệu đầu vào.</p>
+
 <p>Một số ví dụ đơn giản.</p>
-<h5>1.Viết lại pgrep</h5>
+
+<h5 id="1-viết-lại-pgrep">1.Viết lại pgrep</h5>
+
 <p><a href="http://linux.die.net/man/1/pgrep">pgrep</a> là tìm process ID theo keyword được nhập vào. Lệnh này được sử dụng trong rất nhiều trường hợp như tìm process ứng dụng, kết hợp <a href="http://linux.die.net/man/1/kill">kill</a> để tắt 1 loạt ứng dụng, etc.</p>
+
 <p>Giả sử với <strong><em>ps uax</em></strong>, ta có kết quả sau:</p>
+
 <p>[code lang=shell]<br />
 root 3853 0.0 0.0 21024 480 ? Ss 18:52 0:00 /usr/sbin/vmware-authdlauncher<br />
 root 4028 0.0 0.0 241144 5928 ? Ss 18:52 0:00 /usr/sbin/nmbd -D<br />
 root 4073 0.0 0.1 338924 15976 ? Ss 18:52 0:00 /usr/sbin/smbd -D<br />
 root 4077 0.0 0.0 330820 5792 ? S 18:52 0:00 /usr/sbin/smbd -D<br />
 root 4079 0.0 0.0 338932 7484 ? S 18:52 0:00 /usr/sbin/smbd -D</p>
+
 <p>[/code]</p>
+
 <p>Ta sẽ thực hiện lấy PID của các process có chưa từ khóa <strong><em>daemon</em></strong>:</p>
+
 <p>[code lang=shell]<br />
 $ps aux|grep daemon|awk {print $2}<br />
 [/code]</p>

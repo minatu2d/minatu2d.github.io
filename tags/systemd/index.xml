@@ -2,25 +2,27 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>systemd on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/systemd/</link>
+    <link>https://blog.lazytrick.com/tags/systemd/</link>
     <description>Recent content in systemd on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Thu, 19 Jan 2017 16:19:32 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/systemd/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/systemd/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Về /dev trong Embedded Linux</title>
-      <link>https://minatu2d.github.io/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
+      <link>https://blog.lazytrick.com/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
       <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
-      <description>&lt;p&gt;Đây là nội dung &lt;strong&gt;pick up&lt;/strong&gt; từ &lt;a href=&#34;https://buildroot.org/downloads/manual/manual.html&#34;&gt;manual&lt;/a&gt; của Buildroot.&lt;/p&gt;
-&lt;p&gt;Nó mô tả khá rõ về &lt;strong&gt;/dev&lt;/strong&gt; trong hệ thống Linux, cùng&lt;br /&gt;
-với các giải pháp dành cho hệ thống Embedded Linux.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
+      <description>Đây là nội dung pick up từ manual của Buildroot.
+Nó mô tả khá rõ về /dev trong hệ thống Linux, cùng
+với các giải pháp dành cho hệ thống Embedded Linux.
+6.2 /dev management Trên 1 hệ thống Linux, thư mục /dev chứa các file đặc biệt, được gọi là
+device files (hay các file thiết bị), cho phép ứng dụng phía user truy cập
+đến các thiết bị phần cứng mà Linux kernel quản lý.</description>
     </item>
     
   </channel>

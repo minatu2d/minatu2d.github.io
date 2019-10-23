@@ -70,20 +70,12 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Chạy một bản Linux tối giản trên Qemu ARM</p>
-<p>Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa<br />
-các thành phần của một hệ thống Linux thông qua<br />
-việc build, chạy Kernel trên board <strong>vexpress-a9</strong> mô phỏng bằng Qemu.</p>
-<p>Đó là Kernel, Root file system, Busybox, Init.</p>
-<hr />
-<h2>1. "Chém" chút về quá trình khởi động của Linux</h2>
-<ul>
-<li>Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.<br />
-Giai đoạn đầu là load kernel lên RAM và chạy<br />
-Giai đoạn thứ hai là kernle sẽ tự động mount hệ thống file<br />
-rồi các ứng dụng trên hệ thống file được mount.<br />
-Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải có 2 giai đoạn ở trên.<br />
-
+		Chạy một bản Linux tối giản trên Qemu ARM
+Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa
+các thành phần của một hệ thống Linux thông qua
+việc build, chạy Kernel trên board vexpress-a9 mô phỏng bằng Qemu.
+Đó là Kernel, Root file system, Busybox, Init.
+1. &ldquo;Chém&rdquo; chút về quá trình khởi động của Linux  Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -95,21 +87,12 @@ Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Bài này sẽ dịch lại <a href="http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf">Slide</a> thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni<br />
-từ Free Electrons tại Embedded Linux Conference 2016.</p>
-<p>So sánh giữa Buildroot và OpenEmbedded/Yocto Project</p>
-<h2>1. Điểm chung</h2>
-<ul>
-<li>Đều là build-system cho Embedded Linux.<br />
-Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.<br />
-Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
-<li>Đều được build từ source</li>
-<li>Sử dụng cross-compilation</li>
-<li>Rất actively trong cả dự án đang maintained và phát triển.</li>
-<li>Được sử dụng rộng dãi trong công nghiệp.</li>
-<li>Tài liệu tốt, nhiều khóa đào tạo.</li>
-<li>Sử dụng Free Software (phần mềm tự do)<br />
-
+		Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
+từ Free Electrons tại Embedded Linux Conference 2016.
+So sánh giữa Buildroot và OpenEmbedded/Yocto Project
+1. Điểm chung  Đều là build-system cho Embedded Linux.
+Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
+Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -121,14 +104,13 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ta đã có bài giới thiệu về <a href="https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/">4 Stage khi Compiling</a> rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.</p>
-<p>Trong compile thông thường dạng</p>
-<p>[code lang=bash]<br />
-$gcc -o HelloWorld HelloWorld.c<br />
-[/code]</p>
-<p>Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.</p>
-<p>Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</p>
-<p>
+		Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
+Trong compile thông thường dạng
+[code lang=bash]
+$gcc -o HelloWorld HelloWorld.c
+[/code]
+Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -140,24 +122,15 @@ $gcc -o HelloWorld HelloWorld.c<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.<br />
-Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.<br />
-Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.</p>
-<p>HelloWorld.c</p>
-<p>[code lang=cpp]<br />
-#include<br />
-int main()<br />
-{<br />
-print(&quot;Hello World \n&quot;);<br />
-return 0;<br />
-}<br />
-[/code]</p>
-<p>Kết quả chạy:</p>
-<p>[code lang=shell]<br />
-$./HelloWorld<br />
-HelloWorld<br />
-[/code]</p>
-<p>
+		Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.
+Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
+Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
+HelloWorld.c
+[code lang=cpp]
+#include
+int main()
+{
+print(&ldquo;Hello World \n&rdquo;);
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -169,10 +142,10 @@ HelloWorld<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.</p>
-<p>Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì<br />
-một chương trình sẽ được chạy 2 cách dưới đây</p>
-<p>
+		Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.
+Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì
+một chương trình sẽ được chạy 2 cách dưới đây
+1. Chương trình hoàn toàn là tĩnh  Không có symbol nào cần phải được (resolved) trước khi chạy. Không yêu cầu bất cứ một thư viện run-time nào.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -184,10 +157,9 @@ một chương trình sẽ được chạy 2 cách dưới đây</p>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch <strong>GCC</strong> lên đó.<br />
-Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.<br />
-Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.<br />
-
+		Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch GCC lên đó.
+Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.
+Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -199,9 +171,18 @@ Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có r
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.<br />
-Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về <strong>Data Structure Aligment</strong>.</p>
-<p>
+		Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
+Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
+Giả sử ta có một cấu trúc sau:
+[code lang=&ldquo;C&rdquo;]
+#include 
+typedef struct
+{
+uin8_t mem1;
+uin8_t mem2;
+uin32_t mem3;
+}ST_FOOL_1;
+typedef struct
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -213,12 +194,10 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.<br />
-Với người mới, hiểu rõ khái niệm là rất quan trọng.</p>
-<p>Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là <strong>Host Enviroment</strong>, <strong>Build Enviroment</strong>, và <strong>Target Enviroment</strong>. Có thể dịch nôm na là <strong>Môi trường chủ</strong>, <strong>Môi trường biên dịch</strong>, và <strong>Môi trường chạy đích</strong>.<br />
-Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.</p>
-<p>Trước khi bắt đầu với các ví dụ, ta nên xem qua một số nguồn diễn giải 3 khái niệm này.</p>
-<p>
+		Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.
+Với người mới, hiểu rõ khái niệm là rất quan trọng.
+Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là Host Enviroment, Build Enviroment, và Target Enviroment. Có thể dịch nôm na là Môi trường chủ, Môi trường biên dịch, và Môi trường chạy đích.
+Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -230,11 +209,9 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mình đang gặp 1 vấn đề là 1 hàm <em>F1()</em> trong thư viện động mình viết <em>(lib1.so)</em> không hoạt động đúng như mong muốn. Trong hàm <em>F1()</em>có gọi một loại hàm <em>F21(), F22(), F23()...F2n()</em> từ 1 thư viện tĩnh <em>(lib2.a)</em> khác.</p>
-<p>Khi build không gặp lỗi,</p>
-<p>Khi biên dịch thư viện động này với 1 file <strong>sample.c</strong> để chưa <strong>main()</strong> để chạy thử và gọi hàm <em>F1() </em>từ thư viện động <em>lib1.so</em>. Kết quả vẫn mong muốn.</p>
-<p>Tuy nhiên, khi ném thư viện đó vào ứng dụng khác (mà mình không biết họ có sử dụng cùng cách làm với ví dụ của mình không) thì các hàm <em>F2x() </em>có vẻ vẫn chạy nhưng kết quả không như mong muốn, và luôn đưa ra những kết quả giống nhau.</p>
-<p>Tìm hiểu 1 chút về Dynamic Libraries, thì thấy có vẻ chưa hiểu kĩ lắm nên sẽ tìm 1 vài bài để dịch, đọc. Có thể chưa phải là đúng tutor cho đúng problem. Nhưng cứ dịch đã, hiểu được sẽ giải thích được và tìm ra được nguyên nhân ở trên.
+		Mình đang gặp 1 vấn đề là 1 hàm F1() trong thư viện động mình viết (lib1.so) không hoạt động đúng như mong muốn. Trong hàm _F1()_có gọi một loại hàm F21(), F22(), F23()&hellip;F2n() từ 1 thư viện tĩnh (lib2.a) khác.
+Khi build không gặp lỗi,
+Khi biên dịch thư viện động này với 1 file sample.c để chưa main() để chạy thử và gọi hàm _F1() _từ thư viện động lib1.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -273,7 +250,7 @@ Trong giới hạn, tôi sẽ nói về việc sử dụng CMake để build m�
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

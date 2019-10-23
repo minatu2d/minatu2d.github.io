@@ -2,62 +2,52 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>USB on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/usb/</link>
+    <link>https://blog.lazytrick.com/tags/usb/</link>
     <description>Recent content in USB on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Tue, 15 Mar 2016 14:54:41 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/usb/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/usb/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>SCSI - Giao tiếp với USB Memory</title>
-      <link>https://minatu2d.github.io/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
+      <link>https://blog.lazytrick.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
       <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
-      <description>&lt;p&gt;&lt;img class=&#34;  wp-image-533 aligncenter&#34; src=&#34;{{ site.baseurl }}/assets/8gb-usb-flash-drive-rotation-2-0-usb-disk-model-pen-drive-memory-stick-8g-hot.jpg&#34; alt=&#34;8GB-USB-Flash-Drive-Rotation-2-0-USB-DISK-Model-Pen-drive-memory-stick-8G-HOT.jpg&#34; width=&#34;196&#34; height=&#34;196&#34; /&gt;&lt;/p&gt;
-&lt;p&gt;Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &#34;USB Flash Memory&#34; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.&lt;/p&gt;
-&lt;p&gt;Ở một số bài trước, tôi cũng viết về một số điểm chính của giao tiếp USB.&lt;/p&gt;
-&lt;p&gt;Về cơ bản, phần mềm mà programer có thể viết cho USB hầu như được xác định từ sau bước tín hiệu. Tức là phía ứng dụng mức thấp (tức driver ấy) sẽ sử dụng các thanh và các ngắt được cung cấp để setup, nhận dữ liệu, gửi dữ liêu, phát hiện kết nối.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
+      <description>Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &amp;ldquo;USB Flash Memory&amp;rdquo; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.</description>
     </item>
     
     <item>
       <title>Hiểu thêm về HID Report Descriptor</title>
-      <link>https://minatu2d.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
-      <description>&lt;p&gt;Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.&lt;/p&gt;
-&lt;p&gt;Giờ xin dịch lại bài này một cách khái quát nhất.&lt;/p&gt;
-&lt;p&gt;Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).&lt;/p&gt;
-&lt;p&gt;Về nguyên tắc, từ khi cắm 1 thiết bị USB bất kì cắm vào cổng, cần trải qua 3 giai đoạn giao tiếp giữa máy tính và thiết bị để có thể hiểu nhau. Đó là Reset (về điện đóm), Configured (load các driver tương ứng), Sử dụng được (khi chúng di chuyển được con chuột, hoặc gõ được phím).&lt;/p&gt;
-&lt;p&gt;Trong bài này giới thiệu dữ liệu trao đổi giữa HID Driver (nằm trên máy tính) và HID Device (hay về mặt phần mềm là Firmware chạy trên Device). Mà cụ thể nói về &#34;HID Report Descriptor&#34;, cái được HID Device gửi lên HID Driver để báo cho Driver biết HID Device có những dữ liệu gì mà Driver có thể hỏi được, được tổ chức như thế nào.&lt;/p&gt;
-&lt;p&gt;Link : &lt;a href=&#34;http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/&#34;&gt;http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Một USB HID Report là một trong những descriptor (đặc tả) mà Host yêu cầu từ thiết bị USB. Thiết bị USB sẽ trả lời yêu cầu này bằng các Report. Nhưng Report này sẽ nói cho Host biết các dữ liệu trong quá trình sử dụng mà Device gửi lên nên được hiểu như thế nào. Trong bài này, tác giả Frank-Zhang(Sony Engineer) đã giới thiệu theo từng ví dụ.</description>
+      <guid>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
+      <description>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.
+Giờ xin dịch lại bài này một cách khái quát nhất.
+Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau.</description>
     </item>
     
     <item>
       <title>USB cho Dev (Chp.01 - Giới thiệu)</title>
-      <link>https://minatu2d.github.io/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:18:10 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</guid>
-      <description>&lt;p&gt;USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.&lt;/p&gt;
-&lt;p&gt;Link gốc tại &lt;a href=&#34;http://www.beyondlogic.org/usbnutshell/usb1.shtml&#34;&gt;http://www.beyondlogic.org/usbnutshell/usb1.shtml&lt;/a&gt;&lt;/p&gt;
-&lt;h4&gt;Tóm tắt về USB&lt;/h4&gt;
-&lt;h5&gt;Hiểu chuẩn USB để sử dụng trong phát triển&lt;/h5&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</guid>
+      <description>USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.
+Link gốc tại http://www.beyondlogic.org/usbnutshell/usb1.shtml
+Tóm tắt về USB Hiểu chuẩn USB để sử dụng trong phát triển Nếu bạn là người bắt đầu công việc phát triển sử dụng USB, thì quả thật nó không dễ dàng gì.</description>
     </item>
     
     <item>
       <title>Tầng thấp của USB</title>
-      <link>https://minatu2d.github.io/post/2016-01-25-tang-thap-cua-usb-se-viet/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:17:00 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-25-tang-thap-cua-usb-se-viet/</guid>
+      <guid>https://blog.lazytrick.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</guid>
       <description>USB - Khỏi cần nói thì nó cũng đã quá nổi tiếng về sự phổ biến rồi. Gần như mọi thứ đều mặc định phải có kết nối USB, cổng USB gần như là bắt buộc trên máy tính, và rất nhiều thiết bị điện tử ta thấy. Từ USB1.1 đến 2.0, rồi gần đây nhất là 3.0. Rồi gần đây người ta có nhắc nhiều đến USB Type C.</description>
     </item>
     

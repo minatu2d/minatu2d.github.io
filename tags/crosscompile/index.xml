@@ -2,27 +2,25 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>CrossCompile on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/crosscompile/</link>
+    <link>https://blog.lazytrick.com/tags/crosscompile/</link>
     <description>Recent content in CrossCompile on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Wed, 03 Aug 2016 01:24:36 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/crosscompile/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/crosscompile/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Phân biệt Build vs Host vs Target</title>
-      <link>https://minatu2d.github.io/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
+      <link>https://blog.lazytrick.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
       <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
-      <description>&lt;p&gt;Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.&lt;br /&gt;
-Với người mới, hiểu rõ khái niệm là rất quan trọng.&lt;/p&gt;
-&lt;p&gt;Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là &lt;strong&gt;Host Enviroment&lt;/strong&gt;, &lt;strong&gt;Build Enviroment&lt;/strong&gt;, và &lt;strong&gt;Target Enviroment&lt;/strong&gt;. Có thể dịch nôm na là &lt;strong&gt;Môi trường chủ&lt;/strong&gt;, &lt;strong&gt;Môi trường biên dịch&lt;/strong&gt;, và &lt;strong&gt;Môi trường chạy đích&lt;/strong&gt;.&lt;br /&gt;
-Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.&lt;/p&gt;
-&lt;p&gt;Trước khi bắt đầu với các ví dụ, ta nên xem qua một số nguồn diễn giải 3 khái niệm này.&lt;/p&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
+      <description>Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.
+Với người mới, hiểu rõ khái niệm là rất quan trọng.
+Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là Host Enviroment, Build Enviroment, và Target Enviroment. Có thể dịch nôm na là Môi trường chủ, Môi trường biên dịch, và Môi trường chạy đích.
+Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.</description>
     </item>
     
   </channel>

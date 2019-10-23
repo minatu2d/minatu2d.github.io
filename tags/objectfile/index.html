@@ -70,11 +70,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Mình đang gặp 1 vấn đề là 1 hàm <em>F1()</em> trong thư viện động mình viết <em>(lib1.so)</em> không hoạt động đúng như mong muốn. Trong hàm <em>F1()</em>có gọi một loại hàm <em>F21(), F22(), F23()...F2n()</em> từ 1 thư viện tĩnh <em>(lib2.a)</em> khác.</p>
-<p>Khi build không gặp lỗi,</p>
-<p>Khi biên dịch thư viện động này với 1 file <strong>sample.c</strong> để chưa <strong>main()</strong> để chạy thử và gọi hàm <em>F1() </em>từ thư viện động <em>lib1.so</em>. Kết quả vẫn mong muốn.</p>
-<p>Tuy nhiên, khi ném thư viện đó vào ứng dụng khác (mà mình không biết họ có sử dụng cùng cách làm với ví dụ của mình không) thì các hàm <em>F2x() </em>có vẻ vẫn chạy nhưng kết quả không như mong muốn, và luôn đưa ra những kết quả giống nhau.</p>
-<p>Tìm hiểu 1 chút về Dynamic Libraries, thì thấy có vẻ chưa hiểu kĩ lắm nên sẽ tìm 1 vài bài để dịch, đọc. Có thể chưa phải là đúng tutor cho đúng problem. Nhưng cứ dịch đã, hiểu được sẽ giải thích được và tìm ra được nguyên nhân ở trên.
+		Mình đang gặp 1 vấn đề là 1 hàm F1() trong thư viện động mình viết (lib1.so) không hoạt động đúng như mong muốn. Trong hàm _F1()_có gọi một loại hàm F21(), F22(), F23()&hellip;F2n() từ 1 thư viện tĩnh (lib2.a) khác.
+Khi build không gặp lỗi,
+Khi biên dịch thư viện động này với 1 file sample.c để chưa main() để chạy thử và gọi hàm _F1() _từ thư viện động lib1.
 	</div>
 </article>
 </main>
@@ -88,7 +86,7 @@
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

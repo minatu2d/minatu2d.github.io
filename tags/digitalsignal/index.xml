@@ -2,34 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>DigitalSignal on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/digitalsignal/</link>
+    <link>https://blog.lazytrick.com/tags/digitalsignal/</link>
     <description>Recent content in DigitalSignal on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Wed, 03 Feb 2016 15:31:36 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/digitalsignal/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/digitalsignal/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Một chút về RGB VGA, Digital RGB</title>
-      <link>https://minatu2d.github.io/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</link>
+      <link>https://blog.lazytrick.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</link>
       <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</guid>
-      <description>&lt;p&gt;MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.&lt;/p&gt;
-&lt;p&gt;Mô tả ngắn gọn ở đây để sau đỡ quên vậy:&lt;/p&gt;
-&lt;p&gt;ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC...) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.&lt;/p&gt;
-&lt;p&gt;Về chức năng, mình đang có một tín hiệu VGA, nhưng do không hiểu các khái niệm về đầu ra, đầu vào của chip này nên cũng mất một thời gian mới rõ được.&lt;/p&gt;
-&lt;p&gt;Bài này sẽ note lại một số keyword xuất hiện trong Datasheet của ADV7401.&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;Video Decoding là quá trình làm gì.&lt;/li&gt;
-&lt;li&gt;Graphic Digitization là quá trình làm gì.&lt;/li&gt;
-&lt;li&gt;720p, 1080i nói lên điều gì.&lt;/li&gt;
-&lt;li&gt;VGA, SXGA nói lên điều gì.&lt;/li&gt;
-&lt;li&gt;Một số keyword khác, có tìm hiểu nhưng không liên quan.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;</description>
+      <guid>https://blog.lazytrick.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</guid>
+      <description>MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.
+Mô tả ngắn gọn ở đây để sau đỡ quên vậy:
+ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&amp;hellip;) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.</description>
     </item>
     
   </channel>

@@ -62,12 +62,19 @@
 			<h1 class="post__title">Ví dụ cơ bản với pthread trên Linux</h1>
 			
 		</header><div class="content post__content clearfix">
-			</p>
+			
+
+<h2 id="ví-dụ-cơ-bản-với-pthread-trên-linux">Ví dụ cơ bản với pthread trên Linux</h2>
+
+<h2 id="1-tạo-và-dừng-thread">1. Tạo và dừng thread</h2>
+
+<p>Source code gốc lấy từ <a href="https://computing.llnl.gov/tutorials/pthreads/samples/hello.c">link</a></p>
+
 <p>[code lang=c]<br />
 /******************************************************************************<br />
 * FILE: hello.c<br />
 * DESCRIPTION:<br />
-*   Chuong trinh demo thao tac tao thread, tat thread<br />
+* Chuong trinh demo thao tac tao thread, tat thread<br />
 * AUTHOR: Blaise Barney<br />
 * LAST REVISED: 08/09/11<br />
 *<br />
@@ -75,141 +82,157 @@
 * COMPILE CMD : $gcc -o hello hello.c -lpthread<br />
 ******************************************************************************/<br />
 //<br />
-#include &lt;pthread.h&gt;<br />
-#include &lt;stdio.h&gt;<br />
-#include &lt;stdlib.h&gt;<br />
-#define NUM_THREADS     5</p>
+#include <pthread.h><br />
+#include <stdio.h><br />
+#include <stdlib.h><br />
+#define NUM_THREADS 5</p>
+
 <p>void *PrintHello(void *threadid)<br />
 {<br />
-   long tid;<br />
-   tid = (long)threadid;<br />
-   printf(&quot;Hello World! Thread #%ld o day !!!\n&quot;, tid);<br />
-   pthread_exit(NULL);<br />
+long tid;<br />
+tid = (long)threadid;<br />
+printf(&ldquo;Hello World! Thread #%ld o day !!!\n&rdquo;, tid);<br />
+pthread_exit(NULL);<br />
 }</p>
+
 <p>int main(int argc, char *argv[])<br />
 {<br />
-   pthread_t threads[NUM_THREADS];<br />
-   int rc;<br />
-   long tId;</p>
-<p>   for(tId = 0; tId &lt; NUM_THREADS; tId++){<br />
-     printf(&quot; Ham main() : Thread Main : Tao...thread moi: %ld\n&quot;, tId);<br />
-     rc = pthread_create(<br />
-                        &amp;threads[tId],<br />
-                        NULL,<br />
-                        PrintHello,<br />
-                        (void *)tId);<br />
-     if (rc){<br />
-       printf(&quot;ERROR; loi khi chay pthread_create(), ma loi: %d\n&quot;, rc);<br />
-       exit(-1);<br />
-       }<br />
-     }</p>
-<p>   /* Last thing that main() should do */<br />
-   pthread_exit(NULL);<br />
+pthread_t threads[NUM_THREADS];<br />
+int rc;<br />
+long tId;</p>
+
+<p>for(tId = 0; tId &lt; NUM_THREADS; tId++){<br />
+printf(&rdquo; Ham main() : Thread Main : Tao&hellip;thread moi: %ld\n&rdquo;, tId);<br />
+rc = pthread_create(<br />
+&amp;threads[tId],<br />
+NULL,<br />
+PrintHello,<br />
+(void *)tId);<br />
+if (rc){<br />
+printf(&ldquo;ERROR; loi khi chay pthread_create(), ma loi: %d\n&rdquo;, rc);<br />
+exit(-1);<br />
+}<br />
+}</p>
+
+<p>/* Last thing that main() should do */<br />
+pthread_exit(NULL);<br />
 }<br />
 [/code]</p>
+
 <p>Kết quả sau khi biên dịch và chạy:</p>
+
 <p>[code lang=shell]<br />
 oedev@OEDEV-Ubuntu:code$ gcc -o hello hello.c -lpthread<br />
 oedev@OEDEV-Ubuntu:code$ ./hello<br />
- Ham main() : Thread Main : Tao...thread moi: 0<br />
- Ham main() : Thread Main : Tao...thread moi: 1<br />
+Ham main() : Thread Main : Tao&hellip;thread moi: 0<br />
+Ham main() : Thread Main : Tao&hellip;thread moi: 1<br />
 Hello World! Thread #0 o day !!!<br />
- Ham main() : Thread Main : Tao...thread moi: 2<br />
+Ham main() : Thread Main : Tao&hellip;thread moi: 2<br />
 Hello World! Thread #1 o day !!!<br />
- Ham main() : Thread Main : Tao...thread moi: 3<br />
- Ham main() : Thread Main : Tao...thread moi: 4<br />
+Ham main() : Thread Main : Tao&hellip;thread moi: 3<br />
+Ham main() : Thread Main : Tao&hellip;thread moi: 4<br />
 Hello World! Thread #2 o day !!!<br />
 Hello World! Thread #3 o day !!!<br />
 Hello World! Thread #4 o day !!!<br />
 [/code]</p>
+
 <p>Như ta thấy, các thread được tạo và chạy hàm <code>PrintHello</code> rồi hiển thị giá trị <code>tId</code><br />
 được truyền khi tạo trong nội dung của nó.<br />
 Ta chú ý ở đây, thông tin hiện ra màn hình có thể không theo <strong>thứ tự đâu</strong>.<br />
 Tức là có thể dù thread 1 được tạo trước thread 2 nhưng chưa chắc chữ <code>Hello World</code><br />
 của nó sẽ ra trước thread 2.</p>
+
 <p>Nói kĩ hơn về các hàm sử dụng ở trên:</p>
+
 <p>[code lang=c]<br />
-     rc = pthread_create(<br />
-                        &amp;threads[tId],<br />
-                        NULL,<br />
-                        PrintHello,<br />
-                        (void *)tId);<br />
+rc = pthread_create(<br />
+&amp;threads[tId],<br />
+NULL,<br />
+PrintHello,<br />
+(void *)tId);<br />
 [/code]</p>
+
 <p>Trong đó,<br />
 - Tham số thứ nhất: <code>&amp;amp;threads[tId]</code> : Chứa các thông tin của thread sau khi được tạo.<br />
 Bất cứ thao tác nào liên quan đến thread này đều thông qua biến này.</p>
+
 <ul>
 <li>Tham số thứ 2 : <code>NULL</code> : Tức là không set thêm thuộc tính nào cho thread sẽ được tạo,<br />
 lấy hết mặc định.</li>
-<li>
-<p>Tham số thứ 3 : <code>PrintHello</code> : Hàm (hoặc con trỏ hàm) sẽ chạy trong thread sau khi được tạo.<br />
-Thông thường hàm này sẽ chạy mãi bằng một vòng lặp vô tận chẳng hạn.</p>
-</li>
-<li>
-<p>Tham số thứ 4 : <code>(void*)tId</code> : Tham số này là một con trỏ thôi, kiểu gì cũng được.<br />
+
+<li><p>Tham số thứ 3 : <code>PrintHello</code> : Hàm (hoặc con trỏ hàm) sẽ chạy trong thread sau khi được tạo.<br />
+Thông thường hàm này sẽ chạy mãi bằng một vòng lặp vô tận chẳng hạn.</p></li>
+
+<li><p>Tham số thứ 4 : <code>(void*)tId</code> : Tham số này là một con trỏ thôi, kiểu gì cũng được.<br />
 Nó sẽ được truyền như là tham số như thread thực hiện hàm đã truyền ở tham số thứ 3.<br />
 Trong trường hợp này hàm <code>PrintHello</code> nhận tham số <code>void *</code> vì thế nên ép kiểu sang<br />
-<code>void *</code> cho <code>tId</code>. Và ta cũng thấy, giá trị <code>tId</code> được ép kiểu trở lại trong hàm <code>PrintHello</code></p>
-</li>
+<code>void *</code> cho <code>tId</code>. Và ta cũng thấy, giá trị <code>tId</code> được ép kiểu trở lại trong hàm <code>PrintHello</code></p></li>
 </ul>
+
 <p>Tiếp theo đến</p>
+
 <p>[code lang=c]<br />
-   pthread_exit(NULL);<br />
+pthread_exit(NULL);<br />
 [/code]</p>
+
 <ul>
 <li>Tham số của hàm này ở đây được sử dụng để truyền ra cho một thread khác đang đợi bằng <code>join</code><br />
 nó kết thúc, trong trường hợp này không sử dụng nên giá trị nó là NULL.</li>
 </ul>
-<h2>2. Thêm một chút xử lý cho thread</h2>
+
+<h2 id="2-thêm-một-chút-xử-lý-cho-thread">2. Thêm một chút xử lý cho thread</h2>
+
 <ul>
 <li>Giả sử mỗi thread chạy một vòng lặp vô hạn, sẽ in giá trị tăng dần đến các terminal (được bật sẵn)<br />
 khác nhau.</li>
-<li>Để đơn giản, ta sử dụng 4 terminal.<br />
+
+<li><p>Để đơn giản, ta sử dụng 4 terminal.<br />
 1 Terminal (gọi là Terminal 0) để cho thread chính hay chính cái xử lý chứa hàm <code>main()</code><br />
 3 Terminal (gọi là Terminal 1,2,3) còn lại sẽ sử dụng để 5 thread con được tạo hiển thị giá trị:<br />
 Thread 1, 2 sẽ hiển thị Terminal 1<br />
 Thread 3, 4 sẽ hiển thị Terminal 2<br />
-Thread 5    sẽ hiển thị Terminal 3</li>
-</ul>
-<li>
-<p>Mỗi terminal trong Linux có thể được truy cập qua một đường dẫn file.<br />
+Thread 5 sẽ hiển thị Terminal 3</p></li>
+
+<li><p>Mỗi terminal trong Linux có thể được truy cập qua một đường dẫn file.<br />
 Ta có thể lấy đường dẫn của terminal ta đang sử dụng bằng lệnh <code>tty</code><br />
 Giả sử 4 terminal của chúng ta có đường dẫn tương ứng là:<br />
-<code>/dev/pts/15</code> đến <code>/dev/pts/17</code></p>
-</li>
-<li>
-<p>Ta sẽ sửa lại hàm <code>PrintHello</code> ở trên như sau:</p>
-</li>
+<code>/dev/pts/15</code> đến <code>/dev/pts/17</code></p></li>
+
+<li><p>Ta sẽ sửa lại hàm <code>PrintHello</code> ở trên như sau:</p></li>
+</ul>
+
 <p>[code lang=c]<br />
 const char* TERMINAL_DEV_FILES[] = {<br />
-&quot;/dev/pts/19&quot;,<br />
-&quot;/dev/pts/19&quot;,<br />
-&quot;/dev/pts/20&quot;,<br />
-&quot;/dev/pts/20&quot;,<br />
-&quot;/dev/pts/21&quot;,<br />
+&rdquo;/dev/pts/19&rdquo;,<br />
+&rdquo;/dev/pts/19&rdquo;,<br />
+&rdquo;/dev/pts/20&rdquo;,<br />
+&rdquo;/dev/pts/20&rdquo;,<br />
+&rdquo;/dev/pts/21&rdquo;,<br />
 };</p>
+
 <p>void PrintHello(void *threadid)<br />
 {<br />
-   FILE *fo = NULL;<br />
-   long count = 0;<br />
-   long tid;<br />
-   tid = (long)threadid;<br />
-   fo = fopen(TERMINAL_DEV_FILES[tid], &quot;a&quot;);<br />
-   if (fo != NULL)<br />
-   {<br />
-      count = 0;<br />
-      while (1)<br />
-      {<br />
-          fprintf(fo,&quot;Thread %ld : %ld\n&quot;,tid + 1, ++count) ;<br />
-          if (count == 100) break;<br />
-          sleep(3);<br />
-      }<br />
-   }<br />
-   fclose(fo);<br />
-   printf(&quot;Bye!!!! Thread #%ld o day !!!\n&quot;, tid);<br />
-   pthread_exit(NULL);<br />
+FILE *fo = NULL;<br />
+long count = 0;<br />
+long tid;<br />
+tid = (long)threadid;<br />
+fo = fopen(TERMINAL_DEV_FILES[tid], &ldquo;a&rdquo;);<br />
+if (fo != NULL)<br />
+{<br />
+count = 0;<br />
+while (1)<br />
+{<br />
+fprintf(fo,&ldquo;Thread %ld : %ld\n&rdquo;,tid + 1, ++count) ;<br />
+if (count == 100) break;<br />
+sleep(3);<br />
+}<br />
+}<br />
+fclose(fo);<br />
+printf(&ldquo;Bye!!!! Thread #%ld o day !!!\n&rdquo;, tid);<br />
+pthread_exit(NULL);<br />
 }<br />
 [/code]</p>
+
 <p>Giử sử thread chính sẽ được chạy từ một terminal khác.<br />
 Kết quả sẽ như sau:<br />
 <a href="https://youtu.be/Gpy6m8B19qc">https://youtu.be/Gpy6m8B19qc</a></p>

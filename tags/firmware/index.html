@@ -74,7 +74,7 @@
  Khi kernel được build, các tham số sau phải được bật (ENABLE)
 CONFIG_FW_LOADER : Cho phép load firmware
 CONFIG_EXTRA_FIRMWARE &gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa các firmware. Các firmware phải được copy vào thư mục CONFIG_EXTRA_FIRMWARE_DIR đã set ở trên.  Một số điều lưu ý liên quan đến firmware:
-  Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,
+ Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -86,9 +86,9 @@ CONFIG_EXTRA_FIRMWARE &gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa cá
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.<br />
-Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là <strong>Firmware</strong>.<br />
-
+		Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.
+Mình thấy ngoài Driver, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là Firmware.
+Bài này sẽ dịch lại trang, để hiểu qua về Firmware trong Linux Kernel.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -100,14 +100,12 @@ Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh <strong>source</strong>, ta thực hiện build tạo image có có tên là <strong>rpi-basic-image</strong> thông qua lệnh:</p>
-<p>[code lang="shell"]<br />
-$bitbake rpi-basic-image<br />
-[/code]</p>
-<p>Thực ra còn 2 image khác ta có thể build đó là <strong>rpi-hwup-image</strong> <strong>rpi-test-image</strong>. Ta có thể thấy 2 file bb cho 2 image ở thư mục <strong>meta-raspberrypi/recipes-core/images/</strong>.</p>
-<p><strong>rpi-hwup-image</strong> : là image nhỏ nhất (có dịp sẽ thử)<br />
-<strong>rpi-basic-image</strong>: là image ta vấn dùng đến bây giờ.<br />
-<strong>rpi-test-image</strong> : là image dùng cho việc test. (có dịp sẽ thử)
+		Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh source, ta thực hiện build tạo image có có tên là rpi-basic-image thông qua lệnh:
+[code lang=&ldquo;shell&rdquo;]
+$bitbake rpi-basic-image
+[/code]
+Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
+rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)
 	</div>
 </article>
 </main>
@@ -121,7 +119,7 @@ $bitbake rpi-basic-image<br />
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

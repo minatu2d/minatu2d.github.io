@@ -70,9 +70,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trong bài số <a href="https://lazytrick.wordpress.com/2016/09/19/gdb-co-the-lam-gi/">02</a>, ta đã nói đến những việc mà GDB có thể giúp chúng ta.</p>
-<p>Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số <strong>-g</strong> khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.<br />
-
+		Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
+Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
+Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -84,17 +84,9 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là <strong>target program</strong>.<br />
-Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:</p>
-<ol>
-<li>GDB và <strong>target program</strong> cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</li>
-<li>GDB và <strong>target program</strong> không cùng trên 1 máy : Tức là GDB sẽ chạy trên 1 máy để debug 1 chương trình chạy trên máy khác thông qua Serial hoặc Network. Cái này hay thấy khi phát triển ứng dụng nhúng. Xem thêm tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</li>
-</ol>
-<p>Một số distro khi được cài đặt, đã bao gồm <strong>GDB</strong> rồi. Có thể kiểm tra bằng command dưới đây:</p>
-<p>[code lang="shell"]<br />
-$gdb --version<br />
-[/code]</p>
-<p>
+		Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
+ GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -106,11 +98,9 @@ $gdb --version<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Trước khi nói về chủ đề chính là "GDB có thể làm gì". GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.</p>
-<h4>1. Phầm mềm Debugger sinh ra giải quyết cái gì?</h4>
-<p>Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.<br />
-Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế. Những cái đó người ta gọi là <strong>BUG</strong>.</p>
-<p>Một điều nữa, khi đã biên dịch (ở đây không xét đến ngôn ngữ thông dịch nhé), các code mà con người viết ra sẽ trở thành mã nhị phân.
+		Trước khi nói về chủ đề chính là &ldquo;GDB có thể làm gì&rdquo;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.
+1. Phầm mềm Debugger sinh ra giải quyết cái gì? Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.
+Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -122,22 +112,9 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！</p>
-<p>Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với "siêu lười" như mình, loạt về <a href="https://lazytrick.wordpress.com/category/usb/">USB Basic</a> dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.</p>
-<p>Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).</p>
-<p>Nội dung sẽ như sau:</p>
-<ol>
-<li>GDB có thể làm gì?</li>
-<li>Cài đặt GDB</li>
-<li>GDB dòng lệnh cơ bản</li>
-<li>GDB trên Eclipse IDE</li>
-<li>GDB trên QtCreator</li>
-<li>GDB làm việc như thế nào?</li>
-<li>GDB Server giải quyết vấn đề gì</li>
-<li>GDB trên Visual Studio 2015</li>
-<li>GDB trên Eclipse IDE, QtCreator khi sử dụng với GDB Server</li>
-</ol>
-<p>
+		Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！
+Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với &ldquo;siêu lười&rdquo; như mình, loạt về USB Basic dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.
+Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).
 	</div>
 </article>
 </main>
@@ -151,7 +128,7 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

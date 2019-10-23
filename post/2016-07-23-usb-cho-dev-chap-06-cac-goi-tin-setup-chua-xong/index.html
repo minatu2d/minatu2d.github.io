@@ -62,400 +62,555 @@
 			<h1 class="post__title">USB cho dev (Chap.06 – Các gói tin Setup)</h1>
 			
 		</header><div class="content post__content clearfix">
-			<span style="line-height:1.7;">Nhưng yêu cầu về thời gian ở trên hoàn toàn có thể thực hiện được ngay cả với những thiết bị chậm nhất đi nữa. Nhưng những giới hạn về thời gian này có thể gây khó khăn trong quá trình debug. Trong vòng 50ms, chẳng thể có kí tự debug nào được gửi đi ở 9600bps ở dạng serial không đồng bộ hoặc một Emulator cho mỗi step chạy ở các thanh ghi. Chính vì thế, Khi debug USB, người cần có một vài phương pháp khác. (cái này chưa bàn đến)</span></li>
+			<p>Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.</p>
+
+<p>Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây. Ngoài ra, nó cũng quy định chặt hơn cho từng Request từ phía Host.</p>
+
+<ul>
+<li>Yêu cầu thông tin chuẩn của thiết bị (Standard Device request) mà không có dữ liệu (hay DATA Stage) thì phải hoàn thành trong vòng 50ms.</li>
+<li>Nếu yêu cầu có dữ liệu kèm theo (có DATA stage) thì dữ liệu phải được trao đổi sau ít nhất 500ms sau request được gửi đến.
+
+<ul>
+<li>Mỗi gói dữ liệu phải gửi trong 500ms sau khi gói trước được gửi</li>
+<li>Thông báo trạng thái (Status Stage) phải hoàn thành trong vòng 50ms sau khi gửi gói tin cuối cùng.</li>
+</ul></li>
+<li>Lệnh SetAddresss (có chưa phần Data) phải được thực hiện và trả lại Status trong vòng 50ms. Phía thiết bị có 2ms để thực hiện thay địa chỉ trước khi request tiếp theo được gửi đến.Nhưng yêu cầu về thời gian ở trên hoàn toàn có thể thực hiện được ngay cả với những thiết bị chậm nhất đi nữa. Nhưng những giới hạn về thời gian này có thể gây khó khăn trong quá trình debug. Trong vòng 50ms, chẳng thể có kí tự debug nào được gửi đi ở 9600bps ở dạng serial không đồng bộ hoặc một Emulator cho mỗi step chạy ở các thanh ghi. Chính vì thế, Khi debug USB, người cần có một vài phương pháp khác. (cái này chưa bàn đến)</li>
 </ul>
+
 <p>Mỗi request sẽ bắt đầu bằng 8 byte, theo định dạng sau:</p>
-<table width="536" cellspacing="2" cellpadding="7">
-<tbody>
-<tr id="head">
-<td valign="MIDDLE" width="10%" height="24">Offset</td>
-<td valign="MIDDLE" width="22%" height="24">Field</td>
-<td valign="MIDDLE" width="8%" height="24">Size</td>
-<td valign="MIDDLE" width="14%" height="24">Value</td>
-<td valign="MIDDLE" width="46%" height="24">Description</td>
-</tr>
-<tr id="row">
-<td valign="TOP">0</td>
-<td valign="TOP">bmRequestType</td>
-<td valign="TOP">1</td>
-<td valign="TOP">Bit-Map</td>
-<td valign="TOP"><span style="font-family:Arial;font-size:small;"><b>D7 Hướng truyền DATA</b><br />
+
+<p>Offset</p>
+
+<p>Field</p>
+
+<p>Size</p>
+
+<p>Value</p>
+
+<p>Description</p>
+
+<p>0</p>
+
+<p>bmRequestType</p>
+
+<p>1</p>
+
+<p>Bit-Map</p>
+
+<p><strong>D7 Hướng truyền DATA</strong><br />
 0 = Host to Device<br />
 1 = Device to Host<br />
-<b>D6..5 Loại</b><br />
+<strong>D6..5 Loại</strong><br />
 0 = Standard<br />
 1 = Class<br />
 2 = Vendor<br />
 3 = Reserved<br />
-<b>D4..0 Phía nhận</b><br />
+<strong>D4..0 Phía nhận</strong><br />
 0 = Device<br />
 1 = Interface<br />
 2 = Endpoint<br />
 3 = Other<br />
-4..31 = Reserved<br />
-</span></td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE">1</td>
-<td valign="MIDDLE">bRequest</td>
-<td valign="MIDDLE">1</td>
-<td valign="MIDDLE">Value</td>
-<td valign="MIDDLE">Request</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" height="30">2</td>
-<td valign="MIDDLE" height="30">wValue</td>
-<td valign="MIDDLE" height="30">2</td>
-<td valign="MIDDLE" height="30">Value</td>
-<td valign="MIDDLE" height="30">Value</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" height="30">4</td>
-<td valign="MIDDLE" height="30">wIndex</td>
-<td valign="MIDDLE" height="30">2</td>
-<td valign="MIDDLE" height="30">Index or Offset</td>
-<td valign="MIDDLE" height="30">Index</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" height="30">6</td>
-<td valign="MIDDLE" height="30">wLength</td>
-<td valign="MIDDLE" height="30">2</td>
-<td valign="MIDDLE" height="30">Count</td>
-<td valign="MIDDLE" height="30">Số lượng byte truyền trong 1 Data Stage</td>
-</tr>
-</tbody>
-</table>
-<p><b>bmRequestType</b>: Xác định chiều của request (phần DATA), loại request, cũng như loại thông tin sẽ tiếp nhận.</p>
-<p><b>bRequest</b>: Muốn nói rằng, đây là Request.</p>
+4..31 = Reserved</p>
+
+<p>1</p>
+
+<p>bRequest</p>
+
+<p>1</p>
+
+<p>Value</p>
+
+<p>Request</p>
+
+<p>2</p>
+
+<p>wValue</p>
+
+<p>2</p>
+
+<p>Value</p>
+
+<p>Value</p>
+
+<p>4</p>
+
+<p>wIndex</p>
+
+<p>2</p>
+
+<p>Index or Offset</p>
+
+<p>Index</p>
+
+<p>6</p>
+
+<p>wLength</p>
+
+<p>2</p>
+
+<p>Count</p>
+
+<p>Số lượng byte truyền trong 1 Data Stage</p>
+
+<p><strong>bmRequestType</strong>: Xác định chiều của request (phần DATA), loại request, cũng như loại thông tin sẽ tiếp nhận.</p>
+
+<p><strong>bRequest</strong>: Muốn nói rằng, đây là Request.</p>
+
 <p>Thông thường bmRequestType được đọc, và sẽ được chia ra các xử lý theo các handler như Standard Device request Handler, Standard Interface request Handler, hoặc Standard Endpoint request Handler, hay Class Device request handler.etc. Tất nhiên, cách xử lý trên không bắt buộc, biệc đọc nội dung packet Setup cũng như xử lý phụ thuộc hoàn toàn các thiết kế phía Device của bạn. Một số chọn cách đọc bRequest trước tiên sau đó mới xác định đến loại thông tin sẽ tiếp nhận.</p>
+
 <p>Các request chuẩn (Standard request) là phổ biến ở tất cả các thiết bị USB, nó sẽ được nói chi tiết ở bên dưới. Classr request phổ biến cho các lớp Driver. Ví dụ, tất cả các thiết bị tuân theo HID class thì đều có một tập các request class chung. Tập class này khác với Communication class, và tất nhiên khác với Mass Storage class.</p>
+
 <p>Và cuối cùng, là các request mà các vendor tự định nghĩa. Nhưng request này được người thiết kế thiết bị tự đặt, các thiết bị thường không giống nhau. Và tất nhiên, người ta có thể làm bất cứ thứ gì người ta muốn.</p>
+
 <p>Một request phổ biến có thế hướng đến nhiều đối tượng khác nhau (thiết bị, giao diện, hay Endpoint). GetStatus Standard request chẳng hạn, nó có thể cho thiết ị, giao diện hoặc Endpoint. Khi hướng đến thiết bị, nó sẽ trả về trạng thái của remote wake up và nếu thiết bị là tự cung cấp nguồn. Tuy nhiên, nếu cùng request đó được gửi đến interface thì nó luôn trả lại zero, còn đến Endpoint thì nó lại trả lại một dừng tạm thời cho EndPoint đó.</p>
+
 <p>Giá trị wValue và wIndex cho phép các tham số được kèm theo request. wLength chỉ số lượng byte được truyền ở DATA stage.</p>
+
 <p>Request chuẩn (Standard Request)</p>
-<p>Ở Section 9.4 trong đặc tả về USB, có nói rằng, "Standard request" phải được thực hiện trên mọi USB Device. Tài liệu đó cũng cung cấp một bảng của các request có thể. Ta hãy coi rằng phía firmware của thiết bị USB sẽ thực hiện đọc các gói Setup chưa chi chúng ra để xử lý tướng ứng vỡi mỗi loại đối tượng là Device, Interface hay Endpoint.</p>
+
+<p>Ở Section 9.4 trong đặc tả về USB, có nói rằng, &ldquo;Standard request&rdquo; phải được thực hiện trên mọi USB Device. Tài liệu đó cũng cung cấp một bảng của các request có thể. Ta hãy coi rằng phía firmware của thiết bị USB sẽ thực hiện đọc các gói Setup chưa chi chúng ra để xử lý tướng ứng vỡi mỗi loại đối tượng là Device, Interface hay Endpoint.</p>
+
 <p>Request chuẩn cho Device (Standard Device Request)</p>
+
 <p>Có 8 loại request chuẩn cho thiết bị, được liệt kê ở bảng dưới đây:</p>
-<table width="642" cellspacing="2" cellpadding="7">
-<tbody>
-<tr id="head">
-<td valign="TOP" width="17%">bmRequestType</td>
-<td valign="TOP" width="24%">bRequest</td>
-<td valign="TOP" width="15%">wValue</td>
-<td valign="TOP" width="15%">wIndex</td>
-<td valign="TOP" width="15%">wLength</td>
-<td valign="TOP" width="15%">Data</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">1000 0000b</td>
-<td valign="MIDDLE" width="24%">GET_STATUS (0x00)</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Two</td>
-<td valign="MIDDLE" width="15%">Device Status</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0000b</td>
-<td valign="MIDDLE" width="24%">CLEAR_FEATURE (0x01)</td>
-<td valign="MIDDLE" width="15%">Feature Selector</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0000b</td>
-<td valign="MIDDLE" width="24%">SET_FEATURE (0x03)</td>
-<td valign="MIDDLE" width="15%">Feature Selector</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%"><a name="GetDescriptor"></a>0000 0000b</td>
-<td valign="MIDDLE" width="24%">SET_ADDRESS (0x05)</td>
-<td valign="MIDDLE" width="15%">Device Address</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">1000 0000b</td>
-<td valign="MIDDLE" width="24%">GET_DESCRIPTOR (0x06)</td>
-<td valign="MIDDLE" width="15%">Descriptor Type &amp; Index</td>
-<td valign="MIDDLE" width="15%">Zero or Language ID</td>
-<td valign="MIDDLE" width="15%">Descriptor Length</td>
-<td valign="MIDDLE" width="15%">Descriptor</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0000b</td>
-<td valign="MIDDLE" width="24%">SET_DESCRIPTOR (0x07)</td>
-<td valign="MIDDLE" width="15%">Descriptor Type &amp; Index</td>
-<td valign="MIDDLE" width="15%">Zero or Language ID</td>
-<td valign="MIDDLE" width="15%">Descriptor Length</td>
-<td valign="MIDDLE" width="15%">Descriptor</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">1000 0000b</td>
-<td valign="MIDDLE" width="24%">GET_CONFIGURATION (0x08)</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">1</td>
-<td valign="MIDDLE" width="15%">Configuration Value</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0000b</td>
-<td valign="MIDDLE" width="24%">SET_CONFIGURATION (0x09)</td>
-<td valign="MIDDLE" width="15%">Configuration Value</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-</tbody>
-</table>
+
+<p>bmRequestType</p>
+
+<p>bRequest</p>
+
+<p>wValue</p>
+
+<p>wIndex</p>
+
+<p>wLength</p>
+
+<p>Data</p>
+
+<p>1000 0000b</p>
+
+<p>GET_STATUS (0x00)</p>
+
+<p>Zero</p>
+
+<p>Zero</p>
+
+<p>Two</p>
+
+<p>Device Status</p>
+
+<p>0000 0000b</p>
+
+<p>CLEAR_FEATURE (0x01)</p>
+
+<p>Feature Selector</p>
+
+<p>Zero</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
+<p>0000 0000b</p>
+
+<p>SET_FEATURE (0x03)</p>
+
+<p>Feature Selector</p>
+
+<p>Zero</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
+<p>0000 0000b</p>
+
+<p>SET_ADDRESS (0x05)</p>
+
+<p>Device Address</p>
+
+<p>Zero</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
+<p>1000 0000b</p>
+
+<p>GET_DESCRIPTOR (0x06)</p>
+
+<p>Descriptor Type &amp; Index</p>
+
+<p>Zero or Language ID</p>
+
+<p>Descriptor Length</p>
+
+<p>Descriptor</p>
+
+<p>0000 0000b</p>
+
+<p>SET_DESCRIPTOR (0x07)</p>
+
+<p>Descriptor Type &amp; Index</p>
+
+<p>Zero or Language ID</p>
+
+<p>Descriptor Length</p>
+
+<p>Descriptor</p>
+
+<p>1000 0000b</p>
+
+<p>GET_CONFIGURATION (0x08)</p>
+
+<p>Zero</p>
+
+<p>Zero</p>
+
+<p>1</p>
+
+<p>Configuration Value</p>
+
+<p>0000 0000b</p>
+
+<p>SET_CONFIGURATION (0x09)</p>
+
+<p>Configuration Value</p>
+
+<p>Zero</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
 <ul>
 <li>GET_STATUS : Device phải trả lại 2 byte theo dạng dưới đây:</li>
 </ul>
-<table width="600" cellspacing="2" cellpadding="7">
-<tbody>
-<tr id="head">
-<td id="packet">D15</td>
-<td id="packet">D14</td>
-<td id="packet">D13</td>
-<td id="packet">D12</td>
-<td id="packet">D11</td>
-<td id="packet">D10</td>
-<td id="packet">D9</td>
-<td id="packet">D8</td>
-<td id="packet">D7</td>
-<td id="packet">D6</td>
-<td id="packet">D5</td>
-<td id="packet">D4</td>
-<td id="packet">D3</td>
-<td id="packet">D2</td>
-<td id="packet">D1</td>
-<td id="packet">D0</td>
-</tr>
-<tr id="packet">
-<td id="packet" colspan="14" valign="MIDDLE" width="87%">Reserved</td>
-<td id="packet" valign="MIDDLE" bgcolor="#ffffff" width="6%">Remote Wakeup</td>
-<td id="packet" valign="MIDDLE" bgcolor="#ffffff" width="6%">Self Powered</td>
-</tr>
-</tbody>
-</table>
+
+<p>D15</p>
+
+<p>D14</p>
+
+<p>D13</p>
+
+<p>D12</p>
+
+<p>D11</p>
+
+<p>D10</p>
+
+<p>D9</p>
+
+<p>D8</p>
+
+<p>D7</p>
+
+<p>D6</p>
+
+<p>D5</p>
+
+<p>D4</p>
+
+<p>D3</p>
+
+<p>D2</p>
+
+<p>D1</p>
+
+<p>D0</p>
+
+<p>Reserved</p>
+
+<p>Remote Wakeup</p>
+
+<p>Self Powered</p>
+
 <p>Nếu D0 được set, thì có nghĩa thiết bị là nguồn tự cung, ngược lại thì đó là nguồn Bus.</p>
+
 <p>Nếu D1 được set, thì có nghĩa là Remote wakep up được bật, thiết bị có thể wake up Host khi Host đang suspended. Bit này có thể được thay đôi bởi SET_FEATURE hoặc CLEAR_FEATURE.</p>
+
 <ul>
 <li>CLEAR_FEATURE và SET_FEATURE: Sử dụng để set có hay không các feature. Khi nó hướng đên Device thì chỉ có 2 feature có thể set. Đó là DEVICE_REMOTE_WAKEUP và TEST_MODE. Test mode cho phép thiết bị diễn đạt nhiều điều kiện khác nhau. Chi tiết phần này được nói đến ở đặc tả USB 2.0.</li>
 <li>SET_ADDRESS: Sử dụng để gán một địa chỉ duy nhất cho thiết bị trong quá trình Enumuration. Chính là giá trị của trường wValue, tối đa đến 127. Ở request này, thiết bị dù đã có giá trị địa chỉ nhưng vẫn phải đợi thông báo trạng thái trước khi thực sự set địa chỉ cho chính nó. Còn với các request khác, nó thường được thực hiện trước khi Status đến.</li>
 <li>SET_DESCRIPTOR/GET_DESCRIPTOR: được sử dụng để trả về một descriptor trong wValue. Một request cho miêu tả cấu hình sẽ trả về tất cả các thông tin của miêu tả thiết bị, các interface, các Endpoint nữa. Có 1 chú ý ở đây:
+
 <ul>
 <li>Endpoint Descriptor: không thể được truy cập trực tiếp từ GET_DESCRIPTOR/SET_DESCRIPTOR request.</li>
 <li>Interface Descriptor: giống với Endpoint Descriptor.</li>
 <li>String Descriptor: cho phép truy cập trực tiếp</li>
-</ul>
-</li>
+</ul></li>
 <li>GET_CONFIGURATION/SET_CONFIGURATION: Được sử dụng để lấy thông tin cấu hình thiết bị hoặc set cấu hình. Trạng thái trả về ở Status Stage là 1 byte giá trị. Nếu là 0, thì có nghĩa thiết bị chưa được configured, nếu khác 0 thì có nghĩa thiết bị đã được configured. SET_CONFIGURATION được sử dụng để cho phép một thiết bị chính thức hoạt động. Nó chứa giá trị của bConfigurationValue mà Host muốn thiết lập.</li>
 </ul>
+
 <p>Request Giao diện chuẩn</p>
+
 <p>Định nghĩa 5 loại yêu cầu giao diện chuẩn, chi tiết được nêu dưới bảng sau. Chỉ có 2 request là được sử dụng một cách rõ ràng.</p>
-<table width="642" cellspacing="2" cellpadding="7">
-<tbody>
-<tr id="head">
-<td valign="TOP" width="17%">bmRequestType</td>
-<td valign="TOP" width="24%">bRequest</td>
-<td valign="TOP" width="15%">wValue</td>
-<td valign="TOP" width="15%">wIndex</td>
-<td valign="TOP" width="15%">wLength</td>
-<td valign="TOP" width="15%">Data</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">1000 0001b</td>
-<td valign="MIDDLE" width="24%">GET_STATUS (0x00)</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Interface</td>
-<td valign="MIDDLE" width="15%">Two</td>
-<td valign="MIDDLE" width="15%">Interface Status</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0001b</td>
-<td valign="MIDDLE" width="24%">CLEAR_FEATURE (0x01)</td>
-<td valign="MIDDLE" width="15%">Feature Selector</td>
-<td valign="MIDDLE" width="15%">Interface</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0001b</td>
-<td valign="MIDDLE" width="24%">SET_FEATURE (0x03)</td>
-<td valign="MIDDLE" width="15%">Feature Selector</td>
-<td valign="MIDDLE" width="15%">Interface</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">1000 0001b</td>
-<td valign="MIDDLE" width="24%">GET_INTERFACE (0x0A)</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Interface</td>
-<td valign="MIDDLE" width="15%">One</td>
-<td valign="MIDDLE" width="15%">Alternate Interface</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0001b</td>
-<td valign="MIDDLE" width="24%">SET_INTERFACE (0x11)</td>
-<td valign="MIDDLE" width="15%">Alternative Setting</td>
-<td valign="MIDDLE" width="15%">Interface</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-</tbody>
-</table>
+
+<p>bmRequestType</p>
+
+<p>bRequest</p>
+
+<p>wValue</p>
+
+<p>wIndex</p>
+
+<p>wLength</p>
+
+<p>Data</p>
+
+<p>1000 0001b</p>
+
+<p>GET_STATUS (0x00)</p>
+
+<p>Zero</p>
+
+<p>Interface</p>
+
+<p>Two</p>
+
+<p>Interface Status</p>
+
+<p>0000 0001b</p>
+
+<p>CLEAR_FEATURE (0x01)</p>
+
+<p>Feature Selector</p>
+
+<p>Interface</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
+<p>0000 0001b</p>
+
+<p>SET_FEATURE (0x03)</p>
+
+<p>Feature Selector</p>
+
+<p>Interface</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
+<p>1000 0001b</p>
+
+<p>GET_INTERFACE (0x0A)</p>
+
+<p>Zero</p>
+
+<p>Interface</p>
+
+<p>One</p>
+
+<p>Alternate Interface</p>
+
+<p>0000 0001b</p>
+
+<p>SET_INTERFACE (0x11)</p>
+
+<p>Alternative Setting</p>
+
+<p>Interface</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
 <p>wIndex: Tức là chỉ số của Interface mà request này hướng đến, định dạng được nêu ra ở dưới đây:</p>
-<table width="600" cellspacing="2" cellpadding="7">
-<tbody>
-<tr id="head">
-<td valign="TOP" width="6%">D15</td>
-<td valign="TOP" width="6%">D14</td>
-<td valign="TOP" width="6%">D13</td>
-<td valign="TOP" width="6%">D12</td>
-<td valign="TOP" width="6%">D11</td>
-<td valign="TOP" width="6%">D10</td>
-<td valign="TOP" width="6%">D9</td>
-<td valign="TOP" width="6%">D8</td>
-<td valign="TOP" width="6%">D7</td>
-<td valign="TOP" width="6%">D6</td>
-<td valign="TOP" width="6%">D5</td>
-<td valign="TOP" width="6%">D4</td>
-<td valign="TOP" width="6%">D3</td>
-<td valign="TOP" width="6%">D2</td>
-<td valign="TOP" width="6%">D1</td>
-<td valign="TOP" width="6%">D0</td>
-</tr>
-<tr>
-<td colspan="8" valign="TOP" width="50%">Reserved</td>
-<td colspan="8" valign="TOP" bgcolor="#ffffff" width="50%">Interface Number</td>
-</tr>
-</tbody>
-</table>
+
+<p>D15</p>
+
+<p>D14</p>
+
+<p>D13</p>
+
+<p>D12</p>
+
+<p>D11</p>
+
+<p>D10</p>
+
+<p>D9</p>
+
+<p>D8</p>
+
+<p>D7</p>
+
+<p>D6</p>
+
+<p>D5</p>
+
+<p>D4</p>
+
+<p>D3</p>
+
+<p>D2</p>
+
+<p>D1</p>
+
+<p>D0</p>
+
+<p>Reserved</p>
+
+<p>Interface Number</p>
+
 <ul>
 <li>GET_STATUS: được sử dụng để trả về trạng thái của interface. Giá trị thường sẽ là 2 byte (0x00, 0x00)</li>
 <li>CLEAR_FEATURE/SET_FEATURE: Sử dụng để set các giá trị boolean. Khi request cho giao diện thì không có đặc trưng này.</li>
 <li>GET_INTERFACE/SET_INTERFACE: sẽ có trường Alternative Interface mà ta đã miêu tả ở các chương trước.</li>
 </ul>
+
 <p>Request Endpoint chuẩn (Standard Endpoint Request)</p>
+
 <p>Có 4 loại khác nhau được đưa ra dưới đây:</p>
-<table width="642" cellspacing="2" cellpadding="7">
-<tbody>
-<tr id="head">
-<td valign="TOP" width="17%">bmRequestType</td>
-<td valign="TOP" width="24%">bRequest</td>
-<td valign="TOP" width="15%">wValue</td>
-<td valign="TOP" width="15%">Windex</td>
-<td valign="TOP" width="15%">wLength</td>
-<td valign="TOP" width="15%">Data</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">1000 0010b</td>
-<td valign="MIDDLE" width="24%">GET_STATUS (0x00)</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Endpoint</td>
-<td valign="MIDDLE" width="15%">Two</td>
-<td valign="MIDDLE" width="15%">Endpoint Status</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0010b</td>
-<td valign="MIDDLE" width="24%">CLEAR_FEATURE (0x01)</td>
-<td valign="MIDDLE" width="15%">Feature Selector</td>
-<td valign="MIDDLE" width="15%">Endpoint</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">0000 0010b</td>
-<td valign="MIDDLE" width="24%">SET_FEATURE (0x03)</td>
-<td valign="MIDDLE" width="15%">Feature Selector</td>
-<td valign="MIDDLE" width="15%">Endpoint</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">None</td>
-</tr>
-<tr id="row">
-<td valign="MIDDLE" width="17%">1000 0010b</td>
-<td valign="MIDDLE" width="24%">SYNCH_FRAME (0x12)</td>
-<td valign="MIDDLE" width="15%">Zero</td>
-<td valign="MIDDLE" width="15%">Endpoint</td>
-<td valign="MIDDLE" width="15%">Two</td>
-<td valign="MIDDLE" width="15%">FrameNumber</td>
-</tr>
-</tbody>
-</table>
+
+<p>bmRequestType</p>
+
+<p>bRequest</p>
+
+<p>wValue</p>
+
+<p>Windex</p>
+
+<p>wLength</p>
+
+<p>Data</p>
+
+<p>1000 0010b</p>
+
+<p>GET_STATUS (0x00)</p>
+
+<p>Zero</p>
+
+<p>Endpoint</p>
+
+<p>Two</p>
+
+<p>Endpoint Status</p>
+
+<p>0000 0010b</p>
+
+<p>CLEAR_FEATURE (0x01)</p>
+
+<p>Feature Selector</p>
+
+<p>Endpoint</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
+<p>0000 0010b</p>
+
+<p>SET_FEATURE (0x03)</p>
+
+<p>Feature Selector</p>
+
+<p>Endpoint</p>
+
+<p>Zero</p>
+
+<p>None</p>
+
+<p>1000 0010b</p>
+
+<p>SYNCH_FRAME (0x12)</p>
+
+<p>Zero</p>
+
+<p>Endpoint</p>
+
+<p>Two</p>
+
+<p>FrameNumber</p>
+
 <ul>
 <li>wIndex: tham chiếu đến Endpoint và hướng của chúng. Định dạng sẽ như bên dưới:</li>
 </ul>
-<table width="600" cellspacing="2" cellpadding="7">
-<tbody>
-<tr id="head">
-<td id="packet">D15</td>
-<td id="packet">D14</td>
-<td id="packet">D13</td>
-<td id="packet">D12</td>
-<td id="packet">D11</td>
-<td id="packet">D10</td>
-<td id="packet">D9</td>
-<td id="packet">D8</td>
-<td id="packet">D7</td>
-<td id="packet">D6</td>
-<td id="packet">D5</td>
-<td id="packet">D4</td>
-<td id="packet">D3</td>
-<td id="packet">D2</td>
-<td id="packet">D1</td>
-<td id="packet">D0</td>
-</tr>
-<tr>
-<td id="packet" colspan="8" valign="TOP" width="50%">Reserved</td>
-<td id="packet" valign="TOP" bgcolor="#ffffff" width="6%">Dir</td>
-<td id="packet" colspan="3" valign="TOP" width="19%">Reserved</td>
-<td id="packet" colspan="4" valign="TOP" bgcolor="#ffffff" width="25%">Endpoint Number</td>
-</tr>
-</tbody>
-</table>
+
+<p>D15</p>
+
+<p>D14</p>
+
+<p>D13</p>
+
+<p>D12</p>
+
+<p>D11</p>
+
+<p>D10</p>
+
+<p>D9</p>
+
+<p>D8</p>
+
+<p>D7</p>
+
+<p>D6</p>
+
+<p>D5</p>
+
+<p>D4</p>
+
+<p>D3</p>
+
+<p>D2</p>
+
+<p>D1</p>
+
+<p>D0</p>
+
+<p>Reserved</p>
+
+<p>Dir</p>
+
+<p>Reserved</p>
+
+<p>Endpoint Number</p>
+
 <ul>
-<li>GET_STATUS:trả lại 2 bytes trạng thái (Halted/Stalled) của Endpoint. Định dạng của 2 byte đó như sau:</li>
-</ul>
-<ul>
-<li>
-<table width="600" cellspacing="2" cellpadding="7">
-<tbody>
-<tr id="head">
-<td id="packet">D15</td>
-<td id="packet">D14</td>
-<td id="packet">D13</td>
-<td id="packet">D12</td>
-<td id="packet">D11</td>
-<td id="packet">D10</td>
-<td id="packet">D9</td>
-<td id="packet">D8</td>
-<td id="packet">D7</td>
-<td id="packet">D6</td>
-<td id="packet">D5</td>
-<td id="packet">D4</td>
-<td id="packet">D3</td>
-<td id="packet">D2</td>
-<td id="packet">D1</td>
-<td id="packet">D0</td>
-</tr>
-<tr>
-<td id="packet" colspan="15" valign="MIDDLE" width="94%">Reserved</td>
-<td id="packet" valign="MIDDLE" bgcolor="#ffffff" width="6%">Halt</td>
-</tr>
-</tbody>
-</table>
-</li>
-<li></li>
-</ul>
-<ul>
-<li>CLEAR_FEATURE/SET_FEATURE: Sử dụng để set Endpoint Features. Hiện tại chỉ có 1 feature selector, ENDPOINT_HALT(0x00) giúp Host có thể ngưng stall hoặc reset một Endpoint. Chỉ những Endpoint khác Endpoint mặc định mới nên sử dụng chức năng này.</li>
-<li>Synch frame: sử dụng để báo một frame đồng bộ Endpoint.</li>
+<li><p>GET_STATUS:trả lại 2 bytes trạng thái (Halted/Stalled) của Endpoint. Định dạng của 2 byte đó như sau:</p></li>
+
+<li><p>D15</p>
+
+<p>D14</p>
+
+<p>D13</p>
+
+<p>D12</p>
+
+<p>D11</p>
+
+<p>D10</p>
+
+<p>D9</p>
+
+<p>D8</p>
+
+<p>D7</p>
+
+<p>D6</p>
+
+<p>D5</p>
+
+<p>D4</p>
+
+<p>D3</p>
+
+<p>D2</p>
+
+<p>D1</p>
+
+<p>D0</p>
+
+<p>Reserved</p>
+
+<p>Halt</p></li>
+
+<li><p>CLEAR_FEATURE/SET_FEATURE: Sử dụng để set Endpoint Features. Hiện tại chỉ có 1 feature selector, ENDPOINT_HALT(0x00) giúp Host có thể ngưng stall hoặc reset một Endpoint. Chỉ những Endpoint khác Endpoint mặc định mới nên sử dụng chức năng này.</p></li>
+
+<li><p>Synch frame: sử dụng để báo một frame đồng bộ Endpoint.</p></li>
 </ul>
 
 		</div>

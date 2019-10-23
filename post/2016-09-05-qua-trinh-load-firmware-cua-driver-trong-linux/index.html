@@ -63,22 +63,22 @@
 			
 		</header><div class="content post__content clearfix">
 			<p>Để các kernel module sử dụng được các <strong>firmware</strong> thì cần 2 điều kiện sau:</p>
+
 <ol>
 <li>Khi kernel được build, các tham số sau phải được bật (ENABLE)<br />
 <strong>CONFIG_FW_LOADER</strong> : Cho phép load firmware<br />
 <strong>CONFIG_EXTRA_FIRMWARE &gt; CONFIG_EXTRA_FIRMWARE_DIR</strong> : Đường dẫn chưa các firmware.</li>
 <li>Các firmware phải được copy vào thư mục <strong>CONFIG_EXTRA_FIRMWARE_DIR</strong> đã set ở trên.</li>
 </ol>
+
 <p>Một số điều lưu ý liên quan đến <strong>firmware</strong>:</p>
+
 <ol>
-<li>
-<p>Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,<br />
+<li><p>Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,<br />
 nó không nằm trong luồng chính của kernel, được maintain ở địa chỉ sau:<br />
-(http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git)[http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git]</p>
-</li>
-<li>
-<p>Các firmware này không phụ thuộc vào platform chạy Linux, cho dùng là ARM, x86 hay MIPS, etc đều dùng chung 1 nguồn cả. Vì thế, nếu bản Linux Embedded xuất hiện lỗi thiếu firmware cho thiết bị mà chạy tốt trên Linux Desktop, thì cách giải quyết rất có thể là copy firmware bị thiếu từ Desktop sang Linux Embedded.</p>
-</li>
+(<a href="http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git)[http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git">http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git)[http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git</a>]</p></li>
+
+<li><p>Các firmware này không phụ thuộc vào platform chạy Linux, cho dùng là ARM, x86 hay MIPS, etc đều dùng chung 1 nguồn cả. Vì thế, nếu bản Linux Embedded xuất hiện lỗi thiếu firmware cho thiết bị mà chạy tốt trên Linux Desktop, thì cách giải quyết rất có thể là copy firmware bị thiếu từ Desktop sang Linux Embedded.</p></li>
 </ol>
 
 		</div>

@@ -62,22 +62,40 @@
 			<h1 class="post__title">ECB, CBC trong AES</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p>Một trong những phương pháp mã hóa dữ liệu được sử dụng như là một chuẩn. Đó là <strong>AES</strong> (Advanced Encryption Standard)</p>
+			
+
+<p>Một trong những phương pháp mã hóa dữ liệu được sử dụng như là một chuẩn. Đó là <strong>AES</strong> (Advanced Encryption Standard)</p>
+
 <p>Về mã hóa, là quá trình biến dữ liệu rõ (<strong>plain</strong>) thành dữ liệu nhiễu (<strong>encrypt</strong>).</p>
-<h4>1. Hai cách ứng dụng</h4>
+
+<h4 id="1-hai-cách-ứng-dụng">1. Hai cách ứng dụng</h4>
+
 <p>Mã hóa nói chung, thường sử dụng dụng một phương pháp toán học, mã học nào đó để làm nhiễu một cách chủ động thông tin ban đầu.</p>
+
 <p>Phương pháp (method) mã hóa là các bước toán học để tạo ra dữ liệu nhiễu.</p>
+
 <p>Một số loại mã hóa, người ta có thể giấu phương pháp đi, ai biết phương pháp thì mới đọc được dữ liệu nhiễu. Nhưng cách này không hay vì gặp phải nhiều vấn đề trong chia sẻ dữ liệu, tức là phải đi giải thích cả phương pháp lẫn các tham số đi kèm phương pháp đó khi người khác muốn sử dụng.</p>
+
 <p>Một số loại khác, là công khai phương pháp mã hóa những giấu đi 1 yếu tố là giống như các tham số của phương pháp. Ví dụ là KEY. Ai có KEY, nếu áp dụng đúng phương pháp sẽ giải mã được.</p>
-<h4>2. Các từ khóa</h4>
+
+<h4 id="2-các-từ-khóa">2. Các từ khóa</h4>
+
 <p>Trường hợp AES,dù đã public, cũng khá dễ hiểu cho việc implement nhưng hiểu chứng minh thì cực kì khó với người không phải chuyên môn.</p>
+
 <p><strong>Key</strong> : Là key thôi, nó sẽ đuợc sử dụng khi áp dụng phương pháp mã Hóa.</p>
+
 <p><strong>Block</strong>: Đơn vị cho việc mã hóa, đơn vị tối thiểu để mã hóa, 1 khối dữ liệu bản plain sẽ cho ra một khối dữ liệu encrypted cùng độ dài.</p>
+
 <p>Thông thường, để mã hóa một đoạn dữ liệu độ dài bất kì, người ta phải chia khối đó thành những Block đơn vị rồi mã hóa cho từng khối đó.</p>
+
 <p>Để tăng độ phức tạp cho việc mã hóa, người ta có thể tạo ra mối liên hệ giữa các block với nhau.</p>
-<h4>3. ECB và CBC</h4>
+
+<h4 id="3-ecb-và-cbc">3. ECB và CBC</h4>
+
 <p>2 khái niệm trong AES muốn nói đến ở đây là : ECB và CBC.</p>
+
 <p><strong>ECB</strong> : Các block được mã hóa riêng rẽ, một block bị hỏng hoàn toàn không ảnh hưởng đến việc giải mã các block khác</p>
+
 <p><strong>CBC</strong> : Khi mã hóa mỗi block thì ngoài việc sử dụng KEY ra thì nó còn sử dụng kết quả của Block trước đó làm tham số. Cứ như thế, khi hỏng 1 block có thể ảnh hưởng đến rất nhiều block khác nữa.</p>
 
 		</div>

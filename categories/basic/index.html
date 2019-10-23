@@ -70,22 +70,10 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><!-- wp:paragraph --></p>
-<p>Docker, là công nghệ rất nổi và có ảnh hưởng đến hầu hết developer.<br />
-Được coi là một công nghệ ảo hóa ở mức hệ điều hành khi so với các phương pháp ảo hóa phần cứng khác.<br />
-Theo mình hỏi, kĩ thuật để làm việc này không mới, nó dựa trên kĩ thuật <strong>chroot</strong> có được sử dụng từ khá lâu trong linux.</p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:paragraph --></p>
-<p>Nói là vậy, nhưng học để sử dụng thì cần bài bản chút, bài này mình sẽ tóm tắt lại trang <strong>Overview</strong> từ trang của <strong>Docker</strong></p>
-<p><!-- /wp:paragraph --></p>
-<p><!-- wp:heading --></p>
-<h2>0. Docker dùng cho mục đích gì?</h2>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:heading {"level":4} --></p>
-<h4>1. Tối ưu hóa chu trình phát triển:</h4>
-<p><!-- /wp:heading --></p>
-<p><!-- wp:more --><br />
-
+		Docker, là công nghệ rất nổi và có ảnh hưởng đến hầu hết developer.
+Được coi là một công nghệ ảo hóa ở mức hệ điều hành khi so với các phương pháp ảo hóa phần cứng khác.
+Theo mình hỏi, kĩ thuật để làm việc này không mới, nó dựa trên kĩ thuật chroot có được sử dụng từ khá lâu trong linux.
+Nói là vậy, nhưng học để sử dụng thì cần bài bản chút, bài này mình sẽ tóm tắt lại trang Overview từ trang của Docker
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -97,11 +85,10 @@ Theo mình hỏi, kĩ thuật để làm việc này không mới, nó dựa tr�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<h2>Thực hiện 3 phép tập hợp trên bash</h2>
-<p>Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.<br />
-Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.<br />
-Nội dung được dịch từ <a href="http://www.catonmat.net/blog/set-operations-in-unix-shell/">bài viết</a> khá chi tiết của pro <a href="http://www.catonmat.net/about/">Peter Krumins</a> chủ trang <a href="http://www.catonmat.net/">http://www.catonmat.net/</a></p>
-<p>
+		Thực hiện 3 phép tập hợp trên bash Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
+Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.
+Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krumins chủ trang http://www.catonmat.net/
+1. Phép giao Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -113,10 +100,10 @@ Nội dung được dịch từ <a href="http://www.catonmat.net/blog/set-operat
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<h2>Một số thứ hữu ích khi viết sử dụng command, viết script trong bash</h2>
+		<p><h2>Một số thứ hữu ích khi viết sử dụng command, viết script trong bash</h2>
 <p>Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên <a href="https://github.com/jlevy/the-art-of-command-line">The art of command line</a> và mình cũng đã dịch thử (chưa được review) ở<br />
 <a href="https://github.com/minatu2d/the-art-of-command-line/blob/master/README-vi.md">Nghệ thuật sử dụng dòng lệnh</a></p>
-<p>
+<p></p>
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -128,10 +115,22 @@ Nội dung được dịch từ <a href="http://www.catonmat.net/blog/set-operat
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<h2>Ví dụ cơ bản với pthread trên Linux</h2>
-<h2>1. Tạo và dừng thread</h2>
-<p>Source code gốc lấy từ <a href="https://computing.llnl.gov/tutorials/pthreads/samples/hello.c">link</a><br />
-
+		Ví dụ cơ bản với pthread trên Linux 1. Tạo và dừng thread Source code gốc lấy từ link
+[code lang=c]
+/******************************************************************************
+* FILE: hello.c
+* DESCRIPTION:
+* Chuong trinh demo thao tac tao thread, tat thread
+* AUTHOR: Blaise Barney
+* LAST REVISED: 08/09/11
+*
+* TRANSLATE to Vietnamese by Minatu
+* COMPILE CMD : $gcc -o hello hello.c -lpthread
+******************************************************************************/
+//
+#include 
+#include 
+#include
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -143,14 +142,10 @@ Nội dung được dịch từ <a href="http://www.catonmat.net/blog/set-operat
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<h2>So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</h2>
-<p><strong>Link gốc</strong>:<br />
-http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm</p>
-<p><strong>Người dịch</strong>:<br />
-Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụng,nhất là bây giờ đã là năm 2017. Có quá nhiều thứ hiệu quả và nhanh hơn. Tuy nhiên, khi cần tìm hiểu ở mức hệ điều hành, rồi driver thiết bị, thì việc đọc được Assembly là rất hữu ích.</p>
-<p><strong>Nội dung</strong></p>
-<p>Cú pháp ASM giữa Intel và AT&amp;T có rất nhiều điềm khác nhau rõ rệt. Điều này nhiều khi dẫn đến sự nhầm lẫn khi một người đã học một ASM của Intel trước rồi sang học ASM của AT&amp;T hoặc ngoặc lại. Bài này, chúng ta sẽ xem xét những cái khác biệt cơ bản đó.</p>
-<p>
+		So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel Link gốc:
+http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm
+Người dịch:
+Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụng,nhất là bây giờ đã là năm 2017. Có quá nhiều thứ hiệu quả và nhanh hơn. Tuy nhiên, khi cần tìm hiểu ở mức hệ điều hành, rồi driver thiết bị, thì việc đọc được Assembly là rất hữu ích.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -177,18 +172,9 @@ Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó.
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ở bài <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm driver cho Linux</a> cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.</p>
-<h2>Cách tìm source code driver cho thiết bị USB</h2>
-<h2>1. Nói qua về thiết bị USB</h2>
-<ul>
-<li>Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.<br />
-Đó là <strong>Vendor</strong> (nhà sản xuất), và <strong>Product</strong> (sản phẩm).<br />
-Thông tin về <strong>Vendor</strong> được mô tả bằng một id, trong source thường là <strong>idVendor</strong>.<br />
-Thông tin về <strong>Product</strong> cũng được mô tả bằng một id, trong source thường là <strong>idProduct</strong>.<br />
-2 thông tin trên sẽ xác định duy nhất một loại thiết bị.<br />
-Thông tin về id của mỗi Vendor, Product được đăng kí với tổ chức hỗ trợ USB.</li>
-</ul>
-<p>
+		Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
+Cách tìm source code driver cho thiết bị USB 1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Đó là Vendor (nhà sản xuất), và Product (sản phẩm).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -200,20 +186,12 @@ Thông tin về id của mỗi Vendor, Product được đăng kí với tổ ch
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Chạy một bản Linux tối giản trên Qemu ARM</p>
-<p>Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa<br />
-các thành phần của một hệ thống Linux thông qua<br />
-việc build, chạy Kernel trên board <strong>vexpress-a9</strong> mô phỏng bằng Qemu.</p>
-<p>Đó là Kernel, Root file system, Busybox, Init.</p>
-<hr />
-<h2>1. "Chém" chút về quá trình khởi động của Linux</h2>
-<ul>
-<li>Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.<br />
-Giai đoạn đầu là load kernel lên RAM và chạy<br />
-Giai đoạn thứ hai là kernle sẽ tự động mount hệ thống file<br />
-rồi các ứng dụng trên hệ thống file được mount.<br />
-Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải có 2 giai đoạn ở trên.<br />
-
+		Chạy một bản Linux tối giản trên Qemu ARM
+Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa
+các thành phần của một hệ thống Linux thông qua
+việc build, chạy Kernel trên board vexpress-a9 mô phỏng bằng Qemu.
+Đó là Kernel, Root file system, Busybox, Init.
+1. &ldquo;Chém&rdquo; chút về quá trình khởi động của Linux  Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -225,11 +203,9 @@ Bất cứ bản Linux nào, dù lớn, dù bé đều thì tối thiểu phải
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<h2>4 thành phần của Embedded Linux</h2>
-<p>Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)...cho đến các thiết bị gia dụng, gia đình.</p>
-<p>Khi sử dụng máy tính cá nhân, server ta dễ dàng "sờ" thấy được các thành phần của Linux như các tiến trình, shell..etc.<br />
-Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi. Ta thường chỉ quan tâm đến ứng dụng chạy trên đó thôi.</p>
-<p>Nhưng ở một mảng ứng dụng khác của Linux, nơi mà trên đó ta thường chỉ chạy 1 ứng dụng, rất khó thấy các thành phần bên trong, hầu như không thay đổi được...thì Linux như thế nào, nó giống với các bản phân phối ta vẫn gặp không.
+		4 thành phần của Embedded Linux Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)&hellip;cho đến các thiết bị gia dụng, gia đình.
+Khi sử dụng máy tính cá nhân, server ta dễ dàng &ldquo;sờ&rdquo; thấy được các thành phần của Linux như các tiến trình, shell..etc.
+Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -241,7 +217,14 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Có một vài lệnh hữu dụng được cộng đồng sử dụng board NXP chia sẻ, mình sẽ note ở đây cho dễ tìm vậy. Link tại <a href="https://community.nxp.com/docs/DOC-94953">đây</a>.
+		Có một vài lệnh hữu dụng được cộng đồng sử dụng board NXP chia sẻ, mình sẽ note ở đây cho dễ tìm vậy. Link tại đây.
+Lệnh Bitbake
+**Miêu tả
+**
+bitbake 
+Nấu ra 1 &ldquo;ảnh&rdquo; (Image) (Thêm tham số _-k đ_ể cho phép chạy đến hết kẻ cả có lỗi thực thi)
+bitbake  -c 
+Thực hiện 1 task của package nào đó. Tên các task mặc định thường có: _fetch,_ unpack, patch, configure, compile, install, package, package_write, and build.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -253,15 +236,9 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><em>Tham khảo</em><br />
-- Sách : AT&amp;T Assembly Language, Richard Blum</p>
-<h2>1. Ngôn ngữ Assembly là gì?</h2>
-<ul>
-<li>Ở mức thấp nhất, Process chỉ hiểu <strong>instruction code</strong></li>
-<li><strong>Instruction Code</strong> là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element.</li>
-<li>Người ta hoàn toàn có thể viết chương trình bằng <strong>instruction code</strong>, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</li>
-<li>Việc sử dụng các ngôn ngữ bậc cao giúp việc viết chương trình dễ dàng hơn rất nhiều, vì trình biên dịch hoặc thông dịch đảm nhiệm việc chuyển mã ngôn ngữ bậc cao trực tiếp hoặc gián tiếp sang <strong>instruction code</strong> để chạy.</li>
-<li>Tuy nhiên, việc sinh <strong>instruction code</strong> của trình biên dịch/thông dịch không phải luôn luôn hiệu quả.
+		Tham khảo
+- Sách : AT&amp;T Assembly Language, Richard Blum
+1. Ngôn ngữ Assembly là gì?  Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -273,21 +250,12 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Bài này sẽ dịch lại <a href="http://events.linuxfoundation.org/sites/events/files/slides/belloni-petazzoni-buildroot-oe_0.pdf">Slide</a> thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni<br />
-từ Free Electrons tại Embedded Linux Conference 2016.</p>
-<p>So sánh giữa Buildroot và OpenEmbedded/Yocto Project</p>
-<h2>1. Điểm chung</h2>
-<ul>
-<li>Đều là build-system cho Embedded Linux.<br />
-Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.<br />
-Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
-<li>Đều được build từ source</li>
-<li>Sử dụng cross-compilation</li>
-<li>Rất actively trong cả dự án đang maintained và phát triển.</li>
-<li>Được sử dụng rộng dãi trong công nghiệp.</li>
-<li>Tài liệu tốt, nhiều khóa đào tạo.</li>
-<li>Sử dụng Free Software (phần mềm tự do)<br />
-
+		Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
+từ Free Electrons tại Embedded Linux Conference 2016.
+So sánh giữa Buildroot và OpenEmbedded/Yocto Project
+1. Điểm chung  Đều là build-system cho Embedded Linux.
+Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
+Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -299,10 +267,12 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đây là nội dung <strong>pick up</strong> từ <a href="https://buildroot.org/downloads/manual/manual.html">manual</a> của Buildroot.</p>
-<p>Nó mô tả khá rõ về <strong>/dev</strong> trong hệ thống Linux, cùng<br />
-với các giải pháp dành cho hệ thống Embedded Linux.</p>
-<p>
+		Đây là nội dung pick up từ manual của Buildroot.
+Nó mô tả khá rõ về /dev trong hệ thống Linux, cùng
+với các giải pháp dành cho hệ thống Embedded Linux.
+6.2 /dev management Trên 1 hệ thống Linux, thư mục /dev chứa các file đặc biệt, được gọi là
+device files (hay các file thiết bị), cho phép ứng dụng phía user truy cập
+đến các thiết bị phần cứng mà Linux kernel quản lý.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -314,14 +284,13 @@ với các giải pháp dành cho hệ thống Embedded Linux.</p>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ta đã có bài giới thiệu về <a href="https://lazytrick.wordpress.com/2017/01/01/4-stage-khi-bien-dich-helloworld-c/">4 Stage khi Compiling</a> rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.</p>
-<p>Trong compile thông thường dạng</p>
-<p>[code lang=bash]<br />
-$gcc -o HelloWorld HelloWorld.c<br />
-[/code]</p>
-<p>Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.</p>
-<p>Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</p>
-<p>
+		Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
+Trong compile thông thường dạng
+[code lang=bash]
+$gcc -o HelloWorld HelloWorld.c
+[/code]
+Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -333,24 +302,15 @@ $gcc -o HelloWorld HelloWorld.c<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.<br />
-Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.<br />
-Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.</p>
-<p>HelloWorld.c</p>
-<p>[code lang=cpp]<br />
-#include<br />
-int main()<br />
-{<br />
-print(&quot;Hello World \n&quot;);<br />
-return 0;<br />
-}<br />
-[/code]</p>
-<p>Kết quả chạy:</p>
-<p>[code lang=shell]<br />
-$./HelloWorld<br />
-HelloWorld<br />
-[/code]</p>
-<p>
+		Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.
+Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
+Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
+HelloWorld.c
+[code lang=cpp]
+#include
+int main()
+{
+print(&ldquo;Hello World \n&rdquo;);
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -362,10 +322,10 @@ HelloWorld<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.</p>
-<p>Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì<br />
-một chương trình sẽ được chạy 2 cách dưới đây</p>
-<p>
+		Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.
+Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì
+một chương trình sẽ được chạy 2 cách dưới đây
+1. Chương trình hoàn toàn là tĩnh  Không có symbol nào cần phải được (resolved) trước khi chạy. Không yêu cầu bất cứ một thư viện run-time nào.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -377,12 +337,8 @@ một chương trình sẽ được chạy 2 cách dưới đây</p>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><strong>PER</strong> là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng <strong>TLV</strong> như <strong>BER</strong>, <strong>PER</strong> sử dụng <em>Preamble</em> (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là <strong>PLV</strong>.</p>
-<p>Đơn vị biểu diễn của <strong>PER</strong> không phải Octet mà là Bit. Mỗi phần tử sẽ thuộc 1 trong 3 loại sau:<br />
-1. Trường dư bit, tức là dãy bit không thể biểu diễn bằng một số nguyên các Octet.<br />
-2. Trường nguyên bit, có thể biểu diễn bằng một số nguyên các Octet.<br />
-3. Danh sách trường, chứa cả các thành phần là nguyên bit và dư bit.</p>
-<p>
+		PER là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng TLV như BER, PER sử dụng Preamble (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là PLV.
+Đơn vị biểu diễn của PER không phải Octet mà là Bit.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -394,10 +350,9 @@ một chương trình sẽ được chạy 2 cách dưới đây</p>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.</p>
-<p>Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào <strong>BER</strong>, và tạo ra <strong>CER</strong> và <strong>DER</strong>.</p>
-<p>Sự khác nhau chủ yếu giữa <strong>CER</strong> và <strong>DER</strong> là về biểu diễn trường độ dài. <strong>Length(L)</strong>. Trong khi <strong>DER</strong> sử dụng một định dạng với độ dài cố định, thì <strong>CER</strong> sử dụng định dạng với độ dài không có định,<br />
-
+		Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.
+Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào BER, và tạo ra CER và DER.
+Sự khác nhau chủ yếu giữa CER và DER là về biểu diễn trường độ dài.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -409,15 +364,13 @@ một chương trình sẽ được chạy 2 cách dưới đây</p>
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp tục về <a href="https://lazytrick.wordpress.com/tag/asn1/">ASN.1</a>.</p>
-<p>Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)</p>
-<p>Ta sẽ tiếp tục nói về hiện thực dữ liệu.<br />
-Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</strong>, <strong>CER/DER</strong>, và <strong>PER</strong>.</p>
-<p>Trong đó:<br />
-<strong>BER</strong> : Basic Encoding Rules<br />
-<strong>CER/DER</strong> : Canonical Encoding Rules/Distinguished Encoding Rules<br />
-<strong>PER</strong> : Packet Encoding Rules</p>
-<p>
+		Tiếp tục về ASN.1.
+Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)
+Ta sẽ tiếp tục nói về hiện thực dữ liệu.
+Các phương thức để hiện thực dữ liệu gồm có: BER, CER/DER, và PER.
+Trong đó:
+BER : Basic Encoding Rules
+CER/DER : Canonical Encoding Rules/Distinguished Encoding Rules
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -429,21 +382,9 @@ Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</str
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Tiếp theo loạt bài về ASN.1, bài này sẽ "dịch" tài liệu của anh <a href="http://www5d.biglobe.ne.jp/~stssk/mail.html">Isida So</a> nói về cú pháp cơ bản của ASN.1.</p>
-<p>Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.</p>
-<p>ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.</p>
-<p>Ví dụ, khi muốn biểu diễn số điện thoại (<strong>TelephoneNumber</strong>), trong trường đã có kiểu dành cho chuỗi kí tự số (<strong>NumericString</strong>) thì ta chỉ việc viết như sau:</p>
-<p>[code lang=cpp]<br />
-TelephoneNumber ::= NumericString<br />
-[/code]</p>
-<ol>
-<li>Các kiểu cơ bản</li>
-<li>Kiểu cấu trúc</li>
-<li>Thẻ (Tag)</li>
-<li>Kiểu bộ phận</li>
-<li>Quy ước mở rộng (Kí hiệu mở rộng)</li>
-</ol>
-<p>
+		Tiếp theo loạt bài về ASN.1, bài này sẽ &ldquo;dịch&rdquo; tài liệu của anh Isida So nói về cú pháp cơ bản của ASN.1.
+Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.
+ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.
 	</div>
 </article>
 </main>
@@ -462,7 +403,7 @@ TelephoneNumber ::= NumericString<br />
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">

@@ -2,89 +2,81 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Draft on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/draft/</link>
+    <link>https://blog.lazytrick.com/tags/draft/</link>
     <description>Recent content in Draft on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Thu, 28 Jan 2016 15:44:23 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/draft/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/draft/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hiểu thêm về HID Report Descriptor</title>
-      <link>https://minatu2d.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
-      <description>&lt;p&gt;Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.&lt;/p&gt;
-&lt;p&gt;Giờ xin dịch lại bài này một cách khái quát nhất.&lt;/p&gt;
-&lt;p&gt;Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).&lt;/p&gt;
-&lt;p&gt;Về nguyên tắc, từ khi cắm 1 thiết bị USB bất kì cắm vào cổng, cần trải qua 3 giai đoạn giao tiếp giữa máy tính và thiết bị để có thể hiểu nhau. Đó là Reset (về điện đóm), Configured (load các driver tương ứng), Sử dụng được (khi chúng di chuyển được con chuột, hoặc gõ được phím).&lt;/p&gt;
-&lt;p&gt;Trong bài này giới thiệu dữ liệu trao đổi giữa HID Driver (nằm trên máy tính) và HID Device (hay về mặt phần mềm là Firmware chạy trên Device). Mà cụ thể nói về &#34;HID Report Descriptor&#34;, cái được HID Device gửi lên HID Driver để báo cho Driver biết HID Device có những dữ liệu gì mà Driver có thể hỏi được, được tổ chức như thế nào.&lt;/p&gt;
-&lt;p&gt;Link : &lt;a href=&#34;http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/&#34;&gt;http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Một USB HID Report là một trong những descriptor (đặc tả) mà Host yêu cầu từ thiết bị USB. Thiết bị USB sẽ trả lời yêu cầu này bằng các Report. Nhưng Report này sẽ nói cho Host biết các dữ liệu trong quá trình sử dụng mà Device gửi lên nên được hiểu như thế nào. Trong bài này, tác giả Frank-Zhang(Sony Engineer) đã giới thiệu theo từng ví dụ.</description>
+      <guid>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
+      <description>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.
+Giờ xin dịch lại bài này một cách khái quát nhất.
+Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau.</description>
     </item>
     
     <item>
       <title>Bộ nhớ Flash</title>
-      <link>https://minatu2d.github.io/post/2016-01-25-bo-nho-flash-se-viet/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-25-bo-nho-flash-se-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:29:09 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-25-bo-nho-flash-se-viet/</guid>
-      <description>&lt;p&gt;Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.&lt;/p&gt;
-&lt;h5&gt;Lập trình với bộ nhớ Flash&lt;/h5&gt;
-&lt;p&gt;Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn &lt;strong&gt;0xFF&lt;/strong&gt; thôi.&lt;/p&gt;
-&lt;h5&gt;Serial Flash&lt;/h5&gt;
-&lt;p&gt;Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất. Vì giao tiếp được bằng các chuẩn Serial như SPI, I2C nên nó dễ dàng ghép nối với các chip trên board.&lt;/p&gt;
-&lt;h5&gt;NAND và NOR&lt;/h5&gt;
-&lt;p&gt;Có 2 điểm khác biệt giữa 2</description>
+      <guid>https://blog.lazytrick.com/post/2016-01-25-bo-nho-flash-se-viet/</guid>
+      <description>Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.
+Lập trình với bộ nhớ Flash Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn 0xFF thôi.
+Serial Flash Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất.</description>
     </item>
     
     <item>
       <title>Porting Non-OS Driver sang ITRON-based OS</title>
-      <link>https://minatu2d.github.io/post/2016-01-25-porting-non-os-driver-sang-itron-based-os/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-25-porting-non-os-driver-sang-itron-based-os/</link>
       <pubDate>Mon, 25 Jan 2016 14:27:20 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-25-porting-non-os-driver-sang-itron-based-os/</guid>
+      <guid>https://blog.lazytrick.com/post/2016-01-25-porting-non-os-driver-sang-itron-based-os/</guid>
       <description>Hệ điều hành ITRON-based</description>
     </item>
     
     <item>
       <title>Hệ điều hành ITRON-based trông như thế nào?(sẽ viết)</title>
-      <link>https://minatu2d.github.io/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</link>
       <pubDate>Mon, 25 Jan 2016 14:25:05 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</guid>
+      <guid>https://blog.lazytrick.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</guid>
       <description>Có lẽ viết về ITRON cần toàn diện một chút, tiếc là không có mạch để thử.
 Cứ viết trước 3 đề mục lớn để có hướng để ý, tìm hiểu.
- ITRON-OS là gì? Những thuật ngữ cơ bản Người ta đã viết ITRON như thế nào?  &amp;nbsp;</description>
+ ITRON-OS là gì? Những thuật ngữ cơ bản Người ta đã viết ITRON như thế nào?  </description>
     </item>
     
     <item>
       <title>I2C - Kế thừa UART và SPI (sẽ viết)</title>
-      <link>https://minatu2d.github.io/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
       <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
+      <guid>https://blog.lazytrick.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
       <description></description>
     </item>
     
     <item>
       <title>Một số thuật ngữ về giao thông thông minh</title>
-      <link>https://minatu2d.github.io/post/2016-01-24-mot-so-thuat-ngu-ve-giao-thong-thong-minh/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-24-mot-so-thuat-ngu-ve-giao-thong-thong-minh/</link>
       <pubDate>Sun, 24 Jan 2016 13:28:34 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-24-mot-so-thuat-ngu-ve-giao-thong-thong-minh/</guid>
+      <guid>https://blog.lazytrick.com/post/2016-01-24-mot-so-thuat-ngu-ve-giao-thong-thong-minh/</guid>
       <description>ITS - Intelligen Transport System : Hệ thống giao thông thông minh  ETC - Electronic Toll Collection : Tập hợp các hệ thống toán toán phí điện tử OBU - On-Board Unit : Thiết bị gắn vào phương tiện giao thông RDU - Road Side Unit : Thiết bị đặt ở các trạm thu phí, thường là 1 hoặc 1 vài Anten được kết nối với một hệ thống máy tính.</description>
     </item>
     
     <item>
       <title>Cơ bản về pthread</title>
-      <link>https://minatu2d.github.io/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</link>
+      <link>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</link>
       <pubDate>Thu, 16 Jul 2015 23:18:38 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
+      <guid>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
       <description>&lt;p&gt;Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.&lt;/p&gt;
 
 &lt;p&gt;Khi gặp những ứng dụng chạy đa nền tảng mình mới thấy quảng cáo chỉ miêu tả rất nhỏ thôi. Các dự án thực tế luôn có cực kì nhiều vấn đề. Nó không phải là hello world mà chỉ bằng vài click là đa nền tảng được. Ta biết rằng, những thư viện như Qt hỗ trợ rất nhiều. Nhưng thông thường các dự án chỉ dùng 1 phần thôi, còn lại họ tự viết hoặc sử dụng lại ở đâu đó. Vì vậy, nếu nói một dự án pure Qt thì đương nhiên dễ dàng chuyển đổi giữa các platform. Còn một dự án không phải là pure Qt thì rất nhiều vấn đề phát sinh.&lt;/p&gt;

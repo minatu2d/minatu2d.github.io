@@ -2,28 +2,24 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>USBDescriptor on Lazytrick</title>
-    <link>https://minatu2d.github.io/tags/usbdescriptor/</link>
+    <link>https://blog.lazytrick.com/tags/usbdescriptor/</link>
     <description>Recent content in USBDescriptor on Lazytrick</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Thu, 28 Jan 2016 15:44:23 +0900</lastBuildDate>
     
-	<atom:link href="https://minatu2d.github.io/tags/usbdescriptor/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://blog.lazytrick.com/tags/usbdescriptor/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
       <title>Hiểu thêm về HID Report Descriptor</title>
-      <link>https://minatu2d.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
+      <link>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
       <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
       
-      <guid>https://minatu2d.github.io/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
-      <description>&lt;p&gt;Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.&lt;/p&gt;
-&lt;p&gt;Giờ xin dịch lại bài này một cách khái quát nhất.&lt;/p&gt;
-&lt;p&gt;Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).&lt;/p&gt;
-&lt;p&gt;Về nguyên tắc, từ khi cắm 1 thiết bị USB bất kì cắm vào cổng, cần trải qua 3 giai đoạn giao tiếp giữa máy tính và thiết bị để có thể hiểu nhau. Đó là Reset (về điện đóm), Configured (load các driver tương ứng), Sử dụng được (khi chúng di chuyển được con chuột, hoặc gõ được phím).&lt;/p&gt;
-&lt;p&gt;Trong bài này giới thiệu dữ liệu trao đổi giữa HID Driver (nằm trên máy tính) và HID Device (hay về mặt phần mềm là Firmware chạy trên Device). Mà cụ thể nói về &#34;HID Report Descriptor&#34;, cái được HID Device gửi lên HID Driver để báo cho Driver biết HID Device có những dữ liệu gì mà Driver có thể hỏi được, được tổ chức như thế nào.&lt;/p&gt;
-&lt;p&gt;Link : &lt;a href=&#34;http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/&#34;&gt;http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Một USB HID Report là một trong những descriptor (đặc tả) mà Host yêu cầu từ thiết bị USB. Thiết bị USB sẽ trả lời yêu cầu này bằng các Report. Nhưng Report này sẽ nói cho Host biết các dữ liệu trong quá trình sử dụng mà Device gửi lên nên được hiểu như thế nào. Trong bài này, tác giả Frank-Zhang(Sony Engineer) đã giới thiệu theo từng ví dụ.</description>
+      <guid>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
+      <description>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.
+Giờ xin dịch lại bài này một cách khái quát nhất.
+Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau.</description>
     </item>
     
   </channel>

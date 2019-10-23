@@ -70,24 +70,15 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.<br />
-Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.<br />
-Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.</p>
-<p>HelloWorld.c</p>
-<p>[code lang=cpp]<br />
-#include<br />
-int main()<br />
-{<br />
-print(&quot;Hello World \n&quot;);<br />
-return 0;<br />
-}<br />
-[/code]</p>
-<p>Kết quả chạy:</p>
-<p>[code lang=shell]<br />
-$./HelloWorld<br />
-HelloWorld<br />
-[/code]</p>
-<p>
+		Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.
+Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
+Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
+HelloWorld.c
+[code lang=cpp]
+#include
+int main()
+{
+print(&ldquo;Hello World \n&rdquo;);
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -99,10 +90,10 @@ HelloWorld<br />
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.</p>
-<p>Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì<br />
-một chương trình sẽ được chạy 2 cách dưới đây</p>
-<p>
+		Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.
+Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì
+một chương trình sẽ được chạy 2 cách dưới đây
+1. Chương trình hoàn toàn là tĩnh  Không có symbol nào cần phải được (resolved) trước khi chạy. Không yêu cầu bất cứ một thư viện run-time nào.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -149,7 +140,7 @@ một chương trình sẽ được chạy 2 cách dưới đây</p>
 			<input class="widget-search__field" type="search" placeholder="SEARCH..." value="" name="q" aria-label="SEARCH...">
 		</label>
 		<input class="widget-search__submit" type="submit" value="Search">
-		<input type="hidden" name="sitesearch" value="https://minatu2d.github.io/" />
+		<input type="hidden" name="sitesearch" value="https://blog.lazytrick.com/" />
 	</form>
 </div>
 <div class="widget-recent widget">
