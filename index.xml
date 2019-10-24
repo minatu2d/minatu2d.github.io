@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Lazytrick</title>
+    <title>Lazytrick - Limited size memory of mind</title>
     <link>https://blog.lazytrick.com/</link>
-    <description>Recent content on Lazytrick</description>
+    <description>Recent content on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Wed, 11 Sep 2019 06:00:22 +0900</lastBuildDate>
@@ -995,10 +995,7 @@ Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao g�
       <pubDate>Fri, 23 Jan 2015 07:19:16 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/about/</guid>
-      <description>Xin chào, tôi là một lập trình viên.
-Tôi quan tâm đến Linux, đặc biệt là Embedded Linux.
-Tôi viết blog này để mô tả cách tôi giải quyết vấn đề trong trong quá trình làm việc của mình.
-Cám ơn bạn đã ghé thăm.</description>
+      <description>Xin chào, Tôi là một lập trình viên tầm thường, một người lười ghi nhớ (A mediocre developer, a lazier). Tôi quan tâm đến Linux, đặc biệt là Embedded Linux và những thứ ở mức thấp (low-level). Hiện tại, tôi đang việc như một BrSE tại đất nước của những thánh nữ. Tôi viết trang này để mô tả những gì tôi học được, trong quá trình làm việc của mình.</description>
     </item>
     
   </channel>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Buildroot on Lazytrick</title>
+    <title>Buildroot on Lazytrick - Limited size memory of mind</title>
     <link>https://blog.lazytrick.com/categories/buildroot/</link>
-    <description>Recent content in Buildroot on Lazytrick</description>
+    <description>Recent content in Buildroot on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
     <lastBuildDate>Fri, 20 Jan 2017 01:22:46 +0900</lastBuildDate>
