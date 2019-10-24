@@ -118,10 +118,10 @@ printf(&#34;Sizeof(ST_FOOL_2) =%ld\\n&#34;,sizeof(ST_FOOL_2));
 return 0;  
 }  </code></pre></div>
 <p>Ta lưu vào file <strong>sizeof_result.c</strong>, sau đó biên dịch và chạy được kết quả sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$gcc -o sizeof_result sizeof_result.c  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -o sizeof_result sizeof_result.c  
 $./sizeof_result  
-Sizeof(ST_FOOL_1) =8  
-Sizeof(ST_FOOL_2) =5  </code></pre></div>
+Sizeof(ST_FOOL_1) =<span style="color:#b452cd">8</span>  
+Sizeof(ST_FOOL_2) =<span style="color:#b452cd">5</span>  </code></pre></div>
 <p>\=&gt; <strong>Sizeof(ST_FOOL_1)</strong> = 8, vậy GCC đã sử dụng Block 4 byte để &ldquo;aligment&rdquo; cho cấu trúc rồi.<br />
 Vậy nếu Block 4 bytes, thì tại sao ST_FOOL_2 không nhảy lên 8 byte?<br />
 Câu trả lời là khi và chỉ khi trình biên dịch không thể chứa member tiếp theo, nó sẽ bỏ qua một vài byte trống để nhảy đến Block 4 byte tiếp theo.<br />
@@ -161,17 +161,17 @@ return 0;
 }  </code></pre></div>
 <p>Ta sẽ có kết quả như sau:<br />
 - <strong>pack(1)</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$./sizeof_result  
-Sizeof(ST_FOOL_1) =6  
-Sizeof(ST_FOOL_2) =5  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$./sizeof_result  
+Sizeof(ST_FOOL_1) =<span style="color:#b452cd">6</span>  
+Sizeof(ST_FOOL_2) =<span style="color:#b452cd">5</span>  </code></pre></div>
 <p>- <strong>pack(2)</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$./sizeof_result  
-Sizeof(ST_FOOL_1) =6  
-Sizeof(ST_FOOL_2) =5  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$./sizeof_result  
+Sizeof(ST_FOOL_1) =<span style="color:#b452cd">6</span>  
+Sizeof(ST_FOOL_2) =<span style="color:#b452cd">5</span>  </code></pre></div>
 <p>- <strong>pack(4)</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$./sizeof_result  
-Sizeof(ST_FOOL_1) =8  
-Sizeof(ST_FOOL_2) =5  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$./sizeof_result  
+Sizeof(ST_FOOL_1) =<span style="color:#b452cd">8</span>  
+Sizeof(ST_FOOL_2) =<span style="color:#b452cd">5</span>  </code></pre></div>
 <h4 id="2-khi-sử-dụng-casting-con-trỏ">2. Khi sử dụng Casting con trỏ</h4>
 
 <p>Sử dụng casting pointer giữa mảng và cấu trúc là một cách để convert (chuyển đổi) nội dung giữa 1 biến cấu trúc và mảng.</p>
@@ -283,7 +283,7 @@ printf(<span style="color:#cd5555">&#34;.mem5 = 0x%02X</span><span style="color:
 }  </code></pre></div>
 <p>Ta sẽ kiểm tra các kết quả với các trường hợp aligment khác nhau.<br />
 - Khi không sử dụng <strong>pack</strong>, kết quả sẽ như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\=</span>===Structure --&gt; <span style="color:#00688b">Array</span>====  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#cd5555">\=</span>===Structure --&gt; <span style="color:#00688b">Array</span>====  
 pFool_1 :  
 .mem1 = 0x12  
 .mem2 = 0x34  

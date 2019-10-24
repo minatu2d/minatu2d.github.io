@@ -82,14 +82,14 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
 <h5 id="1-driver-về-network">1. Driver về Network</h5>
 
 <p>Các card mạng hiện có sẽ nằm dưới đường dẫn <strong>/sys/class/net/</strong>.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ ls /sys/class/net/  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls /sys/class/net/  
 eth0 eth1 eth2 lo  </code></pre></div>
 <p>Đây chính là các card mạng mà ta vẫn thấy khi sử sụng</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ifconfig</span> -a  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$ifconfig</span> -a  </code></pre></div>
 <p>Để xác định Driver đang điều khiển các card mạng ở trên, ta làm như sau:</p>
 
 <p>Với <strong>eth0</strong> chẳng hạn:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ basename <span style="color:#cd5555">\`</span>readlink /sys/class/net/eth0/device/driver/module<span style="color:#cd5555">\`</span>  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ basename <span style="color:#cd5555">\`</span>readlink /sys/class/net/eth0/device/driver/module<span style="color:#cd5555">\`</span>  
 e1000  </code></pre></div>
 <p>Kết quả <strong>e100</strong> đó chính là tên Driver đang được sử dụng để điều khiển card mạng <strong>eth0</strong></p>
 
@@ -100,41 +100,41 @@ Mỗi thiết bị PCI được phân biệt bởi <strong>VendorID</strong> (m�
 Xác định driver của thiết bị PCI sẽ phức tạp hơn 1 chút.</p>
 
 <p>Đầu tiên, liệt kê tất cả các thiết bị PCI có trong máy (có thể có những thiết bị chưa chạy)</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$lspci</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$lspci</span>  </code></pre></div>
 <p>Kết quả câu lệnh trên sẽ cho ta một danh sách thiết bị. Giả sử trong đó có thiết bị sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#b452cd">06</span>:04.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8139/  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#b452cd">06</span>:04.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8139/  
 8139C/8139C+ (rev <span style="color:#b452cd">10</span>)  </code></pre></div>
 <p>Hãy để ý chuỗi <strong>06:04.0</strong> vì ta sẽ sử dụng nó để tìm kiếm trong <strong>/sys/</strong></p>
 
 <p>Xem danh sách các thiết bị có trong <strong>/sys/</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> /sys/bus/pci/devices/  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> /sys/bus/pci/devices/  
 $ ls  
 <span style="color:#b452cd">0000</span>:00:00.0 <span style="color:#b452cd">0000</span>:00:1d.0 <span style="color:#b452cd">0000</span>:00:1e.0 <span style="color:#b452cd">0000</span>:00:1f.3 <span style="color:#b452cd">0000</span>:06:03.3  
 <span style="color:#b452cd">0000</span>:00:02.0 <span style="color:#b452cd">0000</span>:00:1d.1 <span style="color:#b452cd">0000</span>:00:1f.0 <span style="color:#b452cd">0000</span>:06:03.0 <span style="color:#b452cd">0000</span>:06:03.4  
 <span style="color:#b452cd">0000</span>:00:02.1 <span style="color:#b452cd">0000</span>:00:1d.2 <span style="color:#b452cd">0000</span>:00:1f.1 <span style="color:#b452cd">0000</span>:06:03.1 <span style="color:#b452cd">0000</span>:06:04.0  
 <span style="color:#b452cd">0000</span>:00:1b.0 <span style="color:#b452cd">0000</span>:00:1d.7 <span style="color:#b452cd">0000</span>:00:1f.2 <span style="color:#b452cd">0000</span>:06:03.2 <span style="color:#b452cd">0000</span>:06:05.0  </code></pre></div>
 <p>Ta thấy <strong>06:04.0</strong> cũng xuất hiện trong kết quả trên, vào đó xem sao:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> <span style="color:#b452cd">0000</span>:06:04.0  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> <span style="color:#b452cd">0000</span>:06:04.0  </code></pre></div>
 <p>Trong <strong>0000:06:04.0</strong>, có khá nhiều file, nhưng ta chỉ quan tâm đến 2 giá trị.<br />
 Đó là <strong>Vendor</strong> và <strong>Device</strong>, chính là VendorID, và DeviceID mà ta cần tìm.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat vendor  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat vendor  
 0x10ec  
 $ cat device  
 0x8139  </code></pre></div>
 <p>Từ 2 giá trị đã tìm được ở trên, ta sẽ tìm Driver thông qua source của Kernel.</p>
 
 <p>Bằng VendorID:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
 $ grep -i 0x10ec include/linux/pci_ids.h  
 <span style="color:#228b22">#define PCI_VENDOR_ID_REALTEK 0x10ec</span>  </code></pre></div>
 <p>Bằng DeviceID:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
 $ grep -i 0x8139 include/linux/pci_ids.h  
 <span style="color:#228b22">#define PCI_DEVICE_ID_REALTEK_8139 0x8139</span>  </code></pre></div>
 <p>Ta thấy rằng <strong>PCI_VENDOR_ID_REALTEK</strong>, <strong>PCI_DEVICE_ID_REALTEK_8139</strong> là định nghĩa liên quan đến thiết bị ta cần tìm.</p>
 
 <p>Tiếp tục tìm kiếm trong source code của nhân để xem có driver cho thiết bị của ta không.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ grep -Rl PCI_VENDOR_ID_REALTEK *  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep -Rl PCI_VENDOR_ID_REALTEK *  
 include/linux/pci_ids.h  
 drivers/net/r8169.c  
 drivers/net/8139too.c  
@@ -196,7 +196,7 @@ MODULE_DEVICE_TABLE(pci, cp_pci_tbl);  </code></pre></div>
 4. Tìm trong file <strong>_<kernel source>/include/linux/pci<em>ids.h</em></strong>, xem có định nghĩa nào cho giá trị của ID của PCI vendor và device mà ta đã xác định được ở Bước 3 không.<br />
 5. Tìm tất cả những file chưa tham chiếu đến các định nghĩa tìm được ở Bước 4. Vendor và DeviceId thường sẽ nằm trong 1 cấu trúc của thiết bị PCI, có tên là <strong>struct pci_device_id</strong>. Thường mỗi file .c sẽ tương ứng là 1 Driver.<br />
 6. Tìm trong <strong><em>Makefiles</em></strong> cấu hình source của kernel xem có định nghĩa nào dạng <strong>CONFIG_</strong> cho driver ta cần build không. Ta có thể tìm bằng lệnh dưới đây:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ find -type f -name Makefile | xargs grep DRIVER_NAME  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ find -type f -name Makefile | xargs grep DRIVER_NAME  </code></pre></div>
 <p>7.Tìm đến giá trị <strong>CONFIG_</strong> trong kernel để cho phép driver được build khi build lại kernel.</p>
 
 <h5 id="3-thiết-bị-usb">3. Thiết bị USB</h5>
@@ -207,7 +207,7 @@ MODULE_DEVICE_TABLE(pci, cp_pci_tbl);  </code></pre></div>
 1. Xác định ID USB vendor và product ID của thiết bị bạn muốn tìm Driver. Sử dụng câu lệnh <strong>lsusb</strong> ở trước và sau khi thiết bị được cắm vào máy.<br />
 2. Tìm trong source code của kernel xem có ID của vendor và product của thiết bị ta đã tìm ở Bước 1 không. Cả Vendor ID và Product ID sẽ nằm trong 1 cấu trúc mô tả thiết bị USB, có tên là <strong>struct usb_device_id</strong>. Từ đó xác định được Driver phải build để hỗ trợ thiết bị.<br />
 3. Tìm trong Makefiles xem có định nghĩa <strong>CONFIG_</strong> cho Driver ở Bước 2 không, sử dụng câu lệnh:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ find -type f -name Makefile | xargs grep DRIVER_NAME  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ find -type f -name Makefile | xargs grep DRIVER_NAME  </code></pre></div>
 <p>4.Mở lại cấu hình build kernel và bật các định nghĩa tìm được ở Bước 3.</p>
 
 		</div>

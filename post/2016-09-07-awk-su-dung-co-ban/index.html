@@ -75,7 +75,7 @@
 <p>AWK sẽ làm việc theo flow sau:</p>
 
 <p><img src="{{ site.baseurl }}/assets/awk_workflow.png" alt="awk_workflow" /></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$awk</span> <span style="color:#cd5555">&#39;BEGIN {} {} END {}&#39;</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$awk</span> <span style="color:#cd5555">&#39;BEGIN {} {} END {}&#39;</span>  </code></pre></div>
 <p>Có 3 khối : <strong>BEGIN</strong>, Body (không có từ khóa), <strong>END</strong>.</p>
 
 <p>Khối <strong>BEGIN</strong>: được thực hiện chỉ duy nhất 1 lần, trước khi bắt đầu đọc dữ liệu.<br />
@@ -89,13 +89,13 @@ Khối Body: không có từ khóa bắt đầu, được thực hiện với m�
 <p><a href="http://linux.die.net/man/1/pgrep">pgrep</a> là tìm process ID theo keyword được nhập vào. Lệnh này được sử dụng trong rất nhiều trường hợp như tìm process ứng dụng, kết hợp <a href="http://linux.die.net/man/1/kill">kill</a> để tắt 1 loạt ứng dụng, etc.</p>
 
 <p>Giả sử với <strong><em>ps uax</em></strong>, ta có kết quả sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">root <span style="color:#b452cd">3853</span> <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">21024</span> <span style="color:#b452cd">480</span> ? Ss <span style="color:#b452cd">18</span>:52 <span style="color:#b452cd">0</span>:00 /usr/sbin/vmware-authdlauncher  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root <span style="color:#b452cd">3853</span> <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">21024</span> <span style="color:#b452cd">480</span> ? Ss <span style="color:#b452cd">18</span>:52 <span style="color:#b452cd">0</span>:00 /usr/sbin/vmware-authdlauncher  
 root <span style="color:#b452cd">4028</span> <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">241144</span> <span style="color:#b452cd">5928</span> ? Ss <span style="color:#b452cd">18</span>:52 <span style="color:#b452cd">0</span>:00 /usr/sbin/nmbd -D  
 root <span style="color:#b452cd">4073</span> <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">0</span>.1 <span style="color:#b452cd">338924</span> <span style="color:#b452cd">15976</span> ? Ss <span style="color:#b452cd">18</span>:52 <span style="color:#b452cd">0</span>:00 /usr/sbin/smbd -D  
 root <span style="color:#b452cd">4077</span> <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">330820</span> <span style="color:#b452cd">5792</span> ? S <span style="color:#b452cd">18</span>:52 <span style="color:#b452cd">0</span>:00 /usr/sbin/smbd -D  
 root <span style="color:#b452cd">4079</span> <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">0</span>.0 <span style="color:#b452cd">338932</span> <span style="color:#b452cd">7484</span> ? S <span style="color:#b452cd">18</span>:52 <span style="color:#b452cd">0</span>:00 /usr/sbin/smbd -D</code></pre></div>
 <p>Ta sẽ thực hiện lấy PID của các process có chưa từ khóa <strong><em>daemon</em></strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$ps</span> aux|grep daemon|awk {print <span style="color:#00688b">$2</span>}  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$ps</span> aux|grep daemon|awk {print <span style="color:#00688b">$2</span>}  </code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

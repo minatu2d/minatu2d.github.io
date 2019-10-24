@@ -19,7 +19,7 @@
       <guid>https://blog.lazytrick.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
       <description>Tham khảo
 - Sách : AT&amp;amp;T Assembly Language, Richard Blum
- Ngôn ngữ Assembly là gì? &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-   Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</description>
+1. Ngôn ngữ Assembly là gì?  Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</description>
     </item>
     
   </channel>

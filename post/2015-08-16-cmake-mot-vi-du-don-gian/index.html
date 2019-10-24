@@ -116,12 +116,12 @@ project (helloworld)
 add_executable(hellworld mainapp.c)  </code></pre></div>
 <p>Đặt cả 2 file trên vào cùng 1 thư mục:<br />
 Nội dung được kiểm tra bằng lệnh <code>tree</code>như sau</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">CMake  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">CMake  
 ├── CMakeLists.txt  
 └── mainapp.c  </code></pre></div>
 <p>File <code>CMakeList.txt</code> chính là file định nghĩa source sử dụng ngôn ngữ mà <code>CMake</code> hiểu được.<br />
 Đến đây, ta thực hiện công việc chính của <code>CMake</code>. Đó là sinh ra <code>Makefiles</code> cho project đơn giản này. Ta phải chuyển vào bên trong thư mục <code>CMake</code> trước khi chạy lệnh dưới đây:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cmake .  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cmake .  </code></pre></div>
 <p>Dấu <code>.</code> phía sau rất quan trọng, hay có thể thay nó bằng <code>$(PWD)</code> trong trường hợp này.<br />
 Tham số thứ 2 là thư mục chưa file <code>CMakeFile.txt</code>
 Nội dung chạy xong nên như thế này:</p>
@@ -140,7 +140,7 @@ Nội dung chạy xong nên như thế này:</p>
 -- Generating <span style="color:#8b008b;font-weight:bold">done</span>  
 -- Build files have been written to: /home/oedev/Code/CMake  </code></pre></div>
 <p>Nội dung thư mục sau khi chạy lệnh trên:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">2</span>  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">2</span>  
 .  
 ├── CMakeCache.txt  
 ├── CMakeFiles  
@@ -162,23 +162,23 @@ Nội dung chạy xong nên như thế này:</p>
 Ta cũng thấy rằng chương trình chương được build, hay nói cách khác <code>CMake</code> chỉ làm nhiệm vụ của nó đến đây thôi. Tức là nhiệm vụ của một công cụ sinh <code>Makefiles</code>.</p>
 
 <p>Giờ muốn build project ta vừa tạo lúc đầu (chỉ có 1 file .c), ta sẽ chạy Makefiles thôi.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ make  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ make  
 Scanning dependencies of target hellworld  
 [<span style="color:#b452cd">100</span>%] Building C object CMakeFiles/hellworld.dir/mainapp.c.o  
 Linking C executable hellworld  
 [<span style="color:#b452cd">100</span>%] Built target hellworld  </code></pre></div>
 <p>Kết quả thu được như sau</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ ls  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ ls  
 CMakeCache.txt CMakeFiles cmake_install.cmake CMakeLists.txt hellworld mainapp.c Makefile  </code></pre></div>
 <p>Ta đã thây file <em>helloword</em> được sinh ra, đây chính là file chạy:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ ./hellworld  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ ./hellworld  
 Hello world  </code></pre></div>
 <p>Giờ ta sẽ thêm lời chào bằng ngôn ngữ Ja, Vi vào chương trình trên.</p>
 
 <h2 id="2-thêm-ngôn-ngữ-ja-vi-vào-chương-trình-trên">2.Thêm ngôn ngữ Ja, Vi vào chương trình trên.</h2>
 
 <p>Ta sẽ tổ chức lại source như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ tree  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ tree  
 .  
 ├── CMakeLists.txt  
 ├── include  
@@ -193,7 +193,7 @@ Hello world  </code></pre></div>
 <p>Do cấu trúc thư mục đã thay đổi, vị trí các file nguồn cũng thế.<br />
 Ta cần thay đổi file <code>CMakeList.txt</code> để phù hợp với thay đổi này.<br />
 Nội dung file này sẽ thành như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">#  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">#  
 <span style="color:#228b22"># Điều kiện về version</span>  
 #  
 cmake_minimum_required(VERSION <span style="color:#b452cd">2</span>.8.12)
@@ -225,7 +225,7 @@ set(SOURCES src/mainapp.c src/greetings_en.c src/greetings_ja.c src/greetings_vi
 add_executable(hellworld <span style="color:#cd5555">${</span><span style="color:#00688b">SOURCES</span><span style="color:#cd5555">}</span>)  </code></pre></div>
 <p>Ta sẽ chạy <code>cmake</code> để sinh Makefiles và build chương trình với <code>Makefiles</code> xem kết quả thế nào:<br />
 Với các sử dụng hàm <code>set</code>:  <code>Chạy cmake</code></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ cmake .  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ cmake .  
 -- The C compiler identification is GNU <span style="color:#b452cd">4</span>.8.2  
 -- The CXX compiler identification is GNU <span style="color:#b452cd">4</span>.8.2  
 -- Check <span style="color:#8b008b;font-weight:bold">for</span> working C compiler: /usr/bin/cc  
@@ -240,7 +240,7 @@ Với các sử dụng hàm <code>set</code>:  <code>Chạy cmake</code></p>
 -- Generating <span style="color:#8b008b;font-weight:bold">done</span>  
 -- Build files have been written to: /home/oedev/Code/CMake  </code></pre></div>
 <p><em>Chạy Make</em></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ make  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ make  
 Scanning dependencies of target hellworld  
 [ <span style="color:#b452cd">25</span>%] Building C object CMakeFiles/hellworld.dir/src/mainapp.c.o  
 [ <span style="color:#b452cd">50</span>%] Building C object CMakeFiles/hellworld.dir/src/greetings_en.c.o  
@@ -249,7 +249,7 @@ Scanning dependencies of target hellworld
 Linking C executable hellworld  
 [<span style="color:#b452cd">100</span>%] Built target hellworld  </code></pre></div>
 <p><em>Kiểm tra thư mục</em></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">2</span>  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">2</span>  
 .  
 ├── CMakeCache.txt  
 ├── CMakeFiles  
@@ -277,7 +277,7 @@ Linking C executable hellworld
 ├── greetings_vi.c  
 └── mainapp.c  </code></pre></div>
 <p><em>Kết quả chạy chương trình</em></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ ./hellworld  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ ./hellworld  
 Hello world  
 Konichiwa!!!  
 Xin chao !!!!  </code></pre></div>
@@ -289,7 +289,7 @@ Xin chao !!!!  </code></pre></div>
 Nếu để các file đó chung với thư mục các file source, header ta vừa tạo sẽ gây ra rắc rối, khó quản lý.<br />
 Ta sẽ tống các file đó vào 1 thư mục, gọi là thư mục <em>build</em>.<br />
 Cấu trúc thư mục sẽ thay đổi như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ tree  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ tree  
 .  
 ├── build  
 ├── CMakeLists.txt  
@@ -303,7 +303,7 @@ Cấu trúc thư mục sẽ thay đổi như sau:</p>
 ├── greetings_vi.c  
 └── mainapp.c  </code></pre></div>
 <p>Giờ ta sẽ thực hiện toàn bộ quá trình <em>cmake</em> và <em>make</em> bên trong thư mục <em>build</em></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ cmake ..  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ cmake ..  
 -- The C compiler identification is GNU <span style="color:#b452cd">4</span>.8.2  
 -- The CXX compiler identification is GNU <span style="color:#b452cd">4</span>.8.2  
 -- Check <span style="color:#8b008b;font-weight:bold">for</span> working C compiler: /usr/bin/cc  
@@ -319,7 +319,7 @@ Cấu trúc thư mục sẽ thay đổi như sau:</p>
 -- Build files have been written to: /home/oedev/Code/CMake/build  </code></pre></div>
 <p>Ta sử dụng <em>..</em> thay vì <em>.</em> như ở các câu lệnh trước, vì ta đã chuyển vào thư mục <em>./build</em> nên file <em>CMakeList.txt</em> ở thư mục cha của thư mục này. Ta phải nói cho cmake biết điều đó.<br />
 Tiếp tục chạy lệnh <em>make</em>, ta sẽ có nội dung thư mục <em>CMake</em> sẽ như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">3</span>  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">3</span>  
 .  
 ├── build  
 │   ├── CMakeCache.txt  
@@ -350,7 +350,7 @@ Tiếp tục chạy lệnh <em>make</em>, ta sẽ có nội dung thư mục <em>
 <p>Như ta thấy, toàn bộ nội dung của quá trình chạy <em>cmake</em> và <em>make</em> được giữ trong thư mục <em>./build</em>, phần đinh nghĩa source code bên ngoài không bị ảnh hưởng gì hết.<br />
 Để chạy chương trình, ta phải vào thư mục <em>./build</em><br />
 Kết quả vẫn là :</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ ./hellworld  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ ./hellworld  
 Hello world  
 Konichiwa!!!  
 Xin chao !!!!  </code></pre></div>
@@ -379,7 +379,7 @@ Về cấu trúc file, do thư viện không chứa hàm <em>main()</em> đượ
 Nhớ nhé, thư viện thì chỉ cần file header thôi là dùng được rồi.<br />
 Thư viện mẫu mực sẽ không cần đến xem code, ta chỉ cần xem mô tả API hoặc file header là có thể dùng được rồi.<br />
 Cấu trúc file mới sẽ như thế này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">2</span>  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">2</span>  
 .  
 ├── CMakeLists.txt  
 ├── include  
@@ -391,7 +391,7 @@ Cấu trúc file mới sẽ như thế này:</p>
 ├── greetings_ja.c  
 └── greetings_vi.c  </code></pre></div>
 <p>Giờ, ta phải sửa lại file <code>CMakeList.txt</code>, nó sẽ thành như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">#  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">#  
 <span style="color:#228b22"># Điều kiện phiên bản nhỏ nhất của CMake</span>  
 #  
 cmake_minimum_required(VERSION <span style="color:#b452cd">2</span>.8.12)
@@ -420,7 +420,7 @@ add_library(greetings_enjavi STATIC <span style="color:#cd5555">${</span><span s
 <p>Chạy tiếp <em>cmake</em> và <em>make</em> trong thư mục <em>build</em>:<br />
 Ta sẽ được kết quả như sau:<br />
 Chạy <em>Cmake</em>, kết quả gần như không thay đổi so với trước:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ cmake ..  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ cmake ..  
 -- The C compiler identification is GNU <span style="color:#b452cd">4</span>.8.2  
 -- The CXX compiler identification is GNU <span style="color:#b452cd">4</span>.8.2  
 -- Check <span style="color:#8b008b;font-weight:bold">for</span> working C compiler: /usr/bin/cc  
@@ -435,7 +435,7 @@ Chạy <em>Cmake</em>, kết quả gần như không thay đổi so với trư�
 -- Generating <span style="color:#8b008b;font-weight:bold">done</span>  
 -- Build files have been written to: /home/oedev/Code/CMake/buil  </code></pre></div>
 <p>Chạy <em>make</em>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ make  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ make  
 Scanning dependencies of target greetings_enjavi  
 [ <span style="color:#b452cd">33</span>%] Building C object CMakeFiles/greetings_enjavi.dir/src/greetings_vi.c.o  
 [ <span style="color:#b452cd">66</span>%] Building C object CMakeFiles/greetings_enjavi.dir/src/greetings_ja.c.o  
@@ -444,13 +444,13 @@ Linking C static library libgreetings_enjavi.a
 [<span style="color:#b452cd">100</span>%] Built target greetings_enjavi  </code></pre></div>
 <p>Ta thấy rằng tên thư viện sinh ra là _libgreetings<em>enjavi.a</em>, như vậy tiền tố <em>lib</em> được thêm vào tên thư viện ta đã khai báo với _add<em>library</em> trong file CMakeList.txt.<br />
 Ta có thể kiểm tra xem thư viện này chứa cái gì, bằng câu lệnh <em>ar</em></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ ar -t libgreetings_enjavi.a  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ ar -t libgreetings_enjavi.a  
 greetings_vi.c.o  
 greetings_ja.c.o  
 greetings_en.c.o  </code></pre></div>
 <p>Ta sẽ thấy không có file chạy nào được sinh ra trong thư mục build. Đúng như mong muốn, ta cần build thư viện.<br />
 Ta cũng kiểm tra kích thước file này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ ls -lh libgreetings_enjavi.a  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ ls -lh libgreetings_enjavi.a  
 -rw-rw-r-- <span style="color:#b452cd">1</span> oedev oedev *4.9K*  8月 <span style="color:#b452cd">17</span> <span style="color:#b452cd">23</span>:13 libgreetings_enjavi.a  </code></pre></div>
 <p>Đó là 4.9K (dung lượng NET), còn trên đĩa chắc phải hơn.</p>
 
@@ -465,7 +465,7 @@ Còn thư viện động, thì không làm thế, nó lưu lại thông tin báo
 <p>Cấu trúc các file source, header không thay đổi gì so với khi build thư viện tĩnh.<br />
 Ta cần thay đổi file <em>CMakeList.txt</em> một chút:<br />
 Nó sẽ có nội dung như thế này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">#  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">#  
 <span style="color:#228b22"># Điều kiện phiên bản nhỏ nhất của CMake</span>  
 #  
 cmake_minimum_required(VERSION <span style="color:#b452cd">2</span>.8.12)
@@ -492,7 +492,7 @@ file(GLOB SOURCES &amp;quot;src/*.c&amp;quot;)
 #  
 add_library(greetings_enjavi SHARED <span style="color:#cd5555">${</span><span style="color:#00688b">SOURCES</span><span style="color:#cd5555">}</span>)  </code></pre></div>
 <p>Kết quả của khi chạy <em>CMake</em> là không thay đổi gì, còn khi chạy <em>make</em>, nó sẽ như thế này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ make  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ make  
 Scanning dependencies of target greetings_enjavi  
 [ <span style="color:#b452cd">33</span>%] Building C object CMakeFiles/greetings_enjavi.dir/src/greetings_vi.c.o  
 [ <span style="color:#b452cd">66</span>%] Building C object CMakeFiles/greetings_enjavi.dir/src/greetings_ja.c.o  
@@ -501,7 +501,7 @@ Linking C shared library libgreetings_enjavi.so
 [<span style="color:#b452cd">100</span>%] Built target greetings_enjavi  </code></pre></div>
 <p>Thư viện được sinh ra là _libgreetings<em>enjavi.so</em>, cũng bắt đầu với tiền tố <em>lib</em>, nhưng phần mở rộng là .so.<br />
 Với thư viện động, ta sẽ kiểm tra nội dung như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ ldd libgreetings_enjavi.so  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ ldd libgreetings_enjavi.so  
 linux-vdso.so.1 =&amp;gt;  (0x00007fff3e7fc000)  
 libc.so.6 =&amp;gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007f6cf04e7000)  
 /lib64/ld-linux-x86-64.so.2 (0x00007f6cf0acd000)  </code></pre></div>
@@ -518,7 +518,7 @@ Ta chỉ cần thay _libgreetings<em>enjavi.so</em> trong file <em>CMakeList.txt
 <ul>
 <li><p>Với thư viện động
 Cấu trúc thư mục sẽ như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">2</span>  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake$ tree -L <span style="color:#b452cd">2</span>  
 .  
 ├── build  
 ├── CMakeLists.txt  
@@ -537,7 +537,7 @@ Cấu trúc thư mục sẽ như sau:</p>
 <p>Ta cũng cần sửa lại file <em>CMakeList.txt</em> nữa<br />
 Nó sẽ thành như thế này:<br />
 <em>CMakeList.txt</em></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">#  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">#  
 <span style="color:#228b22"># Ràng buộc về version</span>  
 #  
 cmake_minimum_required(VERSION <span style="color:#b452cd">2</span>.8.12)
@@ -577,7 +577,7 @@ target_link_libraries(helloworld <span style="color:#cd5555">${</span><span styl
 <p>Sau đó, ta cũng chạy <em>CMake</em> và <em>Make</em> để tạo ra file chạy:<br />
 Kết quả của việc chạy CMake hầu như vẫn vậy.<br />
 Còn kết quả của <em>Make</em> sẽ như thế này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ make  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ make  
 Scanning dependencies of target helloworld  
 [ <span style="color:#b452cd">50</span>%] Building C object CMakeFiles/helloworld.dir/src/mainapp.c.o  
 [<span style="color:#b452cd">100</span>%] Building C object CMakeFiles/helloworld.dir/src/greetings_es.c.o  
@@ -585,7 +585,7 @@ Linking C executable helloworld
 [<span style="color:#b452cd">100</span>%] Built target helloworld  </code></pre></div>
 <p>File chạy là <em>helloworld</em><br />
 Kết quả chạy của file này sẽ như thế này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OECrossDev:~/Code/CMake/build$ ./helloworld  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OECrossDev:~/Code/CMake/build$ ./helloworld  
 Hello world  
 Konichiwa!!!  
 Xin chao !!!!  

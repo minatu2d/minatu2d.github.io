@@ -77,12 +77,9 @@ print(<span style="color:#cd5555">&#34;Hello World </span><span style="color:#cd
 }  
 </code></pre></div>
 <p>Kết quả chạy:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$./HelloWorld  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$./HelloWorld  
 HelloWorld  </code></pre></div>
-<ol>
-<li>4 Stage khi compiling
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="1-4-stage-khi-compiling">1. 4 Stage khi compiling</h2>
 
 <p>Để chuyển từ 1 file source code <strong>HelloWorld.c</strong> ở trên sang dạng chạy được <strong>HelloWorld</strong> bằng GCC sẽ có 4 stages sau.<br />
 Kết quả của Stage trước là sẽ là đầu vào của Stage sau.</p>
@@ -90,13 +87,10 @@ Kết quả của Stage trước là sẽ là đầu vào của Stage sau.</p>
 <p><img src="{{ site.baseurl }}/assets/compiling_4_stage.png" alt="compiling_4_stage" /></p>
 
 <p>Khi chúng ta gõ</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -o HelloWorld HelloWorld.c  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -o HelloWorld HelloWorld.c  </code></pre></div>
 <p>Thì chỉ kết quả của Stage sẽ được giữ lại, kết quả của các Stage trung gian không được lưu lại.</p>
 
-<ol>
-<li>Chi tiết mỗi Stage
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="2-chi-tiết-mỗi-stage">2. Chi tiết mỗi Stage</h2>
 
 <h3 id="2-1-stage-1-preprocessing-tiền-xử-lý">2.1 Stage 1 : Preprocessing (Tiền xử lý)</h3>
 
@@ -106,14 +100,14 @@ Do vậy, các lỗi về sai đường dẫn file header sẽ được phát hi
 <p>Để hiển thị kết quả đầu ra của Stage này, ta có thể sử dụng command sau:</p>
 
 <p>Khi sử dụng <strong>gcc</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -E HelloWorld.c &gt; HelloWorld.i  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -E HelloWorld.c &gt; HelloWorld.i  </code></pre></div>
 <p>Hoặc sử dụng <strong>cpp</strong> (C Preprocessor)</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cpp</span> HelloWorld.c &gt; HelloWorld.i  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cpp</span> HelloWorld.c &gt; HelloWorld.i  </code></pre></div>
 <h3 id="2-2-stage-2-biên-dịch-sang-mã-assembly">2.2 Stage 2 : Biên dịch sang mã Assembly</h3>
 
 <p>Ở Stage này, kết quả từ Stage 1 sẽ được biên dịch thành source code trong ngôn ngữ Assembly.<br />
 Để hiển thị đầu ra của Stage này, ta sử dụng command sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -S HelloWorld.c  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -S HelloWorld.c  </code></pre></div>
 <p>Ta sẽ được file <strong>HelloWorld.s</strong> trong thư mục hiện tại.</p>
 
 <h3 id="2-3-stage-3-biên-dịch-sang-mã-máy">2.3 Stage 3 : Biên dịch sang mã máy</h3>
@@ -122,7 +116,7 @@ Do vậy, các lỗi về sai đường dẫn file header sẽ được phát hi
 Tức là GCC sẽ phải biết môi trường mà nó sẽ compile cho là gì. (Môi trường chạy hay Host)</p>
 
 <p>Để lấy kết quả đầu ra của Stage này, ta sử dụng command sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -c HelloWorld.c  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -c HelloWorld.c  </code></pre></div>
 <p>Ta sẽ được file <strong>HelloWorld.o</strong> nằm ở thư mục hiện tại.</p>
 
 <h3 id="2-4-stage-4-link-để-tạo-file-chạy-được">2.4 Stage 4 : Link để tạo file chạy được</h3>
@@ -141,11 +135,11 @@ Từ mỗi file <strong>.c</strong> sẽ tạo ra 1 file <strong>.o</strong>.</p
 <p>Đàu ra Link tĩnh là một file chứa toàn bộ mã máy kể cả các hàm thư viện chuẩn, chỉ cần load lên bộ nhớ là có thể chạy được. Vì thế kích thước thường rất lớn.</p>
 
 <p>Ta có thể sử dụng command sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -static -o HelloWorld HelloWorld.c  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -static -o HelloWorld HelloWorld.c  </code></pre></div>
 <p>Đầu ra của Link động là một file không chứa toàn bộ mã của các thư viện phụ thuộc. Nó có thể yêu cầu kernel load khi thực sự được chạy hoặc được gọi. Vì thế, kích thước file thường nhỏ.</p>
 
 <p>GCC sẽ mặc định sử dụng Link động nên ta có thể sử dụng command sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -o HelloWorld HelloWorld.c  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -o HelloWorld HelloWorld.c  </code></pre></div>
 		</div>
 		<footer class="post__footer">
 			

@@ -91,7 +91,7 @@ Các file binary thì phải dùng lệnh khác.</p>
 </ol>
 
 <p>Giả sử ta đã có 1 phiên bản source với 2 phiên bản sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">greetings-1.0  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">greetings-1.0  
 ├── main.c  
 └── version.h  
 greetings-1.0-mod  
@@ -104,9 +104,9 @@ greetings-1.0-mod
 Giờ ta sẽ thực hiện cập nhật các thay đổi từ <strong>1.0-mod</strong> sang cho <strong>1.0</strong>.</p>
 
 <p>Tạo <strong>patch</strong> file sử dụng <a href="http://linux.die.net/man/1/diff">diff</a>.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">diff -uprN greetings-1.0 greetings-1.0-mod &gt; patch_1.0-mod.patch  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">diff -uprN greetings-1.0 greetings-1.0-mod &gt; patch_1.0-mod.patch  </code></pre></div>
 <p>Nội dung file patch sẽ như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat patch_1.0-mod.patch  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat patch_1.0-mod.patch  
 diff -uprN greetings-1.0/greetings.h greetings-1.0-mod/greetings.h  
 <span style="color:#cd5555">\-</span>-- greetings-1.0/greetings.h <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 +++ greetings-1.0-mod/greetings.h <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">13</span>:43:09.128523777 +0900  
@@ -117,11 +117,11 @@ diff -uprN greetings-1.0/greetings.h greetings-1.0-mod/greetings.h
 +void greetings_vi();  
 +#endif  </code></pre></div>
 <p>Thực hiện bản patch này trên biên bản <strong>1.0</strong> bằng command <a href="http://linux.die.net/man/1/patch">patch</a> như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cd</span> greetings-1.0  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cd</span> greetings-1.0  
 <span style="color:#00688b">$patch</span> -u &lt; ../patch_1.0-mod.patch  
 patching file greetings.h  </code></pre></div>
 <p>Source của <strong>1.0</strong> đã được patch, kiểm tra với <a href="http://linux.die.net/man/1/tree">tree</a></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">greetings-1.0  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">greetings-1.0  
 ├── greetings.h  
 ├── main.c  
 └── version.h  
@@ -130,7 +130,7 @@ greetings-1.0-mod
 ├── main.c  
 └── version.h  </code></pre></div>
 <p>Vì một lý do nào đó, ta muốn quay lại phiên bản <strong>1.0</strong> ban đầu, tức là lúc chưa patch. Ta có thể thực hiện như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cd</span> greetings-1.0  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cd</span> greetings-1.0  
 <span style="color:#00688b">$patch</span> -uR &lt; ../patch_1.0-mod.patch  
 patching file greetings.h  </code></pre></div>
 <p><strong>Patch</strong> sẽ rollback toàn bộ nội ung đã thay đổi ở bước trên, nội dung <strong>1.0</strong> sẽ trở lại như đầu, khi chưa có file <strong><em>greetings.h</em></strong>.</p>
@@ -157,9 +157,9 @@ printf(<span style="color:#cd5555">&#34;REVSION =%d</span><span style="color:#cd
 Ok, ta có 2 file thay đổi.</p>
 
 <p>Tạo patch:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">diff -uprN greetings-1.0 greetings-1.0-mod2 &gt; patch_1.0-mod2.patch  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">diff -uprN greetings-1.0 greetings-1.0-mod2 &gt; patch_1.0-mod2.patch  </code></pre></div>
 <p>Nội dung <strong>_patch<em>1.0-mod2.patch</em></strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">diff -uprN greetings-1.0/main.c greetings-1.0-mod2/main.c  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">diff -uprN greetings-1.0/main.c greetings-1.0-mod2/main.c  
 <span style="color:#cd5555">\-</span>-- greetings-1.0/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">10</span>:45:17.584502129 +0900  
 +++ greetings-1.0-mod2/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:05:17.883121135 +0900  
 @@ -3,6 +3,9 @@
@@ -183,7 +183,7 @@ diff -uprN greetings-1.0/version.h greetings-1.0-mod2/version.h
 +#define REVISION_NUMBER <span style="color:#b452cd">2</span>  
 <span style="color:#228b22">#endif</span>  </code></pre></div>
 <p>Apply bản patch này lên <strong>1.0</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cd</span> greetings-1.0  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cd</span> greetings-1.0  
 <span style="color:#00688b">$patch</span> -u &lt; ../patch_1.0-mod2.patch  
 patching file main.c  
 patching file version.h  </code></pre></div>
@@ -196,7 +196,7 @@ Tất nhiên ta có thể sử dụng tham số *<strong>-R</strong> (Reverse) �
 
 <p>Làm tương tự các bước như trên ta sẽ có<br />
 Nội dung <strong>_patch<em>1.0-mod3.patch</em></strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat patch_1.0-mod3.patch  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat patch_1.0-mod3.patch  
 diff -uprN greetings-1.0/main.c greetings-1.0-mod3/main.c  
 <span style="color:#cd5555">\-</span>-- greetings-1.0/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:13:52.187548541 +0900  
 +++ greetings-1.0-mod3/main.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
@@ -214,12 +214,12 @@ diff -uprN greetings-1.0/main.c greetings-1.0-mod3/main.c
 <span style="color:#cd5555">\-</span> <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
 <span style="color:#cd5555">\-</span>}  </code></pre></div>
 <p>Ta thực hiện bản patch này trên <strong>1.0</strong>, và có kết quả như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">greetings-1.0  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">greetings-1.0  
 └── version.h  
 greetings-1.0-mod3  
 └── version.h  </code></pre></div>
 <p>Thử rollback lại rollback lại bản <strong>patch</strong> vừa rồi, ta vẫn có được kết quả như mong muốn:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">greetings-1.0  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">greetings-1.0  
 ├── main.c  
 └── version.h  
 greetings-1.0-mod3  
@@ -229,7 +229,7 @@ greetings-1.0-mod3
 <p>Ta copy <strong>1.0</strong> thành <strong>1.0-mod4</strong>, rồi đổi <strong><em>main.c</em></strong> thành <strong>_main<em>app.c</em></strong>.<br />
 Ta vẫn thực hiện được các bước như ở 2,3,4 và có được kết quả mong muốn.<br />
 Xem qua file patch, ta có thể thấy phép đổi tên sẽ tương đương với phép xóa file có tên cũ và thêm file có tên mới với cũng nội dung.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat patch_1.0-mod4.patch  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat patch_1.0-mod4.patch  
 diff -uprN greetings-1.0/main_app.c greetings-1.0-mod4/main_app.c  
 <span style="color:#cd5555">\-</span>-- greetings-1.0/main_app.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 +++ greetings-1.0-mod4/main_app.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:23:11.569704749 +0900  
@@ -272,14 +272,14 @@ vì thế không có bản <strong>patch</strong> nào trong trường hợp th�
 
 <p>Giờ ta thêm 1 file vào thư mục <strong><em>lib</em></strong> xem sao?<br />
 Cấu trúc thư mục mới của <strong>1.0-mod5</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">greetings-1.0-mod5  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">greetings-1.0-mod5  
 ├── lib  
 │   └── abc.c  
 ├── main.c  
 └── version.h  </code></pre></div>
 <p>Ta tiến hành lại các bước tạo patch và apply patch như đã làm.<br />
 Patch file có nội dung như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ cat patch_1.0-mod5.patch  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat patch_1.0-mod5.patch  
 diff -uprN greetings-1.0/lib/abc.c greetings-1.0-mod5/lib/abc.c  
 <span style="color:#cd5555">\-</span>-- greetings-1.0/lib/abc.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 +++ greetings-1.0-mod5/lib/abc.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:35:25.920931214 +0900  
@@ -292,7 +292,7 @@ diff -uprN greetings-1.0/lib/abc.c greetings-1.0-mod5/lib/abc.c
 +}  </code></pre></div>
 <p>Khi thực hiện apply patch file trên <strong>1.0</strong>, lệnh ta vẫn dùng sẽ không tạo ra thư mục mà ta chỉ thấy có file xuất hiện thôi.<br />
 Đã thử thay đổi 1 vài tham số, và lệnh dưới đây đã chạy:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cd</span> greetings-1.0  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cd</span> greetings-1.0  
 $ patch -u -p1 &lt; ../patch_1.0-mod5.patch  
 $ tree .  
 ├── lib  
@@ -305,7 +305,7 @@ $ tree .
 
 <p>Giờ ta lấy copy <strong>1.0-mod5</strong> thanh <strong>1.0-mod5r</strong>, rồi xóa bỏ thư mục <strong><em>lib</em></strong>.<br />
 Nội dung bản patch như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OEDEV-Ubuntu:~/geek/patchdiff$ cat patch_1.0-mod5r.patch  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/geek/patchdiff$ cat patch_1.0-mod5r.patch  
 diff -uprN greetings-1.0-mod5/lib/abc.c greetings-1.0-mod5r/lib/abc.c  
 <span style="color:#cd5555">\-</span>-- greetings-1.0-mod5/lib/abc.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:35:25.920931214 +0900  
 +++ greetings-1.0-mod5r/lib/abc.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
@@ -317,7 +317,7 @@ diff -uprN greetings-1.0-mod5/lib/abc.c greetings-1.0-mod5r/lib/abc.c
 <span style="color:#cd5555">\-</span> // Code later  
 <span style="color:#cd5555">\-</span>}  </code></pre></div>
 <p>Khi apply patch, thì tương tự như trên ta cần thêm <strong><em>p0</em></strong></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$patch</span> -u -p1 &lt;../patch_1.0-mod5r.patch  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$patch</span> -u -p1 &lt;../patch_1.0-mod5r.patch  
 patching file lib/abc.c  </code></pre></div>
 		</div>
 		<footer class="post__footer">

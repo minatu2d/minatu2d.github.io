@@ -104,7 +104,7 @@
 tar xvf bitbake-1.16.0.tar.bz2  
 <span style="color:#658b00">cd</span> bitbake-1.16.0&amp;lt;/code&amp;gt;</code></pre></div>
 <p>Thay vì cài đặt, trong bài này ta sẽ chạy nó từ thư mục buil bằng cách add PATH.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#cd5555">\#</span> FIXME: how to disable xml doc generation? It takes a little <span style="color:#658b00">time</span> <span style="color:#8b008b;font-weight:bold">for</span> this doc.  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># FIXME: how to disable xml doc generation? It takes a little time for this doc.</span>  
 python setup.py build  
 <span style="color:#658b00">export</span> <span style="color:#00688b">PYTHONPATH</span>=<span style="color:#cd5555">`</span><span style="color:#658b00">pwd</span><span style="color:#cd5555">`</span>/build/lib</code></pre></div>
 <h2 id="3-build-thử">3. Build thử</h2>
@@ -598,12 +598,12 @@ inherit packagegroup
 
 PACKAGE_ARCH = <span style="color:#cd5555">&#34;${MACHINE_ARCH}&#34;</span>
 
-\<span style="color:#228b22">#</span>
+<span style="color:#228b22">#</span>
 
 Set by the machine configuration <span style="color:#8b008b;font-weight:bold">with</span> packages essential <span style="color:#8b008b;font-weight:bold">for</span> device bootup
 ==========================================================================
 
-\<span style="color:#228b22">#  </span>
+<span style="color:#228b22">#  </span>
 MACHINE_ESSENTIAL_EXTRA_RDEPENDS <span style="color:#a61717;background-color:#e3d2d2">?</span>= <span style="color:#cd5555">&#34;&#34;</span>  
 MACHINE_ESSENTIAL_EXTRA_RRECOMMENDS <span style="color:#a61717;background-color:#e3d2d2">?</span>= <span style="color:#cd5555">&#34;&#34;</span>
 

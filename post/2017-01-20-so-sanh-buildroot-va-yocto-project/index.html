@@ -69,10 +69,7 @@ từ Free Electrons tại Embedded Linux Conference 2016.</p>
 
 <p>So sánh giữa Buildroot và OpenEmbedded/Yocto Project</p>
 
-<ol>
-<li>Điểm chung
-&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="1-điểm-chung">1. Điểm chung</h2>
 
 <ul>
 <li>Đều là build-system cho Embedded Linux.<br />
@@ -87,10 +84,7 @@ Bao gồm: filesystem, toolchain, kernel, bootloaders</li>
 <br /></li>
 </ul>
 
-<ol>
-<li>Khác nhau
-&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="2-khác-nhau">2. Khác nhau</h2>
 
 <h3 id="2-1-về-tư-tưởng-chung">2.1 Về tư tưởng chung</h3>
 
@@ -127,7 +121,7 @@ vốn được tạo bởi các công ty tài trợ</li>
 </ul></li>
 </ul>
 
-<h2 id="2-2-về-output">2.2. Về output</h2>
+<h3 id="2-2-về-output">2.2. Về output</h3>
 
 <ul>
 <li><strong>Buildroot</strong>
@@ -167,7 +161,7 @@ Nhưng SDK phải được đồng bộ với thay đổi của image.</li>
 </ul></li>
 </ul>
 
-<h2 id="2-3-cấu-hình-configuration">2.3. Cấu hình (Configuration)</h2>
+<h3 id="2-3-cấu-hình-configuration">2.3. Cấu hình (Configuration)</h3>
 
 <ul>
 <li><strong>Buildroot</strong>:
@@ -204,7 +198,7 @@ có thể sử dụng khi compiling, có hay không xóa bỏ code sau khi build
 </ul></li>
 </ul>
 
-<h2 id="2-4-layers-lớp">2.4. Layers (Lớp)</h2>
+<h3 id="2-4-layers-lớp">2.4. Layers (Lớp)</h3>
 
 <ul>
 <li><strong>Buildroot</strong>:
@@ -241,7 +235,7 @@ mà framework này hỗ trợ tại <a href="http://layers.openemdedded.org/laye
 </ul></li>
 </ul>
 
-<h2 id="2-5-về-toolchain">2.5. Về toolchain</h2>
+<h3 id="2-5-về-toolchain">2.5. Về toolchain</h3>
 
 <ul>
 <li>Tự build toolchain, dựa trên gcc, lựa chọn được thư viện C Libraries<br />
@@ -256,7 +250,7 @@ mà framework này hỗ trợ tại <a href="http://layers.openemdedded.org/laye
 <li><strong>Yocto Project</strong> : <em>không có trong slide</em></li>
 </ul>
 
-<h2 id="2-6-về-mức-độ-phức-tạp">2.6 Về mức độ phức tạp</h2>
+<h3 id="2-6-về-mức-độ-phức-tạp">2.6 Về mức độ phức tạp</h3>
 
 <ul>
 <li><p><strong>Buildroot</strong>:</p>
@@ -293,7 +287,7 @@ không nên đặt ở local.conf, hoặc xóa tmp/</li>
 </ul></li>
 </ul>
 
-<h2 id="2-7-số-lượng-sự-đa-dạng-của-package">2.7 Số lượng/sự đa dạng của package</h2>
+<h3 id="2-7-số-lượng-sự-đa-dạng-của-package">2.7 Số lượng/sự đa dạng của package</h3>
 
 <ul>
 <li><strong>Buildroot</strong>:
@@ -320,7 +314,7 @@ meta-qt5. Còn trên Metadata Index có khoảng 8400 (bao gồm cả trùng)</l
 </ul></li>
 </ul>
 
-<h2 id="2-8-cách-quản-lý-phụ-thuộc">2.8 Cách quản lý phụ thuộc</h2>
+<h3 id="2-8-cách-quản-lý-phụ-thuộc">2.8 Cách quản lý phụ thuộc</h3>
 
 <ul>
 <li><strong>Buildroot</strong>:
@@ -355,7 +349,7 @@ ra một cấu hình mặc định cho riêng nó.</li>
 </ul></li>
 </ul>
 
-<h2 id="2-9-update-và-security">2.9 Update và security</h2>
+<h3 id="2-9-update-và-security">2.9 Update và security</h3>
 
 <ul>
 <li><strong>Buildroot</strong>
@@ -382,7 +376,7 @@ upgrade.</li>
 </ul></li>
 </ul>
 
-<h2 id="2-10-phát-hiện-và-xử-lý-các-thay-đổi-về-cấu-hình-detection-of-configuration-changes">2.10 Phát hiện và xử lý các thay đổi về cấu hình (detection of configuration changes)</h2>
+<h3 id="2-10-phát-hiện-và-xử-lý-các-thay-đổi-về-cấu-hình-detection-of-configuration-changes">2.10 Phát hiện và xử lý các thay đổi về cấu hình (detection of configuration changes)</h3>
 
 <ul>
 <li><strong>Buildroot</strong>:
@@ -421,7 +415,7 @@ tốc quá trình build full, vốn rât tốn thời gian.</li>
 </ul></li>
 </ul>
 
-<h2 id="2-11-kiến-trúc-hỗ-trợ-architecture-support">2.11 Kiến trúc hỗ trợ (architecture support)</h2>
+<h3 id="2-11-kiến-trúc-hỗ-trợ-architecture-support">2.11 Kiến trúc hỗ trợ (architecture support)</h3>
 
 <ul>
 <li><strong>Buildroot</strong>:
@@ -469,7 +463,7 @@ tốc quá trình build full, vốn rât tốn thời gian.</li>
 </ul></li>
 </ul>
 
-<h2 id="2-12-build-tối-giản">2.12 Build tối giản</h2>
+<h3 id="2-12-build-tối-giản">2.12 Build tối giản</h3>
 
 <ul>
 <li><p><strong>Buildroot</strong>:<br />
@@ -480,7 +474,7 @@ Build core-image-minimal cho qemuarm mất 50 phút 47 giây, ảnh file là 4.9
 Nếu có sstate-cache tồn tại sẵn rồi, thì mát 1 phút 21 giây.</p></li>
 </ul>
 
-<h2 id="2-13-một-số-nội-dung-từ-q-a-của-buildroot">2.13 Một số nội dung từ Q&amp;A của Buildroot</h2>
+<h3 id="2-13-một-số-nội-dung-từ-q-a-của-buildroot">2.13 Một số nội dung từ Q&amp;A của Buildroot</h3>
 
 <ul>
 <li>Không hỗ trợ complier trên target</li>

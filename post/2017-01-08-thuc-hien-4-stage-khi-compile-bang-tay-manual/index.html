@@ -79,9 +79,9 @@
 <p>Đầu vào: <strong>HelloWorld.c</strong><br />
 Đầu ra: <strong>HelloWorld.i</strong><br />
 Câu lệnh thực hiện:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -E HelloWorld.c -o HelloWorld.i  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -E HelloWorld.c -o HelloWorld.i  </code></pre></div>
 <p>Hoặc bằng câu lệnh <strong>cpp</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cpp</span> HelloWorld.c -o HelloWorld.i  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cpp</span> HelloWorld.c -o HelloWorld.i  </code></pre></div>
 <p>File <strong>HelloWorld.i</strong> khá dài so với <strong>HelloWorld.c</strong>.</p>
 
 <p>Về ý nghĩa, file <strong>HelloWorld.i</strong> vẫn là một file source C như bao file Source Code C khác mà thôi, chứ hoàn toàn chưa chuyển sang dạng khác.</p>
@@ -93,7 +93,7 @@ Câu lệnh thực hiện:</p>
 <p>Đầu vào: <strong>HelloWorld.i</strong><br />
 Đầu ra: <strong>HelloWorld.s</strong><br />
 Câu lệnh thực hiện:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$gcc</span> -S HelloWorld.i -o HelloWorld.i  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -S HelloWorld.i -o HelloWorld.i  </code></pre></div>
 <h3 id="3-thực-hiện-stage-3-compiling-to-machine-code">3. Thực hiện Stage 3 (Compiling to Machine Code)</h3>
 
 <p>Bước này sẽ chuyển Assembly Code sang mã máy mà chương trình sẽ chạy:</p>
@@ -102,7 +102,7 @@ Câu lệnh thực hiện:</p>
 Đầu ra:<strong>HelloWorld.o</strong></p>
 
 <p>Câu lệnh thực hiện:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$as</span> HelloWorld.s -o HelloWorld.o  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$as</span> HelloWorld.s -o HelloWorld.o  </code></pre></div>
 <p><strong>as</strong> chính là Assembler, một trình biên dịch Assembly.</p>
 
 <h3 id="4-thực-hiện-stage-4-linking">4. Thực hiện Stage 4 (Linking)</h3>

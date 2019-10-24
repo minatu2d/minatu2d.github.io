@@ -62,13 +62,12 @@
 			<h1 class="post__title">Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p><em>Tham khảo</em><br />
+			
+
+<p><em>Tham khảo</em><br />
 - Sách : AT&amp;T Assembly Language, Richard Blum</p>
 
-<ol>
-<li>Ngôn ngữ Assembly là gì?
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="1-ngôn-ngữ-assembly-là-gì">1. Ngôn ngữ Assembly là gì?</h2>
 
 <ul>
 <li>Ở mức thấp nhất, Process chỉ hiểu <strong>instruction code</strong></li>
@@ -83,10 +82,7 @@
 <li>Bởi vậy, để để lập trình với <strong>Assembly</strong> cho 1 Processor nào đó, ta cũng cần <strong>Assembler</strong> tương ứng cho Processor đó.</li>
 </ul>
 
-<ol>
-<li>Intel ASM và AT&amp;T ASM và ARM
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="2-intel-asm-và-at-t-asm-và-arm">2. Intel ASM và AT&amp;T ASM và ARM</h2>
 
 <ul>
 <li>Các bộ xử lý cùng kiến trúc thường ít có thay đổi về <strong>Assembly Language</strong>, tuy nhiên 2 kiến trúc khác nhau thì thường có <strong>Assembly Language</strong> khác nhau</li>
@@ -112,10 +108,7 @@ offset. <strong>AT&amp;T</strong> sử dụng <em>ljmp $section, $offset</em>, t
 </ul>
 </blockquote>
 
-<ol>
-<li>ASM trên Linux
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="3-asm-trên-linux">3. ASM trên Linux</h2>
 
 <p>Để lập trình ASM trên Linux, ta sử dụng những công cụ sau:</p>
 
@@ -144,38 +137,34 @@ Cho phép xem instruction code và mã dịch ngược về ASM của nó.</p></
 Là công cụ đánh giá performance của phần mềm trong Linux. Nó cho phép xác định hàm nào tốn nhiều thời gian xử lý nhất. Từ đó, ta có thể tập trung cải tiến để tăng hiệu năng.</p></li>
 </ul>
 
-<ol>
-<li>Một chương trình Assembly đơn giản
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="4-một-chương-trình-assembly-đơn-giản">4. Một chương trình Assembly đơn giản</h2>
 
 <p>Chương trình sau sẽ lấy tên của CPU và hiển thị ra dòng **The processor Vendor ID is XXXX **</p>
 
 <ul>
 <li><p>Source code</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#1e889b">#Author : Richard Blum  
-</span><span style="color:#1e889b">#cpuid.s Sample program to extract the processor Vendor ID  
-</span><span style="color:#1e889b"></span>.section .data  
-output:  
-.ascii <span style="color:#a61717;background-color:#e3d2d2">“</span>The processor Vendor ID is <span style="color:#a61717;background-color:#e3d2d2">‘</span>xxxxxxxxxxxx<span style="color:#a61717;background-color:#e3d2d2">’\\</span>n<span style="color:#a61717;background-color:#e3d2d2">”</span>  
-.section .text  
-.globl _start  
-_start:  
-movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0</span>, %eax  
-cpuid  
-movl <span style="color:#a61717;background-color:#e3d2d2">$</span>output, %edi  
-movl %ebx, <span style="color:#b452cd">28</span>(%edi)  
-movl %edx, <span style="color:#b452cd">32</span>(%edi)  
-movl %ecx, <span style="color:#b452cd">36</span>(%edi)  
-movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">4</span>, %eax  
-movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">1</span>, %ebx  
-movl <span style="color:#a61717;background-color:#e3d2d2">$</span>output, %ecx  
-movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">42</span>, %edx  
-<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0x80</span>  
-movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">1</span>, %eax  
-movl <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0</span>, %ebx  
-<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#a61717;background-color:#e3d2d2">$</span><span style="color:#b452cd">0x80</span>  
-</code></pre></div></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#228b22">#Author : Richard Blum  
+</span><span style="color:#228b22">#cpuid.s Sample program to extract the processor Vendor ID  
+</span><span style="color:#228b22"></span><span style="color:#658b00">.section</span> <span style="color:#00688b">.data</span>  
+<span style="color:#00688b">output</span>:  
+<span style="color:#00688b">.ascii</span> <span style="color:#a61717;background-color:#e3d2d2">“</span><span style="color:#00688b">The</span> <span style="color:#00688b">processor</span> <span style="color:#00688b">Vendor</span> <span style="color:#00688b">ID</span> <span style="color:#00688b">is</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;</span><span style="color:#00688b">xxxxxxxxxxxx</span><span style="color:#a61717;background-color:#e3d2d2">&#39;\</span><span style="color:#00688b">n</span><span style="color:#a61717;background-color:#e3d2d2">”</span>  
+<span style="color:#00688b">.section</span> <span style="color:#00688b">.text</span>  
+<span style="color:#00688b">.globl</span> <span style="color:#00688b">_start</span>  
+<span style="color:#00688b">_start</span>:  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$0</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">eax</span>  
+<span style="color:#00688b">cpuid</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$output</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edi</span>  
+<span style="color:#00688b">movl</span> <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ebx</span>, <span style="color:#b452cd">28</span>(<span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edi</span>)  
+<span style="color:#00688b">movl</span> <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edx</span>, <span style="color:#b452cd">32</span>(<span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edi</span>)  
+<span style="color:#00688b">movl</span> <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ecx</span>, <span style="color:#b452cd">36</span>(<span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edi</span>)  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$4</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">eax</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$1</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ebx</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$output</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ecx</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$42</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edx</span>  
+<span style="color:#00688b">int</span> <span style="color:#00688b">$0x80</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$1</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">eax</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$0</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ebx</span>  
+<span style="color:#00688b">int</span> <span style="color:#00688b">$0x80</span>  </code></pre></div></li>
 </ul>
 
 <p>Lưu lại và đặt tên là <strong>cpuid.s</strong>:<br />

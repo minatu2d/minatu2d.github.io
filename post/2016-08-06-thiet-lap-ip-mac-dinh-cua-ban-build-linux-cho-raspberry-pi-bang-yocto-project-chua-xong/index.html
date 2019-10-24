@@ -69,7 +69,7 @@ Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một
 Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.</p>
 
 <p>Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  </code></pre></div>
 <h5 id="gán-ip-tĩnh-cho-bản-build">Gán IP tĩnh cho bản build</h5>
 
 <h6 id="1-cách-1-thay-đổi-trong-rootfs-đã-không-thực-hiện-được-bỏ-qua-và-đến-cách-2-bên-dưới">1. Cách 1: Thay đổi trong <strong>rootfs</strong> (Đã không thực hiện được - bỏ qua và đến cách 2 bên dưới)</h6>
@@ -85,7 +85,7 @@ Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry P
 <ol>
 <li><p>Đầu thay đổi <strong>/etc/network/interfaces</strong> có trong rootfs mặc định<br />
 Từ thư mục <strong>build</strong>, ta tìm bằng câu lệnh sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ locate /etc/network/interfaces  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ locate /etc/network/interfaces  
 /etc/network/interfaces  
 /etc/network/interfaces.d  
 /home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/image/etc/network/interfaces  
@@ -100,13 +100,13 @@ Rồi xơi thôi.</p>
 
 <ul>
 <li><p>Mở file trên ra và sửa thành như sau, tất nhiên nhớ copy ra trước khi sửa nha.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\#</span> /etc/network/interfaces -- configuration file <span style="color:#8b008b;font-weight:bold">for</span> ifup(<span style="color:#b452cd">8</span>), ifdown(<span style="color:#b452cd">8</span>)
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)</span>
 
-<span style="color:#cd5555">\#</span> The loopback interface  
+<span style="color:#228b22"># The loopback interface</span>  
 auto lo  
 iface lo inet loopback
 
-<span style="color:#cd5555">\#</span> Wireless interfaces  
+<span style="color:#228b22"># Wireless interfaces</span>  
 iface wlan0 inet dhcp  
 wireless_mode managed  
 wireless_essid any  
@@ -115,10 +115,10 @@ wpa-conf /etc/wpa_supplicant.conf
 
 iface atml0 inet dhcp
 
-<span style="color:#cd5555">\#</span> Wired or wireless interfaces  
+<span style="color:#228b22"># Wired or wireless interfaces</span>  
 auto eth0  
 #  
-<span style="color:#cd5555">\#</span> Modify START  
+<span style="color:#228b22"># Modify START</span>  
 #  
 <span style="color:#228b22">#iface eth0 inet dhcp</span>  
 iface eth0 inet static  
@@ -127,20 +127,20 @@ netmask <span style="color:#b452cd">255</span>.255.255.0
 network <span style="color:#b452cd">192</span>.168.1.1  
 gateway <span style="color:#b452cd">192</span>.168.1.1  
 #  
-<span style="color:#cd5555">\#</span> Modify END  
+<span style="color:#228b22"># Modify END</span>  
 #
 
 iface eth1 inet dhcp
 
-<span style="color:#cd5555">\#</span> Ethernet/RNDIS gadget (g_ether)  
-<span style="color:#cd5555">\#</span> ... or on host side, usbnet and random hwaddr  
+<span style="color:#228b22"># Ethernet/RNDIS gadget (g_ether)</span>  
+<span style="color:#228b22"># ... or on host side, usbnet and random hwaddr</span>  
 iface usb0 inet static  
 address <span style="color:#b452cd">192</span>.168.7.2  
 netmask <span style="color:#b452cd">255</span>.255.255.0  
 gateway <span style="color:#b452cd">192</span>.168.0.1  
 broadcast <span style="color:#b452cd">192</span>.168.0.255
 
-<span style="color:#cd5555">\#</span> Bluetooth networking  
+<span style="color:#228b22"># Bluetooth networking</span>  
 iface bnep0 inet dhcp  </code></pre></div></li>
 
 <li><p>Cuối cùng, build lại image.<br />
@@ -148,7 +148,7 @@ Nếu chỉ chạy <strong>bitbake rpi-basic-image</strong> thì sẽ không có
 Vì thay đổi trên <strong>rootfs</strong> không làm cho bitbake hiểu được.<br />
 Bitbake chỉ chú ý đến các thay đổi trên layer, hoặc recipes thôi.<br />
 vì thế ta phải ép bitbake build tích hợp lại rootfs để tạo ra ảnh mới.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ bitbake rpi-basic-image -c rootfs -f  </code></pre></div></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ bitbake rpi-basic-image -c rootfs -f  </code></pre></div></li>
 
 <li><p>Sau đó ghi file image được build ra từ đường dẫn <strong>build/tmp/deploy/images/raspberrypi/</strong> vào thẻ nhớ và kiểm chứng nào.<br />
 Một số hình ảnh thực tế</p></li>
@@ -185,13 +185,13 @@ Intel Open Source Technology Centre  </code></pre></div>
 Ta sẽ thực hiện sửa layer <strong>meta-local</strong> với mục đích sẽ thay thế file <strong>/etc/network/interface</strong> mặc định trong rootfs bằng file của chúng ta.</p>
 
 <p>Đầu tiên, từ thư mục <strong>BUILD</strong> (biến môi trường là <strong>BUILDIRR</strong>tạo một file sẽ thay thế, ta copy 1 bản từ file mặc định và edit nó:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\#</span> /etc/network/interfaces -- configuration file <span style="color:#8b008b;font-weight:bold">for</span> ifup(<span style="color:#b452cd">8</span>), ifdown(<span style="color:#b452cd">8</span>)
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)</span>
 
-<span style="color:#cd5555">\#</span> The loopback interface  
+<span style="color:#228b22"># The loopback interface</span>  
 auto lo  
 iface lo inet loopback
 
-<span style="color:#cd5555">\#</span> Wireless interfaces  
+<span style="color:#228b22"># Wireless interfaces</span>  
 iface wlan0 inet dhcp  
 wireless_mode managed  
 wireless_essid any  
@@ -200,10 +200,10 @@ wpa-conf /etc/wpa_supplicant.conf
 
 iface atml0 inet dhcp
 
-<span style="color:#cd5555">\#</span> Wired or wireless interfaces  
+<span style="color:#228b22"># Wired or wireless interfaces</span>  
 auto eth0  
 #  
-<span style="color:#cd5555">\#</span> Modify START  
+<span style="color:#228b22"># Modify START</span>  
 #  
 <span style="color:#228b22">#iface eth0 inet dhcp</span>  
 iface eth0 inet static  
@@ -212,25 +212,25 @@ netmask <span style="color:#b452cd">255</span>.255.255.0
 gateway <span style="color:#b452cd">192</span>.168.0.1  
 broadcast <span style="color:#b452cd">192</span>.168.0.255  
 #  
-<span style="color:#cd5555">\#</span> Modify END  
+<span style="color:#228b22"># Modify END</span>  
 #  
 iface eth1 inet dhcp
 
-<span style="color:#cd5555">\#</span> Ethernet/RNDIS gadget (g_ether)  
-<span style="color:#cd5555">\#</span> ... or on host side, usbnet and random hwaddr  
+<span style="color:#228b22"># Ethernet/RNDIS gadget (g_ether)</span>  
+<span style="color:#228b22"># ... or on host side, usbnet and random hwaddr</span>  
 iface usb0 inet static  
 address <span style="color:#b452cd">192</span>.168.7.2  
 netmask <span style="color:#b452cd">255</span>.255.255.0  
 network <span style="color:#b452cd">192</span>.168.7.0  
 gateway <span style="color:#b452cd">192</span>.168.7.1
 
-<span style="color:#cd5555">\#</span> Bluetooth networking  
+<span style="color:#228b22"># Bluetooth networking</span>  
 iface bnep0 inet dhcp  </code></pre></div>
 <p>Sau đó ta thực hiện lệnh sau để thêm vào recipe <strong>init-ifupdown</strong></p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ recipetool appendfile ../poky/meta-local /etc/network/interfaces ./interface  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ recipetool appendfile ../poky/meta-local /etc/network/interfaces ./interface  </code></pre></div>
 <p>Sau khi thực hiện xong, ta sẽ thấy recipe <strong>init-ifupdown</strong> được thêm vào <strong>meta-local</strong>, cũng như <strong>bbappend</strong> file cũng được thêm vào luôn.<br />
 Đây là nội dung của <strong>meta-local</strong> sau đó:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">../poky/meta-local/  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">../poky/meta-local/  
 ├── conf  
 │   └── layer.conf  
 └── recipes-core  
@@ -244,7 +244,7 @@ iface bnep0 inet dhcp  </code></pre></div>
 
 <p>Giờ ta tiến hành build lại ảnh cho RPI là xong:<br />
 Vẫn câu lệnh quen thuộc từ thư mục <strong>build</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$bitbake</span> rpi-basic-image  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$bitbake</span> rpi-basic-image  </code></pre></div>
 <p>Trong kết quả có thể xuất hiện 2 lỗi về <strong>hash mismatch</strong>, cái này không sao hết. File ảnh mới vẫn được tạo, mọi thứ vẫn chạy bình thường.</p>
 
 <h6 id="3-thực-hiện-thêm-action-vào-bước-tạo-rootfs">3. Thực hiện thêm action vào bước tạo rootfs</h6>

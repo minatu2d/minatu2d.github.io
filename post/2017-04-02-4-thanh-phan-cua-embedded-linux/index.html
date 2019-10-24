@@ -64,8 +64,6 @@
 		</header><div class="content post__content clearfix">
 			
 
-<h2 id="4-thành-phần-của-embedded-linux">4 thành phần của Embedded Linux</h2>
-
 <p>Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)&hellip;cho đến các thiết bị gia dụng, gia đình.</p>
 
 <p>Khi sử dụng máy tính cá nhân, server ta dễ dàng &ldquo;sờ&rdquo; thấy được các thành phần của Linux như các tiến trình, shell..etc.<br />
@@ -77,12 +75,9 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
 
 <p>Bài này chỉ nói về các thành phần mà người ta phải nghĩ đến khi phát triển một ứng dụng trên một phần cứng mới. Tất nhiên, hầu hết chúng ta sẽ phát triển ứng dụng, ít động đến những phần đó. Nhưng có một hiểu biết tổng quan sẽ rất thú vị.</p>
 
-<ol>
-<li>Toolchain - compiler, linker, sysroot&hellip;
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="1-toolchain-compiler-linker-sysroot">1. Toolchain - compiler, linker, sysroot&hellip;</h2>
 
-<p><strong>Tại sao lại phải quan tâm đến toolchain ngay từ đầu, và toolchain là cái gì?</strong></p>
+<h3 id="1-1-tại-sao-lại-phải-quan-tâm-đến-toolchain-ngay-từ-đầu-và-toolchain-là-cái-gì">1.1 Tại sao lại phải quan tâm đến toolchain ngay từ đầu, và toolchain là cái gì?**</h3>
 
 <p>Như chúng ta đã biết, để chạy một đoạn code C (ngôn ngữ nào khác) bất kì, dù đơn giản đến đâu đi nữa, thì ta phải biên dịch nó ra mã nhị phân mà máy tính hiểu được. Việc biên dịch đó cần một phần mềm gọi là <em>Compiler</em>.</p>
 
@@ -96,7 +91,7 @@ Hầu hết các bản phân phối phổ biến làm hết những thứ liên 
 
 <p>Vì thế, nếu không thể tạo ra mã nhị phân cho nền tảng tính toán (platform) thì ta vẫn chỉ có 1 &ldquo;phần cứng&rdquo; với đúng nghĩa đen của nó mà thôi.</p>
 
-<p><strong>Vậy Toolchain cho Linux chung là gì?</strong></p>
+<h3 id="1-2-vậy-toolchain-cho-linux-chung-là-gì">1.2 Vậy Toolchain cho Linux chung là gì?**</h3>
 
 <p>Nó ít nhất bao gồm những thành phần sau:<br />
 - binutils (công cụ xử lý liên quan đến mã phân): GNU Assembler, Linker, etc.<br />
@@ -115,7 +110,7 @@ Ví dụ các bản phân phối ta vẫn dùng cũng được gọi là sử d�
 <p>Khi phát triển Embedded Linux, hầu hết chúng ta sẽ sử dụng <em>Cross Toolchain</em>.<br />
 Vì các thiết bị chạy thường tốc độ thấp, bộ nhớ ít nên không thích hợp để build source trên đó.</p>
 
-<p><strong>C Library</strong></p>
+<h3 id="1-3-c-library">1.3 C Library**</h3>
 
 <p>Hay chính glibc ta vẫn thấy trên các distro, thường được kèm theo GCC cho Platform tương ứng luôn</p>
 
@@ -124,8 +119,9 @@ Vì các thiết bị chạy thường tốc độ thấp, bộ nhớ ít nên k
 - <strong>GNU eglib</strong>: vẫn là glibc, nhưng dễ configure hơn, dễ sử dụng ở hệ thống Embedded<br />
 - <strong>uClibc:</strong> nhỏ, không được update thư viện liên quan đến thread và các hàm POSIX khác</p>
 
-<p><strong>Các tiêu chí để chọn một Toolchain</strong><br />
-- Có hỗ trợ tốt platform của bạn không: ví dụ hỗ trợ kiến trúc ARM nào, &hellip;có là soft-float hay hardfloat.<br />
+<h3 id="1-4-các-tiêu-chí-để-chọn-một-toolchain">1.4 Các tiêu chí để chọn một Toolchain**</h3>
+
+<p>- Có hỗ trợ tốt platform của bạn không: ví dụ hỗ trợ kiến trúc ARM nào, &hellip;có là soft-float hay hardfloat.<br />
 - Có thư viện C phù hợp với yêu cầu dự án không.<br />
 - Có được cập nhật không<br />
 - Có được hỗ trợ tốt (từ cộng đồng hoặc thương mại) không<br />
@@ -133,11 +129,11 @@ Vì các thiết bị chạy thường tốc độ thấp, bộ nhớ ít nên k
 
 <p>Nhiều hãng tự xây dựng Toolchain, nhưng mình đoán họ thường dựa trên một Toolchain Open-source có sẵn. Bên dưới là một số Toolchain rất hay được sử dụng.</p>
 
-<p><img src="{{ site.baseurl }}/assets/toolchain_examples_1.png" alt="Toolchain_examples_1" /></p>
+<p><img src="{{ with .Site.Baseurl }}/assets/toolchain_examples_1.png" alt="Toolchain_examples_1" /></p>
 
 <p><img src="{{ site.baseurl }}/assets/toolchain_example_2.png" alt="Toolchain_example_2" /></p>
 
-<p><strong>Vấn đề khi sử dụng thư viện</strong></p>
+<h3 id="1-5-vấn-đề-khi-sử-dụng-thư-viện">1.5 Vấn đề khi sử dụng thư viện</h3>
 
 <p>Có nhiều Toolchain chỉ cung cấp đúng cái thư viện C Standard thôi.</p>
 
@@ -148,7 +144,7 @@ Bạn có thể may mắn nếu tìm được bản build của thư viện đó
 
 <p>Vì thế, sẽ tốt hơn nếu chọn Toolchain mà được nhiều thư viện hỗ trợ.</p>
 
-<p><strong>Vấn đề với debug</strong></p>
+<h3 id="1-6-vấn-đề-với-debug">1.6 Vấn đề với debug</h3>
 
 <p>Đã phát triển phần mềm việc có bug và phải fix nó là chuyện đương nhiên.</p>
 
@@ -157,17 +153,14 @@ Kiểu như chức năng A chưa fixed được các chức năng B, C, D chưa 
 
 <p>Khi làm việc với Embedded Linux, ta nên xem xét xem toolchain có một <em>gdb</em> (gdb client) chạy ở một máy (khác với phần cứng thật) và một gdb server (chạy trên thiết bị thật) hay không để biết được có thể debug từ xa cho thiết bị hay không.</p>
 
-<p><strong>Một vài chú ý khác</strong></p>
+<h3 id="1-7-một-vài-chú-ý-khác">1.7 Một vài chú ý khác</h3>
 
 <p>Một số công cụ dưới đây nếu có sẽ làm quá trình phát triển thuận lợi hơn rất nhiều.<br />
 - Một vài công cụ khác như Profiler (không có nhiều kinh nghiệm sử dụng)<br />
 - Tracer..<br />
 - Plugin cho Eclipse&hellip;</p>
 
-<ol>
-<li>Bootloader - sống vì kernel, hy sinh để kernel sống
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="2-bootloader-sống-vì-kernel-hy-sinh-để-kernel-sống">2. Bootloader - sống vì kernel, hy sinh để kernel sống</h2>
 
 <p><strong>Tại sao lại cần bootloader, và bootloader là cái gì</strong></p>
 
@@ -222,10 +215,7 @@ Kiểu như thế này</p>
 - Hỗ trợ cả load kernel qua network nữa.<br />
 - Hỗ trợ cơ chế truyền tham số cho kernel bằng device tree khi boot kernel.</p>
 
-<ol>
-<li>Kernel - hệ điều hành bắt đầu từ đây
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="3-kernel-hệ-điều-hành-bắt-đầu-từ-đây">3. Kernel - hệ điều hành bắt đầu từ đây</h2>
 
 <p>Kernel - Thành phần quan trọng nhất của hệ thống, chứa bộ lập lịch các tiến trình, quản lý bộ nhớ, quản lý thiết bị&hellip;etc.</p>
 
@@ -254,10 +244,7 @@ Các BSP này có thể được cung cấp qua các bản Patch.</p>
 Đó là, dạng load được vào kernel là dạng binary, đã số là mã nguồn mở, nhưng có một số kernel module được sử dụng kèm theo thiết bị lại ở dạng mã nguồn đóng, và chúng sẽ không được quản lý trên main stream.<br />
 Cần chú ý cái này khi sử dụng kernel module dạng này trong các sản phẩm thương mại.</p>
 
-<ol>
-<li>User-space applications - với user đây là hệ thống
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="4-user-space-applications-với-user-đây-là-hệ-thống">4. User-space applications - với user đây là hệ thống</h2>
 
 <p>Là các ứng dụng từ init đến các ứng dụng đồ họa ta dùng.<br />
 Đây là một phần quan trọng và không thể thiếu của hệ thống.<br />

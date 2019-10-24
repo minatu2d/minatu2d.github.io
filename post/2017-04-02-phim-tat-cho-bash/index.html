@@ -64,16 +64,16 @@
 		</header><div class="content post__content clearfix">
 			
 
-<p>Mặc định, bash sử dụng <em>emacs</em> mode, có thể chuyển sang <em>vi</em> mode được.<br />
+<p>Mặc định, bash sử dụng <code>emacs</code> mode, có thể chuyển sang <em>vi</em> mode được.<br />
 Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.</p>
 
-<h2 id="chiều-ngang-di-chuyển-cơ-bản">Chiều ngang : Di chuyển cơ bản</h2>
+<h3 id="chiều-ngang-di-chuyển-cơ-bản">Chiều ngang : Di chuyển cơ bản</h3>
 
 <p>Ctrl + b : (Backward) Di chuyển con trỏ sang trái về trước 1 kí tự<br />
 Ctrl + f : (Fordware) Di chuyển con trỏ sang phải một kí tự.<br />
 Ctrl + d : (Delete) Xóa kí tự ở vị trí con trỏ</p>
 
-<h2 id="chiều-ngang-di-chuyển-nhanh">Chiều ngang : Di chuyển nhanh</h2>
+<h3 id="chiều-ngang-di-chuyển-nhanh">Chiều ngang : Di chuyển nhanh</h3>
 
 <p>Ctrl + a : (Ahead) Di chuyển con trỏ về command<br />
 Ctrl + e : (End) Di chuyển con trỏ về cuối command<br />
@@ -82,22 +82,22 @@ Alt + b : (Backward) Di chuyển con trỏ về từ phía trước</p>
 
 <p>(một từ được định nghĩa gồm aphabets, digits, không chứa kí hiệu)</p>
 
-<h2 id="cut-và-paste">Cut và Paste</h2>
+<h3 id="cut-và-paste">Cut và Paste</h3>
 
 <p>Ctrl + k : (Kill) Cắt lấy đoạn từ vị trí con trỏ đến cuối command<br />
 Alt + d : (Delete) Xóa trừ ở vị trí con trỏ<br />
 Ctrl + y : (Yank) Dán vào bị trí hiện tại của con trỏ<br />
 Ctrl + r : (Retrieve) Tìm command trong history theo các kí tự được gõ sau đó</p>
 
-<h2 id="một-số-khác">Một số khác</h2>
+<h3 id="một-số-khác">Một số khác</h3>
 
 <p>Trên đây là các chức năng gần như mặc định, có thể sử dụng được ngay.<br />
 Còn một số chức năng khá hữu ích nữa, ta có thể gắn shortcut cho nó bằng cách sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#cd5555">\#</span> Add some shortcut key <span style="color:#8b008b;font-weight:bold">for</span> quickly search <span style="color:#658b00">history</span> commands  
-<span style="color:#cd5555">\#</span> e -&gt; Alt key  
-<span style="color:#cd5555">\#</span> C -&gt; Ctrl key  
-<span style="color:#658b00">bind</span> <span style="color:#cd5555">&#39;&#34;\\ep&#34;: history-search-backward&#39;</span>  
-<span style="color:#658b00">bind</span> <span style="color:#cd5555">&#39;&#34;\\en&#34;: history-search-forward&#39;</span>  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># Add some shortcut key for quickly search history commands</span>  
+<span style="color:#228b22"># e -&gt; Alt key</span>  
+<span style="color:#228b22"># C -&gt; Ctrl key</span>  
+<span style="color:#658b00">bind</span> <span style="color:#cd5555">&#39;&#34;\ep&#34;: history-search-backward&#39;</span>  
+<span style="color:#658b00">bind</span> <span style="color:#cd5555">&#39;&#34;\en&#34;: history-search-forward&#39;</span>  </code></pre></div>
 <p>Tìm kiếm command bắt đầu bằng một từ bất kì trang history<br />
 2 phím này cực kì hữu dụng để giảm số phim mũi tên<br />
 phải bấm khi muốn chạy một command dài đã gõ trước đó khá lâu.<br />

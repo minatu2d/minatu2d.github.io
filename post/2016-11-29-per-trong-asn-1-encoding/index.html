@@ -77,7 +77,7 @@ Khi định nghĩa chưa các thành phần mở rộng, việc hiện thực s�
 
 <p>Nói chung, xử lý khởi tạo cho <strong>PER</strong> rắc rối hơn, nhưng tốc độ Encode/Decode thì nhanh hơn <strong>BER</strong>, kích thước dữ liệu được Encode cũng nhỏ hơn, vì thế, rất thích hợp cho truyền qua mạng.</p>
 
-<h3 id="1-4-kiểu-hiện-thực-hóa-encoding">1. 4 kiểu hiện thực hóa (Encoding)</h3>
+<h2 id="1-4-kiểu-hiện-thực-hóa-encoding">1. 4 kiểu hiện thực hóa (Encoding)</h2>
 
 <p><strong>PER</strong> có 2 loại là: Kiểu cơ bản (<strong>BASIC PER</strong>), và kiểu chính quy (<strong>CANONICAL-PER</strong>).<br />
 Mỗi loại trên lại có 2 loại con là: Sắp xếp lại (<strong>ALIGNED</strong>) và không sắp xếp lại (<strong>UNALIGNED</strong>).</p>
@@ -88,9 +88,9 @@ Mỗi loại trên lại có 2 loại con là: Sắp xếp lại (<strong>ALIGNE
 Vì thế, kiểu <strong>UNALIGED</strong> thường sẽ nhỏ hơn <strong>ALIGNED</strong>.<br />
 2 kiểu này không tương thích với nhau, một Decoder dạng <strong>ALIGNED</strong> sẽ không thể decode được dữ liệu kiểu <strong>UNALIGNED</strong>.</p>
 
-<h3 id="2-hiện-thực-số-nguyên">2. Hiện thực số nguyên</h3>
+<h2 id="2-hiện-thực-số-nguyên">2. Hiện thực số nguyên</h2>
 
-<h4 id="2-1-kiểu-nguyên-hữu-hạn">2.1 Kiểu nguyên hữu hạn</h4>
+<h3 id="2-1-kiểu-nguyên-hữu-hạn">2.1 Kiểu nguyên hữu hạn</h3>
 
 <p>Giả sử ta sẽ biểu diễn số một số nguyên N.<br />
 Nếu giá trị nhỏ nhất <strong>N_MIN</strong> và giá trị lớn nhất <strong>N_MAX</strong> đã được biết (trong định nghĩa ASN.1) thì ta phải biểu diễn giá trị <strong>N-NMIN</strong>, tức là khi <strong>N=N_MIN</strong> thì giá trị <strong>0</strong> được biểu diễn.<br />
@@ -109,25 +109,25 @@ Không làm tròn, bỏ phần thập phân.  </code></pre></div>
 </ol>
 </blockquote>
 
-<h4 id="2-2-các-số-nguyên-không-âm-nhỏ">2.2 Các số nguyên không âm nhỏ</h4>
+<h3 id="2-2-các-số-nguyên-không-âm-nhỏ">2.2 Các số nguyên không âm nhỏ</h3>
 
 <p>Thông thường, các khoảng có cả các khoảng giá trị nhỏ, nhưng khoảng giá trị không giới hạn cũng không ít. Kích thước của giá trị mở rộng của <strong>SEQUENCE</strong>, <strong>SET</strong>, chỉ số trong <strong>CHOICE</strong> là các số nguyên có khoảng giá trị nhỏ. Được gọi là Dạng các số nguyên không âm nhỏ thông thường.<br />
 Giả sử số cần biểu diễn là N.<br />
 a. Nếu <strong>N = 64</strong>: 1 bit đầu, giá trị 1, để mô tả là <strong>ALIGNED</strong>, 6 bit tiếp theo được biểu diễn cho <strong>Khoảng số nguyên giới hạn</strong> ở ngay phần dưới đây.</p>
 
-<h4 id="2-3-khoảng-số-nguyên-giới-hạn">2.3 Khoảng số nguyên giới hạn</h4>
+<h3 id="2-3-khoảng-số-nguyên-giới-hạn">2.3 Khoảng số nguyên giới hạn</h3>
 
 <p>Khoảng được nói đến ở đây là có giới hạn nhỏ nhất N_MIN nhưng không có giới hạn trên. Được biểu diễn theo dạng độ dài thay đổi được.<br />
 Đầu tiên là số lượng Octet tối thiểu để biểu diễn <strong>N - N_MIN</strong>, sau đó là L Octet tương ứng ở dạng không dấu.<br />
 Tùy vào <strong>UNALIGNED</strong> hay <strong>ALIGNED</strong> mà các biểu diễn L Octet này sẽ khác nhau. Chi tiết được trình bày ở phần sau.</p>
 
-<h4 id="2-4-kiểu-nguyên-không-giới-hạn">2.4 Kiểu nguyên không giới hạn.</h4>
+<h3 id="2-4-kiểu-nguyên-không-giới-hạn">2.4 Kiểu nguyên không giới hạn.</h3>
 
 <p>Giả sử ta sẽ biểu diễn N mà nó không được định nghĩa một giới hạn nào cả. Đương nhiên sẽ sử dụng biểu diễn độ dài thay đổi.<br />
 Đầu tiên là số lượng Octet L, sau đó là L Octet, nhưng L Octet này được biểu diễn ở dạng nhị phân có dấu (bù 2).<br />
 Tùy vào <strong>UNALIGNED</strong> hay <strong>ALIGNED</strong> mà các biểu diễn L Octet này sẽ khác nhau. Xem ở phần sau. Chi tiết được trình bày ở phần sau.</p>
 
-<h4 id="2-5-biểu-diễn-độ-dài">2.5 Biểu diễn độ dài</h4>
+<h3 id="2-5-biểu-diễn-độ-dài">2.5 Biểu diễn độ dài</h3>
 
 <p>Trong <strong>BER</strong>, trường độ dài luôn luôn được đưa vào khi biểu diễn, và theo đơn vị Octet. Nhưng <strong>PER</strong> thì khác, nó chỉ xuất hiện khi thực sự cần mà thôi.<br />
 Về biểu diễn độ dài dữ liệu,<br />
@@ -154,18 +154,18 @@ c. Trường hợp <strong>ALIGNED</strong>:</p>
 </ol>
 </blockquote>
 
-<h4 id="2-6-kiểu-mở">2.6 Kiểu mở</h4>
+<h3 id="2-6-kiểu-mở">2.6 Kiểu mở</h3>
 
 <p>Là kiểu được thêm vào sau các dữ liệu được miêu tả. Nó không có giới hạn về độ dài, vì thế được biểu diễn theo kiểu độ dài thay đổi.<br />
 Đầu tiên là độ dài L (biểu diễn bằng đơn vị Octet), sau đó là dãy L Octet.</p>
 
-<h3 id="3-cách-biểu-diễn-cụ-thể-cho-mỗi-kiểu">3. Cách biểu diễn cụ thể cho mỗi kiểu</h3>
+<h2 id="3-cách-biểu-diễn-cụ-thể-cho-mỗi-kiểu">3. Cách biểu diễn cụ thể cho mỗi kiểu</h2>
 
-<h4 id="3-1-kiểu-logic-bool">3.1 Kiểu logic (BOOL)</h4>
+<h3 id="3-1-kiểu-logic-bool">3.1 Kiểu logic (BOOL)</h3>
 
 <p>Sẽ biểu diễn bằng 1 bit thôi. TRUE được biểu diễn là 1, FALSE được biểu diễn là 0. Không có trường độ dài.</p>
 
-<h4 id="3-2-kiểu-số-nguyên">3.2 Kiểu số nguyên</h4>
+<h3 id="3-2-kiểu-số-nguyên">3.2 Kiểu số nguyên</h3>
 
 <p>Phạm vi biểu diễn của tập giá trị sẽ quyết định giá trị thuộc tập đó được biểu diễn như thế nào.</p>
 
@@ -208,7 +208,7 @@ Khi biểu diễn số nguyên, ta mới chỉ cần để ý đến cận trên
 
 <p>**</p>
 
-<h4 id="3-3-kiểu-liệt-kê-enumerated">3.3 Kiểu liệt kê (ENUMERATED)</h4>
+<h3 id="3-3-kiểu-liệt-kê-enumerated">3.3 Kiểu liệt kê (ENUMERATED)</h3>
 
 <p>Kiểu liệt kê được biểu diễn theo cách được mô tả dưới đây.</p>
 

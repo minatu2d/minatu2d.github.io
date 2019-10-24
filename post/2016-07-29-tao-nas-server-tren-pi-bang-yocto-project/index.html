@@ -84,22 +84,22 @@ Do vậy, bài này sẽ tập trung vào tạo bản basic <strong>rpi-basic-im
 
 <ul>
 <li><p>Trước khi bắt đầu, ta nên cài các gói cần thiết như dưới để đỡ phải cài lúc gặp lỗi:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \\  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib <span style="color:#cd5555">\\</span>  
 build-essential chrpath socat libsdl1.2-dev xterm  </code></pre></div></li>
 
 <li><p>Tạo thư mục cần build, hiện tại <strong>krogoth</strong> đang là bản mới nhất:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$mkdir raspberrpi_krogoth  </code></pre></div></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$mkdir</span> raspberrpi_krogoth  </code></pre></div></li>
 
 <li><p>Tải các Poky, như cách mọi người vẫn làm với <strong>git</strong> :</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$cd raspberrpi_krogoth  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cd</span> raspberrpi_krogoth  
 $  
-$git clone -b krogoth git://git.yoctoproject.org/poky.git  </code></pre></div></li>
+<span style="color:#00688b">$git</span> clone -b krogoth git://git.yoctoproject.org/poky.git  </code></pre></div></li>
 
 <li><p>Như ta đã nói ở phần đầu, Poky là một bản phân phối Linux của Yocto Project, mặc định của nó không hỗ trợ RPI (chỉ có Texas Instruments Beaglebone - beaglebone và Freescale MPC8315E-RDB - mpc8315e-rdb mà thôi, xem thêm tại <a href="http://git.yoctoproject.org/cgit/cgit.cgi/poky/tree/README.hardware?h=krogoth">đây</a>). Vì thế, ta phải tải phần hỗ trợ liên quan đến bo mạch (BSP) của RPI<br />
 <strong>jethro</strong> là bản mới nhất</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$cd poky  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cd</span> poky  
 $  
-$git clone -b jethro git://git.yoctoproject.org/meta-raspberrypi  </code></pre></div></li>
+<span style="color:#00688b">$git</span> clone -b jethro git://git.yoctoproject.org/meta-raspberrypi  </code></pre></div></li>
 </ul>
 
 <p>Đến đây, ta đã được 1 nửa về mặt thao tác phải làm, nhưng chỉ mới <sup>1</sup>&frasl;<sub>10</sub> về mặt thời gian phải đợi. Xin hãy từ từ :))</p>
@@ -108,11 +108,11 @@ $git clone -b jethro git://git.yoctoproject.org/meta-raspberrypi  </code></pre><
 - Thiết lập các biến môi trường<br />
 Do poky đã cung cấp sẵn script thiết lập các biến này rồi.<br />
 Ta chỉ cần chạy.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$source poky/oe-init-build-env build  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  </code></pre></div>
 <p>(có thể không cần <strong>buid</strong> ở cuối)<br />
 Sau khi chạy xong lệnh trên, đường dẫn sẽ tự động chuyển về thư mục build của Yocto. Ta bắt đầu làm mọi thứ từ đây.<br />
 Nó có dạng kiểu như thế này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$  </code></pre></div>
 <ul>
 <li>Poky chia các gói phần mềm thành các layer (lớp), gói hỗ trợ RPI cũng vậy, vì không được hỗ trợ mặc định nên ta phải thêm vào bằng cách:</li>
 </ul>
@@ -120,20 +120,20 @@ Nó có dạng kiểu như thế này:</p>
 <p>Mở file <strong>build/conf/bblayers.conf</strong> bằng <em>nano</em>, <em>vi</em> hoặc bất cứ editor nào.<br />
 Rồi thêm đường dẫn đến gói hỗ trợ bo mạch RPI.<br />
 Sau khi sửa, nó sẽ có nội dung kiểu như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ cat conf/bblayers.conf
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ cat conf/bblayers.conf
 
-\# POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf  
-\# changes incompatibly  
-POKY_BBLAYERS_CONF_VERSION = &amp;amp;quot;2&amp;amp;quot;
+<span style="color:#228b22"># POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf</span>  
+<span style="color:#228b22"># changes incompatibly</span>  
+<span style="color:#00688b">POKY_BBLAYERS_CONF_VERSION</span> = &amp;amp;quot;<span style="color:#b452cd">2</span>&amp;amp;quot;
 
-BBPATH = &amp;amp;quot;${TOPDIR}&amp;amp;quot;  
+<span style="color:#00688b">BBPATH</span> = &amp;amp;quot;<span style="color:#cd5555">${</span><span style="color:#00688b">TOPDIR</span><span style="color:#cd5555">}</span>&amp;amp;quot;  
 BBFILES ?= &amp;amp;quot;&amp;amp;quot;
 
-BBLAYERS ?= &amp;amp;quot; \\  
-/home/oedev/raspberrypi_krogoth/poky/meta \\  
-/home/oedev/raspberrypi_krogoth/poky/meta-poky \\  
-/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp \\  
-/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi \\ # mới thêm vào  
+BBLAYERS ?= &amp;amp;quot; <span style="color:#cd5555">\\</span>  
+/home/oedev/raspberrypi_krogoth/poky/meta <span style="color:#cd5555">\\</span>  
+/home/oedev/raspberrypi_krogoth/poky/meta-poky <span style="color:#cd5555">\\</span>  
+/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp <span style="color:#cd5555">\\</span>  
+/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi <span style="color:#cd5555">\\</span> <span style="color:#228b22"># mới thêm vào</span>  
 &amp;amp;quot;  </code></pre></div>
 <ul>
 <li>Tiếp theo, ta phải thay đổi Target Machine,</li>
@@ -144,38 +144,38 @@ BBLAYERS ?= &amp;amp;quot; \\
 <p>Raspberry PI không được hỗ trợ mặc định nên ta phải thêm nó vào.</p>
 
 <p>Mở file <strong>build/conf/local.conf </strong>và sửa như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">....  
-#MACHINE ?= &#34;qemuarm64&#34;  
-#MACHINE ?= &#34;qemumips&#34;  
-#MACHINE ?= &#34;qemumips64&#34;  
-#MACHINE ?= &#34;qemuppc&#34;  
-#MACHINE ?= &#34;qemux86&#34;  
-#MACHINE ?= &#34;qemux86-64&#34;  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">....  
+<span style="color:#228b22">#MACHINE ?= &#34;qemuarm64&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;qemumips&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;qemumips64&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;qemuppc&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;qemux86&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;qemux86-64&#34;</span>  
 #  
-\# There are also the following hardware board target machines included for  
-\# demonstration purposes:  
+<span style="color:#228b22"># There are also the following hardware board target machines included for</span>  
+<span style="color:#228b22"># demonstration purposes:</span>  
 #  
-#MACHINE ?= &#34;beaglebone&#34;  
-#MACHINE ?= &#34;genericx86&#34;  
-#MACHINE ?= &#34;genericx86-64&#34;  
-#MACHINE ?= &#34;mpc8315e-rdb&#34;  
-#MACHINE ?= &#34;edgerouter&#34;  
+<span style="color:#228b22">#MACHINE ?= &#34;beaglebone&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;genericx86&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;genericx86-64&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;mpc8315e-rdb&#34;</span>  
+<span style="color:#228b22">#MACHINE ?= &#34;edgerouter&#34;</span>  
 #  
-\# This sets the default machine to be qemux86 if no other machine is selected:  
-MACHINE ??= &#34;qemux86&#34;
+<span style="color:#228b22"># This sets the default machine to be qemux86 if no other machine is selected:</span>  
+MACHINE ??= <span style="color:#cd5555">&#34;qemux86&#34;</span>
 
-\# Thêm vào cho RaspberryPI  
-MACHINE ?= &#34;raspberrypi&#34;  
+<span style="color:#228b22"># Thêm vào cho RaspberryPI</span>  
+MACHINE ?= <span style="color:#cd5555">&#34;raspberrypi&#34;</span>  
 ....  </code></pre></div>
 <ul>
 <li><p>Giờ bắt đầu build và bỏ máy, ở phần chạy lệnh <strong>source</strong> phía trên, ta có thể thấy một đoạn được hiện ra với hướng dẫn kiểu <strong>bitbake XXX</strong>.<br />
 Ta cũng làm tương tự như vậy</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$bitbake rpi-basic-image  </code></pre></div></li>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$bitbake</span> rpi-basic-image  </code></pre></div></li>
 </ul>
 
 <p>Bước này sẽ thực hiện việc tải các source cần thiết, thực hiện các sửa, thực hiện tạo compiler, build source, rồi tạo image.<br />
 <strong>rpi-basic-image</strong> : là 1 một images mà framework có thể tạo, ta có thể xem danh sách các images khác bằng đường dẫn bên dưới đây:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky/meta-raspberrypi$ ls recipes-core/images/  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky/meta-raspberrypi$ ls recipes-core/images/  
 rpi-basic-image.bb rpi-hwup-image.bb rpi-test-image.bb  </code></pre></div>
 <p>Trong quá trình thực hiện, có thể gặp phải lỗi kiểu như sau:</p>
 
@@ -183,11 +183,11 @@ rpi-basic-image.bb rpi-hwup-image.bb rpi-test-image.bb  </code></pre></div>
 Tức là chạy lại câu lệnh <strong>bitbake rpi-basic-image</strong> ở phía trên.<br />
 Error.02 : Không tìm thấy file <strong>mkknlimg</strong>:<br />
 Lỗi sẽ hiện ra kiểu như thế này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">DEBUG: Executing shell function do_rpiboot_mkimage  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">DEBUG: Executing shell <span style="color:#8b008b;font-weight:bold">function</span> do_rpiboot_mkimage  
 /build/tmp/sysroots/x86_64-linux/usr/lib/rpi-mkimage/mkknlimg: not found  
-WARNING: exit code 127 from a shell command.  </code></pre></div>
+WARNING: <span style="color:#658b00">exit</span> code <span style="color:#b452cd">127</span> from a shell command.  </code></pre></div>
 <p>Đây là lỗi đường dẫn, hãy sửa bằng cách:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">#Tìm kiếm mkknlimg xem có ở đâu đó không.  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#Tìm kiếm mkknlimg xem có ở đâu đó không.</span>  
 $ locate mkknlimg  </code></pre></div>
 <p>Sẽ có kết quả dạng:<br />
 _&hellip;/tmp/sysroots/x86<em>64-linux/usr/libexec/mkknlimg</em><br />

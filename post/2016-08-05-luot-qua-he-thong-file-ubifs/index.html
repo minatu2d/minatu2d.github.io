@@ -305,7 +305,7 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 - no_builk_read - Không cho phép sử dụng bulk-read (đọc theo khối lớn)</p>
 
 <p>Ví dụ:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ mount -o no_chk_data_crc /dev/ubi0_0 /mnt/ubifs  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ mount -o no_chk_data_crc /dev/ubi0_0 /mnt/ubifs  </code></pre></div>
 <p>Mount hệ thống file UBIFS vào điểm <strong><em>/mnt/ubifs</em></strong>, không kiểm tra CRC data.<br />
 Ngoài ra, UBIFS còn có mode đồng bộ nữa. Nó sẽ hoạt động mà không có writeback, write-buffer. Chú ý rằng, <strong>atime</strong> không được UBIFS hỗ trợ.</p>
 
@@ -328,7 +328,7 @@ Ngoài ra, UBIFS còn có mode đồng bộ nữa. Nó sẽ hoạt động mà k
 <p>Giả sử tình huống như thế này, có X bytes dữ liệu &ldquo;dirty&rdquo; trong page cache. Chúng sẽ được đẩy ra thiết bị flash thôi, nhưng đến lúc đó thì vẫn nằm trên RAM. UBIFS sẽ cần <strong><em>X + O</em></strong> bytes trên thiết bị flash để ghi dữ liệu này, O ở đây là dữ liệu overhead (như index, các header, etc).</p>
 
 <p>Vấn đề ở đây là, UBIFS không thể tính chính xác X và O được, và nó &ldquo;bi quan&rdquo; rằng sẽ là tình huống xấu nhất. Bởi vậy, khi thực sự đẩy ra ngoài flash, nó có thể dùng số vùng trống ít hơn đã giả định. Dưới đây là 1 ví dụ như thế:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ df  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ df  
 Filesystem 1K-blocks Used Available Use% Mounted on  
 ubi0:ubifs <span style="color:#b452cd">49568</span> <span style="color:#b452cd">49568</span> <span style="color:#b452cd">0</span> <span style="color:#b452cd">100</span>% /mnt/ubifs  
 $ sync  

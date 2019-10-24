@@ -217,13 +217,13 @@ display.txt mkdevs.sh mksyslinux.sh syslinux.cfg
 để tạo file system.</p>
 
 <p>Đầu tiên, tạo thư mục chứa nội dung toàn bộ file system:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$mkdir</span> rootfs_content  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$mkdir</span> rootfs_content  
 <span style="color:#00688b">$cp</span> -fR busybox-1.26.2/examples/etc rootfs_content  
 <span style="color:#00688b">$cp</span> -fR busybox-1.26.2/_install/* rootfs_content  
 <span style="color:#00688b">$ls</span> rootfs_content  
 bin etc linuxrc sbin usr  </code></pre></div>
 <p>Ta sẽ tạo thêm một vài thư mục phụ nữa:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cd</span> rootfs_content  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$cd</span> rootfs_content  
 <span style="color:#00688b">$mkdir</span> dev home mnt proc root sys tmp var  </code></pre></div>
 <p>Cuối cùng ta có cấu trúc thư mục như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">├── bin  
@@ -246,14 +246,14 @@ Nó nằm ở <em>/etc/inittab</em>, sửa nội dung thành như sau:</p>
 ::ctrlaltdel:/bin/umount -a -r  </code></pre></div>
 <p>Giờ ta sẽ tạo file system từ thư mục <strong>rootfs_content</strong> ở trên.<br />
 Đầu tiên, tạo một file system ext3 trống:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$dd</span> <span style="color:#8b008b;font-weight:bold">if</span>=/dev/zero <span style="color:#00688b">of</span>=BusyBoxRootFS.ext3 <span style="color:#00688b">bs</span>=1M <span style="color:#00688b">count</span>=<span style="color:#b452cd">32</span>  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$dd</span> <span style="color:#8b008b;font-weight:bold">if</span>=/dev/zero <span style="color:#00688b">of</span>=BusyBoxRootFS.ext3 <span style="color:#00688b">bs</span>=1M <span style="color:#00688b">count</span>=<span style="color:#b452cd">32</span>  
 <span style="color:#00688b">$mkfs</span>.ext3 BusyBoxRootFS.ext3  </code></pre></div>
 <p>Sau đó, mount file system vừa tạo trong file <em>BusyBoxRootFS.ext3</em><br />
 vào để tạo nội dung cho nó (nhớ phải có tham số -o nha):</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$sudo mount -t ext3 BusyBoxRootFS.ext3 tmpfs/ -o loop  
 $cp -fR rootfs_content/* tmpfs/  </code></pre></div>
 <p>Cuối cùng là <em>umount</em> nó:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$umount</span> tmpfs  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$umount</span> tmpfs  </code></pre></div>
 <p>Giờ file hệ thống chứa các ứng dụng user-space nằm trong file system bên trong file <em>BusyboxRootFS.ext3</em> rồi.</p>
 
 <h2 id="7-chạy">7. Chạy</h2>

@@ -65,7 +65,7 @@
 			
 
 <p>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh <strong>source</strong>, ta thực hiện build tạo image có có tên là <strong>rpi-basic-image</strong> thông qua lệnh:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$bitbake rpi-basic-image  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$bitbake</span> rpi-basic-image  </code></pre></div>
 <p>Thực ra còn 2 image khác ta có thể build đó là <strong>rpi-hwup-image</strong> <strong>rpi-test-image</strong>. Ta có thể thấy 2 file bb cho 2 image ở thư mục <strong>meta-raspberrypi/recipes-core/images/</strong>.</p>
 
 <p><strong>rpi-hwup-image</strong> : là image nhỏ nhất (có dịp sẽ thử)<br />
@@ -101,7 +101,7 @@ Cách đơn giản nhát là thêm rcipy <strong>linux-firmware</strong> vào la
 Tuy nhiên, để cấu hình sử dụng được USB Wifi Client ta cần thêm một tập các tool về Wifi nữa. Nó nằm trong gói <strong>packagegroup-base-wifi</strong></p>
 
 <p>Xem lại <strong>meta-local</strong> ở bài[](<a href="https://lazytrick.wordpress.com/2016/08/06/them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/">https://lazytrick.wordpress.com/2016/08/06/them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</a>)</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">poky/meta-local/  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">poky/meta-local/  
 ├── conf  
 │ └── layer.conf  
 └── recipes-core  

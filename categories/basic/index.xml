@@ -114,7 +114,7 @@ việc build, chạy Kernel trên board vexpress-a9 mô phỏng bằng Qemu.
       <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</guid>
-      <description>4 thành phần của Embedded Linux Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)&amp;hellip;cho đến các thiết bị gia dụng, gia đình.
+      <description>Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)&amp;hellip;cho đến các thiết bị gia dụng, gia đình.
 Khi sử dụng máy tính cá nhân, server ta dễ dàng &amp;ldquo;sờ&amp;rdquo; thấy được các thành phần của Linux như các tiến trình, shell..etc.
 Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi.</description>
     </item>
@@ -143,7 +143,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
       <guid>https://blog.lazytrick.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
       <description>Tham khảo
 - Sách : AT&amp;amp;T Assembly Language, Richard Blum
- Ngôn ngữ Assembly là gì? &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;-   Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</description>
+1. Ngôn ngữ Assembly là gì?  Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</description>
     </item>
     
     <item>
@@ -155,7 +155,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
       <description>Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
 từ Free Electrons tại Embedded Linux Conference 2016.
 So sánh giữa Buildroot và OpenEmbedded/Yocto Project
- Điểm chung &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;ndash;   Đều là build-system cho Embedded Linux.
+1. Điểm chung  Đều là build-system cho Embedded Linux.
 Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
 Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.</description>
     </item>

@@ -70,53 +70,47 @@ Nội dung được dịch từ <a href="http://www.catonmat.net/blog/set-operat
 
 <h2 id="1-phép-giao">1. Phép giao</h2>
 
-<hr />
-
 <p>Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.</p>
 
 <p>Cách đầu tiên, đơn giản nhất, dùng <code>uniq -d</code> với sự hỗ trợ của <code>sort</code><br />
 Giả sử có 2 tập (tức là file text luôn) <code>set1</code>, <code>set2</code> (mỗi phần tử nằm trên một dòng).<br />
 Câu lệnh sau sẽ tìm giao của chúng:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$set set1 set2 | uniq -d  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$set</span> set1 set2 | uniq -d  </code></pre></div>
 <p>Cách thứ hai, sử dụng câu lệnh <code>comm</code>, câu lệnh sử dụng để so sánh 2 files đã được sắp xếp.<br />
 Câu lệnh sẽ như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$ comm -12 &lt;(sort set1) &lt;(sort set2)  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ comm -12 &lt;(sort set1) &lt;(sort set2)  </code></pre></div>
 <p>Cách thứ ba, sử dụng câu lệnh <code>join</code>, câu lệnh sử dụng để nối 2 hoặc nhiều files (thường được dùng kết hợp với <code>split</code>).<br />
 Với câu lệnh này, việc tìm giao hai tập sẽ như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$ join &lt;(sort set1) &lt;(sort set2)  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ join &lt;(sort set1) &lt;(sort set2)  </code></pre></div>
 <h2 id="2-phép-hợp">2. Phép hợp</h2>
-
-<hr />
 
 <p>Đây là phép tập hợp dễ làm nhất.</p>
 
 <p>Cách đầu tiên, sử dụng <code>cat</code>.<br />
 Ta cũng giả sử có 2 tập set1, set2 như phần 1.<br />
 Như ta đã biết, ta đã có câu lệnh <code>cat</code> để nối lại, rồi in ra một, hai hay nhiều files.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$cat set1 set2  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cat</span> set1 set2  </code></pre></div>
 <p>Giờ ta phải loại bỏ các phần tử lặp lại và chỉ để lại một từ kết của của lệnh <code>cat</code> ở trên.<br />
 Đơn giản nhất là <code>sort</code> rồi cho qua <code>uniq</code> để lấy dãy duy nhất các phần tử.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$cat set1 set2 | sort | uniq  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cat</span> set1 set2 | sort | uniq  </code></pre></div>
 <p>Hoặc khỏi cần dùng <code>cat</code> mà <code>sort</code> trực tiếp luôn.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$sort set1 set2 | uniq  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$sort</span> set1 set2 | uniq  </code></pre></div>
 <p>Thậm chí, có thể bỏ qua của <code>uniq</code> bằng tham số <code>-u</code> của <code>sort</code>:```shell</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$sort -u set1 set2  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$sort</span> -u set1 set2  </code></pre></div>
 <p><strong>Nếu 2 tập đã được sắp xếp rồi</strong>, bạn có thể lấy hợp của hai tập nhanh hơn bằng tham số <code>-m</code> của <code>sort</code>.<br />
 Tham số này nghĩa là <code>merge</code>.<br />
 Câu lệnh có thể như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$sort -m set1 set2 | uniq  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$sort</span> -m set1 set2 | uniq  </code></pre></div>
 <p>Đương nhiên, có thể bỏ <code>uniq</code> nếu thay <code>-m</code> bằng <code>-um</code> như đã nói ngay trên.</p>
 
 <h2 id="3-phép-hiệu">3. Phép hiệu</h2>
-
-<hr />
 
 <p>Tức là lấy các phần từ thuộc chỉ một trong 2 tập mà thôi.<br />
 Ta cũng giả sử có 2 tập set1, set2 như phần 1.</p>
 
 <p>Đầu tiên, câu lệnh phù hợp nhất trong trường hợp này là <code>comm</code>.<br />
 Câu lệnh sau sẽ in ra các phần tử chỉ thuộc set1 mà không thuộc set2:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"shell"" data-lang=""shell"">$ comm -23 &lt;(sort set1) &lt;(sort set2)  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ comm -23 &lt;(sort set1) &lt;(sort set2)  </code></pre></div>
 <p>Về câu lệnh <code>comm</code>, ở phần 1 chúng ta cũng đã có dùng với tham số <code>-12</code> rồi.<br />
 Tiện thể giải thích một chút về tham số này:<br />
 <strong>1</strong> : Không in những dòng chỉ thuộc file 1<br />
