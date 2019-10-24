@@ -19,7 +19,7 @@
       <guid>https://blog.lazytrick.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
       <description>Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
 Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
-Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.</description>
+0. Source code Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.</description>
     </item>
     
     <item>

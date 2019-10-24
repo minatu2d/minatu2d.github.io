@@ -79,7 +79,7 @@ Trong chương này, tác giả cũng nói đến việc xác định các drive
 <li>Driver cho thiết bị USB</li>
 </ol>
 
-<h5 id="1-driver-về-network">1. Driver về Network</h5>
+<h2 id="1-driver-về-network">1. Driver về Network</h2>
 
 <p>Các card mạng hiện có sẽ nằm dưới đường dẫn <strong>/sys/class/net/</strong>.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls /sys/class/net/  
@@ -93,7 +93,7 @@ eth0 eth1 eth2 lo  </code></pre></div>
 e1000  </code></pre></div>
 <p>Kết quả <strong>e100</strong> đó chính là tên Driver đang được sử dụng để điều khiển card mạng <strong>eth0</strong></p>
 
-<h5 id="2-driver-cho-thiết-bị-pci">2. Driver cho thiết bị PCI</h5>
+<h2 id="2-driver-cho-thiết-bị-pci">2. Driver cho thiết bị PCI</h2>
 
 <p>PCI là giao tiếp dạng Bus. Các thiết bị giao tiếp chuẩn này thường được gắn sẵn trên board của PC hoặc Laptop rồi. Ví dụ như card sound, network cũng thế.<br />
 Mỗi thiết bị PCI được phân biệt bởi <strong>VendorID</strong> (mã nhà sản xuất) và <strong>DeviceID</strong> (mã thiết bị hay sản phẩm).<br />
@@ -123,11 +123,11 @@ $ cat device
 0x8139  </code></pre></div>
 <p>Từ 2 giá trị đã tìm được ở trên, ta sẽ tìm Driver thông qua source của Kernel.</p>
 
-<p>Bằng VendorID:</p>
+<p><strong>Bằng VendorID</strong>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
 $ grep -i 0x10ec include/linux/pci_ids.h  
 <span style="color:#228b22">#define PCI_VENDOR_ID_REALTEK 0x10ec</span>  </code></pre></div>
-<p>Bằng DeviceID:</p>
+<p><strong>Bằng DeviceID</strong>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
 $ grep -i 0x8139 include/linux/pci_ids.h  
 <span style="color:#228b22">#define PCI_DEVICE_ID_REALTEK_8139 0x8139</span>  </code></pre></div>
@@ -162,11 +162,11 @@ Có đoạn sau sử dụng định nghĩa Vendor</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8b008b;font-weight:bold">if</span> (pdev-&gt;vendor == PCI_VENDOR_ID_REALTEK &amp;&amp;  
 pdev-&gt;device == PCI_DEVICE_ID_REALTEK_8139 &amp;&amp; pci_rev &gt;= <span style="color:#b452cd">0x20</span>) {  
 dev_info(&amp;pdev-&gt;dev,  
-<span style="color:#cd5555">&#34;This (id %04x:%04x rev %02x) is an enhanced 8139C+ chip</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,  
+<span style="color:#cd5555">&#34;This (id %04x:%04x rev %02x) is an enhanced 8139C+ chip</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,  
 pdev-&gt;vendor, pdev-&gt;device, pci_rev);  
 dev_info(&amp;pdev-&gt;dev,  
-<span style="color:#cd5555">&#34;Use the </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">&#34;</span><span style="color:#b452cd">8139</span>cp<span style="color:#a61717;background-color:#e3d2d2">\\</span><span style="color:#cd5555">&#34; driver for improved performance and  </span>
-stability.<span style="color:#a61717;background-color:#e3d2d2">\\</span>n<span style="color:#cd5555">&#34;);  </span>
+<span style="color:#cd5555">&#34;Use the </span><span style="color:#cd5555">\&#34;</span><span style="color:#cd5555">8139cp</span><span style="color:#cd5555">\&#34;</span><span style="color:#cd5555"> driver for improved performance and  </span>
+stability.<span style="color:#a61717;background-color:#e3d2d2">\</span>n<span style="color:#cd5555">&#34;);  </span>
 }  </code></pre></div>
 <p>Đoạn comment sau có ý rằng nên dùng Driver 8139cp cho DeviceID 8139.<br />
 Ồ, nó đây chăng.</p>
@@ -199,7 +199,7 @@ MODULE_DEVICE_TABLE(pci, cp_pci_tbl);  </code></pre></div>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ find -type f -name Makefile | xargs grep DRIVER_NAME  </code></pre></div>
 <p>7.Tìm đến giá trị <strong>CONFIG_</strong> trong kernel để cho phép driver được build khi build lại kernel.</p>
 
-<h5 id="3-thiết-bị-usb">3. Thiết bị USB</h5>
+<h2 id="3-thiết-bị-usb">3. Thiết bị USB</h2>
 
 <p>Việc tìm kiếm Driver cho thiết bị sử dụng giao tiếp USB khá giống với PCI ở phần 2.</p>
 

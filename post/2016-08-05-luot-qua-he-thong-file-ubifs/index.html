@@ -74,11 +74,11 @@
 
 <p>Bài này chỉ hướng đến mục tiêu tìm hiểu về <strong>UBIFS</strong> thông qua việc dịch tài liệu dưới đây: <a href="http://www.linux-mtd.infradead.org/doc/ubifs.html">http://www.linux-mtd.infradead.org/doc/ubifs.html</a></p>
 
-<h4 id="1-note-quan-trọng">1. Note quan trọng</h4>
+<h2 id="1-note-quan-trọng">1. Note quan trọng</h2>
 
 <p>Đầu tiên, một thứ chúng ta cần hiểu ngay đó là, UBIFS là hệ thống file không giả định rằng thiết bị nhớ có dạng block (như <strong><em>Hard drive, MMC/SD, USB Flash, SSDs, etc</em></strong>), vì thế nó khác hoàn toàn các hệ thống file truyền thống như Fat, eFAT, etc. UBIFS được thiết kế để làm việc với <strong>raw flash</strong> (flash thô), không có block nào ở đây hết. Ta có thể ví dụ về trường hợp giống như <strong><em>MMC Card</em></strong>, mỗi <strong><em>MMC Card</em></strong> cung cấp ra bên ngoài rằng nó là 1 thiết bị dạng block thông qua FTL (Flash Translation Layer) - được thực hiện bởi phần cứng. Phần cứng này sẽ mô phỏng lại bộ nhớ bên trong sao cho giống với 1 block device cho các giao tiếp bên ngoài. Nếu chưa hiểu rõ về sự khác nhau này, hãy đọc ngay phần cuối của bài.</p>
 
-<h4 id="2-khái-quát">2. Khái quát</h4>
+<h2 id="2-khái-quát">2. Khái quát</h2>
 
 <p>Như ta đã nói lúc đầu, <strong>UBIFS</strong> là file system mới được phát triển bởi các kĩ sư của Nokia với sự trợ giúp từ <a href="http://www.inf.u-szeged.hu/tanszekek/szoftverfejlesztes/starten.xml">the University of Szeged</a>. <strong>UBIFS</strong> được xem như là ra đời sau <strong>JFFS2</strong>.</p>
 
@@ -97,29 +97,29 @@ Không giống JFFS2, UBIFS không cần scan toàn bộ thiết bị nhớ khi 
 - <strong>chịu được lỗi khi bị tắt đột ngột</strong> (tolerance to unclean reboots)<br />
 UBIFS là hệ thống file dạng nhật kí &ldquo;jounaling&rdquo; (các thao tác sẽ được ghi lại) vì thế nó có thể chịu được lỗi xảy ra khi bị hệ thống bị crash hoặc bị reboot bất ngờ. UBIFS sẽ thực hiện lại các thao tác được ghi trong &ldquo;nhật kí&rdquo; của nó, và mất thêm 1 khoảng thời gian nhất định. Nhưng vì nó không cần phải scan toàn bộ hệ thống file nên việc mount cùng lắm chỉ diễn ra trong vài giây thôi.</p>
 
-<h4 id="3-chịu-lỗi-khi-bị-cắt-nguồn">3. Chịu lỗi khi bị cắt nguồn</h4>
+<h2 id="3-chịu-lỗi-khi-bị-cắt-nguồn">3. Chịu lỗi khi bị cắt nguồn</h2>
 
 <p>Cả UBI (tức là Subsystem) và UBIFS ngay từ ban đầu đều được thiết kế để có khả năng chống lỗi khi bị cắt nguồn bất ngờ.</p>
 
-<h4 id="4-ubifs-và-mlc-nand-flash">4. UBIFS và MLC NAND Flash</h4>
+<h2 id="4-ubifs-và-mlc-nand-flash">4. UBIFS và MLC NAND Flash</h2>
 
-<h4 id="5-lỗi-unstable-bits">5. Lỗi Unstable bits</h4>
+<h2 id="5-lỗi-unstable-bits">5. Lỗi Unstable bits</h2>
 
 <p>Nói về lỗi phát sinh khi bị cắt nguồn điện lúc đang xóa hoặc ghi.</p>
 
-<h4 id="6-source-code">6. Source code</h4>
+<h2 id="6-source-code">6. Source code</h2>
 
-<h4 id="7-mailing-list">7. Mailing list</h4>
+<h2 id="7-mailing-list">7. Mailing list</h2>
 
-<h4 id="8-tools">8. Tools</h4>
+<h2 id="8-tools">8. Tools</h2>
 
 <p>Hiện tại chỉ có 1 tool duy nhất phái user-space là <strong><em>mkfs.ubifs</em></strong> để tạo một &ldquo;ảnh&rdquo; UBIFS.</p>
 
-<h4 id="9-khả-năng-mở-rộng-scalability">9. Khả năng mở rộng (Scalability)</h4>
+<h2 id="9-khả-năng-mở-rộng-scalability">9. Khả năng mở rộng (Scalability)</h2>
 
 <p>Vì USBFS sử dụng cấu trúc cây (B+ Tree) nên nó sẽ lớn lên theo logarit của kích thước flash. Tuy nhiên, UBI Subsystem thì phụ thuộc tuyến tính vào kích thước Flash, vì thế UBIFS/UBI sẽ phụ thuộc tuyến tính. Tác giả của UBIFS tin rằng có thể cải tiến trở thành phụ thuộc theo logarit ở phiên bản UBI. Hiện tại UBI làm việc OK cho dung lượng từ 2-16GiB, tất nhiên nó cũng phụ thuộc vào tốc độ I/O nữa.</p>
 
-<h4 id="10-hỗ-trợ-write-back-ghi-không-đồng-bộ">10. Hỗ trợ write-back (ghi không đồng bộ)</h4>
+<h2 id="10-hỗ-trợ-write-back-ghi-không-đồng-bộ">10. Hỗ trợ write-back (ghi không đồng bộ)</h2>
 
 <p>UBIFS hỗ trợ write-back. Điều đó có nghĩa là các thay đổi liên quan đến file sẽ không được ghi ngay vào Flash, nó sẽ được cache và ghi sau đó khi thực sự cần thiết. Điều này sẽ giúp cho các thao tác I/O giảm thời gian thực hiệnl, làm tăng hiệu năng. &ldquo;Write-back caching&rdquo; vốn là kĩ thuật phổ biến được sử dụng trong rất nhiều hệ thống file khác, như Ext3, XFS.<br />
 Ngược lại, JFFS2 lại không hỗ trợ write-back, tất cả các thao tác với hệ thống file đều được thực hiện ngay lập tức lên thiết bị nhớ. Thực ra không hoàn toàn đúng vì JFFS2 có sử dụng một buffer nhỏ bằng kích thước 1 Page. Buffer này chứa dữ liệu cuối cùng được yêu cầu ghi, vì thế nó sẽ được đẩy hết ra khi đầy. Lượng dữ liệu được cached là rất nhỏ, nó gần như hoạt động giống các hệ thống file đồng bộ khác.<br />
@@ -165,7 +165,7 @@ Dưới đây là một check list để các bạn có thể tham khảo khi ch
 
 <p>Cả hai hàm này làm việc với các file descritor (fd - kiểu INT), chứ không phải các Stream, FILE* (con trỏ FILE). Để thực hiện đồng bộ cho các Stream (con trỏ FILE), đầu tiên cần xác định file descriptor của nó bằng <strong><em>fileno()</em></strong>, rồi đây hết dữ liệu ra stream bằng <strong><em>flush()</em></strong>, cuối cùng gọi <strong>fsync()</strong>, hoặc <strong>fdatasync()</strong>. <strong><em>flush()</em></strong> ở đây có được hiểu là đồng bộ ở mức độ buffer của *<strong>libc</strong>, còn <strong>fsync()</strong>, <strong>fdatasync()</strong> là đồng bộ ở mức kernel.</p>
 
-<h4 id="11-các-thông-số-liên-quan-đến-write-back-trên">11. Các thông số liên quan đến write-back trên</h4>
+<h2 id="11-các-thông-số-liên-quan-đến-write-back-trên">11. Các thông số liên quan đến write-back trên</h2>
 
 <p>Linux cung cấp một vài điểm trung gian giữa user-space và kernel space ở &ldquo;/proc/sys/vm&rdquo;, cho phép tinh chỉnh các thông số liên quan đến write-back. Khi thay đổi thông số ở các điểm nối này, nó sẽ ảnh hưởng đến toàn bộ hệ điều hành. Chi tiết có tại &ldquo;Documentation/sysctl/vm.txt&rdquo; trong source của kernel. Dươi đây là một số điểm đáng chú ý:<br />
 - <strong>dirty_writeback_centisecs</strong>: Chu kì cho để đánh thức thread chịu trách nhiệm thực hiện đồng bộ dữ liệu ra thiết bị nhớ.<br />
@@ -175,7 +175,7 @@ Dưới đây là một check list để các bạn có thể tham khảo khi ch
 
 <p>Chú ý, UBIFS có một write-buffer nhỏ được đồng bộ cứ mỗi 3-5 giây. Điều này có nghĩa là hầu như tất cả các dữ liệu &ldquo;dirty&rdquo; sẽ bị được giữ khoảng <strong>dirty_expire_centisecs</strong> centi-seconds. Nhưng một vài KiB sẽ bị giữ lại 3-5 giây.</p>
 
-<h4 id="12-ubifs-write-buffer">12. UBIFS write-buffer</h4>
+<h2 id="12-ubifs-write-buffer">12. UBIFS write-buffer</h2>
 
 <p>UBIFS là hệ thống file không đồng bộ, điều ấy quá rõ rồi. Giống như bao hệ thống file khác trong Linux, nó cũng sử dụng page cache. Nó nằm trong cơ chế quản lý bộ nhớ cơ bản của Linux rồi. Các page cache có thể có kích thước rất lớn. Bạn ghi ram file chẳng hạn, dữ liệu sẽ được đưa vào page cache, được đánh dấu là &ldquo;dirty&rdquo;, câu lệnh <strong><em>write()</em></strong> sẽ trả về ngay (trừ khi file được mở với đặc tính đồng bộ). Sau đó, dữ liệu mới thực sự được ghi vào thiết bị.</p>
 
@@ -193,7 +193,7 @@ Một vài note liên quan đến đồng bộ và các hàm đã nói ở trên
 
 <p>Từ đó, ta có thể suy ra rằng, dữ liệu dù đã được đánh dấu phải ghi vào flash thì nó vẫn có thể bị giữ lại 3-5 giây trước khi vào flash thực sự.</p>
 
-<h4 id="13-so-sánh-mode-đồng-bộ-trong-ubifs-với-hoạt-động-của-jffs2">13. So sánh mode đồng bộ trong UBIFS với hoạt động của JFFS2</h4>
+<h2 id="13-so-sánh-mode-đồng-bộ-trong-ubifs-với-hoạt-động-của-jffs2">13. So sánh mode đồng bộ trong UBIFS với hoạt động của JFFS2</h2>
 
 <p>Khi UBIFS được mount ở mode đồng bộ (<strong>-o sync</strong>), thì tất cả các thao tác sau đó đó đều là đồng bộ. Điều đó đồng nghĩa rằng, dữ liệu sẽ được ghi vào flash trước khi các hàm <strong><em>write()</em></strong> trả về.</p>
 
@@ -222,7 +222,7 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 
 <p>Dù vậy, nhưng trong một số trường hợp UBIFS vẫn phải đóng vai để thực hiện các chức năng của JFFS2. Nó có thể làm được như thế nhưng cần một chút công sức cho việc này và hiện tại nó chưa được implement trên open source của nó. Bạn có thể tự làm nó, hoặc nhờ tác giả nếu thực sự cần nó cho ứng dụng của bạn.</p>
 
-<h4 id="14-đồng-bộ-trong-một-số-ứng-dụng-viết-không-cẩn-thận">14. Đồng bộ trong một số ứng dụng viết không cẩn thận.</h4>
+<h2 id="14-đồng-bộ-trong-một-số-ứng-dụng-viết-không-cẩn-thận">14. Đồng bộ trong một số ứng dụng viết không cẩn thận.</h2>
 
 <p>Như đã miêu tả chương 10,UBIFS là hệ thống file không đồng bộ, các ứng dụng yêu cầu đồng bộ cho các file mà nó sử dụng khi cần thiết. Một số hệ thống file trên Linux như XFS cũng yêu cầu nên như thế.</p>
 
@@ -238,7 +238,7 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 
 <p>Chúng ta cũng nên có kết hoạch để có những tính năng trên trong UBIFS, tuy nhiên hiên hiện tại thì chưa. Tất nhiên, bất kì ai cũng có thể làm nó.</p>
 
-<h4 id="15-compression-nén">15. Compression (Nén)</h4>
+<h2 id="15-compression-nén">15. Compression (Nén)</h2>
 
 <p>UBIFS hỗ trợ nén dữ liệu bên trong nó, có nghĩa là dữ liệu được nén trước khi ghi xuống thiết bị nhớ, và được giải nén sau khi đọc lên. Việc nén này hoàn toàn trong suốt với người dùng. Dữ liệu được nén chỉ là những file thông thường thôi. Các node device, thư mục không được nén. Meta-data và các thông tin index cũng không được nén.</p>
 
@@ -252,7 +252,7 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 
 <p>Có một sự khác nhau nhỏ giữa JFFS2 trong việc nén dữ liệu. UBIFS thì sử dụng &ldquo;crypto-API deflat&rdquo;, trong khi đó JFFS2 sử dụng trực tiếp zlib. Đấn đến, dùng cùng sư dụng zlib nhưng JFFS2 sử dụng deflat level 3, windows bit 15, còn UBIFS thì sử dụng level 6 và windows bit là -11 (sử dụng dấu -, để làm cho zlib không tạo header lên dữ liệu đầu ra. Qua thực nghiệm, JFFS2 có tỉ lệ nén thấp hơn 1 chút, tốc đọc giải nén cũng chậm hơn 1 chút, nhưng tốc độ nén thì cao hơn.</p>
 
-<h4 id="16-checksumming">16. Checksumming</h4>
+<h2 id="16-checksumming">16. Checksumming</h2>
 
 <p>Bất cứ thông tin nào được UBIFS khi xuống thiết bị nhớ đều có CRC-32 checsum. UBIFS bảo vệ cả dữ liệu và meta-data bằng CRC. Mỗi khi meta-data được đọc, CRC phải được verified. CRC-32 khá mạnh trong việc kiểm tra dữ liệu dạng này. UBI subsystem cũng vậy nó verified mỗi meta-data.</p>
 
@@ -264,7 +264,7 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 
 <p>Chú ý quan trong: các phiên bản trước 2.6.39 sử dụng check dữ liệu CRC-32 mặc đinh và sử dụng tham số <strong>_no_chk_data<em>crc</em></strong> khi muốn tắt nó.</p>
 
-<h4 id="17-read-ahead-đọc-trước">17. Read-ahead (Đọc trước)</h4>
+<h2 id="17-read-ahead-đọc-trước">17. Read-ahead (Đọc trước)</h2>
 
 <p>Là kĩ thuật tối ưu hóa, khi yêu cầu hệ thống file được nhiều hơn số dữ liệu user mong muốn. Ý tưỡng xuất phát từ việc đọc 1 file thường theo 1 mạch từ đầu đến cuối chẳng hạn. Ví thế, khi bắt đầu đọc, file system sẽ cố gắng đọc dữ liệu tiếp theo trước khi user thực sự yêu cầu chúng.</p>
 
@@ -282,7 +282,7 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 
 <p>Lại nói về &ldquo;bulk-read&rdquo;, khi hệ thống file bị phân mảnh quá nhiều trên thiết bị nhớ, thì bulk-read có thể làm giảm hiệu năng. Mặc dù bản thân UBIFS không làm phân mảnh hệ thống file, nhưng UBIFS cũng không cố gắng sắp xếp lại. Ví dụ, bạn ghi 1 file tại 1 thời điểm, thì nó sẽ không bị phân mảnh. Nhưng nếu ghi nhiều file cùng lúc, thì có thể nó sẽ bị phân mảnh đấy (nó phụ thuộc vào hoạt động của write-back thread khi đồng bộ các thay đổi), và UBIFS cũng không tự động sắp xếp lại các file bị phân mảnh đâu. Tuy nhiên, điều này vẫn có thể thực hiện được trong tương lai nhưng làm 1 cái chạy sắp xếp lại ở background chẳng hạn. Ví dụ như có thêm một thông tin nhật kí tại mỗi inode để tránh các cho data khác inode bị xen kẽ vào nhau chẳng hạn. Vâng, đó là những thứ sẽ được cải tiến, có thể là bạn sẽ làm nó.</p>
 
-<h4 id="18-space-cho-superuser">18. Space cho superuser</h4>
+<h2 id="18-space-cho-superuser">18. Space cho superuser</h2>
 
 <p>UBIFS có một vài vùng trống dành cho superuser (root), có nghĩa là ngay cả khi với normal-user thì hệ thống file đã đầy, thì vẫn có chỗ cho superuser. Ext2 cũng có khả năng tương tự. Khi sử dụng <strong><em>mkfs.ubifs</em></strong>, chỉ cần thêm <strong>-R</strong> là được.</p>
 
@@ -290,13 +290,13 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 
 <p>Một chú ý nữa, khi mount, UBIFS sẽ in ra thông tin về kích thước vùng trống này.</p>
 
-<h4 id="19-các-thuộc-tính-mở-rộng">19. Các thuộc tính mở rộng</h4>
+<h2 id="19-các-thuộc-tính-mở-rộng">19. Các thuộc tính mở rộng</h2>
 
 <p>UBIFS hiện tại đã hỗ trợ các thuộc tính mở rộng rồi, nó có thể được sử dụng khi cấu hình tương ứng được bật (không cần thêm tham số khi mount). Nó hỗ trợ cho việc sử dụng <strong>user</strong>, <strong>trusted</strong>, <strong>security</strong>. Tuy nhiên, chưa hỗ trợ <strong>ACL</strong> (Access Control List).</p>
 
 <p>Chú ý, hiện tại <strong><em>mkfs.ubifs</em></strong> bỏ qua thuộc tính mở rộng, nó không ghi chúng vào file ảnh hệ thống file được tạo ra.</p>
 
-<h4 id="20-các-options-khi-mount">20. Các options khi mount</h4>
+<h2 id="20-các-options-khi-mount">20. Các options khi mount</h2>
 
 <p>Dưới đây là một vài tham số khi mount dành riêng cho UBIFS:<br />
 - chk_data_crc (mặc định) - kiểm tra phần CRC-32.<br />
@@ -309,13 +309,13 @@ Một ứng dụng lý tưởng nên xem xét đến cả trường hợp nội 
 <p>Mount hệ thống file UBIFS vào điểm <strong><em>/mnt/ubifs</em></strong>, không kiểm tra CRC data.<br />
 Ngoài ra, UBIFS còn có mode đồng bộ nữa. Nó sẽ hoạt động mà không có writeback, write-buffer. Chú ý rằng, <strong>atime</strong> không được UBIFS hỗ trợ.</p>
 
-<h4 id="21-vấn-đề-về-tính-toán-không-khoảng-trống-trên-flash">21. Vấn đề về tính toán không khoảng trống trên Flash</h4>
+<h2 id="21-vấn-đề-về-tính-toán-không-khoảng-trống-trên-flash">21. Vấn đề về tính toán không khoảng trống trên Flash</h2>
 
 <p>Những hệ thống file truyền thống khác như ext2 chẳng hạn, dễ dàng tính toán kích thước vùng trống. Việc tính toán đó khá chính xác, và users cũng quen với các con số đó rồi. Tuy nhiên, trong tình huống của UBIFS, nó hoàn toàn không giống như thế. Nó không thể tính toán hính xác lượng vùng trống còn lại được, nên nó sẽ làm khó users. Thay vào đó, nó đưa ra con số nhỏ nhất (<strong><em>minimum</em></strong>), thừng ít hơn thực tế. Thỉnh thoảng còn sai lệch nhiều nữa. Ví dụ, UBIFS trả về kết quả (thông qua lời gọi <strong><em>statfs()</em></strong>) rằng không có vùng trống nữa, nhưng nó vẫn có thể ghi thêm được kha khá. Vãi~~~</p>
 
 <p>Hay nói về sự khác biệt này, UBIFS thường &ldquo;nói dối&rdquo; về lượng vùng trống nó có. Dù nó có thể đưa ra những con số tin lơn hơn, nhưng thường không bao giờ báo nhiều hơn nó có và rất hiếm khi báo chính xác được. Dẫn đến điều này không phải vì tác giả của UBIFS &ldquo;quá ngốc&rdquo; mà là có những lý do khác nữa. Xin xem tiếp phần dưới đây.</p>
 
-<h5 id="ảnh-hưởng-của-việc-nén-dữ-liệu">Ảnh hưởng của việc nén dữ liệu</h5>
+<h3 id="ảnh-hưởng-của-việc-nén-dữ-liệu">Ảnh hưởng của việc nén dữ liệu</h3>
 
 <p>Như ta đã biết, UBIFS sử dụng nén dữ liệu bên trong nó (LZO và ZLIB). Phía user thì lại thường mong muốn hệ thống file bao cáo rằng nó còn bao nhiêu byte, hơn là có thể tạo được file kích thước bao nhiêu nữa. Vì được nén nên, vùng trống có thể lưu trữ được bao nhiêu dữ liệu của người dùng sẽ phụ thuộc vào tỉ lệ nén mà UBIFS thực hiện trên dữ liệu cụ thể (chứ không cố định).</p>
 
@@ -323,7 +323,7 @@ Ngoài ra, UBIFS còn có mode đồng bộ nữa. Nó sẽ hoạt động mà k
 
 <p>Ồ, chỉ như trên thôi thì cũng không có gì to tát. Tuy nhiên, việc nén này sẽ trở thành vấn đề khi tính toán vùng trống nếu như nó hoạt động với write-back thread. Nói chính xác hơn, UBIFS không biết được dữ liệu &ldquo;dirty&rdquo; được nén như thế nào ngoài cách thực sự nén nó mà thôi.</p>
 
-<h5 id="ảnh-hưởng-của-việc-write-back">Ảnh hưởng của việc write-back</h5>
+<h3 id="ảnh-hưởng-của-việc-write-back">Ảnh hưởng của việc write-back</h3>
 
 <p>Giả sử tình huống như thế này, có X bytes dữ liệu &ldquo;dirty&rdquo; trong page cache. Chúng sẽ được đẩy ra thiết bị flash thôi, nhưng đến lúc đó thì vẫn nằm trên RAM. UBIFS sẽ cần <strong><em>X + O</em></strong> bytes trên thiết bị flash để ghi dữ liệu này, O ở đây là dữ liệu overhead (như index, các header, etc).</p>
 
@@ -343,7 +343,7 @@ ubi0:ubifs <span style="color:#b452cd">49568</span> <span style="color:#b452cd">
 
 <p>À, tất nhiên, UBIFS sẽ đưa ra kết quả chính xác hơn rất nhiều nếu nó đã được thực hiện đồng bộ.</p>
 
-<h5 id="hao-hụt-wastage">Hao hụt (Wastage)</h5>
+<h3 id="hao-hụt-wastage">Hao hụt (Wastage)</h3>
 
 <p>Như đã nói ở trên, UBIFS không bao giờ &ldquo;cross logical eraseblock&rdquo;. Hãy xem xét những con số dưới đây.<br />
 - kích thước lớn nhất của UBIFS node (chưa nén) : 4256 bytes.<br />
@@ -359,7 +359,7 @@ ubi0:ubifs <span style="color:#b452cd">49568</span> <span style="color:#b452cd">
 
 <p>Chính vì giải thích ở trên mà, với LEB kích thước càng lớn thì các con số UBIFS đưa ra càng chính xác.</p>
 
-<h5 id="vùng-dirty">Vùng dirty</h5>
+<h3 id="vùng-dirty">Vùng dirty</h3>
 
 <p>Dirt Space (Vùng bẩn) là vùng flash bị chiếm dụng bởi UBIFS. Từng ít nhất 1 lần được sử dụng nhưng do các thao tác thay đổi, xóa dữ liệu nên nó bị invalidated nên không còn được sử dụng nữa. Ví dụ, nội dung của một file bị thay đổi toàn bộ chẳng hạn, các node data của dữ liệu cũ sẽ bị invalidated, các node data mới sẽ được ghi vào flash. Các invalidated node sẽ tạo thành &ldquo;dirty space&rdquo;, hay vùng bẩn. Còn có nhiều tình huống khác để sinh ra các vùng này nữa.</p>
 
@@ -379,7 +379,7 @@ ubi0:ubifs <span style="color:#b452cd">49568</span> <span style="color:#b452cd">
 
 <p>Muốn chạy GC, thì hay gọi <strong>statfs()</strong>. Tuy nhiên, điều này dẫn đến <strong>statfs()</strong> sẽ rất chậm. Hiện tại chưa có nhưng, có thể làm cho GC chạy ở background giống như JFFS2 đang làm để giảm thời gian thu hồi vùng &ldquo;dirty space&rdquo; hơn.</p>
 
-<h5 id="kích-thước-của-index-thì-không-xác-định">Kích thước của index thì không xác định</h5>
+<h3 id="kích-thước-của-index-thì-không-xác-định">Kích thước của index thì không xác định</h3>
 
 <p>Như đã biết, UBIFS lưu index của nó ở trên Flash. Cần 1 dụng lượng lưu trữ nhất định để chứa nó. Ngoài ra còn có cả UBIFS journal (dữ liệu nhật kí),</p>
 

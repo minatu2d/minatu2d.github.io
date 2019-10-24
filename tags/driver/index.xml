@@ -17,11 +17,9 @@
       <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2016-09-05-qua-trinh-load-firmware-cua-driver-trong-linux/</guid>
-      <description>Để các kernel module sử dụng được các firmware thì cần 2 điều kiện sau:
- Khi kernel được build, các tham số sau phải được bật (ENABLE)
+      <description>Để các kernel module sử dụng được các firmware thì cần 2 điều kiện sau:  Khi kernel được build, các tham số sau phải được bật (ENABLE)
 CONFIG_FW_LOADER : Cho phép load firmware
-CONFIG_EXTRA_FIRMWARE &amp;gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa các firmware. Các firmware phải được copy vào thư mục CONFIG_EXTRA_FIRMWARE_DIR đã set ở trên.  Một số điều lưu ý liên quan đến firmware:
- Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,</description>
+CONFIG_EXTRA_FIRMWARE &amp;gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa các firmware. Các firmware phải được copy vào thư mục CONFIG_EXTRA_FIRMWARE_DIR đã set ở trên.  Một số điều lưu ý liên quan đến firmware:  Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,</description>
     </item>
     
     <item>

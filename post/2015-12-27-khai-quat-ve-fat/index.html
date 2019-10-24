@@ -97,15 +97,11 @@
 
 <h1 id="1-phần-mở-đầu">1. Phần mở đầu</h1>
 
-<hr />
-
 <p>Hệ thống file tức là nói về hệ thống quản lý dữ liệu trên thiết bị nhớ bỏ sung. Có nhiều hệ thống File, những tài liệu này chỉ giới hạn nói về các cấu dữ liệu được lưu trữ của hệ thống file FAT.</p>
 
 <p>Từ 1980, lần đầu tiên FAT được hỗ trợ trên MS-DOS. Ở thời điểm đó, nó được phát triển với mục tiêu tạo ra một hệ thống File phù hợp với ổ đĩa floppy 500KB trở xuống. Về sau, khi dung lượng lớn dần thì nó được mở rộng thêm. FAT nghĩa là File Allocation Table, hay nói cách khác muốn nói đến việc quản lý, cấp phát bảng này. Ngày nay, có 3 loại FAT được sử dụng: FAT12, FAT16, FAT32. Điểm khác nhau cơ bản nằm ở các kích thước FAT Entry (giống như kích thước của index của mảng 1 chiều), tương ứng với số Bit để biểu diễn mỗi index là 12, 16, 32. Và chúng tương thích ngược hoàn toàn, tức là hệ thống hỗ trợ FAT16 thì bao gồm cả FAT12, và hệ thống FAT32 thì bao gồm cả FAT12/16 nữa.</p>
 
 <h1 id="2-các-thuật-ngữ-sử-dụng-bên-trong-tài-liệu">2. Các thuật ngữ sử dụng bên trong tài liệu</h1>
-
-<hr />
 
 <p><code>0xACB..</code>  : bắt đầu nghĩa là biểu diễn kí tự Hexacimal( hệ 16), còn lại là kí tự Decimal (hệ 10).</p>
 
@@ -120,8 +116,6 @@
 <p>Các đoạn code trong tài liệu mặc định viết bằng ngôn ngữ C, và có cú pháp không chặt chẽ. Có nhiều đoạn không mô tả rõ ràng giữa 32 bit và 16 bit. Giả định rằng lập trình viên hiểu rõ kích thước của các kiểu dữ liệu này cũng như các cách để tránh việc chuyển đổi kiểu dữ liệu. Thêm nữa, toàn bộ kiểu dữ liệu sử dụng là không dấu, tuyệt đối không sử dụng kiểu dữ liệu có dố để tránh những kết quả không như mong muốn.</p>
 
 <h1 id="3-cơ-bản-về-hệ-thống-file-fat">3. Cơ bản về hệ thống file FAT</h1>
-
-<hr />
 
 <h2 id="3-1-dung-lượng-fat">3.1 Dung lượng FAT</h2>
 
@@ -143,8 +137,6 @@
 <p>Hệ thống <code>File FAT</code> ban đầu được phát triển cho x86 CPU sử dụng trong <code>IBM PC</code>. Vì điểm quan trọng này nên, toàn bộ dữ liệu được lưu trữ của hệ thống <code>File FAT</code> là <code>Litle-Endian</code>. Vì vậy trên một <code>Big-Endian CPU</code> khác, thì khi truy cập các cấu trúc <code>BPB/FAT/Directory</code> thì cần phải chuyển đổi Endian trước khi sử dụng tính toán. Truy cập các trường dữ liệu <code>16/32</code> bit thì không nhất thiết được <code>Aligment</code>. Cho dù CPU có là <code>Litle Endian</code> đi nữa vẫn có trường hợp truy cập các trường dữ liệu không được Aliment cho kết quả không đúng, vì thế cần truy cập theo đơn vị byte. Thêm một vấn đề nữa, là truy cập kiểu từng <code>WORD</code> chỉ có thẻ thực hiện trong môi trường hỗ trợ các tùy chọn <code>Packing</code>, nó sẽ dần đến code có portability rất kém. Chính vì 2 lý do trên, mà khi thao tác với <code>FAT</code>, dữ liệu sẽ được truy cập như là mảng byte 1 chiều, việc này khiên cho việc đọc code trở nên khó khăn hơn nhưng tăng tính <code>Portability</code> của code.</p>
 
 <h2 id="4-boot-sector-và-bpb">4. Boot Sector và BPB</h2>
-
-<hr />
 
 <ul>
 <li><p>Trong FAT luân lý, cấu trúc dữ liệu quan trọng nhất đó là BPB (BIOS Parameter Block) vì tất cả các thông tin liên quan đến FAT luân lý đều nằm ở đây. BPB nằm bên trong Boot Sector. Cái Sector này có thể được gọi với tên khác như VBR (Volumne Boot Record) hoặc PBR (Private Boot Record), và là Sector đầu tiên trong ổ đĩa FAT luân lý.</p></li>
@@ -470,10 +462,7 @@ Bít 6～4: Dự trữ.Bit 7:  bằng 0 thì toàn bộ FAT sẽ được mirro
 
 <p>Có thể có nhiều đơn vị nhớ không lưu trữ hết gây lãng phí một lượng dùng trống còn lại. Đây là điều hoàn toàn bình thường trong FAT. Tuy nhiên, nếu giá trị kích thước luân lý lớn hơn kích thước thật của thiết bị nó được cài đặt, thì sẽ xảy ra rất nhiều vấn đều. FAT Driver khi phát hiện được vấn đề này cần từ chối việc mount ổ đĩa đó.</p>
 
-<ol>
-<li>Công thức tính kích thước các vùng.
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="5-công-thức-tính-kích-thước-các-vùng">5. Công thức tính kích thước các vùng.</h2>
 
 <p>Từ các thông số của BPB thì ta có thể tính chính xác được vị trí của các vùng và kích thước mỗi vùng trên ổ đĩa luân lý.</p>
 
@@ -505,10 +494,7 @@ DataSectors = BPB_TotSec - DataStartSector;</p>
 <p>Trường hợp thiết bị lưu trữ được chia thành các đoạn, có thể vị trí bắt đầu cài đặt ổ đĩa luôn lý<br />
 không hẳn là vị trí bắt đầu của thiết bị lưu trữ nên Sector luân lý và chỉ số trên thiết bị lưu trữ có thể khác nhau.</p>
 
-<ol>
-<li>FAT và Cluster
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="6-fat-và-cluster">6. FAT và Cluster</h2>
 
 <p>Sau đây là một vùng rất quan trọng, đó chính là vùng FAT. Chức năng của vùng FAT là ghi lại, quản lý vị trí (một dãy các cluster) trên vùng Data của các File trong hệ thống.</p>
 
@@ -516,10 +502,7 @@ không hẳn là vị trí bắt đầu của thiết bị lưu trữ nên Secto
 
 <p>Vì FAT này cực kì quan trọng, nếu Sector chưa nó bị hỏng có thể ảnh hướng rất lớn. Khi sử dụng FAT backup, thông qua giá trị BPB_NumFATs thì kích thước vùng FAT này sẽ bằng BPB_FATSz * BPB_NumFATs. Thông thường khi có tha tác chỉnh sửa, nó sẽ copy và cập nhật ở cả 2 vùng.</p>
 
-<ol>
-<li>Thông số quyết định loại FAT
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="7-thông-số-quyết-định-loại-fat">7. Thông số quyết định loại FAT</h2>
 
 <p>Về vấn đề này có rất nhiều nhầm lẫn dấn đến việc xảy ra nhiều lỗi khác nhau. Thực tế, việc quyết định loại FAT được thực hiện theo một logic hết sức đơn giản dưới đây:</p>
 
@@ -561,10 +544,7 @@ không hẳn là vị trí bắt đầu của thiết bị lưu trữ nên Secto
 
 <p>Ta có bảng như trên.</p>
 
-<ol>
-<li>Truy cập FAT Entry
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="8-truy-cập-fat-entry">8. Truy cập FAT Entry</h2>
 
 <p>Liên quan đến FAT, có một thông số nữa cũng hết sức quan trọng. Đó là cách truy cập vùng FAT (hay các FAT Entry). Đầu tiên, ta cần hiểu rằng mỗi Cluster số N thì sẽ có 1 entry tương ứng (1-1) ở đâu đó trong vùng FAT. FAT16/FAT32 thì khá đơn giản, FAT Entry giống 1 mảng 1 chiều các số nguyên 16\32 bit. So với mảng trên bộ nhớ thì có 1 vài điểm khác. Thứ nhất, các chỉ số không nằm trên một vùng liên tục, ta chỉ có thể chắc chắn từ Sector đầu tiên chứa FAT, thì toàn bộ FAT sẽ nằm trên nhiều Sector liên tục nhau thôi. Vị dụ, muốn xác định Entry của Cluster N (FAT[N]) thì ta thực hiện tính toán như sau:</p>
 
@@ -641,10 +621,7 @@ WriteSector(SecBuff, ThisFATSecNum);
 
 <p><img src="{{ site.baseurl }}/assets/fat.png" alt="fat" /></p>
 
-<ol>
-<li>Mối liên hệ giữa File và các cluster
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="9-mối-liên-hệ-giữa-file-và-các-cluster">9. Mối liên hệ giữa File và các cluster</h2>
 
 <p>Các File nằm trễn ổ đĩa luân lý được quản lý theo đơn vị là Directory (chi tiết về Directory sẽ được nói ở bên dưới). Trong Directory, có chưa tên file, cluster đầu tiên trong dãy cluster của File, những thông tin này là cửa vào để truy cập FAT. Dữ liệu mỗi File là một dãy các cluster nối nhau (link list). Từ cluster đầu tiên, ta sẽ biết được cluster đầu tiên lưu trữ File. Cluster 0, 1 chỉ dùng cho dự trữ, vì thế Cluster sẽ từ 2. Một ổ đĩa luân lý có N Cluster có nghĩa là các Cluster đó có chỉ số từ 2 đến N+1 và số FAT Entry là N+1. Những File có kích thước là 0 thì sẽ không được cấp phát Cluster nào hết. Từ chỉ số hợp lệ của một Cluster, ta có thể tính được vị trí của Sector đầu tiên trong Cluster đó.</p>
 
@@ -811,10 +788,7 @@ WriteSector(SecBuff, ThisFATSecNum);
 
 <p>Ổ đĩa FAT32, có đến 3 Sector liên tiếp là Boot Sector, tức là từ Boot Sector đầu tiên, ta có thêm 2 bản copy nữa. Đương nhiên các Byte 510, 511 của các Sector này lần lượt sẽ nhận giá trị 0x55, 0xAA.</p>
 
-<ol>
-<li>Về cấu trúc Directory
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="10-về-cấu-trúc-directory">10. Về cấu trúc Directory</h2>
 
 <p>Đến đây, ta khoan hãy nghĩ đến những File có tên File dài, ta cứ giả định File có tên File đủ ngắn. Trong ổ đĩa FAT luân lý, thư mục là một loại File đặc biệt, người ta dựa vào một thuộc tính đặc biệt của File để xác định nó là Thư mục hay không. Thuộc tính này được lưu trữ bằng cấu trúc trong bảng Directory Table, có kích thước 2 byte. Vì thế, sẽ lưu trữ tối đa 65536 Entry.</p>
 
@@ -997,10 +971,7 @@ WriteSector(SecBuff, ThisFATSecNum);
 
 <p>Bao rằng File có tên dài, và tên trong phần DIR_NAME chỉ là 1 phần thôi. Sẽ được giải thích kĩ hơn ở phần sau.</p>
 
-<ol>
-<li>Các thao tác với Directory
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;-</li>
-</ol>
+<h2 id="12-các-thao-tác-với-directory">12. Các thao tác với Directory</h2>
 
 <p>Tạo File</p>
 
@@ -1026,10 +997,7 @@ WriteSector(SecBuff, ThisFATSecNum);
 
 <p>Nhãn không thể sử dụng chức năng LFN được. Khi setup nhãn trong MS-DOS, giá trị nhãn trong Root Directory và trường BS_VolLab nằm trong Boot Sector phải đồng nhất. Trong Windows, thì không có điều này. Trên Windows, nếu nhãn bắt đầu bằng 0xE5 thì sẽ xảy ra vấn đề (nếu không chuyển nó sang 0x05 thì không thể ghi được). Vì thế, nó không cần sử dụng như ở trên.</p>
 
-<ol>
-<li>Định dạng nhãn thời gian
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="13-định-dạng-nhãn-thời-gian">13. Định dạng nhãn thời gian</h2>
 
 <p>Trong Directory Entry, có mấy trường liên quan đến thời gian. Hầu hết các Driver chỉ hỗ trợ 2 trương sau đây, đó là DIR_WrtTime, DIR_WrtDate. Các trường khác không được hỗ trợ. Các trường không được hỗ trợ sẽ được giữ giá trị 0. Ngày tháng giờ sẽ có định dạng theo dạng sau:</p>
 
@@ -1052,10 +1020,7 @@ DIR_CrtTime</p>
 Bit 10～5: phút (0～59).<br />
 Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 giây.</p>
 
-<ol>
-<li>Tên File dài
-&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="14-tên-file-dài">14. Tên File dài</h2>
 
 <p>Khi thêm tính năng hỗ trợ tên File dài (LFN) vào FAT, thì cần đảm bảo tính tương thích với các hệ thống trước đó. Cụ thể, bao gồm những điều sau:</p>
 
@@ -1163,7 +1128,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>ary.pdf</p>
 
-<p>--VSHR</p>
+<p>&ndash;VSHR</p>
 
 <p>LFN thứ 33(lfn[26..38])</p>
 
@@ -1173,7 +1138,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>d System Summ</p>
 
-<p>--VSHR</p>
+<p>&ndash;VSHR</p>
 
 <p>LFN2 thứ 2(lfn[13..25])</p>
 
@@ -1183,7 +1148,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>MultiMediaCar</p>
 
-<p>--VSHR</p>
+<p>&ndash;VSHR</p>
 
 <p>LFN thứ 1(lfn[0..12])</p>
 
@@ -1201,10 +1166,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>Các LFN Entry được xếp liên tiếp ngay trước SFN Entry. Nếu không thỏa mãn điều này thì coi như là không sử dụng được.</p>
 
-<ol>
-<li>Phạm vi đặt tên và Page Code
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="15-phạm-vi-đặt-tên-và-page-code">15. Phạm vi đặt tên và Page Code</h2>
 
 <p>Với tên file Ngắn</p>
 
@@ -1220,10 +1182,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>Vì SFN và LFN sử dụng bảng mã cũng như cách Encode khác nhau nên khi implment cần phải làm làm cho chúng tương thích. Nếu Code page là SBCS thì không xảy ra vấn đề gì, nhưng nếu là DBCS thì kích thước bản sẽ chênh nhau vài trăm K nên sẽ xảy ra nhiều vấn đề. Nhất là đối với các hệ nhúng với tài nguyên hạn chế.</p>
 
-<ol>
-<li>Giữa SFN và LFN
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&ndash;</li>
-</ol>
+<h2 id="16-giữa-sfn-và-lfn">16. Giữa SFN và LFN</h2>
 
 <p>Đầu tiên, tên được ghi trong SFN có dạng SFN, còn tên được ghi trong LFN thì có dạng LFN. Cùng một tên nhưng được ghi đồng thời và 2 chỗ. Trong thư mục, không thể có file bất kể SFN/LFN mà có tên giống nhau được. Vì thế các tên &ldquo;LongFileName.txt&rdquo;, &ldquo;longfilename.txt&rdquo;, &ldquo;LONGFILENAME.TXT&rdquo;</p>
 
@@ -1231,10 +1190,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>Khi lấy danh sách File từ thư mục, nếu không thể chuyển các kí tự của LFN sang OEM Code thì FAT Driver sẽ hoặc là thay thế các kí tự không chuyển bằng Underscore (_) hoặc là sử dụng tên trong SFN để thay thế.</p>
 
-<ol>
-<li>Việc tạo SFN và các kí tự đại diện
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="17-việc-tạo-sfn-và-các-kí-tự-đại-diện">17. Việc tạo SFN và các kí tự đại diện</h2>
 
 <p>Trong hệ thống LFN thì các API đương nhiên luôn sử dụng LFN. Đồng thời, nó cũng phải tạo cả SFN nữa, luôn luôn phải đồng thời không được phép tách ra. Điều kiện này để tránh những rắc rối trên hệ thống và ứng dụng khác nhau, cũng như sự thống nhất về tên giữa SFN và LFN. Việc tạo tên SFN (bao gồm cả phần tên, phần kí tự thay thế, phần mở rộng) tuân theo các bước sau:</p>
 
@@ -1261,10 +1217,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>Theo cách này, nếu trong thư mục đó đã có một SFN Entry có tên đó rồi, thì sẽ thay đổi giá trị n để tìm ra tên chưa được sử dụng. Thông thường, giá trị n này được tăng dần từ 1, nhưng cũng có trường hợp sử dụng một thuật toán sinh  khác. Ví dụ trong trường hợp FAT của Windows NT, giá trị được tìm kiếm từ 1 nhưng từ lần thứ 5 trở đi, nó sẽ sử dụng giá trị có trong Buffer nào đó chứ không tăng n lên mãi.</p>
 
-<ol>
-<li>Những trường hợp không sinh ra LFN Entry
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="18-những-trường-hợp-không-sinh-ra-lfn-entry">18. Những trường hợp không sinh ra LFN Entry</h2>
 
 <p>Nếu một tên File tuân theo quy tắc 8.3 rồi thì LFN và SFN sẽ giống hệt nhau (bỏ qua trường hợp khác nhau về chữ Hoa chữ thường). Nếu tên thỏa mãn thêm các trường hợp sau thì LFN tương ứng sẽ không được sinh ra nữa.</p>
 
@@ -1286,10 +1239,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>Nếu thỏa mãn nhưng điều kiện trên, bản chữ thường sẽ được lưu và trường  DIR_NTRes  , LFN Entry sẽ bị bỏ qua. Những File sau đây thỏa mãn điều kiện này : &ldquo;lower12.dll&rdquo;, &ldquo;system32&rdquo;, &ldquo;FDCMD.exe&rdquo;  , trong Windows NT có rất nhiều File được đặt tên theo dạng này. Cũng có một số hệ thống không support việc lưu trữ ở trường DIR_NTRes  (ví dụ Windows 9x chẳng hạn) thì chúng sẽ sử dụng toàn bộ tên dạng chữ Hoa được lưu ở SFN thôi. Vì FAT System không phân biệt chữ Hoa, chữ thường khi tìm kiếm, nên không vấn đề gì hết. Nhưng trong một số hệ thống Unix, thì việc này sẽ xảy ra vấn đề.</p>
 
-<ol>
-<li>Tính tương thích giữa các hệ thống
-&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="19-tính-tương-thích-giữa-các-hệ-thống">19. Tính tương thích giữa các hệ thống</h2>
 
 <p>Hệ thống không hỗ trợ LFN</p>
 
@@ -1303,10 +1253,7 @@ Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 gi
 
 <p>Mac OS X</p>
 
-<ol>
-<li>Về lưu trữ
-&mdash;&mdash;&mdash;&mdash;&mdash;</li>
-</ol>
+<h2 id="20-về-lưu-trữ">20. Về lưu trữ</h2>
 
 <p>Dù không liên quan trực tiếp đến phần File System đang nói đến, nhưng khi tạo ra một hệ thống Embedded, ta không thể không nhắc đến phần lưu trữ vật lý được.</p>
 

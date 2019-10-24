@@ -72,7 +72,7 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 
 <p>Trước khi bắt đầu với các ví dụ, ta nên xem qua một số nguồn diễn giải 3 khái niệm này.</p>
 
-<h3 id="1-diễn-giải-từ-tài-liệu-của-autotools">1. Diễn giải từ tài liệu của Autotools.</h3>
+<h2 id="1-diễn-giải-từ-tài-liệu-của-autotools">1. Diễn giải từ tài liệu của Autotools.</h2>
 
 <p>Trong link diễn giải về <strong>Canonical System</strong> (Hệ thống quy chuẩn) sử dụng trong <a href="https://autotools.io/index.html">Autotools</a>, có đoạn sau:</p>
 
@@ -105,7 +105,7 @@ Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta
 <p>target (<strong>CTARGET</strong>)<br />
 Cũng là hệ thống mà phần mềm đang muốn build sẽ chạy trên đó. Nhưng tác nhân này chỉ tồn tại, đúng hơn là có ý nghĩa khi phần mềm đang được build có thể tương tác với một hệ thống khác cái hệ thống nó đang chạy trên (host). Đây là trường hợp khi build <strong>compilers</strong> (trình biên dịch), <strong>debuggers</strong> (trình gỡ rối), <strong>profilers</strong> (trình đánh giá) and <strong>analyzers</strong> (trình phân tích) hoặc các tool khác tương tự.</p>
 
-<h3 id="2-diễn-giải-từ-gnu-gcc">2. Diễn giải từ GNU GCC</h3>
+<h2 id="2-diễn-giải-từ-gnu-gcc">2. Diễn giải từ GNU GCC</h2>
 
 <p>Trong tài liệu về miêu tả các khái niệm sử dụng trong <a href="https://gcc.gnu.org/onlinedocs/gccint/index.html#Top">GNU GCC</a> có một đoạn giản thích về các <a href="https://gcc.gnu.org/onlinedocs/gccint/Configure-Terms.html#Configure-Terms">Configure Term</a> (các khái niệm khi cấu hình), có đoạn sau:</p>
 
@@ -119,7 +119,7 @@ Cũng là hệ thống mà phần mềm đang muốn build sẽ chạy trên đ�
 
 <p>Dịch nôm na như sau:</p>
 
-<p>Có 3 tên hệ thống mà quá trình build phải biết: máy mà bạn đang chạy build trên đó (build), máy mà bạn đang build phần mềm cho nó (host), và cái máy mà GCC sẽ tạo mã cho nó (target). Khi cấu hình GCC, bạn sẽ chỉ ra 3 tên thống này bằng các tham số <strong>--build=, &ndash;host=, and &ndash;target=</strong>.</p>
+<p>Có 3 tên hệ thống mà quá trình build phải biết: máy mà bạn đang chạy build trên đó (build), máy mà bạn đang build phần mềm cho nó (host), và cái máy mà GCC sẽ tạo mã cho nó (target). Khi cấu hình GCC, bạn sẽ chỉ ra 3 tên thống này bằng các tham số <strong>&ndash;build=, &ndash;host=, and &ndash;target=</strong>.</p>
 
 <p>Tránh chỉ định hệ thống host mà không chỉ định rõ hệ thống build, khi đó quá trình configure có thể giả định rằng hệ host cũng là hệ build, và có thể không đúng với bạn mong muốn.</p>
 

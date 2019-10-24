@@ -72,7 +72,7 @@ Do vậy, bài này sẽ tập trung vào tạo bản basic <strong>rpi-basic-im
 <p>Link tham khảo:<br />
 <a href="http://mickey-happygolucky.hatenablog.com/entry/2015/02/14/002035">http://mickey-happygolucky.hatenablog.com/entry/2015/02/14/002035</a></p>
 
-<h5 id="tạo-một-bản-build-cho-raspberry-pi-từ-ubuntu-bằng-yocto-project">. Tạo một bản build cho Raspberry PI từ Ubuntu bằng Yocto Project</h5>
+<h2 id="1-tạo-một-bản-build-cho-raspberry-pi-từ-ubuntu-bằng-yocto-project">1. Tạo một bản build cho Raspberry PI từ Ubuntu bằng Yocto Project</h2>
 
 <p>Mục đích của bước này là tạo ra được một ảnh đĩa (file .img giống như Raspabian cung cấp cho người dùng tại <a href="https://www.raspberrypi.org/downloads/raspbian/">đây</a>, sau khi đã giải nén). Sử dụng kết quả của <a href="https://www.yoctoproject.org/">Yocto Project</a> - một khung (framework) cho phép tạo ra một bản Linux có thể tùy biến được. Yocto Project cung cấp một bản phân phối Linux (gọi là Poky), người dùng có thể build cho rất nhiều target (gồm mainboard, chíp,etc) khác nhau.</p>
 
@@ -84,7 +84,7 @@ Do vậy, bài này sẽ tập trung vào tạo bản basic <strong>rpi-basic-im
 
 <ul>
 <li><p>Trước khi bắt đầu, ta nên cài các gói cần thiết như dưới để đỡ phải cài lúc gặp lỗi:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib <span style="color:#cd5555">\\</span>  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ sudo apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib <span style="color:#cd5555">\ </span> 
 build-essential chrpath socat libsdl1.2-dev xterm  </code></pre></div></li>
 
 <li><p>Tạo thư mục cần build, hiện tại <strong>krogoth</strong> đang là bản mới nhất:</p>
@@ -129,11 +129,11 @@ Sau khi sửa, nó sẽ có nội dung kiểu như sau:</p>
 <span style="color:#00688b">BBPATH</span> = &amp;amp;quot;<span style="color:#cd5555">${</span><span style="color:#00688b">TOPDIR</span><span style="color:#cd5555">}</span>&amp;amp;quot;  
 BBFILES ?= &amp;amp;quot;&amp;amp;quot;
 
-BBLAYERS ?= &amp;amp;quot; <span style="color:#cd5555">\\</span>  
-/home/oedev/raspberrypi_krogoth/poky/meta <span style="color:#cd5555">\\</span>  
-/home/oedev/raspberrypi_krogoth/poky/meta-poky <span style="color:#cd5555">\\</span>  
-/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp <span style="color:#cd5555">\\</span>  
-/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi <span style="color:#cd5555">\\</span> <span style="color:#228b22"># mới thêm vào</span>  
+BBLAYERS ?= &amp;amp;quot; <span style="color:#cd5555">\ </span> 
+/home/oedev/raspberrypi_krogoth/poky/meta <span style="color:#cd5555">\ </span> 
+/home/oedev/raspberrypi_krogoth/poky/meta-poky <span style="color:#cd5555">\ </span> 
+/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp <span style="color:#cd5555">\ </span> 
+/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi <span style="color:#cd5555">\ </span><span style="color:#228b22"># mới thêm vào</span>  
 &amp;amp;quot;  </code></pre></div>
 <ul>
 <li>Tiếp theo, ta phải thay đổi Target Machine,</li>
@@ -194,8 +194,8 @@ _&hellip;/tmp/sysroots/x86<em>64-linux/usr/libexec/mkknlimg</em><br />
 Ta đi sửa cho đúng là ok.<br />
 Mở file <em>poky/meta-raspberrypi/recipes-kernel/linux/linux-raspberrypi.inc</em><br />
 Tìm đến hàm _do_rpiboot<em>mkimage()</em> sửa thành như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"python"" data-lang=""python"">#Comment dòng cũ này: ${STAGING_DIR_NATIVE}/usr/lib/rpi-mkimage/mkknlimg ...  
-${STAGING_DIR_NATIVE}/usr/libexec/mkknlimg ...  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#228b22">#Comment dòng cũ này: ${STAGING_DIR_NATIVE}/usr/lib/rpi-mkimage/mkknlimg ...  </span>
+<span style="color:#a61717;background-color:#e3d2d2">$</span>{STAGING_DIR_NATIVE}/usr/libexec/mkknlimg ...  </code></pre></div>
 <p>Error.03 : Việc tải <strong>bcm2835-bootfiles</strong> dường như bị đứng lại, thực ra không phải vậy, nó nặng đến 3GB, nếu đường truyền chậm thì rất có thể phải đợi rất lâu, ta có cả giác nó không hề làm việc. Nhưng hãy cố gắng đợi nha. :))</p>
 
 <p>Error.04 : Lỗi khi kiểm tra check sum của image được build ra, lỗi này được sửa bằng cách thêm 1 dòng vào file dưới đây:</p>
@@ -203,9 +203,9 @@ ${STAGING_DIR_NATIVE}/usr/libexec/mkknlimg ...  </code></pre></div>
 <p>_poky/meta-raspberrypi/classes/sdcard<em>image-rpi.bbclass</em></p>
 
 <p>Nội dung đoạn thêm sẽ như thế này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"python"" data-lang=""python"">IMAGEDATESTAMP = &amp;amp;quot;${@time.strftime(&#39;%Y.%m.%d&#39;,time.gmtime())}&amp;amp;quot;  
-#Nội dung thêm vào:  
-IMAGE_CMD_rpi-sdimg[vardepsexclude] = &amp;amp;quot;IMAGEDATESTAMP&amp;amp;quot;  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">IMAGEDATESTAMP = <span style="color:#cd5555">&#34;${@time.strftime(&#39;%Y.%m.</span><span style="color:#cd5555">%d</span><span style="color:#cd5555">&#39;,time.gmtime())}&#34;</span>  
+<span style="color:#228b22">#Nội dung thêm vào:  </span>
+IMAGE_CMD_rpi-sdimg[vardepsexclude] = <span style="color:#cd5555">&#34;IMAGEDATESTAMP&#34;</span>  </code></pre></div>
 <p>Sau khi thực hiện xong bước build images, ta sẽ thu được images trong thư mục<br />
 <strong>build/tmp/deploy/images/raspberrypi</strong> với tên <strong>rpi-basic-image-raspberrypi.rpi-sdimg</strong>.</p>
 

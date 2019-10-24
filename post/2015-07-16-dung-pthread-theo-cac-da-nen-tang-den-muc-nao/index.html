@@ -62,7 +62,9 @@
 			<h1 class="post__title">Cơ bản về pthread</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p>Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.</p>
+			
+
+<p>Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.</p>
 
 <p>Khi gặp những ứng dụng chạy đa nền tảng mình mới thấy quảng cáo chỉ miêu tả rất nhỏ thôi. Các dự án thực tế luôn có cực kì nhiều vấn đề. Nó không phải là hello world mà chỉ bằng vài click là đa nền tảng được. Ta biết rằng, những thư viện như Qt hỗ trợ rất nhiều. Nhưng thông thường các dự án chỉ dùng 1 phần thôi, còn lại họ tự viết hoặc sử dụng lại ở đâu đó. Vì vậy, nếu nói một dự án pure Qt thì đương nhiên dễ dàng chuyển đổi giữa các platform. Còn một dự án không phải là pure Qt thì rất nhiều vấn đề phát sinh.</p>
 
@@ -80,9 +82,9 @@ III. Test thử trên Linux.</p>
 
 <hr />
 
-<h3 id="i-những-thứ-cần-biết-về-pthread">I. Những thứ cần biết về pthread.</h3>
+<h1 id="i-những-thứ-cần-biết-về-pthread">I. Những thứ cần biết về pthread.</h1>
 
-<h4 id="1-phân-loại-api-của-pthread">1. Phân loại API của pthread</h4>
+<h2 id="1-phân-loại-api-của-pthread">1. Phân loại API của pthread</h2>
 
 <p>Dựa theo chức năng mà các API của pthread được chia làm 4 loại:
 - Thread management: Là các hàm sử dụng để tạo, hủy, detached, join thread cũng như set/get các thuộc tính của thread nữa.<br />
@@ -92,7 +94,7 @@ III. Test thử trên Linux.</p>
 - Nhưng hàm thuộc cùng 1 loại API ở trên sẽ có tên tương tự nhau.<br />
 Ví dụ: pthread_create_xXX, pthread_join; pthread_mutex_XXX, pthread_cond_XXX etc</p>
 
-<h4 id="2-cách-tạo-thread">2. Cách tạo thread</h4>
+<h2 id="2-cách-tạo-thread">2. Cách tạo thread</h2>
 
 <ul>
 <li><p>Điều đầu tiên người ta muốn biết luôn là làm thế nào để tạo thread sử dụng pthread, nó có nhiều tham số không. có dễ hiểu không. Cơ chế truyền xử ý của nó là gì? không biết có điều kiện gì khó khăn không???</p></li>
@@ -121,7 +123,7 @@ Hàm này được chạy ngay sau khi kết thúc hàm tạo.<br /></li>
 
 <p>Chú ý rằng, thread sẽ đựoc chạy ngay sau khi kết thúc hàm tạo.</p>
 
-<h4 id="3-dừng-một-thread">3. Dừng một thread</h4>
+<h2 id="3-dừng-một-thread">3. Dừng một thread</h2>
 
 <ul>
 <li>Ta đã tạo và làm cho nó chạy, giờ dừng lại thì làm thế nào?<br /></li>
@@ -129,7 +131,7 @@ Hàm này được chạy ngay sau khi kết thúc hàm tạo.<br /></li>
 <li>Việc dừng một thread cũng tương tự như thế: Nếu thread tự dừng, tức là xử lý của thread kết thúc thì không có gì phải bàn rồi, điều ấy thật tuyệt vời nếu như nó dùng đúng lúc ta muốn. Nếu ta muốn nó dừng lại tại một thời điểm ta mong muốn bất chấp nó có muốn dừng hay không thì làm thế nào??? Cái này mới gọi là chuối đây. Chắc cũng phải tạo ra ma sát để phanh rồi mới dừng đuợc chứ nhỉ.</li>
 </ul>
 
-<h4 id="3-1-tự-stop-tường-minh">3.1 Tự stop tường minh</h4>
+<h3 id="3-1-tự-stop-tường-minh">3.1 Tự stop tường minh</h3>
 
 <ul>
 <li>Đầu tiên ta nói đến tự nguyện dừng lại. Nghĩa là mọi thread đều tự gọi một hàm để yêu cầu đựoc dừng lại chứ không bị ai bắt ép gì cả, tức là thread đó thực hiện xong xử lý của nó, nó kết thúc.<br /></li>
@@ -168,7 +170,7 @@ pthread_exit(<span style="color:#658b00">NULL</span>);
 }  </code></pre></div></li>
 </ul>
 
-<h4 id="3-2-dừng-bắt-buộc-để-sau-viết-tiếp">3.2 Dừng bắt buộc (Để sau viết tiếp)</h4>
+<h3 id="3-2-dừng-bắt-buộc-để-sau-viết-tiếp">3.2 Dừng bắt buộc (Để sau viết tiếp)</h3>
 
 <ul>
 <li>Có một số trường hợp, khi có một yêu cầu bắt buộc phải dừng 1 thread đang chạy từ 1 thead khác chẳng hạn.<br />
@@ -176,7 +178,7 @@ Ví dụ, người dùng yêu cầu tải 1 file lớn từ internet, ta cắm x
 (Sẽ đuợc bổ sung sau)</li>
 </ul>
 
-<h4 id="4-cơ-chế-trao-đổi-dữ-liệu-và-đồng-bộ">4. Cơ chế trao đổi dữ liệu và đồng bộ</h4>
+<h2 id="4-cơ-chế-trao-đổi-dữ-liệu-và-đồng-bộ">4. Cơ chế trao đổi dữ liệu và đồng bộ</h2>
 
 <ul>
 <li>Hiểu đơn giản là giống như, mỗi người thực hiên một việc, nhưng nó có liên quan đến nhau.<br /></li>
@@ -189,7 +191,7 @@ Ví dụ, người dùng yêu cầu tải 1 file lớn từ internet, ta cắm x
 Ta sẽ nói về cái phức tạp hơn trước. Đó là 2 bên cùng biết địa chỉ chung rồi đọc/ghi vào đó.</li>
 </ul>
 
-<h4 id="4-1-mutex">4.1 Mutex</h4>
+<h3 id="4-1-mutex">4.1 Mutex</h3>
 
 <p>Mutual Exclusion, được sử dụng khi có nhiều thread cùng ghi vào một vùng địa chỉ.<br />
 Đây là 1 ví dụ kinh điển nếu không sử dụng mutex:</p>
@@ -203,7 +205,7 @@ Hay ở trên từ bước <em>Read balance</em> đển bước <em>Update Balan
 
 <p>Các hàm mà pthread cung cấp cho để sử dụng mutex:</p>
 
-<h5 id="4-1-1-tạo-hủy-mutex">4.1.1 Tạo, hủy mutex</h5>
+<h3 id="4-1-1-tạo-hủy-mutex">4.1.1 Tạo, hủy mutex</h3>
 
 <p>Hàm tạo:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_mutex_init</span>(pthread_mutex_t *<span style="color:#8b008b;font-weight:bold">restrict</span> mutex,  
@@ -242,7 +244,7 @@ Hàm dưới đây là giải pháp.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_mutex_trylock</span>(pthread_mutex_t *mutex);  </code></pre></div>
 <p>Hàm này có nhiệm vụ chính giống hàm Lock nhưng chỉ khác 1 điểm là nếu mutex đó đang bị lock thì nó sẽ trả về ngay mà không đợi đến khi mutex đó được unlock nữa.</p>
 
-<h4 id="4-2-biến-điều-kiện">4.2 Biến điều kiện</h4>
+<h3 id="4-2-biến-điều-kiện">4.2 Biến điều kiện</h3>
 
 <ul>
 <li><p>Hay còn gọi là Condition Variables. Nó cung cấp một cách khác để đồng bộ hóa. Trong khi mutex thực hiện việc đồng bộ bằng cách điều khiển quyền truy cập dữ liệu đó tại các &ldquo;critical&rdquo; code. Thì condition variable cung cấp cách truy cập dữ liệu dựa trên điều kiện về giá trị của chính dữ liệu đó.</p></li>
@@ -252,7 +254,7 @@ Hàm dưới đây là giải pháp.</p>
 <li><p>Một condition variable luôn được sử dụng kết hợp với mutex.</p></li>
 </ul>
 
-<h5 id="4-2-1-tạo-hủy-biến-điều-kiện">4.2.1 Tạo, hủy biến điều kiện</h5>
+<h4 id="4-2-1-tạo-hủy-biến-điều-kiện">4.2.1 Tạo, hủy biến điều kiện</h4>
 
 <p>Hàm tạo:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">pthread_cond_init</span>(pthread_cond_t *<span style="color:#8b008b;font-weight:bold">restrict</span> cond,  
@@ -269,7 +271,7 @@ Hàm dưới đây là giải pháp.</p>
 <li>Ta có thể initialize lại biến này để sử dụng như mới. Còn tác thao tác khác nhằm sử dụng lại giá trị trước khi hủy đều không xác định kết quả.</li>
 </ul>
 
-<h5 id="4-2-2-sử-dụng-biến-điều-kiện">4.2.2 Sử dụng biến điều kiện</h5>
+<h4 id="4-2-2-sử-dụng-biến-điều-kiện">4.2.2 Sử dụng biến điều kiện</h4>
 
 <p>Có 2 thao tác được sử dụng cho biến điều kiện: đợi và signal (báo hiệu)<br />
 Hàm đợi:</p>
@@ -306,11 +308,11 @@ Hàm phát tín hiệu:</p>
 <li><p>Việc gọi 2 hàm trên không có tác dụng gì nếu chẳng có thread bị block trên biến điều kiện được đưa vào.</p></li>
 </ul>
 
-<h4 id="5-các-công-cụ-để-theo-dõi-pthread">5. Các công cụ để theo dõi pthread</h4>
+<h2 id="5-các-công-cụ-để-theo-dõi-pthread">5. Các công cụ để theo dõi pthread</h2>
 
 <p>Ở đây, ta chỉ nói đến các công cụ sử dụng dòng lệnh vì nó sẽ được sử dụng phổ biến trong các hệ thống *NIX.</p>
 
-<h4 id="5-1-ps">5.1 ps</h4>
+<h3 id="5-1-ps">5.1 ps</h3>
 
 <p>Ai cũng biết kết quả của lệnh này là in ra màn hình danh sách các process đang chạy.<br />
 Ta có thể sử dụng 1 trong các tham số sau để biết có bao nhiêu thread được đang được chạy từ 1 process.<br />
@@ -348,7 +350,7 @@ PID LWP TTY TIME CMD
 <li>Nhiều lúc mình tự hỏi tại sao người ta nghĩ ra nhiều lệnh thực hiện cũng một mục đích như vậy làm gì. Mình nghĩ nếu đê trả lời sẽ có 2 ý thế này, thứ nhất cộng đồng Linux là mã nguồn mở, mọi người có thể tự do thêm các tính năng mà mình muốn. Thứ 2, có nhiều option thực hiện các chức năng tương tự nhau, nhưng cách implment khác nhau, vì thế khi triển khai Linux trên các hệ thống nghèo tài nguyên CPU, bộ nhớ(hệ nhúng), người ta không thể cài đặt tất cả chúng được, chỉ một tập nhỏ các option được hỗ trợ thôi. Điều này cực kì quan trọng.</li>
 </ul>
 
-<h4 id="5-2-lệnh-top">5.2 Lệnh top</h4>
+<h3 id="5-2-lệnh-top">5.2 Lệnh top</h3>
 
 <ul>
 <li>Là lệnh theo dõi hiệu năng của máy ở chế độ gần như thời gian thực.<br /></li>
@@ -357,7 +359,7 @@ PID LWP TTY TIME CMD
 
 <p><img src="{{ site.baseurl }}/assets/topH.gif" alt="" /></p>
 
-<h4 id="6-một-số-thông-tin-hữu-ích-khác">6. Một số thông tin hữu ích khác</h4>
+<h2 id="6-một-số-thông-tin-hữu-ích-khác">6. Một số thông tin hữu ích khác</h2>
 
 <ul>
 <li>Khi thoát chương trình từ thread main ( tức là thread tạo chạy hàm <em>main()</em>), chúng ta nên gọi _pthread<em>exit()</em> ở cuối để đảm bảo thread main sẽ chờ để thoát hết các thread nó tạo ra trước đó.</li>
@@ -375,13 +377,14 @@ PID LWP TTY TIME CMD
 <p>Với option cho attr lúc tạo thread, ta cũng có thể tạo ra thread mà trạng thái là không joinable luôn.</p></li>
 </ul>
 
-<h3 id="ii-test-thử-trên-window">II. Test thử trên Window.</h3>
+<h1 id="ii-test-thử-trên-window">II. Test thử trên Window.</h1>
 
 <p>(Vì bài này đã quá dài, và để dễ nắm bắt nên tôi sẽ để phần ví dụ này sang (một post khác khi hoàn thành bài về CMake)</p>
 
-<h3 id="iii-test-thử-trên-linux">III. Test thử trên Linux.</h3>
+<h1 id="iii-test-thử-trên-linux">III. Test thử trên Linux.</h1>
 
 <p><a href="https://lazytrick.wordpress.com/2017/05/20/vi-du-co-ban-voi-pthread-tren-linux/">Ví dụ cơ bản với pthread trên Linux</a></p>
+
 		</div>
 		<footer class="post__footer">
 			

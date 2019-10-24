@@ -68,9 +68,9 @@
 
 <p>Link gốc tại <a href="http://www.beyondlogic.org/usbnutshell/usb1.shtml">http://www.beyondlogic.org/usbnutshell/usb1.shtml</a></p>
 
-<h4 id="tóm-tắt-về-usb">Tóm tắt về USB</h4>
+<h2 id="tóm-tắt-về-usb">Tóm tắt về USB</h2>
 
-<h5 id="hiểu-chuẩn-usb-để-sử-dụng-trong-phát-triển">Hiểu chuẩn USB để sử dụng trong phát triển</h5>
+<h3 id="hiểu-chuẩn-usb-để-sử-dụng-trong-phát-triển">Hiểu chuẩn USB để sử dụng trong phát triển</h3>
 
 <p>Nếu bạn là người bắt đầu công việc phát triển sử dụng USB, thì quả thật nó không dễ dàng gì. Có đến 650 trang tài liệu đặc tả <a href="http://www.usb.org/developers/docs/usb_20.zip">USB 2.0 specification</a>, mà đó mới chỉ là mô tả chuẩn chung thôi. Nếu phát triển một thiết bị cụ thể, giả sử là HID (bàn phím, chuột..etc) thì có khi bạn phải đọc thêm  97 trang tài liệu đặc tả thiết bị <a href="http://www.usb.org/developers/devclass/">USB Class Standards</a> nữa. Nếu bạn là nhà phát triển Driver cho phía Host, thì bạn phải số tài liệu tương đương. Nhưng thật ra mà nói, chẳng có gì ở mấy cái tài liệu đặc tả đâu.</p>
 
@@ -190,13 +190,13 @@
 7 - Electrical.</p>
 </blockquote>
 
-<h4 id="tóm-tắt-về-usb-dành-cho-nhà-thiết-kế-thiết-bị">Tóm tắt về USB dành cho nhà thiết kế thiết bị</h4>
+<h3 id="tóm-tắt-về-usb-dành-cho-nhà-thiết-kế-thiết-bị">Tóm tắt về USB dành cho nhà thiết kế thiết bị</h3>
 
 <p>Nào, hãy đối mặt với nói. Thứ nhất, hầu hết chúng ta ở đây để phát triển các thiết bị USB. Thứ hai, chúng ta tuy đã đọc mà vẫn không biết cách nào để implement thiết bị. Vì thế, 7 chương tiếp theo trong bài viết này, chúng ta sẽ tập trung vào những phần cần thiết, phù hợp cho việc phát một thiết bị USB. Nó giúp bạn hiểu rõ USB và những vấn đề liên quan, để từ đó nghiên cứu kĩ hơn để giải quyết những vẫn đề trong những ứng dụng cụ thể.</p>
 
 <p>Chuẩn USB 1.1 khá rắc rối vì thế High Speed được ném sang USB 2.0. Để hiểu những nguyên lý cơ bản về USB, chúng tôi sẽ bỏ qua nhiều chỗ liên quan đến High Speed.</p>
 
-<h4 id="giới-thiệu-về-universal-serial-bus">Giới thiệu về Universal Serial Bus</h4>
+<h3 id="giới-thiệu-về-universal-serial-bus">Giới thiệu về Universal Serial Bus</h3>
 
 <p>USB phiên bản 1.1 hỗ trợ 2 mode tốc độ, đó là Full Speed 12Mbits/s và Low Speed 5Mbits/s. Ở Low Speed 5Mbits/s, ít ảnh hưởng của EMI (<a href="https://en.wikipedia.org/wiki/Electromagnetic_interference">Electromagnetic interference</a> - giao thoa điện từ) nên việc chế tạo sẽ rẻ hơn do chi phí cho chất chế tạo thấp hơn. Ví dụ, thay vì dùng thạch anh thì dùng cộng hưởng giá rẻ hơn. Chuẩn USB 2.0, lúc đó vốn chưa có chỗ đứng trong các máy Desktop hồi đó, nhưng được nâng lên để hỗ trợ tối đa 480Mbits/s. Hay ngày nay ta gọi là High Speed Mode. Đây là đặc điểm để cạnh tranh với Firewire Serial Bus, vốn khá phổ biến lúc đó.</p>
 

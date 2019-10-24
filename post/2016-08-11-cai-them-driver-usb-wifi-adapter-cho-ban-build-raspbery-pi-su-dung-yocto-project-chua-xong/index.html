@@ -85,7 +85,7 @@ Thông qua log hệ thống, ta thấy được rằng việc load firmware cho 
 <li>Build driver từ source code.</li>
 </ol>
 
-<h5 id="1-chuyển-driver-đã-chạy-tốt-từ-raspbian-sang-bản-build-rpi-basic-image">1.  Chuyển driver đã chạy tốt từ Raspbian sang bản build <strong>rpi-basic-image</strong></h5>
+<h2 id="1-chuyển-driver-đã-chạy-tốt-từ-raspbian-sang-bản-build-rpi-basic-image">1.  Chuyển driver đã chạy tốt từ Raspbian sang bản build <strong>rpi-basic-image</strong></h2>
 
 <p>Cách này về cơ bản là một &ldquo;cheat&rdquo;, nó hơi khác với tinh thần ban đầu khi build toàn bộ từ source. Nhưng trong tình huống này, ta vẫn hay thử nó.</p>
 
@@ -108,10 +108,10 @@ Tuy nhiên, để cấu hình sử dụng được USB Wifi Client ta cần thê
 └── images  
 └── rpi-basic-image.bbappend  </code></pre></div>
 <p>Ta cần sửa lại <strong>rpi-basic-image.bbappend</strong> thành như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"python"" data-lang=""python"">IMAGE_INSTALL += &amp;quot;samba \\  
-linux-firmware \\  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"python"" data-lang=""python"">IMAGE_INSTALL += &amp;quot;samba \  
+linux-firmware \  
 packagegroup-base-wifi  </code></pre></div>
-<h5 id="2-build-từ-source-code">2. Build từ source code</h5>
+<h2 id="2-build-từ-source-code">2. Build từ source code</h2>
 
 <p>Cách này sai lầm vì bản thân Driver đã có rồi chứ không phải chưa có như đã nghĩ lúc trước.<br />
 Thứ còn thiếu là <strong>firmware</strong> cái sẽ được Driver tải vào để thực hiện cá chức năng vốn có của nó.</p>

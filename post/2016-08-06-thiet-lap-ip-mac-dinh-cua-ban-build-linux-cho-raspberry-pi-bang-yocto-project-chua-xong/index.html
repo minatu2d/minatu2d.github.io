@@ -70,9 +70,9 @@ Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry P
 
 <p>Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  </code></pre></div>
-<h5 id="gán-ip-tĩnh-cho-bản-build">Gán IP tĩnh cho bản build</h5>
+<h2 id="gán-ip-tĩnh-cho-bản-build">Gán IP tĩnh cho bản build</h2>
 
-<h6 id="1-cách-1-thay-đổi-trong-rootfs-đã-không-thực-hiện-được-bỏ-qua-và-đến-cách-2-bên-dưới">1. Cách 1: Thay đổi trong <strong>rootfs</strong> (Đã không thực hiện được - bỏ qua và đến cách 2 bên dưới)</h6>
+<h3 id="1-cách-1-thay-đổi-trong-rootfs-đã-không-thực-hiện-được-bỏ-qua-và-đến-cách-2-bên-dưới">1. Cách 1: Thay đổi trong <strong>rootfs</strong> (Đã không thực hiện được - bỏ qua và đến cách 2 bên dưới)</h3>
 
 <p>Về cơ bản, để tạo được một bản build linux, thì chắc chắn đâu đó phải có 1 <strong>rootfs</strong> (rootfs là gì được giải thích tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</p>
 
@@ -157,7 +157,7 @@ Một số hình ảnh thực tế</p></li>
 <p>Cách làm này không ổn, vì mình đã hiểu sai về cách tạo ảnh của bitbake.<br />
 Các rootfs được tạo mới từ các package khác chứ không phải có từ rootfs có sẵn để mình có thể tìm thấy được. Vì thế, rootfs sẽ được lấy từ 1 file nén ở đâu để làm base. Sau đó thực hiện thêm &ldquo;gia vị&rdquo; bằng các &ldquo;recipe&rdquo; trên cái base đó.</p>
 
-<h6 id="2-ghi-đè-etc-interface-bằng-thêm-vào-recipes-đã-có-sẵn">2. Ghi đè <strong>/etc/interface</strong> bằng thêm vào recipes đã có sẵn</h6>
+<h3 id="2-ghi-đè-etc-interface-bằng-thêm-vào-recipes-đã-có-sẵn">2. Ghi đè <strong>/etc/interface</strong> bằng thêm vào recipes đã có sẵn</h3>
 
 <p>Qua đọc mailing list của cộng đồng người dùng Yocto, mình đã nhận ra rằng, mọi thay đổi từ các file cấu hình, cài đặt phần mềm mới nên thực hiện thông qua các gia vị (recipe) chứ không nên thực hiện thay đổi rootfs.</p>
 
@@ -177,7 +177,7 @@ image beforehand.
 Cheers,  
 Paul
 
-\--
+--
 
 Paul Eggleton  
 Intel Open Source Technology Centre  </code></pre></div>
@@ -247,7 +247,7 @@ Vẫn câu lệnh quen thuộc từ thư mục <strong>build</strong>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$bitbake</span> rpi-basic-image  </code></pre></div>
 <p>Trong kết quả có thể xuất hiện 2 lỗi về <strong>hash mismatch</strong>, cái này không sao hết. File ảnh mới vẫn được tạo, mọi thứ vẫn chạy bình thường.</p>
 
-<h6 id="3-thực-hiện-thêm-action-vào-bước-tạo-rootfs">3. Thực hiện thêm action vào bước tạo rootfs</h6>
+<h3 id="3-thực-hiện-thêm-action-vào-bước-tạo-rootfs">3. Thực hiện thêm action vào bước tạo rootfs</h3>
 
 <p>(chưa thực hiện)</p>
 

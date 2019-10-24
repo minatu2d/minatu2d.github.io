@@ -38,12 +38,11 @@ Các đặc tả phổ biết nhất bao gồm:
       <pubDate>Sat, 26 Mar 2016 03:11:25 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
-      <description>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint
-Control Transfer
-Interrupt Transfer
-Isochronous Transfer
-Bulk Transfer
-Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp). Độ dài mỗi packet trong dạng truyền control ở mỗi speed lại khác nhau.</description>
+      <description>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint  Control Transfer
+ Interrupt Transfer
+ Isochronous Transfer
+ Bulk Transfer
+  1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).</description>
     </item>
     
     <item>
@@ -62,8 +61,7 @@ Control Transfer (Truyền điều khiển) Control Transfer thường được 
       
       <guid>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
       <description>Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.
-Đầu kết nối (Connectors)
-Mọi thiết bị có một upstream &amp;ldquo;chảy&amp;rdquo;đến host, và mọi host có một downstream &amp;ldquo;chảy&amp;rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.</description>
+Đầu kết nối (Connectors) Mọi thiết bị có một upstream &amp;ldquo;chảy&amp;rdquo;đến host, và mọi host có một downstream &amp;ldquo;chảy&amp;rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.</description>
     </item>
     
   </channel>

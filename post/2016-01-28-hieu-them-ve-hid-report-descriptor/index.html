@@ -82,7 +82,7 @@
 
 <p>Thứ hai, có thể tải Tool tên là HID Descriptor Tool từ cùng link ở trên luôn. Tool này hỗ trợ việc Edit, Parse một miêu tả HID ở dạng Binary sang dạng người thiết kế dễ dàng đọc hơn.</p>
 
-<h4 id="usb-hid-report-descriptor-là-cái-gì">USB HID report descriptor là cái gì?</h4>
+<h2 id="usb-hid-report-descriptor-là-cái-gì">USB HID report descriptor là cái gì?</h2>
 
 <blockquote>
 <p>Giao thức HID giúp việc implement thiết bị trở nên rất dễ dàng. Thiết bị tự định nghĩa các gói dữ liệu của nó và gửi đến Host trông qua các  “HID descriptor”.  HID descriptor là một mảng 1 chiều không hơn không kém, miêu tả gói mà thiết bị định gửi sau đó.  Nó bao gồm : thiết bị hỗ trợ bao nhiêu gói dữ liêu, các gói có kích thước ra sao,  và mục đích của mỗi byte trong dữ liệu. Ví dụ, một phím tính toán trên một keyboard có thể được miêu tả với Host rằng 2 trạng thái (nhấn/nhả) được miêu tả trong bít thứ 2, của byte thứ 6 trong packet số 4.(chú ý là đây chỉ là giả đinh thôi). Một thiết bị thông thường lưu trữ HID Descriptor của nó trong ROM và đương nhiên không cần phải Parse lại làm gì. Nhiều chuột và bàn phím hiện nay được implement chỉ với CPU-8bit.</p>

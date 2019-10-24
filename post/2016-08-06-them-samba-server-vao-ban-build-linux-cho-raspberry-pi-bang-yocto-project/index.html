@@ -74,7 +74,7 @@
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  </code></pre></div>
 <p>Thư mục <strong>build</strong> sẽ ở ngoài thư mục <strong>poky</strong></p>
 
-<h5 id="thêm-samba-server-vào-bản-build">Thêm samba server vào bản build</h5>
+<h2 id="thêm-samba-server-vào-bản-build">Thêm samba server vào bản build</h2>
 
 <p>Yocto Project cung cấp một bộ khung cho phép thêm các phần mềm vào image được build ra. Ta có thêm bất cứ phần mềm nào, nó có thể là source tự build hoặc một phần mềm được viết kịch bản từ build để thêm vào images có từ trước.</p>
 
@@ -107,7 +107,7 @@ Tuy nhiên, ta sẽ gặp lỗi ngay vì chỉ thêm networking sẽ không đ�
 BBPATH .= <span style="color:#cd5555">&#34;:${LAYERDIR}&#34;</span>
 
 <span style="color:#228b22"># We have a packages directory, add to BBFILES  </span>
-BBFILES += <span style="color:#cd5555">&#34;${LAYERDIR}/recipes-*/*/*.bb </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">  </span>
+BBFILES += <span style="color:#cd5555">&#34;${LAYERDIR}/recipes-*/*/*.bb \  </span>
 <span style="color:#a61717;background-color:#e3d2d2">$</span>{LAYERDIR}/recipes-*/*/*.bbappend<span style="color:#cd5555">&#34;</span>
 
 BBFILE_COLLECTIONS += <span style="color:#cd5555">&#34;networking-layer&#34;</span>  
@@ -139,15 +139,15 @@ Tức là để build được layer này, ta phải build cả 2 layer kia nữ
 <span style="color:#00688b">BBPATH</span> = <span style="color:#cd5555">&#34;</span><span style="color:#cd5555">${</span><span style="color:#00688b">TOPDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span>  
 BBFILES ?= <span style="color:#cd5555">&#34;&#34;</span>
 
-BBLAYERS ?= <span style="color:#cd5555">&#34; \\  
-</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta \\  
-</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-poky \\  
-</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp \\  
-</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi \\  
-</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-python \\  
-</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-oe \\  
-</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-networking \\  
-</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-local \\  </span></code></pre></div>
+BBLAYERS ?= <span style="color:#cd5555">&#34; \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-poky \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-python \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-oe \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-networking \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-local \  </span></code></pre></div>
 <ul>
 <li>Tiếp theo, thêm <strong>samba server</strong> vào ảnh:<br />
 Theo tài liệu <a href="http://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html">Yocto Project Development Manual</a>, có 2 cách để thêm vào image. Thứ nhất là, thêm vào biến <strong>IMAGE_INSTALL_append</strong> có trong file <strong>build/conf/local.conf</strong>. Cách thứ 2, tạo một layer mới, là layer sau cùng được build, layer chỉ chứa gói phần mềm <strong>samba</strong> mà thôi.<br />
@@ -176,7 +176,7 @@ BBPATH .= <span style="color:#cd5555">&#34;:</span><span style="color:#cd5555">$
 <p>Ta nên để <strong>PRIOIRTY</strong> càng cao càng tốt, tức là độ ưu tiên thấp khi build.</p>
 
 <p><strong>rpi-basic-image.bbappend</strong> sẽ có nội dung như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">IMAGE_INSTALL</span> += <span style="color:#cd5555">&#34;samba \\  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">IMAGE_INSTALL</span> += <span style="color:#cd5555">&#34;samba \  
 </span><span style="color:#cd5555">&#34;</span>  </code></pre></div>
 <ul>
 <li>Cuối cùng ta thực hiện lại lệnh build ảnh như đã build ở phần 1 thôi.<br />

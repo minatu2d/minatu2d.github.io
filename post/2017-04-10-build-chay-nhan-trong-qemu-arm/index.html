@@ -264,12 +264,12 @@ $cp -fR rootfs_content/* tmpfs/  </code></pre></div>
 <strong>file system</strong> : đã tạo</p>
 
 <p>Giờ ta sẽ chạy, câu lệnh như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$qemu-system-arm -M vexpress-a9 \\  
-\-dtb linux-4.10.8/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \\  
-\-kernel linux-4.10.8/arch/arm/boot/zImage \\  
-\-append &#34;root=/dev/mmcblk0 console=ttyAMA0&#34; \\  
-\-sd BusyBoxRootFS.ext3 \\  
-\-serial stdio  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$qemu-system-arm -M vexpress-a9 \  
+-dtb linux-4.10.8/arch/arm/boot/dts/vexpress-v2p-ca9.dtb \  
+-kernel linux-4.10.8/arch/arm/boot/zImage \  
+-append &#34;root=/dev/mmcblk0 console=ttyAMA0&#34; \  
+-sd BusyBoxRootFS.ext3 \  
+-serial stdio  </code></pre></div>
 <p><img src="{{ site.baseurl }}/assets/qemu_arm.png" alt="QEMU" /></p>
 
 <p>Trên cửa sổ dòng lệnh sẽ hiện ra <em>terminal</em> của máy Qemu:</p>

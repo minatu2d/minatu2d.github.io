@@ -64,17 +64,19 @@
 		</header><div class="content post__content clearfix">
 			
 
-<p><strong>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint</strong></p>
+<h2 id="đặc-tả-usb-định-nghĩa-4-loại-transfer-endpoint">Đặc tả USB định nghĩa 4 loại Transfer/EndPoint</h2>
 
-<p>Control Transfer</p>
+<ol>
+<li><p>Control Transfer</p></li>
 
-<p>Interrupt Transfer</p>
+<li><p>Interrupt Transfer</p></li>
 
-<p>Isochronous Transfer</p>
+<li><p>Isochronous Transfer</p></li>
 
-<p>Bulk Transfer</p>
+<li><p>Bulk Transfer</p></li>
+</ol>
 
-<h3 id="control-transfer-truyền-điều-khiển">Control Transfer (Truyền điều khiển)</h3>
+<h3 id="1-control-transfer-truyền-điều-khiển">1. Control Transfer (Truyền điều khiển)</h3>
 
 <p>Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp). Độ dài mỗi packet trong dạng truyền control ở mỗi speed lại khác nhau. Ở low speed, nó là 8 byte; Ở High Speed cho phép độ dài 8, 16, 32 và 64 nữa; Ở Full Speed thì phải là 64 byte.</p>
 
@@ -408,7 +410,7 @@
 
 <p>Device Ack. Entire Transaction</p>
 
-<h3 id="interrupt-transfers-dạng-truyền-ngắt">Interrupt Transfers (Dạng truyền ngắt)</h3>
+<h3 id="2-interrupt-transfers-dạng-truyền-ngắt">2. Interrupt Transfers (Dạng truyền ngắt)</h3>
 
 <p>Như ta đã biết, ngắt được sinh ra từ thiết bị ở bất cứ thời điểm cho phép nào. Tuy nhiên, trong USB thì phía thiết bị (Function) vẫn phải đợi Host hỏi rồi mới báo là có ngắt hay không.</p>
 
@@ -442,7 +444,7 @@
 
 <p><strong>OUT</strong>: Khi một host muốn gửi dữ liệu ngắt đến thiết bị bằng ngắt, nó sẽ đây một OUT token, tiếp theo đó là dữ liệu. Nếu bất kì phần nào của OUT token hoặc dữ liệu bị hỏng, phía Function sẽ bỏ qua packet. Nếu buffer của EndPoint bị rỗng, Function sẽ copy dữ liệu vào, rồi báo lại cho Host biết bằng 1 ACK. Nếu buffer của EndPoint không rỗng, tức là dữ liệu trước đó chưa được xử lý, thì Function sẽ gửi trả lại Host 1 gói NACK. Tuy nhiên, nếu lỗi xảy ra liên tục, và thấy rằng nên gửi lại thì nó sẽ gửi cho Host 1 STALL.</p>
 
-<h3 id="isochronous-transfer-dạng-truyền-đồng-bộ">Isochronous Transfer (Dạng truyền đồng bộ)</h3>
+<h3 id="3-isochronous-transfer-dạng-truyền-đồng-bộ">3. Isochronous Transfer (Dạng truyền đồng bộ)</h3>
 
 <p>Là dạng truyền xảy ra liên tục và có chu kì ổn định. Được sử dụng khi truyền những thông tin đặc trưng như âm thanh, hình ảnh. Nếu delay hoặc gửi lại xảy ra khi truyền âm thanh, hình ảnh, thì chúng ta sẽ thấy một số âm thanh có vẻ kì cục, kiểu như xước đĩa etc. Hoặc các nhạc không đồng bộ với hình ảnh, ta có thể dễ dàng nhận thấy chúng. Tuy nhiên, nếu 1 packet hoặc 1 frame bị drop một vài lần thì nó ít khi bị chú ý bởi người xem, nghe.</p>
 
@@ -465,7 +467,7 @@
 
 <p>Hình trên mô tả định dạng truyền dồng bộ với IN và OUT token. Transaction truyền động bộ không có bước handshake và cũng không thể thông báo lỗi dạng STALL, HALT được.</p>
 
-<h3 id="bulk-transfer-dạng-truyền-hàng-loạt">Bulk Transfer (Dạng truyền hàng loạt)</h3>
+<h3 id="4-bulk-transfer-dạng-truyền-hàng-loạt">4. Bulk Transfer (Dạng truyền hàng loạt)</h3>
 
 <p>Có thể được sử dụng cho truyền những dữ liệu rất lớn. Ví dụ, một dữ liệu để print hoặc một ảnh được scan từ scanner. Dạng truyền hàng loạt cung cấp cơ chế phát hiện lỗi thông qua CRC16 và có cơ chế để yêu cầu gửi lại nếu lỗi để đảm bảo dữ liệu được truyền/nhận không lỗi.</p>
 
@@ -493,7 +495,7 @@
 
 <p><strong>OUT</strong>: Khi host muốn gửi đến Function dữ liệu bulk, nó sẽ gửi một OUT Token, sau đó là gói dữ liệu. Nếu OUT token hoặc Data Packet bị hỏng, thì Function sẽ bỏ qua Packet này. Nếu buffer của EndPoint là Empty, thì Function sẽ copy dữ liệu vào buffer rồi trả lại Host gói ACK. Nếu endpoint buffer chưa rỗng do dữ liệu trước chưa được xử lý, thì Function sẽ trả lại NAK. Nếu có lỗi xảy ra, Function sẽ gửi lại STALL.</p>
 
-<h3 id="quản-lý-bandwidth"><strong>Quản lý BandWidth</strong></h3>
+<h2 id="quản-lý-bandwidth">Quản lý BandWidth</h2>
 
 <p>Host chịu trách nhiệm quản lý bandwidth của bus. Việc này được thực hiện trong quá trình enumeration khi cấu hình các Endpoint đồng bộ, End Point ngắt. Đặc tả của USB nêu chỉ rõ giới hạn để đảm bảo rằng không cho phép quá 90% số frame được cấp phương thức truyền có tính chu kì (Interrupt và Isochronous) khi ở Full-Speed. Ở High-Speed, giới hạn trên được giảm xuống còn 80% microframe có thể cấp cho các phương thức truyền có tính chu kì.</p>
 

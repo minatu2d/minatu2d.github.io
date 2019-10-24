@@ -66,7 +66,7 @@
 
 <p>Trước khi nói về chủ đề chính là &ldquo;GDB có thể làm gì&rdquo;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.</p>
 
-<h4 id="1-phầm-mềm-debugger-sinh-ra-giải-quyết-cái-gì">1. Phầm mềm Debugger sinh ra giải quyết cái gì?</h4>
+<h2 id="1-phầm-mềm-debugger-sinh-ra-giải-quyết-cái-gì">1. Phầm mềm Debugger sinh ra giải quyết cái gì?</h2>
 
 <p>Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.<br />
 Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế. Những cái đó người ta gọi là <strong>BUG</strong>.</p>
@@ -79,7 +79,7 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 
 <p>Có người còn nói &ldquo;Quá trình debug là quá trình quay chậm lại BUG đã xảy ra&rdquo;, để thấy rõ nguyên nhân.</p>
 
-<h4 id="2-gdb-có-thể-làm-gì">2. GDB có thể làm gì.</h4>
+<h2 id="2-gdb-có-thể-làm-gì">2. GDB có thể làm gì.</h2>
 
 <p>GDB, là viết tắt của GNU Debugger. Ta sẽ tham chiếu đến các chức năng mà một Debugger (là phần mềm) có, được định nghĩa ở [wikipedia(<a href="https://en.wikipedia.org/wiki/Debugger">https://en.wikipedia.org/wiki/Debugger</a>)<br />
 - <strong>một công cụ để lấy thông tin (a query processor)</strong> các thông tin thường lấy như trạng thái các thanh ghi, địa chỉ các ô nhớ mà CPU đang xử lý ở 1 thời điểm nào đó.<br />
@@ -90,7 +90,7 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 - <strong>dừng có điều kiện</strong> thông qua các breakpoint.<br />
 - <strong>sửa rồi chạy tiếp</strong> Sửa thông trạng thái chương trình như thay đổi giá trị các biến, các thanh ghi rồi cho phép chạy tiếp với trạng thái mới (một số trường hợp giúp nhảy qua các đoạn lỗi hoặc chưa ổn định)</p>
 
-<h4 id="3-giao-diện-sử-dụng-gdb">3. Giao diện sử dụng GDB</h4>
+<h2 id="3-giao-diện-sử-dụng-gdb">3. Giao diện sử dụng GDB</h2>
 
 <p>Giống như bao chương trình GNU khác. Giao diện dòng lệnh là mặc định.<br />
 Nhưng bên cạnh đó, có rất nhiều IDE hỗ trợ sử dụng GDB. Tức là thay vì ta phải thực hiện từng command trên dòng lệnh của GDB cung cấp. Ta có thể sử dụng IDE để làm việc này nhanh hơn.<br />

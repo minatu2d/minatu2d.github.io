@@ -33,28 +33,8 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
       <pubDate>Sat, 25 Apr 2015 07:50:24 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</guid>
-      <description>&lt;p&gt;&lt;img src=&#34;{{ site.baseurl }}/assets/user-configuration.png?w=300&#34; alt=&#34;user-configuration&#34; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Bitbake là một công cụ cốt lõi của &lt;a href=&#34;https://www.yoctoproject.org/about&#34;&gt;Yocto Project&lt;/a&gt;. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.&lt;/p&gt;
-
-&lt;p&gt;Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao gồm vài step chính. Từ việc tải source code (ở đây là tải source code chứ không phải các gói đã được build sẵn đâu nhé, nó gần giống với ArchLinux, Gentoo và hoàn toàn khác với Ubuntu) , thực hiện các bản patch (sửa source hoặc kịch bản build đề phù hợp mục đích sử dụng), biên dịch, cuối cùng là tích hợp vào distro (kèm theo các thông số cấu hình).&lt;/p&gt;
-
-&lt;p&gt;Mục đích của bitbake là tạo ra một quy trình tự động mà đầu vào là các file kịch bản, bitbake sẽ tự làm các công việc còn lại. Ý tưởng của bitbake thực sự rất hay, dù rằng để áp dụng thực tế một cách nuột nà thì cần khá nhiều công sức để hiểu cách nó làm việc với các công cụ truyền thống.&lt;/p&gt;
-
-&lt;p&gt;(Link gốc của &lt;a href=&#34;http://hambedded.org/blog/2012/11/24/from-bitbake-hello-world-to-an-image/&#34;&gt;bài&lt;/a&gt;)&lt;/p&gt;
-
-&lt;p&gt;OpenEmbedded (OE) và Yocto Project (YP) sử dụng &lt;strong&gt;Bitbake&lt;/strong&gt; là công cụ chính.&lt;/p&gt;
-
-&lt;p&gt;Sẽ rất có ích cho việc hiểu về OE nếu ta hiểu BitBake ở mức độ nào đó thông qua các task (task ở đây xoanh quanh các xử lý của source code như tải, patch, build như đã nỏi ở trên), các class được định nghĩa trong OE.&lt;/p&gt;
-
-&lt;p&gt;Tài liệu này với mong muốn đưa ra một bức tranh mô tả việc tạo ra một Image (ảnh của một Distro) sử dụng OE và YP. Nó sẽ bắt đầu từ một project rất đơn giản sử dụng bitbake. Thông qua project đó sẽ giải thích các khái niệm quan trọng từ các OE class, cuối cùng là chỉ ra quá trình tạo một Image.&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Về Bitbake&lt;/li&gt;
-&lt;li&gt;Tải Bitbake&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h2 id=&#34;1-bitbake-là-cái-gì&#34;&gt;1. BITBAKE là cái gì?&lt;/h2&gt;</description>
+      <description>Bitbake là một công cụ cốt lõi của Yocto Project. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.
+Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao gồm vài step chính.</description>
     </item>
     
   </channel>

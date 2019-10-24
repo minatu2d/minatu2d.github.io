@@ -102,7 +102,7 @@ Giả sử ta có một cấu trúc sau:
 	<div class="content list__excerpt post__content clearfix">
 		Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
 Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
-Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.
+0. Source code Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -281,12 +281,11 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		Đặc tả USB định nghĩa 4 loại Transfer/EndPoint
-Control Transfer
-Interrupt Transfer
-Isochronous Transfer
-Bulk Transfer
-Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp). Độ dài mỗi packet trong dạng truyền control ở mỗi speed lại khác nhau.
+		Đặc tả USB định nghĩa 4 loại Transfer/EndPoint  Control Transfer
+ Interrupt Transfer
+ Isochronous Transfer
+ Bulk Transfer
+  1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -311,8 +310,7 @@ Control Transfer (Truyền điều khiển) Control Transfer thường được 
 	</header>
 	<div class="content list__excerpt post__content clearfix">
 		Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.
-Đầu kết nối (Connectors)
-Mọi thiết bị có một upstream &ldquo;chảy&rdquo;đến host, và mọi host có một downstream &ldquo;chảy&rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.
+Đầu kết nối (Connectors) Mọi thiết bị có một upstream &ldquo;chảy&rdquo;đến host, và mọi host có một downstream &ldquo;chảy&rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

@@ -179,36 +179,36 @@ Nó như thế này:</p>
 <p>Nhìn nản luôn, edit lại chút cho &ldquo;rắc rối hơn&rdquo;</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">COLLECT_GCC_OPTIONS</span>=<span style="color:#cd5555">&#39;-v&#39;</span> <span style="color:#cd5555">&#39;-o&#39;</span> <span style="color:#cd5555">&#39;HelloWorld_auto&#39;</span> <span style="color:#cd5555">&#39;-mtune=generic&#39;</span> <span style="color:#cd5555">&#39;-march=x86-64&#39;</span>  
 /usr/lib/gcc/x86_64-linux-gnu/5/collect2  
-<span style="color:#cd5555">\-</span>plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so  
-<span style="color:#cd5555">\-</span>plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper  
-<span style="color:#cd5555">\-</span>plugin-opt=-fresolution=/tmp/ccy1PInh.res  
-<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lgcc  
-<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lgcc_s  
-<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lc  
-<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lgcc  
-<span style="color:#cd5555">\-</span>plugin-opt=-pass-through=-lgcc_s  
-<span style="color:#cd5555">\-</span>-sysroot=/  
-<span style="color:#cd5555">\-</span>-build-id  
-<span style="color:#cd5555">\-</span>-eh-frame-hdr  
-<span style="color:#cd5555">\-</span>m elf_x86_64  
-<span style="color:#cd5555">\-</span>-hash-style=gnu  
-<span style="color:#cd5555">\-</span>-as-needed  
-<span style="color:#cd5555">\-</span>dynamic-linker /lib64/ld-linux-x86-64.so.2  
-<span style="color:#cd5555">\-</span>z relro  
-<span style="color:#cd5555">\-</span>o HelloWorld_auto  
+-plugin /usr/lib/gcc/x86_64-linux-gnu/5/liblto_plugin.so  
+-plugin-opt=/usr/lib/gcc/x86_64-linux-gnu/5/lto-wrapper  
+-plugin-opt=-fresolution=/tmp/ccy1PInh.res  
+-plugin-opt=-pass-through=-lgcc  
+-plugin-opt=-pass-through=-lgcc_s  
+-plugin-opt=-pass-through=-lc  
+-plugin-opt=-pass-through=-lgcc  
+-plugin-opt=-pass-through=-lgcc_s  
+--sysroot=/  
+--build-id  
+--eh-frame-hdr  
+-m elf_x86_64  
+--hash-style=gnu  
+--as-needed  
+-dynamic-linker /lib64/ld-linux-x86-64.so.2  
+-z relro  
+-o HelloWorld_auto  
 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crt1.o  
 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crti.o  
 /usr/lib/gcc/x86_64-linux-gnu/5/crtbegin.o  
-<span style="color:#cd5555">\-</span>L/usr/lib/gcc/x86_64-linux-gnu/5  
-<span style="color:#cd5555">\-</span>L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu  
-<span style="color:#cd5555">\-</span>L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu  
-<span style="color:#cd5555">\-</span>L/lib/../lib -L/usr/lib/x86_64-linux-gnu  
-<span style="color:#cd5555">\-</span>L/usr/lib/../lib  
-<span style="color:#cd5555">\-</span>L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. /tmp/ccocGwHc.o  
-<span style="color:#cd5555">\-</span>lgcc  
-<span style="color:#cd5555">\-</span>-as-needed -lgcc_s --no-as-needed  
-<span style="color:#cd5555">\-</span>lc -lgcc  
-<span style="color:#cd5555">\-</span>-as-needed -lgcc_s --no-as-needed  
+-L/usr/lib/gcc/x86_64-linux-gnu/5  
+-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu  
+-L/usr/lib/gcc/x86_64-linux-gnu/5/../../../../lib -L/lib/x86_64-linux-gnu  
+-L/lib/../lib -L/usr/lib/x86_64-linux-gnu  
+-L/usr/lib/../lib  
+-L/usr/lib/gcc/x86_64-linux-gnu/5/../../.. /tmp/ccocGwHc.o  
+-lgcc  
+--as-needed -lgcc_s --no-as-needed  
+-lc -lgcc  
+--as-needed -lgcc_s --no-as-needed  
 /usr/lib/gcc/x86_64-linux-gnu/5/crtend.o  
 /usr/lib/gcc/x86_64-linux-gnu/5/../../../x86_64-linux-gnu/crtn.o  </code></pre></div>
 <p>Ồ, dù không thể hiểu hết các tham số nhưng ta cũng thấy một số tham số sau:</p>
@@ -216,7 +216,7 @@ Nó như thế này:</p>
 <ol>
 <li><strong>-dynamic-linker /lib64/ld-linux-x86-64.so.2</strong>: chỉ ra dynamic linker nào được được sử dụng để ghi vào file kết quả.</li>
 <li><strong>-L&lt;đường dẫn&gt;</strong> : chỉ định các đường dẫn chứa thư viện mặc đinh hay chúng ta vẫn nói là chuẩn.</li>
-<li><strong>--sysroot=/</strong> : là thông số <strong>cực kì quan trọng</strong> trong cross-compling. Nó sẽ chỉ ra dường dẫn mà các đường dẫn trong qua trình biên dịch lấy đó là thư mục root.</li>
+<li><strong>&ndash;sysroot=/</strong> : là thông số <strong>cực kì quan trọng</strong> trong cross-compling. Nó sẽ chỉ ra dường dẫn mà các đường dẫn trong qua trình biên dịch lấy đó là thư mục root.</li>
 </ol>
 
 <p>Ok, ta thử chạy manual <strong>Linker</strong> với mớ tham số ở trên xem sao (nhớ xóa tham số <strong>-o HelloWorld_auto</strong> nữa.</p>
@@ -226,7 +226,7 @@ Nó như thế này:</p>
 Hello World  </code></pre></div>
 <h3 id="5-tham-số-cho-gcc">5. Tham số cho GCC</h3>
 
-<p>Nếu muốn xem các file kết quả trung gian từ 3 Stage đầu, ta có thể thêm tham số <strong>--save-temps</strong> khi biên dịch.</p>
+<p>Nếu muốn xem các file kết quả trung gian từ 3 Stage đầu, ta có thể thêm tham số <strong>&ndash;save-temps</strong> khi biên dịch.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> --save-temps -o HelloWorld HelloWorld.c  
 <span style="color:#00688b">$ls</span> -lia  
 total <span style="color:#b452cd">52</span>  

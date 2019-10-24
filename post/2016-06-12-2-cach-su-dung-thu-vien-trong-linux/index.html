@@ -76,7 +76,7 @@
 
 <p>Đầu tiên là bài <strong><a href="http://www.ibm.com/developerworks/library/l-dynamic-libraries/">Anatomy of Linux dynamic libraries</a> </strong>của<strong> <a href="http://www.ibm.com/developerworks/library/l-dynamic-libraries/#authorN10024">M. Tim Jones</a>, </strong>từ IBM.</p>
 
-<h3 id="mổ-xẻ-về-thư-viện-động-trong-linux">Mổ xẻ về thư viện động trong Linux</h3>
+<h2 id="mổ-xẻ-về-thư-viện-động-trong-linux">Mổ xẻ về thư viện động trong Linux</h2>
 
 <p><strong>Process và API</strong></p>
 
@@ -98,19 +98,17 @@
 
 <p><img src="{{ site.baseurl }}/assets/figure2.gif" alt="figure2" /></p>
 
-<h3 id="liên-kết-động-với-linux">Liên kết động với Linux</h3>
+<h2 id="liên-kết-động-với-linux">Liên kết động với Linux</h2>
 
 <p>Nào, giờ chúng ta cùng xem xét quá trình sử dụng của thư viên chia sẻ liên kết động trong Linux. Khi user bắt đầu ứng dụng, thực chất là sẽ thực hiên một Executable and Linking Format (ELF) image (ảnh về định dạng liên kết và chạy). Nhân sẽ bắt đầu quá trình load ELF image vào không gian nhớ ảo của user (user space virtual memory). Nhân sẽ dựa trên một SECTION gọi là <strong>.interp</strong> của image, cái sẽ cho dynamic linker biết thư viện nào được sử dụng đến trong ứng dụng (ở hình dưới ta thấy có /lib/ld-linux.so). Phần này tương tự với định nghĩa về interpreter trong các file Script của UNIX®(như #!/bin/sh)., nhưng nó được sử dụng trong 1 nghĩa cảnh khác mà thôi.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#228b22">## Listing 1. Using readelf to show program headers</span>
+mtj@camus:~/dl$ readelf -l dl
 
-<h5 id="listing-1-using-readelf-to-show-program-headers">Listing 1. Using readelf to show program headers</h5>
-
-<p>mtj@camus:~/dl$ <strong>readelf -l dl</strong></p>
-
-<p>Elf file type is EXEC (Executable file)
+Elf file <span style="color:#658b00">type</span> is EXEC (Executable file)
 Entry point 0x8048618
-There are 7 program headers, starting at offset 52</p>
+There are <span style="color:#b452cd">7</span> program headers, starting at offset <span style="color:#b452cd">52</span>
 
-<p>Program Headers:
+Program Headers:
   Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
   PHDR           0x000034 0x08048034 0x08048034 0x000e0 0x000e0 R E 0x4
   INTERP         0x000114 0x08048114 0x08048114 0x00013 0x00013 R   0x1
@@ -119,37 +117,36 @@ There are 7 program headers, starting at offset 52</p>
   LOAD           0x000958 0x08049958 0x08049958 0x00120 0x00128 RW  0x1000
   DYNAMIC        0x00096c 0x0804996c 0x0804996c 0x000d0 0x000d0 RW  0x4
   NOTE           0x000128 0x08048128 0x08048128 0x00020 0x00020 R   0x4
-  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x4</p>
+  GNU_STACK      0x000000 0x00000000 0x00000000 0x00000 0x00000 RW  0x4
 
-<p>&hellip;</p>
+  ...
 
-<p>mtj@camus:~dl$</p>
-
+mtj@camus:~dl$</code></pre></div>
 <p>Ở đây, ld-linux.so là một interpreter nhưng bản thân nó cũng chính là thư viện cha sẻ ELF. Tuy nhiên nó lại được biên dịch tĩnh và không cần một thư viện phụ thuộc nào hết. Khi quá trình dynamic linking được thực hiên, kernel sẽ gọi dynamic linker (tức là ELF Intepreter) để khởi tạo. Rồi nó sẽ load các thư viện chia sẻ cần thiết(nếu thư viện đó chưa được load vào). Sau khi load xong, nó sẽ thực hiện bước reloation cho các thư viện chia sẻ sẽ sử dụng trong ứng dụng. Thông thường biến môi trường, LDLIBRARY_PATH sẽ định nghĩa nơi chứa những thư viện chia sẻ hiện có. Sau khi kết thúc việc load, reloations thì quyền điều khiển được trả về địa chỉ đầu tiên để chạy chương trình.</p>
 
 <p>Relocations được thực hiện thông qua một cơ chế gián tiếp gọi là Global Offset Table (GOT) và Procedure Linkage Table (PLT). Hai bảng này sẽ cung cấp địa chỉ của external function và data của các thư viện chia sẻ mà ld-linux.so load được trong quá trình relocations. Có nghĩa là code sẽ không thay đổi chỉ có 2 bảng này phải điều chỉnh thôi. Relocations được thực hiện ngay khi load xong hoặc bất cứ khi nào hàm được gọi. (Xem thêm phần Dynamic loading with Linux).</p>
 
 <p>Khi relocation xong, dynamic linker sẽ cho phép các thư viện chạy code khởi tạo của nó. Chức năng này cho phép thư viện khởi tạo dữ liệu cần thiết cho việc sử dụng sau đó. Phần code này được định nghĩa ở section <strong>.init </strong>của ELF image. Ngược lại, khi thư viện bị unload thì dynamic linker cũng sẽ thực hiện code kết thúc tương ứng (được định nghĩa ở section .<strong>fini. </strong>Khi hàm khởi tạo được gọi, dynamic linker sẽ trả điều khiển về cho ELF image.</p>
 
-<h3 id="load-động-trên-linux">Load động trên Linux</h3>
+<h2 id="load-động-trên-linux">Load động trên Linux</h2>
 
 <p>Ngoài khả năng tự động load và link thư viện cho chương trình tương ứng, Linux cũng cung cấp cách để cho chính ứng dụng có quyền điều khiển quá trình load và link này.  Cái đó gọi là load động. Nó khác các Liên kết động ở trên là, trong mã của ứng dụng không biết trước sẽ sử dụng hàm nào trong thư viện. Khi thực hiện load động, ứng dụng có quyền chỉ rõ thư viện cụ thể nào nó load và sử dụng để chạy (gọi hàm bên trong ứng dụng). Tuy có vẻ khác như thế, nhưng những gì ta đã biết về ELF image ở trên vẫn không thay đổi. ld-linux dynamic linker vẫn thực hiên như là ELF loader, Interpreter.</p>
 
 <p>Các Dynamic Loading (DL) API được cung cấp, sẽ cho phép load và sử dụng thư viện trong user-space (program). Hình bên dưới mô tả danh sách các API, số lượng tuy khá nhỏ (dù lượng xử lý bên trong các API này không hề nhỏ) nhưng chừng đó là đủ để cho ta mọi thứ cần thiết.</p>
 
-<p>dlopen</p>
+<p><code>dlopen</code></p>
 
 <p>Tạo một đối tượng để chương trình dùng nó truy cập đến file thư viện</p>
 
-<p>dlsym</p>
+<p><code>dlsym</code></p>
 
 <p>Lấy địa chỉ của một symbol thông qua đối tượng đã tạo bởi <code>dlopen</code>.</p>
 
-<p>dlerror</p>
+<p><code>dlerror</code></p>
 
 <p>Trả về một chuỗi mô tả của lỗi cuối cùng vừa xảy ra.</p>
 
-<p>dlclose</p>
+<p><code>dlclose</code></p>
 
 <p>Đóng đối tượng truy cập file đã mở trước đó.</p>
 
@@ -168,120 +165,105 @@ There are 7 program headers, starting at offset 52</p>
 <p>Hàm dlopen cũng tự động load các thư viện phục thuộc với thư viện chính. Có nghĩa là, nếu bạn mở một truy cập đến một thư viện động, thì các thư viện khac cũng tự động được load vào. Hàm này sẽ trả về một biến, và biến này sẽ được sử dụng ở các hàm tiếp theo.</p>
 
 <p>Prototype của dlopen:</p>
-
-<p>#include <dlfcn.h></p>
-
-<p>void *<strong>dlopen</strong>( const char *file, int mode );</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;dlfcn.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#00688b;font-weight:bold">void</span> ***dlopen**( <span style="color:#8b008b;font-weight:bold">const</span> <span style="color:#00688b;font-weight:bold">char</span> *file, <span style="color:#00688b;font-weight:bold">int</span> mode );</code></pre></div>
 <p>Khi đã có được đối tượng trả về từ hàm trên, gọi là một handle đến thư viện động (ELF Object). Bạn có thể xác định địa chỉ của bất cứ symbol nào bằng cách gọi hàm <strong>dlsym</strong>. Hàm này sẽ truyền vào tên symbol muốn xác định hay chính là tên của 1 hàm chưa bên trong object đó. Giá trị trả về của hàm này sẽ là địa chỉ được tìm thấy của symbol trong object.</p>
-
-<p>void *<strong>dlsym</strong>( void *restrict handle, const char *restrict name );</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">void</span> ***dlsym**( <span style="color:#00688b;font-weight:bold">void</span> *<span style="color:#8b008b;font-weight:bold">restrict</span> handle, <span style="color:#8b008b;font-weight:bold">const</span> <span style="color:#00688b;font-weight:bold">char</span> *<span style="color:#8b008b;font-weight:bold">restrict</span> name );</code></pre></div>
 <p>Khi có lỗi xảy ra khi gọi API trên, bạn có thể sử dụng <strong>dlerror</strong>  để xác định lỗi vừa xảy ra thông qua một chuỗi kí tự. Hàm bên dưới đây, không có tham số và trả về một chuỗi. Hàm này sẽ chỉ trả về kết quả nếu lời gọi ngay trước nó xảy ra lỗi.</p>
-
-<p>char *<strong>dlerror</strong>();</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">char</span> ***dlerror**();</code></pre></div>
 <p>Cuối cùng, khi không cần truy cập nữa, ứng dụng chỉ việc gọi <strong>dlclose</strong> để báo cho OS biết hãy dọn dẹp các tham chiếu không cần thiết đi. Việc dọn dẹp này được thực hiện thông qua một biến đếm tham chiếu, vì thế nhiều user có thể dùng chung 1 đối tượng mà không bị tranh chấp. Tất cả các symbol có thể được đọc ra thông qua <strong>dlsym. </strong>Khi không dùng đến nữa, ta nên đóng lại bằng hàm:</p>
-
-<p>char *<strong>dlclose</strong>( void *handle );</p>
-
-<h3 id="ví-dụ-sử-dụng-dynamic-loading"> Ví dụ sử dụng Dynamic loading</h3>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#00688b;font-weight:bold">char</span> ***dlclose**( <span style="color:#00688b;font-weight:bold">void</span> *handle );</code></pre></div>
+<h2 id="ví-dụ-sử-dụng-dynamic-loading"> Ví dụ sử dụng Dynamic loading</h2>
 
 <p>Bây giờ, chúng ta sẽ làm một ví dụ sử dụng các API bạn vừa thấy phía trên. Trong ứng dụng này, ta sẽ tạo một shell (giao diện dòng lệnh) đơn giản cho phép chỉ định một thư viện để load, 1 hàm để chạy với tham số sẽ được nhập vào luôn. Chúng ta sẽ gọi hàm thông qua load symbol (hàm) bằng các hàm đã tìm hiểu ở phía trên, sau đó truyền vào các tham số tự định nghĩa.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#1e889b">### Toàn bộ source của ví dụ ở đây:
+</span><span style="color:#1e889b"></span>
+<span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;stdio.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;dlfcn.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;string.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#1e889b">#define MAX_STRING      80
+</span><span style="color:#1e889b"></span>
 
-<h4 id="toàn-bộ-source-của-ví-dụ-ở-đây">Toàn bộ source của ví dụ ở đây:</h4>
-
-<p>#include <stdio.h>
-#include <dlfcn.h>
-#include <string.h></p>
-
-<p>#define MAX_STRING      80</p>
-
-<p>void invoke_method( char *lib, char *method, float argument )
+<span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">invoke_method</span>( <span style="color:#00688b;font-weight:bold">char</span> *lib, <span style="color:#00688b;font-weight:bold">char</span> *method, <span style="color:#00688b;font-weight:bold">float</span> argument )
 {
-  void *dl_handle;
-  float (*func)(float);
-  char *error;</p>
+  <span style="color:#00688b;font-weight:bold">void</span> *dl_handle;
+  <span style="color:#00688b;font-weight:bold">float</span> (*func)(<span style="color:#00688b;font-weight:bold">float</span>);
+  <span style="color:#00688b;font-weight:bold">char</span> *error;
 
-<p>/* Open the shared object */
-  dl_handle = <strong>dlopen</strong>( lib, RTLD_LAZY );
-  if (!dl_handle) {
-    printf( &ldquo;!!! %s\n&rdquo;, dlerror() );
-    return;
-  }</p>
+  <span style="color:#228b22">/* Open the shared object */</span>
+  dl_handle = **dlopen**( lib, RTLD_LAZY );
+  <span style="color:#8b008b;font-weight:bold">if</span> (!dl_handle) {
+    printf( <span style="color:#cd5555">&#34;!!! %s</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, dlerror() );
+    <span style="color:#8b008b;font-weight:bold">return</span>;
+  }
 
-<p>/* Resolve the symbol (method) from the object */
-  func = <strong>dlsym</strong>( dl_handle, method );
-  error = <strong>dlerror</strong>();
-  if (error != NULL) {
-    printf( &ldquo;!!! %s\n&rdquo;, error );
-    return;
-  }</p>
+  <span style="color:#228b22">/* Resolve the symbol (method) from the object */</span>
+  func = **dlsym**( dl_handle, method );
+  error = **dlerror**();
+  <span style="color:#8b008b;font-weight:bold">if</span> (error != <span style="color:#658b00">NULL</span>) {
+    printf( <span style="color:#cd5555">&#34;!!! %s</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, error );
+    <span style="color:#8b008b;font-weight:bold">return</span>;
+  }
 
-<p>/* Call the resolved method and print the result */
-  printf(&rdquo;  %f\n&rdquo;, (*func)(argument) );</p>
+  <span style="color:#228b22">/* Call the resolved method and print the result */</span>
+  printf(<span style="color:#cd5555">&#34;  %f</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, (*func)(argument) );
 
-<p>/* Close the object */
-  dlclose( <strong>dl_handle</strong> );</p>
+  <span style="color:#228b22">/* Close the object */</span>
+  dlclose( **dl_handle** );
 
-<p>return;
-}</p>
+  <span style="color:#8b008b;font-weight:bold">return</span>;
+}
 
-<p>int main( int argc, char *argv[] )
+
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>( <span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span> *argv[] )
 {
-  char line[MAX_STRING+1];
-  char lib[MAX_STRING+1];
-  char method[MAX_STRING+1];
-  float argument;</p>
+  <span style="color:#00688b;font-weight:bold">char</span> line[MAX_STRING+<span style="color:#b452cd">1</span>];
+  <span style="color:#00688b;font-weight:bold">char</span> lib[MAX_STRING+<span style="color:#b452cd">1</span>];
+  <span style="color:#00688b;font-weight:bold">char</span> method[MAX_STRING+<span style="color:#b452cd">1</span>];
+  <span style="color:#00688b;font-weight:bold">float</span> argument;
 
-<p>while (1) {</p>
+  <span style="color:#8b008b;font-weight:bold">while</span> (<span style="color:#b452cd">1</span>) {
 
-<pre><code>printf(&quot;&gt; &quot;);
+    printf(<span style="color:#cd5555">&#34;&gt; &#34;</span>);
 
-line[0]=0;
-fgets( line, MAX_STRING, stdin);
+    line[<span style="color:#b452cd">0</span>]=<span style="color:#b452cd">0</span>;
+    fgets( line, MAX_STRING, stdin);
 
-if (!strncmp(line, &quot;bye&quot;, 3)) break;
+    <span style="color:#8b008b;font-weight:bold">if</span> (!strncmp(line, <span style="color:#cd5555">&#34;bye&#34;</span>, <span style="color:#b452cd">3</span>)) <span style="color:#8b008b;font-weight:bold">break</span>;
 
-sscanf( line, &quot;%s %s %f&quot;, lib, method, &amp;argument);
+    sscanf( line, <span style="color:#cd5555">&#34;%s %s %f&#34;</span>, lib, method, &amp;argument);
 
-invoke_method( lib, method, argument );
-</code></pre>
+    invoke_method( lib, method, argument );
 
-<p>}</p>
+  }
 
-<p>}</p>
-
+}</code></pre></div>
 <p>Để build source trên, ta sử dụng GCC (GNU Compiler Collection), với option <strong>-rdynamic</strong>, để báo với GCC Linker rằng, hãy thêm tất cả các symbol (hàm, biến toàn cục) vào bảng dynamic symbol (bảng symbol động), sẽ cho phép truy vết ngược khi sử dụng <strong>dlopen</strong>. Một tham số nữa là <strong>-ldl </strong>để báo rằng chương trình sẽ linked với thư viện <strong>dllib</strong>.</p>
-
-<p>gcc -rdynamic -o dl dl.c -ldl</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">gcc -rdynamic -o dl dl.c -ldl</code></pre></div>
 <p>Ở hàm _main()_ ở trên, ta thấy nó thực hiện một nhiệm vụ khá đơn giản là đọc vào và pass 3 tham số (tên thư viện, tên hàm, tham số kiểu float). Nếu nhập vào &ldquo;bye&rdquo; ứng dụng sẽ thoát. Nếu 3 tham số thỏa mãn điều kiện, thì nó sẽ được pass qua hàm invoke_method.</p>
 
 <p>Dưới đây là một vài ví dụ chạy của ví dụ ở trên:</p>
-
-<p>mtj@camus:~/dl$ <strong>gcc -rdynamic -o dl dl.c -ldl</strong>
-mtj@camus:~/dl$ <strong>./dl</strong>
-&gt; <strong>libm.so cosf 0.0</strong>
-  1.000000
-&gt; <strong>libm.so sinf 0.0</strong>
-  0.000000
-&gt; <strong>libm.so tanf 1.0</strong>
-  1.557408
-&gt; <strong>bye</strong>
-mtj@camus:~/dl$</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mtj@camus:~/dl$ gcc -rdynamic -o dl dl.c -ldl
+mtj@camus:~/dl$ ./dl
+&gt; libm.so cosf <span style="color:#b452cd">0</span>.0
+  <span style="color:#b452cd">1</span>.000000
+&gt; libm.so sinf <span style="color:#b452cd">0</span>.0
+  <span style="color:#b452cd">0</span>.000000
+&gt; libm.so tanf <span style="color:#b452cd">1</span>.0
+  <span style="color:#b452cd">1</span>.557408
+&gt; bye
+mtj@camus:~/dl$</code></pre></div>
 <h3 id="các-tools-sử-dụng">Các tools sử dụng</h3>
 
 <p>Linux cung cấp một loạt tool để xem, đọc các đối tượng ELF (các thư viện chia sẻ động cũng là một loại đối tượng ELF). Một trong những tool hữu ích nhất là <strong>ldd, </strong>dùng để liệt kết các thư viện chia sẻ mà đối tượng ELF phụ thuộc vào. Khi sử dụng <strong>ldd</strong>, ta sẽ có kết quả như dưới đây:</p>
-
-<p>mtj@camus:~/dl$ <strong>ldd dl</strong>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mtj@camus:~/dl$ ldd dl
  linux-vdso.so.1 =&gt; (0x00007ffcd20e5000)
  libdl.so.2 =&gt; /lib/x86_64-linux-gnu/libdl.so.2 (0x00007fa3acdb5000)
  libc.so.6 =&gt; /lib/x86_64-linux-gnu/libc.so.6 (0x00007fa3ac9f0000)
  /lib64/ld-linux-x86-64.so.2 (0x0000561d20bc7000)
-mtj@camus:~/dl$</p>
-
+mtj@camus:~/dl$</code></pre></div>
 <p>Ta thấy kết quả <strong>ldd</strong> ở trên có</p>
 
 <p><em>linux-vdso.so</em> : đây là một thư viện đặc biệt, không liên quan đến file trong hệ thống file.</p>
@@ -295,38 +277,34 @@ mtj@camus:~/dl$</p>
 <p>Một công cụ hết sức mạnh mẽ, cho phép đọc nội dung đối tượng ELF, đó là <strong>readelf</strong>. Một trong những cách sử dụng phổ biến của công cụ này là xác định các phần tử relocation trong đối tượng (phần tử relocation có nghĩa là các hàm chưa được xác định địa chỉ khi biên dịch, nó sẽ được xác định khi chạy).</p>
 
 <p>Với ví dụ ta đã compile ở trên:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mtj@camus:~/dl$ readelf -r dl
 
-<p>mtj@camus:~/dl$ <strong>readelf -r dl</strong></p>
-
-<p>Relocation section &lsquo;.rela.dyn&rsquo; at offset 0x7b0 contains 2 entries:
+Relocation section <span style="color:#cd5555">&#39;.rela.dyn&#39;</span> at offset 0x7b0 contains <span style="color:#b452cd">2</span> entries:
  Offset Info Type Sym. Value Sym. Name + Addend
-000000601ff8 000700000006 R_X86_64_GLOB_DAT 0000000000000000 <strong>gmon_start</strong> + 0
-000000602080 001300000005 R_X86_64_COPY 0000000000602080 stdin + 0</p>
+000000601ff8 <span style="color:#b452cd">000700000006</span> R_X86_64_GLOB_DAT <span style="color:#b452cd">0000000000000000</span> __gmon_start__ + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602080</span> <span style="color:#b452cd">001300000005</span> R_X86_64_COPY <span style="color:#b452cd">0000000000602080</span> stdin + <span style="color:#b452cd">0</span>
 
-<p>Relocation section &lsquo;.rela.plt&rsquo; at offset 0x7e0 contains 11 entries:
+Relocation section <span style="color:#cd5555">&#39;.rela.plt&#39;</span> at offset 0x7e0 contains <span style="color:#b452cd">11</span> entries:
  Offset Info Type Sym. Value Sym. Name + Addend
-000000602018 000100000007 R_X86_64_JUMP_SLO 0000000000000000 strncmp + 0
-000000602020 000300000007 R_X86_64_JUMP_SLO 0000000000000000 __stack_chk_fail + 0
-000000602028 000400000007 R_X86_64_JUMP_SLO 0000000000000000 printf + 0
-000000602030 000500000007 R_X86_64_JUMP_SLO 0000000000000000 __libc_start_main + 0
-000000602038 000600000007 R_X86_64_JUMP_SLO 0000000000000000 fgets + 0
-000000602040 000700000007 R_X86_64_JUMP_SLO 0000000000000000 <strong>gmon_start</strong> + 0
-000000602048 000800000007 R_X86_64_JUMP_SLO 0000000000000000 dlopen + 0
-000000602050 000900000007 R_X86_64_JUMP_SLO 0000000000000000 __isoc99_sscanf + 0
-000000602058 000a00000007 R_X86_64_JUMP_SLO 0000000000000000 dlclose + 0
-000000602060 000d00000007 R_X86_64_JUMP_SLO 0000000000000000 dlsym + 0
-000000602068 000e00000007 R_X86_64_JUMP_SLO 0000000000000000 dlerror + 0
-mtj@camus:~/dl$</p>
-
+<span style="color:#b452cd">000000602018</span> <span style="color:#b452cd">000100000007</span> R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> strncmp + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602020</span> <span style="color:#b452cd">000300000007</span> R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> __stack_chk_fail + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602028</span> <span style="color:#b452cd">000400000007</span> R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> <span style="color:#658b00">printf</span> + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602030</span> <span style="color:#b452cd">000500000007</span> R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> __libc_start_main + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602038</span> <span style="color:#b452cd">000600000007</span> R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> fgets + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602040</span> <span style="color:#b452cd">000700000007</span> R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> __gmon_start__ + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602048</span> <span style="color:#b452cd">000800000007</span> R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> dlopen + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602050</span> <span style="color:#b452cd">000900000007</span> R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> __isoc99_sscanf + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602058</span> 000a00000007 R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> dlclose + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602060</span> 000d00000007 R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> dlsym + <span style="color:#b452cd">0</span>
+<span style="color:#b452cd">000000602068</span> 000e00000007 R_X86_64_JUMP_SLO <span style="color:#b452cd">0000000000000000</span> dlerror + <span style="color:#b452cd">0</span>
+mtj@camus:~/dl$</code></pre></div>
 <p>Từ danh sách này, ta có thể thấy rất nhiều hàm yêu cầu phải relocation như đến libc.so, các lời gọi liên quan đến load thư viên động (libdl.so). Hàm <strong>__libc_start_main</strong>, được gọi đến hàm <strong>main()</strong> trong source code.</p>
 
 <p>Một công cụ khác nữa cũng hay được sử dụng đó là <strong>objdump, </strong>sẽ hiển thị các thông tin về file đối tượng, <strong>nm</strong> sẽ liệt kê các hàm, từ đối file đối tượng. Ngoài ra, ta cũng có thể gọi trực tiếp Linker  liên kết động bằng cách sau:</p>
-
-<p>mtj@camus:~/dl$ <strong>/lib/ld-linux.so.2 ./dl</strong>
-&gt; <strong>libm.so expf 0.0</strong>
-  1.000000
-&gt;</p>
-
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">mtj@camus:~/dl$ /lib/ld-linux.so.2 ./dl
+&gt; libm.so expf <span style="color:#b452cd">0</span>.0
+  <span style="color:#b452cd">1</span>.000000
+&gt;</code></pre></div>
 <p><strong>ld-linux.so.2</strong> với tham số &ndash;list sẽ tương đương với lệnh <strong>ldd</strong></p>
 
 <p>PS: Đã giải quyết được vấn đề nói ở đầu bài, các hàm F2x() đã không được gọi. Lý do là, các hàm này đã tồn tại ở một thư viện trước đó. Mà thực ra là phiên bản thư viện động của thư viện <strong>lib2.a</strong>. Chỉ load trước thư viện tự build động vào trước, thì hiện tương trên sẽ hết.</p>

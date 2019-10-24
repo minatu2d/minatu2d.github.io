@@ -140,18 +140,10 @@ Lại sắp lan man rồi, vào đề thôi.</description>
       <pubDate>Sat, 11 Jul 2015 13:52:18 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</guid>
-      <description>&lt;p&gt;Với những ai đã từng làm nhiều với &lt;code&gt;CGI&lt;/code&gt; và &lt;code&gt;Perl&lt;/code&gt; sẽ dễ dàng đưa ra phương án tối ưu nhất.&lt;/p&gt;
-
-&lt;p&gt;Còn với những ai mới bắt đầu như mình , hoặc chỉ cần 1 chút thôi chẳng hạn thì có thể dễ bị lạc đường giữa rất nhiều framework hoặc thư viện của perl.&lt;/p&gt;
-
-&lt;p&gt;Vừa rồi mình có làm một ứng dụng Web&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Server Side : CGI sử dụng ngôn ngữ perl. (Tức là các file xử lý viết bằng ngôn ngữ Perl, và được server Apache gọi xử lý theo kiểu CGI (sử dụng module mod_perl).&lt;/li&gt;
-&lt;li&gt;Phía Client là Javascript và HTML.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;Mình là người mới hoàn toàn với &lt;code&gt;Perl&lt;/code&gt;. Đã từng 1 chút với &lt;code&gt;PHP&lt;/code&gt;.&lt;/p&gt;</description>
+      <description>Với những ai đã từng làm nhiều với CGI và Perl sẽ dễ dàng đưa ra phương án tối ưu nhất.
+Còn với những ai mới bắt đầu như mình , hoặc chỉ cần 1 chút thôi chẳng hạn thì có thể dễ bị lạc đường giữa rất nhiều framework hoặc thư viện của perl.
+Vừa rồi mình có làm một ứng dụng Web
+ Server Side : CGI sử dụng ngôn ngữ perl.</description>
     </item>
     
     <item>
@@ -160,22 +152,8 @@ Lại sắp lan man rồi, vào đề thôi.</description>
       <pubDate>Sat, 25 Apr 2015 08:19:53 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</guid>
-      <description>&lt;p&gt;Đang chán nản với cái ứng dụng C# vì không thích cái kiểu làm thì theo yêu cầu mà hỏi thì cái gì các sếp cũng không rõ. Thì anh Kusu ra hỏi.&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;
-Kusu : Mày biết CGI không?
-
-Mình : (Ah ha, có việc khác hay hơn ư) Có, trả lời ngay,
-
-Kusu : Bọn tao cần 1 cái web dùng CGI chạy trên CentOS (Wow, good xúc thôi), trong công ty ít người làm về server với Web lắm. T đang nghĩ, nếu mày biết thì ra làm luôn.
-
-Mình; Ok.
-
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;Từ mùng 10-30/3/2015:&lt;/p&gt;
-
-&lt;h3 id=&#34;1-cài-đặt-bau-đầu&#34;&gt;1. Cài đặt bau đầu&lt;/h3&gt;</description>
+      <description>Đang chán nản với cái ứng dụng C# vì không thích cái kiểu làm thì theo yêu cầu mà hỏi thì cái gì các sếp cũng không rõ. Thì anh Kusu ra hỏi.
+ Kusu : Mày biết CGI không? Mình : (Ah ha, có việc khác hay hơn ư) Có, trả lời ngay, Kusu : Bọn tao cần 1 cái web dùng CGI chạy trên CentOS (Wow, good xúc thôi), trong công ty ít người làm về server với Web lắm.</description>
     </item>
     
   </channel>

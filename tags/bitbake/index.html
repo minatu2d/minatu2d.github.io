@@ -89,28 +89,8 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><img src="{{ site.baseurl }}/assets/user-configuration.png?w=300" alt="user-configuration" /></p>
-
-<p>Bitbake là một công cụ cốt lõi của <a href="https://www.yoctoproject.org/about">Yocto Project</a>. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.</p>
-
-<p>Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao gồm vài step chính. Từ việc tải source code (ở đây là tải source code chứ không phải các gói đã được build sẵn đâu nhé, nó gần giống với ArchLinux, Gentoo và hoàn toàn khác với Ubuntu) , thực hiện các bản patch (sửa source hoặc kịch bản build đề phù hợp mục đích sử dụng), biên dịch, cuối cùng là tích hợp vào distro (kèm theo các thông số cấu hình).</p>
-
-<p>Mục đích của bitbake là tạo ra một quy trình tự động mà đầu vào là các file kịch bản, bitbake sẽ tự làm các công việc còn lại. Ý tưởng của bitbake thực sự rất hay, dù rằng để áp dụng thực tế một cách nuột nà thì cần khá nhiều công sức để hiểu cách nó làm việc với các công cụ truyền thống.</p>
-
-<p>(Link gốc của <a href="http://hambedded.org/blog/2012/11/24/from-bitbake-hello-world-to-an-image/">bài</a>)</p>
-
-<p>OpenEmbedded (OE) và Yocto Project (YP) sử dụng <strong>Bitbake</strong> là công cụ chính.</p>
-
-<p>Sẽ rất có ích cho việc hiểu về OE nếu ta hiểu BitBake ở mức độ nào đó thông qua các task (task ở đây xoanh quanh các xử lý của source code như tải, patch, build như đã nỏi ở trên), các class được định nghĩa trong OE.</p>
-
-<p>Tài liệu này với mong muốn đưa ra một bức tranh mô tả việc tạo ra một Image (ảnh của một Distro) sử dụng OE và YP. Nó sẽ bắt đầu từ một project rất đơn giản sử dụng bitbake. Thông qua project đó sẽ giải thích các khái niệm quan trọng từ các OE class, cuối cùng là chỉ ra quá trình tạo một Image.</p>
-
-<ol>
-<li>Về Bitbake</li>
-<li>Tải Bitbake</li>
-</ol>
-
-<h2 id="1-bitbake-là-cái-gì">1. BITBAKE là cái gì?</h2>
+		Bitbake là một công cụ cốt lõi của Yocto Project. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.
+Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao gồm vài step chính.
 	</div>
 </article>
 </main>

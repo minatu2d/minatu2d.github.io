@@ -94,7 +94,7 @@ Vì thế, kiểu <strong>UNALIGED</strong> thường sẽ nhỏ hơn <strong>AL
 
 <p>Giả sử ta sẽ biểu diễn số một số nguyên N.<br />
 Nếu giá trị nhỏ nhất <strong>N_MIN</strong> và giá trị lớn nhất <strong>N_MAX</strong> đã được biết (trong định nghĩa ASN.1) thì ta phải biểu diễn giá trị <strong>N-NMIN</strong>, tức là khi <strong>N=N_MIN</strong> thì giá trị <strong>0</strong> được biểu diễn.<br />
-Nếu <strong>N_MIN</strong>\=<strong>N_MAX</strong> thì chỉ có 1 giá trị, không cần phải biểu diễn gì nữa (được khuyết luôn, biết rồi không cần cho vào tốn chỗ).<br />
+Nếu <strong>N_MIN</strong>=<strong>N_MAX</strong> thì chỉ có 1 giá trị, không cần phải biểu diễn gì nữa (được khuyết luôn, biết rồi không cần cho vào tốn chỗ).<br />
 Khoảng giá trị thực tế sẽ biểu diễn sẽ &gt;=0, sử dụng số không dấu, và sử dụng số bit nhỏ nhất để biểu diễn khoảng giá trị từ <strong>N-N_MIN</strong> đến <strong>N_MAX</strong>.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">Số bit cần <span style="color:#a61717;background-color:#e3d2d2">để</span> biểu diễn = log2(N_MAX - N_MIN + <span style="color:#b452cd">1</span>)  
 Không làm tròn, bỏ phần thập phân.  </code></pre></div>

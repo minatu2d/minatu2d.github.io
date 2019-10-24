@@ -62,141 +62,127 @@
 			<h1 class="post__title">Ví dụ minh họa sử dụng pthread</h1>
 			
 		</header><div class="content post__content clearfix">
-			<p>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.</p>
+			
+
+<p>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.</p>
 
 <p>Mục đích ban đầu nói đến ở bài <a href="https://lazytrick.wordpress.com/2015/07/16/dung-pthread-theo-cac-da-nen-tang-den-muc-nao/">Cơ bản về pthread</a>, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</p>
 
-<p>1 . Hello world</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"C"" data-lang=""C"">/*  
-* p_hello.c -- a hello program (in pthread)  
-*/  
-#include  
-#include  
-#include  
-#include &amp;lt;sys/types.h&amp;gt;  
-#include
-
-#define MAX_THREAD 1000  
-#define CURRENT_TERMINAL_CMD &amp;quot;tty&amp;quot;
-
-typedef struct {  
-int id;  
-char *terminal;  
+<h2 id="1-hello-world">1 . Hello world</h2>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#228b22">/*  
+</span><span style="color:#228b22">* p_hello.c -- a hello program (in pthread)  
+</span><span style="color:#228b22">*/</span>  
+<span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;sys/types.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#1e889b">#define MAX_THREAD 1000
+</span><span style="color:#1e889b">#define CURRENT_TERMINAL_CMD &#34;tty&#34;
+</span><span style="color:#1e889b"></span>
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span> {
+  <span style="color:#00688b;font-weight:bold">int</span> id;
+  <span style="color:#00688b;font-weight:bold">char</span> *terminal;
 } parm;
 
-void *hello(void *arg)  
-{  
-parm *p=(parm *)arg;  
-FILE *fo = fopen(p-&amp;gt;terminal, &amp;quot;wt&amp;quot;);  
-if (fo == NULL)  
-{  
-printf(&amp;quot;Using stdout as output terminal\\n&amp;quot;);  
-printf(&amp;quot;[Node %d] : Hello các anh\\n&amp;quot;, p-&amp;gt;id);  
-sleep (p-&amp;gt;id * 2);  
-printf(&amp;quot;[Node %d] : Em kết thúc đây...\\n&amp;quot;,p-&amp;gt;id);  
-return ;  
+<span style="color:#00688b;font-weight:bold">void</span> *<span style="color:#008b45">hello</span>(<span style="color:#00688b;font-weight:bold">void</span> *arg) {
+  parm *p = (parm *)arg;
+  FILE *fo = fopen(p-&gt;terminal, <span style="color:#cd5555">&#34;wt&#34;</span>);
+  <span style="color:#8b008b;font-weight:bold">if</span> (fo == <span style="color:#658b00">NULL</span>) {
+    printf(<span style="color:#cd5555">&#34;Using stdout as output terminal</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>);
+    printf(<span style="color:#cd5555">&#34;[Node %d] : Hello các anh</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;id);
+    sleep(p-&gt;id * <span style="color:#b452cd">2</span>);
+    printf(<span style="color:#cd5555">&#34;[Node %d] : Em kết thúc đây...</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;id);
+    <span style="color:#8b008b;font-weight:bold">return</span>;
+  }
+
+  fprintf(fo, <span style="color:#cd5555">&#34;Using %s as output terminal</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;terminal);
+  fprintf(fo, <span style="color:#cd5555">&#34;[Node %d] : Hello các anh</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;id);
+  sleep(p-&gt;id * <span style="color:#b452cd">2</span>);
+  fprintf(fo, <span style="color:#cd5555">&#34;[Node %d] : Em kết thúc đây...</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;id);
+
+  fclose(fo);
+
+  <span style="color:#8b008b;font-weight:bold">return</span> (<span style="color:#658b00">NULL</span>);
 }
 
-fprintf(fo,&amp;quot;Using %s as output terminal\\n&amp;quot;,p-&amp;gt;terminal);  
-fprintf(fo,&amp;quot;[Node %d] : Hello các anh\\n&amp;quot;, p-&amp;gt;id);  
-sleep (p-&amp;gt;id * 2);  
-fprintf(fo,&amp;quot;[Node %d] : Em kết thúc đây...\\n&amp;quot;,p-&amp;gt;id);
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">getCurrentTerminal</span>(<span style="color:#00688b;font-weight:bold">char</span> *terminal) {
+  <span style="color:#00688b;font-weight:bold">int</span> retVal = <span style="color:#b452cd">0</span>;
 
-fclose(fo);
+  FILE *ttyCmdFo = popen(CURRENT_TERMINAL_CMD, <span style="color:#cd5555">&#34;r&#34;</span>);
+  <span style="color:#8b008b;font-weight:bold">if</span> (ttyCmdFo == <span style="color:#658b00">NULL</span>) {
+    retVal = -<span style="color:#b452cd">1</span>;
+    <span style="color:#8b008b;font-weight:bold">return</span> retVal;
+  }
 
-return (NULL);  
+  <span style="color:#8b008b;font-weight:bold">if</span> (fscanf(ttyCmdFo, <span style="color:#cd5555">&#34;%s&#34;</span>, terminal) != <span style="color:#b452cd">0</span>) {
+    retVal = -<span style="color:#b452cd">1</span>;
+    <span style="color:#8b008b;font-weight:bold">return</span> retVal;
+  }
+
+  printf(<span style="color:#cd5555">&#34;Terminal :%s&#34;</span>, terminal);
+
+  <span style="color:#8b008b;font-weight:bold">return</span> retVal;
 }
 
-int getCurrentTerminal(char *terminal)  
-{  
-int retVal = 0;
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#00688b;font-weight:bold">char</span> T_TERM_NAME[<span style="color:#b452cd">100</span>];
+<span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">main</span>(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span> *argv[]) {
+  <span style="color:#00688b;font-weight:bold">int</span> n, i;
+  pthread_t *threads;
+  parm *p;
+  <span style="color:#00688b;font-weight:bold">char</span> currentTerminal[<span style="color:#b452cd">100</span>];
+  T_TERM_NAME terminals[<span style="color:#b452cd">10</span>];
+  <span style="color:#00688b;font-weight:bold">char</span> tmpTerm[<span style="color:#b452cd">100</span>];
 
-FILE *ttyCmdFo = popen(CURRENT_TERMINAL_CMD,&amp;quot;r&amp;quot;);  
-if (ttyCmdFo == NULL)  
-{  
-retVal = -1;  
-return retVal;  
-}
+  <span style="color:#8b008b;font-weight:bold">if</span> (argc != <span style="color:#b452cd">2</span>) {
+    printf(<span style="color:#cd5555">&#34;Usage: %s n</span><span style="color:#cd5555">\n</span><span style="color:#cd5555"> N là số threads được tạo, xin nhập lại đi.</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,
+           argv[<span style="color:#b452cd">0</span>]);
+    exit(<span style="color:#b452cd">1</span>);
+  }
 
-if (fscanf(ttyCmdFo,&amp;quot;%s&amp;quot;,terminal) != 0)  
-{  
-retVal = -1;  
-return retVal;  
-}
+  n = atoi(argv[<span style="color:#b452cd">1</span>]);
 
-printf(&amp;quot;Terminal :%s&amp;quot;,terminal);
+  <span style="color:#8b008b;font-weight:bold">if</span> ((n &lt; <span style="color:#b452cd">1</span>) || (n &gt; MAX_THREAD)) {
+    printf(<span style="color:#cd5555">&#34;Số lượng thread phải &gt;=1 và &lt; %d.</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, MAX_THREAD);
+    exit(<span style="color:#b452cd">1</span>);
+  }
 
-return retVal;  
-}
+  threads = (pthread_t *)malloc(n * <span style="color:#8b008b;font-weight:bold">sizeof</span>(*threads));
 
-typedef char T_TERM_NAME[100];  
-void main(int argc, char* argv[]) {  
-int n,i;  
-pthread_t *threads;  
-parm *p;  
-char currentTerminal[100];  
-T_TERM_NAME terminals[10];  
-char tmpTerm[100];
+  p = (parm *)malloc(<span style="color:#8b008b;font-weight:bold">sizeof</span>(parm) * n);
 
-if (argc != 2)  
-{  
-printf (&amp;quot;Usage: %s n\\n N là số threads được tạo, xin nhập lại đi.\\n&amp;quot;,argv[0]);  
-exit(1);  
-}
+  <span style="color:#228b22">/* Tạo và bắt đầu các threads */</span>
+  getCurrentTerminal(&amp;currentTerminal[<span style="color:#b452cd">0</span>]);
 
-n=atoi(argv[1]);
+  <span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; n; i++) {
+    printf(<span style="color:#cd5555">&#34;Đầu ra của thread %d (default =%s) : &#34;</span>, i, currentTerminal);
+    gets(tmpTerm);
+    <span style="color:#8b008b;font-weight:bold">if</span> (strlen(tmpTerm) == <span style="color:#b452cd">0</span>) {
+      strcpy(terminals[i], currentTerminal);
+    } <span style="color:#8b008b;font-weight:bold">else</span> {
+      strcpy(terminals[i], tmpTerm);
+    }
+  }
 
-if ((n &amp;lt; 1) || (n &amp;gt; MAX_THREAD))  
-{  
-printf (&amp;quot;Số lượng thread phải &amp;gt;=1 và &amp;lt; %d.\\n&amp;quot;, MAX_THREAD);  
-exit(1);  
-}
+<span style="color:#1e889b">#if 0</span><span style="color:#228b22">  
+</span><span style="color:#228b22">for (i=0; i&lt;n; i++)  
+</span><span style="color:#228b22">{  
+</span><span style="color:#228b22">printf(&#34;Thread : %s\n&#34;,terminals[i]);  
+</span><span style="color:#228b22">}
+</span><span style="color:#228b22"></span><span style="color:#1e889b">#endif
+</span><span style="color:#1e889b"></span>
+  <span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; n; i++) {
+    p[i].id = i;
+    p[i].terminal = terminals[i];
+    pthread_create(&amp;threads[i], <span style="color:#658b00">NULL</span>, hello, (<span style="color:#00688b;font-weight:bold">void</span> *)(p + i));
+  }
 
-threads=(pthread_t *)malloc(n*sizeof(*threads));
+  <span style="color:#228b22">/* Đợt để các thread được tạo cùng kết thúc. */</span>
 
-p=(parm *)malloc(sizeof(parm)*n);
+  <span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; n; i++) {
+    printf(<span style="color:#cd5555">&#34;[Main] : Đang đợi [Node %d] kết thúc </span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, i);
+    pthread_join(threads[i], <span style="color:#658b00">NULL</span>);
+    printf(<span style="color:#cd5555">&#34;[Main] : [Node %d] đã kết thúc</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, i);
+  }
 
-/* Tạo và bắt đầu các threads */  
-getCurrentTerminal(&amp;amp;currentTerminal[0]);
-
-for (i=0; i&amp;lt;n; i++)  
-{  
-printf(&amp;quot;Đầu ra của thread %d (default =%s) : &amp;quot;,i, currentTerminal);  
-gets(tmpTerm);  
-if (strlen(tmpTerm) == 0)  
-{  
-strcpy(terminals[i], currentTerminal);  
-}  
-else  
-{  
-strcpy(terminals[i], tmpTerm);  
-}  
-}
-
-#if 0  
-for (i=0; i&amp;lt;n; i++)  
-{  
-printf(&amp;quot;Thread : %s\\n&amp;quot;,terminals[i]);  
-}  
-#endif
-
-for (i=0; i&amp;lt;n; i++)  
-{  
-p[i].id=i;  
-p[i].terminal = terminals[i];  
-pthread_create(&amp;amp;threads[i], NULL, hello, (void *)(p+i));  
-}
-
-/* Đợt để các thread được tạo cùng kết thúc. */
-
-for (i=0; i&amp;lt;n; i++)  
-{  
-printf(&amp;quot;[Main] : Đang đợi [Node %d] kết thúc \\n&amp;quot;,i);  
-pthread_join(threads[i],NULL);  
-printf(&amp;quot;[Main] : [Node %d] đã kết thúc\\n&amp;quot;,i);  
-}
-
-free(p);  
+  free(p);
 }</code></pre></div>
 		</div>
 		<footer class="post__footer">

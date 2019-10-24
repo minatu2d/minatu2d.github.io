@@ -415,7 +415,7 @@ Cú pháp định nghĩa như sau:</p>
 <p><em>Ví dụ</em>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">PrimeNumbers ::= INTEGER ( <span style="color:#b452cd">2</span> | <span style="color:#b452cd">3</span> | <span style="color:#b452cd">5</span> | <span style="color:#b452cd">7</span> | <span style="color:#b452cd">11</span> | <span style="color:#b452cd">13</span> )  
 PushButtonDial ::= IA5String (<span style="color:#cd5555">&#34;0&#34;</span>|<span style="color:#cd5555">&#34;1&#34;</span>|<span style="color:#cd5555">&#34;2&#34;</span>|<span style="color:#cd5555">&#34;3&#34;</span>|<span style="color:#cd5555">&#34;4&#34;</span>|<span style="color:#cd5555">&#34;5&#34;</span>|<span style="color:#cd5555">&#34;6&#34;</span>|<span style="color:#cd5555">&#34;7&#34;</span>|<span style="color:#cd5555">&#34;8&#34;</span>|<span style="color:#cd5555">&#34;9&#34;</span>|<span style="color:#cd5555">&#34;*&#34;</span>|<span style="color:#cd5555">&#34;#&#34;</span>)  
-<span style="color:#a61717;background-color:#e3d2d2">\</span>-- PushButtonDial là chuỗi <span style="color:#b452cd">1</span> kí tự  
+-- PushButtonDial là chuỗi <span style="color:#b452cd">1</span> kí tự  
 </code></pre></div>
 <h5 id="phép-giao-intersection-đối-với-tập-hợp">Phép giao (INTERSECTION) (đối với tập hợp)</h5>
 
@@ -470,8 +470,8 @@ Nếu không muốn chỉ định giới hạn trên, hãy sử dụng <strong>M
 <p><em>Ví dụ</em>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">name ::= PrintableString (SIZE (1..20)),  
 Matrix ::= SEQUENCE SIZE (6) OF SEQUENCE SIZE (6) OF INTEGER(-100..100)  
-\-- Matrix có kích thước 6x6 phần tử,  
-\-- mỗi phần từ là giá trị nguyên nằm trong khoảng 100~100  </code></pre></div>
+-- Matrix có kích thước 6x6 phần tử,  
+-- mỗi phần từ là giá trị nguyên nằm trong khoảng 100~100  </code></pre></div>
 <h5 id="giới-hạn-các-kí-tự-alphabet">Giới hạn các kí tự Alphabet</h5>
 
 <p>Cú pháp:</p>

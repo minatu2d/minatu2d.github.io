@@ -98,7 +98,7 @@ greetings-1.0-mod
 ├── greetings.h  
 ├── main.c  
 └── version.h  </code></pre></div>
-<h5 id="1-thêm-file">1. Thêm file</h5>
+<h2 id="1-thêm-file">1. Thêm file</h2>
 
 <p>Các file <strong><em>main.c</em></strong>, *<strong>version.h</strong> ở cả 2 bản <strong>1.0</strong> và <strong>1.0-mod</strong> giống hệt nhau.<br />
 Giờ ta sẽ thực hiện cập nhật các thay đổi từ <strong>1.0-mod</strong> sang cho <strong>1.0</strong>.</p>
@@ -108,7 +108,7 @@ Giờ ta sẽ thực hiện cập nhật các thay đổi từ <strong>1.0-mod</
 <p>Nội dung file patch sẽ như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat patch_1.0-mod.patch  
 diff -uprN greetings-1.0/greetings.h greetings-1.0-mod/greetings.h  
-<span style="color:#cd5555">\-</span>-- greetings-1.0/greetings.h <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
+--- greetings-1.0/greetings.h <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 +++ greetings-1.0-mod/greetings.h <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">13</span>:43:09.128523777 +0900  
 @@ -0,0 +1,5 @@  
 +#ifndef __GREETINGS_HEADER__  
@@ -135,7 +135,7 @@ greetings-1.0-mod
 patching file greetings.h  </code></pre></div>
 <p><strong>Patch</strong> sẽ rollback toàn bộ nội ung đã thay đổi ở bước trên, nội dung <strong>1.0</strong> sẽ trở lại như đầu, khi chưa có file <strong><em>greetings.h</em></strong>.</p>
 
-<h5 id="2-sửa-file">2. Sửa file</h5>
+<h2 id="2-sửa-file">2. Sửa file</h2>
 
 <p>Ta copy phiên bản <strong>1.0</strong> thanh <strong>1.0-mod2</strong> rồi thêm 1 dòng vào <strong>main.c</strong>, để nó trở thành như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;stdio.h&gt;  </span><span style="color:#1e889b">
@@ -144,12 +144,12 @@ patching file greetings.h  </code></pre></div>
 <span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span>* argv[])  
 {  
 <span style="color:#228b22">// Add in v1.0-mod2  
-</span><span style="color:#228b22"></span>printf(<span style="color:#cd5555">&#34;--This is sample source for patch/diff usage demo</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);
+</span><span style="color:#228b22"></span>printf(<span style="color:#cd5555">&#34;--This is sample source for patch/diff usage demo</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>);
 
-printf(<span style="color:#cd5555">&#34;--Version--info--</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
-printf(<span style="color:#cd5555">&#34;MAJOR =%d</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,VERSION_MAJOR);  
-printf(<span style="color:#cd5555">&#34;MINOR =%d</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,VERSION_MINOR);  
-printf(<span style="color:#cd5555">&#34;REVSION =%d</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,REVISION_NUMBER);
+printf(<span style="color:#cd5555">&#34;--Version--info--</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;MAJOR =%d</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,VERSION_MAJOR);  
+printf(<span style="color:#cd5555">&#34;MINOR =%d</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,VERSION_MINOR);  
+printf(<span style="color:#cd5555">&#34;REVSION =%d</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,REVISION_NUMBER);
 
 <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
 }  </code></pre></div>
@@ -160,26 +160,26 @@ Ok, ta có 2 file thay đổi.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">diff -uprN greetings-1.0 greetings-1.0-mod2 &gt; patch_1.0-mod2.patch  </code></pre></div>
 <p>Nội dung <strong>_patch<em>1.0-mod2.patch</em></strong>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">diff -uprN greetings-1.0/main.c greetings-1.0-mod2/main.c  
-<span style="color:#cd5555">\-</span>-- greetings-1.0/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">10</span>:45:17.584502129 +0900  
+--- greetings-1.0/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">10</span>:45:17.584502129 +0900  
 +++ greetings-1.0-mod2/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:05:17.883121135 +0900  
 @@ -3,6 +3,9 @@
 
 int main(int argc, char* argv[])  
 {  
-<span style="color:#cd5555">\+</span> // Add in v1.0-mod2  
-<span style="color:#cd5555">\+</span> printf(<span style="color:#cd5555">&#34;--This is sample source for patch/diff usage demo\\n&#34;</span>);  
++ // Add in v1.0-mod2  
++ printf(<span style="color:#cd5555">&#34;--This is sample source for patch/diff usage demo\n&#34;</span>);  
 +  
-printf(<span style="color:#cd5555">&#34;--Version--info--\\n&#34;</span>);  
-printf(<span style="color:#cd5555">&#34;MAJOR =%d\\n&#34;</span>,VERSION_MAJOR);  
-printf(<span style="color:#cd5555">&#34;MINOR =%d\\n&#34;</span>,VERSION_MINOR);  
+printf(<span style="color:#cd5555">&#34;--Version--info--\n&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;MAJOR =%d\n&#34;</span>,VERSION_MAJOR);  
+printf(<span style="color:#cd5555">&#34;MINOR =%d\n&#34;</span>,VERSION_MINOR);  
 diff -uprN greetings-1.0/version.h greetings-1.0-mod2/version.h  
-<span style="color:#cd5555">\-</span>-- greetings-1.0/version.h <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">11</span>:46:31.463883113 +0900  
+--- greetings-1.0/version.h <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">11</span>:46:31.463883113 +0900  
 +++ greetings-1.0-mod2/version.h <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:09:00.274072101 +0900  
 @@ -3,5 +3,5 @@  
 // Version :  
 <span style="color:#228b22">#define VERSION_MAJOR 1</span>  
 <span style="color:#228b22">#define VERSION_MINOR 0</span>  
-<span style="color:#cd5555">\-</span><span style="color:#228b22">#define REVISION_NUMBER 0</span>  
+-#define REVISION_NUMBER <span style="color:#b452cd">0</span>  
 +#define REVISION_NUMBER <span style="color:#b452cd">2</span>  
 <span style="color:#228b22">#endif</span>  </code></pre></div>
 <p>Apply bản patch này lên <strong>1.0</strong>:</p>
@@ -190,7 +190,7 @@ patching file version.h  </code></pre></div>
 <p>Như vậy <strong>1.0</strong> sẽ được cập nhật.<br />
 Tất nhiên ta có thể sử dụng tham số *<strong>-R</strong> (Reverse) để xóa bỏ toàn bộ thay đổi mà bản patch mod2 đã làm.</p>
 
-<h5 id="3-xóa-file">3. Xóa file</h5>
+<h2 id="3-xóa-file">3. Xóa file</h2>
 
 <p>Ta copy <strong>1.0</strong> thành <strong>1.0-mod3</strong>, và xóa file <strong>main.c</strong>:</p>
 
@@ -198,21 +198,21 @@ Tất nhiên ta có thể sử dụng tham số *<strong>-R</strong> (Reverse) �
 Nội dung <strong>_patch<em>1.0-mod3.patch</em></strong>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat patch_1.0-mod3.patch  
 diff -uprN greetings-1.0/main.c greetings-1.0-mod3/main.c  
-<span style="color:#cd5555">\-</span>-- greetings-1.0/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:13:52.187548541 +0900  
+--- greetings-1.0/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:13:52.187548541 +0900  
 +++ greetings-1.0-mod3/main.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 @@ -1,12 +0,0 @@  
-<span style="color:#cd5555">\-</span><span style="color:#228b22">#include&lt;stdio.h&gt;</span>  
-<span style="color:#cd5555">\-</span><span style="color:#228b22">#include&#34;version.h&#34;</span>  
-<span style="color:#cd5555">\-</span>  
-<span style="color:#cd5555">\-</span>int main(int argc, char* argv[])  
-<span style="color:#cd5555">\-</span>{  
-<span style="color:#cd5555">\-</span> printf(<span style="color:#cd5555">&#34;--Version--info--\\n&#34;</span>);  
-<span style="color:#cd5555">\-</span> printf(<span style="color:#cd5555">&#34;MAJOR =%d\\n&#34;</span>,VERSION_MAJOR);  
-<span style="color:#cd5555">\-</span> printf(<span style="color:#cd5555">&#34;MINOR =%d\\n&#34;</span>,VERSION_MINOR);  
-<span style="color:#cd5555">\-</span> printf(<span style="color:#cd5555">&#34;REVSION =%d\\n&#34;</span>,REVISION_NUMBER);  
-<span style="color:#cd5555">\-</span>  
-<span style="color:#cd5555">\-</span> <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
-<span style="color:#cd5555">\-</span>}  </code></pre></div>
+-#include&lt;stdio.h&gt;  
+-#include<span style="color:#cd5555">&#34;version.h&#34;</span>  
+-  
+-int main(int argc, char* argv[])  
+-{  
+- printf(<span style="color:#cd5555">&#34;--Version--info--\n&#34;</span>);  
+- printf(<span style="color:#cd5555">&#34;MAJOR =%d\n&#34;</span>,VERSION_MAJOR);  
+- printf(<span style="color:#cd5555">&#34;MINOR =%d\n&#34;</span>,VERSION_MINOR);  
+- printf(<span style="color:#cd5555">&#34;REVSION =%d\n&#34;</span>,REVISION_NUMBER);  
+-  
+- <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+-}  </code></pre></div>
 <p>Ta thực hiện bản patch này trên <strong>1.0</strong>, và có kết quả như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">greetings-1.0  
 └── version.h  
@@ -224,14 +224,14 @@ greetings-1.0-mod3
 └── version.h  
 greetings-1.0-mod3  
 └── version.h  </code></pre></div>
-<h5 id="4-đổi-tên-file">4. Đổi tên file</h5>
+<h2 id="4-đổi-tên-file">4. Đổi tên file</h2>
 
 <p>Ta copy <strong>1.0</strong> thành <strong>1.0-mod4</strong>, rồi đổi <strong><em>main.c</em></strong> thành <strong>_main<em>app.c</em></strong>.<br />
 Ta vẫn thực hiện được các bước như ở 2,3,4 và có được kết quả mong muốn.<br />
 Xem qua file patch, ta có thể thấy phép đổi tên sẽ tương đương với phép xóa file có tên cũ và thêm file có tên mới với cũng nội dung.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat patch_1.0-mod4.patch  
 diff -uprN greetings-1.0/main_app.c greetings-1.0-mod4/main_app.c  
-<span style="color:#cd5555">\-</span>-- greetings-1.0/main_app.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
+--- greetings-1.0/main_app.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 +++ greetings-1.0-mod4/main_app.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:23:11.569704749 +0900  
 @@ -0,0 +1,12 @@  
 +#include&lt;stdio.h&gt;  
@@ -239,30 +239,30 @@ diff -uprN greetings-1.0/main_app.c greetings-1.0-mod4/main_app.c
 +  
 +int main(int argc, char* argv[])  
 +{  
-<span style="color:#cd5555">\+</span> printf(<span style="color:#cd5555">&#34;--Version--info--\\n&#34;</span>);  
-<span style="color:#cd5555">\+</span> printf(<span style="color:#cd5555">&#34;MAJOR =%d\\n&#34;</span>,VERSION_MAJOR);  
-<span style="color:#cd5555">\+</span> printf(<span style="color:#cd5555">&#34;MINOR =%d\\n&#34;</span>,VERSION_MINOR);  
-<span style="color:#cd5555">\+</span> printf(<span style="color:#cd5555">&#34;REVSION =%d\\n&#34;</span>,REVISION_NUMBER);  
++ printf(<span style="color:#cd5555">&#34;--Version--info--\n&#34;</span>);  
++ printf(<span style="color:#cd5555">&#34;MAJOR =%d\n&#34;</span>,VERSION_MAJOR);  
++ printf(<span style="color:#cd5555">&#34;MINOR =%d\n&#34;</span>,VERSION_MINOR);  
++ printf(<span style="color:#cd5555">&#34;REVSION =%d\n&#34;</span>,REVISION_NUMBER);  
 +  
-<span style="color:#cd5555">\+</span> <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
++ <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
 +}  
 diff -uprN greetings-1.0/main.c greetings-1.0-mod4/main.c  
-<span style="color:#cd5555">\-</span>-- greetings-1.0/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:20:47.563705673 +0900  
+--- greetings-1.0/main.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:20:47.563705673 +0900  
 +++ greetings-1.0-mod4/main.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 @@ -1,12 +0,0 @@  
-<span style="color:#cd5555">\-</span><span style="color:#228b22">#include&lt;stdio.h&gt;</span>  
-<span style="color:#cd5555">\-</span><span style="color:#228b22">#include&#34;version.h&#34;</span>  
-<span style="color:#cd5555">\-</span>  
-<span style="color:#cd5555">\-</span>int main(int argc, char* argv[])  
-<span style="color:#cd5555">\-</span>{  
-<span style="color:#cd5555">\-</span> printf(<span style="color:#cd5555">&#34;--Version--info--\\n&#34;</span>);  
-<span style="color:#cd5555">\-</span> printf(<span style="color:#cd5555">&#34;MAJOR =%d\\n&#34;</span>,VERSION_MAJOR);  
-<span style="color:#cd5555">\-</span> printf(<span style="color:#cd5555">&#34;MINOR =%d\\n&#34;</span>,VERSION_MINOR);  
-<span style="color:#cd5555">\-</span> printf(<span style="color:#cd5555">&#34;REVSION =%d\\n&#34;</span>,REVISION_NUMBER);  
-<span style="color:#cd5555">\-</span>  
-<span style="color:#cd5555">\-</span> <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
-<span style="color:#cd5555">\-</span>}  </code></pre></div>
-<h5 id="5-thêm-thư-mục">5. Thêm thư mục</h5>
+-#include&lt;stdio.h&gt;  
+-#include<span style="color:#cd5555">&#34;version.h&#34;</span>  
+-  
+-int main(int argc, char* argv[])  
+-{  
+- printf(<span style="color:#cd5555">&#34;--Version--info--\n&#34;</span>);  
+- printf(<span style="color:#cd5555">&#34;MAJOR =%d\n&#34;</span>,VERSION_MAJOR);  
+- printf(<span style="color:#cd5555">&#34;MINOR =%d\n&#34;</span>,VERSION_MINOR);  
+- printf(<span style="color:#cd5555">&#34;REVSION =%d\n&#34;</span>,REVISION_NUMBER);  
+-  
+- <span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+-}  </code></pre></div>
+<h2 id="5-thêm-thư-mục">5. Thêm thư mục</h2>
 
 <p>Ta cũng copy <strong>1.0</strong> thành <strong>1.0-mod5</strong>, và thêm vào thư mục trống <strong><em>lib</em></strong>.<br />
 Khi thực hiện <strong>diff</strong>, ta không thấy có sự khác nhau nào được sinh ra.<br />
@@ -281,14 +281,14 @@ Cấu trúc thư mục mới của <strong>1.0-mod5</strong>:</p>
 Patch file có nội dung như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat patch_1.0-mod5.patch  
 diff -uprN greetings-1.0/lib/abc.c greetings-1.0-mod5/lib/abc.c  
-<span style="color:#cd5555">\-</span>-- greetings-1.0/lib/abc.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
+--- greetings-1.0/lib/abc.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 +++ greetings-1.0-mod5/lib/abc.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:35:25.920931214 +0900  
 @@ -0,0 +1,6 @@  
 +#include&lt;stdio.h&gt;  
 +  
 +void abc_initialize()  
 +{  
-<span style="color:#cd5555">\+</span> // Code later  
++ // Code later  
 +}  </code></pre></div>
 <p>Khi thực hiện apply patch file trên <strong>1.0</strong>, lệnh ta vẫn dùng sẽ không tạo ra thư mục mà ta chỉ thấy có file xuất hiện thôi.<br />
 Đã thử thay đổi 1 vài tham số, và lệnh dưới đây đã chạy:</p>
@@ -301,21 +301,21 @@ $ tree .
 └── version.h  </code></pre></div>
 <p><strong>p1</strong> : ở đây được hiểu là sẽ bỏ qua 1 lần <strong>/</strong>.</p>
 
-<h5 id="6-xóa-thư-mục">6. Xóa thư mục</h5>
+<h2 id="6-xóa-thư-mục">6. Xóa thư mục</h2>
 
 <p>Giờ ta lấy copy <strong>1.0-mod5</strong> thanh <strong>1.0-mod5r</strong>, rồi xóa bỏ thư mục <strong><em>lib</em></strong>.<br />
 Nội dung bản patch như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/geek/patchdiff$ cat patch_1.0-mod5r.patch  
 diff -uprN greetings-1.0-mod5/lib/abc.c greetings-1.0-mod5r/lib/abc.c  
-<span style="color:#cd5555">\-</span>-- greetings-1.0-mod5/lib/abc.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:35:25.920931214 +0900  
+--- greetings-1.0-mod5/lib/abc.c <span style="color:#b452cd">2016</span>-09-12 <span style="color:#b452cd">14</span>:35:25.920931214 +0900  
 +++ greetings-1.0-mod5r/lib/abc.c <span style="color:#b452cd">1970</span>-01-01 <span style="color:#b452cd">09</span>:00:00.000000000 +0900  
 @@ -1,6 +0,0 @@  
-<span style="color:#cd5555">\-</span><span style="color:#228b22">#include</span>  
-<span style="color:#cd5555">\-</span>  
-<span style="color:#cd5555">\-</span>void abc_initialize()  
-<span style="color:#cd5555">\-</span>{  
-<span style="color:#cd5555">\-</span> // Code later  
-<span style="color:#cd5555">\-</span>}  </code></pre></div>
+-#include  
+-  
+-void abc_initialize()  
+-{  
+- // Code later  
+-}  </code></pre></div>
 <p>Khi apply patch, thì tương tự như trên ta cần thêm <strong><em>p0</em></strong></p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$patch</span> -u -p1 &lt;../patch_1.0-mod5r.patch  
 patching file lib/abc.c  </code></pre></div>

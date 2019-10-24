@@ -76,14 +76,14 @@ Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ 
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gdb</span> --version  </code></pre></div>
 <p>Dưới đây, sẽ đưa ra hướng dẫn cách cài đặt GDB trên máy sử dụng để debug. Nó có thể là máy chạy <strong>target program</strong>, có thể không.</p>
 
-<h3 id="1-cài-đặt-trên-debian-debian-based-distro">1. Cài đặt trên Debian (Debian-based distro)</h3>
+<h2 id="1-cài-đặt-trên-debian-debian-based-distro">1. Cài đặt trên Debian (Debian-based distro)</h2>
 
 <p>Debian 8.x chưa được cài mặc định GDB, hãy sử dụng command sau để cài nó:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#aptitude install gdb</span>  </code></pre></div>
 <p>Chú ý rằng, ở đây phải sử dụng quyền <strong><em>root</em></strong> hoặc <strong><em>sudo</em></strong>.<br />
 Trên một số bản Debian như 8.x thì hoàn toàn có thể dùng cách cài đặt như Ubuntu được.</p>
 
-<h3 id="2-cài-đặt-trên-ubuntu-ubuntu-based-distro">2. Cài đặt trên Ubuntu (Ubuntu-based distro)</h3>
+<h2 id="2-cài-đặt-trên-ubuntu-ubuntu-based-distro">2. Cài đặt trên Ubuntu (Ubuntu-based distro)</h2>
 
 <p>Trên các bản Ubuntu gần đây như <a href="http://releases.ubuntu.com/trusty/ubuntu-14.04.4-desktop-i386.manifest">14.04</a>, <a href="http://releases.ubuntu.com/xenial/ubuntu-16.04-desktop-i386.manifest">16.04</a> <strong>GDB</strong> đều được được cài mặc định.<br />
 Hoặc nếu chưa được cài, thì hãy chạy command sau để cài nó :</p>
@@ -93,14 +93,14 @@ Hoặc nếu chưa được cài, thì hãy chạy command sau để cài nó :<
 <p>Trên CentOS, Fedora, ta cài bằng lệnh sau dưới quyền root.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#yum install gdb</span>  </code></pre></div>
 <p>Nếu có đĩa DVD cài đặt, có thể tải gói cài từ DVD bằng lệnh sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#yum install --disablerepo=\\* --enablerepo=c7-media install gdb</span>  </code></pre></div>
-<h3 id="3-cài-đặt-trên-raspbian">3. Cài đặt trên Raspbian</h3>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#yum install --disablerepo=\* --enablerepo=c7-media install gdb</span>  </code></pre></div>
+<h2 id="3-cài-đặt-trên-raspbian">3. Cài đặt trên Raspbian</h2>
 
 <p>Raspbian dựa trên Debian, có thể cài theo cách cài trên Ubuntu hoặc Debian đều được.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#aptitude install gdb</span>  </code></pre></div>
 <p>hoặc</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$sudo</span> apt-get install gdb  </code></pre></div>
-<h3 id="4-cài-đặt-từ-source-code">4. Cài đặt từ source code</h3>
+<h2 id="4-cài-đặt-từ-source-code">4. Cài đặt từ source code</h2>
 
 <p>Ta có thể tải một bản gdb bất kì tại <a href="ftp://sourceware.org/pub/gdb/releases/">đây</a> để tiến hành cài đặt.</p>
 
@@ -109,7 +109,7 @@ Chú ý là, ta có thể cài đặt <strong>GDB</strong> trên 1 đường d�
 Và quá trình này không cần phải là <strong>root</strong>.<br />
 Thực hiện với quyền root nhiều khi còn phát sinh vấn đề.</p>
 
-<h4 id="4-1-tạo-thư-mục-để-build">4.1. Tạo thư mục để build</h4>
+<h3 id="4-1-tạo-thư-mục-để-build">4.1. Tạo thư mục để build</h3>
 
 <p>Command:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#228b22">#1. Creating local directory</span>  
@@ -122,28 +122,28 @@ Thực hiện với quyền root nhiều khi còn phát sinh vấn đề.</p>
 <span style="color:#00688b">$mkdir</span> gdb_install  </code></pre></div>
 <p>Ta sẽ cài đặt <strong>GDB</strong> vào *<strong>gdb_install</strong>.</p>
 
-<h4 id="4-2-tải-source-code">4.2. Tải source code</h4>
+<h3 id="4-2-tải-source-code">4.2. Tải source code</h3>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#228b22">#2. Download source code</span>  
 <span style="color:#00688b">$wget</span> ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz  </code></pre></div>
-<h4 id="4-3-giải-nén-source-code">4.3. Giải nén source code</h4>
+<h3 id="4-3-giải-nén-source-code">4.3. Giải nén source code</h3>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#228b22">#3. Extrating the source code</span>  
 <span style="color:#00688b">$tar</span> -xzvf gdb-7.11.1.tar.gz  
 <span style="color:#00688b">$ls</span>  
 gdb-7.11.1 gdb-7.11.1.tar.gz  
 <span style="color:#00688b">$cd</span> gdb-7.11.1  </code></pre></div>
-<h4 id="4-4-cấu-hình-configure">4.4. Cấu hình (Configure)</h4>
+<h3 id="4-4-cấu-hình-configure">4.4. Cấu hình (Configure)</h3>
 
 <p>Khi ta chỉ chạy GDB trên chính máy hiện tại, và debug các chương trình chạy trên máy này thôi thì command đơn giản là :</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$./configure --prefix=/home/oedev/gdb/gdb_install  </code></pre></div>
 <p>Sẽ mất vài giây để chạy xong.</p>
 
-<h4 id="4-5-biên-dịch-compiling">4.5. Biên dịch (Compiling)</h4>
+<h3 id="4-5-biên-dịch-compiling">4.5. Biên dịch (Compiling)</h3>
 
 <p>Sau khi <strong>configure</strong>, thì sẽ là <strong>make</strong>:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$make</span>  </code></pre></div>
 <p>Cần 5-10 phút để build xong.</p>
 
-<h4 id="4-6-cài-đặt-installing">4.6. Cài đặt (Installing)</h4>
+<h3 id="4-6-cài-đặt-installing">4.6. Cài đặt (Installing)</h3>
 
 <p>Vì ta đã cấu hình đường dẫn ở bước configure rồi nên ở đây, chỉ cần chạy lệnh sau là <strong>GDB</strong> sẽ được cài đặt vào được dẫn đó (không cần quyền root):</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$make</span> install  </code></pre></div>

@@ -196,7 +196,7 @@ $gcc -o HelloWorld HelloWorld.c  Với câu lệnh trên,ta sẽ không thấy k
 Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
 Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
 HelloWorld.c
-#include int main() { print(&amp;#34;Hello World \\n&amp;#34;); return 0; }  Kết quả chạy:</description>
+#include int main() { print(&amp;#34;Hello World \n&amp;#34;); return 0; }  Kết quả chạy:</description>
     </item>
     
     <item>
@@ -290,7 +290,7 @@ Giả sử ta có một cấu trúc sau:
       <guid>https://blog.lazytrick.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
       <description>Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
 Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
-Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.</description>
+0. Source code Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.</description>
     </item>
     
     <item>
@@ -430,12 +430,11 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
       <pubDate>Sat, 26 Mar 2016 03:11:25 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
-      <description>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint
-Control Transfer
-Interrupt Transfer
-Isochronous Transfer
-Bulk Transfer
-Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp). Độ dài mỗi packet trong dạng truyền control ở mỗi speed lại khác nhau.</description>
+      <description>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint  Control Transfer
+ Interrupt Transfer
+ Isochronous Transfer
+ Bulk Transfer
+  1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).</description>
     </item>
     
     <item>
@@ -454,8 +453,7 @@ Control Transfer (Truyền điều khiển) Control Transfer thường được 
       
       <guid>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
       <description>Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.
-Đầu kết nối (Connectors)
-Mọi thiết bị có một upstream &amp;ldquo;chảy&amp;rdquo;đến host, và mọi host có một downstream &amp;ldquo;chảy&amp;rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.</description>
+Đầu kết nối (Connectors) Mọi thiết bị có một upstream &amp;ldquo;chảy&amp;rdquo;đến host, và mọi host có một downstream &amp;ldquo;chảy&amp;rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.</description>
     </item>
     
     <item>
@@ -600,21 +598,7 @@ http://minatu2d.github.io/</description>
       <pubDate>Thu, 16 Jul 2015 23:18:38 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
-      <description>&lt;p&gt;Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.&lt;/p&gt;
-
-&lt;p&gt;Khi gặp những ứng dụng chạy đa nền tảng mình mới thấy quảng cáo chỉ miêu tả rất nhỏ thôi. Các dự án thực tế luôn có cực kì nhiều vấn đề. Nó không phải là hello world mà chỉ bằng vài click là đa nền tảng được. Ta biết rằng, những thư viện như Qt hỗ trợ rất nhiều. Nhưng thông thường các dự án chỉ dùng 1 phần thôi, còn lại họ tự viết hoặc sử dụng lại ở đâu đó. Vì vậy, nếu nói một dự án pure Qt thì đương nhiên dễ dàng chuyển đổi giữa các platform. Còn một dự án không phải là pure Qt thì rất nhiều vấn đề phát sinh.&lt;/p&gt;
-
-&lt;p&gt;Nói lan man rồi, phần chính của bài này là nói về &lt;strong&gt;pthread&lt;/strong&gt;.&lt;br /&gt;
-Pthread được giới thiệu là thư viện implement chuẩn POSIX đặc tả việc tạo nhiều luồng tính toán song song.&lt;br /&gt;
-Hầu hết các implement của pthread là trên Linux. Ta hiểu POSIX miểu tả các API ( tức là các tên hàm và chức năng của chúng). Khi viết các hàm đó, thì tùy mỗi nền tảng mà người ta sẽ có những các khác nhau để thực hiện được nhiệm vụ được miêu tả trong đặc tả của các hàm này.&lt;/p&gt;
-
-&lt;p&gt;Trong bài này ta sẽ tìm hiểu một số thứ về pthread trên Linux và Window, chắc bài này sẽ khá đầu &amp;ldquo;lâu&amp;rdquo; nên thui mỗi hôm viết một tẹo vậy.&lt;/p&gt;
-
-&lt;p&gt;Thứ tự thực hiện sẽ như sau:&lt;/p&gt;
-
-&lt;p&gt;I. Những thứ cần biết về pthread API&lt;br /&gt;
-II. Test thử trên Window.&lt;br /&gt;
-III. Test thử trên Linux.&lt;/p&gt;</description>
+      <description>Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.</description>
     </item>
     
   </channel>

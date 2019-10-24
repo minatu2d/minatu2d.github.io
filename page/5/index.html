@@ -69,21 +69,7 @@
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.</p>
-
-<p>Khi gặp những ứng dụng chạy đa nền tảng mình mới thấy quảng cáo chỉ miêu tả rất nhỏ thôi. Các dự án thực tế luôn có cực kì nhiều vấn đề. Nó không phải là hello world mà chỉ bằng vài click là đa nền tảng được. Ta biết rằng, những thư viện như Qt hỗ trợ rất nhiều. Nhưng thông thường các dự án chỉ dùng 1 phần thôi, còn lại họ tự viết hoặc sử dụng lại ở đâu đó. Vì vậy, nếu nói một dự án pure Qt thì đương nhiên dễ dàng chuyển đổi giữa các platform. Còn một dự án không phải là pure Qt thì rất nhiều vấn đề phát sinh.</p>
-
-<p>Nói lan man rồi, phần chính của bài này là nói về <strong>pthread</strong>.<br />
-Pthread được giới thiệu là thư viện implement chuẩn POSIX đặc tả việc tạo nhiều luồng tính toán song song.<br />
-Hầu hết các implement của pthread là trên Linux. Ta hiểu POSIX miểu tả các API ( tức là các tên hàm và chức năng của chúng). Khi viết các hàm đó, thì tùy mỗi nền tảng mà người ta sẽ có những các khác nhau để thực hiện được nhiệm vụ được miêu tả trong đặc tả của các hàm này.</p>
-
-<p>Trong bài này ta sẽ tìm hiểu một số thứ về pthread trên Linux và Window, chắc bài này sẽ khá đầu &ldquo;lâu&rdquo; nên thui mỗi hôm viết một tẹo vậy.</p>
-
-<p>Thứ tự thực hiện sẽ như sau:</p>
-
-<p>I. Những thứ cần biết về pthread API<br />
-II. Test thử trên Window.<br />
-III. Test thử trên Linux.</p>
+		Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -108,18 +94,10 @@ Lại sắp lan man rồi, vào đề thôi.
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Với những ai đã từng làm nhiều với <code>CGI</code> và <code>Perl</code> sẽ dễ dàng đưa ra phương án tối ưu nhất.</p>
-
-<p>Còn với những ai mới bắt đầu như mình , hoặc chỉ cần 1 chút thôi chẳng hạn thì có thể dễ bị lạc đường giữa rất nhiều framework hoặc thư viện của perl.</p>
-
-<p>Vừa rồi mình có làm một ứng dụng Web</p>
-
-<ul>
-<li>Server Side : CGI sử dụng ngôn ngữ perl. (Tức là các file xử lý viết bằng ngôn ngữ Perl, và được server Apache gọi xử lý theo kiểu CGI (sử dụng module mod_perl).</li>
-<li>Phía Client là Javascript và HTML.</li>
-</ul>
-
-<p>Mình là người mới hoàn toàn với <code>Perl</code>. Đã từng 1 chút với <code>PHP</code>.</p>
+		Với những ai đã từng làm nhiều với CGI và Perl sẽ dễ dàng đưa ra phương án tối ưu nhất.
+Còn với những ai mới bắt đầu như mình , hoặc chỉ cần 1 chút thôi chẳng hạn thì có thể dễ bị lạc đường giữa rất nhiều framework hoặc thư viện của perl.
+Vừa rồi mình có làm một ứng dụng Web
+ Server Side : CGI sử dụng ngôn ngữ perl.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -146,22 +124,8 @@ Nào thế đủ rồi, ta đi vào phần chính.
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p>Đang chán nản với cái ứng dụng C# vì không thích cái kiểu làm thì theo yêu cầu mà hỏi thì cái gì các sếp cũng không rõ. Thì anh Kusu ra hỏi.</p>
-
-<pre><code>
-Kusu : Mày biết CGI không?
-
-Mình : (Ah ha, có việc khác hay hơn ư) Có, trả lời ngay,
-
-Kusu : Bọn tao cần 1 cái web dùng CGI chạy trên CentOS (Wow, good xúc thôi), trong công ty ít người làm về server với Web lắm. T đang nghĩ, nếu mày biết thì ra làm luôn.
-
-Mình; Ok.
-
-</code></pre>
-
-<p>Từ mùng 10-30/3/2015:</p>
-
-<h3 id="1-cài-đặt-bau-đầu">1. Cài đặt bau đầu</h3>
+		Đang chán nản với cái ứng dụng C# vì không thích cái kiểu làm thì theo yêu cầu mà hỏi thì cái gì các sếp cũng không rõ. Thì anh Kusu ra hỏi.
+ Kusu : Mày biết CGI không? Mình : (Ah ha, có việc khác hay hơn ư) Có, trả lời ngay, Kusu : Bọn tao cần 1 cái web dùng CGI chạy trên CentOS (Wow, good xúc thôi), trong công ty ít người làm về server với Web lắm.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">
@@ -173,28 +137,8 @@ Mình; Ok.
 		
 	</header>
 	<div class="content list__excerpt post__content clearfix">
-		<p><img src="{{ site.baseurl }}/assets/user-configuration.png?w=300" alt="user-configuration" /></p>
-
-<p>Bitbake là một công cụ cốt lõi của <a href="https://www.yoctoproject.org/about">Yocto Project</a>. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.</p>
-
-<p>Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao gồm vài step chính. Từ việc tải source code (ở đây là tải source code chứ không phải các gói đã được build sẵn đâu nhé, nó gần giống với ArchLinux, Gentoo và hoàn toàn khác với Ubuntu) , thực hiện các bản patch (sửa source hoặc kịch bản build đề phù hợp mục đích sử dụng), biên dịch, cuối cùng là tích hợp vào distro (kèm theo các thông số cấu hình).</p>
-
-<p>Mục đích của bitbake là tạo ra một quy trình tự động mà đầu vào là các file kịch bản, bitbake sẽ tự làm các công việc còn lại. Ý tưởng của bitbake thực sự rất hay, dù rằng để áp dụng thực tế một cách nuột nà thì cần khá nhiều công sức để hiểu cách nó làm việc với các công cụ truyền thống.</p>
-
-<p>(Link gốc của <a href="http://hambedded.org/blog/2012/11/24/from-bitbake-hello-world-to-an-image/">bài</a>)</p>
-
-<p>OpenEmbedded (OE) và Yocto Project (YP) sử dụng <strong>Bitbake</strong> là công cụ chính.</p>
-
-<p>Sẽ rất có ích cho việc hiểu về OE nếu ta hiểu BitBake ở mức độ nào đó thông qua các task (task ở đây xoanh quanh các xử lý của source code như tải, patch, build như đã nỏi ở trên), các class được định nghĩa trong OE.</p>
-
-<p>Tài liệu này với mong muốn đưa ra một bức tranh mô tả việc tạo ra một Image (ảnh của một Distro) sử dụng OE và YP. Nó sẽ bắt đầu từ một project rất đơn giản sử dụng bitbake. Thông qua project đó sẽ giải thích các khái niệm quan trọng từ các OE class, cuối cùng là chỉ ra quá trình tạo một Image.</p>
-
-<ol>
-<li>Về Bitbake</li>
-<li>Tải Bitbake</li>
-</ol>
-
-<h2 id="1-bitbake-là-cái-gì">1. BITBAKE là cái gì?</h2>
+		Bitbake là một công cụ cốt lõi của Yocto Project. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.
+Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao gồm vài step chính.
 	</div>
 </article><article class="list__item post">
 	<header class="list__header">

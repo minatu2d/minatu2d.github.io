@@ -72,7 +72,7 @@
 
 <p>Cái NORTi (một hệ điều hành implement các API cho RTOS của iTRON Project)</p>
 
-<h3 id="1-diện-mạo-bên-ngoài">1. Diện mạo bên ngoài:</h3>
+<h2 id="1-diện-mạo-bên-ngoài">1. Diện mạo bên ngoài:</h2>
 
 <p>Không giống với Linux hay Windows, ta thường thấy một con trỏ nhấp nháy trên màn hình, để người dùng nhập lệnh hay một màn hình đồ họa cho phép thao tác bằng chuột và keyboard. Và hầu hết ta sẽ có quá trình cài đặt 2 hệ điều hành này vào máy trước khi chạy.</p>
 
@@ -88,7 +88,7 @@
 
 <p>Khi chưa có firmware thì con microcontroller này ko khác một viên gạch hay một thanh tre có cùng kích thước và trọng lượng. Chẳng có tiếng Beep vào giống như ta mở PC. Có chăng có 1 điểm giống với PC là có vài cái đèn sẽ sáng khi có nguồn điện.</p>
 
-<h3 id="2-các-thiết-bị-ngoại-vi">2. Các thiết bị ngoại vi</h3>
+<h2 id="2-các-thiết-bị-ngoại-vi">2. Các thiết bị ngoại vi</h2>
 
 <p>Về cơ bản, RTOS sẽ chạy trên các chip được tích hợp rất nhiều chức năng. Nhưng chức năng ấy là gì. Nói ra thì nhiều vô kể, nhìn vào danh sách chức năng của một con Chip, ta những tưởng nó là hệ điều hành, một &ldquo;nồi lẩu&rdquo; với rất nhiều chức năng. Tất nhiên, rất ít ứng dụng cụ thể nào sử dụng hết được.</p>
 
@@ -100,23 +100,23 @@
 
 <p>Về phần cứng, không rõ nên cũng không ghi ra đây.</p>
 
-<h3 id="3-ngắt">3. Ngắt</h3>
+<h2 id="3-ngắt">3. Ngắt</h2>
 
 <p>Nguyên tắc giao tiếp với thiết bị ngoại vi của máy tính từ xưa đến này thông qua 2 cách là Ngắt và Polling.</p>
 
 <p>Nhiều chip hỗ trợ ngắt ở nhiều mức ưu tiêu khác nhau. Việc này có rất nhiều lợi ích. Lợi ích lớn nhất là có phép ưu tiên một xử lý có độ ưu tiên cao không bị ngắt quãng. Ví dụ như một số đoạn lập lịch trong nhân không thể bị ngắt quãng được.</p>
 
-<h3 id="4-cái-gì-diễn-ra-khi-nort-được-khởi-động">4. Cái gì diễn ra khi NORT được khởi động</h3>
+<h2 id="4-cái-gì-diễn-ra-khi-nort-được-khởi-động">4. Cái gì diễn ra khi NORT được khởi động</h2>
 
 <p>Các ứng dụng trên Microcontroller thì thường được chạy cách như sau:</p>
 
 <p>Khởi tạo các vùng trên RAM, Clock của hệ thống.</p>
 
-<p>-&mdash;&mdash;-&gt;</p>
+<p>&mdash;&mdash;&ndash;&gt;</p>
 
 <p>Khởi tạo các thiết bị ngoại vi (gồm bật cái nào, tắt cái nào, mở ngắt nào, tắt ngắt nào)</p>
 
-<p>-&mdash;&mdash;-&gt;</p>
+<p>&mdash;&mdash;&ndash;&gt;</p>
 
 <p>Chạy ứng dụng (có thể là hệ điều hành, có thể là hàm main của một sample code)</p>
 
@@ -124,7 +124,7 @@
 
 <p>Trong trường hợp của NORTi, hoặc các hệ điều hành ITRON-based khác, nó cung cấp một đoạn chương trình nhỏ thực hiện các bước khởi tạo (có thể theo luồng phía trên). Kết thúc đoạn chương trình đó, nó sẽ nhảy tới địa chỉ hàm main() để chay ứng dụng ta đã viết.</p>
 
-<h3 id="5-quá-trình-multi-tasking-được-thực-hiện-như-thế-nào">5. Quá trình multi-tasking được thực hiện như thế nào?</h3>
+<h2 id="5-quá-trình-multi-tasking-được-thực-hiện-như-thế-nào">5. Quá trình multi-tasking được thực hiện như thế nào?</h2>
 
 <p>Hầu hết các dòng Chip có thể cài được RTOS sẽ cung cấp 1 chức năng cho phép bật tắt việc xảy ra ngắt. Tức là bằng một thao tác ghi trên một ghi R nào đó, phần mềm có thể ngăn tạp thời toàn bộ, hoặc một số ngắt xảy ra. Cũng bằng thao tác ghi trên thanh R đó (tất nhiên với giá trị khác), phần mềm có thể cho phép các ngắt đã bị tạm dừng tiếp tục đươc thực hiện.</p>
 
@@ -134,11 +134,11 @@
 
 <p>Ngăn không cho các ngắt ảnh hưởng đến nhân (tạm thời)</p>
 
-<p>-&mdash;&ndash;&gt;</p>
+<p>&mdash;&mdash;&gt;</p>
 
 <p>Thực hiện xử lý critical của kernel.</p>
 
-<p>-&mdash;&ndash;&gt;</p>
+<p>&mdash;&mdash;&gt;</p>
 
 <p>Cho phép lại các ngắt đã bị ngăn</p>
 
@@ -146,7 +146,7 @@
 
 <p>Chế Lock hay Unlock cũng có thể được thực hiện bằng cách giống như trên.</p>
 
-<h3 id="6-một-số-chú-ý-khi-sử-dụng-itron">6. Một số chú ý khi sử dụng ITRON</h3>
+<h2 id="6-một-số-chú-ý-khi-sử-dụng-itron">6. Một số chú ý khi sử dụng ITRON</h2>
 
 <p>Nếu MCU không hỗ trợ nhiều hơn 2 độ ưu tiên cho ngắt mà chỉ có tắt, mở thôi thì ta không cần quan tâm đến việc</p>
 

@@ -69,11 +69,11 @@ Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian 
 
 <p>Bài này sẽ dịch lại <a href="https://wiki.ubuntu.com/Kernel/Firmware">trang</a>, để hiểu qua về Firmware trong Linux Kernel.</p>
 
-<h5 id="1-firmware-ở-đây-là-gì">1. Firmware ở đây là gì?</h5>
+<h2 id="1-firmware-ở-đây-là-gì">1. Firmware ở đây là gì?</h2>
 
 <p>Nhiều thiết bị có tới 2 thành phần để tạo nên chức năng của chúng khi trong hệ điều hành. Đầu tiên, đó là một <strong>Driver</strong>, là phần mềm cho phép hệ điều hành nói chuyện được với phần cứng của thiết bị. Thứ hai, đó là <strong>Firmware</strong>, thường là một mã nhị phân được upload trực tiếp vài thiết bị để nó có thể hoạt động được. Bạn có thể nghĩ Firmware ở đây là cách để lập trình phần cứng bên trong thiết bị. Trong thực tế, hầu hết <strong>Firmware</strong> đều có dạng (closed-source), thường không có source code đi kèm, và được phân phối miễn phí.</p>
 
-<h5 id="2-lấy-firmware-như-thế-này-ở-đâu">2. Lấy Firmware như thế này ở đâu?</h5>
+<h2 id="2-lấy-firmware-như-thế-này-ở-đâu">2. Lấy Firmware như thế này ở đâu?</h2>
 
 <p><strong>Firmware</strong> thường được maintained bởi chính các công ty phát triển thiết bị. Trên Windows, <strong>firmware</strong> thường là một phần của <strong>Driver</strong> bạn cài đặt để sử dụng thiết bị đó, và tất nhiên, user không hề thấy nó. Trên Linux, <strong>firmware</strong> đến từ rất nhiều nguồn. Một số có ngay trong source của nhân. Số khác được phân phối từ <a href="http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git">upstream</a>. Một số khác thì thật không may, chúng không được phân phối miễn phí.</p>
 
@@ -87,7 +87,7 @@ Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian 
 <p>Chú ý rằng, gói <strong><em>linux-firmware-nonfree</em></strong> không được cài mặc định.<br />
 Các <strong>firmware</strong> đã được cài đặt sẽ nằm ở <strong>/lib/firmware/</strong>.</p>
 
-<h5 id="3-các-firmware-này-được-sử-dụng-lúc-nào">3. Các Firmware này được sử dụng lúc nào?</h5>
+<h2 id="3-các-firmware-này-được-sử-dụng-lúc-nào">3. Các Firmware này được sử dụng lúc nào?</h2>
 
 <p>Khi driver cho các thiết bị này được chạy, nó sẽ &ldquo;yêu cầu&rdquo; các <strong>firmare</strong> tương ứng từ <strong><em>lib/firmware/</em></strong><br />
 Quá trình về cơ bản sẽ như sau:<br />

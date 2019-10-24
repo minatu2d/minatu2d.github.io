@@ -68,6 +68,8 @@
 
 <p>Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số <strong>-g</strong> khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.</p>
 
+<h2 id="0-source-code">0. Source code</h2>
+
 <p>Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.<br />
 Giả sử ta có một source Hello world như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.  
@@ -114,21 +116,21 @@ greeting_vi();
 </span><span style="color:#228b22"></span><span style="color:#1e889b">#include</span>  
 <span style="color:#1e889b">void greeting_en()  </span><span style="color:#1e889b">
 </span><span style="color:#1e889b"></span>{  
-printf(<span style="color:#cd5555">&#34;Hello world</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;Hello world</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>);  
 }
 
 <span style="color:#228b22">// greetings_ja.c  
 </span><span style="color:#228b22"></span><span style="color:#1e889b">#include</span>  
 <span style="color:#1e889b">void greeting_ja()  </span><span style="color:#1e889b">
 </span><span style="color:#1e889b"></span>{  
-printf(<span style="color:#cd5555">&#34;Konnichiwa </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;Konnichiwa </span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>);  
 }
 
 <span style="color:#228b22">// greetings_vi.c  
 </span><span style="color:#228b22"></span><span style="color:#1e889b">#include</span>  
 <span style="color:#1e889b">void greeting_vi()  </span><span style="color:#1e889b">
 </span><span style="color:#1e889b"></span>{  
-printf(<span style="color:#cd5555">&#34;Xin chao </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>);  
+printf(<span style="color:#cd5555">&#34;Xin chao </span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>);  
 }  
 </code></pre></div>
 <p>Lệnh biên dịch từ <strong>src</strong>:</p>
@@ -141,7 +143,7 @@ Konnichiwa
 Xin chao  </code></pre></div>
 <p>OK, đó là 1 chương trình đơn giản để làm ví dụ các phần bên dưới đây.</p>
 
-<h3 id="1-chạy-chương-trình-với-gdb">1. Chạy chương trình với GDB</h3>
+<h2 id="1-chạy-chương-trình-với-gdb">1. Chạy chương trình với GDB</h2>
 
 <p>-Ta chỉ cần thêm <strong>gdb</strong> vào đầu câu lệnh thông thường, ta sẽ thấy GDB được khởi động với giao diện sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/src<span style="color:#00688b">$gdb</span> ./mainapp  
@@ -184,7 +186,7 @@ Starting program: /home/oedev/code/debug_03/src/mainapp
 Temporary breakpoint <span style="color:#b452cd">1</span>, main (<span style="color:#00688b">argc</span>=<span style="color:#b452cd">1</span>, <span style="color:#00688b">argv</span>=0x7fffffffdcb8) at mainapp.c:11  
 <span style="color:#b452cd">11</span> greeting_en();  
 (gdb)  </code></pre></div>
-<h3 id="2-breakpoint">2. Breakpoint</h3>
+<h2 id="2-breakpoint">2. Breakpoint</h2>
 
 <p>-Ta chỉ có thể đặt khi chương trình chính không chạy (chưa chạy hoặc đang bị paused).<br />
 Mỗi breakpoint sẽ gắn với dòng tại 1 file nào đó.<br />
@@ -221,7 +223,7 @@ Num Type Disp Enb Address What
 <span style="color:#b452cd">2</span> breakpoint keep y 0x0000000000400549 in main at mainapp.c:13  </code></pre></div>
 <p>Dù xóa breakpoint 3 đi thì số 3 đó cũng không được sử dụng lại để đánh số cho các breakpoint được đánh dấu sau này (trừ khi khởi động lại GDB).</p>
 
-<h3 id="3-các-thao-tác-debug-khi-chương-trình-dừng-tại-breakpoint">3. Các thao tác debug khi chương trình dừng tại breakpoint</h3>
+<h2 id="3-các-thao-tác-debug-khi-chương-trình-dừng-tại-breakpoint">3. Các thao tác debug khi chương trình dừng tại breakpoint</h2>
 
 <p>Sau khi đặt breakpoint, ta tiến hành chạy chương trình.<br />
 Vì chương trình đang dừng (paused), ta dùng lệnh <strong>continue</strong> (viết ngắn là <strong><em>c</em></strong>) để chạy tiếp. Chương trình sẽ dừng lại khi gặp breakpoint.<br />
@@ -261,14 +263,14 @@ Giả sử đang dừng ở lời gọi <strong>greeting_vi()</strong>,<br />
 Sử dụng <strong>step</strong>, GDB sẽ chạy vào bên trong <strong>greeting_vi()</strong> thay vì thực hiện ngay toàn bộ xử lý trong nó giống như <strong>next</strong>.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) step  
 greeting_vi () at greetings_vi.c:4  
-<span style="color:#b452cd">4</span> printf(<span style="color:#cd5555">&#34;Xin chao \\n&#34;</span>);  
+<span style="color:#b452cd">4</span> printf(<span style="color:#cd5555">&#34;Xin chao \n&#34;</span>);  
 (gdb) l  
 <span style="color:#b452cd">1</span> <span style="color:#228b22">#include</span>  
 <span style="color:#b452cd">2</span> void greeting_vi()  
 <span style="color:#b452cd">3</span> {  
-<span style="color:#b452cd">4</span> printf(<span style="color:#cd5555">&#34;Xin chao \\n&#34;</span>);  
+<span style="color:#b452cd">4</span> printf(<span style="color:#cd5555">&#34;Xin chao \n&#34;</span>);  
 <span style="color:#b452cd">5</span>  </code></pre></div>
-<h3 id="4-xem-giá-trị-khi-chương-trình-dừng-tại-breakpoint">4. Xem giá trị khi chương trình dừng tại breakpoint</h3>
+<h2 id="4-xem-giá-trị-khi-chương-trình-dừng-tại-breakpoint">4. Xem giá trị khi chương trình dừng tại breakpoint</h2>
 
 <p>Trước khi đi vào phần này, ta sửa lại nội dung file <strong>mainapp.c</strong> ở trên thành như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp"><span style="color:#1e889b">#include</span>  
@@ -299,12 +301,12 @@ int16_t timezone;
 {  
 ST_COUNTRY *country = (ST_COUNTRY*)data;
 
-printf(<span style="color:#cd5555">&#34;Capital :%s</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;capital);  
-printf(<span style="color:#cd5555">&#34;Area :%.2f km2</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;area);  
-printf(<span style="color:#cd5555">&#34;Density :%.2f /km2</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;density);  
-printf(<span style="color:#cd5555">&#34;Currency : %s (%s) </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;currency.iso4217Code, country-&gt;currency.name);  
-printf(<span style="color:#cd5555">&#34;Timezone : GMT + %d </span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;timezone);  
-printf(<span style="color:#cd5555">&#34;Dateformat :%s</span><span style="color:#cd5555">\\</span><span style="color:#cd5555">n&#34;</span>,country-&gt;dateFormat);  
+printf(<span style="color:#cd5555">&#34;Capital :%s</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,country-&gt;capital);  
+printf(<span style="color:#cd5555">&#34;Area :%.2f km2</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,country-&gt;area);  
+printf(<span style="color:#cd5555">&#34;Density :%.2f /km2</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,country-&gt;density);  
+printf(<span style="color:#cd5555">&#34;Currency : %s (%s) </span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,country-&gt;currency.iso4217Code, country-&gt;currency.name);  
+printf(<span style="color:#cd5555">&#34;Timezone : GMT + %d </span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,country-&gt;timezone);  
+printf(<span style="color:#cd5555">&#34;Dateformat :%s</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,country-&gt;dateFormat);  
 }  
 <span style="color:#228b22">//  
 </span><span style="color:#228b22">// Main functions  
@@ -354,33 +356,33 @@ Ta lần lượt sẽ hiển thị giá trị nguyên, thực, chuỗi, cấu tr
 (gdb) p vietnam.density  
 <span style="color:#00688b">$2</span> = <span style="color:#b452cd">276</span>.029999  
 (gdb) p vietnam.capital  
-<span style="color:#00688b">$3</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+<span style="color:#00688b">$3</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span>  
 (gdb) p vietnam  
-<span style="color:#00688b">$4</span> = {<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> , <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
+<span style="color:#00688b">$4</span> = {<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> , <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
 <span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>, <span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999, <span style="color:#00688b">currency</span> = {  
-<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>, <span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> },  
-<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>, <span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> }  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND000&#34;</span>, <span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> },  
+<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>, <span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> }  
 (gdb)  </code></pre></div>
 <p>-Hiển thị giá trị biến cấu trúc đẹp hơn<br />
 Bật chế độ in đẹp bằng <strong>set print pretty on</strong>, rồi thực hiện in như bình thường.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) p vietnam  
-<span style="color:#00688b">$4</span> = {<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> , <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
+<span style="color:#00688b">$4</span> = {<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> , <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
 <span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>, <span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999, <span style="color:#00688b">currency</span> = {  
-<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>, <span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> },  
-<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>, <span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> }  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND000&#34;</span>, <span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> },  
+<span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>, <span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> }  
 (gdb) <span style="color:#658b00">set</span> print pretty on  
 (gdb) p vietnam  
 <span style="color:#00688b">$5</span> = {  
-<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> ,  
+<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> ,  
 <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
 <span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>,  
 <span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999,  
 <span style="color:#00688b">currency</span> = {  
-<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>,  
-<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND000&#34;</span>,  
+<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span>  
 },  
 <span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>,  
-<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span>  
 }  </code></pre></div>
 <p>Ta có thể thấy rõ sự khác bọt giữa khi pretty là off/on.</p>
 
@@ -394,16 +396,16 @@ Bật chế độ in đẹp bằng <strong>set print pretty on</strong>, rồi t
 Nhưng vì biết đó là kiểu con trỏ của <strong>ST_COUNTRY</strong> rồi, ta có thể làm như sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) p (*(ST_COUNTRY*)data)  
 <span style="color:#00688b">$7</span> = {  
-<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> ,  
+<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> ,  
 <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
 <span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>,  
 <span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999,  
 <span style="color:#00688b">currency</span> = {  
-<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>,  
-<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND000&#34;</span>,  
+<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span>  
 },  
 <span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>,  
-<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span>  
 }  </code></pre></div>
 <p>-Hiển thị mảng<br />
 Ở trên ta đã thấy chuỗi được hiển thị rồi, chuỗi cũng là mảng nên tả hãy thử hiện thị độ dài bất kì của mảng đó xem sao, cách làm phổ biến như sau:</p>
@@ -412,7 +414,7 @@ Nhưng vì biết đó là kiểu con trỏ của <strong>ST_COUNTRY</strong> r�
 0x7fffffffd958: 0x00 0x00  </code></pre></div>
 <p>Câu lệnh trên sẽ hiển thị <strong>10</strong> bytes (<strong>b</strong> cuối cùng là byte) đầu tiên của mảng <strong>country-&gt;capital</strong>, ở dang cơ số 16(chính là <strong>x</strong> sau số 10).</p>
 
-<h3 id="5-kiểm-tra-stacktrace">5. Kiểm tra stacktrace</h3>
+<h2 id="5-kiểm-tra-stacktrace">5. Kiểm tra stacktrace</h2>
 
 <p>-backtrace (viết ngắn là bt) được sử dụng để cho biết luồng xử lý đi như thế nào để đến được điểm dang dừng lại, ta có thể sử dụng thêm <strong>bt full</strong> để thấy các lời gọi ở vị trí nào trong code.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">(gdb) bt  
@@ -423,16 +425,16 @@ Nhưng vì biết đó là kiểu con trỏ của <strong>ST_COUNTRY</strong> r�
 <span style="color:#00688b">country</span> = 0x7fffffffd950  
 <span style="color:#228b22">#1 0x00000000004007ef in main (argc=1, argv=0x7fffffffdcb8) at mainapp.c:58</span>  
 <span style="color:#00688b">vietnam</span> = {  
-<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span> ,  
+<span style="color:#00688b">capital</span> = <span style="color:#cd5555">&#34;Hanoi&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span> ,  
 <span style="color:#00688b">area</span> = <span style="color:#b452cd">332698</span>,  
 <span style="color:#00688b">population</span> = <span style="color:#b452cd">91700000</span>,  
 <span style="color:#00688b">density</span> = <span style="color:#b452cd">276</span>.029999,  
 <span style="color:#00688b">currency</span> = {  
-<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND\\000&#34;</span>,  
-<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+<span style="color:#00688b">iso4217Code</span> = <span style="color:#cd5555">&#34;VND000&#34;</span>,  
+<span style="color:#00688b">name</span> = <span style="color:#cd5555">&#34;Dong&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span>  
 },  
 <span style="color:#00688b">timezone</span> = <span style="color:#b452cd">7</span>,  
-<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;\\000&#39;</span>  
+<span style="color:#00688b">dateFormat</span> = <span style="color:#cd5555">&#34;dd/mm/yyyy&#34;</span>, <span style="color:#cd5555">&#39;000&#39;</span>  
 }  </code></pre></div>
 		</div>
 		<footer class="post__footer">
