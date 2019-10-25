@@ -6,10 +6,19 @@
     <description>Recent content in Khác on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Wed, 11 Sep 2019 06:00:22 +0900</lastBuildDate>
+    <lastBuildDate>Thu, 24 Oct 2019 23:30:16 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/categories/kh%C3%A1c/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Chuyển sang site mới, tên miền mới</title>
+      <link>https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/</link>
+      <pubDate>Thu, 24 Oct 2019 23:30:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/</guid>
+      <description> 1. Lý do chuyển sang  Wordpress hỗ trợ không tốt việc viết bằng markdown Cần một site nhẹ hơn Cần một cách quản lý bài viết dễ hiểu và rõ ràng hơn Chuyển hẳn sang một domain mới để dễ dang  2. Nền tảng sử dụng  Lưu trữ: Github page Bộ sinh HTML : Hugo Tên miền: AWS 53  </description>
+    </item>
     
     <item>
       <title>Học Ruby On Rails (RoR)</title>

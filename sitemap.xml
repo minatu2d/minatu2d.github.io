@@ -3,7 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.lazytrick.com/categories/</loc>
+    <lastmod>2019-10-24T23:30:16+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/</loc>
+    <lastmod>2019-10-24T23:30:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/categories/kh%C3%A1c/</loc>
     <lastmod>2019-10-24T23:30:16+09:00</lastmod>
   </url>
   
@@ -18,17 +28,7 @@
   </url>
   
   <url>
-    <loc>https://blog.lazytrick.com/categories/</loc>
-    <lastmod>2019-09-11T06:00:22+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</loc>
-    <lastmod>2019-09-11T06:00:22+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lazytrick.com/categories/kh%C3%A1c/</loc>
     <lastmod>2019-09-11T06:00:22+09:00</lastmod>
   </url>
   
