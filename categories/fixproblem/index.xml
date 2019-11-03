@@ -6,10 +6,19 @@
     <description>Recent content in fixproblem on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Thu, 31 Oct 2019 22:17:58 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 03 Nov 2019 17:41:31 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/categories/fixproblem/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Chuyển HTML thành PDF cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/</link>
+      <pubDate>Sun, 03 Nov 2019 17:41:31 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/</guid>
+      <description>1. Tại sao cần chuyển sang PDF  Nhiều lý do để người ta sử dụng PDF thay vì các định dạng khác.  Về cơ bản không thể edit nên đảm bảo thống nhất về nội dung hiển thị Ít bị lỗi FONT Tiện lợi khi gửi, nhận: bên nhận và bên gửi luôn thấy chung 1 dữ liệu và ít khi sửa được.  Vì PDF gần như tiêu chuẩn để trao đổi dạng tài liệu read-only Đọc được ở trên hầu hết mọi nền tảng: máy tính, điện thoại.</description>
+    </item>
     
     <item>
       <title>Tensorflow và AVX</title>
