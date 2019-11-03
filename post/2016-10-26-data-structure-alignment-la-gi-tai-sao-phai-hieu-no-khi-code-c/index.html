@@ -68,14 +68,14 @@
 Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về <strong>Data Structure Aligment</strong>.</p>
 
 <p>Giả sử ta có một cấu trúc sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"C"" data-lang=""C"">#include &lt;stdint.h&gt;  
-typedef struct  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;stdint.h&gt;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span><span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
 {  
 uin8_t mem1;  
 uin8_t mem2;  
 uin32_t mem3;  
 }ST_FOOL_1;  
-typedef struct  
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
 {  
 uin8_t mem1;  
 uin8_t mem2;  
@@ -92,16 +92,16 @@ Tùy theo tham số trong quá trình &ldquo;Data structure alignment&rdquo;, m�
 <p>Khi có thay đổi về &ldquo;data structure aligment&rdquo; (ta tạm gọi là kích thước để nhóm), kết quả của <strong>sizeof()</strong> sẽ bị thay được phản ánh, và ngược lại từ kết quả của <strong>sizeof()</strong> ta sẽ đoán được trình biên dịch đã sử kích thước bao nhiêu.</p>
 
 <p>Ta có ví dụ như sau:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"C"" data-lang=""C"">#include&lt;stdio.h&gt;  
-#include&lt;stdint.h&gt;  
-typedef struct  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;stdio.h&gt;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;stdint.h&gt;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span><span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
 {  
 uint8_t mem1;  
 uint8_t mem2;  
 uint32_t mem6;  
 }ST_FOOL_1;
 
-typedef struct  
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
 {  
 uint8_t mem1;  
 uint8_t mem2;  
@@ -110,12 +110,12 @@ uint8_t mem4;
 uint8_t mem5;  
 }ST_FOOL_2;
 
-int main()  
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>()  
 {  
-printf(&#34;Sizeof(ST_FOOL_1) =%ld\n&#34;,sizeof(ST_FOOL_1));  
-printf(&#34;Sizeof(ST_FOOL_2) =%ld\n&#34;,sizeof(ST_FOOL_2));
+printf(<span style="color:#cd5555">&#34;Sizeof(ST_FOOL_1) =%ld</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,<span style="color:#8b008b;font-weight:bold">sizeof</span>(ST_FOOL_1));  
+printf(<span style="color:#cd5555">&#34;Sizeof(ST_FOOL_2) =%ld</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,<span style="color:#8b008b;font-weight:bold">sizeof</span>(ST_FOOL_2));
 
-return 0;  
+<span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
 }  </code></pre></div>
 <p>Ta lưu vào file <strong>sizeof_result.c</strong>, sau đó biên dịch và chạy được kết quả sau:</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gcc</span> -o sizeof_result sizeof_result.c  
@@ -132,18 +132,18 @@ Kích thước sẽ được tính đến bị trí mà member cuối cùng vớ
 <p>Ta sẽ sử dụng chỉ thị dịch <strong>pack</strong> (chi tiết ở <a href="https://gcc.gnu.org/onlinedocs/gcc-4.4.4/gcc/Structure_002dPacking-Pragmas.html">đây</a> :</p>
 
 <p>Cách sử dụng:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"C"" data-lang=""C"">#include&lt;stdio.h&gt;  
-#include&lt;stdint.h&gt;
-
-#pragma pack(1) // phải là lũy thừa của 2, tức là 1,2,4,8..  
-typedef struct  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;stdio.h&gt;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&lt;stdint.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#1e889b">#pragma pack(1) </span><span style="color:#228b22">// phải là lũy thừa của 2, tức là 1,2,4,8..  
+</span><span style="color:#228b22"></span><span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
 {  
 uint8_t mem1;  
 uint8_t mem2;  
 uint32_t mem6;  
 }ST_FOOL_1;
 
-typedef struct  
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span>  
 {  
 uint8_t mem1;  
 uint8_t mem2;  
@@ -152,12 +152,12 @@ uint8_t mem4;
 uint8_t mem5;  
 }ST_FOOL_2;
 
-int main()  
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>()  
 {  
-printf(&#34;Sizeof(ST_FOOL_1) =%ld\n&#34;,sizeof(ST_FOOL_1));  
-printf(&#34;Sizeof(ST_FOOL_2) =%ld\n&#34;,sizeof(ST_FOOL_2));
+printf(<span style="color:#cd5555">&#34;Sizeof(ST_FOOL_1) =%ld</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,<span style="color:#8b008b;font-weight:bold">sizeof</span>(ST_FOOL_1));  
+printf(<span style="color:#cd5555">&#34;Sizeof(ST_FOOL_2) =%ld</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,<span style="color:#8b008b;font-weight:bold">sizeof</span>(ST_FOOL_2));
 
-return 0;  
+<span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
 }  </code></pre></div>
 <p>Ta sẽ có kết quả như sau:<br />
 - <strong>pack(1)</strong>:</p>

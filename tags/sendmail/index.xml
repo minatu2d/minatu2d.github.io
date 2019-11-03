@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>sendmail on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/sendmail/</link>
+    <description>Recent content in sendmail on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sat, 02 Nov 2019 23:04:22 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.lazytrick.com/tags/sendmail/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Giải thích log của lệnh sendmail</title>
+      <link>https://blog.lazytrick.com/post/2019-11-02-giai-thich-log-sendmail/</link>
+      <pubDate>Sat, 02 Nov 2019 23:04:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-11-02-giai-thich-log-sendmail/</guid>
+      <description>Bài này sẽ dịch lại một phần của trang: http://sendmail.org/~ca/email/doc8.12/op-sh-2.html Về nội dung liên quan đến format log của sendmail cũng ý nghĩa của từng trường.
+0. Sendmail là gì  Một phần mềm chạy trên hệ thống Linux (hoặc là *Nix). Có nhiệm vụ gửi mail - ta nên dùng từ phân phối (delivery) thì sẽ chuẩn xác hơn. Gửi mail (hay phân phối mail) nói đơn giản là sử dụng kết nối mạng (có thể là internet hoặc không) thực hiện gửi nội dung có định dạng bằng giao thức như SMTP,&amp;hellip; đến máy chứa tài khoản người nhận.</description>
+    </item>
+    
+  </channel>
+</rss>

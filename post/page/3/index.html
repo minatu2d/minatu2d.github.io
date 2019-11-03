@@ -63,6 +63,20 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/" rel="bookmark">
+			Driver và Firmware trong Linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.
+Mình thấy ngoài Driver, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là Firmware.
+Bài này sẽ dịch lại trang, để hiểu qua về Firmware trong Linux Kernel.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/" rel="bookmark">
 			Tìm Driver cho Linux
 			</a>
@@ -317,20 +331,6 @@ Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó r
 	<div class="content list__excerpt post__content clearfix">
 		Giao thức MQTT dựa trên mô hình publisher/subscriber (nhà cung cấp/người sử dụng), publisher có dữ liệu trên một lĩnh nào đó (được đại diện bằng các topic), phía subscriber (người mong muốn thông tin) sẽ mong muốn thông tin trên môt lĩnh vực nào đó (cũng được miêu tả bằng topic). Môt anh trung gian ở giữa sẽ nhận từ rất nhiều anh cung cấp trên rất nhiều lĩnh vực, sau đó xem xét, thông tin phù hợp để gửi đến những người sử dụng mà anh trung gian này biết.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/" rel="bookmark">
-			Một chút về RGB VGA, Digital RGB
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.
-Mô tả ngắn gọn ở đây để sau đỡ quên vậy:
-ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&hellip;) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.
-	</div>
 </article>
 </main>
 
@@ -348,6 +348,7 @@ ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&hell
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/2019-11-02-giai-thich-log-sendmail/">Giải thích log của lệnh sendmail</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/chuyen-sang-site-moi-domain-moi/">Chuyển sang site mới, tên miền mới</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
@@ -357,7 +358,6 @@ ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&hell
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/">Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/">Thực hiện 3 phép tập hợp trên bash</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/">Một số thứ khi sử dụng command, viết script trong bash</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/">Ví dụ cơ bản với pthread trên Linux</a></li>
 		</ul>
 	</div>
 </div>
@@ -441,6 +441,7 @@ ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&hell
 		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/linuximage" title="Linuximage">Linuximage</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/log" title="Log">Log</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/make" title="Make">Make</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mqtt" title="Mqtt">Mqtt</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs" title="Nodejs">Nodejs</a>
@@ -461,6 +462,7 @@ ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&hell
 		<a class="widget-taglist__link widget__link btn" href="/tags/samba" title="Samba">Samba</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/script" title="Script">Script</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/scsi" title="Scsi">Scsi</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sendmail" title="Sendmail">Sendmail</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/serialization" title="Serialization">Serialization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/smb" title="Smb">Smb</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/spi" title="Spi">Spi</a>

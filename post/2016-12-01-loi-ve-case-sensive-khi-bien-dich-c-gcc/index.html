@@ -76,7 +76,7 @@ Vấn đề được trình bày bên dưới.</p>
 <h3 id="1-cấu-trúc-source-ví-dụ">1. Cấu trúc source ví dụ</h3>
 
 <p>Giả sử có source như này:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"bash"" data-lang=""bash"">.  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.  
 ├── hello  
 ├── hello.c  
 ├── inc_lowercase  
@@ -84,43 +84,43 @@ Vấn đề được trình bày bên dưới.</p>
 └── inc_uppercase  
 └── Abc.h  </code></pre></div>
 <p><strong>hello.c</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"c"" data-lang=""c"">$ cat hello.c  
-#include  
-#include&amp;quot;Abc.h&amp;quot;  
-#include&amp;quot;abc.h&amp;quot;
-
-int main(int argc, char* argv[])  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#a61717;background-color:#e3d2d2">$</span> cat hello.c  
+<span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">#include&amp;quot;Abc.h&amp;quot;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&amp;quot;abc.h&amp;quot;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#00688b;font-weight:bold">int</span> main(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span>* argv[])  
 {  
 abc_t var1;  
 Abc_t var2;
 
-var1.x = 0;  
-var2 = 3;
+var1.x = <span style="color:#b452cd">0</span>;  
+var2 = <span style="color:#b452cd">3</span>;
 
 printf(&amp;quot;OMG Hello world %d %ldn&amp;quot;,var1.x, var2);  
-return 0;  
+<span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
 }  </code></pre></div>
 <p><strong>inc_lowercase/abc.h</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"c"" data-lang=""c"">typedef struct _abc_  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span> _abc_  
 {  
-int x;  
+<span style="color:#00688b;font-weight:bold">int</span> x;  
 }abc_t;  </code></pre></div>
 <p><strong>inc_uppercase/Abc.h</strong>:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"c"" data-lang=""c"">typedef long int Abc_t;  </code></pre></div>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#00688b;font-weight:bold">long</span> <span style="color:#00688b;font-weight:bold">int</span> Abc_t;  </code></pre></div>
 <h3 id="2-so-sánh-thử">2. So sánh thử</h3>
 
 <h4 id="2-1-thư-mục-source-nằm-trên-home-của-vmware">2.1 Thư mục source nằm trên <strong><em>home</em></strong> của VMWare</h4>
 
 <p>Kết quả: Build ngon, chạy tốt:</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"bash"" data-lang=""bash"">$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase  
 $ ./hello  
-OMG Hello world 0 3  </code></pre></div>
+OMG Hello world <span style="color:#b452cd">0</span> <span style="color:#b452cd">3</span>  </code></pre></div>
 <h4 id="2-1-thư-mục-source-nằm-trên-thư-mục-chia-sẻ-giữa-vmware-chạy-linux-với-host-chạy-windows-thông-qua-vmhgfs">2.1 Thư mục source nằm trên thư mục chia sẻ giữa VMWare (chạy Linux) với Host (chạy Windows) thông qua <strong>vmhgfs</strong>:</h4>
 
 <p>Giả sử ta để source ở <em>/mnt/hgfs</em> :</p>
 
 <p>Kết quả: Build lỗi, đương nhiên là không chạy được.</p>
-<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-"bash"" data-lang=""bash"">duser@192.168.70.225:/mnt/hgfs$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase  
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">duser@192.168.70.225:/mnt/hgfs$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase  
 In file included from hello.c:3:0:  
 abc.h:1:16: error: redefinition of ‘struct _abc_’  
 typedef struct _abc_  
@@ -130,18 +130,18 @@ Abc.h:1:16: note: originally defined here
 typedef struct _abc_  
 ^  
 In file included from hello.c:3:0:  
-abc.h:4:2: error: conflicting types for ‘abc_t’  
+abc.h:4:2: error: conflicting types <span style="color:#8b008b;font-weight:bold">for</span> ‘abc_t’  
 }abc_t;  
 ^  
 In file included from hello.c:2:0:  
 Abc.h:4:2: note: previous declaration of ‘abc_t’ was here  
 }abc_t;  
 ^  
-hello.c: In function ‘main’:  
-hello.c:8:2: error: unknown type name ‘Abc_t’  
+hello.c: In <span style="color:#8b008b;font-weight:bold">function</span> ‘main’:  
+hello.c:8:2: error: unknown <span style="color:#658b00">type</span> name ‘Abc_t’  
 Abc_t var2;  
 ^  
-hello.c:13:2: warning: format ‘%ld’ expects argument of type ‘long int’, but argument 3 has type ‘int’ [-Wformat=]  
+hello.c:13:2: warning: format ‘%ld’ expects argument of <span style="color:#658b00">type</span> ‘long int’, but argument <span style="color:#b452cd">3</span> has <span style="color:#658b00">type</span> ‘int’ [-Wformat=]  
 printf(&amp;quot;OMG Hello world %d %ldn&amp;quot;,var1.x, var2);  
 ^  </code></pre></div>
 <p>Ta thấy các lỗi ở đây khá là &ldquo;lạ&rdquo;, nào là <strong>redefine</strong>, nào là <strong>unkown type name</strong>.<br />

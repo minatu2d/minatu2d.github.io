@@ -63,6 +63,19 @@
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="/post/2019-11-02-giai-thich-log-sendmail/" rel="bookmark">
+			Giải thích log của lệnh sendmail
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Bài này sẽ dịch lại một phần của trang: http://sendmail.org/~ca/email/doc8.12/op-sh-2.html Về nội dung liên quan đến format log của sendmail cũng ý nghĩa của từng trường.
+0. Sendmail là gì  Một phần mềm chạy trên hệ thống Linux (hoặc là *Nix). Có nhiệm vụ gửi mail - ta nên dùng từ phân phối (delivery) thì sẽ chuẩn xác hơn. Gửi mail (hay phân phối mail) nói đơn giản là sử dụng kết nối mạng (có thể là internet hoặc không) thực hiện gửi nội dung có định dạng bằng giao thức như SMTP,&hellip; đến máy chứa tài khoản người nhận.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="/post/chuyen-sang-site-moi-domain-moi/" rel="bookmark">
 			Chuyển sang site mới, tên miền mới
 			</a>
@@ -342,20 +355,6 @@ Nấu ra 1 &ldquo;ảnh&rdquo; (Image) (Thêm tham số _-k đ_ể cho phép c
 bitbake  -c 
 Thực hiện 1 task của package nào đó. Tên các task mặc định thường có: _fetch,_ unpack, patch, configure, compile, install, package, package_write, and build.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/" rel="bookmark">
-			Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Tham khảo
-- Sách : AT&amp;T Assembly Language, Richard Blum
-1. Ngôn ngữ Assembly là gì?  Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.
-	</div>
 </article>
 </main>
 
@@ -372,6 +371,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="/post/2019-11-02-giai-thich-log-sendmail/">Giải thích log của lệnh sendmail</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/chuyen-sang-site-moi-domain-moi/">Chuyển sang site mới, tên miền mới</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
@@ -381,7 +381,6 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
 			<li class="widget__item"><a class="widget__link" href="/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/">Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/">Thực hiện 3 phép tập hợp trên bash</a></li>
 			<li class="widget__item"><a class="widget__link" href="/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/">Một số thứ khi sử dụng command, viết script trong bash</a></li>
-			<li class="widget__item"><a class="widget__link" href="/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/">Ví dụ cơ bản với pthread trên Linux</a></li>
 		</ul>
 	</div>
 </div>
@@ -465,6 +464,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
 		<a class="widget-taglist__link widget__link btn" href="/tags/linux" title="Linux">Linux</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/linuximage" title="Linuximage">Linuximage</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/log" title="Log">Log</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/make" title="Make">Make</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/mqtt" title="Mqtt">Mqtt</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/nodejs" title="Nodejs">Nodejs</a>
@@ -485,6 +485,7 @@ Thực hiện 1 task của package nào đó. Tên các task mặc định thư�
 		<a class="widget-taglist__link widget__link btn" href="/tags/samba" title="Samba">Samba</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/script" title="Script">Script</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/scsi" title="Scsi">Scsi</a>
+		<a class="widget-taglist__link widget__link btn" href="/tags/sendmail" title="Sendmail">Sendmail</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/serialization" title="Serialization">Serialization</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/smb" title="Smb">Smb</a>
 		<a class="widget-taglist__link widget__link btn" href="/tags/spi" title="Spi">Spi</a>

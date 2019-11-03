@@ -6,10 +6,19 @@
     <description>Recent content in Categories on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Thu, 24 Oct 2019 23:30:16 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 02 Nov 2019 23:04:22 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Basic</title>
+      <link>https://blog.lazytrick.com/categories/basic/</link>
+      <pubDate>Sat, 02 Nov 2019 23:04:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/categories/basic/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Khác</title>
@@ -17,15 +26,6 @@
       <pubDate>Thu, 24 Oct 2019 23:30:16 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/categories/kh%C3%A1c/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Basic</title>
-      <link>https://blog.lazytrick.com/categories/basic/</link>
-      <pubDate>Wed, 06 Feb 2019 07:26:15 +0900</pubDate>
-      
-      <guid>https://blog.lazytrick.com/categories/basic/</guid>
       <description></description>
     </item>
     

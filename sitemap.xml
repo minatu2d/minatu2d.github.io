@@ -3,8 +3,43 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://blog.lazytrick.com/categories/basic/</loc>
+    <lastmod>2019-11-02T23:04:22+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.lazytrick.com/categories/</loc>
-    <lastmod>2019-10-24T23:30:16+09:00</lastmod>
+    <lastmod>2019-11-02T23:04:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/post/2019-11-02-giai-thich-log-sendmail/</loc>
+    <lastmod>2019-11-02T23:04:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/</loc>
+    <lastmod>2019-11-02T23:04:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/log/</loc>
+    <lastmod>2019-11-02T23:04:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/post/</loc>
+    <lastmod>2019-11-02T23:04:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/sendmail/</loc>
+    <lastmod>2019-11-02T23:04:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/</loc>
+    <lastmod>2019-11-02T23:04:22+09:00</lastmod>
   </url>
   
   <url>
@@ -18,23 +53,8 @@
   </url>
   
   <url>
-    <loc>https://blog.lazytrick.com/</loc>
-    <lastmod>2019-10-24T23:30:16+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lazytrick.com/post/</loc>
-    <lastmod>2019-10-24T23:30:16+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</loc>
     <lastmod>2019-09-11T06:00:22+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lazytrick.com/categories/basic/</loc>
-    <lastmod>2019-02-06T07:26:15+09:00</lastmod>
   </url>
   
   <url>
@@ -64,11 +84,6 @@
   
   <url>
     <loc>https://blog.lazytrick.com/tags/serialization/</loc>
-    <lastmod>2018-05-24T07:53:35+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lazytrick.com/tags/</loc>
     <lastmod>2018-05-24T07:53:35+09:00</lastmod>
   </url>
   
