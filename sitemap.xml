@@ -43,6 +43,26 @@
   </url>
   
   <url>
+    <loc>https://blog.lazytrick.com/tags/avx/</loc>
+    <lastmod>2019-10-31T22:17:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/categories/fixproblem/</loc>
+    <lastmod>2019-10-31T22:17:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/tensorflow/</loc>
+    <lastmod>2019-10-31T22:17:58+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/</loc>
+    <lastmod>2019-10-31T22:17:58+09:00</lastmod>
+  </url>
+  
+  <url>
     <loc>https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/</loc>
     <lastmod>2019-10-24T23:30:16+09:00</lastmod>
   </url>
@@ -54,6 +74,26 @@
   
   <url>
     <loc>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</loc>
+    <lastmod>2019-09-11T06:00:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/categories/learningnew/</loc>
+    <lastmod>2019-09-11T06:00:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/rails/</loc>
+    <lastmod>2019-09-11T06:00:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/ror/</loc>
+    <lastmod>2019-09-11T06:00:22+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/ruby/</loc>
     <lastmod>2019-09-11T06:00:22+09:00</lastmod>
   </url>
   

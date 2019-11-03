@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tensorflow và AVX - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="/css/style.css">
+	
+	<link rel="shortcut icon" href="/favicon.ico">
+		
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="/" title="Lazytrick - Limited size memory of mind" rel="home">
+				<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="/">Home</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/post/">Viết những gì?</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="/about/">Ai viết?</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Tensorflow và AVX</h1>
+			
+			
+
+
+<br>
+<i data-feather="calendar">
+  Published: <b><time datetime="2019-10-31 00:00:00 &#43;0700">Thu, 31 Oct 2019 22:17:58</time></b> | Last modified:<b><time datetime="2019-10-31 00:00:00 &#43;0700">Thu, 31 Oct 2019 22:17:58</time></b>
+  </i> 
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Mục lục</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-lỗi-liên-quan-đến-cpu-instruction-của-tensorflow">1. Lỗi liên quan đến <code>CPU instruction</code> của tensorflow</a></li>
+<li><a href="#2-avx-là-gì">2. <code>AVX</code> là gì</a></li>
+<li><a href="#3-tại-sao-lại-dùng-nó-và-không-dùng-avx">3. Tại sao lại dùng nó và không dùng <code>AVX</code></a></li>
+<li><a href="#4-giải-quyết-vấn-đề-lỗi-với-avx-như-thế-nào">4. Giải quyết vấn đề lỗi với <code>AVX</code> như thế nào</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h2 id="1-lỗi-liên-quan-đến-cpu-instruction-của-tensorflow">1. Lỗi liên quan đến <code>CPU instruction</code> của tensorflow</h2>
+
+<ul>
+<li>Định cài đặt <code>tensorflow-gpu</code> trên con máy già chạy <code>Intel Xeon X5672</code> và có gắng <code>GTX 1060 3G</code> để nghịch chút.</li>
+
+<li><p>Nhưng khi kiểm tra xem có chạy được không:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">&gt;&gt;&gt; <span style="color:#8b008b;font-weight:bold">import</span> <span style="color:#008b45;text-decoration:underline">tensorflow</span> <span style="color:#8b008b;font-weight:bold">as</span> <span style="color:#008b45;text-decoration:underline">tf</span>
+Illegal instruction (<span style="color:#a61717;background-color:#e3d2d2">コアダンプ</span>)</code></pre></div></li>
+
+<li><p>Vâng, là lỗi run-time - chỉ xảy ra khi chạy, chứ cài thì chưa xuất hiện vấn đề.</p></li>
+</ul>
+
+<h2 id="2-avx-là-gì">2. <code>AVX</code> là gì</h2>
+
+<ul>
+<li>Ta tìm hiểu một chút về lỗi kể trên, thì hầu hết đề nói rằng: máy sử dụng CPU không hỗ trợ đầy tập lệnh mà tensorflow đang dùng.</li>
+<li>Phổ biến là thiếu là <code>AVX - Advanced Vector Extension</code>.</li>
+<li>Theo wikipedia:</li>
+</ul>
+
+<blockquote>
+<p><strong>Advanced Vector Extension</strong> là phần mở rộng cho bộ vi xử lý kiến trúc x86 (cả Intel và AMD), được Intel đề xuất năm 2008. Lần đầu tiên được hỗ trợ trên bộ xử lý <code>Sandy Bridge</code> năm Q1/2011. Sau đó đến Q3/2011 thì AMD cũng hỗ trợ. <code>AVX</code> cung cấp tính năng mới cùng các lệnh mới và cấu trúc thực hiện cũng khác.</p>
+</blockquote>
+
+<ul>
+<li>Trong đó, <code>AVX</code> có giới thiệu một loại phép tính toán gọi là <code>fused multipl-add</code> (dịch là tổ hợp nhân cộng). Phép tính này giúp làm tăng đáng kể việc tính toán số học như: phép nhân ma trận (dot-product, convolution). Nó có thể làm tăng tốc độ lên gấp 3 với các phép tính kiểu này.</li>
+<li>Một nữa, tất cả những điều này chỉ dành cho <code>CPU</code> thôi.</li>
+</ul>
+
+<h2 id="3-tại-sao-lại-dùng-nó-và-không-dùng-avx">3. Tại sao lại dùng nó và không dùng <code>AVX</code></h2>
+
+<ul>
+<li>Thông thường, <code>tensorflow</code> vẫn có thể built được mà không cần <code>phần mở rộng của CPU</code> như <code>SSE4.1</code>, <code>SSE4.2</code>, <code>AVX</code>, <code>AVX2</code>, <code>FMA</code>&hellip;etc. Vì như thế sẽ tương thích với nhiều <code>CPU</code> nhất có thể.</li>
+<li>Và tốc độ của nó so với <code>GPU</code> thì ko đáng kể gì. Bởi vậy, với quy mô chạy hơi lớn một chút thì ta nên dùng <code>GPU</code>.</li>
+</ul>
+
+<h2 id="4-giải-quyết-vấn-đề-lỗi-với-avx-như-thế-nào">4. Giải quyết vấn đề lỗi với <code>AVX</code> như thế nào</h2>
+
+<ul>
+<li><p>Tải phiên bản cũ từ <code>1.5</code> trở về trước:</p>
+
+<pre><code>pip install tensorflow==1.5
+</code></pre></li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="/tags/tensorflow/" rel="tag">tensorflow</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="/tags/avx/" rel="tag">avx</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2019 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="/js/menu.js"></script>
+</body>
+</html>

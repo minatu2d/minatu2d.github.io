@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fixproblem on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/categories/fixproblem/</link>
+    <description>Recent content in fixproblem on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Thu, 31 Oct 2019 22:17:58 +0900</lastBuildDate>
+    
+	<atom:link href="https://blog.lazytrick.com/categories/fixproblem/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Tensorflow và AVX</title>
+      <link>https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/</link>
+      <pubDate>Thu, 31 Oct 2019 22:17:58 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/</guid>
+      <description>1. Lỗi liên quan đến CPU instruction của tensorflow  Định cài đặt tensorflow-gpu trên con máy già chạy Intel Xeon X5672 và có gắng GTX 1060 3G để nghịch chút. Nhưng khi kiểm tra xem có chạy được không:
+&amp;gt;&amp;gt;&amp;gt; import tensorflow as tf Illegal instruction (コアダンプ) Vâng, là lỗi run-time - chỉ xảy ra khi chạy, chứ cài thì chưa xuất hiện vấn đề.
+  2. AVX là gì  Ta tìm hiểu một chút về lỗi kể trên, thì hầu hết đề nói rằng: máy sử dụng CPU không hỗ trợ đầy tập lệnh mà tensorflow đang dùng.</description>
+    </item>
+    
+  </channel>
+</rss>

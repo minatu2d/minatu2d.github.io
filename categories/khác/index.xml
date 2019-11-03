@@ -21,16 +21,6 @@
     </item>
     
     <item>
-      <title>Học Ruby On Rails (RoR)</title>
-      <link>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</link>
-      <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
-      
-      <guid>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</guid>
-      <description> 1. General 2. Scope  Biến bắt đầu bằng @* gọi là instance variable
-https://stackoverflow.com/questions/14319347/variables-in-ruby-on-rails  3. Model 4. View 5. Controller </description>
-    </item>
-    
-    <item>
       <title>Phím tắt cho bash</title>
       <link>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</link>
       <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
