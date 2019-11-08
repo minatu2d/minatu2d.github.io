@@ -89,13 +89,13 @@
 
 <p>Không nhất thiết 2 cấu hình phải có cách sử dụng nguồn khác nhau. Có thể 2 cấu hình sử dụng nguồn giống hệt nhau những khác nhau về các thông số khác như các giao diện, kết hợp các Endpoint. Chú rằng, khi thay đổi cấu hình, Host phải dừng toàn bộ các EndPoint đang sử dụng để chuyển sang cấu hình mới. Dù có thể chưa nhiều cấu hình, nhưng rất ít thiết bị có nhiều hơn 1 cấu hình.</p>
 
-<p><img src="{{ site.baseurl }}/assets/desctree.gif" alt="" /></p>
+<p><img src="/post/images/desctree.gif" alt="" /></p>
 
 <p>Miêu tả giao diện có thể được xem miêu tả của một nhóm Endpoint phối hợp với nhau để thực hiện một tính năng của thiết bị. Ví dụ: bạn có một thiết bị đa chức năng như fax/scanner/printer chẳng hạn. Miêu tả giao diện 1 có thể là các Endpoint của chức năng fax; giao diện thứ 2 có thể là của chức năng scanner và giao diện thứ 3 dành cho chức năng printer. Không giống miêu tả cấu hình, không có giới về số lượng được phép thực hiện. Tức là một thiết bị có thể có 1 hoặc nhiều miêu tả giao diện cùng chạy tại 1 thời điểm.</p>
 
 <p>Mỗi miêu tả giao diện có 1 trường là <strong>bInterfaceNumber</strong> để chỉ số của Giao diện và <strong>bAlternateSetting</strong>, sẽ cho phép một giao diện thay đổi bất cứ lúc nào. Ví dụ, nếu một thiết bị có 2 giao diện, giao diện 1 và giao diện 2 chẳng hạn. Giao diện thứ nhất sẽ giá trị <strong>bInterfaceNumber</strong> được gán là zero (tức là giao diện đầu tiên), và <strong>bAlternateSetting</strong> cũng là 0 (tức là cấu hình mặc định). Giao diện thứ 2 sẽ có <strong>bInterfaceNumber</strong> là 1, tức là chỉ giao diện thứ 2 và cũng <strong>bAlternateSetting</strong> được gán là 0 (tức là cấu hình mặc định). Ta cũng có thể đưa ra một miêu tả giao diện khác với  <strong>bInterfaceNumber</strong> là 1 (giao diện 2), nhưng <strong>bAlternateSetting</strong> tức là chỉ một setting khác của giao diện 2. Khi cấu hình trên được sử dụng, tức là 2 miêu tả giao diện trên sẽ được sử dụng với <strong>bAlternativeSettings</strong> là zero. Tuy nhiên, trong quá trình sử dụng, Host có thể gửi một yêu cầu <strong>SetInterface</strong> đến interface 1 yêu cầu nó chuyển sang setting thay thế. Khi đó nó sẽ chạy trên một miêu tả giao diện khác.</p>
 
-<p><img src="{{ site.baseurl }}/assets/intftree.gif" alt="" />Từ cấu hình trên, ta thấy chúng ta có được đến 2 cấu hình. Chúng ta vẫn có thể gửi dữ liệu qua interface zero, trong khi thay đổi setting Endpoint liên quan đến interface 1 mà không ảnh hưởng đến interface zero.</p>
+<p><img src="/post/images/intftree.gif" alt="" />Từ cấu hình trên, ta thấy chúng ta có được đến 2 cấu hình. Chúng ta vẫn có thể gửi dữ liệu qua interface zero, trong khi thay đổi setting Endpoint liên quan đến interface 1 mà không ảnh hưởng đến interface zero.</p>
 
 <p>Mỗi miêu tả Endpoint được sử dụng để chỉ rõ loại truyền, hướng truyền, tần số polling (hỏi thiết bị) và kích thước lớn nhất của packet cho mỗi Endpoint. Endpoint Zero mặc định được sủ dụng là Endpoint điều khiển và nó không bao giờ có miêu tả.</p>
 
@@ -415,7 +415,7 @@
 
 <p>Khi một mô tả cấu hình được đọc, nó sẽ trả về toàn bộ cấu trúc cây của cấu hình, bao gồm toàn bộ các interface liên quan, các miêu tả Endpoint nữa. Trường <strong>wTotalLength</strong> miêu tả số lượng byte trong cấu trúc được gửi về Host.</p>
 
-<p><img src="{{ site.baseurl }}/assets/confsize.gif" alt="" /></p>
+<p><img src="/post/images/confsize.gif" alt="" /></p>
 
 <ul>
 <li>bNumInterfaces : là số lượng interface có trong cấu hình này</li>

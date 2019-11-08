@@ -95,7 +95,7 @@
 
 <p>Hình bên dưới miêu tả một cách đơn giản về các loại thư viện:</p>
 
-<p><img src="{{ site.baseurl }}/assets/figure1.gif" alt="figure1" /></p>
+<p><img src="/post/images/figure1.gif" alt="figure1" /></p>
 
 <p>Về thư viện tĩnh, do được đưa vào ứng dụng tại thời điểm biên dịch. Vì thế, với dụng ứng dụng nhỏ, chúng vẫn phù hợp. Với những ứng dụng, cần nhiều thư viện, thì thư viện động, sẽ giảm dung lượng lưu trữ và bộ nhớ phải sử dụng. Ví khi cần, chúng mới được load vào bộ nhớ để sử dụng. Nhiều chương trình có thể cùng sử dụng 1 bản copy của thư viện động. Còn với thư viện tĩnh, mỗi chương trình sẽ giữ 1 bản copy của riêng nó.</p>
 
@@ -103,7 +103,7 @@
 
 <p>GNU/Linux cung cấp 2 cách để làm việc với thư viện động (chúng được kế thừa từ Sun Solaris). Bạn có thể liên kết động chương trình của bạn với thư viện động và Linux sẽ thực hiện việc load khi cần thiết khi ứng dụng của bạn yêu cầu (mà nó chưa được load trước đó). Và một cách sử dụng khác nữa, là lựa chọn hàm cần gọi để load vào, cái này gọi là <strong>dynamic loading. </strong>Với <strong>dynamic loading, </strong>một chương trình có thể chỉ định để loại một thư viện cụ thể (nếu nó chưa được load) và gọi 1 hàm cụ thể trong đó (hình dưới miêu tả điều này). Các phần mềm hỗ trợ plugins là một ví dụ phổ biến của cách sử dụng này. Tôi sẽ đưa ví dụ ở phần sau. :)</p>
 
-<p><img src="{{ site.baseurl }}/assets/figure2.gif" alt="figure2" /></p>
+<p><img src="/post/images/figure2.gif" alt="figure2" /></p>
 
 <h2 id="liên-kết-động-với-linux">Liên kết động với Linux</h2>
 

@@ -106,7 +106,7 @@ Khi Decode, dựa vào 3 yếu tố này để xác định kiểu, độ dài t
 
 <p>Với kiểu cơ bản, phần giá trị (<strong>V</strong>) sẽ được biểu diễn theo dữ liệu của kiểu. Còn với kiểu cấu trúc, phần dữ liệu lại một lần nữa được biểu diễn bằng <strong>TLV</strong>.</p>
 
-<p><img src="{{ site.baseurl }}/assets/pic_1.png" alt="pic_1" /></p>
+<p><img src="/post/images/pic_1.png" alt="pic_1" /></p>
 
 <h3 id="2-thứ-tự-bit-bit-order">2. Thứ tự bit (Bit order)</h3>
 
@@ -114,11 +114,11 @@ Khi Decode, dựa vào 3 yếu tố này để xác định kiểu, độ dài t
 Tức là cho dù kiểu dữ liệu là 1 bit thì nó vẫn sử dụng 1 octet để biểu diễn.<br />
 Thứ tự octet là Octet ý nghĩa cao -&gt; Octet ý nghĩa thấp) theo chiều từ trái qua phải. Điều này hướng đến việc thích hợp với truyền dữ liệu qua mạng (Network Byte Order).</p>
 
-<p><img src="{{ site.baseurl }}/assets/pic_3.png" alt="pic_3" /></p>
+<p><img src="/post/images/pic_3.png" alt="pic_3" /></p>
 
 <p>Còn trong 1 octet, thứ tự và ý nghĩa được thể hiện như sau:</p>
 
-<p><img src="{{ site.baseurl }}/assets/pic_4.png" alt="pic_4" /></p>
+<p><img src="/post/images/pic_4.png" alt="pic_4" /></p>
 
 <h3 id="3-hiện-thực-hóa-các-thẻ">3. Hiện thực hóa các thẻ</h3>
 
@@ -158,22 +158,22 @@ Cụ thể như sau:</p>
 
 <p>０～３０</p>
 
-<p><img src="{{ site.baseurl }}/assets/pic5.png" alt="" /></p>
+<p><img src="/post/images/pic5.png" alt="" /></p>
 
 <p>３１～</p>
 
-<p><img src="{{ site.baseurl }}/assets/pic_6.png" alt="" /></p>
+<p><img src="/post/images/pic_6.png" alt="" /></p>
 
 <p><em>Ví dụ</em>: Số điện thoại với định nghĩa và hiện thực tương ứng như bên dưới đây là một ví dụ cho 2 lần <strong>TLV</strong>.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= [<span style="color:#b452cd">1</span>] NumericString  
 </code></pre></div>
-<p><img src="{{ site.baseurl }}/assets/pic_8.png" alt="pic_8" /></p>
+<p><img src="/post/images/pic_8.png" alt="pic_8" /></p>
 
 <p>Khi muốn bỏ biểu diễn phần <strong>T</strong> đi, <strong>BER</strong> sử dụng từ khóa <strong>IMPLICIT</strong> trong định nghĩa của ASN.1.<br />
 *Thế mới biết, từ khóa này ban đầu dành cho <strong>BER</strong></p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= [<span style="color:#b452cd">1</span>] IMPLICIT NumericString  
 </code></pre></div>
-<p><img src="{{ site.baseurl }}/assets/pic_9.png" alt="pic_9" /></p>
+<p><img src="/post/images/pic_9.png" alt="pic_9" /></p>
 
 <p>Ngược lại với <strong>IMPLICIT</strong>, sử dụng <strong>EXPLICIT</strong> sẽ phải sử dụng <strong>TLV</strong> cho phần dữ liệu <strong>V</strong>.</p>
 
@@ -183,15 +183,15 @@ Cụ thể như sau:</p>
 <li>Khi độ dài dữ liệu nhỏ &lt;= 127, được gọi là Short Definite - Dạng ngắn, 1 octet được sử dụng để biểu diễn (thực sự sử dụng 7 bit, còn bit đầu là 0). - Khi độ dài &gt;=128, 2 octet trở lên được sử dụng để biểu diễn, gọi là Long Definite - Dạng dài. Bit đầu của octet đầu tiên được set là 1. 7 bit tiếp theo miêu tả độ dài tính theo octet của độ dài dữ liệu (1-126).</li>
 </ul>
 
-<p><img src="{{ site.baseurl }}/assets/pic_12.png" alt="pic_12" /><br />
+<p><img src="/post/images/pic_12.png" alt="pic_12" /><br />
 Tức là nếu độ dài dữ liệu (<strong>V</strong>)là 128-255 thì 7 bit này sẽ có giá trị 1. Nếu độ dài dữ liệu từ 256-65535 thì 7 bit này sẽ có giá trị 2.<br />
 - Giá trị 127 cũng có thể được sử dụng nếu cần thiết.</p>
 
-<p><img src="{{ site.baseurl }}/assets/pic_13.png" alt="pic_13" /></p>
+<p><img src="/post/images/pic_13.png" alt="pic_13" /></p>
 
 <p>Trong trường hợp của kiểu cấu trúc, phải hiện thực với độ dài có thể thay đổi (Inefinite). Trường độ dài (<strong>L</strong>) sẽ có độ dài là 1 octet, bit cao nhất được gán là 1, các bit còn lại là 0 (tức là <strong>giá trị 0x80</strong>). Phần giá trị <strong>V</strong> sẽ được hiện thực ở ngay phía sau, phần này sẽ được kết thúc bởi <strong>2 octet toàn là 0</strong>.</p>
 
-<p><img src="{{ site.baseurl }}/assets/pic_11.png" alt="pic_11" /></p>
+<p><img src="/post/images/pic_11.png" alt="pic_11" /></p>
 
 <h3 id="5-hiện-thực-phần-giá-trị">5. Hiện thực phần giá trị</h3>
 
