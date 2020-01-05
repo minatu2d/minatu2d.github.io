@@ -12,9 +12,9 @@
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
 	
-	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
 		
 <script type="application/javascript">
 var doNotTrack = false;
@@ -33,7 +33,7 @@ if (!doNotTrack) {
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
 				<div class="logo__title">Lazytrick - Limited size memory of mind</div>
 				
 			</a>
@@ -45,19 +45,19 @@ if (!doNotTrack) {
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/">Home</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/">Home</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/post/">Viết những gì?</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">Viết những gì?</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/tags/">Tags</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">Tags</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/categories/">Category</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">Category</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">Ai viết?</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">Ai viết?</a>
 		</li>
 	</ul>
 </nav>
@@ -320,7 +320,7 @@ if (!doNotTrack) {
 
 <p>Vậy thì, đến lúc này rồi, chúng ta có nên biết mọi thứ cấu tạo nên USB Packet không? Câu trả lời là không. Bạn tốt nhất hãy quên bao nhiêu bit cho trường PID đi là vừa, đừng quá tập trung mấy cái đó. Bởi vì, thật may mắn là hấu hết USB Functions thực hiện từ dưới cho đến tầng transaction (chúng ta sẽ nói ở những Chapter sau) trong phần cứng rồi. Lý do, chúng ta phải biết những thông tin chi tiết phía trên là vì USB Functions sẽ thông báo các lỗi như PID Encoding Error. Nếu không lướt qua phần đó, tôi e rằng sau này các bạn sẽ hỏi Một PID Encoding Error là cái gì thế. Nếu bạn đoán rằng từ cái tên của nó rằng 4 bit cuối của PID sẽ không match với 4 bit còn lại sau khi được đảo, thì bạn đã đúng.</p>
 
-<p><img src="/post/images/endpoint.gif" alt="" />Hầu hết USB Function đều có một loại buffer, thông thường mỗi cái độ dài 8 bytes. Mỗi buffer này sẽ thuộc 1 End Point,  EP0 IN, EP0 OUT chẳng hạn. Lấy một ví dụ thế này, Host gửi cho Device một Device Descripter Request (yêu cầu lây miêu tả về Device). Hardware phía USB Function sẽ đọc Packet Setup và xem trường Address (địa chỉ đến) để xác định xem Packet này có phải dành cho nó không. Nếu là Packet gửi đến cho nó, thì nó sẽ copy payload vào buffer của EndPoint (được xác định bởi trường EndPoint cũng trong Packet Setup). Đồng thời, phần cứng cũng gửi một Packet Handshake để báo rằng nó đã nhận Packet về phía Host. Phần cứng sẽ sinh ra một ngắt bên trong nó để báo cho phía semiconductor/micro-controller biết về Packet nó mới nhận. Đó, phần cứng làm đến mức đó đấy.</p>
+<p><img src="https://blog.lazytrick.com/post/images/endpoint.gif" alt="" />Hầu hết USB Function đều có một loại buffer, thông thường mỗi cái độ dài 8 bytes. Mỗi buffer này sẽ thuộc 1 End Point,  EP0 IN, EP0 OUT chẳng hạn. Lấy một ví dụ thế này, Host gửi cho Device một Device Descripter Request (yêu cầu lây miêu tả về Device). Hardware phía USB Function sẽ đọc Packet Setup và xem trường Address (địa chỉ đến) để xác định xem Packet này có phải dành cho nó không. Nếu là Packet gửi đến cho nó, thì nó sẽ copy payload vào buffer của EndPoint (được xác định bởi trường EndPoint cũng trong Packet Setup). Đồng thời, phần cứng cũng gửi một Packet Handshake để báo rằng nó đã nhận Packet về phía Host. Phần cứng sẽ sinh ra một ngắt bên trong nó để báo cho phía semiconductor/micro-controller biết về Packet nó mới nhận. Đó, phần cứng làm đến mức đó đấy.</p>
 
 <p>Phần mềm sẽ phải xử lý ngắt, đọc dữ liệu từ buffer của EndPoint, rồi parse Device Descriptor Request.</p>
 
@@ -346,7 +346,7 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/translate/" rel="tag">Translate</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/translate/" rel="tag">Translate</a></li>
 	</ul>
 </div>
 		</footer>
@@ -386,12 +386,12 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Lazytrick - Limited size memory of mind.
+			&copy; 2020 Lazytrick - Limited size memory of mind.
 			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>
 	</div>
-<script async defer src="/js/menu.js"></script>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
 </body>
 </html>

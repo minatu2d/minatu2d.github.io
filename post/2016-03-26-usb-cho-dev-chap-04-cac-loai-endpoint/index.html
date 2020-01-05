@@ -12,9 +12,9 @@
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
 	
-	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
 		
 <script type="application/javascript">
 var doNotTrack = false;
@@ -33,7 +33,7 @@ if (!doNotTrack) {
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
 				<div class="logo__title">Lazytrick - Limited size memory of mind</div>
 				
 			</a>
@@ -45,19 +45,19 @@ if (!doNotTrack) {
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/">Home</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/">Home</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/post/">Viết những gì?</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">Viết những gì?</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/tags/">Tags</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">Tags</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/categories/">Category</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">Category</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">Ai viết?</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">Ai viết?</a>
 		</li>
 	</ul>
 </nav>
@@ -104,7 +104,7 @@ if (!doNotTrack) {
 
 <p>Ở Stage này, request sẽ được chuyển đến phía Function Device. Quá trình này được thực hiện trong 3 packet. Packet đầu tiên là Setup Token, chứa Address và Endpoint Number. Tiếp theo là Data Packet, luôn chứa PID Type ở Data0 và một Setup Packet chỉ rõ loại request (Setup Packet sẽ được giải thích chương 6). Packet cuối cùng là một handshaked, dùng để cho biết việc nhận đã xảy thành công hay chưa. Nếu phía Function Device nhận thành công Setup Data (gồm CRC và PID đều OK), nó sẽ trả lời phía Host bằng ACK. Ngược lại, nó có thẻ bỏ qua, không cần gửi lại gì hết. Phía Function không thể gửi một gói STALL hoặc NAK để trả lời Setup Packet được.</p>
 
-<p><img src="/post/images/contset.gif" alt="contset" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/contset.gif" alt="contset" /></p>
 
 <p><strong>Tiếp theo là Data Stage.</strong></p>
 
@@ -116,9 +116,9 @@ if (!doNotTrack) {
 
 <p>Khi Host muốn nhận dữ liệu, nó sẽ gửi một IN Token. Phía Function nhận được IN Token sẽ kiểm tra xem trường PID (bao gồm phần đảo bit) có hợp lệ hay không. Nếu hợp lệ, device Function sẽ trả lại bằng một packet DATA chứa dữ liệu cần gửi hoặc packet STALL nếu EndPoint có lỗi hoặc NAK nếu EndPoint đang có xử lý khác (tất nhiên các trường hợp lỗi sẽ không có dữ liệu được gửi đi).</p>
 
-<p><img src="/post/images/contdata.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/contdata.gif" alt="" /></p>
 
-<p><img src="/post/images/transkey.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt="" /></p>
 
 <p><strong>OUT:</strong></p>
 
@@ -130,15 +130,15 @@ if (!doNotTrack) {
 
 <p><strong>IN :</strong> Nếu host gửi một Token IN để nhận dữ liệu, thì phía Host phải xác nhận dữ liệu đã được nhận thành công. Việc xác nhận này được thực hiện khi Host gửi một token OUT với độ dài payload là zero. Việc nhận được token này sẽ coi như là ACK. Nếu không nhận được hoặc nhận lỗi, phía Host sẽ coi là STALL. Trường hợp còn lại sẽ coi là NACK, để báo rằng Host sẽ lặp lại Status Stage sau đó.</p>
 
-<p><img src="/post/images/contsta1.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/contsta1.gif" alt="" /></p>
 
-<p><img src="/post/images/transkey.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt="" /></p>
 
 <p><strong>OUT</strong>: Nếu host gửi OUT token để gửi dữ liệu ra thì phía Function sẽ xác nhận việc nhận dữ liệu thành công bằng cách gửi lại một Packet có độ dài là Zero cho 1 Token IN mà Host sẽ gửi sau cùng. Tuy nhiên, nếu có lỗi xảy ra khi trả lại Zero Packet thì nó sẽ coi là STALL. Nếu Function ko thể trả lời IN Token do bận, nó sẽ báo lại là NACK để Host nhận lại Status trong Phase tiếp theo.</p>
 
-<p><img src="/post/images/contsta2.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/contsta2.gif" alt="" /></p>
 
-<p><img src="/post/images/transkey.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt="" /></p>
 
 <p><strong><em>Truyền Control : Một bức tranh lớn hơn</em></strong></p>
 
@@ -450,9 +450,9 @@ if (!doNotTrack) {
 <li>Kích thước tối đa của payload cho High-Speed là 1024 bytes.</li>
 </ul>
 
-<p><img src="/post/images/transint.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/transint.gif" alt="" /></p>
 
-<p><img src="/post/images/transkey.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt="" /></p>
 
 <p>Hình trên miêu tả định dạng phổ biến của IN và OUT Interrupt:</p>
 
@@ -479,9 +479,9 @@ if (!doNotTrack) {
 
 <p>Kích thước lớn nhất của dữ liệu truyền (payload) được chỉ rõ trong phần mô tả EndPoint của một Endpoint truyền đồng bộ. Nó có thể truyền tới 1023 bytes với Full Speed và 1024 bytes với High Speed. Kích thước lớn nhất của payload sẽ ảnh hướng đến bandwitdh yêu cầu đến bus. Vì thế, phải thận trọng để chọn payload size phù hợp. Nếu sử dụng một payload lớn, thì nên sử dụng các định nghĩa cho alternative interface (interface thay thế khi cần) để thực hiện nhiều payload size. Nếu trong quá trình enumeration, host không thể cho phép bandwidth mà Endpoint yêu cầu do việc hạn chế sử dụng bandwidth, thỉnh thoảng sẽ phải hạn bandwidth xuống chứ không hẳn là không thể sử dụng được. Dữ liệu được gửi trong Endpoint có thể ít hơn con số đã được chấp nhận tại bước enumeration. Có thể thay đổi trong mỗi transaction.</p>
 
-<p><img src="/post/images/transiso.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/transiso.gif" alt="" /></p>
 
-<p><img src="/post/images/transkey.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt="" /></p>
 
 <p>Hình trên mô tả định dạng truyền dồng bộ với IN và OUT token. Transaction truyền động bộ không có bước handshake và cũng không thể thông báo lỗi dạng STALL, HALT được.</p>
 
@@ -503,9 +503,9 @@ if (!doNotTrack) {
 
 <p>Dạng truyền hàng loạt chỉ được hỗ trợ ở Full và High Speed. Kích thước tối đa của payload mỗi packet có thể là 8,16,32,64 byte với Full Speed, và lên đến 512 bytes với High Speed. Dù dữ liệu truyền thực tế nhỏ hơn kích thước lớn nhất, nó cũng không cần padding zero. Một lần truyền hàng loạt được xem là hoàn thành khi nó truyền chính xác số dữ liệu được yêu cầu. Packet truyền đi có thể nhỏ hơn kích thước lớn nhất của EndPoint hoặc là Zero-length packet.</p>
 
-<p><img src="/post/images/contdata.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/contdata.gif" alt="" /></p>
 
-<p><img src="/post/images/transkey.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt="" /></p>
 
 <p>Hình trên chỉ ra định dạng của 1 bulk IN và bulk OUT transaction:</p>
 
@@ -525,7 +525,7 @@ if (!doNotTrack) {
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/translate/" rel="tag">Translate</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/translate/" rel="tag">Translate</a></li>
 	</ul>
 </div>
 		</footer>
@@ -565,12 +565,12 @@ if (!doNotTrack) {
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Lazytrick - Limited size memory of mind.
+			&copy; 2020 Lazytrick - Limited size memory of mind.
 			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>
 	</div>
-<script async defer src="/js/menu.js"></script>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
 </body>
 </html>

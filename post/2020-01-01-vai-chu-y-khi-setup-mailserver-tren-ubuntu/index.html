@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Vài chú ý khi setup mail server - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Vài điều đã giải quyết khi setup mail server">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+				<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">Home</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">Viết những gì?</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">Ai viết?</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Vài chú ý khi setup mail server</h1>
+			
+			
+
+
+<br>
+<i data-feather="calendar">
+  <u>Published: <b><time datetime="2020-01-01 00:00:00 &#43;0700">Wed, 01 Jan 2020 01:01:01</time></b> | Last modified:<b><time datetime="2020-01-01 00:00:00 &#43;0700">Wed, 01 Jan 2020 01:01:01</time></b></u>
+  </i> 
+		</header><div class="content post__content clearfix">
+			
+
+<p><code>Mail Server</code> là một trong những ứng dụng phổ biến bậc nhất trong hầu hết các hệ thống thông tin.
+Theo mình, ngay cả khi các ứng dụng tin nhắn nhóm như Slack, Chatwork, FB Messenger đã thì việc sử dụng mail vẫn rất được ưa chuộng do những tính chất đặc trưng của nớ: như formal hơn, lưu trữ chắc chắn hơn&hellip;</p>
+
+<p>Lần đầu tiên mình được trực tiếp sờ vào việc cài đặt của một mail server. Thực ra ở vị trí mới của mình thì có lẽ không nên đụng vào mấy thứ đó thì sẽ hiệu quả hơn. Nhưng biết làm sao được, mình thích đi <code>giải quyết, tìm hiểu vẫn đề kĩ thuật</code> nên mò vào tìm hiểu.</p>
+
+<p>Nói vậy đủ rồi, bắt đầu vào.</p>
+
+<h3 id="1-các-khái-niệm-và-giao-thức-của-hệ-thống-mail">1. Các khái niệm và giao thức của hệ thống Mail</h3>
+
+<h4 id="1-1-sự-khác-nhau-giữa-webmail-và-clientmail">1.1 Sự khác nhau giữa <code>WebMail</code> và <code>ClientMail</code></h4>
+
+<p><strong>Đầu tiên nhất</strong>, đó là sự khác nhau giữa sử dụng <code>WebMail</code> và <code>MailClient</code> truyền thống (tôi gọi là truyền thống vì ra đường trước <code>WebMai</code> rất nhiều).
+<code>WebMail</code> nghĩa là gửi/nhận mail ngay trên trình duyệt web. Cái này giờ phổ biến nhất, gần như áp đảo.</p>
+
+<p><code>MailClient</code> nghĩa là, thay vì sử dụng trình duyệt, thì có một ứng dụng chuyên dụng để thực hiện việc gửi/nhận mail.</p>
+
+<p>Nhiều người sẽ hỏi: Tại sao trên <code>web</code> cũng gửi/nhận được thì cần cái ứng dụng <code>MailClient</code> để làm cái gì.
+Đó là vấn đề lịch sử: Khi <code>web</code> chưa phổ biến như bây giờ, lúc đó đơn giản web là mở ra vài trang tin thì <code>web</code> và <code>mail</code> là các dịch vụ khá tương đương thôi.</p>
+
+<p>Còn giờ người ta có thể làm mọi thứ trên <code>web</code> thì bỗng nhiên <code>web</code> trở thành một cái nền tảng cho các dịch vụ khác chứ không đơn thuần là một dịch vụ tương đương như <code>email</code> nữa.
+<img src="https://blog.lazytrick.com/post/images/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/WebMai_And_MailClient.png" alt="WebMail and ClientMail" /></p>
+
+<h4 id="1-2-các-khái-niệm-và-hoạt-động-cơ-bản">1.2 Các khái niệm và hoạt động  cơ bản</h4>
+
+<p><strong><em>Về khái niệm</em></strong>:</p>
+
+<p>Ta sẽ nói về một số khái niệm khi sử dụng <code>MailClient</code> (trường hợp <code>WebMail</code> hầu như không khác mấy).</p>
+
+<ul>
+<li><p><code>Mail</code> : Là nội dung (bao gồm cả file đính kèm) được trao đổi giữa 2 người bất kì thông qua địa chỉ của họ.</p></li>
+
+<li><p><code>Mail Server</code>: Là một cái máy tính có nhiệm vụ chứa <code>mail</code> gửi/nhận của các user mà nó quản lý.</p></li>
+
+<li><p><code>SMTP</code> : Là giao thức (các thức giao tiếo) giữa 2 <code>Mail Server</code>.</p></li>
+
+<li><p><code>POP3</code> hoặc <code>POP3S</code>: Là giao thức để tải mail xuống, bao gồm toàn bộ nội dung của <code>Mail</code>. Chữ <code>S</code> ở cuối là chỉ <code>Secured</code> tức là giao thức <code>POP3</code> trên đường truyền được mã hoá.
+Chứ bản thân <code>POP3</code> thì không được mã hoá.</p></li>
+
+<li><p><code>IMAP</code> hoặc <code>IMAPS</code>: Là giao thức để tải <code>header</code> của <code>Mail</code> xuống. Việc này làm tăng tính hiệu quả của việc Check mail vì người dùng có thể xem <code>Header</code> rồi mới quyết định có thực sự tải cả <code>Mail</code> đó xuống hay không.</p></li>
+
+<li><p><code>Mail Header</code>: Phần header của <code>Mail</code> bao gồm những thông tin như : Tiêu đề, danh sách gửi nhận, danh sách CC, danh sách BCC.</p></li>
+
+<li><p><code>CC</code> : Đồng gửi đến. Nghĩa là mọi người ở trong danh sách này đều nhận được <code>Mail</code> và đều biết người khác cũng danh sách trong CC đó cũng nhận được <code>Mail</code>.</p></li>
+
+<li><p><code>BCC</code>: Đồng gửi đến, nhưng mỗi người không biết có ai khác nhận được <code>Mail</code> hay không.</p></li>
+
+<li><p><code>Mail Relay Server</code>: Chưa rõ lắm</p></li>
+</ul>
+
+<p><strong><em>Gửi mail</em></strong></p>
+
+<ul>
+<li><p><strong>Step 1</strong>: Sau khi User soạn mail và nhân nút &ldquo;Send&rdquo; trên <code>MailClient</code>, <code>MailClient</code> sẽ gửi <code>Mail</code> đó đến <code>Mail Server</code> của chính mình (chứ không phải của người nhận) bằng giao thức <code>SMTP</code>.</p></li>
+
+<li><p><strong>Step 2</strong>: Sau khi <code>Mail Server</code> của người gửi nhận được yêu cầu gửi <code>Mail</code> tư user, nó sẽ sử dụng tiếp giao thức <code>SMTP</code> để gửi đến <code>Mail Server</code> của người nhận. Vậy là kết thúc việc gửi.</p></li>
+</ul>
+
+<p><strong>_Về hoạt _</strong></p>
+
+<ul>
+<li><p><strong>Step 3</strong>: Sau khi <code>Mail Server</code> nhận được mail đến thông quan giao thức <code>SMTP</code>, nó sẽ lưu lại ở đâu đó.</p></li>
+
+<li><p><strong>Step 4</strong>: Phía user nhận cũng sẽ sử dụng một <code>MailClient</code>, thông qua giao thức <code>IMAP(S)</code> hoặc <code>POP3(S)</code> để lấy mail mới của chính nó về.
+Đến đây, ta cũng kết thúc việc nhận <code>Mail</code></p></li>
+</ul>
+
+<h3 id="2-các-phần-mềm-server-server-phổ-biến-smtp-runner">2.Các phần mềm <code>Server &lt;=&gt; Server</code> phổ biến (SMTP runner)</h3>
+
+<ul>
+<li>Là phần mềm chạy trên <code>Server</code> để làm 3 nhiệm vu: Nhận email gửi từ chính User nó quản lý, nhận email được gửi từ <code>Mail Server</code> khác gửi đến cho User của nó, chuyển tiếp mail gửi từ User của nó đến <code>Mail Server</code> khác.</li>
+</ul>
+
+<h4 id="2-1-postfix">2.1 Postfix</h4>
+
+<ul>
+<li>Một trong những phần mềm &ldquo;già&rdquo; nhất, phổ biến nhất.</li>
+</ul>
+
+<h4 id="2-2-zimbra">2.2 Zimbra</h4>
+
+<h4 id="2-3-sendmail">2.3 Sendmail</h4>
+
+<h3 id="3-các-phần-mềm-server-client-phổ-biến-imap-pop3-runner">3. Các phần mềm <code>Server &lt;=&gt; Client</code> phổ biến (IMAP, POP3 runner)</h3>
+
+<ul>
+<li></li>
+</ul>
+
+<h3 id="4-thêm-record-vào-dns-records">4. Thêm record vào <code>DNS Records</code></h3>
+
+<h3 id="4-cài-đặt-cụ-thể-trên-ubuntu-18-04">4. Cài đặt cụ thể trên Ubuntu 18.04</h3>
+
+<h4 id="4-1-cài-đặt-phần-mềm-server-server-postfix">4.1 Cài đặt phần mềm <code>Server &lt;=&gt; Server</code>: Postfix</h4>
+
+<h5 id="4-1-1-cài-đặt">4.1.1 Cài đặt</h5>
+
+<h5 id="4-1-2-cấu-hình">4.1.2 Cấu hình</h5>
+
+<h5 id="4-4-3-kiểm-tra-hoạt-động">4.4.3 Kiểm tra hoạt động</h5>
+
+<h4 id="4-2-cài-đặt-phần-mềm-server-client-dovecot">4.2 Cài đặt phần mềm <code>Server &lt;=&gt; Client</code>: Dovecot</h4>
+
+<h5 id="4-2-1-cài-đặt">4.2.1 Cài đặt</h5>
+
+<h5 id="4-2-1-cấu-hình">4.2.1 Cấu hình</h5>
+
+<h5 id="4-2-3-kiểm-tra-hoạt-động">4.2.3 Kiểm tra hoạt động</h5>
+
+<h4 id="4-3-gửi-và-nhận-email">4.3 Gửi và nhận email</h4>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/mailserver/" rel="tag">mailserver</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/pdf/" rel="tag">pdf</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

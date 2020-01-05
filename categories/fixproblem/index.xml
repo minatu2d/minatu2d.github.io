@@ -6,10 +6,20 @@
     <description>Recent content in fixproblem on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Sun, 03 Nov 2019 17:41:31 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 01:01:01 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/categories/fixproblem/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Vài chú ý khi setup mail server</title>
+      <link>https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/</guid>
+      <description>Mail Server là một trong những ứng dụng phổ biến bậc nhất trong hầu hết các hệ thống thông tin. Theo mình, ngay cả khi các ứng dụng tin nhắn nhóm như Slack, Chatwork, FB Messenger đã thì việc sử dụng mail vẫn rất được ưa chuộng do những tính chất đặc trưng của nớ: như formal hơn, lưu trữ chắc chắn hơn&amp;hellip;
+Lần đầu tiên mình được trực tiếp sờ vào việc cài đặt của một mail server.</description>
+    </item>
     
     <item>
       <title>Chuyển HTML thành PDF cơ bản</title>

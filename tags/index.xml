@@ -6,10 +6,28 @@
     <description>Recent content in Tags on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Sun, 03 Nov 2019 17:41:31 +0900</lastBuildDate>
+    <lastBuildDate>Wed, 01 Jan 2020 01:01:01 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>mailserver</title>
+      <link>https://blog.lazytrick.com/tags/mailserver/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/mailserver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pdf</title>
+      <link>https://blog.lazytrick.com/tags/pdf/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/pdf/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>html2pdf</title>
@@ -17,15 +35,6 @@
       <pubDate>Sun, 03 Nov 2019 17:41:31 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/tags/html2pdf/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>pdf</title>
-      <link>https://blog.lazytrick.com/tags/pdf/</link>
-      <pubDate>Sun, 03 Nov 2019 17:41:31 +0900</pubDate>
-      
-      <guid>https://blog.lazytrick.com/tags/pdf/</guid>
       <description></description>
     </item>
     

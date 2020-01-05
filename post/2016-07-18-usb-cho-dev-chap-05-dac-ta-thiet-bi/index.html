@@ -12,9 +12,9 @@
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
 	
-	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
 		
 <script type="application/javascript">
 var doNotTrack = false;
@@ -33,7 +33,7 @@ if (!doNotTrack) {
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
 				<div class="logo__title">Lazytrick - Limited size memory of mind</div>
 				
 			</a>
@@ -45,19 +45,19 @@ if (!doNotTrack) {
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/">Home</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/">Home</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/post/">Viết những gì?</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">Viết những gì?</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/tags/">Tags</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">Tags</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/categories/">Category</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">Category</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">Ai viết?</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">Ai viết?</a>
 		</li>
 	</ul>
 </nav>
@@ -100,13 +100,13 @@ if (!doNotTrack) {
 
 <p>Không nhất thiết 2 cấu hình phải có cách sử dụng nguồn khác nhau. Có thể 2 cấu hình sử dụng nguồn giống hệt nhau những khác nhau về các thông số khác như các giao diện, kết hợp các Endpoint. Chú rằng, khi thay đổi cấu hình, Host phải dừng toàn bộ các EndPoint đang sử dụng để chuyển sang cấu hình mới. Dù có thể chưa nhiều cấu hình, nhưng rất ít thiết bị có nhiều hơn 1 cấu hình.</p>
 
-<p><img src="/post/images/desctree.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/desctree.gif" alt="" /></p>
 
 <p>Miêu tả giao diện có thể được xem miêu tả của một nhóm Endpoint phối hợp với nhau để thực hiện một tính năng của thiết bị. Ví dụ: bạn có một thiết bị đa chức năng như fax/scanner/printer chẳng hạn. Miêu tả giao diện 1 có thể là các Endpoint của chức năng fax; giao diện thứ 2 có thể là của chức năng scanner và giao diện thứ 3 dành cho chức năng printer. Không giống miêu tả cấu hình, không có giới về số lượng được phép thực hiện. Tức là một thiết bị có thể có 1 hoặc nhiều miêu tả giao diện cùng chạy tại 1 thời điểm.</p>
 
 <p>Mỗi miêu tả giao diện có 1 trường là <strong>bInterfaceNumber</strong> để chỉ số của Giao diện và <strong>bAlternateSetting</strong>, sẽ cho phép một giao diện thay đổi bất cứ lúc nào. Ví dụ, nếu một thiết bị có 2 giao diện, giao diện 1 và giao diện 2 chẳng hạn. Giao diện thứ nhất sẽ giá trị <strong>bInterfaceNumber</strong> được gán là zero (tức là giao diện đầu tiên), và <strong>bAlternateSetting</strong> cũng là 0 (tức là cấu hình mặc định). Giao diện thứ 2 sẽ có <strong>bInterfaceNumber</strong> là 1, tức là chỉ giao diện thứ 2 và cũng <strong>bAlternateSetting</strong> được gán là 0 (tức là cấu hình mặc định). Ta cũng có thể đưa ra một miêu tả giao diện khác với  <strong>bInterfaceNumber</strong> là 1 (giao diện 2), nhưng <strong>bAlternateSetting</strong> tức là chỉ một setting khác của giao diện 2. Khi cấu hình trên được sử dụng, tức là 2 miêu tả giao diện trên sẽ được sử dụng với <strong>bAlternativeSettings</strong> là zero. Tuy nhiên, trong quá trình sử dụng, Host có thể gửi một yêu cầu <strong>SetInterface</strong> đến interface 1 yêu cầu nó chuyển sang setting thay thế. Khi đó nó sẽ chạy trên một miêu tả giao diện khác.</p>
 
-<p><img src="/post/images/intftree.gif" alt="" />Từ cấu hình trên, ta thấy chúng ta có được đến 2 cấu hình. Chúng ta vẫn có thể gửi dữ liệu qua interface zero, trong khi thay đổi setting Endpoint liên quan đến interface 1 mà không ảnh hưởng đến interface zero.</p>
+<p><img src="https://blog.lazytrick.com/post/images/intftree.gif" alt="" />Từ cấu hình trên, ta thấy chúng ta có được đến 2 cấu hình. Chúng ta vẫn có thể gửi dữ liệu qua interface zero, trong khi thay đổi setting Endpoint liên quan đến interface 1 mà không ảnh hưởng đến interface zero.</p>
 
 <p>Mỗi miêu tả Endpoint được sử dụng để chỉ rõ loại truyền, hướng truyền, tần số polling (hỏi thiết bị) và kích thước lớn nhất của packet cho mỗi Endpoint. Endpoint Zero mặc định được sủ dụng là Endpoint điều khiển và nó không bao giờ có miêu tả.</p>
 
@@ -426,7 +426,7 @@ if (!doNotTrack) {
 
 <p>Khi một mô tả cấu hình được đọc, nó sẽ trả về toàn bộ cấu trúc cây của cấu hình, bao gồm toàn bộ các interface liên quan, các miêu tả Endpoint nữa. Trường <strong>wTotalLength</strong> miêu tả số lượng byte trong cấu trúc được gửi về Host.</p>
 
-<p><img src="/post/images/confsize.gif" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/confsize.gif" alt="" /></p>
 
 <ul>
 <li>bNumInterfaces : là số lượng interface có trong cấu hình này</li>
@@ -777,7 +777,7 @@ Bits 3..2 = Loại đồng bộ (chỉ có Iso 0x01)</p>
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/translate/" rel="tag">Translate</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/translate/" rel="tag">Translate</a></li>
 	</ul>
 </div>
 		</footer>
@@ -817,12 +817,12 @@ Bits 3..2 = Loại đồng bộ (chỉ có Iso 0x01)</p>
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Lazytrick - Limited size memory of mind.
+			&copy; 2020 Lazytrick - Limited size memory of mind.
 			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>
 	</div>
-<script async defer src="/js/menu.js"></script>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
 </body>
 </html>

@@ -12,9 +12,9 @@
 	<link rel="dns-prefetch" href="//fonts.googleapis.com">
 	<link rel="dns-prefetch" href="//fonts.gstatic.com">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
-	<link rel="stylesheet" href="/css/style.css">
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
 	
-	<link rel="shortcut icon" href="/favicon.ico">
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
 		
 <script type="application/javascript">
 var doNotTrack = false;
@@ -33,7 +33,7 @@ if (!doNotTrack) {
 		<header class="header">
 	<div class="container">
 		<div class="logo">
-			<a class="logo__link" href="/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
 				<div class="logo__title">Lazytrick - Limited size memory of mind</div>
 				
 			</a>
@@ -45,19 +45,19 @@ if (!doNotTrack) {
 	</button>
 	<ul class="menu__list">
 		<li class="menu__item">
-			<a class="menu__link" href="/">Home</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/">Home</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/post/">Viết những gì?</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">Viết những gì?</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/tags/">Tags</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">Tags</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/categories/">Category</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">Category</a>
 		</li>
 		<li class="menu__item">
-			<a class="menu__link" href="/about/">Ai viết?</a>
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">Ai viết?</a>
 		</li>
 	</ul>
 </nav>
@@ -117,7 +117,7 @@ Khi Decode, dựa vào 3 yếu tố này để xác định kiểu, độ dài t
 
 <p>Với kiểu cơ bản, phần giá trị (<strong>V</strong>) sẽ được biểu diễn theo dữ liệu của kiểu. Còn với kiểu cấu trúc, phần dữ liệu lại một lần nữa được biểu diễn bằng <strong>TLV</strong>.</p>
 
-<p><img src="/post/images/pic_1.png" alt="pic_1" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_1.png" alt="pic_1" /></p>
 
 <h3 id="2-thứ-tự-bit-bit-order">2. Thứ tự bit (Bit order)</h3>
 
@@ -125,11 +125,11 @@ Khi Decode, dựa vào 3 yếu tố này để xác định kiểu, độ dài t
 Tức là cho dù kiểu dữ liệu là 1 bit thì nó vẫn sử dụng 1 octet để biểu diễn.<br />
 Thứ tự octet là Octet ý nghĩa cao -&gt; Octet ý nghĩa thấp) theo chiều từ trái qua phải. Điều này hướng đến việc thích hợp với truyền dữ liệu qua mạng (Network Byte Order).</p>
 
-<p><img src="/post/images/pic_3.png" alt="pic_3" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_3.png" alt="pic_3" /></p>
 
 <p>Còn trong 1 octet, thứ tự và ý nghĩa được thể hiện như sau:</p>
 
-<p><img src="/post/images/pic_4.png" alt="pic_4" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_4.png" alt="pic_4" /></p>
 
 <h3 id="3-hiện-thực-hóa-các-thẻ">3. Hiện thực hóa các thẻ</h3>
 
@@ -169,22 +169,22 @@ Cụ thể như sau:</p>
 
 <p>０～３０</p>
 
-<p><img src="/post/images/pic5.png" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic5.png" alt="" /></p>
 
 <p>３１～</p>
 
-<p><img src="/post/images/pic_6.png" alt="" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_6.png" alt="" /></p>
 
 <p><em>Ví dụ</em>: Số điện thoại với định nghĩa và hiện thực tương ứng như bên dưới đây là một ví dụ cho 2 lần <strong>TLV</strong>.</p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= [<span style="color:#b452cd">1</span>] NumericString  
 </code></pre></div>
-<p><img src="/post/images/pic_8.png" alt="pic_8" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_8.png" alt="pic_8" /></p>
 
 <p>Khi muốn bỏ biểu diễn phần <strong>T</strong> đi, <strong>BER</strong> sử dụng từ khóa <strong>IMPLICIT</strong> trong định nghĩa của ASN.1.<br />
 *Thế mới biết, từ khóa này ban đầu dành cho <strong>BER</strong></p>
 <div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= [<span style="color:#b452cd">1</span>] IMPLICIT NumericString  
 </code></pre></div>
-<p><img src="/post/images/pic_9.png" alt="pic_9" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_9.png" alt="pic_9" /></p>
 
 <p>Ngược lại với <strong>IMPLICIT</strong>, sử dụng <strong>EXPLICIT</strong> sẽ phải sử dụng <strong>TLV</strong> cho phần dữ liệu <strong>V</strong>.</p>
 
@@ -194,15 +194,15 @@ Cụ thể như sau:</p>
 <li>Khi độ dài dữ liệu nhỏ &lt;= 127, được gọi là Short Definite - Dạng ngắn, 1 octet được sử dụng để biểu diễn (thực sự sử dụng 7 bit, còn bit đầu là 0). - Khi độ dài &gt;=128, 2 octet trở lên được sử dụng để biểu diễn, gọi là Long Definite - Dạng dài. Bit đầu của octet đầu tiên được set là 1. 7 bit tiếp theo miêu tả độ dài tính theo octet của độ dài dữ liệu (1-126).</li>
 </ul>
 
-<p><img src="/post/images/pic_12.png" alt="pic_12" /><br />
+<p><img src="https://blog.lazytrick.com/post/images/pic_12.png" alt="pic_12" /><br />
 Tức là nếu độ dài dữ liệu (<strong>V</strong>)là 128-255 thì 7 bit này sẽ có giá trị 1. Nếu độ dài dữ liệu từ 256-65535 thì 7 bit này sẽ có giá trị 2.<br />
 - Giá trị 127 cũng có thể được sử dụng nếu cần thiết.</p>
 
-<p><img src="/post/images/pic_13.png" alt="pic_13" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_13.png" alt="pic_13" /></p>
 
 <p>Trong trường hợp của kiểu cấu trúc, phải hiện thực với độ dài có thể thay đổi (Inefinite). Trường độ dài (<strong>L</strong>) sẽ có độ dài là 1 octet, bit cao nhất được gán là 1, các bit còn lại là 0 (tức là <strong>giá trị 0x80</strong>). Phần giá trị <strong>V</strong> sẽ được hiện thực ở ngay phía sau, phần này sẽ được kết thúc bởi <strong>2 octet toàn là 0</strong>.</p>
 
-<p><img src="/post/images/pic_11.png" alt="pic_11" /></p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_11.png" alt="pic_11" /></p>
 
 <h3 id="5-hiện-thực-phần-giá-trị">5. Hiện thực phần giá trị</h3>
 
@@ -302,8 +302,8 @@ Với kiểu cấu trúc, được biểu diễn bằng một dãy kiểu cơ b�
 <div class="post__tags tags clearfix">
 	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
 	<ul class="tags__list">
-		<li class="tags__item"><a class="tags__link btn" href="/tags/asn1/" rel="tag">ASN1</a></li>
-		<li class="tags__item"><a class="tags__link btn" href="/tags/per/" rel="tag">PER</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/asn1/" rel="tag">ASN1</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/per/" rel="tag">PER</a></li>
 	</ul>
 </div>
 		</footer>
@@ -343,12 +343,12 @@ Với kiểu cấu trúc, được biểu diễn bằng một dãy kiểu cơ b�
 	<div class="container footer__container flex">
 		
 		<div class="footer__copyright">
-			&copy; 2019 Lazytrick - Limited size memory of mind.
+			&copy; 2020 Lazytrick - Limited size memory of mind.
 			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
 		</div>
 	</div>
 </footer>
 	</div>
-<script async defer src="/js/menu.js"></script>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
 </body>
 </html>
