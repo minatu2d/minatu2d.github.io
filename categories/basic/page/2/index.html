@@ -74,19 +74,6 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2016-11-29-per-trong-asn-1-encoding/" rel="bookmark">
-			PER trong ASN.1 Encoding
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		PER là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng TLV như BER, PER sử dụng Preamble (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là PLV.
-Đơn vị biểu diễn của PER không phải Octet mà là Bit.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
 			<a href="https://blog.lazytrick.com/post/2016-11-25-phuong-thuc-cerder/" rel="bookmark">
 			CER/DER trong ASN.1 Encoding
 			</a>
@@ -357,6 +344,18 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
  Bulk Transfer
   1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).
 	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/" rel="bookmark">
+			USB cho dev (Chap.03 - Giao thức)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &ldquo;nguy hiểm&rdquo;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi.
+	</div>
 </article>
 </main>
 
@@ -391,6 +390,7 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 	<h4 class="widget__title">Categories</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/babycare">Babycare</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/basic">Basic</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/buildroot">Buildroot</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/codeskill">Codeskill</a></li>
@@ -458,7 +458,6 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/flash" title="Flash">Flash</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/gcc" title="Gcc">Gcc</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/gdb" title="Gdb">Gdb</a>
-		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/github" title="Github">Github</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/helloworld" title="Helloworld">Helloworld</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/hid" title="Hid">Hid</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/html2pdf" title="Html2pdf">Html2pdf</a>
@@ -466,6 +465,7 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/installation" title="Installation">Installation</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/itron" title="Itron">Itron</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/kernel" title="Kernel">Kernel</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/khoc" title="Khoc">Khoc</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/library" title="Library">Library</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linker" title="Linker">Linker</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linking" title="Linking">Linking</a>
@@ -476,7 +476,6 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mailserver" title="Mailserver">Mailserver</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/make" title="Make">Make</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mqtt" title="Mqtt">Mqtt</a>
-		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/multipleacount" title="Multipleacount">Multipleacount</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/nodejs" title="Nodejs">Nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/objectfile" title="Objectfile">Objectfile</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/open" title="Open">Open</a>

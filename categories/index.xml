@@ -6,26 +6,35 @@
     <description>Recent content in Categories on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Thu, 13 Feb 2020 01:01:01 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 16 Feb 2020 23:51:01 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/categories/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
-      <title>Basic</title>
-      <link>https://blog.lazytrick.com/categories/basic/</link>
-      <pubDate>Thu, 13 Feb 2020 01:01:01 +0900</pubDate>
+      <title>babycare</title>
+      <link>https://blog.lazytrick.com/categories/babycare/</link>
+      <pubDate>Sun, 16 Feb 2020 23:51:01 +0900</pubDate>
       
-      <guid>https://blog.lazytrick.com/categories/basic/</guid>
+      <guid>https://blog.lazytrick.com/categories/babycare/</guid>
       <description></description>
     </item>
     
     <item>
       <title>fixproblem</title>
       <link>https://blog.lazytrick.com/categories/fixproblem/</link>
-      <pubDate>Thu, 13 Feb 2020 01:01:01 +0900</pubDate>
+      <pubDate>Sun, 16 Feb 2020 23:51:01 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/categories/fixproblem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Basic</title>
+      <link>https://blog.lazytrick.com/categories/basic/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/categories/basic/</guid>
       <description></description>
     </item>
     
