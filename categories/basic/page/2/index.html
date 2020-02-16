@@ -74,6 +74,19 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2016-11-29-per-trong-asn-1-encoding/" rel="bookmark">
+			PER trong ASN.1 Encoding
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		PER là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng TLV như BER, PER sử dụng Preamble (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là PLV.
+Đơn vị biểu diễn của PER không phải Octet mà là Bit.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="https://blog.lazytrick.com/post/2016-11-25-phuong-thuc-cerder/" rel="bookmark">
 			CER/DER trong ASN.1 Encoding
 			</a>
@@ -344,18 +357,6 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
  Bulk Transfer
   1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/" rel="bookmark">
-			USB cho dev (Chap.03 - Giao thức)
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &ldquo;nguy hiểm&rdquo;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi.
-	</div>
 </article>
 </main>
 
@@ -373,6 +374,7 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/">Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/">Vài chú ý khi setup mail server</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/">Chuyển HTML thành PDF cơ bản</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-11-02-giai-thich-log-sendmail/">Giải thích log của lệnh sendmail</a></li>
@@ -382,7 +384,6 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
-			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/">Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</a></li>
 		</ul>
 	</div>
 </div>
@@ -457,6 +458,7 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/flash" title="Flash">Flash</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/gcc" title="Gcc">Gcc</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/gdb" title="Gdb">Gdb</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/github" title="Github">Github</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/helloworld" title="Helloworld">Helloworld</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/hid" title="Hid">Hid</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/html2pdf" title="Html2pdf">Html2pdf</a>
@@ -474,6 +476,7 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mailserver" title="Mailserver">Mailserver</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/make" title="Make">Make</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mqtt" title="Mqtt">Mqtt</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/multipleacount" title="Multipleacount">Multipleacount</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/nodejs" title="Nodejs">Nodejs</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/objectfile" title="Objectfile">Objectfile</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/open" title="Open">Open</a>
