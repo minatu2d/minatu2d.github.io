@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cảm nhận về zsh sau 1 tháng sử dụng basic - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Cảm nhận về zsh sau 1 tháng sử dụng basic">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+				<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">Home</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">Viết những gì?</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">Ai viết?</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Cảm nhận về zsh sau 1 tháng sử dụng basic</h1>
+			
+			
+
+
+<br>
+<i data-feather="calendar">
+  <u>Published: <b><time datetime="2020-02-23 00:00:00 &#43;0700">Sun, 23 Feb 2020 00:30:01</time></b> | Last modified:<b><time datetime="2020-02-23 00:00:00 &#43;0700">Sun, 23 Feb 2020 00:30:01</time></b></u>
+  </i> 
+		</header><div class="content post__content clearfix">
+			
+
+<p>Sau khi update chiếc máy <code>MAC</code> (máy công ty), terminal mặc định trong máy có recommend sang sử dụng <code>zsh</code> thay vì <code>SHELL</code> mặc định trước đó (<code>bash</code> thì phải) thì mới bắt đầu sử dụng thử <code>zsh</code>.
+Đọc qua một vài lời khen thấy nó khá hay nên quyết định chuyển sang dùng <code>zsh</code> xem sao. Xem có đúng <strong>như lời đồn</strong> không.
+Bài này xin tóm tắt một số ý đã tìm hiểu, cảm nhận được.</p>
+
+<h3 id="0-một-số-tính-năng-đáng-giá">0. Một số tính năng <code>đáng giá</code></h3>
+
+<ul>
+<li>Theo trang <a href="https://www.howtogeek.com/362409/what-is-zsh-and-why-should-you-use-it-instead-of-bash/">howtogeek.com</a>, zsh nổi bật với những tính năng sau:
+
+<ul>
+<li>Thự động chuyển thư mục <code>cd&quot; bằng cách gõ tên thư mục :Hay nói cách khác, giờ khi chuyển thư mục ta có thể bỏ</code>cd` đi. Cũng hay đấy chứ.</li>
+<li>Tự động phân giải đường dẫn: Ví dụ “/u/lo/b” có thể được phân giả thành “/usr/local/bin”</li>
+<li>Tự động sửa lỗi chính và tự hoàn thành nếu viết sai</li>
+<li>Hỗ trợ <code>plugin</code> và <code>theme</code></li>
+</ul></li>
+</ul>
+
+<h2 id="1-cài-đặt-dễ-dàng">1. Cài đặt dễ dàng</h2>
+
+<ul>
+<li>Cài đặt trên <code>MAC</code> bằng <code>brew install zsh</code>.</li>
+<li>Cài đặt trên Ubuntu (hoặc tương tự):<code>sudo apt install zsh</code>.</li>
+<li>Cài đặt trên các nền tảng khác có thể tham khảo ở <a href="https://github.com/ohmyzsh/ohmyzsh/wiki/Installing-ZSH">đây</a></li>
+</ul>
+
+<h2 id="2-có-một-thứ-gọi-là-oh-my-zsh">2. Có một thứ gọi là <code>oh my zsh</code></h2>
+
+<ul>
+<li>Một cái tên rất <code>dị</code>, chi tiết tại <a href="https://github.com/ohmyzsh/ohmyzsh">github của oh my zsh</a> hoặc tại <a href="https://ohmyz.sh/">https://ohmyz.sh/</a></li>
+<li>Là một <code>framework</code> được <code>fan</code> của <code>zsh</code> tạo ra để quản lý các <code>thiết lập</code>, <code>plugin</code> của <code>zsh</code>.</li>
+<li>Có đến hơn <code>200</code> plugin và hơn <code>140</code> theme.</li>
+
+<li><p>Cài đặt <code>oh my zsh</code> cũng cực kì đơn giản.</p>
+
+<ul>
+<li><p>Cài bằng <code>curl</code>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh -c <span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">$(</span>curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh<span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555">&#34;</span></code></pre></div></li>
+
+<li><p>Cài bằng <code>wget</code></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sh -c <span style="color:#cd5555">&#34;</span><span style="color:#8b008b;font-weight:bold">$(</span>wget https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -<span style="color:#8b008b;font-weight:bold">)</span><span style="color:#cd5555">&#34;</span></code></pre></div></li>
+</ul></li>
+</ul>
+
+<h2 id="3-hỗ-trợ-theme">3. Hỗ trợ <code>theme</code></h2>
+
+<ul>
+<li>Một <code>theme</code> điển hình là <a href="https://github.com/bhilburn/powerlevel9k">powerlevel9k</a>, dù có một chút vấn đề về hiển thị <code>font</code> khi cài font này.
+
+<ul>
+<li>Ví dụ:
+<img src="https://blog.lazytrick.com/post/images/zsh_oh_my_zsh_powerline9k.png" alt="powerline9k_sample" /></li>
+</ul></li>
+</ul>
+
+<h2 id="4-có-vẻ-như-chỉ-có-1-file-cấu-hình-là-zsh">4. Có vẻ như chỉ có 1 file cấu hình là <code>~/.zsh</code></h2>
+
+<ul>
+<li>Không giống như <code>bash</code>, file cấu hình được chia ra ở nhiều cấp độ như: <code>/etc/bash.bashrc</code>, <code>~/.bashrc</code>, etc.</li>
+</ul>
+
+<h2 id="4-tương-thích-hầu-hết-với-bash">4. Tương thích hầu hết với <code>bash</code></h2>
+
+<ul>
+<li>Tức là <code>tập lệnh</code>, <code>shortcut key</code> gần như giống nhau</li>
+</ul>
+
+<h2 id="5-việc-gõ-có-vẻ-trở-nên-nhanh">5. Việc gõ có vẻ trở nên nhanh</h2>
+
+<ul>
+<li>Có thể chính là do chức năng tự động hoàn thành, tự tìm kiếm ở của <code>zsh</code>.</li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/zsh/" rel="tag">zsh</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/bash/" rel="tag">bash</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

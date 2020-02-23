@@ -3,12 +3,67 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
-    <loc>https://blog.lazytrick.com/categories/babycare/</loc>
-    <lastmod>2020-02-16T23:51:01+09:00</lastmod>
+    <loc>https://blog.lazytrick.com/categories/basic/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
   </url>
   
   <url>
     <loc>https://blog.lazytrick.com/categories/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/cmd/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/categories/cmd/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/post/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/screen/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/</loc>
+    <lastmod>2020-02-23T01:20:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/bash/</loc>
+    <lastmod>2020-02-23T00:30:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/</loc>
+    <lastmod>2020-02-23T00:30:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/tags/zsh/</loc>
+    <lastmod>2020-02-23T00:30:01+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/categories/babycare/</loc>
     <lastmod>2020-02-16T23:51:01+09:00</lastmod>
   </url>
   
@@ -23,28 +78,8 @@
   </url>
   
   <url>
-    <loc>https://blog.lazytrick.com/</loc>
-    <lastmod>2020-02-16T23:51:01+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lazytrick.com/post/</loc>
-    <lastmod>2020-02-16T23:51:01+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lazytrick.com/tags/</loc>
-    <lastmod>2020-02-16T23:51:01+09:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/</loc>
     <lastmod>2020-02-16T23:51:01+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lazytrick.com/categories/basic/</loc>
-    <lastmod>2020-01-01T01:01:01+09:00</lastmod>
   </url>
   
   <url>
@@ -190,11 +225,6 @@
   <url>
     <loc>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</loc>
     <lastmod>2018-05-23T02:18:56+09:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://blog.lazytrick.com/tags/bash/</loc>
-    <lastmod>2017-11-03T09:02:16+09:00</lastmod>
   </url>
   
   <url>
@@ -1100,6 +1130,11 @@
   <url>
     <loc>https://blog.lazytrick.com/about/</loc>
     <lastmod>2015-01-23T07:19:16+09:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://blog.lazytrick.com/post/2020-02-20-clone-private-github-repo-tu-docker-container/</loc>
+    <priority>0</priority>
   </url>
   
 </urlset>

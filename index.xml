@@ -6,10 +6,29 @@
     <description>Recent content on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Sun, 16 Feb 2020 23:51:01 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 01:20:01 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Sử dụng lệnh screen cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/</link>
+      <pubDate>Sun, 23 Feb 2020 01:20:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/</guid>
+      <description>screen là một phần mềm (chạy ở chế độ dòng lệnh) trên Linux rất hữu ích.
+1. screen giải quyết vấn đề gì?  Vấn đề: Khi bạn kết nối bằng SSH đến server qua 1 terminal, bạn có thể gặp các vấn đề sau:  1. Chương trình bạn định chạy (train 1 con AI, down phim XXX) sẽ rất mất thời gian, bạn không thể đợi đến khi nó xong được.</description>
+    </item>
+    
+    <item>
+      <title>Cảm nhận về zsh sau 1 tháng sử dụng basic</title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/</link>
+      <pubDate>Sun, 23 Feb 2020 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/</guid>
+      <description>Sau khi update chiếc máy MAC (máy công ty), terminal mặc định trong máy có recommend sang sử dụng zsh thay vì SHELL mặc định trước đó (bash thì phải) thì mới bắt đầu sử dụng thử zsh. Đọc qua một vài lời khen thấy nó khá hay nên quyết định chuyển sang dùng zsh xem sao. Xem có đúng như lời đồn không. Bài này xin tóm tắt một số ý đã tìm hiểu, cảm nhận được.</description>
+    </item>
     
     <item>
       <title>Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</title>
@@ -1055,6 +1074,15 @@ Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao g�
       
       <guid>https://blog.lazytrick.com/about/</guid>
       <description>Xin chào, Tôi là một lập trình viên tầm thường, một người lười ghi nhớ (A mediocre developer, a lazier). Tôi quan tâm đến Linux, đặc biệt là Embedded Linux và những thứ ở mức thấp (low-level). Hiện tại, tôi đang việc như một BrSE tại đất nước của những thánh nữ. Tôi viết trang này để mô tả những gì tôi học được, trong quá trình làm việc của mình.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-clone-private-github-repo-tu-docker-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-clone-private-github-repo-tu-docker-container/</guid>
+      <description></description>
     </item>
     
   </channel>

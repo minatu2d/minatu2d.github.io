@@ -6,10 +6,46 @@
     <description>Recent content in Tags on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Sun, 16 Feb 2020 23:51:01 +0900</lastBuildDate>
+    <lastBuildDate>Sun, 23 Feb 2020 01:20:01 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>cmd</title>
+      <link>https://blog.lazytrick.com/tags/cmd/</link>
+      <pubDate>Sun, 23 Feb 2020 01:20:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/cmd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>screen</title>
+      <link>https://blog.lazytrick.com/tags/screen/</link>
+      <pubDate>Sun, 23 Feb 2020 01:20:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/screen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>https://blog.lazytrick.com/tags/bash/</link>
+      <pubDate>Sun, 23 Feb 2020 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zsh</title>
+      <link>https://blog.lazytrick.com/tags/zsh/</link>
+      <pubDate>Sun, 23 Feb 2020 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/zsh/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>khoc</title>
@@ -143,15 +179,6 @@
       <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/tags/coursera/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Bash</title>
-      <link>https://blog.lazytrick.com/tags/bash/</link>
-      <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
-      
-      <guid>https://blog.lazytrick.com/tags/bash/</guid>
       <description></description>
     </item>
     

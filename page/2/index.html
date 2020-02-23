@@ -73,6 +73,37 @@ if (!doNotTrack) {
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/" rel="bookmark">
+			Build, chạy nhân Linux trong QEMU ARM
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Chạy một bản Linux tối giản trên Qemu ARM
+Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa
+các thành phần của một hệ thống Linux thông qua
+việc build, chạy Kernel trên board vexpress-a9 mô phỏng bằng Qemu.
+Đó là Kernel, Root file system, Busybox, Init.
+1. &ldquo;Chém&rdquo; chút về quá trình khởi động của Linux  Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/" rel="bookmark">
+			4 thành phần của Embedded Linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)&hellip;cho đến các thiết bị gia dụng, gia đình.
+Khi sử dụng máy tính cá nhân, server ta dễ dàng &ldquo;sờ&rdquo; thấy được các thành phần của Linux như các tiến trình, shell..etc.
+Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/" rel="bookmark">
 			Phím tắt cho bash
 			</a>
@@ -345,34 +376,6 @@ Giả sử ta có một cấu trúc sau:
 Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
 0. Source code Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/" rel="bookmark">
-			Cài đặt GDB (02 - Cài đặt)
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
-Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
- GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.
-	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2016-09-19-gdb-co-the-lam-gi/" rel="bookmark">
-			GDB có thể làm gì? (01 - Khả năng của GDB)
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Trước khi nói về chủ đề chính là &ldquo;GDB có thể làm gì&rdquo;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.
-1. Phầm mềm Debugger sinh ra giải quyết cái gì? Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.
-Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế.
-	</div>
 </article>
 </main>
 
@@ -389,6 +392,8 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/">Sử dụng lệnh screen cơ bản</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/">Cảm nhận về zsh sau 1 tháng sử dụng basic</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/">Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/">Vài chú ý khi setup mail server</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/">Chuyển HTML thành PDF cơ bản</a></li>
@@ -397,8 +402,6 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/">Chuyển sang site mới, tên miền mới</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
-			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/">Pickle - Thư viện Serialization/Deserialization trong Python</a></li>
-			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2018-05-24-__trashed/">Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</a></li>
 		</ul>
 	</div>
 </div>
@@ -409,6 +412,7 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/babycare">Babycare</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/basic">Basic</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/buildroot">Buildroot</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/cmd">Cmd</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/codeskill">Codeskill</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/communication">Communication</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/categories/compile">Compile</a></li>
@@ -453,6 +457,7 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/casting" title="Casting">Casting</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/cer" title="Cer">Cer</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/cmake" title="Cmake">Cmake</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/cmd" title="Cmd">Cmd</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/command" title="Command">Command</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/compiler" title="Compiler">Compiler</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/coursera" title="Coursera">Coursera</a>
@@ -512,6 +517,7 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/rt2870" title="Rt2870">Rt2870</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/ruby" title="Ruby">Ruby</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/samba" title="Samba">Samba</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/screen" title="Screen">Screen</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/script" title="Script">Script</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/scsi" title="Scsi">Scsi</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/sendmail" title="Sendmail">Sendmail</a>
@@ -533,6 +539,7 @@ Vì con người viết code tạo ra phần mềm, mà con người không ph�
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/vim" title="Vim">Vim</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/wifiusb" title="Wifiusb">Wifiusb</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/wireshark" title="Wireshark">Wireshark</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/zsh" title="Zsh">Zsh</a>
 	</div>
 </div>
 </aside>
