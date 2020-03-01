@@ -6,10 +6,19 @@
     <description>Recent content in Post on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Sun, 23 Feb 2020 01:20:01 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Feb 2020 21:17:00 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>File locking trong linux</title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/</link>
+      <pubDate>Sat, 29 Feb 2020 21:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/</guid>
+      <description>1. Giới thiệu  File locking (khoá file) là cơ chế để đảm bảo việc đọc/ghi file giữa nhiều process cùng lúc một cách an toàn. Bài này chúng ta sẽ giới thiệu xem cơ chế Locking sinh ra giải quyết vấn đề gì và các ví dụ sử dụng của nó trên bash script và ngôn ngữ C.  2. Nếu vấn đề theo cách muôn thủa  Ví dụ mô tả vấn đề cập nhật xen kẽ trong bất cứ hệ thống thông tin nào.</description>
+    </item>
     
     <item>
       <title>Sử dụng lệnh screen cơ bản</title>
@@ -1074,6 +1083,15 @@ Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao g�
       
       <guid>https://blog.lazytrick.com/post/2020-02-20-clone-private-github-repo-tu-docker-container/</guid>
       <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.lazytrick.com/post/2020-02-29-van-de-chia-se-volume-giua-nhieu-docker-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-29-van-de-chia-se-volume-giua-nhieu-docker-container/</guid>
+      <description>Sự tiện lợi của Docker thì không cần phải nói thêm. Mình là một beginner khi sử dụng Docker, gần như làm các dự án maintain là chủ yếu. Vì thế, kinh nghiệm sử dụng Docker một cách thuần thục chắc chắn chưa nhiều. Nhưng gần đây, mình khá bất ngờ khi đọc được 1 bài viết nói về sự tiện lợi quá mức của Docker làm người ta quyên đi những hạn chế của nó.</description>
     </item>
     
   </channel>

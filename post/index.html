@@ -74,6 +74,18 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/" rel="bookmark">
+			File locking trong linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		1. Giới thiệu  File locking (khoá file) là cơ chế để đảm bảo việc đọc/ghi file giữa nhiều process cùng lúc một cách an toàn. Bài này chúng ta sẽ giới thiệu xem cơ chế Locking sinh ra giải quyết vấn đề gì và các ví dụ sử dụng của nó trên bash script và ngôn ngữ C.  2. Nếu vấn đề theo cách muôn thủa  Ví dụ mô tả vấn đề cập nhật xen kẽ trong bất cứ hệ thống thông tin nào.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/" rel="bookmark">
 			Sử dụng lệnh screen cơ bản
 			</a>
@@ -333,21 +345,6 @@ Cú pháp ASM giữa Intel và AT&amp;T có rất nhiều điềm khác nhau rõ
 1. Lệnh MOV Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.
 Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó. Nói là chức năng sao chép thôi, chứ thực sự nó bao hàm sao chép, truyền dữ liệu. Đó có thể là từ bộ nhớ (các loại RAM) vào thanh ghi, từ thanh ghi vào bộ nhớ, từ một giá trị nào đó xuống thanh ghi hoặc bộ nhớ chẳng hạn.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/" rel="bookmark">
-			Tìm source code của USB Driver trên Linux
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
-Cách tìm source code driver cho thiết bị USB
-1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
-Đó là Vendor (nhà sản xuất), và Product (sản phẩm).
-	</div>
 </article>
 </main>
 
@@ -364,6 +361,7 @@ Cách tìm source code driver cho thiết bị USB
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/">File locking trong linux</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/">Sử dụng lệnh screen cơ bản</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/">Cảm nhận về zsh sau 1 tháng sử dụng basic</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/">Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</a></li>
@@ -373,7 +371,6 @@ Cách tìm source code driver cho thiết bị USB
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/">Tensorflow và AVX</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/">Chuyển sang site mới, tên miền mới</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 		</ul>
 	</div>
 </div>
@@ -445,6 +442,7 @@ Cách tìm source code driver cho thiết bị USB
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/embbeded" title="Embbeded">Embbeded</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/error" title="Error">Error</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fat" title="Fat">Fat</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filelock" title="Filelock">Filelock</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filesystem" title="Filesystem">Filesystem</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/firmware" title="Firmware">Firmware</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fit" title="Fit">Fit</a>
@@ -465,6 +463,7 @@ Cách tìm source code driver cho thiết bị USB
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linux" title="Linux">Linux</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linuximage" title="Linuximage">Linuximage</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/locking" title="Locking">Locking</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/log" title="Log">Log</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mailserver" title="Mailserver">Mailserver</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/make" title="Make">Make</a>

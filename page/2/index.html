@@ -73,6 +73,21 @@ if (!doNotTrack) {
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/" rel="bookmark">
+			Tìm source code của USB Driver trên Linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
+Cách tìm source code driver cho thiết bị USB
+1. Nói qua về thiết bị USB  Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Đó là Vendor (nhà sản xuất), và Product (sản phẩm).
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="https://blog.lazytrick.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/" rel="bookmark">
 			Build, chạy nhân Linux trong QEMU ARM
 			</a>
@@ -362,20 +377,6 @@ Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ th�
 Giả sử ta có một cấu trúc sau:
 #include &lt;stdint.h&gt; typedef struct { uin8_t mem1; uin8_t mem2; uin32_t mem3; }ST_FOOL_1; typedef struct { uin8_t mem1; uin8_t mem2; uin8_t mem3; uin8_t mem4; uin8_t mem5; }ST_FOOL_2;  Cấu trúc ST_FOOL_1 sẽ được miêu tả trong 6 byte?
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/" rel="bookmark">
-			GDB dòng lệnh cơ bản (03 - Cơ bản)
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
-Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
-0. Source code Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.
-	</div>
 </article>
 </main>
 
@@ -392,6 +393,7 @@ Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhi�
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/">File locking trong linux</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/">Sử dụng lệnh screen cơ bản</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/">Cảm nhận về zsh sau 1 tháng sử dụng basic</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/">Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</a></li>
@@ -401,7 +403,6 @@ Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhi�
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/">Tensorflow và AVX</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/">Chuyển sang site mới, tên miền mới</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 		</ul>
 	</div>
 </div>
@@ -473,6 +474,7 @@ Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhi�
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/embbeded" title="Embbeded">Embbeded</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/error" title="Error">Error</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fat" title="Fat">Fat</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filelock" title="Filelock">Filelock</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filesystem" title="Filesystem">Filesystem</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/firmware" title="Firmware">Firmware</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fit" title="Fit">Fit</a>
@@ -493,6 +495,7 @@ Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhi�
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linux" title="Linux">Linux</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linuximage" title="Linuximage">Linuximage</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/locking" title="Locking">Locking</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/log" title="Log">Log</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mailserver" title="Mailserver">Mailserver</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/make" title="Make">Make</a>

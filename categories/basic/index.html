@@ -74,6 +74,18 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/" rel="bookmark">
+			File locking trong linux
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		1. Giới thiệu  File locking (khoá file) là cơ chế để đảm bảo việc đọc/ghi file giữa nhiều process cùng lúc một cách an toàn. Bài này chúng ta sẽ giới thiệu xem cơ chế Locking sinh ra giải quyết vấn đề gì và các ví dụ sử dụng của nó trên bash script và ngôn ngữ C.  2. Nếu vấn đề theo cách muôn thủa  Ví dụ mô tả vấn đề cập nhật xen kẽ trong bất cứ hệ thống thông tin nào.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/" rel="bookmark">
 			Sử dụng lệnh screen cơ bản
 			</a>
@@ -351,22 +363,6 @@ Trong compile thông thường dạng
 $gcc -o HelloWorld HelloWorld.c  Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
 Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/" rel="bookmark">
-			4 Stage khi biên dịch HelloWorld.c
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.
-Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
-Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
-HelloWorld.c
-#include int main() { print(&#34;Hello World \n&#34;); return 0; }  Kết quả chạy:
-	</div>
 </article>
 </main>
 
@@ -383,6 +379,7 @@ HelloWorld.c
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/">File locking trong linux</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/">Sử dụng lệnh screen cơ bản</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/">Cảm nhận về zsh sau 1 tháng sử dụng basic</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/">Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</a></li>
@@ -392,7 +389,6 @@ HelloWorld.c
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/">Tensorflow và AVX</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/">Chuyển sang site mới, tên miền mới</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 		</ul>
 	</div>
 </div>
@@ -464,6 +460,7 @@ HelloWorld.c
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/embbeded" title="Embbeded">Embbeded</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/error" title="Error">Error</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fat" title="Fat">Fat</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filelock" title="Filelock">Filelock</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filesystem" title="Filesystem">Filesystem</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/firmware" title="Firmware">Firmware</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fit" title="Fit">Fit</a>
@@ -484,6 +481,7 @@ HelloWorld.c
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linux" title="Linux">Linux</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linuximage" title="Linuximage">Linuximage</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/locking" title="Locking">Locking</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/log" title="Log">Log</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mailserver" title="Mailserver">Mailserver</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/make" title="Make">Make</a>

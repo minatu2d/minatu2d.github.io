@@ -74,6 +74,20 @@ if (!doNotTrack) {
 	</header><article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/" rel="bookmark">
+			GDB dòng lệnh cơ bản (03 - Cơ bản)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
+Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
+0. Source code Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/" rel="bookmark">
 			Cài đặt GDB (02 - Cài đặt)
 			</a>
@@ -334,22 +348,6 @@ Khi biên dịch thư viện động này với 1 file sample.c để chưa main
 		Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.
 Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/" rel="bookmark">
-			USB cho dev (Chap.04 - Các loại Endpoint)
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Đặc tả USB định nghĩa 4 loại Transfer/EndPoint  Control Transfer
- Interrupt Transfer
- Isochronous Transfer
- Bulk Transfer
-  1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).
-	</div>
 </article>
 </main>
 
@@ -367,6 +365,7 @@ Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo 
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/">File locking trong linux</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/">Sử dụng lệnh screen cơ bản</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/">Cảm nhận về zsh sau 1 tháng sử dụng basic</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/">Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</a></li>
@@ -376,7 +375,6 @@ Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo 
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/">Tensorflow và AVX</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/">Chuyển sang site mới, tên miền mới</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 		</ul>
 	</div>
 </div>
@@ -448,6 +446,7 @@ Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo 
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/embbeded" title="Embbeded">Embbeded</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/error" title="Error">Error</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fat" title="Fat">Fat</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filelock" title="Filelock">Filelock</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filesystem" title="Filesystem">Filesystem</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/firmware" title="Firmware">Firmware</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fit" title="Fit">Fit</a>
@@ -468,6 +467,7 @@ Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo 
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linux" title="Linux">Linux</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linuximage" title="Linuximage">Linuximage</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/locking" title="Locking">Locking</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/log" title="Log">Log</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mailserver" title="Mailserver">Mailserver</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/make" title="Make">Make</a>

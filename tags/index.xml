@@ -6,7 +6,7 @@
     <description>Recent content in Tags on Lazytrick - Limited size memory of mind</description>
     <generator>Hugo -- gohugo.io</generator>
     <copyright>&amp;copy; 2019 Minatu2d</copyright>
-    <lastBuildDate>Sun, 23 Feb 2020 01:20:01 +0900</lastBuildDate>
+    <lastBuildDate>Sat, 29 Feb 2020 21:17:00 +0900</lastBuildDate>
     
 	<atom:link href="https://blog.lazytrick.com/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,27 @@
     <item>
       <title>cmd</title>
       <link>https://blog.lazytrick.com/tags/cmd/</link>
-      <pubDate>Sun, 23 Feb 2020 01:20:01 +0900</pubDate>
+      <pubDate>Sat, 29 Feb 2020 21:17:00 +0900</pubDate>
       
       <guid>https://blog.lazytrick.com/tags/cmd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>filelock</title>
+      <link>https://blog.lazytrick.com/tags/filelock/</link>
+      <pubDate>Sat, 29 Feb 2020 21:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/filelock/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>locking</title>
+      <link>https://blog.lazytrick.com/tags/locking/</link>
+      <pubDate>Sat, 29 Feb 2020 21:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/locking/</guid>
       <description></description>
     </item>
     

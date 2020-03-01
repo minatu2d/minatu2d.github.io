@@ -73,6 +73,22 @@ if (!doNotTrack) {
 	<article class="list__item post">
 	<header class="list__header">
 		<h3 class="list__title post__title ">
+			<a href="https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/" rel="bookmark">
+			USB cho dev (Chap.04 - Các loại Endpoint)
+			</a>
+		</h3>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Đặc tả USB định nghĩa 4 loại Transfer/EndPoint  Control Transfer
+ Interrupt Transfer
+ Isochronous Transfer
+ Bulk Transfer
+  1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h3 class="list__title post__title ">
 			<a href="https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/" rel="bookmark">
 			USB cho dev (Chap.03 - Giao thức)
 			</a>
@@ -317,20 +333,6 @@ Flow chart thì rõ là phải viết rồi, có thể đặt tên theo các x�
 Về mã hóa, là quá trình biến dữ liệu rõ (plain) thành dữ liệu nhiễu (encrypt).
 1. Hai cách ứng dụng Mã hóa nói chung, thường sử dụng dụng một phương pháp toán học, mã học nào đó để làm nhiễu một cách chủ động thông tin ban đầu.
 	</div>
-</article><article class="list__item post">
-	<header class="list__header">
-		<h3 class="list__title post__title ">
-			<a href="https://blog.lazytrick.com/post/2015-12-27-khai-quat-ve-fat/" rel="bookmark">
-			Khái quát về FAT
-			</a>
-		</h3>
-		
-	</header>
-	<div class="content list__excerpt post__content clearfix">
-		Trong quá trình porting sang hệ điều hành ITRON-based (NORTi), đã có dịp tìm hiểu về FAT, thấy bài của anh ELMちゃん này đầy đủ những thứ mình muốn biết về FAT nên sẽ dịch lại cả bài ở đây.
-Link gốc: http://elm-chan.org/docs/fat.html
-Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Spec , nhưng sẽ được giản luợc và bô sung thêm phần giải thích khái niệm mà bản gốc không có.
-	</div>
 </article>
 </main>
 
@@ -347,6 +349,7 @@ Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Sp
 	<h4 class="widget__title">Recent Posts</h4>
 	<div class="widget__content">
 		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/">File locking trong linux</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/">Sử dụng lệnh screen cơ bản</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/">Cảm nhận về zsh sau 1 tháng sử dụng basic</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/">Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</a></li>
@@ -356,7 +359,6 @@ Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Sp
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/">Tensorflow và AVX</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/">Chuyển sang site mới, tên miền mới</a></li>
 			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/">Học Ruby On Rails (RoR)</a></li>
-			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/">Bắt đầu về Docker</a></li>
 		</ul>
 	</div>
 </div>
@@ -428,6 +430,7 @@ Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Sp
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/embbeded" title="Embbeded">Embbeded</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/error" title="Error">Error</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fat" title="Fat">Fat</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filelock" title="Filelock">Filelock</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filesystem" title="Filesystem">Filesystem</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/firmware" title="Firmware">Firmware</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fit" title="Fit">Fit</a>
@@ -448,6 +451,7 @@ Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Sp
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linux" title="Linux">Linux</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linuximage" title="Linuximage">Linuximage</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/loader" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/locking" title="Locking">Locking</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/log" title="Log">Log</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mailserver" title="Mailserver">Mailserver</a>
 		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/make" title="Make">Make</a>

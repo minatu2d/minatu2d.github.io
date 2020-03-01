@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en-us">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>File locking trong linux - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Giới thiệu cơ bản về file locking ứng dụng trên linux">
+	
+	
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container">
+		<div class="logo">
+			<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+				<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+				
+			</a>
+		</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">Home</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">Viết những gì?</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">Tags</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">Category</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">Ai viết?</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">File locking trong linux</h1>
+			
+			
+
+
+<br>
+<i data-feather="calendar">
+  <u>Published: <b><time datetime="2020-02-29 00:00:00 &#43;0700">Sat, 29 Feb 2020 21:17:00</time></b> | Last modified:<b><time datetime="2020-02-29 00:00:00 &#43;0700">Sat, 29 Feb 2020 21:17:00</time></b></u>
+  </i> 
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Mục lục</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+<ul>
+<li>
+<ul>
+<li><a href="#1-giới-thiệu">1. Giới thiệu</a></li>
+<li><a href="#2-nếu-vấn-đề-theo-cách-muôn-thủa">2. Nếu vấn đề theo cách muôn thủa</a></li>
+<li><a href="#3-hai-cơ-chế-locking-trong-ứng-dụng-linux">3. Hai cơ chế <code>Locking</code> trong ứng dụng <code>Linux</code></a>
+<ul>
+<li><a href="#3-1-cơ-chế-khoá-cộng-tác-advisory-locking">3.1 Cơ chế khoá cộng tác (Advisory Locking)</a></li>
+<li><a href="#3-2-cơ-chế-khoá-độc-quyền-mandatory-locking">3.2 Cơ chế khoá độc quyền (Mandatory Locking)</a></li>
+</ul></li>
+<li><a href="#4-xem-danh-sách-lock-đang-được-sử-dụng">4. Xem danh sách lock đang được sử dụng</a></li>
+<li><a href="#5-sử-dụng-locking-trong-script">5. Sử dụng <code>Locking</code> trong <code>script</code></a></li>
+<li><a href="#6-sử-dụng-locking-trong-c">6. Sử dụng <code>Locking</code> trong <code>C</code></a></li>
+<li><a href="#7-links-tham-khảo">7. Links tham khảo</a></li>
+</ul></li>
+</ul>
+</nav>
+	</div>
+</div>
+<div class="content post__content clearfix">
+			
+
+<h2 id="1-giới-thiệu">1. Giới thiệu</h2>
+
+<ul>
+<li><code>File locking</code> (khoá file) là cơ chế để đảm bảo việc <code>đọc/ghi</code> file giữa nhiều <code>process</code> cùng lúc một cách an toàn.</li>
+<li>Bài này chúng ta sẽ giới thiệu xem cơ chế <code>Locking</code> sinh ra giải quyết vấn đề gì và các ví dụ sử dụng của nó trên <code>bash script</code> và <code>ngôn ngữ C</code>.</li>
+</ul>
+
+<h2 id="2-nếu-vấn-đề-theo-cách-muôn-thủa">2. Nếu vấn đề theo cách muôn thủa</h2>
+
+<ul>
+<li><p>Ví dụ mô tả vấn đề <code>cập nhật xen kẽ</code> trong bất cứ hệ thống thông tin nào.</p>
+
+<ul>
+<li>Đó là vấn đề cập nhật số dư tài khoản (<code>balance</code>) được lưu trong file <code>balance.dat</code> thông quan 2 <code>process</code> là <code>A</code> và <code>B</code>, giả sử ban đầu trong tài khoản có <code>100 củ</code>, thứ tự thực hiện đúng sẽ như sau:
+
+<ul>
+<li>1. <strong>Process A</strong>: Đọc giá trị tài khoản hiện tại, trừ đi <code>20 củ</code> và lưu kết quả vào <code>số dư</code>.</li>
+<li>2. <strong>Process B</strong>: Đọc giá trị tài khoản hiện tại, cộng vào <code>80 củ</code> và cũng lưu kết quả vào <code>số dư</code>.</li>
+</ul></li>
+<li>Sau khi thực hiện xong, số dư tài khoản phải là : <code>100 - 20 + 80 = 160 củ</code>.</li>
+<li>Tuy nhiên, nếu xảy ra vấn đề <code>cập nhật xen kẽ</code>, thứ tự thực hiện có thể như sau:
+
+<ul>
+<li>1. <strong>Process A</strong>: Đọc giá trị <code>balance</code> hiện tại và chuẩn bị thực hiện tính toán.</li>
+<li>2. <strong>Process B</strong>: Đọc được cùng giá trị với <strong>Process A</strong> và cũng chuẩn bị thực hiện tính toán.</li>
+<li>3. <strong>Process A</strong>: Thực hiện trừ <code>20 củ</code> và lưu kết quả (<code>80 củ</code>) vào <code>balance</code></li>
+<li>4. <strong>Process B</strong>: Do không biết giá trị nó đọc lúc trước đã bị thay đổi (giá trị nó đang giữa là <code>100 củ</code> trong khi giá trị của <code>balance</code> đã là <code>80 củ</code> rồi), nên nó vẫn thực hiện cộng <code>80</code> củ và lưu kết quả <code>100 + 80 = 180 củ</code> vào <code>balance</code>.</li>
+</ul></li>
+
+<li><p>Kết quả là <code>180</code> là giá trị cuối cùng chứ không phải là <code>160</code> như mong muốn.</p>
+
+<h2 id="3-hai-cơ-chế-locking-trong-ứng-dụng-linux">3. Hai cơ chế <code>Locking</code> trong ứng dụng <code>Linux</code></h2></li>
+</ul></li>
+
+<li><p><code>File locking</code> (ở đây là nói đến đơn vị <code>File</code> để phân biệt với <code>memory locking</code>) là cơ chế cho để hạn chế truy cập cùng 1 file của nhiều <code>process</code>. Có nghĩa là chỉ cho phép một <code>process</code> truy cập ở một thời điểm cụ thể nào đó, vì thế sẽ tránh được <code>cập nhật xen kẽ</code>.</p></li>
+
+<li><p>Ta hẳn đều biết câu lệnh được ví như <code>ôm boom cảm tử</code> trong linux: <code>rm -rf /</code> (<strong>Tuyệt đối đừng thử nếu không biết!!!!!</strong>). Nếu ta chạy nó, toà bộ hệ thống đang chạy sẽ bị xoá sạch <strong>không còn một cái gì, nên nhớ là không còn một cái gì hết</strong>.</p></li>
+
+<li><p>Tại sao lại kì quặc vậy, hệ thống đang chạy mà lại còn bị xoá đi là sao.
+Đó chính là vì : <strong>Linux thường không tự động thực hiện lock các file đang được mở</strong>.
+Cho nên cho dù hệ thống đang chạy với một tá file đang được mở đi nữa, thì nó vẫn có thể bị xoá sạch sẽ.</p></li>
+
+<li><p>Thực ra, Linux có hỗ trợ 2 cơ chế lock <em>lock</em> (gọi là 2 loại lock cũng được), đó là:</p>
+
+<ul>
+<li>Cơ chế khoá cộng tác (Advisory Locking)</li>
+<li>Cơ chế khoá độc quyền (Mandatory Locking)</li>
+</ul></li>
+
+<li><p>Chúng ta sẽ xem chi tiết thêm ở bên dưới.</p>
+
+<h3 id="3-1-cơ-chế-khoá-cộng-tác-advisory-locking">3.1 Cơ chế khoá cộng tác (Advisory Locking)</h3></li>
+
+<li><p>Nó không phải là một cách thức bắt buộc.</p></li>
+
+<li><p>Nó chỉ chạy khi các <code>process</code> tham gia tự giác cộng tác bằng cách <code>chiếm lấy khoá</code>.</p></li>
+
+<li><p>Hay nói cách khác, <code>khoá cộng tác</code> này sẽ bị làm ngơ nếu <code>process</code> cố tình không chiếm lấy khoá.</p></li>
+
+<li><p>Tiếp tục lấy ví dụ về trường hợp cập nhật <code>balance.dat</code> ở trên.</p></li>
+
+<li><p>Trường hợp <strong>Process B</strong> không cộng tác (hoặc không tự giác):</p>
+
+<ul>
+<li>0. Gỉa sử giá trị ban đầu của <code>balance</code> vẫn là <code>100 củ</code>.</li>
+<li>1. <strong>Process A</strong>: thực hiện <code>chiếm lấy khoá</code> trên file <code>balance.dat</code> và thực hiện mở file, đọc được giá trị <code>100 củ</code> lên.
+
+<ul>
+<li>Chúng ta phải hiểu rằng, <code>khoá</code> mà <strong>Process A</strong> đã chiếm không được set bởi hệ điều hành hay hệ thống file.</li>
+<li>Vì thế, cho dù <strong>Process A</strong> đã khoá đi nữa thì <strong>Process B</strong> vẫn thoải mái đọc, ghi, thậm chí là xoá file đó thông qua <code>system call</code>.</li>
+<li>Nếu <strong>Process B</strong> thực hiện như thế thật, thì ta nói rằng : <strong>Process B</strong> không cộng tác với <strong>Process A</strong> hay đơn giản là <strong>không tự giác</strong>.</li>
+</ul></li>
+</ul></li>
+
+<li><p>Trường hợp <strong>Process B</strong> có cộng tác (hoặc tự giác):</p>
+
+<ul>
+<li>0. Gỉa sử giá trị ban đầu của <code>balance</code> vẫn là <code>100 củ</code>.</li>
+<li>1. <strong>Process A</strong>: Thực hiện <code>chiếm lấy khoá</code> trên file <code>balance.dat</code> và thực hiện mở file, đọc được giá trị <code>100 củ</code> lên.</li>
+<li>2. <strong>Process B</strong>: Thực hiện việc cố gắng <code>chiếm lấy khoá</code> trước đọc file.
+
+<ul>
+<li>Vì <strong>Process A</strong> đã <code>locked</code> rồi nên <strong>Process B</strong> sẽ đợi <strong>Process A</strong> nhả ra.</li>
+</ul></li>
+<li>3. <strong>Process A</strong>: Thực hiện trừ <code>20 củ</code> và lưu kết quả (<code>80 củ</code>) vào <code>balance</code>.
+
+<ul>
+<li>Rồi nó cũng thực hiện <code>nhả (release) lock</code> luôn.</li>
+</ul></li>
+<li>4. <strong>Process B</strong>: Giờ nó chiếm được <code>lock</code> rồi, nó sẽ đọc file và được giá tị <code>80 củ</code>.
+
+<ul>
+<li>Rồi nó thực hiện logic của nó (cộng thêm <code>80 củ</code>) và lưu vào file <code>balance.dat</code>.</li>
+<li>Cuối cùng nó cũng <code>nhả lock</code> để các <code>process</code> khác có thể dùng.
+<br /></li>
+</ul></li>
+</ul></li>
+</ul>
+
+<h3 id="3-2-cơ-chế-khoá-độc-quyền-mandatory-locking">3.2 Cơ chế khoá độc quyền (Mandatory Locking)</h3>
+
+<ul>
+<li>Trước khi nói về <code>khoá độc quyền</code>, chúng ta hãy nhớ trong đầu là <strong>Khoá độc quyền trong Linux là không đáng tin (unreliable)</strong>
+
+<ul>
+<li>Trong tài liệu <code>man page</code>, (<a href="http://man7.org/linux/man-pages/man2/fcntl.2.html">link</a>) về hàm C <code>fcntl</code> có đoạn sau:
+&gt;Mandatory locking
+&gt;
+&gt;   Warning: the Linux implementation of mandatory locking is unreliable.
+&gt;   See BUGS below.  Because of these bugs, and the fact that the feature
+&gt;   is believed to be little used, since Linux 4.5, mandatory locking has
+&gt;   been made an optional feature, governed by a configuration option
+&gt;   (CONFIG_MANDATORY_FILE_LOCKING).  This is an initial step toward
+&gt;   removing this feature completely.
+Lược dịch:
+&gt; Implement của <code>mandatory locking</code> trong <code>Linux</code> là không đáng tin.
+&gt; Sẽ thêm lý do ở BUGS bên dưới. Chính vì những BUG đó, từ bản <code>Linux 4.5</code>, phần implement
+&gt; của <code>mandatory locking</code> sẽ được coi là <code>tính năng optional</code>, được quyết định có trong
+&gt; kernel hay không bằng option <code>CONFIG_MANDATORY_FILE_LOCKING</code>. Đây là bước đầu của việc
+&gt; loại bỏ hoàn toàn tính năng này trong tương lai.</li>
+</ul></li>
+<li>Không giống <code>khoá cộng tác</code> ở trên, <code>khoá độc quyền</code> không yêu cầu bất cứ sự cộng tác nào từ phía <code>process</code> khác</li>
+<li>Một khi khoá này được kích hoạt trên file nào đó, hệ điều hành sẽ không cho bất cứ <code>process</code> nào khác đọc/ghi file đó nữa.</li>
+<li>Để sử dụng được loại khoá này trên Linux, thì hệ thống phải thoả mãn 3 yêu cầu sau:
+
+<ul>
+<li>1. Phải <code>mount</code> hệ thống file với <code>mand</code> option
+
+<ul>
+<li>Câu lệnh sẽ có dạng: `mount -o mand <FILESYSTEM> <MOUNTPOINT></li>
+</ul></li>
+<li>2. Phải bật bit <code>set-group-ID</code> và tắt bit <code>group-execute</code> cho những file mà ta muốn <code>lock</code>.
+
+<ul>
+<li>Câu lệnh sẽ có dạng: <a href="http://man7.org/linux/man-pages/man1/chmod.1.html">chmod</a> g+s, g-x <files></li>
+</ul></li>
+<li>3. <code>Kernel</code> phải được build với option <code>CONFIG_MANDATORY_FILE_LOCKING</code> được bật.</li>
+</ul></li>
+</ul>
+
+<h2 id="4-xem-danh-sách-lock-đang-được-sử-dụng">4. Xem danh sách lock đang được sử dụng</h2>
+
+<ul>
+<li><p>Sử dụng  <code>lslock</code> (có sẵn trong package <a href="https://en.wikipedia.org/wiki/Util-linux">util-linux</a></p>
+
+<ul>
+<li>Kết quả:Trong đó cột <code>M</code> sẽ cho biết <code>khoá cộng tác</code> (giá trị = 1) hay <code>khoá độc quyền</code> (giá trị = 0)
+<img src="https://blog.lazytrick.com/post/images/locking_cmd_lslocks.png" alt="locking_cmd_ls_locks" /></li>
+</ul></li>
+
+<li><p>Sử dụng <code>cat /proc/locks</code></p>
+
+<ul>
+<li>Kết quả: Ở đây, cột thứ 3 từ trái sang cho ta biết nó là <code>khoá cộng tác</code> (ADVISORY) hay <code>khoá độc quyền</code> (MANDATORY)
+<img src="https://blog.lazytrick.com/post/images/locking_cmd_cat_proc_locks.png" alt="locking_cmd_cat_proc_locks" />
+<br /></li>
+</ul></li>
+</ul>
+
+<h2 id="5-sử-dụng-locking-trong-script">5. Sử dụng <code>Locking</code> trong <code>script</code></h2>
+
+<ul>
+<li>Ta sẽ xem các ví dụ cho <code>khoá cộng tác</code> là chủ yếu.</li>
+<li>Lệnh <a href="http://man7.org/linux/man-pages/man1/flock.1.html">flock</a> từ <a href="https://en.wikipedia.org/wiki/Util-linux">util-linux</a> cho phép ta thực hiện <code>lock</code> file.</li>
+
+<li><p>Để <code>lock</code> 1 file cho một câu lệnh bất kì, ta sử dụng:</p>
+
+<pre><code>flock &lt;file path &gt; &lt;command&gt;
+</code></pre></li>
+
+<li><p>Giả sử ta làm thử với ví dụ, cập nhật số dư tài khoản:</p></li>
+
+<li><p>Ta giả sử có 1 file text <code>balance.dat</code> chứa số dư hiện tại, ta có 2 <code>process</code> <strong>A</strong> và <strong>B</strong> được chạy bởi 2 script để thực hiện việc cập nhật tài khoản.</p></li>
+
+<li><p>Ta chuẩn bị 1 script là <code>update_balance.sh</code> để thực hiện việc update số dư chung cho cả <strong>A</strong> và <strong>B</strong></p></li>
+
+<li><p><strong>update_balance.sh</strong> sẽ chạy script sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#1e889b">#!/bin/bash
+</span><span style="color:#1e889b"></span><span style="color:#00688b">file</span>=<span style="color:#cd5555">&#34;balance.dat&#34;</span>
+<span style="color:#00688b">value</span>=<span style="color:#8b008b;font-weight:bold">$(</span>cat <span style="color:#00688b">$file</span><span style="color:#8b008b;font-weight:bold">)</span>
+<span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;Read current balance:</span><span style="color:#00688b">$value</span><span style="color:#cd5555">&#34;</span>
+
+<span style="color:#228b22">#sleep 10 seconds to simulate business calculation</span>
+<span style="color:#00688b">progress</span>=<span style="color:#b452cd">10</span>
+<span style="color:#8b008b;font-weight:bold">while</span> [[ <span style="color:#00688b">$progress</span> -lt <span style="color:#b452cd">101</span> ]]; <span style="color:#8b008b;font-weight:bold">do</span>
+<span style="color:#658b00">echo</span> -n -e <span style="color:#cd5555">&#34;\033[77DCalculating new balance..</span><span style="color:#00688b">$progress</span><span style="color:#cd5555">%&#34;</span>
+sleep <span style="color:#b452cd">1</span>
+<span style="color:#00688b">progress</span>=<span style="color:#8b008b;font-weight:bold">$((</span><span style="color:#b452cd">10</span>+progress<span style="color:#8b008b;font-weight:bold">))</span>
+<span style="color:#8b008b;font-weight:bold">done</span>
+<span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;&#34;</span>
+
+<span style="color:#00688b">value</span>=<span style="color:#8b008b;font-weight:bold">$((</span>value+<span style="color:#00688b">$1</span><span style="color:#8b008b;font-weight:bold">))</span>
+<span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;Write new balance (</span><span style="color:#00688b">$value</span><span style="color:#cd5555">) back to </span><span style="color:#00688b">$file</span><span style="color:#cd5555">.&#34;</span>
+<span style="color:#658b00">echo</span> <span style="color:#00688b">$value</span> &gt; <span style="color:#cd5555">&#34;</span><span style="color:#00688b">$file</span><span style="color:#cd5555">&#34;</span>
+<span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;Done.&#34;</span></code></pre></div></li>
+
+<li><p>Tạo file <code>balance.dat</code> bằng lệnh:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#658b00">echo</span> <span style="color:#cd5555">&#34;100&#34;</span> &gt; balance.dat</code></pre></div></li>
+
+<li><p>Script <strong>a.sh</strong> mà <strong>Process A</strong> chạy sẽ như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#1e889b">#!/bin/bash
+</span><span style="color:#1e889b"></span><span style="color:#228b22">#-----------------------------------------</span>
+<span style="color:#228b22"># process A: lock the file and subtract 20</span>
+<span style="color:#228b22"># from the current balance</span>
+<span style="color:#228b22">#-----------------------------------------</span>
+flock --verbose balance.dat ./update_balance.sh <span style="color:#cd5555">&#39;-20&#39;</span></code></pre></div></li>
+
+<li><p>Trường hợp 1: <strong>Process B</strong> không quan tâm đến việc <code>chiếm khoá</code>, cứ access như bình thường:</p>
+
+<ul>
+<li><p>Script <strong>b.sh</strong> mà <strong>Process B</strong> chạy sẽ như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#1e889b">#!/bin/bash
+</span><span style="color:#1e889b"></span><span style="color:#228b22">#----------------------------------------</span>
+<span style="color:#228b22"># process B: add 80 to the current balance in a</span>
+<span style="color:#228b22"># non-cooperative way</span>
+<span style="color:#228b22">#----------------------------------------</span>
+./update_balance.sh <span style="color:#cd5555">&#39;80&#39;</span></code></pre></div></li>
+
+<li><p>Khi chạy sẽ như sau:
+<img src="https://blog.lazytrick.com/post/images/file_locking_non_cooporative.gif" alt="file_locking_non_cooporative" /></p></li>
+</ul></li>
+
+<li><p>Trường hợp 2: <strong>Process B</strong> <code>chiếm khoá</code> rồi mới access file:</p>
+
+<ul>
+<li><p>Script <strong>b.sh</strong> mà <strong>Process B</strong> chạy sẽ như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#1e889b">#!/bin/bash
+</span><span style="color:#1e889b"></span><span style="color:#228b22">#----------------------------------------</span>
+<span style="color:#228b22"># process B: add 80 to the current balance</span>
+<span style="color:#228b22"># in a cooperative way</span>
+<span style="color:#228b22">#----------------------------------------</span>
+flock --verbose balance.dat ./update_balance.sh <span style="color:#cd5555">&#39;80&#39;</span></code></pre></div></li>
+
+<li><p>Khi chạy sẽ như sau:
+<img src="https://blog.lazytrick.com/post/images/file_locking_cooperative.gif" alt="file_locking_cooperative" /></p></li>
+</ul></li>
+</ul>
+
+<h2 id="6-sử-dụng-locking-trong-c">6. Sử dụng <code>Locking</code> trong <code>C</code></h2>
+
+<h2 id="7-links-tham-khảo">7. Links tham khảo</h2>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/cmd/" rel="tag">cmd</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/locking/" rel="tag">locking</a></li>
+		<li class="tags__item"><a class="tags__link btn" href="https://blog.lazytrick.com/tags/filelock/" rel="tag">filelock</a></li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2020 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Convert nội dung Markdown sang HTML bằng <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> and sử dụng theme <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>
