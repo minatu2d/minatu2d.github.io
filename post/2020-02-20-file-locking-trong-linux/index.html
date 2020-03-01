@@ -116,7 +116,7 @@ if (!doNotTrack) {
 <h2 id="2-nếu-vấn-đề-theo-cách-muôn-thủa">2. Nếu vấn đề theo cách muôn thủa</h2>
 
 <ul>
-<li><p>Ví dụ mô tả vấn đề <code>cập nhật xen kẽ</code> trong bất cứ hệ thống thông tin nào.</p>
+<li>Ví dụ mô tả vấn đề <code>cập nhật xen kẽ</code> trong bất cứ hệ thống thông tin nào.
 
 <ul>
 <li>Đó là vấn đề cập nhật số dư tài khoản (<code>balance</code>) được lưu trong file <code>balance.dat</code> thông quan 2 <code>process</code> là <code>A</code> và <code>B</code>, giả sử ban đầu trong tài khoản có <code>100 củ</code>, thứ tự thực hiện đúng sẽ như sau:
@@ -134,38 +134,34 @@ if (!doNotTrack) {
 <li>3. <strong>Process A</strong>: Thực hiện trừ <code>20 củ</code> và lưu kết quả (<code>80 củ</code>) vào <code>balance</code></li>
 <li>4. <strong>Process B</strong>: Do không biết giá trị nó đọc lúc trước đã bị thay đổi (giá trị nó đang giữa là <code>100 củ</code> trong khi giá trị của <code>balance</code> đã là <code>80 củ</code> rồi), nên nó vẫn thực hiện cộng <code>80</code> củ và lưu kết quả <code>100 + 80 = 180 củ</code> vào <code>balance</code>.</li>
 </ul></li>
-
-<li><p>Kết quả là <code>180</code> là giá trị cuối cùng chứ không phải là <code>160</code> như mong muốn.</p>
-
-<h2 id="3-hai-cơ-chế-locking-trong-ứng-dụng-linux">3. Hai cơ chế <code>Locking</code> trong ứng dụng <code>Linux</code></h2></li>
+<li>Kết quả là <code>180</code> là giá trị cuối cùng chứ không phải là <code>160</code> như mong muốn.</li>
 </ul></li>
+</ul>
 
-<li><p><code>File locking</code> (ở đây là nói đến đơn vị <code>File</code> để phân biệt với <code>memory locking</code>) là cơ chế cho để hạn chế truy cập cùng 1 file của nhiều <code>process</code>. Có nghĩa là chỉ cho phép một <code>process</code> truy cập ở một thời điểm cụ thể nào đó, vì thế sẽ tránh được <code>cập nhật xen kẽ</code>.</p></li>
+<h2 id="3-hai-cơ-chế-locking-trong-ứng-dụng-linux">3. Hai cơ chế <code>Locking</code> trong ứng dụng <code>Linux</code></h2>
 
-<li><p>Ta hẳn đều biết câu lệnh được ví như <code>ôm boom cảm tử</code> trong linux: <code>rm -rf /</code> (<strong>Tuyệt đối đừng thử nếu không biết!!!!!</strong>). Nếu ta chạy nó, toà bộ hệ thống đang chạy sẽ bị xoá sạch <strong>không còn một cái gì, nên nhớ là không còn một cái gì hết</strong>.</p></li>
-
-<li><p>Tại sao lại kì quặc vậy, hệ thống đang chạy mà lại còn bị xoá đi là sao.
+<ul>
+<li><code>File locking</code> (ở đây là nói đến đơn vị <code>File</code> để phân biệt với <code>memory locking</code>) là cơ chế cho để hạn chế truy cập cùng 1 file của nhiều <code>process</code>. Có nghĩa là chỉ cho phép một <code>process</code> truy cập ở một thời điểm cụ thể nào đó, vì thế sẽ tránh được <code>cập nhật xen kẽ</code>.</li>
+<li>Ta hẳn đều biết câu lệnh được ví như <code>ôm boom cảm tử</code> trong linux: <code>rm -rf /</code> (<strong>Tuyệt đối đừng thử nếu không biết!!!!!</strong>). Nếu ta chạy nó, toà bộ hệ thống đang chạy sẽ bị xoá sạch <strong>không còn một cái gì, nên nhớ là không còn một cái gì hết</strong>.</li>
+<li>Tại sao lại kì quặc vậy, hệ thống đang chạy mà lại còn bị xoá đi là sao.
 Đó chính là vì : <strong>Linux thường không tự động thực hiện lock các file đang được mở</strong>.
-Cho nên cho dù hệ thống đang chạy với một tá file đang được mở đi nữa, thì nó vẫn có thể bị xoá sạch sẽ.</p></li>
-
-<li><p>Thực ra, Linux có hỗ trợ 2 cơ chế lock <em>lock</em> (gọi là 2 loại lock cũng được), đó là:</p>
+Cho nên cho dù hệ thống đang chạy với một tá file đang được mở đi nữa, thì nó vẫn có thể bị xoá sạch sẽ.</li>
+<li>Thực ra, Linux có hỗ trợ 2 cơ chế lock <em>lock</em> (gọi là 2 loại lock cũng được), đó là:
 
 <ul>
 <li>Cơ chế khoá cộng tác (Advisory Locking)</li>
 <li>Cơ chế khoá độc quyền (Mandatory Locking)</li>
 </ul></li>
+<li>Chúng ta sẽ xem chi tiết thêm ở bên dưới.</li>
+</ul>
 
-<li><p>Chúng ta sẽ xem chi tiết thêm ở bên dưới.</p>
+<h3 id="3-1-cơ-chế-khoá-cộng-tác-advisory-locking">3.1 Cơ chế khoá cộng tác (Advisory Locking)</h3>
 
-<h3 id="3-1-cơ-chế-khoá-cộng-tác-advisory-locking">3.1 Cơ chế khoá cộng tác (Advisory Locking)</h3></li>
-
-<li><p>Nó không phải là một cách thức bắt buộc.</p></li>
-
-<li><p>Nó chỉ chạy khi các <code>process</code> tham gia tự giác cộng tác bằng cách <code>chiếm lấy khoá</code>.</p></li>
-
-<li><p>Hay nói cách khác, <code>khoá cộng tác</code> này sẽ bị làm ngơ nếu <code>process</code> cố tình không chiếm lấy khoá.</p></li>
-
-<li><p>Tiếp tục lấy ví dụ về trường hợp cập nhật <code>balance.dat</code> ở trên.</p></li>
+<ul>
+<li>Nó không phải là một cách thức bắt buộc.</li>
+<li>Nó chỉ chạy khi các <code>process</code> tham gia tự giác cộng tác bằng cách <code>chiếm lấy khoá</code>.</li>
+<li>Hay nói cách khác, <code>khoá cộng tác</code> này sẽ bị làm ngơ nếu <code>process</code> cố tình không chiếm lấy khoá.</li>
+<li>Tiếp tục lấy ví dụ về trường hợp cập nhật <code>balance.dat</code> ở trên.</li>
 
 <li><p>Trường hợp <strong>Process B</strong> không cộng tác (hoặc không tự giác):</p>
 
