@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lỗi về Case-sensive khi biên dịch C (gcc) - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Lỗi về Case-sensive khi biên dịch C (gcc)</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch <strong>GCC</strong> lên đó.<br>
+Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.<br>
+Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.</p>
+<p>Vì 2 yêu cầu trên, mình thường bằng 1 cách nào đó setup một thư mục chung giữa 2 môi trường. Và cách phổ biến và có lẽ là đơn giản nhất là sử dụng module <strong>vmhgfs</strong> được cung cấp sẵn bở VMWare.<br>
+Với cách này, chúng ta dễ dàng chia sẻ 1 thư mục từ Host (máy Windows) với máy Guest (chạy Ubuntu chẳng hạn).<br>
+Nhưng gần đây, mình gặp 1 vấn đề với hệ thống file được <strong>vmhgfs</strong> hỗ trợ, khi build source trên thư mục chia sẻ với Host này.<br>
+Vấn đề được trình bày bên dưới.</p>
+<h3 id="1-cấu-trúc-source-ví-dụ">1. Cấu trúc source ví dụ</h3>
+<p>Giả sử có source như này:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">.  
+├── hello  
+├── hello.c  
+├── inc_lowercase  
+│ └── abc.h  
+└── inc_uppercase  
+└── Abc.h  
+</code></pre></div><p><strong>hello.c</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#a61717;background-color:#e3d2d2">$</span> cat hello.c  
+<span style="color:#1e889b">#include</span>  
+<span style="color:#1e889b">#include&amp;quot;Abc.h&amp;quot;  </span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span><span style="color:#1e889b">&amp;quot;abc.h&amp;quot;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#00688b;font-weight:bold">int</span> main(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span>* argv[])  
+{  
+abc_t var1;  
+Abc_t var2;
+
+var1.x = <span style="color:#b452cd">0</span>;  
+var2 = <span style="color:#b452cd">3</span>;
+
+printf(&amp;quot;OMG Hello world %d %ldn&amp;quot;,var1.x, var2);  
+<span style="color:#8b008b;font-weight:bold">return</span> <span style="color:#b452cd">0</span>;  
+}  
+</code></pre></div><p><strong>inc_lowercase/abc.h</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span> _abc_  
+{  
+<span style="color:#00688b;font-weight:bold">int</span> x;  
+}abc_t;  
+</code></pre></div><p><strong>inc_uppercase/Abc.h</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#00688b;font-weight:bold">long</span> <span style="color:#00688b;font-weight:bold">int</span> Abc_t;  
+</code></pre></div><h3 id="2-so-sánh-thử">2. So sánh thử</h3>
+<h4 id="21-thư-mục-source-nằm-trên-_home_-của-vmware">2.1 Thư mục source nằm trên <strong><em>home</em></strong> của VMWare</h4>
+<p>Kết quả: Build ngon, chạy tốt:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase  
+$ ./hello  
+OMG Hello world <span style="color:#b452cd">0</span> <span style="color:#b452cd">3</span>  
+</code></pre></div><h4 id="21-thư-mục-source-nằm-trên-thư-mục-chia-sẻ-giữa-vmware-chạy-linux-với-host-chạy-windows-thông-qua-vmhgfs">2.1 Thư mục source nằm trên thư mục chia sẻ giữa VMWare (chạy Linux) với Host (chạy Windows) thông qua <strong>vmhgfs</strong>:</h4>
+<p>Giả sử ta để source ở <em>/mnt/hgfs</em> :</p>
+<p>Kết quả: Build lỗi, đương nhiên là không chạy được.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">duser@192.168.70.225:/mnt/hgfs$ gcc -o hello hello.c -I./inc_uppercase -I./inc_lowercase  
+In file included from hello.c:3:0:  
+abc.h:1:16: error: redefinition of ‘struct _abc_’  
+typedef struct _abc_  
+^  
+In file included from hello.c:2:0:  
+Abc.h:1:16: note: originally defined here  
+typedef struct _abc_  
+^  
+In file included from hello.c:3:0:  
+abc.h:4:2: error: conflicting types <span style="color:#8b008b;font-weight:bold">for</span> ‘abc_t’  
+}abc_t;  
+^  
+In file included from hello.c:2:0:  
+Abc.h:4:2: note: previous declaration of ‘abc_t’ was here  
+}abc_t;  
+^  
+hello.c: In <span style="color:#8b008b;font-weight:bold">function</span> ‘main’:  
+hello.c:8:2: error: unknown <span style="color:#658b00">type</span> name ‘Abc_t’  
+Abc_t var2;  
+^  
+hello.c:13:2: warning: format ‘%ld’ expects argument of <span style="color:#658b00">type</span> ‘long int’, but argument <span style="color:#b452cd">3</span> has <span style="color:#658b00">type</span> ‘int’ [-Wformat=]  
+printf(&amp;quot;OMG Hello world %d %ldn&amp;quot;,var1.x, var2);  
+^  
+</code></pre></div><p>Ta thấy các lỗi ở đây khá là &ldquo;lạ&rdquo;, nào là <strong>redefine</strong>, nào là <strong>unkown type name</strong>.<br>
+<strong>Nếu gặp lỗi này lần đầu thì không phải ai cũng lý giải được. :(</strong></p>
+<p>Vấn đề ở đây nằm ở <strong>/mnt/hgfs</strong>.<br>
+Có vẻ như <strong>hgfs</strong> không phân biệt <strong>Abc.h</strong> với <strong>abc.h</strong> nên khi GCC (dù chạy trên VM Ubuntu) đọc cái file này lên sẽ cùng 1 tên.</p>
+<p>Ở đây ta thấy lỗi <strong>typedef struct _abc</strong> thì có thể đoán được rằng <strong>abc.h</strong> đã được include trước.<br>
+Có vẻ như <strong>hgfs</strong> coi 2 file header trên với cùng 1 tên <strong>abc.h</strong>.</p>
+<p>Không chỉ có <strong>hgfs</strong> mà nhiều hệ thống file khác cũng giống như thế.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/c/" rel="tag">C</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/error/" rel="tag">Error</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/filesystem/" rel="tag">FileSystem</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/gcc/" rel="tag">GCC</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/linux/" rel="tag">Linux</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

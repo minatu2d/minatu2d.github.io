@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Debug on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/categories/debug/</link>
+    <description>Recent content in Debug on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Wed, 19 Oct 2016 14:27:19 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/categories/debug/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GDB dòng lệnh cơ bản (03 - Cơ bản)</title>
+      <link>https://blog.lazytrick.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
+      <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
+      <description>Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
+Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
+0. Source code Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.</description>
+    </item>
+    
+    <item>
+      <title>Cài đặt GDB (02 - Cài đặt)</title>
+      <link>https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
+      <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
+      <description>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
+ GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</description>
+    </item>
+    
+    <item>
+      <title>GDB có thể làm gì? (01 - Khả năng của GDB)</title>
+      <link>https://blog.lazytrick.com/post/2016-09-19-gdb-co-the-lam-gi/</link>
+      <pubDate>Mon, 19 Sep 2016 11:58:27 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-19-gdb-co-the-lam-gi/</guid>
+      <description>Trước khi nói về chủ đề chính là &amp;ldquo;GDB có thể làm gì&amp;rdquo;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.
+1. Phầm mềm Debugger sinh ra giải quyết cái gì? Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.
+Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế.</description>
+    </item>
+    
+    <item>
+      <title>Làm việc với GDB - GNU Debugger (00- Mở đầu)</title>
+      <link>https://blog.lazytrick.com/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</link>
+      <pubDate>Thu, 15 Sep 2016 09:19:53 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</guid>
+      <description>Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！
+Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với &amp;ldquo;siêu lười&amp;rdquo; như mình, loạt về USB Basic dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.
+Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).</description>
+    </item>
+    
+  </channel>
+</rss>

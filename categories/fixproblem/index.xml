@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>fixproblem on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/categories/fixproblem/</link>
+    <description>Recent content in fixproblem on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sun, 16 Feb 2020 23:51:01 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/categories/fixproblem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</title>
+      <link>https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/</link>
+      <pubDate>Sun, 16 Feb 2020 23:51:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/</guid>
+      <description>1. Từ hội nghiên cứu, bảo vệ bà mẹ trẻ em Nhật Bản:  Link : https://www.mcfh.or.jp/netsoudan/article.php?id=981  Nội dung Có 4 thuyết giải thích tại sao trẻ không khóc trước khi ngủ:
+  Từ ngày xưa, loài người khi ngủ thường có nguy cơ bị các loài khác tấn công, bị mưa ưới nên bị sợ bóng tối. Những cái đó biến thành gen di truyền, nên khi người ta ko biết lúc nào sẽ ngủ mất nên sẽ bất an.</description>
+    </item>
+    
+    <item>
+      <title>Vài chú ý khi setup mail server</title>
+      <link>https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/</guid>
+      <description>Mail Server là một trong những ứng dụng phổ biến bậc nhất trong hầu hết các hệ thống thông tin. Theo mình, ngay cả khi các ứng dụng tin nhắn nhóm như Slack, Chatwork, FB Messenger đã thì việc sử dụng mail vẫn rất được ưa chuộng do những tính chất đặc trưng của nớ: như formal hơn, lưu trữ chắc chắn hơn&amp;hellip;
+Lần đầu tiên mình được trực tiếp sờ vào việc cài đặt của một mail server.</description>
+    </item>
+    
+    <item>
+      <title>Chuyển HTML thành PDF cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/</link>
+      <pubDate>Sun, 03 Nov 2019 17:41:31 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/</guid>
+      <description>1. Tại sao cần chuyển sang PDF  Nhiều lý do để người ta sử dụng PDF thay vì các định dạng khác.  Về cơ bản không thể edit nên đảm bảo thống nhất về nội dung hiển thị Ít bị lỗi FONT Tiện lợi khi gửi, nhận: bên nhận và bên gửi luôn thấy chung 1 dữ liệu và ít khi sửa được.   Vì PDF gần như tiêu chuẩn để trao đổi dạng tài liệu read-only Đọc được ở trên hầu hết mọi nền tảng: máy tính, điện thoại.</description>
+    </item>
+    
+    <item>
+      <title>Tensorflow và AVX</title>
+      <link>https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/</link>
+      <pubDate>Thu, 31 Oct 2019 22:17:58 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/</guid>
+      <description>1. Lỗi liên quan đến CPU instruction của tensorflow  Định cài đặt tensorflow-gpu trên con máy già chạy Intel Xeon X5672 và có gắng GTX 1060 3G để nghịch chút. Nhưng khi kiểm tra xem có chạy được không:  &amp;gt;&amp;gt;&amp;gt; import tensorflow as tf Illegal instruction (コアダンプ)  Vâng, là lỗi run-time - chỉ xảy ra khi chạy, chứ cài thì chưa xuất hiện vấn đề.  2. AVX là gì  Ta tìm hiểu một chút về lỗi kể trên, thì hầu hết đề nói rằng: máy sử dụng CPU không hỗ trợ đầy tập lệnh mà tensorflow đang dùng.</description>
+    </item>
+    
+  </channel>
+</rss>

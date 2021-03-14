@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>UART on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/uart/</link>
+    <description>Recent content in UART on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Mon, 25 Jan 2016 14:22:56 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/uart/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I2C - Kế thừa UART và SPI (sẽ viết)</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
+      <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

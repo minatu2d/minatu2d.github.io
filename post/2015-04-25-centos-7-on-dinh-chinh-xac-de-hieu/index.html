@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CentOS 7 - Ổn định, chính xác, dễ hiểu - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">CentOS 7 - Ổn định, chính xác, dễ hiểu</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Đang chán nản với cái ứng dụng C# vì không thích cái kiểu làm thì theo yêu cầu mà hỏi thì cái gì các sếp cũng không rõ. Thì anh Kusu ra hỏi.</p>
+<pre><code>
+Kusu : Mày biết CGI không?
+
+Mình : (Ah ha, có việc khác hay hơn ư) Có, trả lời ngay,
+
+Kusu : Bọn tao cần 1 cái web dùng CGI chạy trên CentOS (Wow, good xúc thôi), trong công ty ít người làm về server với Web lắm. T đang nghĩ, nếu mày biết thì ra làm luôn.
+
+Mình; Ok.
+
+</code></pre><p>Từ mùng 10-30/3/2015:</p>
+<h3 id="1-cài-đặt-bau-đầu">1. Cài đặt bau đầu</h3>
+<ul>
+<li>
+<p>Cài đặt CentOS hơi khác với Ubuntu mình dùng trước đến giờ.</p>
+</li>
+<li>
+<p>Trên cùng cái đĩa DVD đó, nó cho phép nhiều tùy chọn để cài đặt.</p>
+</li>
+</ul>
+<p>tùy chọn ở đây là số lượng gói và tool được cài vào máy, tất nhiên các phần cơ bản liên quan đến mạng sẽ luôn được cài. Một vài tùy chọn như: Desktop Gnome, Desktop KDE, Desktop Xfe&hellip; Môi trường phát triển Web..</p>
+<p>Mình chọn Minimal vì sử dụng VM Player tạo máy ảo để chạy CentOS +  máy chỉ có 4G RAM(tù). Thực ra trước khi quyết định Minimal thì có cài thử cái Gnome lên, nhưng hỡi ôi, chậm trên cả tưởng tượng.</p>
+<ul>
+<li>Với cái minimal, thì rất ít tool được cài, một số thứ sẽ phải cài ngay như:</li>
+</ul>
+<p>nettool : ifconfig, networking&hellip; cái nọ cái chai.</p>
+<ul>
+<li>
+<p>Set up local responsibility gì đó, chắc là nó sẽ up cái kho phần mềm từ cái đống package trong DVD luôn (vì DVD có tùy chọn full nên chắc chắn nó sẽ có không ít gói phần mềm trong đó) (Cái này mình không làm. dùng mạng cài luôn).</p>
+</li>
+<li>
+<p>Rồi thiếu cái gì cũng google rồi, yum,&hellip; nọ kia thôi.</p>
+</li>
+</ul>
+<p>Nhưng thấy 1 cái, hướng dẫn trên net hầu như chính xác đến từ dòng, kết quả chạy hệt như hình mẫu.</p>
+<h3 id="2-cài-đặt-apache-trên-centos-được-gọi-là-httpd---http-diamond">2. Cài đặt Apache( trên CentOS được gọi là httpd - http &ldquo;diamond&rdquo;)</h3>
+<ul>
+<li>Tất nhiên là yum -y install httpd,</li>
+</ul>
+<p>Cài xong, bật service cái chạy luôn, không phải nghĩ.</p>
+<p>Thế là xong helloworld trên HTML</p>
+<h3 id="3-cấu-hình-để-chạy-cgiperl-hello-world">3. Cấu hình để chạy CGI/Perl (Hello World)</h3>
+<p>((Mai viết tiếp)). Giờ ngủ đã.</p>
+<h3 id="4-cấu-hình-để-phát-triểnnbsphello-customers">4. Cấu hình để phát triển Hello Customers.</h3>
+<h3 id="5-từ-plain-cgi-chuyển-qua-cgi-application">5. Từ Plain CGI chuyển qua CGI-Application</h3>
+<p>Lúc mới đầu, thấy có cung cấp 1 cái lớp CGI, cung cấp request, response, các query</p>
+<p>Nghĩ bụng, vậy là đủ cho 1 cái web đơn gian rồi, xử lý thì thiếu gì tìm đó.</p>
+<p>Việc routing đơn là xử lý string thôi</p>
+<p>http://127.0.0.1/webapp/abc.cgi?var1=value1&amp;var2=value2.</p>
+<p>Cứ dùng cgi -&gt; query rồi if..else  mà xử lý thôi.</p>
+<p>Nói chung ứng dụng mà đặc biệt là web, cái nào cũng nên thực hiện cái mô hình MVC.</p>
+<p>Tức là càng tách biệt 3 phần Model (việc truy cập data base) + View ( Phần hiển thị cho người dụng) + Control (phần xử lý các nghiệp vụ gì đó dựa trên đầu vào dữ liệu, đầu ra là kết quả hiện thị ra view).</p>
+<p>Với CGI plain mỗi controller, ta sẽ dùng 1 lệnh if</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl">actionValue = <span style="color:#008b45;text-decoration:underline">cgi</span> -&gt; query(<span style="color:#cd5555">&#34;action&#34;</span>)
+<span style="color:#8b008b;font-weight:bold">if</span> (action == <span style="color:#cd5555">&#34;action1&#34;</span>) {
+
+<span style="color:#1c7e71">//</span>&lt;Xử lý <span style="color:#b452cd">1</span>&gt;
+
+} <span style="color:#8b008b;font-weight:bold">else</span> <span style="color:#8b008b;font-weight:bold">if</span> (action == <span style="color:#cd5555">&#34;action2&#34;</span>) {
+
+<span style="color:#1c7e71">//</span>&lt;Xử lý <span style="color:#b452cd">2</span>&gt;
+
+}
+</code></pre></div><p>Phần database mình chưa động đến &lt;Để bổ sung sau vậy&gt;</p>
+<p>Phần View, làm sao để chuyển cái output là giá trị đến người dùng 1 cách dễ hiểu nhất.</p>
+<p>CGI thì không hỗ trợ việc nhúng code, nên ta dùng 1 plugin gọi là HTMLTemplate</p>
+<p>template = HTMLTemplate -&gt; Load(&ldquo;abc.tpl&rdquo;)// Miễn là text file thôi, kiểu gì cũng ok.</p>
+<p>Ta được đối tượng HTMLTemplate,</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-perl" data-lang="perl"><span style="color:#008b45;text-decoration:underline">template</span> -&gt; param(<span style="color:#cd5555">&#34;VAR1&#34;</span>, realValu1)
+
+<span style="color:#008b45;text-decoration:underline">template</span> -&gt; param(<span style="color:#cd5555">&#34;VAR2&#34;</span>, realValu2)
+</code></pre></div><p>các biến VAR1, VAR2 được định nghĩa bên trong trong file template kia.</p>
+<p>Chuyển qua CGI Application, hầu hết các xử lý đều không đổi.</p>
+<p>Chỉ có phần điều hướng thì sử dụng khái niệm mode của CGIApplication</p>
+<p>Nhưng cũng phải nói rằng, các xử lý về lỗi, các xử lý liên quan đến sesion sẽ</p>
+<p>dễ dàng hơn rất nhiều khi dùng CGIApplication.</p>
+
+		</div>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linking on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/linking/</link>
+    <description>Recent content in Linking on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sun, 12 Jun 2016 13:20:13 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/linking/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>2 cách sử dụng thư viện trong Linux</title>
+      <link>https://blog.lazytrick.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
+      <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
+      <description>Mình đang gặp 1 vấn đề là 1 hàm F1() trong thư viện động mình viết (lib1.so) không hoạt động đúng như mong muốn. Trong hàm _F1()_có gọi một loại hàm F21(), F22(), F23()&amp;hellip;F2n() từ 1 thư viện tĩnh (lib2.a) khác.
+Khi build không gặp lỗi,
+Khi biên dịch thư viện động này với 1 file sample.c để chưa main() để chạy thử và gọi hàm _F1() _từ thư viện động lib1.</description>
+    </item>
+    
+  </channel>
+</rss>

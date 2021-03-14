@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>PER on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/per/</link>
+    <description>Recent content in PER on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Tue, 29 Nov 2016 14:48:30 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/per/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PER trong ASN.1 Encoding</title>
+      <link>https://blog.lazytrick.com/post/2016-11-29-per-trong-asn-1-encoding/</link>
+      <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-11-29-per-trong-asn-1-encoding/</guid>
+      <description>PER là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng TLV như BER, PER sử dụng Preamble (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là PLV.
+Đơn vị biểu diễn của PER không phải Octet mà là Bit.</description>
+    </item>
+    
+    <item>
+      <title>ASN.1 - BER (Basic Encoding Rules)</title>
+      <link>https://blog.lazytrick.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
+      <pubDate>Thu, 24 Nov 2016 15:58:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
+      <description>Tiếp tục về ASN.1.
+Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)
+Ta sẽ tiếp tục nói về hiện thực dữ liệu.
+Các phương thức để hiện thực dữ liệu gồm có: BER, CER/DER, và PER.
+Trong đó:
+BER : Basic Encoding Rules
+CER/DER : Canonical Encoding Rules/Distinguished Encoding Rules</description>
+    </item>
+    
+  </channel>
+</rss>

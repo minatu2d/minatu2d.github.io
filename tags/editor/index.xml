@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Editor on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/editor/</link>
+    <description>Recent content in Editor on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Thu, 30 Mar 2017 13:16:57 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/editor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Một số điều rút ra từ việc phải sử dụng command</title>
+      <link>https://blog.lazytrick.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
+      <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
+      <description>Do yêu cầu bắt buộc nên gần đây phải làm việc với VIM.
+Thực ra vẫn dùng máy tính Windows để chạy các ứng dụng SSH Client, SCP, rồi thì Excel. Tuy nhiên, các thao tác chủ yếu với source, text file, là trên command.
+Mà trên command của Unix, hay Linux. Dù có trả qua bao nhiêu năm nữa, thì có vẻ chỉ có 2 trường phái là VIM và Emacs thôi.</description>
+    </item>
+    
+  </channel>
+</rss>

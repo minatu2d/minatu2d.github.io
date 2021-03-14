@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Translate on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/translate/</link>
+    <description>Recent content in Translate on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sat, 23 Jul 2016 05:46:28 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/translate/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>USB cho dev (Chap.06 – Các gói tin Setup)</title>
+      <link>https://blog.lazytrick.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</link>
+      <pubDate>Sat, 23 Jul 2016 05:46:28 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</guid>
+      <description>Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.
+Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây.</description>
+    </item>
+    
+    <item>
+      <title>USB cho dev (Chap.05 – Đặc tả thiết bị)</title>
+      <link>https://blog.lazytrick.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</link>
+      <pubDate>Mon, 18 Jul 2016 09:19:07 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</guid>
+      <description>Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.
+Các đặc tả phổ biết nhất bao gồm:
+ Miêu tả thiết bị (Device Descriptors) Miêu tả các cấu hình (Configuration Descriptors) Miêu tả giao diện (Interface Descriptors) Miêu tả điểm đầu cuối (EndPoint Descriptors) Các chuỗi sử dụng trong các miêu tả trên.</description>
+    </item>
+    
+    <item>
+      <title>USB cho dev (Chap.04 - Các loại Endpoint)</title>
+      <link>https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</link>
+      <pubDate>Sat, 26 Mar 2016 03:11:25 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
+      <description>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint   Control Transfer
+  Interrupt Transfer
+  Isochronous Transfer
+  Bulk Transfer
+  1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).</description>
+    </item>
+    
+    <item>
+      <title>USB cho dev (Chap.03 - Giao thức)</title>
+      <link>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</link>
+      <pubDate>Mon, 21 Mar 2016 15:19:47 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</guid>
+      <description>Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &amp;ldquo;nguy hiểm&amp;rdquo;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi.</description>
+    </item>
+    
+    <item>
+      <title>USB cho Dev (Chp.02 - Phần cứng)</title>
+      <link>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</link>
+      <pubDate>Mon, 21 Mar 2016 02:17:04 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
+      <description>Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.
+Đầu kết nối (Connectors) Mọi thiết bị có một upstream &amp;ldquo;chảy&amp;quot;đến host, và mọi host có một downstream &amp;ldquo;chảy&amp;rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.</description>
+    </item>
+    
+  </channel>
+</rss>

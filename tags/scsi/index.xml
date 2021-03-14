@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>SCSI on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/scsi/</link>
+    <description>Recent content in SCSI on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Tue, 15 Mar 2016 14:54:41 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/scsi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SCSI - Giao tiếp với USB Memory</title>
+      <link>https://blog.lazytrick.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
+      <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
+      <description>Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &amp;ldquo;USB Flash Memory&amp;rdquo; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.</description>
+    </item>
+    
+  </channel>
+</rss>

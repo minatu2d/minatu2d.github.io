@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Khác on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/categories/kh%C3%A1c/</link>
+    <description>Recent content in Khác on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Thu, 24 Oct 2019 23:30:16 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/categories/kh%C3%A1c/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Chuyển sang site mới, tên miền mới</title>
+      <link>https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/</link>
+      <pubDate>Thu, 24 Oct 2019 23:30:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/</guid>
+      <description>1. Lý do chuyển sang  Wordpress hỗ trợ không tốt việc viết bằng markdown Cần một site nhẹ hơn Cần một cách quản lý bài viết dễ hiểu và rõ ràng hơn Chuyển hẳn sang một domain mới để dễ dang  2. Nền tảng sử dụng  Lưu trữ: Github page Bộ sinh HTML : Hugo Tên miền: AWS 53  </description>
+    </item>
+    
+    <item>
+      <title>Phím tắt cho bash</title>
+      <link>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</link>
+      <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</guid>
+      <description>Mặc định, bash sử dụng emacs mode, có thể chuyển sang vi mode được.
+Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.
+Chiều ngang : Di chuyển cơ bản Ctrl + b : (Backward) Di chuyển con trỏ sang trái về trước 1 kí tự
+Ctrl + f : (Fordware) Di chuyển con trỏ sang phải một kí tự.</description>
+    </item>
+    
+    <item>
+      <title>Một số điều rút ra từ việc phải sử dụng command</title>
+      <link>https://blog.lazytrick.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
+      <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
+      <description>Do yêu cầu bắt buộc nên gần đây phải làm việc với VIM.
+Thực ra vẫn dùng máy tính Windows để chạy các ứng dụng SSH Client, SCP, rồi thì Excel. Tuy nhiên, các thao tác chủ yếu với source, text file, là trên command.
+Mà trên command của Unix, hay Linux. Dù có trả qua bao nhiêu năm nữa, thì có vẻ chỉ có 2 trường phái là VIM và Emacs thôi.</description>
+    </item>
+    
+    <item>
+      <title>Chuyển sang dùng VI(M)</title>
+      <link>https://blog.lazytrick.com/post/2017-03-29-chuyen-sang-dung-vim/</link>
+      <pubDate>Wed, 29 Mar 2017 13:37:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-03-29-chuyen-sang-dung-vim/</guid>
+      <description>Chuyển sang dùng Vi Vi - Editor khá nhiều tuổi, có lẽ còn nhiều tuổi hơn của mình.
+Là editor phổ biến nhất trên hệ thống dòng lệnh Linux, Unix hoặc tương tự.
+Có Linux, bạn gần như sẽ có thể dùng Vi. Mà Linux thì có ở rất rất nhiều nơi.
+Có phải vì nó mặc định nên nó phổ biến???
+Mình từng nghĩ vậy hoặc nghĩ chắc nó nhẹ nên người ta cài sẵn nó thôi</description>
+    </item>
+    
+    <item>
+      <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
+      <link>https://blog.lazytrick.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <description>Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch GCC lên đó.
+Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.
+Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.</description>
+    </item>
+    
+    <item>
+      <title>Chia sẻ dữ liệu giữa Host và Guest như thế nào là có lợi nhất?</title>
+      <link>https://blog.lazytrick.com/post/2016-01-24-chia-se-du-lieu-giua-host-va-guest-nhu-the-nao-la-co-loi-nhat/</link>
+      <pubDate>Sun, 24 Jan 2016 13:14:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-24-chia-se-du-lieu-giua-host-va-guest-nhu-the-nao-la-co-loi-nhat/</guid>
+      <description>Ngày nay, dù chỉ cần có 1 mày tính thì người ta vẫn có thể sử dụng nhiều môi trường hệ điều hành khác nhau. Cái đó gọi là ảo hóa.
+Tức là trên một máy tính chạy một hệ điều hành cụ thể. Ta cài đặt một ứng dụng mô phỏng một máy tính trên đó. Ta sẽ có bao nhiều máy tính tùy vào khả năng phần cứng của máy thôi.</description>
+    </item>
+    
+    <item>
+      <title>[CodeC] Về cách viết code</title>
+      <link>https://blog.lazytrick.com/post/2016-01-05-codec-ve-cach-viet-code/</link>
+      <pubDate>Tue, 05 Jan 2016 15:02:39 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-05-codec-ve-cach-viet-code/</guid>
+      <description>Việc code thường hay phải lặp đi lặp lại rất nhiều thao tác trong nhiều dự án khác nhau. Có thể kể đến nhưng scanf, fread, fwrite&amp;hellip;.print, debug&amp;hellip;
+Giờ có một design, tức là flow chart+ danh sách tên hàm.
+Flow chart thì rõ là phải viết rồi, có thể đặt tên theo các xử lý, gắn các mã. Nó dù rất giống với phần implement nhưng ta có thể tách bạch được.</description>
+    </item>
+    
+    <item>
+      <title>Glogger - Log viewer tốt nhưng còn một vài điểm</title>
+      <link>https://blog.lazytrick.com/post/2015-07-28-glogger-log-viewer-very-tot-nhung-con-mot-vai-diem/</link>
+      <pubDate>Tue, 28 Jul 2015 15:21:24 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-28-glogger-log-viewer-very-tot-nhung-con-mot-vai-diem/</guid>
+      <description>Nói đến editor, ai cũng nghĩ đến Notepad++. Sakura (JP thôi), hay gì gì đó.
+Ừ thì đúng Notepad++ rất nhiều tính năng, rất nhanh, rất nhẹ.
+Nhưng gần đây tôi phát hiện ra điểm yếu của nó, xử lý file lớn của nó rất tệ. Thậm chí nó còn gây mất dữ liệu.
+Tôi và bạn tôi đã thử với một file khoảng 600MB trở lên thì khó có thể thực hiện một phép copy &amp;amp; paste nào nữa.</description>
+    </item>
+    
+    <item>
+      <title>Thêm chức năng giao tiếp bằng telnet cho ứng dụng?</title>
+      <link>https://blog.lazytrick.com/post/2015-07-28-them-chuc-nang-giao-tiep-bang-telnet-cho-ung-dung/</link>
+      <pubDate>Tue, 28 Jul 2015 15:09:41 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-28-them-chuc-nang-giao-tiep-bang-telnet-cho-ung-dung/</guid>
+      <description>Hôm nay mình có gợi ý ông leader về việc sử dụng giao diện telnet để giúp ứng dụng giao tiếp tốt hơn với bên ngoài.
+Thì ông ấy hỏi : &amp;ldquo;Mày làm nó bao giờ chưa? Không đủ time đâu. Nghĩ cũng đúng, mình thấy có thể làm thôi chứ chưa đo time để làm cái đó.&amp;rdquo;
+Vậy thì thử xem sao:
+Tôi dự định sẽ thêm tính năng giao tiếp bằng telnet cho một ứng dụng chát.</description>
+    </item>
+    
+    <item>
+      <title>Nếu wireshark trên Windows gặp lỗi, hãy thử dùng dumpcap</title>
+      <link>https://blog.lazytrick.com/post/2015-07-28-neu-wireshark-tren-windows-gap-loi-hay-thu-dung-dumpcap/</link>
+      <pubDate>Tue, 28 Jul 2015 15:04:10 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-28-neu-wireshark-tren-windows-gap-loi-hay-thu-dung-dumpcap/</guid>
+      <description>Wireshark, một phần mềm quá phổ biến để phân tích gói tin cho dù là có dây hay không dây, 1 dây hay 2 dây, tất tần tật. Gì em nó cũng làm được.
+Wireshark vốn đuợc phát triển cho Solaris và Linux. Và thư viện đồ họa hiện đang sử dụng là gtk.
+Gtk là vốn là thư viện đựoc phát triển từ dự án GIMP ( GNOME Graphic Toolkit).</description>
+    </item>
+    
+    <item>
+      <title>Wireshark có thể làm gì?</title>
+      <link>https://blog.lazytrick.com/post/2015-07-14-wireshark-co-the-lam-gi/</link>
+      <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-14-wireshark-co-the-lam-gi/</guid>
+      <description>Dù biết tool này đã lâu, từ hồi học ĐH có mở ra mở vào để làm mấy bài tập mạng theo kiểu &amp;ldquo;chống chế&amp;rdquo;. Hơn nữa ngày đó, phần mạng (networking) mình cũng không nhiều kiến thức vì đang ham hố phần viết một phần mềm để đời, có giao diện chứ không đen ngòm như mấy cái thầy giáo dạy trên lớp.
+Lại sắp lan man rồi, vào đề thôi.</description>
+    </item>
+    
+    <item>
+      <title>Một ứng dụng Web đơn giản sử dụng CGI/Perl sẽ cần những gì?</title>
+      <link>https://blog.lazytrick.com/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</link>
+      <pubDate>Sat, 11 Jul 2015 13:52:18 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</guid>
+      <description>Với những ai đã từng làm nhiều với CGI và Perl sẽ dễ dàng đưa ra phương án tối ưu nhất.
+Còn với những ai mới bắt đầu như mình , hoặc chỉ cần 1 chút thôi chẳng hạn thì có thể dễ bị lạc đường giữa rất nhiều framework hoặc thư viện của perl.
+Vừa rồi mình có làm một ứng dụng Web
+ Server Side : CGI sử dụng ngôn ngữ perl.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7 - Ổn định, chính xác, dễ hiểu</title>
+      <link>https://blog.lazytrick.com/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</link>
+      <pubDate>Sat, 25 Apr 2015 08:19:53 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</guid>
+      <description>Đang chán nản với cái ứng dụng C# vì không thích cái kiểu làm thì theo yêu cầu mà hỏi thì cái gì các sếp cũng không rõ. Thì anh Kusu ra hỏi.
+ Kusu : Mày biết CGI không? Mình : (Ah ha, có việc khác hay hơn ư) Có, trả lời ngay, Kusu : Bọn tao cần 1 cái web dùng CGI chạy trên CentOS (Wow, good xúc thôi), trong công ty ít người làm về server với Web lắm.</description>
+    </item>
+    
+  </channel>
+</rss>

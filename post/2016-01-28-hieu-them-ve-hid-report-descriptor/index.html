@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Hiểu thêm về HID Report Descriptor - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Hiểu thêm về HID Report Descriptor</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.</p>
+<p>Giờ xin dịch lại bài này một cách khái quát nhất.</p>
+<p>Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau. Qua giao tiếp USB, máy tính có thể giao tiếp với rất nhiều thiết bị từ USB Flash Memory (hay gọi là USB), chuột, bàn phím,..etc. Vì có rất nhiều thiết bị có thể kết nối được, nên để dễ phân biệt và dễ dàng cho việc phát triển Driver trên máy tính, người ta chia thành các lớp thiết bị. Có rất nhiều lớp không thể kể hết được, nhưng xin có 2 lớp chính đó là Mass Storage Device (chính là USB Flash Memory đấy), và HID Device (chính là chuột, bàn phím).</p>
+<p>Về nguyên tắc, từ khi cắm 1 thiết bị USB bất kì cắm vào cổng, cần trải qua 3 giai đoạn giao tiếp giữa máy tính và thiết bị để có thể hiểu nhau. Đó là Reset (về điện đóm), Configured (load các driver tương ứng), Sử dụng được (khi chúng di chuyển được con chuột, hoặc gõ được phím).</p>
+<p>Trong bài này giới thiệu dữ liệu trao đổi giữa HID Driver (nằm trên máy tính) và HID Device (hay về mặt phần mềm là Firmware chạy trên Device). Mà cụ thể nói về &ldquo;HID Report Descriptor&rdquo;, cái được HID Device gửi lên HID Driver để báo cho Driver biết HID Device có những dữ liệu gì mà Driver có thể hỏi được, được tổ chức như thế nào.</p>
+<p>Link : <a href="http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/">http://eleccelerator.com/tutorial-about-usb-hid-report-descriptors/</a></p>
+<p>Một USB HID Report là một trong những descriptor (đặc tả) mà Host yêu cầu từ thiết bị USB. Thiết bị USB sẽ trả lời yêu cầu này bằng các Report. Nhưng Report này sẽ nói cho Host biết các dữ liệu trong quá trình sử dụng mà Device gửi lên nên được hiểu như thế nào. Trong bài này, tác giả Frank-Zhang(Sony Engineer) đã giới thiệu theo từng ví dụ.</p>
+<p>Đầu tiên, hãy vào trang <a href="http://www.usb.org/developers/hidpage/">http://www.usb.org/developers/hidpage/</a> và tìm tài liệu có tên  “Device Class Definition for HID”(Định nghĩa lớp cho các thiết bị HID), trong bài này tác giả sẽ nói về phần cơ bản nhất để hiểu tài liệu này.</p>
+<p>Thứ hai, có thể tải Tool tên là HID Descriptor Tool từ cùng link ở trên luôn. Tool này hỗ trợ việc Edit, Parse một miêu tả HID ở dạng Binary sang dạng người thiết kế dễ dàng đọc hơn.</p>
+<h2 id="usb-hid-report-descriptor-là-cái-gì">USB HID report descriptor là cái gì?</h2>
+<blockquote>
+<p>Giao thức HID giúp việc implement thiết bị trở nên rất dễ dàng. Thiết bị tự định nghĩa các gói dữ liệu của nó và gửi đến Host trông qua các  “HID descriptor”.  HID descriptor là một mảng 1 chiều không hơn không kém, miêu tả gói mà thiết bị định gửi sau đó.  Nó bao gồm : thiết bị hỗ trợ bao nhiêu gói dữ liêu, các gói có kích thước ra sao,  và mục đích của mỗi byte trong dữ liệu. Ví dụ, một phím tính toán trên một keyboard có thể được miêu tả với Host rằng 2 trạng thái (nhấn/nhả) được miêu tả trong bít thứ 2, của byte thứ 6 trong packet số 4.(chú ý là đây chỉ là giả đinh thôi). Một thiết bị thông thường lưu trữ HID Descriptor của nó trong ROM và đương nhiên không cần phải Parse lại làm gì. Nhiều chuột và bàn phím hiện nay được implement chỉ với CPU-8bit.</p>
+</blockquote>
+<p>– Wikipedia on Human Interface Device</p>
+<p>Trong bài viết này, tác giả sẽ dạy chúng ta về USB HID Report Descriptors (Đặc tả mẫu báo cáo dữ liệu cho thiết bị USB HID) bằng một vài ví dụ cụ thể.</p>
+<p>Để cho đơn giản, chúng ta hãy cùng tạo Report Descriptor cho một mouse chuẩn gồm: 3 nút bấm và toa độ di chuyển X, Y. Chúng ta tất nhiên sẽ muốn gửi thông tin về 3 nút kia và tọa độ di chuyển của chuột. Ta cần 1 bit để miêu tả mỗi nút, và 1 byte (giá trị có dấu) để miêu tả mỗi tọa độ. Ta có thể miêu tả đơn giản bằng một bảng các byte như sau:</p>
+<p>Bit 7</p>
+<p>Bit 6</p>
+<p>Bit 5</p>
+<p>Bit 4</p>
+<p>Bit 3</p>
+<p>Bit 2</p>
+<p>Bit 1</p>
+<p>Bit 0</p>
+<p>Byte 0</p>
+<p>Ko sd</p>
+<p>Ko sd</p>
+<p>Ko sd</p>
+<p>Ko sd</p>
+<p>Ko sd</p>
+<p>Nút trái</p>
+<p>Nút giữa</p>
+<p>Nút phải</p>
+<p>Byte 1</p>
+<p>Giá trị có dấu miêu tả tọa độ tương đối X</p>
+<p>Byte 2</p>
+<p>Gia trị có dấu miêu tả tọa độ tương đối Y</p>
+<p>Có thể miêu dữ liệu trên trong một cấu trúc ngôn ngữ C như thế này:</p>
+<p><code>struct</code> <code>mouse_report_t</code></p>
+<p><code>{</code></p>
+<p><code>uint8_t buttons;</code></p>
+<p><code>int8_t x;</code></p>
+<p><code>int8_t y;</code></p>
+<p><code>}</code></p>
+<p>Giờ, ta sẽ miêu tả dữ liêu trên trong Report Descriptor.</p>
+<p>Đầu tiên, ta miêu tả rằng, ta cần một nhóm 3 nút.</p>
+<p><code>USAGE_PAGE (Button)</code></p>
+<p><code>USAGE_MINIMUM (Button 1)</code></p>
+<p><code>USAGE_MAXIMUM (Button 3)</code></p>
+<p>Mỗi nút có trạng thái biểu diễn bằng 1 bít (0/1 tương đương với nhấn và không được nhấn).</p>
+<p><code>LOGICAL_MINIMUM (0)</code></p>
+<p><code>LOGICAL_MAXIMUM (1)</code></p>
+<p>Và ta cần 1 nhóm 3 bít này, nó sẽ được biểu diễn như sau:</p>
+<p><code>REPORT_COUNT (3)</code></p>
+<p><code>REPORT_SIZE (1)</code></p>
+<p>Cuối cùng, khai báo rằng đây là 1 input, nó cần được gửi đến máy tính:</p>
+<p><code>INPUT (Data,Var,Abs)</code></p>
+<p>Cuối cùng, 3 nút được biểu diễn bằng dãy sau:</p>
+<p><code>USAGE_PAGE (Button)</code></p>
+<p><code>USAGE_MINIMUM (Button 1)</code></p>
+<p><code>USAGE_MAXIMUM (Button 3)</code></p>
+<p><code>LOGICAL_MINIMUM (0)</code></p>
+<p><code>LOGICAL_MAXIMUM (1)</code></p>
+<p><code>REPORT_COUNT (3)</code></p>
+<p><code>REPORT_SIZE (1)</code></p>
+<p><code>INPUT (Data,Var,Abs)</code></p>
+<p>OK rồi. nhưng đến đây chưa xong, ta nhớ rằng, cần miêu tả đến mỗi byte được sử dụng như thế nào. Ta ở đây còn 5 bit chưa sử dụng của byte đầu tiên. Ta cần phải báo cho Host biết nó sẽ được dùng làm gì. Hoặc không được dùng làm gì hết thì ta khai báo như sau:</p>
+<p><code>REPORT_COUNT (1)</code></p>
+<p><code>REPORT_SIZE (5)</code></p>
+<p><code>INPUT (Cnst,Var,Abs)</code></p>
+<p>Vậy là 3 nút bấm, trong byte đầu tiên luôn.</p>
+<p>Giờ ta đến với tọa độ X, đầu tiên ta cũng cần khai báo rằng đây là X.</p>
+<p><code>USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>USAGE (X)</code></p>
+<p>Giá trị ó có thể nhận trong khoảng -127 đến 128, ta miêu tả như sau:</p>
+<p><code>LOGICAL_MINIMUM (-127)</code></p>
+<p><code>LOGICAL_MAXIMUM (127)</code></p>
+<p>Cần 1 bộ 8 bit.</p>
+<p><code>REPORT_SIZE (8)</code></p>
+<p><code>REPORT_COUNT (1)</code></p>
+<p>Và đây là dữ liệu input, cần gửi đến máy tính;</p>
+<p><code>INPUT (Data,Var,Rel)</code></p>
+<p>Và ta được dãy miêu tả tọa độ X như sau:</p>
+<p><code>USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>USAGE (X)</code></p>
+<p><code>LOGICAL_MINIMUM (-127)</code></p>
+<p><code>LOGICAL_MAXIMUM (127)</code></p>
+<p><code>REPORT_SIZE (8)</code></p>
+<p><code>REPORT_COUNT (1)</code></p>
+<p><code>INPUT (Data,Var,Rel)</code></p>
+<p>Ta sư dụng trọn ven trọng 1 byte nên không có phần thừa ở đây.</p>
+<p>Với tọa độ Y, ta cũng tương tự có tọa độ X, Y như sau:</p>
+<p><code>USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>USAGE (X)</code></p>
+<p><code>LOGICAL_MINIMUM (-127)</code></p>
+<p><code>LOGICAL_MAXIMUM (127)</code></p>
+<p><code>REPORT_SIZE (8)</code></p>
+<p><code>REPORT_COUNT (1)</code></p>
+<p><code>INPUT (Data,Var,Rel)</code></p>
+<p><code>USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>USAGE (Y)</code></p>
+<p><code>LOGICAL_MINIMUM (-127)</code></p>
+<p><code>LOGICAL_MAXIMUM (127)</code></p>
+<p><code>REPORT_SIZE (8)</code></p>
+<p><code>REPORT_COUNT (1)</code></p>
+<p><code>INPUT (Data,Var,Rel)</code></p>
+<p>Mỗi trên vẫn chạy ngon nhưng để tiết kiệp bộ nhớ (vì Report này thường được lưu trên bộ nhớ rất nhỏ mà). Ta có thể rút như như sau mà không thay đổi ý nghĩa:</p>
+<p><code>USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>USAGE (X)</code></p>
+<p><code>USAGE (Y)</code></p>
+<p><code>LOGICAL_MINIMUM (-127)</code></p>
+<p><code>LOGICAL_MAXIMUM (127)</code></p>
+<p><code>REPORT_SIZE (8)</code></p>
+<p><code>REPORT_COUNT (2)</code></p>
+<p><code>INPUT (Data,Var,Rel)</code></p>
+<p>Toàn bộ 3 nút và tọa độ X, Y được miêu tả bằng dãy dữ liệu sau:</p>
+<p><code>USAGE_PAGE (Button)</code></p>
+<p><code>USAGE_MINIMUM (Button 1)</code></p>
+<p><code>USAGE_MAXIMUM (Button 3)</code></p>
+<p><code>LOGICAL_MINIMUM (0)</code></p>
+<p><code>LOGICAL_MAXIMUM (1)</code></p>
+<p><code>REPORT_COUNT (3)</code></p>
+<p><code>REPORT_SIZE (1)</code></p>
+<p><code>INPUT (Data,Var,Abs)</code></p>
+<p><code>REPORT_COUNT (1)</code></p>
+<p><code>REPORT_SIZE (5)</code></p>
+<p><code>INPUT (Cnst,Var,Abs)</code></p>
+<p><code>USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>USAGE (X)</code></p>
+<p><code>USAGE (Y)</code></p>
+<p><code>LOGICAL_MINIMUM (-127)</code></p>
+<p><code>LOGICAL_MAXIMUM (127)</code></p>
+<p><code>REPORT_SIZE (8)</code></p>
+<p><code>REPORT_COUNT (2)</code></p>
+<p><code>INPUT (Data,Var,Rel)</code></p>
+<p>Đến đây vẫn chưa hết, ta cần thêm một vài trường bao bọc khối này để máy tính hiểu đây là một Report của Mouse.</p>
+<p>Nó giống như thế này:</p>
+<p><code>USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>USAGE (Mouse)</code></p>
+<p><code>COLLECTION (Application)</code></p>
+<p><code>USAGE (Pointer)</code></p>
+<p><code>COLLECTION (Physical)</code></p>
+<p><code>... What we wrote already goes here</code></p>
+<p><code>END COLLECTION</code></p>
+<p><code>END COLLECTION</code></p>
+<p>Cuối cùng, dãy dưới đây mới thực sự là dữ liệu ta vừa tạo:</p>
+<p><code>0x05, 0x01,</code> <code>// USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>0x09, 0x02,</code> <code>// USAGE (Mouse)</code></p>
+<p><code>0xa1, 0x01,</code> <code>// COLLECTION (Application)</code></p>
+<p><code>0x09, 0x01,</code> <code>//   USAGE (Pointer)</code></p>
+<p><code>0xa1, 0x00,</code> <code>//   COLLECTION (Physical)</code></p>
+<p><code>0x05, 0x09,</code> <code>//     USAGE_PAGE (Button)</code></p>
+<p><code>0x19, 0x01,</code> <code>//     USAGE_MINIMUM (Button 1)</code></p>
+<p><code>0x29, 0x03,</code> <code>//     USAGE_MAXIMUM (Button 3)</code></p>
+<p><code>0x15, 0x00,</code> <code>//     LOGICAL_MINIMUM (0)</code></p>
+<p><code>0x25, 0x01,</code> <code>//     LOGICAL_MAXIMUM (1)</code></p>
+<p><code>0x95, 0x03,</code> <code>//     REPORT_COUNT (3)</code></p>
+<p><code>0x75, 0x01,</code> <code>//     REPORT_SIZE (1)</code></p>
+<p><code>0x81, 0x02,</code> <code>//     INPUT (Data,Var,Abs)</code></p>
+<p><code>0x95, 0x01,</code> <code>//     REPORT_COUNT (1)</code></p>
+<p><code>0x75, 0x05,</code> <code>//     REPORT_SIZE (5)</code></p>
+<p><code>0x81, 0x03,</code> <code>//     INPUT (Cnst,Var,Abs)</code></p>
+<p><code>0x05, 0x01,</code> <code>//     USAGE_PAGE (Generic Desktop)</code></p>
+<p><code>0x09, 0x30,</code> <code>//     USAGE (X)</code></p>
+<p><code>0x09, 0x31,</code> <code>//     USAGE (Y)</code></p>
+<p><code>0x15, 0x81,</code> <code>//     LOGICAL_MINIMUM (-127)</code></p>
+<p><code>0x25, 0x7f,</code> <code>//     LOGICAL_MAXIMUM (127)</code></p>
+<p><code>0x75, 0x08,</code> <code>//     REPORT_SIZE (8)</code></p>
+<p><code>0x95, 0x02,</code> <code>//     REPORT_COUNT (2)</code></p>
+<p><code>0x81, 0x06,</code> <code>//     INPUT (Data,Var,Rel)</code></p>
+<p><code>0xc0,</code> <code>//   END_COLLECTION</code></p>
+<p><code>0xc0</code> <code>// END_COLLECTION</code></p>
+<p>Đến đây, nếu bạn gặp vấn đề về một vài khái niệm, bạn có thể đặt câu hỏi với tác giả link gốc hoặc đặt câu hỏi bằng tiếng Việt với chủ blog để cùng thảo luận.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/draft/" rel="tag">Draft</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/hid/" rel="tag">HID</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/usb/" rel="tag">USB</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/usbdescriptor/" rel="tag">USBDescriptor</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

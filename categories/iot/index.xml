@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>IoT on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/categories/iot/</link>
+    <description>Recent content in IoT on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Tue, 08 Mar 2016 15:39:23 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/categories/iot/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Trường Remain Length trong MQTT Fixed Header</title>
+      <link>https://blog.lazytrick.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</link>
+      <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</guid>
+      <description>Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.
+Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver&amp;hellip; Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.</description>
+    </item>
+    
+    <item>
+      <title>Cờ Retain và QoS trong message PUBLISH</title>
+      <link>https://blog.lazytrick.com/post/2016-02-21-khai-quat-ve-mqtt/</link>
+      <pubDate>Sun, 21 Feb 2016 15:41:14 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-02-21-khai-quat-ve-mqtt/</guid>
+      <description>Giao thức MQTT dựa trên mô hình publisher/subscriber (nhà cung cấp/người sử dụng), publisher có dữ liệu trên một lĩnh nào đó (được đại diện bằng các topic), phía subscriber (người mong muốn thông tin) sẽ mong muốn thông tin trên môt lĩnh vực nào đó (cũng được miêu tả bằng topic). Môt anh trung gian ở giữa sẽ nhận từ rất nhiều anh cung cấp trên rất nhiều lĩnh vực, sau đó xem xét, thông tin phù hợp để gửi đến những người sử dụng mà anh trung gian này biết.</description>
+    </item>
+    
+    <item>
+      <title>Giao thức MQTT</title>
+      <link>https://blog.lazytrick.com/post/2015-08-04-giao-thuc-mqtt/</link>
+      <pubDate>Tue, 04 Aug 2015 14:56:02 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-08-04-giao-thuc-mqtt/</guid>
+      <description>Bài này dự là sẽ dịch lại đặc của giao thức MQTT này, nhằm có một cách hiểu tổng quát về MQTT protocol.
+Link gốc :
+http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html
+Update 2017/03/24: Bản dịch của MQTT đã được chuyển sang địa chỉ sau:
+http://minatu2d.github.io/</description>
+    </item>
+    
+  </channel>
+</rss>

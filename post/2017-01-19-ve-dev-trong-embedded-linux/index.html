@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Về /dev trong Embedded Linux - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Về /dev trong Embedded Linux</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Đây là nội dung <strong>pick up</strong> từ <a href="https://buildroot.org/downloads/manual/manual.html">manual</a> của Buildroot.</p>
+<p>Nó mô tả khá rõ về <strong>/dev</strong> trong hệ thống Linux, cùng<br>
+với các giải pháp dành cho hệ thống Embedded Linux.</p>
+<h3 id="62-dev-management">6.2 /dev management</h3>
+<p>Trên 1 hệ thống Linux, thư mục <em>/dev</em> chứa các file đặc biệt, được gọi là<br>
+<em>device files</em> (hay các file thiết bị), cho phép ứng dụng phía user truy cập<br>
+đến các thiết bị phần cứng mà Linux kernel quản lý. Nếu không có những file đặc<br>
+biệt này, ứng dụng phía user không thể sử dụng được các thiết bị phần cứng, thậm<br>
+chí chú có được Linux kernel nhận ra một cách đúng đắn đi chăng nữa.</p>
+<p>Dưới <em>System configuration</em> của Buildroot, có <em>/dev management</em>, có 4 giải pháp<br>
+khác nhau để hangle thư mục <em>/dev</em> này:</p>
+<ul>
+<li>
+<p>Solution 1: <strong>Tĩnh sử dụng bảng thiết bị</strong><br>
+Đây là cách khá cũ để handle các file thiết bị trong Linux. Bằng cách này, các file<br>
+thiết bị sẽ được lưu trữ không đổi (persistently)trên hệ thống file gốc<br>
+(root filesystem) (chúng luôn không đổi qua mỗi lần reboot), và không có quá trình<br>
+tự động thêm, xóa những file thiết bị này khi phần được thêm, gỡ từ hệ thống. Buildroot<br>
+cho phép tạo ra một tập các file thiết bị này sử dụng <em>bảng thiết bị</em> (device table),<br>
+mặc định chúng sẽ nằm ở <em>system/device_table_dev.txt</em> trong source code của Buildroot.<br>
+File này sẽ được sử dụng khi Buildroot tạo ảnh hệ thống file cuối cùng<br>
+(final root filesystem image), vì thế nó sẽ không xuất hiện trong thư mục<br>
+<em>output/target</em>. Tùy chọn <em>BR2_ROOTFS_STATIC_DEVICE_TABLE</em> cho phép thay đổi bảng<br>
+thiết bị mặc định mà Buildroot sẽ sử dụng. Bạn có thể tạo bảng thiết bị của riêng<br>
+cho dự án của mình.</p>
+</li>
+<li>
+<p>Solution 2: <strong>Động chỉ sử dụng devtmpfs thôi</strong><br>
+<em>devtmpfs</em> là một hệ thống file &ldquo;ảo&rdquo; (chỉ nằm trên RAM) trong Linux kernel, được<br>
+được vào ở phiên bản kernel 2.6.32 (nếu bạn sử dụng kernel cũ hơn, thì không thể<br>
+sử dụng option này). Khi được mount vào <em>/dev</em> hệ thống file ảo này sẽ tự động làm<br>
+cho các file thiết bị xuất hiện hoặc không xuất hiện tương ứng với thiết bị phần<br>
+cứng được thêm hay được rút khỏi hệ thống. Hệ thống file này sẽ không được bảo<br>
+toàn sau mỗi lần reboot, đơn giản vì nó được thay đổi động bởi kernel. Khi muốn<br>
+sử dụng <em>devtmpfs</em>, trong cấu hình kernel, các tham số sau phải được bật:<br>
+<em>CONFIG_DEVTMPFS</em> và <em>CONFIG_DEVTMPFS_MOUNT</em>. Khi Buildroot thực hiện việc build<br>
+Linux kernel cho hệ thống của bạn thì nó sẽ đảm bảo chắc chắn 2 option trên được<br>
+bật. Còn khi bạn tự build Linux kernel bên ngoài Buildroot, bạn phải có trách nhiệm<br>
+bật 2 option đó (Nếu không làm thế, hệ thống sau khi build sẽ không khởi động được<br>
+đâu)</p>
+</li>
+<li>
+<p>Solution 3: <strong>Động sử dụng devtmpfs + mdev</strong><br>
+Cách này vẫn dựa trên hệ thống file ảo <em>devtmpfs</em> đã nói ở trên (vì thế để sử dụng<br>
+được thì phải bật 2 option: <em>CONFIG_DEVTMPFS</em> và <em>CONFIG_DEVTMPFS_MOUNT</em>) khi<br>
+cấu hình Linux kernel, và nó thêm một tiện ích phía userspace, đó là <em>mdev</em> phía<br>
+trên của <em>devtmpfs</em>.　<em>mdev</em> là một chương trình, một phần của Busybox, chương trình<br>
+này sẽ được kernel gọi mỗi khi 1 thiết bị được thêm hoặc loại bỏ khỏi hệ thống.<br>
+Nhờ file cấu hình tại <em>/etc/mdev.conf</em>, <em>mdev</em> có thể được cấu hình một cách linh<br>
+hoạt. Ví dụ, set quyền hoặc ownership cho file thiết bị, gọi một script hoặc ứng<br>
+dụng bất cứ khi nào một thiết bị xuất hiện hoặc biến mất, etc. Về cơ bản, nó cho<br>
+phép phía userspace tham gia vào sự kiện thêm hoặc loại bỏ thiết bị. Ví dụ, việc<br>
+load tự động kernel modules khi thiết bị xuất hiện trên hệ thống. <em>mdev</em> cũng đóng<br>
+vai trò quan trọng nếu bạn có thiết bị yêu cầu firmware để hoạt động được, nó sẽ<br>
+chịu trách nhiệm đẩy nội dung chuyển nội dung firmware cho kernel. <em>mdev</em> là phiên<br>
+<em>nhẹ nhàng</em> của <em>udev</em>. Thông tin chi tiết về <em>mdev</em> và cú pháp file cấu hình có<br>
+thể xem tại <a href="http://git.busybox.net/busybox/tree/docs/mdev.txt">đây</a></p>
+</li>
+<li>
+<p>Solution 4: <strong>Động sử dụng devtmpfs + eudev</strong><br>
+Cách này cũng tiếp tục dựa trên hệ thống file ảo <em>devtmpfs</em> đã nói ở trên, nhưng<br>
+thêm một ứng dụng chạy daemon (ngầm) bên trên <em>devtmpfs</em>, đó là <em>eudev</em>. <em>eudev</em><br>
+là ứng dụng chạy ngầm nhận lời gọi từ kernel khi một thiết bị được thêm hoặc loại<br>
+bỏ khỏi hệ thống. Nó <em>nặng</em> hơn so với <em>mdev</em>, nhưng cung cấp tính mềm dẻo tốt hơn.<br>
+<em>eudev</em> là một phiên bản chạy độc lập của <em>udev</em> - chính là ứng dụng chạy ngầm phía<br>
+userspace được sử dụng trong hầu hết các bản phân phối Linux desktop. Hiện tại nó<br>
+cũng là 1 phần của <em>systemd</em> nữa.</p>
+</li>
+</ul>
+<p>Các developer của Buildroot khuyến nghị sử dụng <strong>Solution 2</strong> (Động chỉ sử dụng<br>
+devtmpfs). Nếu bạn cần phía userspace được thông báo khi có sự kiện thêm/loại bỏ<br>
+thiết bị hoặc firmware khi cần, thì <strong>Solution 3</strong> là một lựa chọn tốt.</p>
+<p>Có 1 chú ý ở đây, nếu <em>systemd</em> được chọn làm <em>init system</em>, thì <em>/dev</em> sẽ được<br>
+thực hiện bởi <em>udev</em> cung cấp từ chính <em>systemd</em>.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/device-file/" rel="tag">device file</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/kernel/" rel="tag">Kernel</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/systemd/" rel="tag">systemd</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/udev/" rel="tag">udev</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

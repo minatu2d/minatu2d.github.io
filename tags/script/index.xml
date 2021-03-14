@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>script on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/script/</link>
+    <description>Recent content in script on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Fri, 03 Nov 2017 09:02:16 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/script/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thực hiện 3 phép tập hợp trên bash</title>
+      <link>https://blog.lazytrick.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</link>
+      <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</guid>
+      <description>Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
+Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.
+Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krumins chủ trang http://www.catonmat.net/
+1. Phép giao Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.</description>
+    </item>
+    
+    <item>
+      <title>Một số thứ khi sử dụng command, viết script trong bash</title>
+      <link>https://blog.lazytrick.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</link>
+      <pubDate>Fri, 03 Nov 2017 06:31:11 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</guid>
+      <description>Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên The art of command line và mình cũng đã dịch thử (chưa được review) ở
+Nghệ thuật sử dụng dòng lệnh
+1. Hạn chế gõ lại câu lệnh cho dù là rất ngắn Hãy sử dụng chức năng tìm đoạn đang gõ trong history để làm giảm công gõ lại
+Hai chức năng tìm xuôi và tìm ngược được bash cung cấp rồi.</description>
+    </item>
+    
+  </channel>
+</rss>

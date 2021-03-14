@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Wireshark có thể làm gì? - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Wireshark có thể làm gì?</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Dù biết tool này đã lâu, từ hồi học ĐH có mở ra mở vào để làm mấy bài tập mạng theo kiểu &ldquo;chống chế&rdquo;. Hơn nữa ngày đó, phần mạng (networking) mình cũng không nhiều kiến thức vì đang ham hố phần viết một phần mềm để đời, có giao diện chứ không đen ngòm như mấy cái thầy giáo dạy trên lớp.</p>
+<p>Lại sắp lan man rồi, vào đề thôi.</p>
+<p>Trong bài này sẽ trả lời mấy câu sau:</p>
+<ul>
+<li>
+<ol>
+<li>Thế nào là phân tích traffic của mạng.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Một chút hiểu biết cơ bản về phần cứng trong mạng (hub, switch, router&hellip;)</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Wireshark là phần mềm gì thế?</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Một số ứng dụng có thể thấy.</li>
+</ol>
+</li>
+</ul>
+<p>Ta sẽ đi trả lời tuần tự từng câu hỏi.</p>
+<h2 id="1--thế-nào-là-phân-tích-traffic-mạng">1.  Thế nào là phân tích traffic mạng.</h2>
+<ul>
+<li>
+<p>Trước hết traffic nghĩa là gì? Tại sao không gọi là dữ liệu mạng, hay tài nguyên mạng hay gì khác.</p>
+</li>
+<li>
+<p>Từ traffic ở đây được hiểu là lưu lượng đi qua, hay nội dung đi qua một chỗ nào đó. Trong mạng đó có thể là card mạng (chỗ nối dây mạng vào trên máy tính), hub, switch, hay router&hellip;. Ta nên hiểu mạng giống như một hệ thống đường xá.</p>
+</li>
+<li>
+<p>Dữ liệu của chúng ta giống như hàng hóa, được chuyên chở đến đích bằng một hệ thống đường dây kết nối điểm gửi và điểm nhận. Ta có thể hiểu như thế này, muốn chuyên hàng từ làng L1 của tỉnh T1, đến làng L2 của tỉnh T2. Người ta sẽ phải gửi hàng lên tỉnh, rồi từ tỉnh T1 gửi sang tỉnh T2 rồi từ T2 chuyển dần xuống làng L2. Vận chuyển dữ liệu cũng vậy, dữ liệu được đóng vào các gói tin rồi cho di chuyển qua đường mạng. Tuy nhiên, vì mạng quá chẳng chịt nên nhiều khi không biết phải chuyển đi đường nào là đúng nhất nên có những trường hợp phải chuyển đi mọi hướng, rồi đến đâu lại hỏi tiếp, đến khi nào tới nơi thì thôi.</p>
+</li>
+<li>
+<p>Đến mỗi điểm mà có giao cắt chẳng hạn, các gói tin này sẽ được người quản lý ở các điểm giao cắt đó chuyển đến điểm kế tiếp.</p>
+</li>
+<li>
+<p>Lưu thông trong mạng cũng vậy, không phải bao giờ gói tin cũng đuợc chuyển đến đúng điểm nhận bằng một đường duy nhất. Và rất nhiều trường hợp không thể chuyển đến điểm đích được.</p>
+</li>
+<li>
+<p>Khi gặp vấn đề này, người ta thường dùng cách phân tích traffic (các gói tin qua các điểm nối) để thấy gói đó được chuyển như thế nào, và từ đó tại sao lại không tới đích.</p>
+</li>
+<li>
+<p>Thêm một điểm cần nói đến ở đây, không phải sau khi ta nhấn nút gửi trên màn hình máy tính, thì máy tính tập hợp tất cả cái đó rồi quăng xuống dây mạng và vận chuyển đi. Giống như hàng hóa, nó cần được bọc lại, để tránh bị tò mò.</p>
+</li>
+<li>
+<p>Trong mạng có 7 tầng, không nhớ rõ lắm nữa. Tại mỗi tầng, dữ liệu đều được bọc lại, và lúc đó gói bé cũng như gói lớn bên ngoài giống nhau hết. Được gọi là đơn vị vận chuyển của tầng tương ứng.</p>
+</li>
+</ul>
+<p><strong>Ví dụ</strong> : Web sẽ sử dụng giấy là HTTP để bọc dữ liệu, xuống phía dưới, Cả cục HTTP này lại được bọc bên trong 1 cục TCP, sau đó cả cục TCP đó được bọc tiếp trong một cục IP, cuối cùng IP mới chuyển cho mấy em đường dây để chuyển qua mạng. Bên nhận cũng có các tầng tương ứng, mỗi tầng sẽ bóc lớp tương ứng của nó thôi rồi chuyển cái có được bên trong lên cho tầng trên.</p>
+<h2 id="2-một-chút-về-phần-cứng-mạng">2. Một chút về phần cứng mạng.</h2>
+<h3 id="a-hub">a. Hub</h3>
+<p>Hay còn gọi là repeater, nó có nhiều cổng, dữ liệu vào bất kì cổng nào sẽ được copy ra nhiều bản, mỗi bản gửi đến một cổng còn lại. Anh Hub này thực sự không có một chút trí nhớ nào, dù có chuyển bao nhiều lần đi nữa thì mỗi gói tin đến anh này đề copy bi ra rồi gửi mỗi bản đến các cổng còn lại. Và nó không thể nhận nhiều gói cùng một lúc trên các cổng khác nhau được.</p>
+<h3 id="b-switch">b. Switch</h3>
+<p>Về cơ bản là cũng chuyển gói tin đến từ một cổng vào sang một cổng ra khác. Tuy nhiên, switch &ldquo;khôn&rdquo; hơn hub, nó không copy gói đó rồi chuyển đến tất cả các cổng. Nó lưu lại một bảng để biết là cổng nào sẽ nói đến IP nào. Vì vậy lúc chuyển nó sẽ chuyển gói đó đến port tương ứng thôi.</p>
+<h3 id="c-router">c. Router</h3>
+<p>Cái này mới gọi là pro nè. Nó chẳng những làm được việc chuyển gói tin đến các máy cắm vào nó một cách chính xác như switch, nó còn có khả năng chuyển gói tin ra ngoài nếu bản thân nó không biết địa chỉ đến của gói tin ở đâu.</p>
+<h2 id="3--wireshark-là-phần-mềm-gì">3.  Wireshark là phần mềm gì?</h2>
+<ul>
+<li>
+<p>Là phần mềm mã nguồn mở được sử dụng phổ biến trong lĩnh vực phân tích traffic mạng.</p>
+</li>
+<li>
+<p>Về mặt phần cứng, nó hoạt động được là nhờ vào chế độ promiscuous của thiết bị mạng.</p>
+</li>
+<li>
+<p>Khi chạy ở chế độ này, card mạng sẽ cho ta biết tất cả các gói tin qua nó kể các cái gói tin mà đích đến không phải là card mạng đó.</p>
+</li>
+<li>
+<p>Có rất nhiều tool cho việc phân tích traffic mạng này. Nhưng nhờ rất nhiều ưu điểm vượt trội mà wireshark thường được sử dụng nhiều nhất. Có thể kể ra ở đây một vài ưu điểm sau:<br>
+&ndash; Số protocol hỗ trợ là quá nhiều, nếu bạn thấy có giao thức nào chưa được hỗ trợ hay gửi mail yêu cầu cho công đồng, nó sẽ có ở phiên bản tiếp theo. Thậm chí, bạn có thể tự viết một protocol rồi gửi yêu cầu được merge vào đến các maintainer. Nó cũng sẽ xuất hiện trong phiên bản tiếp theo nếu được chấp nhận.<br>
+&ndash; Giao diện thân thiện và kinh điển.　Wireshark có giao diện được coi như điển hình của một chương trình phân tích traffic mạng.</p>
+</li>
+<li>
+<p>Giá là zero. Vì là phần mềm mã nguồn mở theo giấu GPL. Chúng ta có thể sử dụng chúng với bất kì mục đích nào, kể cả thương mại lẫn không thương mại.</p>
+</li>
+</ul>
+<h2 id="4-một-số-số-ứng-dụng-có-thể-thấy-của-wireshark">4. Một số số ứng dụng có thể thấy của wireshark.</h2>
+<h3 id="phân-tích-vấn-đề-không-kết-nối-của-2-endpoint-đã-được-kết-nối-vật-lý-với-nhau">Phân tích vấn đề không kết nối của 2 endpoint đã được kết nối vật lý với nhau.</h3>
+<p>Vì gói tin được di chuyển qua rất nhiều thiết bị mạng trước khi đến máy đích.</p>
+<p>Ta cần kiểm tra tại mỗi node (có thể là hub, switch, router&hellip;) để biết được, gói tin có được truyển theo đường mong muốn không.</p>
+<p>Với hub, ta chỉ cần nối một máy tính chạy wireshark vào một cổng bất kì của hub đó. Mọi gói tin vào hub sẽ qua máy tính phân tích của chúng ta.<br>
+Với switch, do các cái gói tin sẽ được truyền đến 1 port để đi tiếp đến đích. Ta sẽ sử dụng 2 phương án:<br>
+sw1 : Ta đặt một hub trên đường từ điểm muốn kiểm tra tới switch.<br>
+sw2 : Ta sử dụng chế độ mirror trong switch để sao chép gói tin sang một port ta mong muốn.</p>
+<p>Với router, ta sẽ sử dụng cách 1 của switch.</p>
+<h3 id="sử-dụng-stream-để-theo-dõ-follow-dữ-liệu-được-trao-đổi-giữa-2-endpoint">Sử dụng stream để theo dõ follow dữ liệu được trao đổi giữa 2 endpoint.</h3>
+<p>Với TCP, việc view stream sẽ cho ta thấy tất cả các gói tin được gửi giữa 2 điểm từ lúc socket được tạo đến lúc kết thúc việc bắt gói tin hoặc ngắt kết nối.<br>
+Với UDP, việc view stream sẽ cho ta thấy thứ tự về thời gian các các gói tin UDP.</p>
+<h3 id="sử-dụng-flow-graph">Sử dụng Flow Graph</h3>
+<p>Chức năng này cho ta thấy một biểu đồ ở dạng tuần tự. Nó mô tả những end point nào, giap tiếp với card mạng hiện tai. Trong một mạng nhỏ không kết nối internet, biểu đồ này cho thấy tổng quan thứ tự kết nối, truyển dữ liệu giữa các máy tính với nhau một cách dễ dàng nhất.</p>
+<h3 id="io-graph">IO Graph</h3>
+<p>Chức năng này cho ta một biểu đồ histogram mô tả lưu lượng gói tin qua card mạng theo thời gian.</p>
+<h3 id="chức-năng-conversation">Chức năng conversation</h3>
+<p>Cho ta tổng quan về lượng dữ liệu đã trao đổi giữa các endpoint với máy tính ta đang phân tích.<br>
+Bao nhiêu gửi đi, gửi cho những ai, bao nhiều nhận về, nhận từ những ai sẽ hiện ra rất rõ ràng.</p>
+<p>Qua phần đầu của dự án hiện tại, mình mới để ý thấy chừng đó chức năng.<br>
+Mình nghĩ rằng mình sẽ viết một phần mở rộng cho wireshark để hỗ trợ phân tích các message ứng dụng mình tự định nghĩa. Chưa có kế hoạch cụ thể.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/wireshark/" rel="tag">Wireshark</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

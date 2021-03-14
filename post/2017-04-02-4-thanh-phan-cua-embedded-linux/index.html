@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>4 thành phần của Embedded Linux - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">4 thành phần của Embedded Linux</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)&hellip;cho đến các thiết bị gia dụng, gia đình.</p>
+<p>Khi sử dụng máy tính cá nhân, server ta dễ dàng &ldquo;sờ&rdquo; thấy được các thành phần của Linux như các tiến trình, shell..etc.<br>
+Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi. Ta thường chỉ quan tâm đến ứng dụng chạy trên đó thôi.</p>
+<p>Nhưng ở một mảng ứng dụng khác của Linux, nơi mà trên đó ta thường chỉ chạy 1 ứng dụng, rất khó thấy các thành phần bên trong, hầu như không thay đổi được&hellip;thì Linux như thế nào, nó giống với các bản phân phối ta vẫn gặp không.</p>
+<p>Rồi thêm nữa, trên quan điểm của một &ldquo;coder&rdquo;, thì người ta phát triển thiết bị chạy Linux kiểu đó như thế nào.</p>
+<p>Bài này chỉ nói về các thành phần mà người ta phải nghĩ đến khi phát triển một ứng dụng trên một phần cứng mới. Tất nhiên, hầu hết chúng ta sẽ phát triển ứng dụng, ít động đến những phần đó. Nhưng có một hiểu biết tổng quan sẽ rất thú vị.</p>
+<h2 id="1-toolchain---compiler-linker-sysroot">1. Toolchain - compiler, linker, sysroot&hellip;</h2>
+<h3 id="11-tại-sao-lại-phải-quan-tâm-đến-toolchain-ngay-từ-đầu-và-toolchain-là-cái-gì">1.1 Tại sao lại phải quan tâm đến toolchain ngay từ đầu, và toolchain là cái gì?**</h3>
+<p>Như chúng ta đã biết, để chạy một đoạn code C (ngôn ngữ nào khác) bất kì, dù đơn giản đến đâu đi nữa, thì ta phải biên dịch nó ra mã nhị phân mà máy tính hiểu được. Việc biên dịch đó cần một phần mềm gọi là <em>Compiler</em>.</p>
+<p>Nếu C đó sử dụng các thư viện khác, ví dụ thư viện chuẩn để nhập xuất chẳng hạn, thì rất có thể nó còn cần các file header, các mã binary của thư viện nữa.</p>
+<p>Để liên kết những thứ đó lại rồi tạo ra 1 file nhị phân có thể chạy được thì cần đến một <em>Linker</em>.</p>
+<p>Rồi từ code C không chỉ 1 bước là biến thành mã máy, nó phải chuyển sang mã Assembly rồi dùng chuyển từ mã Assembly đó ra mã máy. Việc đó ít nhất còn cần 1 thêm 1 <em>Compiler</em> cho Assembly nữa.</p>
+<p>Vì con người đã không còn viết trực tiếp mã nhị phân cho máy tính nữa nên bất cứ phần mềm nào từ bootloader, kernel, rồi lệnh ls, lệnh copy&hellip;etc đều phải được biên dịch ra mã nhị phân mới nhét vào máy tính chạy được.</p>
+<p>Vì thế, nếu không thể tạo ra mã nhị phân cho nền tảng tính toán (platform) thì ta vẫn chỉ có 1 &ldquo;phần cứng&rdquo; với đúng nghĩa đen của nó mà thôi.</p>
+<h3 id="12-vậy-toolchain-cho-linux-chung-là-gì">1.2 Vậy Toolchain cho Linux chung là gì?**</h3>
+<p>Nó ít nhất bao gồm những thành phần sau:</p>
+<ul>
+<li>binutils (công cụ xử lý liên quan đến mã phân): GNU Assembler, Linker, etc.</li>
+<li>gcc: GNU C Compiler</li>
+<li>C library (libc): gồm các file header lẫn các file binary cho phép ứng dụng giao tiếp với hệ điều hành.</li>
+<li>gdb: Debugger</li>
+</ul>
+<p>Có 2 loại Toolchain là <em>Native</em> và <em>Cross</em> chia theo mối quan hệ giữa môi trường nó chạy và môi trường nó sinh mã nhị phân cho:</p>
+<ul>
+<li><em>Native</em> : tức là chạy trên máy nào, sinh mã nhị phân chạy cho máy ấy luôn<br>
+Ví dụ các bản phân phối ta vẫn dùng cũng được gọi là sử dụng <em>Native Toolchain</em></li>
+<li><em>Cross</em>: tức là chạy trên một máy, nhưng sinh mã nhị phân cho máy khác.</li>
+</ul>
+<p>Khi phát triển Embedded Linux, hầu hết chúng ta sẽ sử dụng <em>Cross Toolchain</em>.<br>
+Vì các thiết bị chạy thường tốc độ thấp, bộ nhớ ít nên không thích hợp để build source trên đó.</p>
+<h3 id="13-c-library">1.3 C Library**</h3>
+<p>Hay chính glibc ta vẫn thấy trên các distro, thường được kèm theo GCC cho Platform tương ứng luôn</p>
+<p>Có 3 lựa chọn của thư viện này:</p>
+<ul>
+<li><strong>GNU glibc</strong>: đầy đủ chức năng của glibc, nhưng kích thước lớn và chạy cũng tốn</li>
+<li><strong>GNU eglib</strong>: vẫn là glibc, nhưng dễ configure hơn, dễ sử dụng ở hệ thống Embedded</li>
+<li><strong>uClibc:</strong> nhỏ, không được update thư viện liên quan đến thread và các hàm POSIX khác</li>
+</ul>
+<h3 id="14-các-tiêu-chí-để-chọn-một-toolchain">1.4 Các tiêu chí để chọn một Toolchain**</h3>
+<ul>
+<li>Có hỗ trợ tốt platform của bạn không: ví dụ hỗ trợ kiến trúc ARM nào, &hellip;có là soft-float hay hardfloat.</li>
+<li>Có thư viện C phù hợp với yêu cầu dự án không.</li>
+<li>Có được cập nhật không</li>
+<li>Có được hỗ trợ tốt (từ cộng đồng hoặc thương mại) không</li>
+<li>Các công cụ kèm theo có ngon không</li>
+</ul>
+<p>Nhiều hãng tự xây dựng Toolchain, nhưng mình đoán họ thường dựa trên một Toolchain Open-source có sẵn. Bên dưới là một số Toolchain rất hay được sử dụng.</p>
+<p>![Toolchain_examples_1]({{ with .Site.Baseurl }}/assets/toolchain_examples_1.png)</p>
+<p><img src="https://blog.lazytrick.com/post/images/toolchain_example_2.png" alt="Toolchain_example_2"></p>
+<h3 id="15-vấn-đề-khi-sử-dụng-thư-viện">1.5 Vấn đề khi sử dụng thư viện</h3>
+<p>Có nhiều Toolchain chỉ cung cấp đúng cái thư viện C Standard thôi.</p>
+<p>Nếu muốn sử dụng một thư viện nào khác thì sao?<br>
+Bạn có thể may mắn nếu tìm được bản build của thư viện đó cho platform của bạn đã được tác giả hoặc người khác cung cấp rồi.</p>
+<p>Trường hợp xấu nhất, phải lấy source về tự build.Nếu thư viện được viết tốt thì không vấn đề gì, còn không có thể không thể build nổi hoặc rất tốn công sức.</p>
+<p>Vì thế, sẽ tốt hơn nếu chọn Toolchain mà được nhiều thư viện hỗ trợ.</p>
+<h3 id="16-vấn-đề-với-debug">1.6 Vấn đề với debug</h3>
+<p>Đã phát triển phần mềm việc có bug và phải fix nó là chuyện đương nhiên.</p>
+<p>Debug luôn là một phần trong phát triển, thậm chí có ý nghĩa rất quan trọng tới việc một dự án có kịp hay không. Vì một lỗi không thể fix có thể kéo theo một loạt hệ quả khác.<br>
+Kiểu như chức năng A chưa fixed được các chức năng B, C, D chưa thể test hoặc có test nhưng độ tin tưởng sẽ thấp chẳng hạn. Dễ bị móm lắm.</p>
+<p>Khi làm việc với Embedded Linux, ta nên xem xét xem toolchain có một <em>gdb</em> (gdb client) chạy ở một máy (khác với phần cứng thật) và một gdb server (chạy trên thiết bị thật) hay không để biết được có thể debug từ xa cho thiết bị hay không.</p>
+<h3 id="17-một-vài-chú-ý-khác">1.7 Một vài chú ý khác</h3>
+<p>Một số công cụ dưới đây nếu có sẽ làm quá trình phát triển thuận lợi hơn rất nhiều.</p>
+<ul>
+<li>Một vài công cụ khác như Profiler (không có nhiều kinh nghiệm sử dụng)</li>
+<li>Tracer..</li>
+<li>Plugin cho Eclipse&hellip;</li>
+</ul>
+<h2 id="2-bootloader---sống-vì-kernel-hy-sinh-để-kernel-sống">2. Bootloader - sống vì kernel, hy sinh để kernel sống</h2>
+<p><strong>Tại sao lại cần bootloader, và bootloader là cái gì</strong></p>
+<p>Trước hết nó cũng là phần mềm giống hệ điều hành, hay các ứng dụng ta vẫn đang chạy hàng ngày thôi.</p>
+<p>Ta đã biết rằng ứng dụng của ta chạy trên hệ điều hành chứ có chạy trên bootloader éo đâu.<br>
+<strong>Vậy bootloader là cái qué gì??? Có nhất thiết phải cần nó???</strong></p>
+<p>Nếu nói hệ điều hành chung, ngoài Linux, bao gồm các hệ điều hành cực nhỏ, giống như mấy RTOS chẳng hạn, thì có thể không cần cái bootloader ta đang nói ở đây.<br>
+Vì thường CPU có khả năng load một đoạn code nhất định, nếu hệ điều hành đủ nhỏ để CPU load được nó lên bộ nhớ thì không cần bootloader nữa.</p>
+<p><strong>Vậy kết cục, bootloader làm cái mie gì???</strong><br>
+Nguyên nhân chính là từ nguyên lý cơ bản về máy tính (không nhớ rõ tên lắm).<br>
+Đại ý là: <strong>chương trình phải được load lên bộ nhớ rồi mới chạy được</strong>.</p>
+<p>CPU thường cũng có sẵn một đoạn code nhỏ được chạy, sau khi được cắm điện, đoạn code dùng để load một đoạn cố định ở đâu đó (thường là boot sector trên main storage) vào bộ nhớ để chạy.<br>
+*Ta nên phân biệt rõ bộ nhớ là RAM nha, còn thiết bị nhớ thì nói đến HDD, SSD, USB Memory&hellip;loại không bị xóa khi mất điện ấy để đỡ bị loạn)</p>
+<p>Vì để chạy được ứng dụng thì phải load kernel vào bộ nhớ đầu, ta giả sử nhân Linux có kích thước khoảng 9MB đi. CPU không thể load chừng đó vào được, có load được đi nữa thì cũng rất bất tiện, vì CPU chỉ thao tác thường là với một địa chỉ, của một loại thiết bị nhớ nhất định mà thôi. Khi thay đổi thì vỡ mồm luôn.</p>
+<p>Để giải quyết vấn đề này, người ta chia từ lúc cắm điện đến lúc nhân hệ điều hành được load vào bộ nhớ thành nhiều giai đoạn nối tiếp nhau:<br>
+Kiểu như thế này</p>
+<p>CPU &ndash;&gt; LD 1 &ndash;&gt; LD 2 &ndash;&gt; LD 3 &hellip;&mdash;&gt; Hệ điều hành</p>
+<p>CPU thực hiện load LD 1, LD 1 đưa vào bộ nhớ để chạy, chính nó sẽ thực hiện load LD 2, rồi cứ thế, load hệ điều hành và chạy hệ điều hành.</p>
+<p>Đến hệ điều hành rồi, thì ta sẽ có thể chạy được mọi thứ rồi.</p>
+<p>Ở đây ta nên nhớ thực hiện load xong LD tiếp theo, nó chuyển điều khiển (hay nhảy đến địa chỉ mà được load trên bộ nhớ) để chạy Loader vừa được load. Điều đó cũng có nghĩa, LD trước đó sẽ kết thúc nhiệm vụ, không cần nữa.</p>
+<p>Quá trình thực hiện LD 1 &ndash;&gt; LD 2&hellip;.&ndash;&gt; LD N</p>
+<p>Được gọi chung là quá trình Booting, hay cả đống LDn kia được gọi là Bootloader.</p>
+<p>Có bao nhiêu load rồi thay thế sẽ phụ thuộc vào Platform cũng như Bootloader bạn sử dụng.</p>
+<p>Nếu LD 1 để khả năng load hệ điều hành rồi, thì không cần đến LD 2, 3 nữa.</p>
+<p>Nguyên lý có vẻ là vậy, nhưng thường các Bootloader được có 2, hoặc 3 lần là đến hệ điều hành rồi.</p>
+<p>Các nhiệm vụ chính của bootloader:</p>
+<ul>
+<li>Khởi tạo phần cứng</li>
+<li>Thiết lập bộ nhớ RAM</li>
+<li>Thiết lập bộ xử lý</li>
+<li>Load hệ điều hành bằng cách đọc thiết bị nhớ, từ mạng, từ serial&hellip;</li>
+</ul>
+<p>Trên Embedded Linux, bootloader được sử dụng phổ biến là Das U-Boot, Barebox.</p>
+<p>Phổ biến nhất là Das U-Boot, rất nhiều chắc năng mạnh mẽ.</p>
+<ul>
+<li>Có thể truy cập được các hệ thống file phổ biến như: FAT, ext2, ext3, ext4.</li>
+<li>Hỗ trợ cả load kernel qua network nữa.</li>
+<li>Hỗ trợ cơ chế truyền tham số cho kernel bằng device tree khi boot kernel.</li>
+</ul>
+<h2 id="3-kernel---hệ-điều-hành-bắt-đầu-từ-đây">3. Kernel - hệ điều hành bắt đầu từ đây</h2>
+<p>Kernel - Thành phần quan trọng nhất của hệ thống, chứa bộ lập lịch các tiến trình, quản lý bộ nhớ, quản lý thiết bị&hellip;etc.</p>
+<p><strong>Được khởi động từ bootloader</strong><br>
+Binary của Kernel được chứa trong 1 file. File chứa kernel thường có 2 loại là zImage (nén tự giải) và uImage, phần header hỗ trợ việc boot từng Das U-Boot.</p>
+<p>Sau khi được load lên địa chỉ bộ nhớ thích hợp, kernel sẽ được khởi động (theo mình hiểu đơn giản là JUMP đến địa chỉ đó để chạy).<br>
+Trước khi JUMP đến các giá trị tham số khởi động (một phần từ device tree) phải được truyền vào thông qua các thanh ghi phù hợp.</p>
+<p><strong>Board Support Package</strong></p>
+<p>Để kernel chạy được trên phần cứng, thì phải có BSP (Board Support Package).<br>
+BSP chứa các phần giao tiếp với phần cứng cụ thể, nó đóng vai trò trung gian cho hầu hết các lớp khác của Kernel và phần cứng.<br>
+BSP có thể từ main-stream (tức là được tích hợp trong source của Linux) hoặc từ chính các Vendor tạo ra phần cứng.<br>
+Các BSP này có thể được cung cấp qua các bản Patch.</p>
+<p><strong>Kernel module</strong></p>
+<p>Là thành phần phần mềm được load động vào kernel để chạy. Chạy ở kernel-space chứ không phải user-space.</p>
+<p>Tùy vào cấu hình khi biên dịch kernel mà mỗi module, hoặc nhóm module sẽ được tích hợp sẵn vào bên trong kernel (file zImage hoặc uImage) hoặc được load khi hệ thống đang chạy.</p>
+<p>Ứng dụng phổ biến của module là được sử dụng làm driver cho thiết bị.</p>
+<p>Có một điểm chú ý liên quan đến license của một kernel module.<br>
+Đó là, dạng load được vào kernel là dạng binary, đã số là mã nguồn mở, nhưng có một số kernel module được sử dụng kèm theo thiết bị lại ở dạng mã nguồn đóng, và chúng sẽ không được quản lý trên main stream.<br>
+Cần chú ý cái này khi sử dụng kernel module dạng này trong các sản phẩm thương mại.</p>
+<h2 id="4-user-space-applications---với-user-đây-là-hệ-thống">4. User-space applications - với user đây là hệ thống</h2>
+<p>Là các ứng dụng từ init đến các ứng dụng đồ họa ta dùng.<br>
+Đây là một phần quan trọng và không thể thiếu của hệ thống.<br>
+Kernel sẽ là vô dụng nếu không có ứng dụng sử dụng các chức năng của kernel đó.<br>
+Không tồn tại một hệ thống chỉ có kernel.</p>
+<p><strong>Hệ thống file root</strong></p>
+<p>Như ta đã biết, kernel (file zImage hoặc uImage) có thể được lưu bất cứ đâu.<br>
+Nó chỉ là 1 file nằm trong 1 hệ thống file bất kì từ FAT, extN trên bất cứ thiết bị nào mà bootloader có thể đọc được, kể cả ở 1 NFS server có kết nối đến thiết bị thật.</p>
+<p>Còn các ứng dụng thì sao??<br>
+Nó thường là một nhóm ứng dụng và nó phải nằm trong 1 hệ thống file.<br>
+Hệ thống file này có thể nằm trên thiết bị nhớ hoặc trên bộ nhớ (trường hợp Init RAM fs)<br>
+Khi được khởi động, hệ thống chỉ chạy duy nhất một root file system mà thôi.<br>
+Được gọi là hệ thống file root, hệ thống file này có thể extN, JFFS2, ZFS, UBIFS&hellip;hỗ trợ các yêu cầu về hệ thống file cho Linux.</p>
+<p>Có thể có một số hệ thống file nằm trên RAM mà không cần đến một thống file trên thiết bị lưu trữ.</p>
+<p>Nhưng vì chỉ tồn tại trên RAM, nên nó chỉ hữu ích trong một số tình huống nhất định<br>
+như cứu hộ chẳng hạn&hellip;<em>init ram fs</em> là một ví dụ.</p>
+<p><em>initrd ram fs</em> là hệ thống file chứa một số chương trình user-space, được bootloader<br>
+load lên RAM cho kernel mount vào sử dụng như là hệ thống file root của nó.</p>
+<p>Còn trong hầu hết hệ thống, việc đầu tiên mà kernel làm để tiếp cận với các ứng dụng<br>
+là mount hệ thống file root. Tức gắn vào để dùng đấy.<br>
+Vì thế, thông tin về thiết bị lưu trữ hệ thống file đó cũng phải được truyền cho kernel khi nó được khởi động. Đó là nhiệm vụ của <em>bootloader</em></p>
+<p><strong>Chương trình Init</strong></p>
+<p>Ứng dụng user-space được kernel chạy có tên là <em>init program</em>.<br>
+Không chỉ có 1 chương trình <em>init program</em>. Mỗi lớp hệ thống Linux có một <em>init program</em> riêng.</p>
+<p>Đó có thể là <strong>System V</strong> (phổ biến trên các distro desktop), <strong>systemd</strong> hoặc là <strong>BusyBox init</strong> (phổ biến trên Embedded Linux).</p>
+<p>Vị trí (hay là đường dẫn) của <em>init program</em> trong hệ thống file root thường để set như là một tham số khi khởi động kernel.</p>
+<p>Từ <em>init program</em> này, các chương trình khác sẽ được khởi động.</p>
+<p>Mỗi loại <em>init program</em> lại có tính năng, tính dễ cấu hình, tính dễ thay đổi cũng khác nhau.</p>
+<p>Chương trình hiển thị ra console cho phép có thể đăng nhập cũng sẽ được khởi động theo.</p>
+<p>Đến đây, ta đã có thể sử dụng hệ thống như bao hệ thống Linux khác rồi.Tuy rằng, số chương trình có sẵn trong root file system của Embedded Linux ít hơn trên Desktop rất nhiều.</p>
+<h2 id="tham-khảo">Tham khảo</h2>
+<ul>
+<li><a href="http://free-electrons.com/blog/elce-2010-tutorial-videos/">ELCE 2010 Videos and Slides</a> của tác giả Chris Simmonds Video từ free-electrons.com</li>
+</ul>
+
+		</div>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

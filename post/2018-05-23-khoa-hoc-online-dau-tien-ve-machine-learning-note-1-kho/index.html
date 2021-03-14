@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~ - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Cuối cùng cũng kết thúc khoá học Online đầu tiên về Machine Learnning.<br>
+Do tiếng Anh cùi, nên dù nhìn sub liên tục nhưng vẫn vô số lần tua lại để xem.<br>
+Khoá học rất hay, thầy Andrew NG giảng khá kĩ các khái niệm quan trọng.<br>
+Dù mình biết Machine Learning nặng về Toán, đặc biệt Toán Tối ưu như machinelearningcoban.com viết, nhưng khoá này không tập trung vào những cái đó.<br>
+Nó tập trung vào việc Intuition - Trực giác về Machine Learning.<br>
+Ví dụ như giải quyết vấn đề gì. Quá trình Train là đi tìm cái gì. Quá trình Test làm gì. Rồi cách đánh giá một mô hình Machine Learning.</p>
+<p>Với người mới như mềnh, có vẻ khoá này hợp lý.</p>
+<p>Thôi, tạm note nội dung tóm tắt từng tuần ra đây cho đỡ quên. Và cũng đỡ phải nhớ.</p>
+<h2 id="tuần-1--giới-thiêu">Tuần 1 : Giới thiêu</h2>
+<p>Lướt sóng qua một chút về Machine Learning.</p>
+<ul>
+<li>Supervised Learning là gì.</li>
+<li>Unsupervised Learning là gì.</li>
+</ul>
+<p>Giới thiệu, mô hình ( mới đầu mình nghe thì khó tưởng tượng từ này, đại khái là cách giải trong toán) đầu tiên là <strong>Linear Regression With One Variable</strong>.</p>
+<p>Bắt đầu từ bài toán tìm <em>f(x)</em> thoả mãn : <em>y = f(x)</em>, biết rằng <em>x=x1</em> thì <em>y=y1</em>, <em>x=x2</em> thì <em>y=y2</em>, etc&hellip; . Biết thêm rằng nữa f(x) có dạng : <em>ax + b</em>.<br>
+Mình nhớ không nhầm với bài toán trên, cách giải là coi a,b là biến, thay các giá trị x1, x2, y1, y2.. đã biết vào rồi giải. Cộng trừ nhân chia gì đó chắc sẽ ra thôi.<br>
+Khi tìm được a,b rồi thì cho x=x3 thì hỏi y bằng bao nhiêu chẳng hạn thì quá đơn giản rồi. *<em>Luôn luôn bằng, luôn luôn chính xác</em>.</p>
+<p>Nhưng trong Machine Learning thì hơi khác một chút. Nó cũng giống việc giải phương trình là đi tìm a,b nhưng không phải để đúng với mọi điều kiện dạng x=x1 thì y phải bằng y1, x=x2 thì b phải bằng y2.</p>
+<p>Giả sử sau khi tìm được a,b rồi, với <em>x=x1</em> nó tìm ra <em>y1_p=ax1 + b</em>, với <em>x=x2</em> nó tìm ra<br>
+y2_p. Các giá trị này chỉ y1_p, y2_p chỉ cần gần gần y1, y2 đã cho là được. Vì sao lại thế, vì nhiệm vụ của nó là đoán một quy luật sát với tất cả các điểm có dạng **(x1, y1), (x2, y2) thôi, chứ không phải đoán chính xác tất cả. Sau đó với quy luật đoán được, nó thực hiện đoán tốt với các điểm x3, x4 chưa biết.</p>
+<p>Cái đoán để tìm ra quy luật hay chính là hàm số đó người ta gọi là <strong>fit</strong>.<br>
+Cái hàm số chưa biết đó được gọi với cái tên <strong>Hyphothesis</strong>, với mình đây là từ mới toanh.<br>
+Quá trình tìm ra quy luật từ dữ liệu ban đầu gọi là <strong>train</strong><br>
+Quá trình kiểm tra quy luật với những dữ liệu chưa có lúc <strong>train</strong>, được gọi là <strong>test</strong>.</p>
+<p>Tiếp theo, nó giới thiệu về <strong>Cost Function</strong>, tức là hàm <strong>trả giá có sự sai khác khi đoán</strong>.<br>
+Dùng luôn ví dụ ở trên, cái giá phải trả chính là sự sai khác giữa giá trị đoán và giá trị mong muốn. Giữa y1 và y1_p, y2 và y2_p etc.<br>
+Người ta hay dùng khoảng cách Eclide ( hay gọi là Norm-2) để tính **cái giá ** này.<br>
+Mục đích trong quá trình train là làm cho <strong>cái giá phải trả</strong> là nhỏ nhất.<br>
+Hay tối thiểu hoá hàm <strong>Cost Function</strong>.</p>
+<p>Tiếp nữa, đến Gradient Descent, là một phương pháp để tối thiểu hoá <strong>Cost Function</strong> nó ở trên.<br>
+Hãy tưởng tượng đến Parabol ở cổng Giải Phóng của BKHN. Nó bị ngược, nếu nó quay lại thành hình chữ U chẳng hạn, thì trên đồ thị ta dễ dàng thấy điểm nhỏ nhất của nó. Chính là điểm nằm ở <strong>đít</strong> chữ U hay Parabol đó.<br>
+Giả sử hàm <strong>trả giá</strong> cũng có dạng tương tự như thế ( cũng bậc 2 mà), ta phải làm thế nào? Vẽ lên thì cũng thấy đấy. Nhưng người ta có cách khác dựa vào hiểu biết về đạo hàm. Hồi cấp 3, tôi đã học thuộc là đạo hàm chính là hệ số góc của đường tiếp tuyê đến hàm số tại chính điểm đó.<br>
+Hoá ra, chính từ cái hệ số góc đó người ta sẽ biết được là đồ thị tại điểm đó là cong hay thẳng hay xiên. Thế là họ có phương pháp cứ đi theo từng điểm của đồ thị rồi di chuyển dần theo chiều ngược với tiếp tuyến thì thể nào cũng về điểm thấp nhất, à nhầm, điểm cực trị mới đúng.</p>
+<p>Trong Gradient Descent, việc thực hiện update hệ số phải đồng thời.<br>
+Tức là sau khi tính được Gradient (dựa trên đạo hàm) tại một điểm hoặc tập điểm (từ đầu vào), ta phải thực hiện việc update hệ số đồng thời.</p>
+<p>Ở trên chỉ là đường tiếp tuyến cho không gian 2 chiều. Khi nhiều chiều, người ta sẽ có mặt tiếp tuyến rồi siêu phẳng tiếp tuyến. Với mình, từ 3 chiều không tưởng tượng được tốt rồi. :((</p>
+<p>Phần cuối của tuần, là ôn lại ( thực ra với mình nó như mới rồi vì thì Toán xong môn nào mình thường xoá hết dữ liệu môn đó bằng một trận AOE ) về đại số, ma trận.<br>
+Mình ôn để biết mấy khái niệm về Inverse, Transpose, Matrix vậy thôi. Học như lần đầu có khác, cái gì cũng thú vị VKL :))</p>
+<h2 id="tuần-2--linear-regression-with-multiple-variables">Tuần 2 : Linear Regression With Multiple Variables</h2>
+<p>Nói về Linear Regression with Multiple Variables với các khái niệm tương ứng với One Variable ở tuần 1.<br>
+Đừng tưởng tượng đến đồ thị làm gì, khó VKL.</p>
+<p>Tiếp theo, nhắc đến 2 khái niệm quan trọng là <strong>feature scaling</strong> và <strong>mean normalization</strong><br>
+<strong>Feature Scaling</strong> là chia tất cả giá trị đầu vào cho một giá trị đủ lớn ( thường là hiệu giữa max và min )<br>
+<strong>Mean Normalization</strong> là trừ tất cả giá trị đầu vào cho giá trị trung bình của chúng.</p>
+<p>Tiếp đó, có nhắc đến các khái niệm <strong>Cost Function</strong> và **Gradient</p>
+<p>Tiếp theo nói đến, Polymonial Regression, tức là lấy mũ giá trị đầu vào.<br>
+Thay vì chỉ dùng <em>ax + b</em>, người ta có thể dùng <em>ax^100 + b</em>.</p>
+<p>Rồi nó đến các giải bài toán tìm hệ số thuần túy ( tức là sao cho tất cả các dấu bằng giữa y1=y1_p, y2=y2_p) bằng các sử dụng ma trận. Với cách này, chú ý có cả trường hợp vô nghiệm và vô số nghiệm.</p>
+<p>Tuần này, cũng có bài tập đầu tiên phải làm và nộp.<br>
+Tất cả bài tập trong khoá sẽ phải viết bằng ngôn ngữ Matlab (Matrix Laborary).<br>
+Matlab mất phí nên dùng Octave.<br>
+Viêc nộp bài cũng trên Octave luôn, khá tiện.</p>
+<h2 id="3-tuần-3--logistic-regression">3. Tuần 3 : Logistic Regression</h2>
+<p>Trong Machine Learning có 2 lớp bài toán người ta hay gặp.<br>
+Đó là Classification và Regression.<br>
+<strong>Regression</strong> giống như ví dụ ở trên, đoán giá trị là một tập số liên tục. Thường là thuộc tập số thực.<br>
+<strong>Classification</strong> hay còn gọi là phân loại, đoán thuộc loại nào.</p>
+<p>Tuy nhiên, vì một vài lý do lịch sử mà thuật toán Logistic Regression dù là thuật toán dùng cho bài toán phân loại (chính xác hơn là phân loại nhị phân - tức chỉ có 2 loại), nhưng lại có cái tên rất Regression.</p>
+<p>Hàm <strong>sigmoid</strong> được giới thiệu.<br>
+Để tính xác xuất thuộc vào một lớp (đang xét bài toán chỉ có 2 lớp thôi).<br>
+Nó thực hiện hàm <strong>sigmoid</strong> trên tích giữa vector hệ số và đầu vào.<br>
+Giống nhữa Linear Regression:<br>
+Zi = Xi * Theta</p>
+<p>Áp dụng hàm <strong>signmoid</strong> lên tích này:</p>
+<p>g(Zi) = 1 / (1 + e^-z)</p>
+<p>Sau đó, khái niệm <strong>Decision Boudary</strong> (biên quyết định) cũng được giới thiệu.<br>
+Tức là nhìn trên đồ thị đơn giản nó sẽ đường thằng (trong nhiều chiều hơn là mặt phẳng, siêu phẳng) để phân chia 2 vùng tuơng ứng với 2 lớp</p>
+<p>Hàm <strong>Cost Function</strong> của Logistic Regression cũng được đưa ra.<br>
+Sau đó là cách tính <strong>Gradient</strong></p>
+<p>Kể từ đây ta có thể hiểu rằng, đi đâu làm gì thì đều cần nhớ đến 2 thứ</p>
+<p><strong>Cost Function</strong> và cách tính <strong>Gradient</strong></p>
+<p>Trong tuần này, cũng giới thiệu một khái niệm mới nữa, đó là <strong>Regularization</strong>.<br>
+Mình nghĩ, để giải thích rõ ràng về tại sao lại có khái niệm này thì hơi khó.<br>
+Trong khóa học có giới thiệu về <strong>Overfitting</strong>, rồi <strong>Generalize</strong> (tính tổng quan), rồi <strong>Underfetting</strong>.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/coursera/" rel="tag">CourserA</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Nếu wireshark trên Windows gặp lỗi, hãy thử dùng dumpcap - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Nếu wireshark trên Windows gặp lỗi, hãy thử dùng dumpcap</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p><code>Wireshark</code>, một phần mềm quá phổ biến để phân tích gói tin cho dù là có dây hay không dây, 1 dây hay 2 dây, tất tần tật. Gì em nó cũng làm được.</p>
+<p><code>Wireshark</code> vốn đuợc phát triển cho <code>Solaris</code> và <code>Linux</code>. Và thư viện đồ họa hiện đang sử dụng là <code>gtk</code>.<br>
+<code>Gtk</code> là vốn là thư viện đựoc phát triển từ dự án GIMP ( GNOME Graphic Toolkit). Và nó được phát triển cho hệ điều hành <code>Linux</code>.<br>
+Giống như bao chương trình dạng của Unix khác, ban đầu chúng đều chạy ở chế độ dòng lệnh.<br>
+Do được nhiều người sử dụng nên họ viết GUI cho nó.<br>
+Và cũng giống hầu hết các siêu tool khác như <code>emacs</code>, <code>glade</code>&hellip;etc. Chúng đuợc port sang Window bằng cách sử dụng các bản build cho Window của thư viện gtk và các thư viện liên quan.<br>
+Độ ổn định của gtk và các thư đồ họa nền Linux mà Wireshark đang sử dụng là quá tuyệt vời só với các tool đuợc porting khác rồi.<br>
+Nhưng không phải lúc nào cũng muợt mà. Nó vẫn có thể gặp lỗi liên quan đến mấy thư viện này.<br>
+Phần đa các lỗi liên quan đến một loạt thư viện dll đuợc porting sang Windows từ Linux.<br>
+Mà thường những lỗi này sẽ dấn đến crash chưong trình ngay, khỏi chạy gì nữa.</p>
+<p>Trong trường hợp đó, ta có thể tìm kiếm sự giúp đỡ từ cộng đồng người sử dụng và developer của Wireshark, một trong những cộng đồng mã nguồn mở active nhất hiện nay.</p>
+<p>Có một phưong pháp vẫn cho ta kết quả capture gói tin mà không phải sử dụng đến các thư viện đồ họa, vốn rất thiếu ổn định ở trên.</p>
+<p>Đó là <code>tshark</code> và <code>dumcap</code>.</p>
+<p>Khi đồ họa bị crash hãy nghĩ đến chúng, biết đâu chúng sẽ cho ta kết quả không ngờ. :)))</p>
+
+		</div>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

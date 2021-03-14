@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ruby on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/ruby/</link>
+    <description>Recent content in ruby on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Wed, 11 Sep 2019 06:00:22 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/ruby/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Học Ruby On Rails (RoR)</title>
+      <link>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</link>
+      <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</guid>
+      <description>1. General 2. Scope  Biến bắt đầu bằng @* gọi là _**instance variable**_
+https://stackoverflow.com/questions/14319347/variables-in-ruby-on-rails  3. Model 4. View 5. Controller </description>
+    </item>
+    
+  </channel>
+</rss>

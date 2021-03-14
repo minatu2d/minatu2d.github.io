@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Driver và Firmware trong Linux - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Driver và Firmware trong Linux</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.<br>
+Mình thấy ngoài <strong>Driver</strong>, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là <strong>Firmware</strong>.</p>
+<p>Bài này sẽ dịch lại <a href="https://wiki.ubuntu.com/Kernel/Firmware">trang</a>, để hiểu qua về Firmware trong Linux Kernel.</p>
+<h2 id="1-firmware-ở-đây-là-gì">1. Firmware ở đây là gì?</h2>
+<p>Nhiều thiết bị có tới 2 thành phần để tạo nên chức năng của chúng khi trong hệ điều hành. Đầu tiên, đó là một <strong>Driver</strong>, là phần mềm cho phép hệ điều hành nói chuyện được với phần cứng của thiết bị. Thứ hai, đó là <strong>Firmware</strong>, thường là một mã nhị phân được upload trực tiếp vài thiết bị để nó có thể hoạt động được. Bạn có thể nghĩ Firmware ở đây là cách để lập trình phần cứng bên trong thiết bị. Trong thực tế, hầu hết <strong>Firmware</strong> đều có dạng (closed-source), thường không có source code đi kèm, và được phân phối miễn phí.</p>
+<h2 id="2-lấy-firmware-như-thế-này-ở-đâu">2. Lấy Firmware như thế này ở đâu?</h2>
+<p><strong>Firmware</strong> thường được maintained bởi chính các công ty phát triển thiết bị. Trên Windows, <strong>firmware</strong> thường là một phần của <strong>Driver</strong> bạn cài đặt để sử dụng thiết bị đó, và tất nhiên, user không hề thấy nó. Trên Linux, <strong>firmware</strong> đến từ rất nhiều nguồn. Một số có ngay trong source của nhân. Số khác được phân phối từ <a href="http://git.kernel.org/cgit/linux/kernel/git/firmware/linux-firmware.git">upstream</a>. Một số khác thì thật không may, chúng không được phân phối miễn phí.</p>
+<p>Trên Ubuntu, <strong>firmware</strong> có thể đến từ 1 trong các nguồn dưới đây:</p>
+<ul>
+<li>Gói <strong><em>linux-image</em></strong></li>
+<li>Gói <strong><em>linux-firmware</em></strong></li>
+<li>Gói <strong><em>linux-firmware-nonfree</em></strong></li>
+<li>Gói driver riêng biệt</li>
+<li>Các nguồn khác như Driver CD, Email, Website.</li>
+</ul>
+<p>Chú ý rằng, gói <strong><em>linux-firmware-nonfree</em></strong> không được cài mặc định.<br>
+Các <strong>firmware</strong> đã được cài đặt sẽ nằm ở <strong>/lib/firmware/</strong>.</p>
+<h2 id="3-các-firmware-này-được-sử-dụng-lúc-nào">3. Các Firmware này được sử dụng lúc nào?</h2>
+<p>Khi driver cho các thiết bị này được chạy, nó sẽ &ldquo;yêu cầu&rdquo; các <strong>firmare</strong> tương ứng từ <strong><em>lib/firmware/</em></strong><br>
+Quá trình về cơ bản sẽ như sau:</p>
+<ol>
+<li>Driver yêu cầu file Firmware.</li>
+<li>Kernel sẽ gửi 1 yêu cầu đến <strong>udev</strong> để hỏi Firmware</li>
+<li><strong>udev</strong> sẽ chạy 1 script để load dữ liệu từ firmware vào 1 file đặc biệt được tạo bởi Kernel.</li>
+<li>Kernels sẽ đọc đọc Firmware từ file đó và chuyển cho Driver.</li>
+<li>Driver sau đó sẽ bằng cách nào đó load firmware vào thiết bị.</li>
+</ol>
+<p><strong>Vị dụ về USB Wifi Buffalo sử dụng chip Ralink</strong></p>
+<p>Thông thường các module khi yêu cầu <strong>External Firmware</strong>, nhân sẽ tìm trong đường dẫn <strong>/lib/firmware</strong>. Đường dẫn này được set trong biến <strong>CONFIG_EXTRA_FIRMWARE_DIR</strong> khi cấu hình để build kernel.</p>
+<p>Trong trường hợp của chúng ta, module đã được load nhưng firmware dành cho thiết bị không có trong <strong>/lib/firmware</strong>, có lẽ ta chỉ cần copy vào thư mục trên là vấn đề sẽ được giải quyết.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/driver/" rel="tag">Driver</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/firmware/" rel="tag">Firmware</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

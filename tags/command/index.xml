@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Command on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/command/</link>
+    <description>Recent content in Command on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Wed, 07 Sep 2016 09:25:06 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWK - Sử dụng cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2016-09-07-awk-su-dung-co-ban/</link>
+      <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-07-awk-su-dung-co-ban/</guid>
+      <description>AWK : 1 trong 3 tool (cùng với grep và sed) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.
+Sau một hồi tìm hiểu awk trên TutorialPoint.
+awk là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng.</description>
+    </item>
+    
+    <item>
+      <title>Sử dụng Patch và Diff</title>
+      <link>https://blog.lazytrick.com/post/2016-09-02-su-dung-patch-vs-diff/</link>
+      <pubDate>Fri, 02 Sep 2016 08:53:59 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-02-su-dung-patch-vs-diff/</guid>
+      <description>Patch, hay người ta vẫn gọi là các bản vá, víu gì đó. Cũng thấy khái niệm này từ lâu rồi. Nhưng chưa bao giờ phát sinh nhu cầu sử dụng vì đa số các dự án mình từng làm đều dùng Server SVN tập trung. Mọi thay đổi đều có quản lý chặt chẽ, cũng ít khi rẽ quá nhiều nhánh (branch).
+Gần đây, bắt buộc phải nghĩ đến việc sử dụng 2 tool này vì phải update source trên máy thật (một board mạch) chỉ hỗ trợ truyền Serial.</description>
+    </item>
+    
+  </channel>
+</rss>

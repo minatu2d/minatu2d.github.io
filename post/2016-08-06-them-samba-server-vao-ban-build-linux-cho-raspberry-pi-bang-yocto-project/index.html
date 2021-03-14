@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Thêm samba server vào bản build Linux cho Raspberry PI bằng Yocto Project - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Thêm samba server vào bản build Linux cho Raspberry PI bằng Yocto Project</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project</a>.</p>
+<p>Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).</p>
+<p>Trong bài này, sẽ trình bày cách đưa <strong>Samba</strong> vào bản phân phối Linux đã được build ở bài trước.</p>
+<p>Trước khi bắt đầu các thao tác dưới đây, ta cần thiết lập các biến môi trường cần thiết bằng câu lệnh từ bài trước:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  
+</code></pre></div><p>Thư mục <strong>build</strong> sẽ ở ngoài thư mục <strong>poky</strong></p>
+<h2 id="thêm-samba-server-vào-bản-build">Thêm samba server vào bản build</h2>
+<p>Yocto Project cung cấp một bộ khung cho phép thêm các phần mềm vào image được build ra. Ta có thêm bất cứ phần mềm nào, nó có thể là source tự build hoặc một phần mềm được viết kịch bản từ build để thêm vào images có từ trước.</p>
+<p>Trường hợp của <strong>samba server</strong>, đây vốn là một phần mềm khá phổ biến khi muốn tạo một server để truy cập giống như chia sẻ file giữa các máy trên windows vậy.<br>
+Vì thế, kịch bản tải source, thực hiện các bản sửa, compiple đã có sẵn rồi.<br>
+Nó là 1 <strong>recipes</strong> (file chứa kịch bản download source đến compile) thuộc layer <strong>meta-openembedded/meta-networking/</strong></p>
+<p>(Để tìm hiểu thêm các khái niệm về <strong>recipe</strong> và <strong>layer</strong> của Yocto Project xin hãy hỏi thầy Google)</p>
+<p>Như một cách để confirm, ta có thể truy cập vào source code của layer trên tại:</p>
+<p><a href="https://github.com/openembedded/meta-openembedded/tree/master/meta-networking">https://github.com/openembedded/meta-openembedded/tree/master/meta-networking</a></p>
+<p>Recipe của <strong>samba server</strong> nằm ở <strong>meta-networking/recipes-connectivity/samba/</strong>.</p>
+<p>Ta bắt đầu quá trình thêm ngay bây giờ</p>
+<ul>
+<li>Đầu tiên, ta phải tải layer trên về thư mục <strong>poky</strong>, giống như cách tải BSP ở <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">bài trước</a>, phiên bản mới nhất của <strong>meta-openembedded</strong> là <strong>krogoth</strong>.<br>
+Ta sẽ thực hiện các câu lệnh để tải về như dưới đây:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky$ <span style="color:#658b00">pwd</span>  
+/home/oedev/raspberrypi_krogoth/poky  
+oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/poky$ git clone -b krogoth git://github.com/openembedded/meta-openembedded.git  
+</code></pre></div><p>Không mất quá thời gian để tải, ta sẽ có thư mục <strong>meta-openembedded</strong> nằm bên dưới <strong>Poky</strong>, tức là cùng thư mục với <strong>meta-raspberrypi</strong> đã tải ở phần trên.</p>
+<ul>
+<li>Giờ ta phải thêm layer chứa <strong>samba server</strong> vào<br>
+Để thêm layer, ta sẽ thực hiện giống như đã thêm với layer BSP ở trên thôi:<br>
+Mở file <strong>build/conf/bblayers.conf</strong> và thêm đường dẫn của layer networking.<br>
+Tuy nhiên, ta sẽ gặp lỗi ngay vì chỉ thêm networking sẽ không đủ, vì trong file mô tả của layer networking (đường dẫn <strong>meta-networking/conf/layer.conf</strong>) có nội dung như sau:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python"><span style="color:#228b22"># We have a conf and classes directory, add to BBPATH  </span>
+BBPATH .= <span style="color:#cd5555">&#34;:${LAYERDIR}&#34;</span>
+
+<span style="color:#228b22"># We have a packages directory, add to BBFILES  </span>
+BBFILES += <span style="color:#cd5555">&#34;${LAYERDIR}/recipes-*/*/*.bb \  </span>
+<span style="color:#a61717;background-color:#e3d2d2">$</span>{LAYERDIR}/recipes-*/*/*.bbappend<span style="color:#cd5555">&#34;</span>
+
+BBFILE_COLLECTIONS += <span style="color:#cd5555">&#34;networking-layer&#34;</span>  
+BBFILE_PATTERN_networking-layer := <span style="color:#cd5555">&#34;^${LAYERDIR}/&#34;</span>  
+BBFILE_PRIORITY_networking-layer = <span style="color:#cd5555">&#34;5&#34;</span>
+
+<span style="color:#228b22"># This should only be incremented on significant changes that will  </span>
+<span style="color:#228b22"># cause compatibility issues with other layers  </span>
+LAYERVERSION_networking-layer = <span style="color:#cd5555">&#34;1&#34;</span>
+
+LAYERDEPENDS_networking-layer = <span style="color:#cd5555">&#34;core&#34;</span>  
+LAYERDEPENDS_networking-layer += <span style="color:#cd5555">&#34;openembedded-layer&#34;</span>  
+LAYERDEPENDS_networking-layer += <span style="color:#cd5555">&#34;meta-python&#34;</span>
+
+LICENSE_PATH += <span style="color:#cd5555">&#34;${LAYERDIR}/licenses&#34;</span>
+
+<span style="color:#228b22"># used by waf-samba.bbclass  </span>
+WAF_CROSS_ANSWERS_PATH = <span style="color:#cd5555">&#34;${LAYERDIR}/files/waf-cross-answers&#34;</span>  
+</code></pre></div><p>Ta sẽ thấy 3 dòng có chữ LAYERDEPENDS, hay là các layer mà layer này phụ thuộc.<br>
+Tức là để build được layer này, ta phải build cả 2 layer kia nữa.</p>
+<p>Vì thế, ta phải sửa file <strong>build/conf/bblayers.conf</strong> thành như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># POKY_BBLAYERS_CONF_VERSION is increased each time build/conf/bblayers.conf  </span>
+<span style="color:#228b22"># changes incompatibly  </span>
+<span style="color:#00688b">POKY_BBLAYERS_CONF_VERSION</span> = <span style="color:#cd5555">&#34;2&#34;</span>
+
+<span style="color:#00688b">BBPATH</span> = <span style="color:#cd5555">&#34;</span><span style="color:#cd5555">${</span><span style="color:#00688b">TOPDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span>  
+BBFILES ?= <span style="color:#cd5555">&#34;&#34;</span>
+
+BBLAYERS ?= <span style="color:#cd5555">&#34; \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-poky \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-yocto-bsp \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-raspberrypi \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-python \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-oe \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-openembedded/meta-networking \  
+</span><span style="color:#cd5555">/home/oedev/raspberrypi_krogoth/poky/meta-local \  
+</span></code></pre></div><ul>
+<li>Tiếp theo, thêm <strong>samba server</strong> vào ảnh:<br>
+Theo tài liệu [Yocto Project Development Manual] (<a href="http://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html),">http://www.yoctoproject.org/docs/1.8/dev-manual/dev-manual.html),</a> có 2 cách để thêm vào image. Thứ nhất là, thêm vào biến <strong>IMAGE_INSTALL_append</strong> có trong file <strong>build/conf/local.conf</strong>. Cách thứ 2, tạo một layer mới, là layer sau cùng được build, layer chỉ chứa gói phần mềm <strong>samba</strong> mà thôi.<br>
+Cách thứ 2 sẽ ít ảnh hưởng hơn cách thứ nhất vì ta không phải động đến file có sẵn là <strong>local.conf</strong>. Vì thế, ta sẽ làm theo cách 2.</li>
+</ul>
+<p>Tạo cây thư mục với đường dẫn như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">poky/meta-local/  
+├── conf  
+│   └── layer.conf  
+└── recipes-core  
+└── images  
+└── rpi-basic-image.bbappend  
+</code></pre></div><p>Trong đó:<br>
+<strong>layer.conf</strong>: là file cấu hình layer <strong>local</strong> này, có có mẫu chung rồi.<br>
+trong trường này, ta sẽ sử dụng nội dung sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># We have a conf and classes directory, add to BBPATH  </span>
+BBPATH .= <span style="color:#cd5555">&#34;:</span><span style="color:#cd5555">${</span><span style="color:#00688b">LAYERDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">&#34;</span>
+
+<span style="color:#228b22"># We have recipes-* directories, add to BBFILES  </span>
+<span style="color:#00688b">BBFILES</span> += <span style="color:#cd5555">&#34;</span><span style="color:#cd5555">${</span><span style="color:#00688b">LAYERDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">/recipes-*/*/*.bb </span><span style="color:#cd5555">${</span><span style="color:#00688b">LAYERDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">/recipes*/*/*.bbappend&#34;</span>
+
+<span style="color:#00688b">BBFILE_COLLECTIONS</span> += <span style="color:#cd5555">&#34;local&#34;</span>  
+<span style="color:#00688b">BBFILE_PATTERN_local</span> = <span style="color:#cd5555">&#34;^</span><span style="color:#cd5555">${</span><span style="color:#00688b">LAYERDIR</span><span style="color:#cd5555">}</span><span style="color:#cd5555">/&#34;</span>  
+<span style="color:#00688b">BBFILE_PRIORITY_local</span> = <span style="color:#cd5555">&#34;7&#34;</span>  
+</code></pre></div><p>Ta nên để <strong>PRIOIRTY</strong> càng cao càng tốt, tức là độ ưu tiên thấp khi build.</p>
+<p><strong>rpi-basic-image.bbappend</strong> sẽ có nội dung như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">IMAGE_INSTALL</span> += <span style="color:#cd5555">&#34;samba \  
+</span><span style="color:#cd5555">&#34;</span>  
+</code></pre></div><ul>
+<li>Cuối cùng ta thực hiện lại lệnh build ảnh như đã build ở phần 1 thôi.<br>
+Sau khi thực hiện xong, ta sẽ có file ảnh mới với kích thước lớn hơn hẳn<br>
+(128MB so với 197MB thì phải)</li>
+</ul>
+<p>&lt;Một số hình ảnh kiểm chứng&gt;</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/samba/" rel="tag">Samba</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/smb/" rel="tag">SMB</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

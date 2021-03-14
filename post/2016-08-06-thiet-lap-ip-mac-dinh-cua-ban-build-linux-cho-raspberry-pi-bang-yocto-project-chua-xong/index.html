@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Thiết lập IP mặc định của bản build Linux cho Raspberry PI bằng Yocto Project - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Thiết lập IP mặc định của bản build Linux cho Raspberry PI bằng Yocto Project</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Để tiếp tục customize bản OS được build trong bài <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">trước</a>.<br>
+Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.<br>
+Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.</p>
+<p>Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$source</span> poky/oe-init-build-env build  
+</code></pre></div><h2 id="gán-ip-tĩnh-cho-bản-build">Gán IP tĩnh cho bản build</h2>
+<h3 id="1-cách-1-thay-đổi-trong-rootfs-đã-không-thực-hiện-được---bỏ-qua-và-đến-cách-2-bên-dưới">1. Cách 1: Thay đổi trong <strong>rootfs</strong> (Đã không thực hiện được - bỏ qua và đến cách 2 bên dưới)</h3>
+<p>Về cơ bản, để tạo được một bản build linux, thì chắc chắn đâu đó phải có 1 <strong>rootfs</strong> (rootfs là gì được giải thích tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</p>
+<p>Và ta cũng biết rằng, để setup IP cho một máy chạy Linux (những bản dựa trên Debian/Ubuntu), ta sẽ hỏi google và tìm được link <a href="http://www.cyberciti.biz/faq/linux-configure-a-static-ip-address-tutorial/">này</a>.</p>
+<p>Ta cần vào <strong>/etc/netwwork/interface</strong> rồi edit lại đoạn setup <strong>eth0</strong> với mạng có dây mặc định, <strong>wlan0</strong> với mạng không dây mặc định.</p>
+<p>Từ 2 thông tin trên, Yocto có gì liên quan đến 2 thứ trên.</p>
+<ol>
+<li>Đầu thay đổi <strong>/etc/network/interfaces</strong> có trong rootfs mặc định<br>
+Từ thư mục <strong>build</strong>, ta tìm bằng câu lệnh sau:</li>
+</ol>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ locate /etc/network/interfaces  
+/etc/network/interfaces  
+/etc/network/interfaces.d  
+/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/image/etc/network/interfaces  
+/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/package/etc/network/interfaces  
+/home/oedev/raspberrypi_krogoth/build/tmp/work/arm1176jzfshf-vfp-poky-linux-gnueabi/init-ifupdown/1.0-r7/packages-split/init-ifupdown/etc/network/interfaces  
+/home/oedev/raspberrypi_krogoth/build/tmp/work/raspberrypi-poky-linux-gnueabi/rpi-basic-image/1.0-r0/rootfs/etc/network/interfaces  
+</code></pre></div><p>Ta thấy có 1 kết quả là <strong><em>&hellip;rpi-basic-image/1.0-r0/rootfs/etc/network/interfaces</em></strong>.<br>
+Ôi, chính em nó đây rồi.<br>
+Rồi xơi thôi.</p>
+<ul>
+<li>Mở file trên ra và sửa thành như sau, tất nhiên nhớ copy ra trước khi sửa nha.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)</span>
+
+<span style="color:#228b22"># The loopback interface  </span>
+auto lo  
+iface lo inet loopback
+
+<span style="color:#228b22"># Wireless interfaces  </span>
+iface wlan0 inet dhcp  
+wireless_mode managed  
+wireless_essid any  
+wpa-driver wext  
+wpa-conf /etc/wpa_supplicant.conf
+
+iface atml0 inet dhcp
+
+<span style="color:#228b22"># Wired or wireless interfaces  </span>
+auto eth0  
+<span style="color:#228b22">#  </span>
+<span style="color:#228b22"># Modify START  </span>
+<span style="color:#228b22">#  </span>
+<span style="color:#228b22">#iface eth0 inet dhcp  </span>
+iface eth0 inet static  
+address 192.168.1.100  
+netmask 255.255.255.0  
+network 192.168.1.1  
+gateway 192.168.1.1  
+<span style="color:#228b22">#  </span>
+<span style="color:#228b22"># Modify END  </span>
+<span style="color:#228b22">#</span>
+
+iface eth1 inet dhcp
+
+<span style="color:#228b22"># Ethernet/RNDIS gadget (g_ether)  </span>
+<span style="color:#228b22"># ... or on host side, usbnet and random hwaddr  </span>
+iface usb0 inet static  
+address 192.168.7.2  
+netmask 255.255.255.0  
+gateway 192.168.0.1  
+broadcast 192.168.0.255
+
+<span style="color:#228b22"># Bluetooth networking  </span>
+iface bnep0 inet dhcp  
+</code></pre></div><ul>
+<li>Cuối cùng, build lại image.<br>
+Nếu chỉ chạy <strong>bitbake rpi-basic-image</strong> thì sẽ không có ảnh mới được tạo.<br>
+Vì thay đổi trên <strong>rootfs</strong> không làm cho bitbake hiểu được.<br>
+Bitbake chỉ chú ý đến các thay đổi trên layer, hoặc recipes thôi.<br>
+vì thế ta phải ép bitbake build tích hợp lại rootfs để tạo ra ảnh mới.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/raspberrypi_krogoth/build$ bitbake rpi-basic-image -c rootfs -f  
+</code></pre></div><ul>
+<li>Sau đó ghi file image được build ra từ đường dẫn <strong>build/tmp/deploy/images/raspberrypi/</strong> vào thẻ nhớ và kiểm chứng nào.<br>
+Một số hình ảnh thực tế</li>
+</ul>
+<p>Cách làm này không ổn, vì mình đã hiểu sai về cách tạo ảnh của bitbake.<br>
+Các rootfs được tạo mới từ các package khác chứ không phải có từ rootfs có sẵn để mình có thể tìm thấy được. Vì thế, rootfs sẽ được lấy từ 1 file nén ở đâu để làm base. Sau đó thực hiện thêm &ldquo;gia vị&rdquo; bằng các &ldquo;recipe&rdquo; trên cái base đó.</p>
+<h3 id="2-ghi-đè-etcinterface-bằng-thêm-vào-recipes-đã-có-sẵn">2. Ghi đè <strong>/etc/interface</strong> bằng thêm vào recipes đã có sẵn</h3>
+<p>Qua đọc mailing list của cộng đồng người dùng Yocto, mình đã nhận ra rằng, mọi thay đổi từ các file cấu hình, cài đặt phần mềm mới nên thực hiện thông qua các gia vị (recipe) chứ không nên thực hiện thay đổi rootfs.</p>
+<p>Câu trả lời cho hầu hết các trường hợp muốn setup file cấu hình mặc định khi build ảnh nằm ở <a href="https://lists.yoctoproject.org/pipermail/yocto/2016-July/031004.html">đây</a>. Có đoạn như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">FYI there is a shortcut to creating these - the &#34;recipetool appendfile&#34;  
+command. For example, say you have your desired custom inittab file locally as  
+&#34;myinittab&#34; and you want the bbappend to be created in meta-mylayer then you  
+would run:
+
+recipetool appendfile meta-mylayer /etc/inittab myinittab
+
+This will automatically determine which recipe is providing the file and how  
+to overwrite it with your version. You do need to have built that recipe for  
+this to work, but then that will already be the case if you have built the  
+image beforehand.
+
+Cheers,  
+Paul
+
+--
+
+Paul Eggleton  
+Intel Open Source Technology Centre  
+</code></pre></div><p>Áp dụng với trường hợp của <strong>/etc/network/interface</strong>:<br>
+Ta sẽ thực hiện sửa layer <strong>meta-local</strong> với mục đích sẽ thay thế file <strong>/etc/network/interface</strong> mặc định trong rootfs bằng file của chúng ta.</p>
+<p>Đầu tiên, từ thư mục <strong>BUILD</strong> (biến môi trường là <strong>BUILDIRR</strong>tạo một file sẽ thay thế, ta copy 1 bản từ file mặc định và edit nó:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22"># /etc/network/interfaces -- configuration file for ifup(8), ifdown(8)</span>
+
+<span style="color:#228b22"># The loopback interface  </span>
+auto lo  
+iface lo inet loopback
+
+<span style="color:#228b22"># Wireless interfaces  </span>
+iface wlan0 inet dhcp  
+wireless_mode managed  
+wireless_essid any  
+wpa-driver wext  
+wpa-conf /etc/wpa_supplicant.conf
+
+iface atml0 inet dhcp
+
+<span style="color:#228b22"># Wired or wireless interfaces  </span>
+auto eth0  
+<span style="color:#228b22">#  </span>
+<span style="color:#228b22"># Modify START  </span>
+<span style="color:#228b22">#  </span>
+<span style="color:#228b22">#iface eth0 inet dhcp  </span>
+iface eth0 inet static  
+address 192.168.0.100  
+netmask 255.255.255.0  
+gateway 192.168.0.1  
+broadcast 192.168.0.255  
+<span style="color:#228b22">#  </span>
+<span style="color:#228b22"># Modify END  </span>
+<span style="color:#228b22">#  </span>
+iface eth1 inet dhcp
+
+<span style="color:#228b22"># Ethernet/RNDIS gadget (g_ether)  </span>
+<span style="color:#228b22"># ... or on host side, usbnet and random hwaddr  </span>
+iface usb0 inet static  
+address 192.168.7.2  
+netmask 255.255.255.0  
+network 192.168.7.0  
+gateway 192.168.7.1
+
+<span style="color:#228b22"># Bluetooth networking  </span>
+iface bnep0 inet dhcp  
+</code></pre></div><p>Sau đó ta thực hiện lệnh sau để thêm vào recipe <strong>init-ifupdown</strong></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ recipetool appendfile ../poky/meta-local /etc/network/interfaces ./interface  
+</code></pre></div><p>Sau khi thực hiện xong, ta sẽ thấy recipe <strong>init-ifupdown</strong> được thêm vào <strong>meta-local</strong>, cũng như <strong>bbappend</strong> file cũng được thêm vào luôn.<br>
+Đây là nội dung của <strong>meta-local</strong> sau đó:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">../poky/meta-local/  
+├── conf  
+│   └── layer.conf  
+└── recipes-core  
+├── images  
+│   └── rpi-basic-image.bbappend  
+└── init-ifupdown  
+├── init-ifupdown  
+│   └── interfaces  
+└── init-ifupdown_1.0.bbappend  
+</code></pre></div><p>Như vậy ta thấy rằng, <strong>recipetool</strong> tự động thêm vào 1 <strong>recipe</strong> đã có trước đó.</p>
+<p>Giờ ta tiến hành build lại ảnh cho RPI là xong:<br>
+Vẫn câu lệnh quen thuộc từ thư mục <strong>build</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$bitbake</span> rpi-basic-image  
+</code></pre></div><p>Trong kết quả có thể xuất hiện 2 lỗi về <strong>hash mismatch</strong>, cái này không sao hết. File ảnh mới vẫn được tạo, mọi thứ vẫn chạy bình thường.</p>
+<h3 id="3-thực-hiện-thêm-action-vào-bước-tạo-rootfs">3. Thực hiện thêm action vào bước tạo rootfs</h3>
+<p>(chưa thực hiện)</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/recipe/" rel="tag">Recipe</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/staticip/" rel="tag">StaticIP</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

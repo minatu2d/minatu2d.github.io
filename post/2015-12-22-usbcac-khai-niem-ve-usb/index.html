@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[USB]Các khái niệm về USB - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[USB]Các khái niệm về USB</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Kết nối USB, chắc chắn ai cũng biết. Mỗi người đểu sở hữu ít nhất một thiết bị có kết nối này.</p>
+<p>Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập trình giống như người dùng vẫn hiểu về nó.</p>
+<p>Đúng là với người dùng cuối, một thiết bị có kết nối thì khả năng có nó có thể kết với máy tính như smartphone, máy nghe nhạc, bộ sạc&hellip;. rất dễ hiểu, dễ gần.</p>
+<p>Nhưng gần đây khi được tiếp cận với USB ở dạng driver và firmware cho thiết bị, tôi thấy nó không dễ dàng như tôi tưởng. Nó đủ phực tạp để chúng ta tiếp tục nói về nó.</p>
+<p>Trong bài này, tôi sẽ giới thiệu một số khái niệm tôi đọc và rút ra được trong quá trình làm. Nó gồm cả những khái niệm về phần cứng, lẫn phần mềm cho dù về mặt phần cứng mình không được tự tin lắm.</p>
+<ol>
+<li>Chúng ta vẫn thấy mỗi máy tính có 2, 3 có khi 4 cổng USB, những tất cả chúng đều nối đến một điểm mà ở đó hệ điều hành điều khiển, quan sát được tất cả các thiết bị cắm vào.</li>
+<li>Dù nhiều cổng nhưng cùng nối đến 1 điểm, cái này gọi là Bus, dữ liệu tất cả các cổng đều truyền qua các Bus này, vì thế, khi số thiết bị đang sử dụng đạt đến một số lượng nhất định thì tốc độ sẽ bị chậm.</li>
+<li>Chắc chắn chúng ta từng nghe đến USB Hub, ví dụ khi máy chỉ có 2 cổng USB mà ta muốn dùng đến 3 cổng là chuột, bàn phím và 1 cái USB. Khi đó nối một chiếc USB Hub 4 cổng hay gì đó vào bất kì cổng USB nào. Tức là cần 1 đầu vào cho máy tính mà có đến 4 đầu cho các thiết bị bên ngoài. Quá là tiện.</li>
+<li>Về mặt lý thuyết, USB Host hỗ trợ đến 127 thiết bị được cắm vào chúng (không tính Hub)</li>
+<li>Người ta hay nói đến tốc độ của USB là Low-Speed, Full-Speed, High-Speed. Đó là muốn nói đến tương quan về mặt thời gian cần thiết để truyền một khối dữ liệu nhất đinh. Không mang ra để làm thước đo về mặt hiệu năng sử dụng được. Ta nên hiểu tốc độ đặc trưng cho một lớp thiết bị. Ví dụ như bàn phím, hầu hết chuột thì chỉ cần tốc độ Full là đủ lắm rồi. Có thiết bị truyền tải Video, thì sẽ cần High để đảm bảo độ trễ giới hạn.</li>
+<li>Khi một thiết bị USB được cắm vào máy tính hay là Host thì sẽ có 3 qua trình lớn xả ra cho đến khi sử dụng. Đó là quá trình Reset(về mặt điện đóm), quá trình nhận dạng (tức là Host hiểu đây là thiết bị gì, phải thao tác với nó như thế nào), sau đó mới đến trạng thái sử dụng.</li>
+<li>Đặc trưng truyền dữ liệu tầng ứng dụng với thiết bị là khi nào Host hỏi, thì thiết bị mới trả lời (kèm theo dữ liệu), Host không hỏi thì thiết bị không gửi gì hết (trừ trường hợp Wake-up).</li>
+<li>Nếu thiết bị không thể được nhận dạng bởi Window, ta sẽ thấy xuất hiện một hộp thoại thông báo &ldquo;Unrecognize device &quot; hiện ra.</li>
+<li>Nếu thiết bị hỏng cả mạch rồi, thì đến cái đèn báo (nếu có) cũng sẽ không sáng.</li>
+</ol>
+
+		</div>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

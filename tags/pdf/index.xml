@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pdf on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/pdf/</link>
+    <description>Recent content in pdf on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Wed, 01 Jan 2020 01:01:01 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/pdf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vài chú ý khi setup mail server</title>
+      <link>https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/</guid>
+      <description>Mail Server là một trong những ứng dụng phổ biến bậc nhất trong hầu hết các hệ thống thông tin. Theo mình, ngay cả khi các ứng dụng tin nhắn nhóm như Slack, Chatwork, FB Messenger đã thì việc sử dụng mail vẫn rất được ưa chuộng do những tính chất đặc trưng của nớ: như formal hơn, lưu trữ chắc chắn hơn&amp;hellip;
+Lần đầu tiên mình được trực tiếp sờ vào việc cài đặt của một mail server.</description>
+    </item>
+    
+    <item>
+      <title>Chuyển HTML thành PDF cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/</link>
+      <pubDate>Sun, 03 Nov 2019 17:41:31 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/</guid>
+      <description>1. Tại sao cần chuyển sang PDF  Nhiều lý do để người ta sử dụng PDF thay vì các định dạng khác.  Về cơ bản không thể edit nên đảm bảo thống nhất về nội dung hiển thị Ít bị lỗi FONT Tiện lợi khi gửi, nhận: bên nhận và bên gửi luôn thấy chung 1 dữ liệu và ít khi sửa được.   Vì PDF gần như tiêu chuẩn để trao đổi dạng tài liệu read-only Đọc được ở trên hầu hết mọi nền tảng: máy tính, điện thoại.</description>
+    </item>
+    
+  </channel>
+</rss>

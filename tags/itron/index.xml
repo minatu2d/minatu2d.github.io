@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>ITRON on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/itron/</link>
+    <description>Recent content in ITRON on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Tue, 01 Mar 2016 15:25:24 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/itron/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RTOS - Hầu hết giống như một thư viện</title>
+      <link>https://blog.lazytrick.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</link>
+      <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</guid>
+      <description>Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.
+Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver&amp;hellip; Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.</description>
+    </item>
+    
+    <item>
+      <title>Hệ điều hành ITRON-based trông như thế nào?(sẽ viết)</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</link>
+      <pubDate>Mon, 25 Jan 2016 14:25:05 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</guid>
+      <description>Có lẽ viết về ITRON cần toàn diện một chút, tiếc là không có mạch để thử.
+Cứ viết trước 3 đề mục lớn để có hướng để ý, tìm hiểu.
+ ITRON-OS là gì? Những thuật ngữ cơ bản Người ta đã viết ITRON như thế nào?  </description>
+    </item>
+    
+  </channel>
+</rss>

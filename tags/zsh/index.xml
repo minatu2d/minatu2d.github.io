@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>zsh on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/zsh/</link>
+    <description>Recent content in zsh on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sun, 23 Feb 2020 00:30:01 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/zsh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cảm nhận về zsh sau 1 tháng sử dụng basic</title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/</link>
+      <pubDate>Sun, 23 Feb 2020 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/</guid>
+      <description>Sau khi update chiếc máy MAC (máy công ty), terminal mặc định trong máy có recommend sang sử dụng zsh thay vì SHELL mặc định trước đó (bash thì phải) thì mới bắt đầu sử dụng thử zsh. Đọc qua một vài lời khen thấy nó khá hay nên quyết định chuyển sang dùng zsh xem sao. Xem có đúng như lời đồn không. Bài này xin tóm tắt một số ý đã tìm hiểu, cảm nhận được.</description>
+    </item>
+    
+  </channel>
+</rss>

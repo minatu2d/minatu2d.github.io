@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Asm on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/asm/</link>
+    <description>Recent content in Asm on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sat, 11 Feb 2017 12:47:50 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/asm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</title>
+      <link>https://blog.lazytrick.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
+      <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
+      <description>Tham khảo
+ Sách : AT&amp;amp;T Assembly Language, Richard Blum  1. Ngôn ngữ Assembly là gì?  Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</description>
+    </item>
+    
+  </channel>
+</rss>

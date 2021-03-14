@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>USB on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/usb/</link>
+    <description>Recent content in USB on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Tue, 15 Mar 2016 14:54:41 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/usb/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SCSI - Giao tiếp với USB Memory</title>
+      <link>https://blog.lazytrick.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
+      <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
+      <description>Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &amp;ldquo;USB Flash Memory&amp;rdquo; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.</description>
+    </item>
+    
+    <item>
+      <title>Hiểu thêm về HID Report Descriptor</title>
+      <link>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
+      <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
+      <description>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.
+Giờ xin dịch lại bài này một cách khái quát nhất.
+Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau.</description>
+    </item>
+    
+    <item>
+      <title>USB cho Dev (Chp.01 - Giới thiệu)</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</link>
+      <pubDate>Mon, 25 Jan 2016 14:18:10 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</guid>
+      <description>USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.
+Link gốc tại http://www.beyondlogic.org/usbnutshell/usb1.shtml
+Tóm tắt về USB Hiểu chuẩn USB để sử dụng trong phát triển Nếu bạn là người bắt đầu công việc phát triển sử dụng USB, thì quả thật nó không dễ dàng gì.</description>
+    </item>
+    
+    <item>
+      <title>Tầng thấp của USB</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</link>
+      <pubDate>Mon, 25 Jan 2016 14:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</guid>
+      <description>USB - Khỏi cần nói thì nó cũng đã quá nổi tiếng về sự phổ biến rồi. Gần như mọi thứ đều mặc định phải có kết nối USB, cổng USB gần như là bắt buộc trên máy tính, và rất nhiều thiết bị điện tử ta thấy. Từ USB1.1 đến 2.0, rồi gần đây nhất là 3.0. Rồi gần đây người ta có nhắc nhiều đến USB Type C.</description>
+    </item>
+    
+  </channel>
+</rss>

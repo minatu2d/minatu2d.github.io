@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>StaticIP on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/staticip/</link>
+    <description>Recent content in StaticIP on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sat, 06 Aug 2016 17:08:17 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/staticip/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thiết lập IP mặc định của bản build Linux cho Raspberry PI bằng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</link>
+      <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</guid>
+      <description>Để tiếp tục customize bản OS được build trong bài trước.
+Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.
+Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.
+Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</description>
+    </item>
+    
+  </channel>
+</rss>

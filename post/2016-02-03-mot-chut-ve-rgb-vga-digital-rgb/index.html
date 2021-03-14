@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Một chút về RGB VGA, Digital RGB - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Một chút về RGB VGA, Digital RGB</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.</p>
+<p>Mô tả ngắn gọn ở đây để sau đỡ quên vậy:</p>
+<p>ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&hellip;) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.</p>
+<p>Về chức năng, mình đang có một tín hiệu VGA, nhưng do không hiểu các khái niệm về đầu ra, đầu vào của chip này nên cũng mất một thời gian mới rõ được.</p>
+<p>Bài này sẽ note lại một số keyword xuất hiện trong Datasheet của ADV7401.</p>
+<ol>
+<li>Video Decoding là quá trình làm gì.</li>
+<li>Graphic Digitization là quá trình làm gì.</li>
+<li>720p, 1080i nói lên điều gì.</li>
+<li>VGA, SXGA nói lên điều gì.</li>
+<li>Một số keyword khác, có tìm hiểu nhưng không liên quan.</li>
+</ol>
+<hr>
+<h3 id="1-video-decoding-là-quá-trình-gì">1. Video Decoding là quá trình gì.</h3>
+<p>Video Decoding, ghe thôi đã biết là nặng nề rồi. Mình vẫn nghe thấy phải card hình xịn xem video mới mượt, hoặc đại loại như thế. Các có liên quan gì đến card xịn, liên quan đến xử lý hình ảnh đây.</p>
+<p>Vì ta đang tìm hiểu cho việc lập trình, mà lập trình phải I/O. Rốt cuộc, cái Video Decoding nó nhận đầu vào là cái gì, và đầu ra của nó là cái gì???</p>
+<p>Ta thấy ngay chữ Decoding, thì chắc là giải mã cái gì rồi. Đó là Video. Cái ta thấy trên màn hình. Nhưng ở Video ở đây muốn nói đến Analog Video hay Video sử dụng mà dạng trước khi lên màn hình của nó là tín hiệu Analog (tức là tần số, các phrase, cường độ..). Video hay Tivi sử dụng Analog ra đời trước khi Tivi tín hiệu số phổ biến. Tivi tín hiệu Analog vẫn được sử dụng đến ngay nay, tuy nhiên trong các thiết bị hiển thị trong máy tính thì hầu hết là Video số. Video số có nghĩa là nó sẽ chưa dữ liệu về màu sắc của mỗi điểm ảnh trên màn hình. Tín hiệu Analog thì không như thế, nó tái tạo các thông số về tần số, cường độ tại điểm nhận thôi. (không biết có đúng ko nữa!!!)</p>
+<p>Video Decoding ở đây là quá trình lấy tín hiệu Video Analog làm đầu vào và xuất ra đầu ra Video Digital (</p>
+<h3 id="2-graphic-digitization-là-quá-trình-làm-gì">2. Graphic Digitization là quá trình làm gì.</h3>
+<p>Graphic nghĩa là liên quan đến điểm ảnh liên quan đến RGB rồi. Còn Digitization là số hóa. Có nghĩa là số hóa cái gì đó để tạo ra dữ liệu dạng số hay bảng giá trị RGB của mỗi pixel.</p>
+<p>Như ta đã biết, máy tính (máy tính Case và một số laptop) thường có một cổng ghi VGA (thuật ngữ này sẽ thảo luận sau) có 15 lỗ, nối với màn hình để hiển thị nội dung cho ta.</p>
+<p>Tín hiệu ở máy tính xử lý là RGB (bảng mã màu cho mỗi Pixel), còn tín hiệu truyền qua dây đương nhiên là dạng Analog rồi. Nếu coi case máy tính là bên gửi, màn hình là bên nhận. Thì bảng RGB được truyền qua dây bằng tín hiệu Analog đến màn hình, rồi được Controller của màn hình tái tạo rồi hiển thị cho ta thấy kết quá.</p>
+<p>Graphics Digitization là quá trình mà Controller của màn hình sẽ làm, nó nhận đầu vào là Analog (chú ý đây là Analog của tín hiệu số phía máy tính gửi sang) rồi xuất ra đầu ra là một bảng RGB cho ra màn hình.</p>
+<h3 id="3-720p-1080i-là-gì">3. 720p, 1080i là gì.</h3>
+<p>p : progressive scanning hay noninterlaced scanning</p>
+<p>i : interlaced scanning</p>
+<p>Hình ảnh được hiển thị lên màn hình thông qua các frame (mỗi frame thông thường là trạng thái các điểm trên một đường ngang), việc update trạng thái màn hình chính là việc lặp đi lặp lại cập nhật trạng thái các đường này từ trên xuống dưới. Tần số cập nhật sẽ đủ lớn để mắt không nhận ra là có sự thay đổi cục bộ một phần của màn hình. Cái này gọi là scanning (quét màn hình).</p>
+<p>Có 2 cách để quét màn hình, là progressive và interlace,</p>
+<p>Progressive nghĩa là các đường từ trên xuống lần lượt được cập nhật trong 1 lần scan.</p>
+<p>Interlaced nghĩa là các đường lẻ được cập nhật hết rồi đến các đường chẳn trong 1 lần scan. Vì thế nó cần 2 lần scan để cập nhật hết toàn bộ màn hình.</p>
+<p>Progressive sẽ cập nhật toàn bộ các line cho mỗi lần scan nên phải có tần số cao hơn Interlace, mà cụ thể bằng 1/2.</p>
+<p>720p ở đây là muốn nói đến của 720 đường ngang được cập nhật bằng progressive.</p>
+<p>1080i ở đây là nói đến có 1080 đường ngang được cập nhật bằng Interlaced.</p>
+<h3 id="4-vga-svga-là-gì">4. VGA, SVGA là gì.</h3>
+<p>Là tên đại diện cho độ phân giải màn hình,</p>
+<p><img src="https://blog.lazytrick.com/post/images/800px-vector_video_standards2-svg.png" alt="800px-vector_video_standards2-svg"></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/digitalsignal/" rel="tag">DigitalSignal</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/rgb/" rel="tag">RGB</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/vga/" rel="tag">VGA</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

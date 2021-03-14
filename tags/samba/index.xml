@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Samba on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/samba/</link>
+    <description>Recent content in Samba on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sat, 06 Aug 2016 16:05:42 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/samba/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thêm samba server vào bản build Linux cho Raspberry PI bằng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</link>
+      <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</guid>
+      <description>Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project.
+Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).</description>
+    </item>
+    
+  </channel>
+</rss>

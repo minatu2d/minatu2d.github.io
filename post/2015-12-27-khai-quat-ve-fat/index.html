@@ -1,0 +1,983 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Khái quát về FAT - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="FAT comprehensive overview">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Khái quát về FAT</h1>
+			
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Mục lục</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#31-dung-lượng-fat">3.1 Dung lượng FAT</a></li>
+    <li><a href="#32-sector">3.2 Sector</a></li>
+    <li><a href="#33-định-dạng-dữ-liệu">3.3 Định dạng dữ liệu</a></li>
+    <li><a href="#4-boot-sector-và-bpb">4. Boot Sector và BPB</a></li>
+    <li><a href="#5-công-thức-tính-kích-thước-các-vùng">5. Công thức tính kích thước các vùng.</a></li>
+    <li><a href="#6-fat-và-cluster">6. FAT và Cluster</a></li>
+    <li><a href="#7-thông-số-quyết-định-loại-fat">7. Thông số quyết định loại FAT</a></li>
+    <li><a href="#8-truy-cập-fat-entry">8. Truy cập FAT Entry</a></li>
+    <li><a href="#9-mối-liên-hệ-giữa-file-và-các-cluster">9. Mối liên hệ giữa File và các cluster</a></li>
+    <li><a href="#10-về-cấu-trúc-directory">10. Về cấu trúc Directory</a></li>
+    <li><a href="#12-các-thao-tác-với-directory">12. Các thao tác với Directory</a></li>
+    <li><a href="#13-định-dạng-nhãn-thời-gian">13. Định dạng nhãn thời gian</a></li>
+    <li><a href="#14-tên-file-dài">14. Tên File dài</a></li>
+    <li><a href="#15-phạm-vi-đặt-tên-và-page-code">15. Phạm vi đặt tên và Page Code</a></li>
+    <li><a href="#16-giữa-sfn-và-lfn">16. Giữa SFN và LFN</a></li>
+    <li><a href="#17-việc-tạo-sfn-và-các-kí-tự-đại-diện">17. Việc tạo SFN và các kí tự đại diện</a></li>
+    <li><a href="#18-những-trường-hợp-không-sinh-ralfn-entry">18. Những trường hợp không sinh ra LFN Entry</a></li>
+    <li><a href="#19-tính-tương-thích-giữa-các-hệ-thống">19. Tính tương thích giữa các hệ thống</a></li>
+    <li><a href="#20-về-lưu-trữ">20. Về lưu trữ</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p>Trong quá trình porting sang hệ điều hành ITRON-based (NORTi), đã có dịp tìm hiểu về FAT, thấy bài của anh ELMちゃん này đầy đủ những thứ mình muốn biết về FAT nên sẽ dịch lại cả bài ở đây.</p>
+<p>Link gốc: <a href="http://elm-chan.org/docs/fat.html">http://elm-chan.org/docs/fat.html</a></p>
+<p>Trong tài liệu này, về cơ bản là dựa trên tài liệu vể <a href="http://www.microsoft.com/whdc/system/platform/firmware/fatgen.mspx">FAT32 Spec</a> , nhưng sẽ được giản luợc và bô sung thêm phần giải thích khái niệm mà bản gốc không có. Trong thực tế, các hệ thống chuẩn (DOS/Windows) cũng hoạt động không hoàn toàn giống với tài liệu Spec, tôi sẽ giải thích các khái niệm dựa trên hoạt động thực tế. Thêm một điều nữa là, trong tài liệu có thể có những nội dung theo ý cá nhân của tôi, nên khi triển khai hệ thống thực tế thì cần confirm chắc chắn yêu cầu thực tế rồi mới làm.</p>
+<p>Mục lục</p>
+<ol>
+<li>Phần mở đầu</li>
+<li>Các thuật ngữ sử dụng bên trong tài liệu</li>
+<li>Cơ bản về hệ thống file FAT</li>
+<li>Boot Sector và BPB</li>
+<li>Công thức tính kích thước các vùng</li>
+<li>FAT và Cluster</li>
+<li>Thông số quyết định loại FAT</li>
+<li>Truy cập FAT Entry</li>
+<li>Sự liên quan giữa File và Sector</li>
+<li>Về cấu trúc FSInfo của FAT và Backup của Boot Sector</li>
+<li>Về cấu trúc Directory</li>
+<li>Các thao tác với Directory</li>
+<li>Định dạng nhãn thời gian</li>
+<li>Độ dài tên File</li>
+<li>Pham vi tên và Code page</li>
+<li>Matching giữa LFN và SFN</li>
+<li>Việc tạo SFN và việc thêm kí tự</li>
+<li>Về LFN Entry</li>
+<li>Tính tương thích</li>
+<li>Về việc chia các Partitions (về mặt vật lý)</li>
+</ol>
+<h1 id="1-phần-mở-đầu">1. Phần mở đầu</h1>
+<p>Hệ thống file tức là nói về hệ thống quản lý dữ liệu trên thiết bị nhớ bỏ sung. Có nhiều hệ thống File, những tài liệu này chỉ giới hạn nói về các cấu dữ liệu được lưu trữ của hệ thống file FAT.</p>
+<p>Từ 1980, lần đầu tiên FAT được hỗ trợ trên MS-DOS. Ở thời điểm đó, nó được phát triển với mục tiêu tạo ra một hệ thống File phù hợp với ổ đĩa floppy 500KB trở xuống. Về sau, khi dung lượng lớn dần thì nó được mở rộng thêm. FAT nghĩa là File Allocation Table, hay nói cách khác muốn nói đến việc quản lý, cấp phát bảng này. Ngày nay, có 3 loại FAT được sử dụng: FAT12, FAT16, FAT32. Điểm khác nhau cơ bản nằm ở các kích thước FAT Entry (giống như kích thước của index của mảng 1 chiều), tương ứng với số Bit để biểu diễn mỗi index là 12, 16, 32. Và chúng tương thích ngược hoàn toàn, tức là hệ thống hỗ trợ FAT16 thì bao gồm cả FAT12, và hệ thống FAT32 thì bao gồm cả FAT12/16 nữa.</p>
+<h1 id="2-các-thuật-ngữ-sử-dụng-bên-trong-tài-liệu">2. Các thuật ngữ sử dụng bên trong tài liệu</h1>
+<p><code>0xACB..</code>  : bắt đầu nghĩa là biểu diễn kí tự Hexacimal( hệ 16), còn lại là kí tự Decimal (hệ 10).</p>
+<p><code>1K, 2K..</code> : K ở đây biểu diễn đơn vị bằng 1024 (hay <code>2^10</code>)</p>
+<p><code>1M, 2M..</code> : M ở đây biểu diễn đỡn vị bằng 1048576 (hay <code>2^20</code>)</p>
+<p><code>1G, 2G..</code> : G ở đây biểu diễn đơn vị bằng 103741824 (hay <code>2^30</code>)</p>
+<p><code>1T, 2T..</code> : T ở đây biểu diễn <code>2^40</code>.</p>
+<p>Các đoạn code trong tài liệu mặc định viết bằng ngôn ngữ C, và có cú pháp không chặt chẽ. Có nhiều đoạn không mô tả rõ ràng giữa 32 bit và 16 bit. Giả định rằng lập trình viên hiểu rõ kích thước của các kiểu dữ liệu này cũng như các cách để tránh việc chuyển đổi kiểu dữ liệu. Thêm nữa, toàn bộ kiểu dữ liệu sử dụng là không dấu, tuyệt đối không sử dụng kiểu dữ liệu có dố để tránh những kết quả không như mong muốn.</p>
+<h1 id="3-cơ-bản-về-hệ-thống-file-fat">3. Cơ bản về hệ thống file FAT</h1>
+<h2 id="31-dung-lượng-fat">3.1 Dung lượng FAT</h2>
+<p>Tức là nói về dung lượng luân lý (ổ đĩa luân lý) của một hệ thống <code>FAT</code> hoàn chỉnh. Dung lượng luân lý này thường bao gồm 3 hoặc 4 thành phần. Các vùng được cấu tạo từ 1 hoặc nhiều Sector (định nghĩa phía dưới). Và được đặt theo thứ tự như sau:</p>
+<ol>
+<li>Vùng dữ trữ  (chứa dữ liệu các thành phần của ổ đĩa)</li>
+<li>Vùng <code>FAT</code> (bảng cấp phát vùng dữ liệu - giống như index của mảng)</li>
+<li>Vùng thư mục gốc (trong <code>FAT32</code> không có vùng này)</li>
+<li>Vùng dữ liệu ( chứa nội dung của File và thư mục, giống như giá trị các phần tử mảng)</li>
+</ol>
+<h2 id="32-sector">3.2 Sector</h2>
+<p>Là đơn vị nhỏ nhất khi hệ thống file đọc, ghi từ thiết bị lưu trữ. Về kích thước, có 3 loại phổ biến được sử dụng là <code>512/1024/2048</code> byte. Các sector được đánh chỉ số từ đầu đến hết ổ đĩa luân lý, chỉ số bắt đầu là 0. Ổ đĩa luôn lý không phải luôn luôn bắt đầu từ đầu của thiết bị lưu trữ, tức là người ta có thể cài đặt <code>FAT</code> chỉ cho một vùng trên thiết bị thôi chẳng hạn. Vì thế, trong tài liệu này, khi nói đến Sector thì có nghĩa là nói tính từ Sector 0 của ổ đĩa luân lý. Khi nói về vị trí tuyệt đối trên thiết bị lưu trữ, thì sẽ là Sector vật lý.</p>
+<h2 id="33-định-dạng-dữ-liệu">3.3 Định dạng dữ liệu</h2>
+<p>Hệ thống <code>File FAT</code> ban đầu được phát triển cho x86 CPU sử dụng trong <code>IBM PC</code>. Vì điểm quan trọng này nên, toàn bộ dữ liệu được lưu trữ của hệ thống <code>File FAT</code> là <code>Litle-Endian</code>. Vì vậy trên một <code>Big-Endian CPU</code> khác, thì khi truy cập các cấu trúc <code>BPB/FAT/Directory</code> thì cần phải chuyển đổi Endian trước khi sử dụng tính toán. Truy cập các trường dữ liệu <code>16/32</code> bit thì không nhất thiết được <code>Aligment</code>. Cho dù CPU có là <code>Litle Endian</code> đi nữa vẫn có trường hợp truy cập các trường dữ liệu không được Aliment cho kết quả không đúng, vì thế cần truy cập theo đơn vị byte. Thêm một vấn đề nữa, là truy cập kiểu từng <code>WORD</code> chỉ có thẻ thực hiện trong môi trường hỗ trợ các tùy chọn <code>Packing</code>, nó sẽ dần đến code có portability rất kém. Chính vì 2 lý do trên, mà khi thao tác với <code>FAT</code>, dữ liệu sẽ được truy cập như là mảng byte 1 chiều, việc này khiên cho việc đọc code trở nên khó khăn hơn nhưng tăng tính <code>Portability</code> của code.</p>
+<h2 id="4-boot-sector-và-bpb">4. Boot Sector và BPB</h2>
+<ul>
+<li>
+<p>Trong FAT luân lý, cấu trúc dữ liệu quan trọng nhất đó là BPB (BIOS Parameter Block) vì tất cả các thông tin liên quan đến FAT luân lý đều nằm ở đây. BPB nằm bên trong Boot Sector. Cái Sector này có thể được gọi với tên khác như VBR (Volumne Boot Record) hoặc PBR (Private Boot Record), và là Sector đầu tiên trong ổ đĩa FAT luân lý.</p>
+</li>
+<li>
+<p>Vùng BPB này hay dùng để chứa những thông tin mở rộng khi hệ thống File FAT thêm các chức năng mới. Đó chính là lý do mà BPB này có nhiều tên gọi đến vậy. Ở MS-DOSv1.0 thì chưa có vùng BPB này. Do phiên bản đầu tiên chỉ dành cho đĩa mêm Floppy 5.25 inches, 2 mặt hoặc 1 mặt, và để phân biệt loại 1 mặt hay mặt, nó sẽ đọc 8 bit trong FAT[0] (tức là ngay sau Boot Sector).</p>
+</li>
+<li>
+<p>Trong phiên bản MS-DÓSv2.0, việc xác định trên sẽ thông qua việc đọc BPB trong Boot Sector, kể từ đó phương pháp sử dụng byte đầu tiên của FAT[0] không còn được sử dụng nữa. Hiện tại, tất cả FAT luân lý đều phải chứa trường này. Về sau BPP này được mở rộng thêm khá nhiều dẫn đến việc xác định các tham số của ổ đĩa FAT luân lý gây ra nhiều hiểu lầm hoặc không rõ ràng.</p>
+</li>
+<li>
+<p>Đầu tiên, do sử phổ biến của ổ đĩa cứng (Hard Disk - Dung lượng lớn hơn trước) nên việc sử dụng FAT12 gây ra nhiều hạn chế về hiệu xuất cũng như giới hạn số lượng File nó quản lý được. MS-DOS ra đời để hỗ trợ FAT16 (thay đổi lần 1). Tuy nhiên, không lâu sau đó, nó cũng gặp vấn đề về khả năng quản lý. Đó là kích thước index bảng FAT của FAT16 chỉ có 16 bit nên nó chỉ quản lý được tối đa 2^26 (65536) Sector (nếu 1 Sector là 512 thì size lớn nhất nó quản lý được là 32M Byte), vẫn ổn khi dung lượng ổ đĩa cứng tăng rất nhanh. Thế là MS-DÓSv3.31 ra đời, hỗ trợ FAT32 (32 bit index), ngoài ra nó cũng hỗ trợ FAT12 (kích thước tối đa 128M Byte - Sector kích thước 32Byte ), FAt16(kích thước tối đa 2G Byte - Sector kích thước 32 Byte ) (thay đổi lần 2).</p>
+</li>
+<li>
+<p>Cuối cùng, trong Windows 95 OSR2 thì FAT32 đã hỗ trợ đến những ổ cứng dung lượng lớn hơn 2G Byte rồi, khi mà thời điểm trước đó FAT16 chỉ hỗ trợ đến 2GB. Trong spec của FAT32, có nói sẽ hỗ trợ đến2T Byte( Sector là 512 Byte). Và đây là lần thay đổi cuối cùng. Sau đó, thì Microsoft có khuyến nghị người dùng chuyển sang  NTFSS hoặc exFAT cho những thiết bị lưu trữ lớn hơn 32GB.</p>
+</li>
+<li>
+<p>Trong bảng dưới đây, tôi sẽ liệt kê một số trường dữ liệu của BPB, nó sẽ bắt đầu bằn BPB_. Những trường bắt đầu bằng BS_ thì không liên quan đến BPB mà nó chỉ nằm trong Boot Sector.</p>
+</li>
+<li>
+<p>Trong phần BPB của ổ đĩa luân lý FAT32 từ trường đầu tiên đến trường BPB_TotSec32 nó giống với FAT12, FAT16. Từ trường đó về sau thì có sự khác biệt. Từ byte 36 trở đi, thì mỗi trường chỉ thuộc về 1 loại mà thôi (hoặc là FAT32, hoặc là FAT12/16. Các xác định loại FAT nào sẽ được trình bày bên dưới:</p>
+</li>
+</ul>
+<p>Tên</p>
+<p>Offset</p>
+<p>Size</p>
+<p>Giải thích</p>
+<p>BS_jmpBoot</p>
+<p>0</p>
+<p>3</p>
+<p>Mã lệnh để nhảy đến boot trap。Trường này có 2 định dạng phổ biến sau;<br>
+0xEB, 0x??, 0x90 (Short Jump+NOP)<br>
+0xE9, 0x??, 0x?? (Near Jump)<br>
+?? là một giá trị tùy ý phụ thuộc vào địa chỉ nó sẽ nhảy đến。Trường hợp trường này bị mất hoặc ko có giá trị đúng thì Windows sẽ không thể nhận ra ổ đĩa này.</p>
+<p>BS_OEMName</p>
+<p>3</p>
+<p>8</p>
+<p>&ldquo;MSWIN4.1&quot;là giá trị được khuyến nghị nên đặt ở đây。Ngoài ra &ldquo;MSDOS5.0&rdquo; cũng hay được sử dụng。Giá trị của trường này hay bị hiểu nhầm như sau. Trường này đơn giản chỉ là 1 cá dãy kí tự, là tên. Trên các hệ điều hành của Microsoft thì không để ý đến trường này. Nhưng có thể một lúc nào đó giá trị này được xét đến với FAT Driver. Vì thế việc set giá trị ở đây để giảm tối thiểu vấn đề không tương thích đó. Dù nói là set gì cũng được nhưng vẫn có thể xảy ra tình trạng không nhận dạng được ổ đĩa FAT luân lý. Về ý nghĩa, trường này đại khái là tên của hệ thống đã format hay đã tạo ra FAT luân lý thôi.</p>
+<p>BPB_BytsPerSec</p>
+<p>11</p>
+<p>2</p>
+<p>Kích thước của Sector. Giá trị hợp lệ là một trong những giá trị sau 512/1024/2048/4096. Microsoft sẽ support các giá trị này. Nhiều hệ thống chỉ support 512, nhưng không kiểm tra trường này có bằng 512 hay không, chỗ này để giảm vấn đề tương thích ta cần sử dụng đúng giá trị của Sector Size. Đơn giản chỉ để tránh những hiểu nhầm không đáng có. Giá trị này phải bằng với kích thước của Sector mà hệ thống đang dùng để lưu trữ.</p>
+<p>BPB_SecPerClus</p>
+<p>13</p>
+<p>1</p>
+<p>Số Sector cấp phát tối thiểu. Trong ổ đĩa FAT luân lý sử dụng một khái  niệm gọi là Cluster. Để chỉ một dãy liên tục từ 1 Sector trở nên. Số Sector chưa trong 1 Cluster phải là cơ số của 2. Tức là nó phải là 1 trong các số 1, 2, 4, &hellip;, 128. Kích thước của Cluster tính theo Byte bằng (BPB_BytsPerSec * BPB_SecPerClus) và nó không thể lớn hơn 32K Byte được. Các phiên bản Window 98, NT.. về sau có sử dụng cluster có kích thước 64K, 128K, 256K lớn hơn 32KB cũ. Những FAT được tạo trên các hệ thống này có thể không thể được nhận ra trên các hệ thống cũ.</p>
+<p>BPB_RsvdSecCnt</p>
+<p>14</p>
+<p>2</p>
+<p>Số Sector chứa vùng dự trữ, trường này luôn hơn 0 (Vì ít nhất nó phải chưa BPB hay chính nó). Với FAT12/16 thì trường này chỉ cần 1 là đủ. Vì vùng dữ trữ của FAT12/16 chứa trong 1 Sector là đủ. Cũng có nhiều FAT Driver không kiểm tra trường này. Trên FAT32 trường này có giá trị 32. Microsoft support các giá trị từ 1 trở lên.</p>
+<p>BPB_NumFATs</p>
+<p>16</p>
+<p>1</p>
+<p>Số phân vùng FAT, phải được set là 2. Thực ra chỉ cần &gt;= 1 là được nhưng thỉnh thoảng cũng có trường hợp phần mềm FAT hoặc FAT Driver của OS kiểm tra điều kiện bằng hay không chẳng hạn. Driver của Microsoft thì hỗ trợ cả giá trị khác 2 nhưng vẫn khuyến nghị không nên dùng giá trị khác 2.<br>
+Giá trị chuẩn bằng 2 có ý nghĩa là FAT luân có một bản back up để khi xảy ra mất mát dữ liệu sẽ giảm khả năng mất dữ liệu. Ở các thiết bị không phải là đĩa như thẻ nhớ, flash thì vùng này không được sử dụng. Vì không có vùng backup nên ta set giá trị 1 cũng được. Có thể một lúc nào đó FAT Driver không nhận ra được cũng nên.</p>
+<p>BPB_RootEntCnt</p>
+<p>17</p>
+<p>2</p>
+<p>Trong FAT12/16 thì trường này được sử dụng để chỉ số lượng Directory trong Root Directory. Giá trị của trường này phải được set để sao kích thước của vùng Directory, tức là  BPB_RootEntCnt * 32 (kích thước mỗi Directory Entry) bằng số chưa BPB_BytsPerSec(kích thước 1 Sector) . Để tương thích được rộng nhất thì FAT16 phải sử dụng Sector size =512. Trên FAT32 thì trường này không được sử dụng và nó luôn phải được set là 0.</p>
+<p>BPB_TotSec16</p>
+<p>19</p>
+<p>2</p>
+<p>Tổng số sector của ổ đĩa luân lý (độ dài 16 bit là giá trị cũ)。Giá trị này là tổng số Sector chứa cả 4 vùng đã nêu ở phần trên. Ở FAT12/16 giá trị này mà lớn hơn 0x10000 thì trường này không được sử dụng và phải được set là 0. Tổng số Sector sẽ được lấy từ giá trị  BPB_TotSec32にbên dưới. Trong FAT32 thì trường này nhất định phải set là 0 (tức là không dùng).</p>
+<p>BPB_Media</p>
+<p>21</p>
+<p>1</p>
+<p>Giá trị ngăn cách cỗ định bên của đĩa cứng, giá trị cố định chuẩn là 0xF8. Với các đĩa không có ngăn cách thì giá trị này thường là  0xF0. Ngoài ra những giá trị dưới đây cũng được sử dụng 0xF0, 0xF8, 0xF9, 0xFA, 0xFB, 0xFC, 0xFD, 0xFE, 0xFF. Ngoài ra một điểm rất quan trọng khác nữa là giá trị này phải bằng với giá trị đặt ở 8 bit thấp của FAT[0]. Cái này xuất hiện từ MS-DOSv1.0, hiện tại thì không được sử dụng nữa.</p>
+<p>BPB_FATSz16</p>
+<p>22</p>
+<p>2</p>
+<p>Số Sector có trong 1 phân vùng FAT. Trường này chỉ sủ dụng được ở FAT12/FAT16 thôi. Trong FAT32 trường này nhất định phải set là 0 (không sử dụng) và trường BPB_FATSz32 sẽ được sử dụng thay thế. Kích thước bằng Sector của ổ đĩa luân lý sẽ bằng : giá trị trường này* BPB_NumFATs.</p>
+<p>BPB_SecPerTrk</p>
+<p>24</p>
+<p>2</p>
+<p>Số Sector có trong 1 Track (Rãnh đĩa). Trường này liên quan đến thị chi tiết về hình học của thiết bị lưu trữ. Sử dụng ở ổ đĩa máy IBM PC, ngoài ra thì nó chẳng có ý nghĩa gì nữa.</p>
+<p>BPB_NumHeads</p>
+<p>26</p>
+<p>2</p>
+<p>Số lượng Head (đầu đọc), giống với Track, trường này liên quan đến cấu tạo hình học của đĩa. Chỉ được sử dụng trong IBM PC, không còn được sử dụng nữa.</p>
+<p>BPB_HiddSec</p>
+<p>28</p>
+<p>4</p>
+<p>Số sector không thuộc ổ đĩa luân lý, tức là nằm phía trước địa chỉ bắt đầu cài đặt ổ đĩa luân lý. Nói chung, trong máy IBM PC, Phần này liên quan đến việc truy cập các thông tin BIOS được hệ thống lưu trữ lại. Trong trường hợp ổ luân lý bắt đầu từ đầu của thiết bị lưu trữ như ổ Floppy chẳng hạn thì trường này có giá trị là 0.</p>
+<p>BPB_TotSec32</p>
+<p>32</p>
+<p>4</p>
+<p>Tổng số Sector của ổ đĩa luân lý (độ dài 32 bit là giá trị mới). Đây là kích thước tính bằng Sector của 4 vùng đã miêu tả ở phần trên. Trong FAT12/16 khi số Sector nhỏ hơn hoặc bằng 0x10000 thì trường này phải gán là 0, trường BPB_TotSec16 sẽ được sử dụng thay thế. Trong FAT32 trường này luôn được sử dụng.</p>
+<p>Các trường trong bảng sau sẽ khác biệt giữa FAT12/16 với FAT32. Vì thế, trước khi tham khảo, cần quyết định xem dùng loại nào. Có những trường chỉ có trong FAT32 mà không hề có trong FAT12/FAT16.</p>
+<p>Các trường tính từ Offset 36 trong FAT12/16</p>
+<p>名前</p>
+<p>Offset</p>
+<p>Size</p>
+<p>解説</p>
+<p>BS_DrvNum</p>
+<p>36</p>
+<p>1</p>
+<p>Số thứ tự ổ đĩa được sử dụng trong đĩa của BIOS IBM PC. Trường này được sử dụng trong Boot Trap của MS-DOS. Với Floppy Disk thì nó là 0x00, còn với Disk cố định thì nó là 0x80. Cái này thực tế sẽ phục vụ cho hệ điều hành.</p>
+<p>BS_Reserved1</p>
+<p>37</p>
+<p>1</p>
+<p>Dự trữ( dùng cho WindowsNT), khi format thì cần set 0 cho giá trị này.</p>
+<p>BS_BootSig</p>
+<p>38</p>
+<p>1</p>
+<p>Boot Signature mở rộng (0x29). Giá trị này sẽ quyết định sự tồn tại của 2\3 giá trị kế tiếp.</p>
+<p>BS_VolID</p>
+<p>39</p>
+<p>4</p>
+<p>Số serial của ổ đĩa luân lý. Trường này với trường BS_VolLab được sử dụng như là dấu hiệu để support trên Removable Storage. Nó cũng giúp cho FAT Driver phát hiện ra việc rút Removable Store không đúng. Cái ID này thường được sinh từ giờ hệ thống</p>
+<p>BS_VolLab</p>
+<p>43</p>
+<p>11</p>
+<p>Nhãn của ổ đĩa luân lý. Trường này với trường được ghi ở Root Directory sẽ giống nhau. Khi FAT Driver thay đổi trường này ở 1 trong 2 thì cũng phải thay thay đổi cả 2. Trong trường hợp không được set nhãn thì giá trị sẽ là &ldquo;NO NAME &ldquo;.</p>
+<p>BS_FilSysType</p>
+<p>54</p>
+<p>8</p>
+<p>Loại FAT &ldquo;FAT12   &ldquo;, &ldquo;FAT16   &quot; hoặc là FAT     &ldquo;.Nhìn vào có thể nghĩ rằng trường này sẽ có tác dụng khi xác định loại FAT. Nhưng không phải vậy, nó không thuộc BPB và FAT Driver của Micosoft cũng không dùng nó để quyết định kiểu FAT. Vì một số FAT Driver vẫn dùng nó để kiểm tra nên để tăng tối đa tính tương thích thì trường này nên được gán đúng kiểu của FAT hiện tại.</p>
+<p>Từ offset 36, các trường này chỉ có trong FAT32</p>
+<p>名前</p>
+<p>Offset</p>
+<p>Size</p>
+<p>解説</p>
+<p>BPB_FATSz32</p>
+<p>36</p>
+<p>4</p>
+<p>Số Sector có trong 1 FAT luân lý. Kích thước của cả ổ đĩa luân lý tính bằng Sector: Giá trị này * BPB_NumFAT. Việc tham khảo trường này là cần thiết trước khi quyết định loại FAT. Cho dù trong FAT12/16 đi nữa cũng không vấn đề gì vì , trường BPB_FATSz16 sẽ được sử dụng và trong FAT32 nó sẽ bị bỏ qua.</p>
+<p>BPB_ExtFlags</p>
+<p>40</p>
+<p>2</p>
+<p>Bít 3～0: FAT active tính từ 0. Nếu bit số 7 là 1 thì trường này được sử dụng.<br>
+Bít 6～4: Dự trữ.Bit 7:  bằng 0 thì toàn bộ FAT sẽ được mirroring. Nếu là 1 thì chỉ có FAT được chỉ định ở bit 3~0 là active thôi.Bit 15～8: dự trữ.</p>
+<p>BPB_FSVer</p>
+<p>42</p>
+<p>2</p>
+<p>Version của FAT32. Byte cao là Major, Byte thấp là Minor. Trường này không phải để sử dụng cho việc mount ổ đĩa FAT32 cũ mà là dùng để mở rộng FAT32. Trong tài liệu này sẽ nói về version 0.0 thôi.</p>
+<p>Những tool Ultility khi truy cập đến ổ luân lý mà thấy giá trị lơn hơn giá trị mà nó có thì sẽ không cần làm gì thêm. Ngoài ra, FAT32 Driver kiểm tra trường này nếu nó lớn hơn thời điểm viết Driver thì cũng không cần mount gì.</p>
+<p>BPB_RootClus</p>
+<p>44</p>
+<p>4</p>
+<p>Vị trí của Senctor đầu tiên trong vùng Directory. Thông thường thì là 2 (hay là Sector đầu tiên sau Boot Sector), nhưng giá trị 2 là không bắt buộc.<br>
+Đương nhiên, nếu vị trí Root Directory thay đổi thì phải đặt đúng cái Sector đầu của nó thôi. Nếu vị trí này bị sai hoặc bị xóa mất(0) thì Tool phục hồi đĩa phải thực hiện việc tìm Root Directory thôi.</p>
+<p>BPB_FSInfo</p>
+<p>48</p>
+<p>2</p>
+<p>Bên trong vùng dự trữ của FAT32 có vị trí Sector đặt cấu trúc FSINFO.　Thường là 1. Tức là Sector sau Boot Sector.</p>
+<p>BPB_BkBootSec</p>
+<p>50</p>
+<p>2</p>
+<p>Nếu khác giá trị 0, thì nó sẽ là giá của Sector chưa bản Backup của Boot Sector.</p>
+<p>BPB_Reserved</p>
+<p>52</p>
+<p>12</p>
+<p>Trường dự phòng cho việc mở rộng trong tương lai. Tại thời điểm format ổ đĩa, chúng nên được gán là Zero.</p>
+<p>BS_DrvNum</p>
+<p>64</p>
+<p>1</p>
+<p>Giống với FAT12/16</p>
+<p>BS_Reserved1</p>
+<p>65</p>
+<p>1</p>
+<p>Giống với FAT12/16</p>
+<p>BS_BootSig</p>
+<p>66</p>
+<p>1</p>
+<p>Giống với FAT12/16</p>
+<p>BS_VolID</p>
+<p>67</p>
+<p>4</p>
+<p>Giống với FAT12/16</p>
+<p>BS_VolLab</p>
+<p>71</p>
+<p>11</p>
+<p>Giống với FAT12/16</p>
+<p>BS_FilSysType</p>
+<p>82</p>
+<p>8</p>
+<p>Luôn luôn là &ldquo;FAT32   &ldquo;, trường này không liên quan đến việc quyết định loại FAT nào.</p>
+<p>Trong Boot Sector, có một điểm rất quan trọng nữa, các byte ở offset 510, 511 của Sector này phải lần lượt là 0x55, 0xAA. Nếu 2 giá trị này không được đọc đúng thì Boot Sector này là invalid. Rất nhiều tài liệu về FAT hiểu làm và cho rằng rằng 2 byte cuối của Boot Sector phải là 0x55, và 0xAA. Điều trên chỉ đúng khi Boot Sector có kích thước là 512 byte. Nhưng trong trường hợp khác thì không thể đúng được. Ta phải hiểu là luôn luôn là vị trị offset 510, 511 (có thể là cả 2 byte cuối cũng được). Trong tài liệu của Microsoft thì vị trí offset 512 trở đi đều là 0 hết.</p>
+<p>Kích thước ổ đĩa luân lý, (trường BPB_TotSec16 hoặc 32) thì có thể nhỏ hơn kích thước của thiết bị nhớ hoặc vùng lưu trữ đó. Vì các vùng nhỡ được chia ra làm các ô nhớ cố định để lưu trữ nên có thể xảy ra tình trạng sau.</p>
+<p>Có thể có nhiều đơn vị nhớ không lưu trữ hết gây lãng phí một lượng dùng trống còn lại. Đây là điều hoàn toàn bình thường trong FAT. Tuy nhiên, nếu giá trị kích thước luân lý lớn hơn kích thước thật của thiết bị nó được cài đặt, thì sẽ xảy ra rất nhiều vấn đều. FAT Driver khi phát hiện được vấn đề này cần từ chối việc mount ổ đĩa đó.</p>
+<h2 id="5-công-thức-tính-kích-thước-các-vùng">5. Công thức tính kích thước các vùng.</h2>
+<p>Từ các thông số của BPB thì ta có thể tính chính xác được vị trí của các vùng và kích thước mỗi vùng trên ổ đĩa luân lý.</p>
+<p>Vùng FAT là vùng ngay sau vùng dự trữ, vì thế kích thước và vị trị của vùng FAT sẽ được tính như công thức dưới đây:</p>
+<blockquote>
+<p>FatStartSector = BPB_ResvdSecCnt;<br>
+FatSectors = BPB_FATSz * BPB_NumFATs;</p>
+</blockquote>
+<p>Tiếp theo, kích thước và vị trí của vùng thư mục gốc:</p>
+<blockquote>
+<p>RootDirStartSector = FatStartSector + FatSectors;<br>
+RootDirSectors = (32 * BPB_RootEntCnt + BPB_BytsPerSec - 1) / BPB_BytsPerSec;</p>
+</blockquote>
+<p>32 ở đây là kích thước một Directory Entry (đơn vị Byte).<br>
+Bỏ qua phần thập phân.<br>
+Ở công thức trên, kết quả đã đã bao gồm đủ Sector để chưa toàn bộ Root Directory rồi.<br>
+Ở FAT32, thì vì trường BPB_RootEntCnt luôn là 0 nên kích thước của vùng Root Directory cũng luôn là 0.<br>
+Cứ thế, vung dữ liệu được tính theo công thức dưới đây;</p>
+<blockquote>
+<p>DataStartSector = RootDirStartSector + RootDirSectors;<br>
+DataSectors = BPB_TotSec - DataStartSector;</p>
+</blockquote>
+<p>Trường hợp thiết bị lưu trữ được chia thành các đoạn, có thể vị trí bắt đầu cài đặt ổ đĩa luôn lý<br>
+không hẳn là vị trí bắt đầu của thiết bị lưu trữ nên Sector luân lý và chỉ số trên thiết bị lưu trữ có thể khác nhau.</p>
+<h2 id="6-fat-và-cluster">6. FAT và Cluster</h2>
+<p>Sau đây là một vùng rất quan trọng, đó chính là vùng FAT. Chức năng của vùng FAT là ghi lại, quản lý vị trí (một dãy các cluster) trên vùng Data của các File trong hệ thống.</p>
+<p>Vùng Data được chia ra đều ra thành các đơn vị lưu trữ gọi là cluster. Cluster không phải là có kích thước tùy ý mà phải bằng một số lần cố định (chính là trường BPB_SecPerClus) Sector. Vùng FAT sẽ quản lý một danh sách các số và ánh xạ 1:1 đến các cluster này. Mỗi giá trị được quả lý trong vùng FAT tương ứng với một Cluster trong vùng Data. Có 1 điểm đặc biệt ở đây, 2 Entry đầu trong vùng FAT (FAT[0], FAT[1] thì không sử dụng hay nói cách khác là dự trữ, nó không chỉ ánh xạ đến một cluster hết. Tính từ FAT[2] (sẽ tương ứng với Cluster 2), FAT[3] sẽ tương ứng với Cluster 3, cứ như thế cho đến hết. Nói cách khác, chỉ số Cluster được tính từ 2. Về những chỉ số trong vùng FAT, có thể xem kĩ tại đây.</p>
+<p>Vì FAT này cực kì quan trọng, nếu Sector chưa nó bị hỏng có thể ảnh hướng rất lớn. Khi sử dụng FAT backup, thông qua giá trị BPB_NumFATs thì kích thước vùng FAT này sẽ bằng BPB_FATSz * BPB_NumFATs. Thông thường khi có tha tác chỉnh sửa, nó sẽ copy và cập nhật ở cả 2 vùng.</p>
+<h2 id="7-thông-số-quyết-định-loại-fat">7. Thông số quyết định loại FAT</h2>
+<p>Về vấn đề này có rất nhiều nhầm lẫn dấn đến việc xảy ra nhiều lỗi khác nhau. Thực tế, việc quyết định loại FAT được thực hiện theo một logic hết sức đơn giản dưới đây:</p>
+<p><strong>Kiểu FAT (FAT12/FAT16/FAT32) được quyết định dựa trên số cluster của ổ đĩa luân lý, ngoài ra không có cách định nào khác.</strong></p>
+<p>Số cluster ở đây là số lượng cluster có ở vùng Data, hay nói cách khác là giá trị mà kích thước vùng Data chia cho kích thước cluster.</p>
+<p>CountofClusters = DataSectors / BPB_SecPerClus;</p>
+<p>Nếu có số dư thì nó sẽ bị bỏ đi tức là chỉ lấy giá trị nguyên của phép chi trên thôi. Sau khí có được số lượng Cluster rồi thì, thực hiện bước sau để xác định kiểu FAT:</p>
+<p>Nếu số cluster nhỏ hơn 4085 thì ổ đĩa luân lý là FAT12</p>
+<p>Nếu số cluster &gt;= 4086 và = 65526 thì ổ đĩa luân lý là FAT32.</p>
+<p>Đây là cách duy nhất để xác định loại FAT. Ở đây có thể thấy, FAT12 không thể có nhiều hơn 4085 cluster được, FAT16 không thể có ít hơn 4086 cluster, hoặc nhiều hơn 65525 được. Nếu ổ đĩa FAT luân lý nào không tuân theo luật này rất dễ xảy ra việc FAT Driver không nhận đúng loại FAT dẫn đến những sai xót phá hỏng dữ liệu.</p>
+<p>Tuy nhiên, những giá trị biên này không được quy định rõ ràng. Từ số lượng cluster ta có thể có được các giá trị biên như ở trên. Nhưng thực tế, những giá trị biên này cũng không thông nhất ( Cluster có thể nhiều loại 1,2,8,10,16&hellip;). Ví dụ, giá trị biên của số cluster lớn nhất chẳng hạn, trong FAT Spec thì nói là 4084, trong tài liệu MSDN thì viết là 4085, trên Windows thì 4085 cho Driver và 4086 cho Disk Tool. Nếu lấy 1 cái làm chuẩn thì có trên một cái khác lại thành không chuẩn. Vì thế, để đảm bảo việc tương thích tốt nhất cho source của FAT, ta nên tránh lấy số cluster gần với các giá trị biên. Nên lấy giá trị cách giá trị biên quy định trong FAT Spec khoảng 16 đơn vị là đẹp.</p>
+<p>Thêm nữa, có nhiều FAT Driver không thực hiện chặt chẽ quy tắc ở trên để xác định loại FAT mà dựa vào chuỗi kí tự ở trường BS_FilSysType để xác định kiểu. Vì thế, để sử dụng như là cách sau cùng để xác định đúng kiểu FAT, ta cũng nên gán giá trị trường này đúng với kiểu thực của FAT hiện tại.</p>
+<p>Từ quy tắc trên ta có thể suy ra cách xác định kiểu FAT từ kích thước của ổ đĩa luân lý. Ví dụ: Kích thước Sector là 512 byte, kích thước Cluster từ 512 Byte ~ 32K Byte.</p>
+<p>Kiểu FAT</p>
+<p>Kích thước ổ đĩa luân lý</p>
+<p>FAT12</p>
+<p>～128M Byte</p>
+<p>FAT16</p>
+<p>2M～2G Byte</p>
+<p>FAT32</p>
+<p>32M～2T Byte</p>
+<p>Ta có bảng như trên.</p>
+<h2 id="8-truy-cập-fat-entry">8. Truy cập FAT Entry</h2>
+<p>Liên quan đến FAT, có một thông số nữa cũng hết sức quan trọng. Đó là cách truy cập vùng FAT (hay các FAT Entry). Đầu tiên, ta cần hiểu rằng mỗi Cluster số N thì sẽ có 1 entry tương ứng (1-1) ở đâu đó trong vùng FAT. FAT16/FAT32 thì khá đơn giản, FAT Entry giống 1 mảng 1 chiều các số nguyên 16\32 bit. So với mảng trên bộ nhớ thì có 1 vài điểm khác. Thứ nhất, các chỉ số không nằm trên một vùng liên tục, ta chỉ có thể chắc chắn từ Sector đầu tiên chứa FAT, thì toàn bộ FAT sẽ nằm trên nhiều Sector liên tục nhau thôi. Vị dụ, muốn xác định Entry của Cluster N (FAT[N]) thì ta thực hiện tính toán như sau:</p>
+<p>Vị trí Entry của FAT16:
+ThisFATSecNum = BPB_ResvdSecCnt + (N * 2 / BPB_BytsPerSec);</p>
+<pre><code>ThisFATEntOffset = (N * 2) % BPB_BytsPerSec;
+</code></pre>
+<p>Vị trí Entry của FAT32:
+ThisFATSecNum = BPB_ResvdSecCnt + (N * 4 / BPB_BytsPerSec);</p>
+<pre><code>ThisFATEntOffset = (N * 4) % BPB_BytsPerSec;
+</code></pre>
+<p>Dựa vào công thức ở trên, giá trị của FAT Entry chính là giá 2 hoặc 4 byte kể từ vị trí bắt đầu được xác định bởi chỉ số của Sector. Thứ tự byte trong trường hợp này luôn là Litle-Endian. Trong FAT16/FAT32 thì chỉ số FAT Entry không thể đến số Sector giới hạn được.</p>
+<p>Liên quan đến FAT32, có một điểm rất quan trọng nữa. Tuy FAT Entry trong FAT32 chiếm 4 byte, nhưng 4 bit cao thì không được sử dụng mà để dự trữ thôi. Tức là chỉ còn 28 bit thấp được sử dụng. Các bít dự trữ được set là 0, và không được phép thay đổi những giá trị này. Chính vì thế, khi đọc FAT Entry từ ổ đĩa luân lý FAT32, ta phải sử dụng Bit Mask 0x0FFFFFFF với phép AND. Sau đó, khi ghi xuống, ta vẫn đảm bảo 4 bit đầu không thay đổi.</p>
+<p>Khi lấy ra:</p>
+<p>Lấy ra Entry của FAT32:
+ReadSector(SecBuff, ThisFATSecNum);</p>
+<pre><code>ThisEntryVal = *(uint32*)&amp;SecBuff[ThisFATEntOffset] &amp; 0x0FFFFFFF;
+</code></pre>
+<p>Khi ghi lại:</p>
+<p>Lấy ra Entry của FAT32:
+ReadSector(SecBuff, ThisFATSecNum);</p>
+<pre><code>tmp = *(uint32*)&amp;SecBuff[ThisFATEntOffset];
+tmp = (tmp &amp; 0xF0000000) | (NewEntryVal &amp; 0x0FFFFFFF);
+*(uint32*)&amp;SecBuff[ThisFATEntOffset] = tmp;
+
+WriteSector(SecBuff, ThisFATSecNum);
+</code></pre>
+<p>Với FAT12, mỗi FAT Entry sử dụng 12 bit (1.5 byte) nên có phức tạp hơn một chút. Tuơng ứng với chỉ số Cluster là chẵn hay lẻ ta sẽ có công thức tương ứng như sau:</p>
+<p>Vị trí Entry của FAT12:
+ThisFATSecNum = BPB_ResvdSecCnt + ((N + (N / 2)) / BPB_BytsPerSec);
+ThisFATEntOffset = (N + (N / 2)) % BPB_BytsPerSec;</p>
+<p>Lấy ra Entry của FAT FAT12:
+ReadSector(SecBuff, ThisFATSecNum);</p>
+<pre><code>if (N &amp; 1) {    /* Cluster có chỉ số là lẻ */
+    ThisEntryVal = (SecBuff[ThisFATEntOffset] &gt;&gt; 4)
+                 | ((uint16)SecBuff[ThisFATEntOffset + 1] &lt;&lt; 4);
+} else {        /* Cluster có chỉ số chẵn */
+    ThisEntryVal = SecBuff[ThisFATEntOffset]
+                 | ((uint16)(SecBuff[ThisFATEntOffset + 1] &amp; 0x0F) &lt;&lt; 8);
+}
+</code></pre>
+<p>Set Entry của FAT12:
+ReadSector(SecBuff, ThisFATSecNum);</p>
+<pre><code>if (N &amp; 1) {    /* Cluster có chỉ số là lẻ */
+    SecBuff[ThisFATEntOffset] = (SecBuff[ThisFATEntOffset] &amp; 0x0F)
+                              | (NewEntryVal &lt;&gt; 4;
+} else {        /* Cluster có chỉ số là chẵn */
+    SecBuff[ThisFATEntOffset] = NewEntryVal;
+    SecBuff[ThisFATEntOffset + 1] = (SecBuff[ThisFATEntOffset + 1] &amp; 0xF0)
+                                  | ((NewEntryVal &gt;&gt; 8) &amp; 0x0F);
+}
+
+WriteSector(SecBuff, ThisFATSecNum);
+</code></pre>
+<p>Đoạn code trên vẫn bị sai,</p>
+<p><img src="https://blog.lazytrick.com/post/images/fat.png" alt="fat"></p>
+<h2 id="9-mối-liên-hệ-giữa-file-và-các-cluster">9. Mối liên hệ giữa File và các cluster</h2>
+<p>Các File nằm trễn ổ đĩa luân lý được quản lý theo đơn vị là Directory (chi tiết về Directory sẽ được nói ở bên dưới). Trong Directory, có chưa tên file, cluster đầu tiên trong dãy cluster của File, những thông tin này là cửa vào để truy cập FAT. Dữ liệu mỗi File là một dãy các cluster nối nhau (link list). Từ cluster đầu tiên, ta sẽ biết được cluster đầu tiên lưu trữ File. Cluster 0, 1 chỉ dùng cho dự trữ, vì thế Cluster sẽ từ 2. Một ổ đĩa luân lý có N Cluster có nghĩa là các Cluster đó có chỉ số từ 2 đến N+1 và số FAT Entry là N+1. Những File có kích thước là 0 thì sẽ không được cấp phát Cluster nào hết. Từ chỉ số hợp lệ của một Cluster, ta có thể tính được vị trí của Sector đầu tiên trong Cluster đó.</p>
+<p>FirstSectorofCluster = DataStartSector + (N - 2) * BPB_SecPerClus;</p>
+<p>Hay nói cách khác, từ dữ liệu được lưu trữ từ Cluster số 2 trở đi. Khi kích thước File lớn, nó có thể được lưu trữ trên nhiều Cluster. FAT Entry tương ứng cho mỗi Cluster đó sẽ chưa chỉ số của Cluster tiếp theo. Vì vậy, cứ đi theo thứ tự đó, ta sẽ truy cập đến bất cứ Sector nào của File. Và tất nhiên, không thể theo thứ tự ngược lại được. FAT Entry của Cluster cuối cùng trong dãy Cluster mô tả dữ liệu 1 File sẽ có 1 dấu hiệu đặc biệt để nhận biết (EOC). Giá trị này sẽ không trùng với bất cứ Cluster nào đang có để đảm bảo tính đúng đắn. Tùy theo mỗi loại FAT sẽ sẽ sử dụng các giá trị khác nhau:</p>
+<ul>
+<li>FAT12: 0xFF8～0xFFF (thường đại diện là 0xFFF)</li>
+<li>FAT16: 0xFFF8～0xFFFF (thường đại diện là 0xFFFF)</li>
+<li>FAT32: 0x0FFFFFF8～0x0FFFFFFF (thường đại diện là 0x0FFFFFFF)</li>
+</ul>
+<p>Thêm một giá trị đặc biệt nữa, đó là dấu hiệu dành cho Cluster lỗi (hay ta vẫn gọi là Bad Cluster). Cluster lỗi nghĩa nói đến Cluster chưa Sector không sử dụng được nữa do hỏng hóc của thiết bị nhớ. Trong quá trình Format, phục hồi, hay dọn dẹp, khi một Cluster được phát hiện là hỏng, thì ta phải dấu lại để sau không đưa dữ liệu lên đó nữa. Các giá trị dùng để đánh dấu Cluster hỏng lần lượt như sau, FAT12 là 0xFF7, FAT16 là 0xFFF7, FAT32 là 0x0FFFFFF7.</p>
+<p>Trong FAT12 thì không thể có Cluster hợp lệ nào có chỉ số trùng với những giá trị trên được. Tuy nhiên, trong FAT32, só Cluster tối đa không được quy định rõ, nên vẫn có khả năng một Cluster hợp lệ có trùng chỉ số với giá trị đánh dấu. Nhưng ổ đĩa loại này sẽ gây ra nhiều phức tạp cho các tool Disk Ultility. Vì thế, khi tạo cần tránh những điều này. Với FAT32 ta nên lấy giá trị cận trên của số Cluster là 268435444.</p>
+<p>Trên một số hệ thống, nó có giới hạn số Cluster tại thời điểm tạo hệ thống đó. Ví dụ, trên Windows9X/Me thì kích thước hỗ trợ tối chỉ tới 16MB thôi, nên FAT32 không thể sử dụng nhiều hơn 4M Cluster được.</p>
+<p>Cluster  chỉ số 0 FAT[0] vì không được sử dụng nên không được cấp phát để lưu trữ bất cứ File nào. Ngoài ra người ta cũng dùng giá trị khác để đánh dấu những Cluster đang sử dụng, hoặc Cluster bị hỏng không thể cấp phát. Số Cluster còn lại mà chưa được sử dụng thì không được lưu ở đâu hết. Vì thế, muốn biết ổ đĩa còn trống bao nhiều, không còn cách nào khác là duyệt toàn bộ FAT Entry. FAT32 có số Cluster tương đối lớn, nên trong trường hợp này người sử dụng thông tin hỗ trợ (từ trường FSInfo).</p>
+<p>2 FAT Entry đầu tiên là FAT[0], FAT[1] không được sử dụng để lưu trữ thông tin. Khi forrmat ổ đĩa, tùy vào mỗi loại FAT mà 2 Entry này được gán giá trị khác nhau:</p>
+<ul>
+<li>FAT12: FAT[0] = 0xF??; FAT[1] = 0xFFF;</li>
+<li>FAT16: FAT[0] = 0xFF??; FAT[1] = 0xFFFF;</li>
+<li>FAT32: FAT[0] = 0xFFFFFF??; FAT[1] = 0xFFFFFFFF;</li>
+</ul>
+<p>&ldquo;??&rdquo; có giá trị bằng giá trị ở trường BPB_Media. FAT[0] cũng không mang chức năng gì đặc biệt. Còn FAT[1], trong trường hợp FAT16/FAT32 thì chúng được sử dụng như sau:</p>
+<ul>
+<li>Lịch sử trạng thái khi máy được tắt (FAT16: bit15、FAT32: bit31): 1:Bình thường, 0: Xuất hiện việc bị tắt bất thường.</li>
+<li>Lịch sử lỗi phần cứng (FAT16: bit14、FAT32: bit30): 1: Không có lỗi、0: Có lỗi phần cứng.</li>
+</ul>
+<p>Những bit trên để chỉ đến lỗi có thể phát sinh trên ổ đĩa. Nhưng OS support cái này sẽ dựa vào đó để biết được trạng thái của ổ đĩa luân lý lúc trước mà có thao tác tự động phụ hồi, kiểm tra lỗi thích hợp.</p>
+<p>Liên quan đến vùng FAT có 2 điểm quan trọng. Thứ nhất, không nhất thiết phải dùng đến hết đến Sector cuối cùng.  Hầu hết FAT sử dụng một dãy Sector nhất định thôi.FAT Driver không được phép giả định về giá trị của phần chưa được sử dụng. Khi tạo ổ đĩa luân lý, phải khởi tạo vùng FAT về zero hết (Trừ FAT[0], FAT[1]). Thêm một điều nữa, trường thể hiện kích thước của ổ đĩa (BPB_FATSz16/32) nhiều khi cũng được gán giá trị lớn hơn thực tế. Vì thế, có thể có những Sector không được sử dụng nằm ở phía sau ổ đĩa FAT. Vì thế, để điều chỉnh lại các vùng này, người ta sinh ra các thao tác Aligment để điều chỉnh lại.</p>
+<p>Dưới đây là bảng tóm tắt các khoảng giá trị của FAT Entry</p>
+<p>FAT12</p>
+<p>FAT16</p>
+<p>FAT32</p>
+<p>解説</p>
+<p>0x000</p>
+<p>0x0000</p>
+<p>0x00000000</p>
+<p>Không sử dụng</p>
+<p>0x001</p>
+<p>0x0001</p>
+<p>0x00000001</p>
+<p>Dự trữ</p>
+<p>0x002:0xFF6</p>
+<p>0x0002:0xFFF6</p>
+<p>0x00000002:0x0FFFFFF6</p>
+<p>Đang sử dụng (chưa phải Cluster cuối, phía sau còn Cluster khác nữa trong day mô tả dữ liệu)</p>
+<p>0xFF7</p>
+<p>0xFFF7</p>
+<p>0x0FFFFFF7</p>
+<p>Sector bị hỏng</p>
+<p>0xFF8:0xFFF</p>
+<p>0xFFF8:0xFFFF</p>
+<p>0x0FFFFFF8:0x0FFFFFFF</p>
+<p>Dang được sửdunjg (là Cluster cuối của dãy mô tả dữ liệu)</p>
+<ol>
+<li>Về cấu trúc FSInfo của FAT và Backup của Boot Sector</li>
+</ol>
+<p>Về kích thước lớn nhất của vùng FAT, trong FAT12 là 6KB, FAT16 là 128KB, FAT32 khoảng vài MB trở lên. Vì kích thước vùng FAT của FAT32 khá lớn, nên phải tránh tối đa phải duyệt lại toàn bộ tất cả khi tìm kiếm một Cluster trống. Vì thế, trong FAT32 nó có hỗ trợ thêm một cấu trúc nữa, là FSInfo. Cấu trúc chứa trọn vẹn trong 1 Sector. Chỉ số của Sector chứa cấu trúc này được xác định bởi giá trị của trường BPB_FSInfo trong bảng BPB.</p>
+<p>Cấu trúc FSInfo  của FAT32(chỉ FAT32 mới có)</p>
+<p>Tên</p>
+<p>Offset</p>
+<p>Size</p>
+<p>解説</p>
+<p>FSI_LeadSig</p>
+<p>0</p>
+<p>4</p>
+<p>Cố định là 0x41615252. Trong thực tế, trường này là dấu hiệu đầu tiên dùng để xác định Sector FSInfo.</p>
+<p>FSI_Reserved1</p>
+<p>4</p>
+<p>480</p>
+<p>Dự trữ, không sử dụng, khi format phải được gán hết là 0.</p>
+<p>FSI_StrucSig</p>
+<p>484</p>
+<p>4</p>
+<p>Cố định 0x61417272. Trong thực tế, trường này là dấu hiệu thứ 2 để xác định Sector FS_Info.</p>
+<p>FSI_Free_Count</p>
+<p>488</p>
+<p>4</p>
+<p>Số lượng Cluster còn trống. Đây là giá trị tham chiếu, không nhất thiết phải đúng. Khi nó được gán là 0xFFFFFFFF thì có nghĩa là không sử dụng trường này.Khi trương này ở trạng thái sử dụng thì ít nhất ta cũng kiểm tra được giá trị số Cluster của ổ đĩa luân lý có hợp lệ hay không.</p>
+<p>FSI_Nxt_Free</p>
+<p>492</p>
+<p>4</p>
+<p>Chỉ số của Cluster cuối cùng được cấp phát. Đây cũng chỉ là giá trị tham chiếu thôi. Nếu nó là 0xFFFFFFFF thì cũng có nghĩa là không dùng. Khi FAT Driver muốn tìm một Cluster trống, thì giá trị ở đây được sử dụng như chỉ số bắt đầu. Nếu giá trị ở đây không hợp lệ, thì nó phải tìm từ FAT[2].</p>
+<p>FSI_Reserved2</p>
+<p>496</p>
+<p>12</p>
+<p>Dự trự. Khi format ổ đĩa, nó được khởi tạo toàn bộ là 0. Thực tế đến giờ vẫn không dùng.</p>
+<p>FSI_TrailSig</p>
+<p>508</p>
+<p>4</p>
+<p>Cố định là 0xAA550000. Trong thực tế, giá trị này được sử dụng như là dấu hiệu nhận biết thứ 3 cho Sector FSInfo.</p>
+<p>Ngoài ra, FAT32 còn có một chức năng nữa, đó là Backup Boot Record ( Vùng khởi động dự phòng). Ở trong FA12/FAT16 không có chức năng này, thay vào đó nó sử dụng mã kiểm tra vòng (CRC). Nhưng điều này để tăng cường khả năng phục hồi tronh trường hợp hỏng hóc bất thường. Vị trí Sector chứa vùng Backup Boot Record ở trên được xác định qua trường BPB_BkBootSec. Giá trị này được khuyến cáo mạnh mẽ rằng nên set là 6. Các boot loader hoặc FAT Driver nên được thiết kê trong trường hợp đọc Boot Sector thất bại, thì nó sẽ đọc Boot Record từ Sector số 6.</p>
+<p>Ổ đĩa FAT32, có đến 3 Sector liên tiếp là Boot Sector, tức là từ Boot Sector đầu tiên, ta có thêm 2 bản copy nữa. Đương nhiên các Byte 510, 511 của các Sector này lần lượt sẽ nhận giá trị 0x55, 0xAA.</p>
+<h2 id="10-về-cấu-trúc-directory">10. Về cấu trúc Directory</h2>
+<p>Đến đây, ta khoan hãy nghĩ đến những File có tên File dài, ta cứ giả định File có tên File đủ ngắn. Trong ổ đĩa FAT luân lý, thư mục là một loại File đặc biệt, người ta dựa vào một thuộc tính đặc biệt của File để xác định nó là Thư mục hay không. Thuộc tính này được lưu trữ bằng cấu trúc trong bảng Directory Table, có kích thước 2 byte. Vì thế, sẽ lưu trữ tối đa 65536 Entry.</p>
+<p>Thư mục luôn tồn tại trong ổ đĩa luân lý là Root Directory. Là thư mục ở tầng cao nhất. Trong FAT12/FAT16, nó nằm ngay sau vùng FAT, và có kích thước không thay dổi. Độ dài của bảng Directory chính là giá trị của trường BPB_RootEntCnt. Trong FAT32, cả File và Sub Directory cũng đưowjc lưu. Sub Directory chỉ khác với Directory ở chỗ nó không trỏ đến một Directory Entry nào cả. Sector bắt đầu của Root Directory được xác định bởi giá trị BPB_RootClus.</p>
+<p>Ngoài ra còn Sub Directory còn phải giữa thông tin của Dot Entry nữa. Đó là &ldquo;.&rdquo; và &ldquo;..&rdquo;. Dưới đây là bảng mô tả của một cấu trúc lưu trữ Directory.</p>
+<p>名前</p>
+<p>Offset</p>
+<p>Size</p>
+<p>解説</p>
+<p>DIR_Name</p>
+<p>0</p>
+<p>11</p>
+<p>Tên của File ngắn + phần mở rộng.</p>
+<p>DIR_Attr</p>
+<p>11</p>
+<p>1</p>
+<p>Các thuộc tính của File. Kết hợp các giá trị sau (2 bít cao đầu tiên không sử dụng) <br>
+0x01: ATTR_READ_ONLY (Chỉ đọc)<br>
+0x02: ATTR_HIDDEN (Ẩn)<br>
+0x04: ATTR_SYSTEM (Hệ thống)<br>
+0x08: ATTR_VOLUME_ID (Nhãn ổ đĩa)<br>
+0x10: ATTR_DIRECTORY (Thư mục)<br>
+0x20: ATTR_ARCHIVE (Lưu trữ)<br>
+0x0F: ATTR_LONG_FILE_NAME (File có tên dài)</p>
+<p>DIR_NTRes</p>
+<p>12</p>
+<p>1</p>
+<p>Cờ ghi tên File ngắn bằng chữ thường(đây là 1 option).<br>
+0x08:Toàn bộ là chữ thường.<br>
+0x10:Phần mở rộng là chữ thường</p>
+<p>DIR_CrtTimeTenth</p>
+<p>13</p>
+<p>1</p>
+<p>Giá trị hỗ trợ độ chính xác cho DIR_CrtTime. DIR_CrtTime có độ chínhxác là 2s. 2s này sẽ được chia làm 200 phần đánh số từ 0-199. Nếu không support trường này, thì gán bằng 0.</p>
+<p>DIR_CrtTime</p>
+<p>14</p>
+<p>2</p>
+<p>Thời điểm (giờ phút giây) tạo File(đâ cũng là option). Trường hợp không support thì cũng gán là 0 và không thay đổi giá trị.</p>
+<p>DIR_CrtDate</p>
+<p>16</p>
+<p>2</p>
+<p>Thời điểm (ngày tháng năm) tạo(là option). Trong trường hợp không support thì gán là 0.</p>
+<p>DIR_LstAccDate</p>
+<p>18</p>
+<p>2</p>
+<p>Ngày cuối cùng File được mở(là option). Không có thôngtin về giờ. Khi thực hiện thao tác ghi, phải gán giá trị giống với giá trị DIR_WrtDate.Trong trường hợp không support thì cũng gán là 0 và không thay đổi giá trị.</p>
+<p>DIR_FstClusHI</p>
+<p>20</p>
+<p>2</p>
+<p>16 bit cao của Cluster đầu tiên. Nếu là FAT12/16 thì gán hết bằng 0 và không thay đổi giá trị.</p>
+<p>DIR_WrtTime</p>
+<p>22</p>
+<p>2</p>
+<p>Giờ cuối cùng File được thực hiện thao tác ghi(Ghi xong đóng lại). Phải hỗ trợ.</p>
+<p>DIR_WrtDate</p>
+<p>24</p>
+<p>2</p>
+<p>Ngày cuối cùng File được thực hiện thao tác ghi. Phải hỗ trợ.</p>
+<p>DIR_FstClusLO</p>
+<p>26</p>
+<p>2</p>
+<p>16 bit cuối của Cluster bắt đầu nội dung File. Nếu File có kích thước là 0, thì trường này cũng là 0.</p>
+<p>DIR_FileSize</p>
+<p>28</p>
+<p>4</p>
+<p>Kích thước File tính theo Byte. Nếu là Directory thì giá trị là 0.</p>
+<p>Byte đầu tiên trong trường DIR_NAME có ý nghĩa rất quan trọng đối với trạng thái của Entry tương ứng. Nếu nó là 0xE5 hoặc 0x00 thì đây là Entry trống, nó có thể được sừ dụng. Nếu ngoài 2 giá trị trên, thì Entry đó sẽ được hiểu là đang sử dụng. Khi giá trị là 0, thì có được biết đến là Entry cuối cùng đang được sử dụng. Các Entry tiếp sau đó, phải được đảm bảo cũng là 0x00. Điều này sẽ giúp việc tìm kiếm dễ dàng hơn vì không phải tìm đến các Entry không có dữ liệu nữa. Với các tên File mà có byte đầu là 0xE5 giá trị 0xE5 sẽ được chuyển thành 0x05.</p>
+<p>Trường DIR_NAME có 11 byte, bao gồm 8 byte phần tên File và 3 byte phần mở rộng. Khi ấy, dấu &ldquo;.&rdquo; ngăn cách giữa tên File và phần mở rộng sẽ bị xóa bỏ. Nếu tên tổng độ dài của tên File và phần mở rộng không đủ 11 byte, thì các byte ở giữa sẽ được fill là 0x20 (space, dấu cách).</p>
+<p>Trường hợp sử dụng kí tự của bảng mã khác ngoài ASCII thì bảng mã máy hiện tại sẽ được sử dụng. Dươi đây là một ví dụ thực tế:</p>
+<p>ファイル名         DIR_Name          解説
+&ldquo;FILENAME.TXT&rdquo;    &ldquo;FILENAMETXT&rdquo;     Dấu &ldquo;.&rdquo; ngăn cách bị xóa.
+&ldquo;DOG.AVI&rdquo;         &ldquo;DOG     AVI&rdquo;     Không đủ 8+3 byte thì sẽ được padding ở giữa.
+&ldquo;File.Txt&rdquo;        &ldquo;FILE    TXT&rdquo;     Chuyển hết thành các kí tự chữ IN HOA
+&ldquo;file.TXT&rdquo;        &ldquo;FILE    TXT&rdquo;     Giống ở trên.
+&ldquo;蜃気楼.JPG&rdquo;      &ldquo;・気楼  JPG&rdquo;      &ldquo;蜃&quot;の第一バイトが0xE5なので0x05に置き換え
+&ldquo;NO_EXT&rdquo;          &ldquo;NO_EXT     &quot;     Không có phần mở rộng
+&ldquo;NO_EXT.&rdquo;         &ldquo;NO_EXT     &quot;     Giống ở trên
+&ldquo;.cnf&rdquo;                              *không thể ko có tên File
+&ldquo;new file.txt&rdquo;                      *không sử dụng space trong tên File
+&ldquo;file[1].c++&rdquo;                       ※kí tự [],+ là không được phép
+&ldquo;longext.jpeg&rdquo;                      ※dài quá 8+3 cũng không được
+&ldquo;arch.tar.gz&rdquo;                       ※dài quá 8+3 cũng không được.</p>
+<p>Các kí tự ASCII có thể sử dụng trong Filename là:</p>
+<p><em>0～9 A～Z ! # $ % &amp; ' ( ) - @ ^ _ ` { } ~</em></p>
+<p>Và các kí tự mở rộng 0x80 - 0xFF). Các kí tự in thường a~z không sử dụng được. Nó không gây lỗi nhưng sẽ được tự động chuyển sang IN HOA. Về kí tự mở rộng, với mỗi ngôn ngữ thì nó sẽ khác nhau. Nhưng tất cả đều được chuyển sang dạng chữ IN HOA rồi chuyển về dạng kí tự ASCII. Chính vì thế, việc tương thích giữa các ngôn ngữ là rất thấp. Về tính tương thích trong môi trường tiếng Nhật, hãy tham khảo phần nói về tính tương thích ở bên dưới.</p>
+<p>Các File trong một thư mục thì phải có tên duy nhất. Không thể tồn tại 2 Entry có cùng DIR_Name được. Trường DIR_Attr có giá trị được kết hợp bởi các flag từ bảng sau:</p>
+<p>ファイル属性</p>
+<p>Flag</p>
+<p>Giải thích</p>
+<p>ATTR_READ_ONLY</p>
+<p>Chống ghi. Không được phép ghi hoặc xóa File này.</p>
+<p>ATTR_HIDDEN</p>
+<p>Không hiển thị trong thư mục thông thường (phụ thuộc vào hệ thống sử dụng)</p>
+<p>ATTR_SYSTEM</p>
+<p>File hệ thống (phụ thuộc vào hệ thống sử dụng)</p>
+<p>ATTR_DIRECTORY</p>
+<p>Đây là thư mục, có chứa thư mục con. Được giải thích bên dưới</p>
+<p>ATTR_ARCHIVE</p>
+<p>Được set khi có thay đổi trong File. Nó chủ yếu được sử dụng khi các ToolBackup muốn tìm kiếm các file đã thay đổi.</p>
+<p>ATTR_VOLUME_ID</p>
+<p>Chỉ có 1 Entry sử dụng cờ này. Đó chính Root Directory. Đây là tên của ổ đĩa luân lý luôn. Các trường DIR_FstClusHI, DIR_FstClusLO, DIR_FileSize phải luôn được giữ giá trị 0. Nó được dụng độc lập.</p>
+<p>ATTR_LONG_NAME</p>
+<p>Bao rằng File có tên dài, và tên trong phần DIR_NAME chỉ là 1 phần thôi. Sẽ được giải thích kĩ hơn ở phần sau.</p>
+<h2 id="12-các-thao-tác-với-directory">12. Các thao tác với Directory</h2>
+<p>Tạo File</p>
+<p>Khi tạo File, nó sẽ tìm đến một Directory trống trong bảng Directory, rồi tạo Entry cho tên File đó. Nếu tìm đến cuối Cluster mà vẫn không có vùng trống nào thì sẽ cấp phát thêm Cluster mới và thêm vào dãy các Cluster. Số Entry không được phép lớn hơn 65536. Nếu bảng Directory là tĩnh (tức là Root Directory trong FAT12/FAT16) mà đã đầy thì không thể tạo thêm được Entry nữa. Trong Directory Entry mới được tạo, cờ ATTR_ARCHIVE trong trường DIR_Attr sẽ được bật, các trường DIR_FstClusHI, DIR_FstClusLO, DIR_FileSize sẽ được khởi tạo giá trị 0. Khi thực hiện ghi vào File, kích thước File tăng lên &gt; 0, thì sẽ có Cluster mới cho dữ liệu được tạo. Chỉ số của Cluster đó được gán và 2 trường DIR_FstClusHI, DIR_FstClusLO sẽ được gán giá trị tương ứng. Rồi khi kích thước File lớn thêm nữa, Cluster hiện tại không đủ chứa, nó sẽ cấp thêm Cluster. Và dãy Cluster lưu trữ dữ liệu được cập nhật.</p>
+<p>Tạo Directory</p>
+<p>Khi tạo thưc mụ con, sau khi tạo Entry cho thư mục con đó, trường DIR_Attr sẽ được gán 2 cờ ATTR_DIRECTORY và ATTR_ARCHIVE. Đây chính là điểm khác biệt duy nhất giữa Directory và File. Directory cũng không mang thông tin về kích thước, đương nhien trường DIR_FileSize sẽ bằng 0. Các trường DIR_FstClusHI, DIR_FstClusLO sẽ được gán chỉ số từ Cluster đầu tiên được cấp cho Directory này.</p>
+<p>2 Entry đầu tiên của Sub Directory phải là &ldquo;.&rdquo; và &ldquo;..&rdquo;. Dot Entry không tồn tại trong Root Directory, chỉ có trong Sub Directory. TrườngDIR_NAME của DIR[0] là &ldquo;.&rdquo;, của DIR[1] là &ldquo;..&rdquo;. Thuộc tính ATTR_DIRECTORY phải được set cho 2 thư mục này. Trường lưu vị trí Cluster của &ldquo;.&rdquo; Entry sẽ lấy chính giá trị của thư mục hiện tại. Còn của &ldquo;..&rdquo; thì lấy giá trị của thư mục cha. Nếu thư mục cha là Root Directory thì gán 0.</p>
+<p>Xóa File</p>
+<p>Khi xóa File, gán giá trị 0xE5 trong Directory Entry. Nếu File nằm trên nhiều Cluster thì gán các FAT Entry tương ứng là 0.</p>
+<p>Xóa Directory</p>
+<p>Cũng giống với việc xóa File nhưng. Nếu bảng Directory không trống ( ngoài top Entry ra không còn Entry nào khác) thì không xóa được. Nếu xóa thư mục chứa File đi, thì những Cluster bị chiếm bởi các File đó trở thành &ldquo;Lost Cluster&rdquo;. Vì thế, khi xóa thư mục, phải xóa tất cả các thành phần bên trong đi.</p>
+<p>Nhãn ổ đĩa</p>
+<p>Là tên được gán cho ổ đĩa FAT, được lưu trong trong Root Entry. Khác với tên của Directory Entry, nhãn đĩa có thể trùng với tên một Directory Entry khác, được phép có kí tự space. Tối đa cũng là 11 byte nhưng không được phép có kí tự &ldquo;.&rdquo;.</p>
+<p>Nhãn không thể sử dụng chức năng LFN được. Khi setup nhãn trong MS-DOS, giá trị nhãn trong Root Directory và trường BS_VolLab nằm trong Boot Sector phải đồng nhất. Trong Windows, thì không có điều này. Trên Windows, nếu nhãn bắt đầu bằng 0xE5 thì sẽ xảy ra vấn đề (nếu không chuyển nó sang 0x05 thì không thể ghi được). Vì thế, nó không cần sử dụng như ở trên.</p>
+<h2 id="13-định-dạng-nhãn-thời-gian">13. Định dạng nhãn thời gian</h2>
+<p>Trong Directory Entry, có mấy trường liên quan đến thời gian. Hầu hết các Driver chỉ hỗ trợ 2 trương sau đây, đó là DIR_WrtTime, DIR_WrtDate. Các trường khác không được hỗ trợ. Các trường không được hỗ trợ sẽ được giữ giá trị 0. Ngày tháng giờ sẽ có định dạng theo dạng sau:</p>
+<p>Tên trường</p>
+<p>Các bit</p>
+<p>DIR_WrtDate<br>
+DIR_CrtDate<br>
+DIR_LstAccDate</p>
+<p>Bit 15～9: Số năm tính từ 1980(0～127). 1980～2107.<br>
+Bit 8～5: tháng (1～12).<br>
+Bit 4～0: ngày (1～31).</p>
+<p>DIR_WrtTime<br>
+DIR_CrtTime</p>
+<p>Bit 15～11: Giờ  (0～23).<br>
+Bit 10～5: phút (0～59).<br>
+Bit 4～0: giây (theo đơn vị 2 giây) (0～29) tương ứng là 0～58 giây.</p>
+<h2 id="14-tên-file-dài">14. Tên File dài</h2>
+<p>Khi thêm tính năng hỗ trợ tên File dài (LFN) vào FAT, thì cần đảm bảo tính tương thích với các hệ thống trước đó. Cụ thể, bao gồm những điều sau:</p>
+<ul>
+<li>Trên các hệ thống cũ, nó sẽ không nhận thức được sự tồn tại của LFN.</li>
+<li>Mục đích đầu tiên là để nó không bị dê dàng thấy được trên MS-DOS và hệ thống File của Windows cũ. Nếu muốn thấy được sự tồn tại thì phải bằng một phép tìm kiếm Wildcard.</li>
+<li>Tên File dài sẽ được đặt ở bị trí gần về mặt vật lý với Directory Entry. Hay nói cách khác nó sẽ có quan hệ trực tiếp với SFN Entry, và không làm ảnh hưởng đến perform chung.</li>
+</ul>
+<p>-Dù có được phát hiện về sự tồn tại đi chăng nữa, thì cũng sẽ không làm ảnh hưởng xấu đến toàn hệ thống File. Các tool Disk sẽ không sử dụng các API thông thường mà sử dụng các truy cập trục tiếp đến các Sector. Vì phần LFN này coi nhưng không được biết đến với các xử lý thông thường. Vì thế, nó cũng không ảnh hưởng đến việc hỏng hóc của dữ liệu.</p>
+<p>Để thỏa mãn những điều kiện trên, LFV được định nghĩa bằng một thuộc tính đặc trưng của Directory Entry. Ở Section trước đã được giải thích rồi, trong thuộc tính của Directory Entry có một thuộc tính là ATTR_LONG_NAME. Từ cái thuộc tính này, sẽ biết được tên trong cái Entry hiện tại là một phần của LFN (Long FileName) Entry. Khi tìm kiếm đến các Entry như thế, thì biết được sự khác biệt giữa LFN và SFN trong bảng dưới đây:</p>
+<p>Cấu trúc thư mục của LFN</p>
+<p>Tên</p>
+<p>Offset</p>
+<p>Size</p>
+<p>Giải thích</p>
+<p>LDIR_Ord</p>
+<p>0</p>
+<p>1</p>
+<p>Là chí số về thứ tự của EntrytrongchuỗiEntry. Khi cờ LAST_LONG_ENTRY được bật (0x40)thì có nghĩa là phần cuối cùng trong chỗ Entry</p>
+<p>_Name1</p>
+<p>1</p>
+<p>10</p>
+<p>Tên. Kí tự thứ nhất đến kí tự thứ 5.</p>
+<p>LDIR_Attr</p>
+<p>11</p>
+<p>1</p>
+<p>Thuộc tính của LFN. Biểu diễn rằng đây là một phần của LFN Entry , giá trị phải là ATTR_LONG_NAME.</p>
+<p>LDIR_Type</p>
+<p>12</p>
+<p>1</p>
+<p>Loại LFN. Luôn là 0, giá trị khác 0 là giá trị dự trữ.</p>
+<p>LDIR_Chksum</p>
+<p>13</p>
+<p>1</p>
+<p>Checksume bao gồm LFN Entry và SFN Entry.</p>
+<p>LDIR_Name2</p>
+<p>14</p>
+<p>12</p>
+<p>Tên. Kí tự thứ 6 đến 11.</p>
+<p>LDIR_FstClusLO</p>
+<p>26</p>
+<p>2</p>
+<p>Để tránh những lỗi do Tool Disk cũ gây ra, trường này nên được gán là 0.</p>
+<p>LDIR_Name3</p>
+<p>28</p>
+<p>4</p>
+<p>Tên. Kí tự thứ 12 đến 13.</p>
+<p>LFN Entry luôn đi kèm với một SFN Entry mà nó bổ trợ, vì thế không có ý nghĩa gì nếu LFN tồn tại độc lập. Tên File hoặc là chỉ sử dụng SFN hoặc sử dụng cả SFN, LFN. Điều này sẽ đảm bảo tính tương thích ngược với các hệ thống không hỗ trợ LFN. Khi có sử dụng LFN thì tên sẽ là tên đầy đủ. Khi không sử dụng LFN thì LFN Entry sẽ không được nhận ra và việc access vẫn bằng SFN. Với hệ thống hỗ trợ LFN thì có thể sử dụng cả 2 phương án để truy cập File. Các Entry LFN chỉ mô tả các thông tin về tên File, cho dù không có đi chăng nữa thì việc truy cập SFN vẫn không vấn đề gì.</p>
+<p>Lưu trữ tên File cho File&quot;MultiMediaCard System Summary.pdf&rdquo; </p>
+<p>Vị trí</p>
+<p>Byte đầu</p>
+<p>Trường tên</p>
+<p>Thuộc tính</p>
+<p>Nội dung</p>
+<p>DIR[N-3]</p>
+<p>0x43</p>
+<p>ary.pdf</p>
+<p>&ndash;VSHR</p>
+<p>LFN thứ 33(lfn[26..38])</p>
+<p>DIR[N-2]</p>
+<p>0x02</p>
+<p>d System Summ</p>
+<p>&ndash;VSHR</p>
+<p>LFN2 thứ 2(lfn[13..25])</p>
+<p>DIR[N-1]</p>
+<p>0x01</p>
+<p>MultiMediaCar</p>
+<p>&ndash;VSHR</p>
+<p>LFN thứ 1(lfn[0..12])</p>
+<p>DIR[N]</p>
+<p>&lsquo;M&rsquo;</p>
+<p>MULTIM~1PDF</p>
+<p>A&mdash;&ndash;</p>
+<p>SFN</p>
+<p>Mỗi tên trong LFN Entry chỉ có 13 kí tự . Do số kí tự tối đa hỗ trợ cho tên File là 255 kí tự nên tên File sẽ chiếm tối đa 20 Entry. Mỗi kí tự sử dụng trong tên File sử dụng Encode là UCS-2 (tức là mỗi kí tự gồm 16 bit). Nếu số kí tự không chia hết cho 13 thì tên sẽ kết thúc bằng kí tự Null (U+0000) và phần trống sẽ được fill bằng (U+FFFF).</p>
+<p>Các LFN Entry được xếp liên tiếp ngay trước SFN Entry. Nếu không thỏa mãn điều này thì coi như là không sử dụng được.</p>
+<h2 id="15-phạm-vi-đặt-tên-và-page-code">15. Phạm vi đặt tên và Page Code</h2>
+<p>Với tên file Ngắn</p>
+<p>Được phép sử dụng 8 byte phần tên và 3 byte phần mở rộng. Hay ta vẫn gọi là dạng 8.3. Độ dài tối đa của đường dẫn đầy đủ: 64 byte (cho Path) + 12 byte (cho tên 8.3) + 3 byte cho tên ổ đĩa = 97 byte( không tính NULL ở cuối). Các kí tự có thể dùng để đặt tên gồm kí tự tiếng Anh, kí tự thuộc khoảng (0x80 - 0xFF) và một phần của kí hiệu ASCII (&quot;<em>$ % ' - _ @ ~ ` ! ( ) { } ^ # &amp;&rdquo;.</em></p>
+<p>Khi lưu trữ, tên được lưu trữ trong SFN (sử dụng OEM Code Page), không cho phép chữ thường nên các tên đặt chữ thường sẽ bị chuyển hết về chữ hoa.</p>
+<p>Tên file Dài</p>
+<p>Tối đa có 255 kí tự phần tên + 3 kí tự phần mở rộng, tổng sẽ có 259 kí tự (+1 cho dấu .) chưa kể kí tự NULL. Các kí tự có thể dùng để đặt tên bao gồm: Tất cả các kí tự của SFN, thêm các dấu &ldquo;<em>+ , ; = [ ]</em>&rdquo; của ASCII, dấu chấm có thể xuất hiện nhiều lần (không chi riêng phần ngăn cách giữa tên và phần mở rộng), dấu cách. Tuy nhiên, không có phép dấu &ldquo;.&rdquo; hoặc dấu Space ở cuối tên. Có thể tool tạo vẫn cho phép nhưng trong Window thì gần như không thể nhập trực tiếp được.</p>
+<p>Tên sẽ được lưu trữ như đã nhập chứ không bị chuyển đổi sang chữ Hoa. Các kí tự sử dụng được Encode bằng UCS-2, bảng kí tự Unicode.</p>
+<p>Vì SFN và LFN sử dụng bảng mã cũng như cách Encode khác nhau nên khi implment cần phải làm làm cho chúng tương thích. Nếu Code page là SBCS thì không xảy ra vấn đề gì, nhưng nếu là DBCS thì kích thước bản sẽ chênh nhau vài trăm K nên sẽ xảy ra nhiều vấn đề. Nhất là đối với các hệ nhúng với tài nguyên hạn chế.</p>
+<h2 id="16-giữa-sfn-và-lfn">16. Giữa SFN và LFN</h2>
+<p>Đầu tiên, tên được ghi trong SFN có dạng SFN, còn tên được ghi trong LFN thì có dạng LFN. Cùng một tên nhưng được ghi đồng thời và 2 chỗ. Trong thư mục, không thể có file bất kể SFN/LFN mà có tên giống nhau được. Vì thế các tên &ldquo;LongFileName.txt&rdquo;, &ldquo;longfilename.txt&rdquo;, &ldquo;LONGFILENAME.TXT&rdquo;</p>
+<p>Sẽ cùng được nhìn nhận như nhau. Vì vậy, trong phép tìm kiếm không có phân biệt chữ Hoa vs chữ thường.</p>
+<p>Khi lấy danh sách File từ thư mục, nếu không thể chuyển các kí tự của LFN sang OEM Code thì FAT Driver sẽ hoặc là thay thế các kí tự không chuyển bằng Underscore (_) hoặc là sử dụng tên trong SFN để thay thế.</p>
+<h2 id="17-việc-tạo-sfn-và-các-kí-tự-đại-diện">17. Việc tạo SFN và các kí tự đại diện</h2>
+<p>Trong hệ thống LFN thì các API đương nhiên luôn sử dụng LFN. Đồng thời, nó cũng phải tạo cả SFN nữa, luôn luôn phải đồng thời không được phép tách ra. Điều kiện này để tránh những rắc rối trên hệ thống và ứng dụng khác nhau, cũng như sự thống nhất về tên giữa SFN và LFN. Việc tạo tên SFN (bao gồm cả phần tên, phần kí tự thay thế, phần mở rộng) tuân theo các bước sau:</p>
+<ol>
+<li>
+<p>Xóa các kí tự cách và dấu &ldquo;.&rdquo; ở cuối</p>
+</li>
+<li>
+<p>Khi gặp dấu cách trong tên File, thì xóa hết và bật cờ báo có kí tự không thể chuyển đổi.</p>
+</li>
+<li>
+<p>Khi gặp dấu chấm &ldquo;.&rdquo; trong ở đầu tên File thì xóa hết và cũng bật cờ báo có kí tự không thể chuyển đổi.</p>
+</li>
+<li>
+<p>Khi vẫn còn có từ 2 dấu chấm &ldquo;.&rdquo; trở nên thì xóa chỉ để lại dấu chấm ỏ phía sau, bật cờ có kí tự không thể chuyển đổi.</p>
+</li>
+<li>
+<p>Các kí tự in thường (chữ cái và mở rộng) chuyển hết sang chữ Hoa.</p>
+</li>
+<li>
+<p>Nếu nhập vào Unicode thì cần chuyển sang OEM Code, nếu kí nào không chuyển được thì thay thế bằng Underscore &ldquo;_&rdquo;, bật cờ báo có kí tự không chuyển đổi được.</p>
+</li>
+<li>
+<p>Với tên của SFN, điền hết space vào giữa để đủ độ dài 8.3.</p>
+</li>
+<li>
+<p>Khi tạo SFN, thì cứ từ kí tự đầu tiên trong tên LFN copy sang SFN. Việc copy kết thúc khi thỏa mãn một trong những điều kiện sau: hết tên tròn LFN, phát hiện dấu &ldquo;.&rdquo;, đã copy được 8 byte. Nếu vượt quá độ dài 8 byte thì bật cờ báo có kí tự không chuyển đổi được.</p>
+</li>
+<li>
+<p>Tạo phần mở rộng của SFN, nếu có tồn tại kí tự &ldquo;.&rdquo; thì copy từ kí tự ngay phía sau kí tự &ldquo;.&rdquo; đến khi xảy ra một trong các điều kiện sau: hết chuỗi, đã copy 3 byte). Nếu có nhiều hơn 3 byte thì bật cờ báo có kí tự không chuyển đổi được.</p>
+</li>
+</ol>
+<p>Đến đây, ta đã xong phần tên (gồm cả phần mở rộng) của SFN rồi. Ta xét đến cờ báo có kí tự không chuyển đổi được hay không. Nếu nó được bật, sẽ thêm các kí tự đại diện khác vào SFN. Định dạng các kí tự đại diện này có dạng &ldquo;~n&rdquo; (n có giá trị từ  1 đến 6 chữ số trong hệ cơ số 10). Nếu thêm các kí tự đại diện này vào mà làm cho phần tên (trước dấu &ldquo;.&quot;) vượt quá 8 byte thì đoạn cuối của phần tên sẽ bị xóa đi.</p>
+<p>Theo cách này, nếu trong thư mục đó đã có một SFN Entry có tên đó rồi, thì sẽ thay đổi giá trị n để tìm ra tên chưa được sử dụng. Thông thường, giá trị n này được tăng dần từ 1, nhưng cũng có trường hợp sử dụng một thuật toán sinh  khác. Ví dụ trong trường hợp FAT của Windows NT, giá trị được tìm kiếm từ 1 nhưng từ lần thứ 5 trở đi, nó sẽ sử dụng giá trị có trong Buffer nào đó chứ không tăng n lên mãi.</p>
+<h2 id="18-những-trường-hợp-không-sinh-ralfn-entry">18. Những trường hợp không sinh ra LFN Entry</h2>
+<p>Nếu một tên File tuân theo quy tắc 8.3 rồi thì LFN và SFN sẽ giống hệt nhau (bỏ qua trường hợp khác nhau về chữ Hoa chữ thường). Nếu tên thỏa mãn thêm các trường hợp sau thì LFN tương ứng sẽ không được sinh ra nữa.</p>
+<ul>
+<li>Không chứa kí tự chữ ASCII in thường.</li>
+<li>Không chứa kí tự mở rộng (0x80 trở lên)</li>
+</ul>
+<p>Lại trong Windows NT, khi thỏa mãn các điều kiện sau thì LFN sẽ được bỏ qua</p>
+<ul>
+<li>
+<p>Chứa kí tự in ASCII in thường ở phần tên hoặc phần mở rộng hoặc cả 2 phần.</p>
+</li>
+<li>
+<p>Không phải là sự lẫn lỗn giữa chữ Hoa và chữ thường.</p>
+</li>
+<li>
+<p>Phần mở rộng không chứa kí tự mỏ rộng(0x80 trở lên)</p>
+</li>
+</ul>
+<p>Nếu thỏa mãn nhưng điều kiện trên, bản chữ thường sẽ được lưu và trường  DIR_NTRes  , LFN Entry sẽ bị bỏ qua. Những File sau đây thỏa mãn điều kiện này : &ldquo;lower12.dll&rdquo;, &ldquo;system32&rdquo;, &ldquo;FDCMD.exe&rdquo;  , trong Windows NT có rất nhiều File được đặt tên theo dạng này. Cũng có một số hệ thống không support việc lưu trữ ở trường DIR_NTRes  (ví dụ Windows 9x chẳng hạn) thì chúng sẽ sử dụng toàn bộ tên dạng chữ Hoa được lưu ở SFN thôi. Vì FAT System không phân biệt chữ Hoa, chữ thường khi tìm kiếm, nên không vấn đề gì hết. Nhưng trong một số hệ thống Unix, thì việc này sẽ xảy ra vấn đề.</p>
+<h2 id="19-tính-tương-thích-giữa-các-hệ-thống">19. Tính tương thích giữa các hệ thống</h2>
+<p>Hệ thống không hỗ trợ LFN</p>
+<p>Việc hỗ trợ LFN trên các Disk cố định đương nhiên là việc rất cần thiết rồi. Trên các thiết bị nhớ di động cũng được support. Vì các thiết bị di động có thể sử dụng ở nhiều nơi, với nhiều hệ thống khác nhau nên yêu cầu về tính tương thích là vô cùng quan trọng. Chức năng LFN phải được implement để ngay cả trên các hệ thống không support LFN cũng không xảy ra mất mất dữ liệu. Ví dụ, một ổ đĩa sử dụng LFN cũng có thể truy cập được trên hệ thống không hỗ trợ LFN. Không những thế, việc truy cập phải đảm bảo rằng không có sự sửa chữa hay chuyển đổi dữ liệu nào. Trừ khi có thao tác tạo mới Directory Entry thì chúng sẽ được tạo theo cách hệ thống sử dụng.</p>
+<p>Trên các hệ thống không hỗ trợ LFN, các LFN Entry dù có tồn tại cũng không được nhận biết, vì thế các LFN Entry có thể bị hỏng bởi các thao tác với thư mục. Dù các LFN Entry có bị hỏng đi chăng nữa thì, phần dữ liệu của File vẫn không bị mất. Tất nhiên phần tên LFN có thể bị mất nhưng, ta luôn truy cập được bằng SFN.</p>
+<p>Tương thích với tiếng Nhật</p>
+<p>Các loại OEM Page Code khác nhau</p>
+<p>Mac OS X</p>
+<h2 id="20-về-lưu-trữ">20. Về lưu trữ</h2>
+<p>Dù không liên quan trực tiếp đến phần File System đang nói đến, nhưng khi tạo ra một hệ thống Embedded, ta không thể không nhắc đến phần lưu trữ vật lý được.</p>
+<p>Với những thiết bị lưu trữ cố định (nghĩa là ko phải kiểu copy vào rồi tháo ra mang sang chỗ khác như USB, hay thẻ nhớ ấy) thì người ta thường chia ra làm nhiều partition để sử dụng. Ví dụ 8GB được chia ra làm 3 Partitions tương ứng là 4G, 2G, 2G. Cũng có trường hợp người ta chỉ sử dụng 1 disk logic trên 1 đĩa vật lý thôi.</p>
+<p>Về tool để partitition, thì người ta hay sử dụng 2 tool là FDISK và SFD (Super Floppy Disk). Ở những Disk thời trước, trong Sector vật lý đầu tiên, thường lưu trữ bảng phân vùng, tức là bảng mô tả Disk được chia ra như thế nào. Về sau, những Floppy Disk không còn được chia ra nữa. File System được tính từ sector vật lý đầu tiên luôn.</p>
+<p>FDISK được được sử dụng trên các Disk cố định và một số thiết bị nhớ di động (Removable Media) như SD Card, CF Card, USB Memory. SFD được sử dụng trên các thiết bị còn lại như Floppy Disk, thẻ từ, MicroDrive. Trên Windows, với thiết bị nhớ di động cả định dạng của FDISK (loại chỉ 1 phần vùng), và SFD, còn FDISK loại nhiều phân vùng không được Support. Ngược ại, với Disk cố định, thì SFD không được hỗ trợ.</p>
+<p>Bảng sau đây mô tả các trường của MBR:</p>
+<p>Các trường của MBR(Sector vật lý 0)</p>
+<p>Tên</p>
+<p>Offset</p>
+<p>Kích thước</p>
+<p>Giải thích</p>
+<p>MBR_bootcode</p>
+<p>0</p>
+<p>446</p>
+<p>Mã khởi động. Mã này phụ thuộc vào hệ thống. Giá trị 0 nghĩa là không sử dụng.</p>
+<p>MBR_Partation1</p>
+<p>446</p>
+<p>16</p>
+<p>Bảng phân vùng Entry 1. Mô tả trạng thái và phạm vi của phân vùng. (Chi tiết về trường này ở bên dưới)</p>
+<p>MBR_Partation2</p>
+<p>462</p>
+<p>16</p>
+<p>Bảng phân vùng Entry 2.</p>
+<p>MBR_Partation3</p>
+<p>478</p>
+<p>16</p>
+<p>Bảng phân vùng Entry 3.</p>
+<p>MBR_Partation4</p>
+<p>494</p>
+<p>16</p>
+<p>Bảng phân vùng Entry 4.</p>
+<p>MBR_Sig</p>
+<p>510</p>
+<p>2</p>
+<p>Phải là 0xAA55. Mã xác thức MBR. Nếu giá trị khác giá trị trên sẽ coi như MBR không hợp lệ.</p>
+<p>Mỗi Bảng phân vùng Entry được mô tả như bảng dưới đây. Có tối đa 4 Entry thôi, có nghĩa là có tối đa 4 phân vùng có thể sử dụng. Cũng có thuật ngữ về phân vùng mở rộng (Extended Partition) tức là có thẻ chia phân mỗi phân vùng vật lý thành nhiều phân vùng con, nhưng xin không nhắc đến ở đây.</p>
+<p>Các trường trong bảng phần vùng Entry</p>
+<p>Tên</p>
+<p>Offset</p>
+<p>Kích thước</p>
+<p>Giải thích</p>
+<p>PT_BootID</p>
+<p>0</p>
+<p>1</p>
+<p>Nhãn boot.<br>
+0x00: Không phải phân vùng boot<br>
+0x80:Phân vùng boot.<br>
+Boot có nghĩa là có thể từ phân vùng tương ứng, nhưng đây là 1 trường phụ thuộc hệ thống sử dụng. Chỉ có thể chỉ định 1 phân vùng trong số 4 phân vùng để boot.</p>
+<p>PT_StartHd</p>
+<p>1</p>
+<p>1</p>
+<p>Chỉ số của Head trỏ đến Sector đầu tiên theo định dạng CHS..(0~254)</p>
+<p>PT_StartCySc</p>
+<p>2</p>
+<p>2</p>
+<p>Chỉ số của Cylinder (10 bit thấp 0=1023) và chỉ số sector bên trong Track(6 bit cao 1~63)</p>
+<p>PT_System</p>
+<p>4</p>
+<p>1</p>
+<p>Loại phân vùng (có tính đại diện đại diện)。<br>
+0x00:Phân vùng trống<br>
+0x01: FAT12 (CHS/LBA, Có không quá 65536)<br>
+0x04: FAT16 (CHS/LBA, Có không quá 65536)<br>
+0x05: Phân vùng mở rộng (CHS/LBA)<br>
+0x06: FAT12/16 (CHS/LBA, Có từ 65536 sector)<br>
+0x07: HPFS/NTFS/exFAT (CHS/LBA)<br>
+0x0B: FAT32 (CHS/LBA)<br>
+0x0C: FAT32 (LBA)<br>
+0x0E: FAT12/16 (LBA)<br>
+0x0F: Phân vùng mở rộng (LBA)</p>
+<p>PT_EndHd</p>
+<p>1</p>
+<p>1</p>
+<p>Chỉ số của Header của Sector cuối ùng của phân vùng(0～254). (Theo định dạng CHS)</p>
+<p>PT_EndCySc</p>
+<p>2</p>
+<p>2</p>
+<p>Chỉ số của Cylinder của Sector cuối cùng (10 bit thấp :0～1023)và Chỉ số sector bên trong Track (6 bit cao:1～63). (theo định dạng CHS)</p>
+<p>PT_LbaOfs</p>
+<p>8</p>
+<p>4</p>
+<p>Chỉ số đầu tiên của Sector theo định dạng LBA(1～0xFFFFFFFF)。</p>
+<p>PT_LbaSize</p>
+<p>12</p>
+<p>4</p>
+<p>Kích thước phân vùng theo định dạng LBA(1～0xFFFFFFFF)。</p>
+<p>Trong bảng phân vùng, không phải tất cả các Entry đều được sử dụng. Thông thường, chỉ 1 phân vùng được tạo, 3 Entry lại để trống.</p>
+<p>Ở trên có nói đến 2 thuật ngữ CHS và LBA. CHS nghĩa là mô tả theo tính chất vật lý của đĩa, nhưng phụ thuộc vào hệ thống. LBA nghĩa là chỉ cần 2 thông tin là Sector đầu tiên và số Sector sẽ dùng là đủ. Do bị giới hạn về dung lương nên khi vượt quá phạm vi dung lượng thì các trường CHS sẽ bị loại.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/fat/" rel="tag">FAT</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/filesystem/" rel="tag">FileSystem</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+<div class="authorbox clearfix">
+	<div class="authorbox__header">
+		<span class="authorbox__name">Về Minatu</span>
+	</div>
+	<div class="authorbox__description">
+		A mediocre developer, a lazier
+	</div>
+</div>
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

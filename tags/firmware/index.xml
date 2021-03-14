@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Firmware on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/firmware/</link>
+    <description>Recent content in Firmware on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Mon, 05 Sep 2016 01:44:02 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/firmware/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Quá trình load firmware của Driver trong Linux</title>
+      <link>https://blog.lazytrick.com/post/2016-09-05-qua-trinh-load-firmware-cua-driver-trong-linux/</link>
+      <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-05-qua-trinh-load-firmware-cua-driver-trong-linux/</guid>
+      <description>Để các kernel module sử dụng được các firmware thì cần 2 điều kiện sau:  Khi kernel được build, các tham số sau phải được bật (ENABLE)
+CONFIG_FW_LOADER : Cho phép load firmware
+CONFIG_EXTRA_FIRMWARE &amp;gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa các firmware. Các firmware phải được copy vào thư mục CONFIG_EXTRA_FIRMWARE_DIR đã set ở trên.  Một số điều lưu ý liên quan đến firmware:   Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,</description>
+    </item>
+    
+    <item>
+      <title>Driver và Firmware trong Linux</title>
+      <link>https://blog.lazytrick.com/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/</link>
+      <pubDate>Mon, 29 Aug 2016 08:25:25 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/</guid>
+      <description>Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.
+Mình thấy ngoài Driver, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là Firmware.
+Bài này sẽ dịch lại trang, để hiểu qua về Firmware trong Linux Kernel.</description>
+    </item>
+    
+    <item>
+      <title>Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</link>
+      <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</guid>
+      <description>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh source, ta thực hiện build tạo image có có tên là rpi-basic-image thông qua lệnh:
+$bitbake rpi-basic-image Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
+rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cài đặt GDB (02 - Cài đặt) - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Cài đặt GDB (02 - Cài đặt)</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là <strong>target program</strong>.<br>
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:</p>
+<ol>
+<li>GDB và <strong>target program</strong> cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</li>
+<li>GDB và <strong>target program</strong> không cùng trên 1 máy : Tức là GDB sẽ chạy trên 1 máy để debug 1 chương trình chạy trên máy khác thông qua Serial hoặc Network. Cái này hay thấy khi phát triển ứng dụng nhúng. Xem thêm tại <a href="https://lazytrick.wordpress.com/2016/08/03/cac-khai-niem-trong-cross-compiling/">đây</a>.</li>
+</ol>
+<p>Một số distro khi được cài đặt, đã bao gồm <strong>GDB</strong> rồi. Có thể kiểm tra bằng command dưới đây:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$gdb</span> --version  
+</code></pre></div><p>Dưới đây, sẽ đưa ra hướng dẫn cách cài đặt GDB trên máy sử dụng để debug. Nó có thể là máy chạy <strong>target program</strong>, có thể không.</p>
+<h2 id="1-cài-đặt-trên-debian-debian-based-distro">1. Cài đặt trên Debian (Debian-based distro)</h2>
+<p>Debian 8.x chưa được cài mặc định GDB, hãy sử dụng command sau để cài nó:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#aptitude install gdb  </span>
+</code></pre></div><p>Chú ý rằng, ở đây phải sử dụng quyền <strong><em>root</em></strong> hoặc <strong><em>sudo</em></strong>.<br>
+Trên một số bản Debian như 8.x thì hoàn toàn có thể dùng cách cài đặt như Ubuntu được.</p>
+<h2 id="2-cài-đặt-trên-ubuntu-ubuntu-based-distro">2. Cài đặt trên Ubuntu (Ubuntu-based distro)</h2>
+<p>Trên các bản Ubuntu gần đây như <a href="http://releases.ubuntu.com/trusty/ubuntu-14.04.4-desktop-i386.manifest">14.04</a>, <a href="http://releases.ubuntu.com/xenial/ubuntu-16.04-desktop-i386.manifest">16.04</a> <strong>GDB</strong> đều được được cài mặc định.<br>
+Hoặc nếu chưa được cài, thì hãy chạy command sau để cài nó :</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$sudo</span> apt-get install gdb  
+</code></pre></div><h3 id="2-cài-đặt-trên-centos-fedora">2. Cài đặt trên CentOS, Fedora</h3>
+<p>Trên CentOS, Fedora, ta cài bằng lệnh sau dưới quyền root.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#yum install gdb  </span>
+</code></pre></div><p>Nếu có đĩa DVD cài đặt, có thể tải gói cài từ DVD bằng lệnh sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#yum install --disablerepo=\* --enablerepo=c7-media install gdb  </span>
+</code></pre></div><h2 id="3-cài-đặt-trên-raspbian">3. Cài đặt trên Raspbian</h2>
+<p>Raspbian dựa trên Debian, có thể cài theo cách cài trên Ubuntu hoặc Debian đều được.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#228b22">#aptitude install gdb  </span>
+</code></pre></div><p>hoặc</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$sudo</span> apt-get install gdb  
+</code></pre></div><h2 id="4-cài-đặt-từ-source-code">4. Cài đặt từ source code</h2>
+<p>Ta có thể tải một bản gdb bất kì tại <a href="ftp://sourceware.org/pub/gdb/releases/">đây</a> để tiến hành cài đặt.</p>
+<p>Ở đây, bản mới nhất là <strong>7.11.1</strong> để build, cài đặt.<br>
+Chú ý là, ta có thể cài đặt <strong>GDB</strong> trên 1 đường dẫn bất kì của user đang sử dụng mà không cần phải cài vào các đường dẫn mặc định như <strong>/usr/bin</strong>, hay <strong>/usr/local/bin</strong>, etc.<br>
+Và quá trình này không cần phải là <strong>root</strong>.<br>
+Thực hiện với quyền root nhiều khi còn phát sinh vấn đề.</p>
+<h3 id="41-tạo-thư-mục-để-build">4.1. Tạo thư mục để build</h3>
+<p>Command:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#228b22">#1. Creating local directory  </span>
+<span style="color:#00688b">$pwd</span>  
+/home/oedev  
+<span style="color:#00688b">$mkdir</span> gdb  
+<span style="color:#00688b">$cd</span> gdb  
+<span style="color:#00688b">$pwd</span>  
+/home/oedev/gdb  
+<span style="color:#00688b">$mkdir</span> gdb_install  
+</code></pre></div><p>Ta sẽ cài đặt <strong>GDB</strong> vào *<strong>gdb_install</strong>.</p>
+<h3 id="42-tải-source-code">4.2. Tải source code</h3>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#228b22">#2. Download source code  </span>
+<span style="color:#00688b">$wget</span> ftp://sourceware.org/pub/gdb/releases/gdb-7.11.1.tar.gz  
+</code></pre></div><h3 id="43-giải-nén-source-code">4.3. Giải nén source code</h3>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#228b22">#3. Extrating the source code  </span>
+<span style="color:#00688b">$tar</span> -xzvf gdb-7.11.1.tar.gz  
+<span style="color:#00688b">$ls</span>  
+gdb-7.11.1 gdb-7.11.1.tar.gz  
+<span style="color:#00688b">$cd</span> gdb-7.11.1  
+</code></pre></div><h3 id="44-cấu-hình-configure">4.4. Cấu hình (Configure)</h3>
+<p>Khi ta chỉ chạy GDB trên chính máy hiện tại, và debug các chương trình chạy trên máy này thôi thì command đơn giản là :</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$./configure --prefix=/home/oedev/gdb/gdb_install  
+</code></pre></div><p>Sẽ mất vài giây để chạy xong.</p>
+<h3 id="45-biên-dịch-compiling">4.5. Biên dịch (Compiling)</h3>
+<p>Sau khi <strong>configure</strong>, thì sẽ là <strong>make</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$make</span>  
+</code></pre></div><p>Cần 5-10 phút để build xong.</p>
+<h3 id="46-cài-đặt-installing">4.6. Cài đặt (Installing)</h3>
+<p>Vì ta đã cấu hình đường dẫn ở bước configure rồi nên ở đây, chỉ cần chạy lệnh sau là <strong>GDB</strong> sẽ được cài đặt vào được dẫn đó (không cần quyền root):</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$make</span> install  
+</code></pre></div><p>Kiểm tra thư mục cài đặt</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:~/gdb/gdb_install$ tree -L <span style="color:#b452cd">2</span>  
+.  
+├── bin  
+│   ├── gcore  
+│   ├── gdb  
+│   └── gdbserver  
+├── include  
+│   ├── ansidecl.h  
+│   ├── bfd.h  
+│   ├── bfdlink.h  
+│   ├── dis-asm.h  
+│   ├── gdb  
+│   ├── plugin-api.h  
+│   └── symcat.h  
+├── lib  
+│   ├── libbfd.a  
+│   ├── libbfd.la  
+│   ├── libinproctrace.so  
+│   ├── libopcodes.a  
+│   └── libopcodes.la  
+└── share  
+├── gdb  
+├── info  
+├── locale  
+└── man  
+</code></pre></div><p>Giờ ta có thể sử dụng các file trong thư mục bin rồi.<br>
+Ta chủ yếu sử dụng 2 file là <strong>bin/gdb</strong> và <strong>bin/gdbserver</strong>.<br>
+Chi tiết sẽ được nói trong các bài tiếp theo.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/gdb/" rel="tag">GDB</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/installation/" rel="tag">Installation</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

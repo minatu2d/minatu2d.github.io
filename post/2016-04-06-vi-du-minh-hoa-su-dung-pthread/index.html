@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ví dụ minh họa sử dụng pthread - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Ví dụ minh họa sử dụng pthread</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.</p>
+<p>Mục đích ban đầu nói đến ở bài <a href="https://lazytrick.wordpress.com/2015/07/16/dung-pthread-theo-cac-da-nen-tang-den-muc-nao/">Cơ bản về pthread</a>, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</p>
+<h2 id="1--hello-world">1 . Hello world</h2>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#228b22">/*  
+</span><span style="color:#228b22">* p_hello.c -- a hello program (in pthread)  
+</span><span style="color:#228b22">*/</span>  
+<span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;sys/types.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b"></span>
+<span style="color:#1e889b">#define MAX_THREAD 1000
+</span><span style="color:#1e889b">#define CURRENT_TERMINAL_CMD &#34;tty&#34;
+</span><span style="color:#1e889b"></span>
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#8b008b;font-weight:bold">struct</span> {
+  <span style="color:#00688b;font-weight:bold">int</span> id;
+  <span style="color:#00688b;font-weight:bold">char</span> *terminal;
+} parm;
+
+<span style="color:#00688b;font-weight:bold">void</span> *<span style="color:#008b45">hello</span>(<span style="color:#00688b;font-weight:bold">void</span> *arg) {
+  parm *p = (parm *)arg;
+  FILE *fo = fopen(p-&gt;terminal, <span style="color:#cd5555">&#34;wt&#34;</span>);
+  <span style="color:#8b008b;font-weight:bold">if</span> (fo == <span style="color:#658b00">NULL</span>) {
+    printf(<span style="color:#cd5555">&#34;Using stdout as output terminal</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>);
+    printf(<span style="color:#cd5555">&#34;[Node %d] : Hello các anh</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;id);
+    sleep(p-&gt;id * <span style="color:#b452cd">2</span>);
+    printf(<span style="color:#cd5555">&#34;[Node %d] : Em kết thúc đây...</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;id);
+    <span style="color:#8b008b;font-weight:bold">return</span>;
+  }
+
+  fprintf(fo, <span style="color:#cd5555">&#34;Using %s as output terminal</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;terminal);
+  fprintf(fo, <span style="color:#cd5555">&#34;[Node %d] : Hello các anh</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;id);
+  sleep(p-&gt;id * <span style="color:#b452cd">2</span>);
+  fprintf(fo, <span style="color:#cd5555">&#34;[Node %d] : Em kết thúc đây...</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, p-&gt;id);
+
+  fclose(fo);
+
+  <span style="color:#8b008b;font-weight:bold">return</span> (<span style="color:#658b00">NULL</span>);
+}
+
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">getCurrentTerminal</span>(<span style="color:#00688b;font-weight:bold">char</span> *terminal) {
+  <span style="color:#00688b;font-weight:bold">int</span> retVal = <span style="color:#b452cd">0</span>;
+
+  FILE *ttyCmdFo = popen(CURRENT_TERMINAL_CMD, <span style="color:#cd5555">&#34;r&#34;</span>);
+  <span style="color:#8b008b;font-weight:bold">if</span> (ttyCmdFo == <span style="color:#658b00">NULL</span>) {
+    retVal = -<span style="color:#b452cd">1</span>;
+    <span style="color:#8b008b;font-weight:bold">return</span> retVal;
+  }
+
+  <span style="color:#8b008b;font-weight:bold">if</span> (fscanf(ttyCmdFo, <span style="color:#cd5555">&#34;%s&#34;</span>, terminal) != <span style="color:#b452cd">0</span>) {
+    retVal = -<span style="color:#b452cd">1</span>;
+    <span style="color:#8b008b;font-weight:bold">return</span> retVal;
+  }
+
+  printf(<span style="color:#cd5555">&#34;Terminal :%s&#34;</span>, terminal);
+
+  <span style="color:#8b008b;font-weight:bold">return</span> retVal;
+}
+
+<span style="color:#8b008b;font-weight:bold">typedef</span> <span style="color:#00688b;font-weight:bold">char</span> T_TERM_NAME[<span style="color:#b452cd">100</span>];
+<span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">main</span>(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span> *argv[]) {
+  <span style="color:#00688b;font-weight:bold">int</span> n, i;
+  pthread_t *threads;
+  parm *p;
+  <span style="color:#00688b;font-weight:bold">char</span> currentTerminal[<span style="color:#b452cd">100</span>];
+  T_TERM_NAME terminals[<span style="color:#b452cd">10</span>];
+  <span style="color:#00688b;font-weight:bold">char</span> tmpTerm[<span style="color:#b452cd">100</span>];
+
+  <span style="color:#8b008b;font-weight:bold">if</span> (argc != <span style="color:#b452cd">2</span>) {
+    printf(<span style="color:#cd5555">&#34;Usage: %s n</span><span style="color:#cd5555">\n</span><span style="color:#cd5555"> N là số threads được tạo, xin nhập lại đi.</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,
+           argv[<span style="color:#b452cd">0</span>]);
+    exit(<span style="color:#b452cd">1</span>);
+  }
+
+  n = atoi(argv[<span style="color:#b452cd">1</span>]);
+
+  <span style="color:#8b008b;font-weight:bold">if</span> ((n &lt; <span style="color:#b452cd">1</span>) || (n &gt; MAX_THREAD)) {
+    printf(<span style="color:#cd5555">&#34;Số lượng thread phải &gt;=1 và &lt; %d.</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, MAX_THREAD);
+    exit(<span style="color:#b452cd">1</span>);
+  }
+
+  threads = (pthread_t *)malloc(n * <span style="color:#8b008b;font-weight:bold">sizeof</span>(*threads));
+
+  p = (parm *)malloc(<span style="color:#8b008b;font-weight:bold">sizeof</span>(parm) * n);
+
+  <span style="color:#228b22">/* Tạo và bắt đầu các threads */</span>
+  getCurrentTerminal(&amp;currentTerminal[<span style="color:#b452cd">0</span>]);
+
+  <span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; n; i++) {
+    printf(<span style="color:#cd5555">&#34;Đầu ra của thread %d (default =%s) : &#34;</span>, i, currentTerminal);
+    gets(tmpTerm);
+    <span style="color:#8b008b;font-weight:bold">if</span> (strlen(tmpTerm) == <span style="color:#b452cd">0</span>) {
+      strcpy(terminals[i], currentTerminal);
+    } <span style="color:#8b008b;font-weight:bold">else</span> {
+      strcpy(terminals[i], tmpTerm);
+    }
+  }
+
+<span style="color:#1e889b">#if 0</span><span style="color:#228b22">  
+</span><span style="color:#228b22">for (i=0; i&lt;n; i++)  
+</span><span style="color:#228b22">{  
+</span><span style="color:#228b22">printf(&#34;Thread : %s\n&#34;,terminals[i]);  
+</span><span style="color:#228b22">}
+</span><span style="color:#228b22"></span><span style="color:#1e889b">#endif
+</span><span style="color:#1e889b"></span>
+  <span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; n; i++) {
+    p[i].id = i;
+    p[i].terminal = terminals[i];
+    pthread_create(&amp;threads[i], <span style="color:#658b00">NULL</span>, hello, (<span style="color:#00688b;font-weight:bold">void</span> *)(p + i));
+  }
+
+  <span style="color:#228b22">/* Đợt để các thread được tạo cùng kết thúc. */</span>
+
+  <span style="color:#8b008b;font-weight:bold">for</span> (i = <span style="color:#b452cd">0</span>; i &lt; n; i++) {
+    printf(<span style="color:#cd5555">&#34;[Main] : Đang đợi [Node %d] kết thúc </span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, i);
+    pthread_join(threads[i], <span style="color:#658b00">NULL</span>);
+    printf(<span style="color:#cd5555">&#34;[Main] : [Node %d] đã kết thúc</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>, i);
+  }
+
+  free(p);
+}
+
+
+</code></pre></div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/pthread/" rel="tag">pthread</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

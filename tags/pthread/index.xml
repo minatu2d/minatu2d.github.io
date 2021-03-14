@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>pthread on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/pthread/</link>
+    <description>Recent content in pthread on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sat, 20 May 2017 15:50:20 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/pthread/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ví dụ cơ bản với pthread trên Linux</title>
+      <link>https://blog.lazytrick.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</link>
+      <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</guid>
+      <description>1. Tạo và dừng thread Source code gốc lấy từ link
+/****************************************************************************** * FILE: hello.c * DESCRIPTION: * Chuong trinh demo thao tac tao thread, tat thread * AUTHOR: Blaise Barney * LAST REVISED: 08/09/11 * * TRANSLATE to Vietnamese by Minatu * COMPILE CMD : $gcc -o hello hello.c -lpthread ******************************************************************************/ // #include &amp;lt;pthread.h&amp;gt;#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;#define NUM_THREADS 5  void *PrintHello(void *threadid) { long tid; tid = (long)threadid; printf(&amp;#34;Hello World!</description>
+    </item>
+    
+    <item>
+      <title>Ví dụ minh họa sử dụng pthread</title>
+      <link>https://blog.lazytrick.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</link>
+      <pubDate>Wed, 06 Apr 2016 15:26:51 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</guid>
+      <description>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.
+Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</description>
+    </item>
+    
+    <item>
+      <title>Cơ bản về pthread</title>
+      <link>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</link>
+      <pubDate>Thu, 16 Jul 2015 23:18:38 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
+      <description>Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.</description>
+    </item>
+    
+  </channel>
+</rss>

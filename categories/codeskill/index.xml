@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CodeSkill on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/categories/codeskill/</link>
+    <description>Recent content in CodeSkill on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sun, 02 Apr 2017 11:16:36 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/categories/codeskill/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phím tắt cho bash</title>
+      <link>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</link>
+      <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</guid>
+      <description>Mặc định, bash sử dụng emacs mode, có thể chuyển sang vi mode được.
+Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.
+Chiều ngang : Di chuyển cơ bản Ctrl + b : (Backward) Di chuyển con trỏ sang trái về trước 1 kí tự
+Ctrl + f : (Fordware) Di chuyển con trỏ sang phải một kí tự.</description>
+    </item>
+    
+    <item>
+      <title>Ví dụ minh họa sử dụng pthread</title>
+      <link>https://blog.lazytrick.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</link>
+      <pubDate>Wed, 06 Apr 2016 15:26:51 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</guid>
+      <description>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.
+Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</description>
+    </item>
+    
+    <item>
+      <title>[CodeC] Về cách viết code</title>
+      <link>https://blog.lazytrick.com/post/2016-01-05-codec-ve-cach-viet-code/</link>
+      <pubDate>Tue, 05 Jan 2016 15:02:39 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-05-codec-ve-cach-viet-code/</guid>
+      <description>Việc code thường hay phải lặp đi lặp lại rất nhiều thao tác trong nhiều dự án khác nhau. Có thể kể đến nhưng scanf, fread, fwrite&amp;hellip;.print, debug&amp;hellip;
+Giờ có một design, tức là flow chart+ danh sách tên hàm.
+Flow chart thì rõ là phải viết rồi, có thể đặt tên theo các xử lý, gắn các mã. Nó dù rất giống với phần implement nhưng ta có thể tách bạch được.</description>
+    </item>
+    
+  </channel>
+</rss>

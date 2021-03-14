@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Chuyển HTML thành PDF cơ bản - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Các chuyển một HTML thành PDF ở mức cơ bản">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Chuyển HTML thành PDF cơ bản</h1>
+			
+		</header><div class="content post__content clearfix">
+			<h3 id="1-tại-sao-cần-chuyển-sang-pdf">1. Tại sao cần chuyển sang <code>PDF</code></h3>
+<ul>
+<li>Nhiều lý do để người ta sử dụng PDF thay vì các định dạng khác.
+<ul>
+<li>Về cơ bản không thể edit nên đảm bảo thống nhất về nội dung hiển thị</li>
+<li>Ít bị lỗi FONT</li>
+<li>Tiện lợi khi gửi, nhận: bên nhận và bên gửi luôn thấy chung 1 dữ liệu và ít khi sửa được.</li>
+</ul>
+</li>
+<li>Vì <code>PDF</code> gần như tiêu chuẩn để trao đổi dạng tài liệu <code>read-only</code></li>
+<li>Đọc được ở trên hầu hết mọi nền tảng: máy tính, điện thoại..
+<ul>
+<li>Trình duyết Web như <code>Firefox</code>, <code>Chrome</code> còn cho phép đọc luôn mà ko cần cài thêm gì.</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-công-cụ-hỗ-trợ-chuyển-từ-html-sang-pdf">2. Công cụ hỗ trợ chuyển từ <code>HTML</code> sang <code>PDF</code></h3>
+<ul>
+<li>Về cơ bản, <code>HTML</code> là <code>plan-text</code>(các <code>thẻ</code> (tag) được kết hợp với nhau), chúng ta sẽ không thể có nội dung nếu không có <code>Web Browser</code> để mở nó.</li>
+<li>Vì thế, muốn chuyển : <code>HTML</code> sang <code>PDF</code>, ta cần 1 <code>Web Browser</code> để mở lên, sau đó dùng chính <code>Web Browser</code> đó để <code>PDF</code> hoá. Trên hầu hết trình duyệt web đều có chức năng này.</li>
+<li>Vậy khi lập trình thì sao? Có thư viện nào hỗ trợ không?</li>
+<li>Câu trả lời là : Có. Đó là <a href="https://github.com/wkhtmltopdf/wkhtmltopdf">wkhtmltopdf</a></li>
+</ul>
+<h3 id="2-thử-nghiệm-và-một-số-vấn-đề">2. Thử nghiệm và một số vấn đề</h3>
+<h4 id="21-thử-xem">2.1 Thử xem</h4>
+<ul>
+<li>Giả sử convert 1 post <a href="https://blog.lazytrick.com/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/">này</a></li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wkhtmltopdf post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/index.html ./result.pdf
+Loading pages (1/6)
+Warning: Failed to load file:///css/style.css (ignore)
+Warning: Failed to load file:///js/menu.js (ignore)
+Warning: Failed to load file://https-blog-lazytrick-com.disqus.com/embed.js (ignore)
+Counting pages (2/6)
+Resolving links (4/6)
+Loading headers and footers (5/6)
+Printing pages (6/6)
+Done
+</code></pre></div><p>Và kết quả: <a href="https://blog.lazytrick.com/post/pdfs/2019-11-03-chuyen-html-thanh-pdf-co-ban/result_default.pdf">result.pdf</a>. Một file trắng xoá luôn.</p>
+<ul>
+<li>Như ta cũng thấy ở trên, có một số <code>warning</code> khi ta chạy câu lệnh.</li>
+<li>Sau khi tìm hiểu, thì biết được rằng:
+<ul>
+<li><code>wkhtmltopdf</code> không thể load được các file kể trên</li>
+<li>Các resource được chỉ định bằng đường dẫn tuyệt đối thì vẫn load được.</li>
+<li>Các resource có đường dẫn tương đối thì load lỗi.</li>
+</ul>
+</li>
+</ul>
+<h4 id="22-chỉnh-sửa-một-chút">2.2 Chỉnh sửa một chút</h4>
+<ul>
+<li>Copy các thư mục: <code>css</code>,<code>js</code> vào thư mục chạy lệnh <code>wkhtmltopdf</code> để nó có thể phù hợp với đường dẫn đang bị lỗi.</li>
+<li>Copy cả file html vào thư mục chạy lệnh luôn -&gt; phù hợp với đường dẫn tương đối</li>
+<li>Ta điều chỉnh một chút trong source HTML để các file bị lỗi ở trên thành tương đối:
+<ul>
+<li><code>/css/style.css</code> -&gt; <code>./css/style.css</code></li>
+<li><code>/js/menu.js</code> -&gt; <code>./js/menu.js</code></li>
+</ul>
+</li>
+<li>Chạy lại câu lệnh lần nữa:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$wkhtmltopdf</span> index.html result_1.pdf
+Loading pages (1/6)
+Warning: Failed to load file://https-blog-lazytrick-com.disqus.com/embed.js (ignore)
+Counting pages (2/6)
+Resolving links (4/6)
+Loading headers and footers (5/6)
+Printing pages (6/6)
+Done
+</code></pre></div><p>Và kết qủa là: <a href="https://blog.lazytrick.com/post/pdfs/2019-11-03-chuyen-html-thanh-pdf-co-ban/result_1.pdf">result_1.pdf</a>
+Tốt hơn rất nhiều rồi.
+Tuy một số <code>style</code> chưa đúng với web page.</p>
+<h3 id="3-tích-hợp-trong-ứng-dụng-khác">3. Tích hợp trong ứng dụng khác:</h3>
+<ul>
+<li>Thư viện <code>wkhtmltopdf</code> chủ yếu bằng <code>C</code> nên chắc chắn sẽ dễ dàng được binding sang các ngôn ngữ khác.</li>
+<li>Một số ngôn ngữ đã hỗ trợ:
+<ul>
+<li>PHP : <a href="https://github.com/KnpLabs/snappy">https://github.com/KnpLabs/snappy</a></li>
+<li>Ruby: <a href="https://rubygems.org/gems/wkhtmltopdf-binary-edge">https://rubygems.org/gems/wkhtmltopdf-binary-edge</a></li>
+<li>Python: <a href="https://pypi.org/project/pdfkit/">https://pypi.org/project/pdfkit/</a></li>
+</ul>
+</li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/html2pdf/" rel="tag">html2pdf</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/pdf/" rel="tag">pdf</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

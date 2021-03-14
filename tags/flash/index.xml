@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Flash on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/flash/</link>
+    <description>Recent content in Flash on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Fri, 05 Aug 2016 01:50:50 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/flash/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hệ thống File Ubifs</title>
+      <link>https://blog.lazytrick.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/</link>
+      <pubDate>Fri, 05 Aug 2016 01:50:50 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/</guid>
+      <description>Gần đây, có thấy trên Board mạch phát triển của mình có xuất hiện 1 process là ubifs. Qua tìm hiểu mới biết rằng, em nó là UBIFS, được phát triển năm 2007 bởi Nokia với sự giúp đỡ của University of Szeged, Hungary.
+Bắt đầu được đưa vào mainline của Linux 2.6.27 năm 2008.
+Hỏi thấy GG thấy được 1 bài giới thiệu chung về hệ thống file cho thiết bị nhớ Flash của anh Le Dinh Thao trên blog kithuatmaytinh.</description>
+    </item>
+    
+    <item>
+      <title>Bộ nhớ Flash</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-bo-nho-flash-se-viet/</link>
+      <pubDate>Mon, 25 Jan 2016 14:29:09 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-bo-nho-flash-se-viet/</guid>
+      <description>Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.
+Lập trình với bộ nhớ Flash Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn 0xFF thôi.
+Serial Flash Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất.</description>
+    </item>
+    
+  </channel>
+</rss>

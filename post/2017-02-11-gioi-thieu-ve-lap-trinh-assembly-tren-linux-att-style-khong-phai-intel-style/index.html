@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style) - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p><em>Tham khảo</em></p>
+<ul>
+<li>Sách : AT&amp;T Assembly Language, Richard Blum</li>
+</ul>
+<h2 id="1-ngôn-ngữ-assembly-là-gì">1. Ngôn ngữ Assembly là gì?</h2>
+<ul>
+<li>Ở mức thấp nhất, Process chỉ hiểu <strong>instruction code</strong></li>
+<li><strong>Instruction Code</strong> là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element.</li>
+<li>Người ta hoàn toàn có thể viết chương trình bằng <strong>instruction code</strong>, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</li>
+<li>Việc sử dụng các ngôn ngữ bậc cao giúp việc viết chương trình dễ dàng hơn rất nhiều, vì trình biên dịch hoặc thông dịch đảm nhiệm việc chuyển mã ngôn ngữ bậc cao trực tiếp hoặc gián tiếp sang <strong>instruction code</strong> để chạy.</li>
+<li>Tuy nhiên, việc sinh <strong>instruction code</strong> của trình biên dịch/thông dịch không phải luôn luôn hiệu quả.</li>
+<li>Khi muốn động vào các kết quả được sinh ra từ trình biên dich/thông dịch ở trên, ta không khó có thể sử trực tiếp trên <strong>instruction code</strong>, một dạng dễ nhớ của các <strong>instruction code</strong> này được sinh ra để phục vụ việc này. Đó chính là <strong>Assembly Language</strong>.</li>
+<li>Vì gần như được chuyển sang <strong>instruction code</strong> của Processor nên <strong>Assemble Code</strong> gần như được gắn với Processor nào đó.</li>
+<li>Dù các lệnh của hầu hết bộ xử lý là tương tự nhau nhưng quy tắc gợi nhớ các mã <strong>Assembly</strong> dù chỉ khác nhau một chút thôi cũng khiến việc viết code cross-processor gần như là không thể rồi.</li>
+<li>Ta nói <strong>Assembly Language</strong> là nói đến 1 ngôn ngữ, nhưng thực chất mỗi Processor có 1 <strong>Assembly Language</strong> riêng của nó.</li>
+<li>Bởi vậy, để để lập trình với <strong>Assembly</strong> cho 1 Processor nào đó, ta cũng cần <strong>Assembler</strong> tương ứng cho Processor đó.</li>
+</ul>
+<h2 id="2-intel-asm-và-att-asm-và-arm">2. Intel ASM và AT&amp;T ASM và ARM</h2>
+<ul>
+<li>Các bộ xử lý cùng kiến trúc thường ít có thay đổi về <strong>Assembly Language</strong>, tuy nhiên 2 kiến trúc khác nhau thì thường có <strong>Assembly Language</strong> khác nhau</li>
+<li><strong>ARM</strong> : Hiện tại chưa tìm hiểu được.</li>
+<li>Nếu bỏ qua <strong>ARM</strong>, ta có thể chia ra làm 2 loại <strong>Assembly Language</strong> sau theo tiêu chí <strong>lệnh gợi nhớ</strong>, đó là <strong>Intel</strong> và <strong>AT&amp;T</strong>.<br>
+Về sự khác nhau của 2 loại này:<br>
+Hầu hết sự khác biệt xuất hiện ở một dài định dạng cụ thể. Nhưng những điểm khác nhau chính giữa <strong>Intel</strong> và <strong>AT&amp;T</strong> được đưa ra dưới đây:</li>
+</ul>
+<blockquote>
+<ul>
+<li>
+<p><strong>AT&amp;T</strong> sử dụng <strong>$</strong> để kí hiệu, còn <strong>Intel</strong> thì không.<br>
+Vì thế, khi biểu diễn giá trị <strong>4</strong>, AT&amp;T sẽ sử dụng <strong>$4</strong>, còn <strong>Intel</strong> thì<br>
+đơn giản viết <strong>4</strong>.</p>
+</li>
+<li>
+<p><strong>AT&amp;T</strong> sử dụng thứ tự về source (nguồn), destination (đích) ngược với <strong>Intel</strong>,<br>
+Ví thế, để chuyển giá trị <strong>4</strong> vào thanh ghi <strong>EAX</strong>, <strong>AT&amp;T</strong> sẽ viết là<br>
+<em>movl $4, %eax</em>, còn <strong>Intel</strong> lại viết là <em>mov eax, 4</em>.</p>
+</li>
+<li>
+<p>Ở Long calls và jumps cũng sử dụng cú pháp khác nhau để định nghĩa segment và<br>
+offset. <strong>AT&amp;T</strong> sử dụng <em>ljmp $section, $offset</em>, trong khi đó Intel sử dụng<br>
+<em>jmp section:offset</em></p>
+</li>
+</ul>
+</blockquote>
+<h2 id="3-asm-trên-linux">3. ASM trên Linux</h2>
+<p>Để lập trình ASM trên Linux, ta sử dụng những công cụ sau:</p>
+<ul>
+<li>
+<p>Assembler :<strong>as</strong><br>
+Đây là <strong>GNU Assembler</strong>, là cross-platform assembler phổ biến nhất trên Linux.<br>
+Như đã nói ở trên, mỗi <strong>assemble language</strong> thường gắn liền với assembler của nó. Vậy thì cross-platform ở trên là ý gì. Có nghĩa là compiler này có khả năng biên dịch nhiều loại assembly code khác nhau.<br>
+Cùng 1 source nhưng nó có thể sinh ra nhiều loại instruction code tùy theo processor được chỉ đinh.</p>
+</li>
+<li>
+<p>Linker :<strong>ld</strong><br>
+Ở ngôn ngữ C/C++ hầu như ít khi ta phải thao tác trực tiếp với linker. <strong>gcc</strong> thường sẽ làm tất rồi.<br>
+Nhưng đối với assembler thì không như thế, nó sẽ không tự động gọi linker đâu, ta phải tự gọi <strong>linker</strong> để tạo ra file chạy cho source chúng ta viết.<br>
+Và <strong>linker</strong> duy nhất sử dụng trên Linux chính là <strong>GNU Linker</strong>, hay <strong>ld</strong>.</p>
+</li>
+<li>
+<p>Debugger : <strong>gdb</strong><br>
+Chúng ta đã có 1 loại bài về <strong>GDB</strong> rồi, <strong>gdb</strong> debug được mọi chương trình trong Linux dù chúng được viết bằng C/C++ hay bây giờ là Assembly đi nữa.</p>
+</li>
+<li>
+<p>C/C++ Compiler :<strong>gcc</strong><br>
+Thực ra không trực tiếp liên quan lắm. Nhưng như trong 1 bài nói về <strong>Tìm hiểu thêm về biên dịch HelloWorl</strong>, ta cũng đề cập đến khả năng sinh Asssembly Code của <strong>gcc</strong> rồi.<br>
+Có thể chúng ta sẽ sử dụng <strong>gcc</strong> để sinh mã ASM rồi optimize chúng thay vì viết từ zero.</p>
+</li>
+<li>
+<p>Object code dissassembler (Dịch ngược asm):<strong>objdump</strong><br>
+Cho phép xem instruction code và mã dịch ngược về ASM của nó.</p>
+</li>
+<li>
+<p>Profiler : <strong>gprof</strong><br>
+Là công cụ đánh giá performance của phần mềm trong Linux. Nó cho phép xác định hàm nào tốn nhiều thời gian xử lý nhất. Từ đó, ta có thể tập trung cải tiến để tăng hiệu năng.</p>
+</li>
+</ul>
+<h2 id="4-một-chương-trình-assembly-đơn-giản">4. Một chương trình Assembly đơn giản</h2>
+<p>Chương trình sau sẽ lấy tên của CPU và hiển thị ra dòng **The processor Vendor ID is XXXX **</p>
+<ul>
+<li>Source code</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#228b22">#Author : Richard Blum  
+</span><span style="color:#228b22">#cpuid.s Sample program to extract the processor Vendor ID  
+</span><span style="color:#228b22"></span><span style="color:#658b00">.section</span> <span style="color:#00688b">.data</span>  
+<span style="color:#00688b">output</span>:  
+<span style="color:#00688b">.ascii</span> <span style="color:#a61717;background-color:#e3d2d2">“</span><span style="color:#00688b">The</span> <span style="color:#00688b">processor</span> <span style="color:#00688b">Vendor</span> <span style="color:#00688b">ID</span> <span style="color:#00688b">is</span> <span style="color:#a61717;background-color:#e3d2d2">&#39;</span><span style="color:#00688b">xxxxxxxxxxxx</span><span style="color:#a61717;background-color:#e3d2d2">&#39;\</span><span style="color:#00688b">n</span><span style="color:#a61717;background-color:#e3d2d2">”</span>  
+<span style="color:#00688b">.section</span> <span style="color:#00688b">.text</span>  
+<span style="color:#00688b">.globl</span> <span style="color:#00688b">_start</span>  
+<span style="color:#00688b">_start</span>:  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$0</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">eax</span>  
+<span style="color:#00688b">cpuid</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$output</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edi</span>  
+<span style="color:#00688b">movl</span> <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ebx</span>, <span style="color:#b452cd">28</span>(<span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edi</span>)  
+<span style="color:#00688b">movl</span> <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edx</span>, <span style="color:#b452cd">32</span>(<span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edi</span>)  
+<span style="color:#00688b">movl</span> <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ecx</span>, <span style="color:#b452cd">36</span>(<span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edi</span>)  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$4</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">eax</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$1</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ebx</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$output</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ecx</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$42</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">edx</span>  
+<span style="color:#00688b">int</span> <span style="color:#00688b">$0x80</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$1</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">eax</span>  
+<span style="color:#00688b">movl</span> <span style="color:#00688b">$0</span>, <span style="color:#a61717;background-color:#e3d2d2">%</span><span style="color:#00688b">ebx</span>  
+<span style="color:#00688b">int</span> <span style="color:#00688b">$0x80</span>  
+</code></pre></div><p>Lưu lại và đặt tên là <strong>cpuid.s</strong>:</p>
+<ul>
+<li>Biên dịch bằng Assembler:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$as</span> -o cpuid.o cpuid.s  
+</code></pre></div><p>Output: <strong>cpuid.o</strong></p>
+<ul>
+<li>Link để tạo file chạy:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ld -o cpuid cpuid.o  
+</code></pre></div><p>Output: <strong>cpuid</strong></p>
+<ul>
+<li>Chạy</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ./cpuid  
+The processor Vendor ID is <span style="color:#cd5555">&#39;GenuineIntel&#39;</span>  
+</code></pre></div><ul>
+<li>Debug<br>
+Ta cần biên dịch với option khác thì mới debug được.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$as</span> -o cpuid.o cpuid.s  
+ld -o cpuid cpuid.o  
+</code></pre></div><p>Ta sẽ đặt break point ở <strong>_start</strong> và xem thử vị trí dừng:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ gdb ./cpuid  
+GNU gdb (Ubuntu 7.11-0ubuntu1) 7.11  
+Copyright (C) <span style="color:#b452cd">2016</span> Free Software Foundation, Inc.  
+License GPLv3+: GNU GPL version <span style="color:#b452cd">3</span> or later &lt;http://gnu.org/licenses/gpl.html&gt;  
+This is free software: you are free to change and redistribute it.  
+There is NO WARRANTY, to the extent permitted by law. Type <span style="color:#cd5555">&#34;show copying&#34;</span>  
+and <span style="color:#cd5555">&#34;show warranty&#34;</span> <span style="color:#8b008b;font-weight:bold">for</span> details.  
+This GDB was configured as <span style="color:#cd5555">&#34;i686-linux-gnu&#34;</span>.  
+Type <span style="color:#cd5555">&#34;show configuration&#34;</span> <span style="color:#8b008b;font-weight:bold">for</span> configuration details.  
+For bug reporting instructions, please see:  
+&lt;http://www.gnu.org/software/gdb/bugs/&gt;.  
+Find the GDB manual and other documentation resources online at:  
+&lt;http://www.gnu.org/software/gdb/documentation/&gt;.  
+For help, <span style="color:#658b00">type</span> <span style="color:#cd5555">&#34;help&#34;</span>.  
+Type <span style="color:#cd5555">&#34;apropos word&#34;</span> to search <span style="color:#8b008b;font-weight:bold">for</span> commands related to <span style="color:#cd5555">&#34;word&#34;</span>...  
+Reading symbols from ./cpuid...done.  
+(gdb) b *_start  
+Breakpoint <span style="color:#b452cd">1</span> at 0x8048074: file cpuid.s, line 10.  
+(gdb) r  
+Starting program: /home/osboxes/code/asm/cpuid
+
+Breakpoint 1, _start () at cpuid.s:10  
+<span style="color:#b452cd">10</span> movl <span style="color:#00688b">$0</span>, %eax  
+(gdb) l  
+<span style="color:#b452cd">5</span> .section .text  
+<span style="color:#b452cd">6</span> .globl _start  
+<span style="color:#b452cd">7</span> _start:  
+<span style="color:#b452cd">8</span> <span style="color:#228b22"># Using $0 for value 0  </span>
+<span style="color:#b452cd">9</span> <span style="color:#228b22"># Using %eax for register EAX  </span>
+<span style="color:#b452cd">10</span> movl <span style="color:#00688b">$0</span>, %eax  
+<span style="color:#b452cd">11</span> cpuid  
+<span style="color:#b452cd">12</span> movl <span style="color:#00688b">$output</span>, %edi  
+<span style="color:#b452cd">13</span> movl %ebx, 28(%edi)  
+<span style="color:#b452cd">14</span> movl %edx, 32(%edi)  
+</code></pre></div><ul>
+<li>Dissassemler:<br>
+Cho <strong>cpuid.o</strong>:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ objdump -d cpuid.o
+
+cpuid.o: file format elf32-i386
+
+Disassembly of section .text:
+
+<span style="color:#b452cd">00000000</span> :  
+0: b8 <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%eax  
+5: 0f a2 cpuid  
+7: bf <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%edi  
+c: <span style="color:#b452cd">89</span> 5f 1c mov %ebx,0x1c(%edi)  
+f: <span style="color:#b452cd">89</span> <span style="color:#b452cd">57</span> <span style="color:#b452cd">20</span> mov %edx,0x20(%edi)  
+12: <span style="color:#b452cd">89</span> 4f <span style="color:#b452cd">24</span> mov %ecx,0x24(%edi)  
+15: b8 <span style="color:#b452cd">04</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x4,%eax  
+1a: bb <span style="color:#b452cd">01</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x1,%ebx  
+1f: b9 <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%ecx  
+24: ba 2a <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x2a,%edx  
+29: <span style="color:#658b00">cd</span> <span style="color:#b452cd">80</span> int <span style="color:#00688b">$0</span>x80  
+2b: b8 <span style="color:#b452cd">01</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x1,%eax  
+30: bb <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%ebx  
+35: <span style="color:#658b00">cd</span> <span style="color:#b452cd">80</span> int <span style="color:#00688b">$0</span>x80  
+</code></pre></div><p>Cho <strong>cpuid</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ objdump -d cpuid
+
+cpuid: file format elf32-i386
+
+Disassembly of section .text:
+
+<span style="color:#b452cd">08048074</span> :  
+8048074: b8 <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%eax  
+8048079: 0f a2 cpuid  
+804807b: bf ab <span style="color:#b452cd">90</span> <span style="color:#b452cd">04</span> <span style="color:#b452cd">08</span> mov <span style="color:#00688b">$0</span>x80490ab,%edi  
+8048080: <span style="color:#b452cd">89</span> 5f 1c mov %ebx,0x1c(%edi)  
+8048083: <span style="color:#b452cd">89</span> <span style="color:#b452cd">57</span> <span style="color:#b452cd">20</span> mov %edx,0x20(%edi)  
+8048086: <span style="color:#b452cd">89</span> 4f <span style="color:#b452cd">24</span> mov %ecx,0x24(%edi)  
+8048089: b8 <span style="color:#b452cd">04</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x4,%eax  
+804808e: bb <span style="color:#b452cd">01</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x1,%ebx  
+8048093: b9 ab <span style="color:#b452cd">90</span> <span style="color:#b452cd">04</span> <span style="color:#b452cd">08</span> mov <span style="color:#00688b">$0</span>x80490ab,%ecx  
+8048098: ba 2a <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x2a,%edx  
+804809d: <span style="color:#658b00">cd</span> <span style="color:#b452cd">80</span> int <span style="color:#00688b">$0</span>x80  
+804809f: b8 <span style="color:#b452cd">01</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x1,%eax  
+80480a4: bb <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> <span style="color:#b452cd">00</span> mov <span style="color:#00688b">$0</span>x0,%ebx  
+80480a9: <span style="color:#658b00">cd</span> <span style="color:#b452cd">80</span> int <span style="color:#00688b">$0</span>x80  
+</code></pre></div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/asm/" rel="tag">Asm</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/assembly/" rel="tag">Assembly</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Driver on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/categories/driver/</link>
+    <description>Recent content in Driver on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sun, 23 Apr 2017 04:10:05 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/categories/driver/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tìm source code của USB Driver trên Linux</title>
+      <link>https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
+      <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
+      <description>Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
+Cách tìm source code driver cho thiết bị USB
+1. Nói qua về thiết bị USB   Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Đó là Vendor (nhà sản xuất), và Product (sản phẩm).</description>
+    </item>
+    
+  </channel>
+</rss>

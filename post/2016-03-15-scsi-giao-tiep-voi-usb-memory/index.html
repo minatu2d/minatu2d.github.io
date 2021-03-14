@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>SCSI - Giao tiếp với USB Memory - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">SCSI - Giao tiếp với USB Memory</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p><img src="https://blog.lazytrick.com/post/images/8gb-usb-flash-drive-rotation-2-0-usb-disk-model-pen-drive-memory-stick-8g-hot.jpg" alt="8GB-USB-Flash-Drive-Rotation-2-0-USB-DISK-Model-Pen-drive-memory-stick-8G-HOT.jpg"></p>
+<p>Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &ldquo;USB Flash Memory&rdquo; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.</p>
+<p>Ở một số bài trước, tôi cũng viết về một số điểm chính của giao tiếp USB.</p>
+<p>Về cơ bản, phần mềm mà programer có thể viết cho USB hầu như được xác định từ sau bước tín hiệu. Tức là phía ứng dụng mức thấp (tức driver ấy) sẽ sử dụng các thanh và các ngắt được cung cấp để setup, nhận dữ liệu, gửi dữ liêu, phát hiện kết nối.</p>
+<p>Về phía người dùng ta sẽ thấy có một vài loại thiết bị sử dụng USB như chuột, bàn phím, thiết bị nhớ (ta vẫn gọi là USB).</p>
+<p>Bài này sẽ nói 1 chút về thiết bị nhớ sử dụng giao tiếp USB hay USB Memory.</p>
+<h2 id="1-quá-trình-configure">1. Quá trình Configure</h2>
+<p>Là quá trình lúc cắm vào đến khi phần mềm phía Host hiểu đây là một thiết bị nhớ.</p>
+<p>Quá trình này chỉ xác định đây là một thiết bị Mass Storage Class, có thể lưu trữ được.</p>
+<p>Mà chỉ xác định rằng đây là 1 thiết bị nhớ, bằng cách nào đó có thể truy cập (đọc, ghi) theo địa chỉ hoặc Block.</p>
+<p>Trong quá trình Configure này, controller phía USB Memory sẽ giao tiếp với phần mềm phía Host. Nó sẽ gửi các thông số cần thiết để Host nhận ra nó và đưa ra cách giao tiếp phù hợp.</p>
+<p>Một trong những thông số quan trọng nhất là tập lệnh giao tiếp với Controller trên USB Memory.</p>
+<p>&lt;Sẽ có bảng ở đây&gt;</p>
+<h2 id="2-các-truyền-dữ-liệu-nào-được-sử-dụng">2. Các truyền dữ liệu nào được sử dụng</h2>
+<p>Như đã nói ở trên, hầu hết các USB hiện nay sẽ hỗ trợ giao tiếp bằng tập lệnh SCSI.</p>
+<p>Nghĩa là như thế nào, thông qua đường Bus của phần cứng, phía Host sẽ gửi các lệnh trong tập lệnh SCSI đến Controller trên USB Memory để lấy thông tin, đọc, ghi&hellip;</p>
+<p>Nhiệm vụ của Driver phía Host là sử dụng các lệnh này đẻ truy cập đến đúng vùng nhớ.</p>
+<p>Để ứng dụng phía trên dễ dàng sử dụng USB, người ta thường cài đặt trên USB Memory một hệ thống File. Thông thường là FAT16, FAT32..</p>
+<h2 id="3-làm-thế-nào-để-truy-cập-đến-thiết-bị-nhớ">3. Làm thế nào để truy cập đến thiết bị nhớ.</h2>
+<p>Controller phía USB Memory sẽ cho phép phía Driver truy cập đến từng đơn vị nhớ Flash.</p>
+<p>Ta cũng biết rằng, bản thân Flash là loại bộ nhớ mà mọi thao tác ghi lại phải kèm với một thao tác xóa dữ liệu trước đó. Đơn vị để đọc, ghi, xóa được quy định trên mỗi loại chip nhớ, thông thường USB Memory sẽ sử dụng đơn vị là 512 byte. Nhiều loại chip nhớ có dung lượng nhỏ sẽ sử dụng đơn vị là 256 Byte, 4Kilo Byte, 64Kbyte.</p>
+<p>Phía Driver (nói về phần mềm) sẽ gửi các yêu cầu cho phía Controller của USB Memory thông qua các Commands. Các command này phải được cả phía Controller của USB Memory hiểu thì mới thực hiện đúng được. Thông thường người ta sẽ dựa trên một tập commands được quy định rõ ràng.</p>
+<p>Thông qua giá trị <em>bInterfaceSubClass</em> mà phía Controller gửi lên cho Driver lúc 2 trao đổi để nhận ra nhau. Thì phía Driver sẽ biết phía Controller hỗ trợ tập Command nào.</p>
+<p>Tất cả các giá trị có thể được miêu tả trong trang 11 của tài liệu mô tả về Mass Storage Class. <a href="http://www.usb.org/developers/docs/devclass_docs/Mass_Storage_Specification_Overview_v1.4_2-19-2010.pdf">Ở đây</a></p>
+<p><img src="https://blog.lazytrick.com/post/images/screenshot-from-2016-03-19-214108.png" alt="Screenshot from 2016-03-19 21:41:08"></p>
+<p>Tập command được hỗ trợ phổ biến nhất hiện tại là SCSI Transparent command set.</p>
+<p>Tức giá trị _bInterfaceSubClass _sẽ là <em>0x06</em></p>
+<p>Tập command trên khá nhiều nhưng phổ có 3 command phổ được sử dụng phổ biến là</p>
+<p>INQUIRY : Đọc những thông số cơ bản của USB Memory.</p>
+<p>READ(10) : Là lệnh đọc dữ liệu từ USB Memory. Có nhiều câu lệnh READ với những tham số khác nhau, vì câu lệnh này có độ dài 10 byte nên thường được gọi là READ10.</p>
+<p>WRITE : Ghi dữ liệu vào USB Memory.</p>
+<p>*Ghi chú: SCSI sử dụng trong bài viết là nói về một tập các định nghĩa câu lệnh (về mặt phần mềm), ngoài ra SCSI cũng được biết đến là một giao diện phần cứng phổ biến trước đây. Thực ra SCSI Command Set ban đầu được sử dụng trong giao tiếp SCSI (phần cứng), nhưng sau này phần cứng bị tuy đã không còn sử dụng nhưng những câu lệnh giao tiếp vẫn được sử dụng trong một giao diện phần cứng khác. Điển hình ta thấy ở đây là USB Memory.</p>
+<p>Thế mới biết, phần cứng có tuổi thọ ngắn hơn phần mềm rất nhiều.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/scsi/" rel="tag">SCSI</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/usb/" rel="tag">USB</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/usbmemory/" rel="tag">USBMemory</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

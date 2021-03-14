@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>CMake - Công cụ hỗ trợ việc build source trên nhiều platform. - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">CMake - Công cụ hỗ trợ việc build source trên nhiều platform.</h1>
+			
+		</header><div class="content post__content clearfix">
+			<ul>
+<li>
+<p>Đuợc làm việc cùng những pro đầy kinh nghiệm thực sự rất thú vị, ngoài việc chia sẻ hiểu biết của mình, còn đuợc hóng nhiều kĩ năng sử dụng tool của các pro nữa. Mình thấy rằng, không có tool nào gọi là thần thành, mọi tool chỉ giúp tăng tốc độc với những người mới và không đủ thời gian để hiểu sâu. Còn với những người đã nhiều kinh nghiệm, họ sử dụng tool theo các điểm mạnh của chúng và kết hợp rất nhiều tool một cách nhịp nhàng sao cho công việc tiến hành nhanh nhất.</p>
+</li>
+<li>
+<p>Qua dự án vừa rồi, dù đã nghe qua về <code>CMake</code>. Nhưng cũng giống vô vàn các tool khác, ta nhiều khi không biết cái nào sẽ đến, và cái nào sẽ cần trong dự án tiếp theo. Thôi thì, duyên gặp em nào thì cũng để cho em ấy chút kỉ niệm trên blog này.</p>
+</li>
+</ul>
+<ol>
+<li>Về Build Cross-Platform</li>
+<li>CMake giải quyết vấn đề gì.</li>
+<li>Các tính năng mạnh của CMake</li>
+</ol>
+<p>Trước hết, ta cứ làm một số mục chính để lần sau viết tiếp còn biết đang ở chỗ nào.</p>
+<h2 id="1-nói-một-chút-về-build-cross-platform">1. Nói một chút về build-cross platform</h2>
+<ul>
+<li>Ta biết rằng, trên các hệ thống *NIX, các phần mềm hầu hết là mã nguồn mở được nhiều người phát triển. Và hầu hết trong chúng sử dụng một cách build source đơn giản, và rất mạnh. Đó là <code>Make</code> hay các <code>Makefiles</code>. Cùng với việc giảm thiểu đến mức tối đa việc tạo ra một kịch bản build cho các hệ thông nàng, các tool đi kèm cũng được sinh ra: <code>autotools</code>, <code>autobuild</code>,&hellip;etc.</li>
+<li>Nhưng với sự phổ biến của <code>Linux</code>, càng ngày khiến người không còn chỉ biết có Window nữa, mà song hành với nó còn có nhiều hệ điều hành khác. Việc phát triển phần mềm mà có thể chạy trên càng nhiều hệ điều hành(Platform) sẽ là lý tưởng.</li>
+<li>Ta sẽ nói đến việc làm thế nào để porting một chương trình từ <code>Linux</code> sang <code>Windows</code>.</li>
+<li>Nếu nói hết ra ta thấy sẽ rất nhiều việc phải làm, nào là porting thư viện sử dụng, porting source đã viết, rồi quản lý source ra sao khi phải thay đổi source&hellip;</li>
+<li>Ở đây, tôi muốn nói đến việc quản lý source và tạo ra kịch bản build cho 2 nền tảng Linux và Windows một cách bài bản, thống nhất, dễ hiểu, đáng tin cậy là một yêu cầu gần như bắt buộc.</li>
+</ul>
+<h2 id="2-cmake-giải-quyết-vấn-đề-gì">2. CMake giải quyết vấn đề gì.</h2>
+<ul>
+<li>Trên <code>Linux</code>, hay các hệ *NIX, <code>programmer</code> thường thích dùng Command Line hơn vì nó quen với họ, vì họ cảm thấy nó dễ dùng cho công việc của họ.</li>
+<li>Trên <code>Windows</code> thì không như thế, họ được cung cấp một IDE (Visual Studio..) để phát triển ứng dụng.</li>
+<li>Giả sử ta muốn porting một ứng dụng từ <code>Linux</code> sang <code>Window</code>, ta không thể yêu cầu họ phải sử dụng dòng lệnh, phải viết Make file được. Điều đó khiến cho giá phát triển sẽ bị đẩy lên cao do phải đào tạo programmer trên Window biết sử dụng command line, rồi không tận dụng được kinh nghiệm của họ với IDE, rồi việc phát triển song song 2 phiên bản sẽ gặp rất nhiều vấn đề&hellip;</li>
+<li>Giống như rất nhiều công cụ khác giúp tăng hiệu quả và độ tin cậy trong việc develop ứng dụng cross-platform. Điểm mạnh lớn nhất của <code>CMake</code> là trên cùng 1 source mà <code>CMake</code> quản lý, nó có khả năng tạo ra kịch bản build bằng Makefile cho Linux, tạo ra Project file cho Visual Studio&hellip;</li>
+<li>Source code được giữa gần như trong suốt giữa 2 môi trường này.</li>
+<li>Ta sẽ tìm hiểu ở phần sau kĩ hơn xem <code>CMake</code> nó làm thế nào, và có điều gì khác thường ở đây.</li>
+<li>Có một điểm cần nói ở đây, trước khi có <code>CMake</code> thì có nhiều công cụ khác cũng hộ trợ việc này nhưng đều dựa trên ngôn ngữ Make hay tạo ra Makefile như là kết quả cuối cùng. CMake tự định nghĩa riêng một ngôn ngữ của nó giúp việc định nghĩa các thành phần của ứng dụng nó quản lý một cách dễ dàng nhất.</li>
+</ul>
+<h2 id="3-các-tính-năng-mạnh-của-cmake">3. Các tính năng mạnh của CMake</h2>
+<p>Những tính năng được gọi là mạnh của <code>CMake</code>, có thể kể đến 2 tính năng sau:</p>
+<ul>
+<li>Tạo ra kịch bản build cho ra hiệu suất làm việc cao trên các hệ thống nó support.</li>
+<li>Tao ra kịch kịch bản build mà tách riêng với source code, (tính năng này có từ Autotools), điều hành đặc biết hữu ích khi ta muốn thực hiện nhiều kịch bản build trên cùng 1 source code.<br>
+(Ta thấy trên <code>Window</code>, các project thường chứa luôn source code trong đó, nhưng <code>CMake</code> tạo ra project file mà các file source ở một chỗ khác)</li>
+</ul>
+<p>Ta có thể nói rằng, <code>CMake</code> là một bộ sinh Makefile.<br>
+Ví dụ sử dụng <code>CMake</code> mình sẽ để trong một post khác để tránh làm post này quá dài.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/cmake/" rel="tag">Cmake</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Sử dụng lệnh screen cơ bản - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="Sử dụng lệnh screen cơ bản">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Sử dụng lệnh screen cơ bản</h1>
+			
+		</header>
+<div class="post__toc toc">
+	<div class="toc__title">Mục lục</div>
+	<div class="toc__menu">
+		<nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-screen-giải-quyết-vấn-đề-gì">1. <code>screen</code> giải quyết vấn đề gì?</a></li>
+    <li><a href="#2-một-số-khái-niệm-khi-sử-dụng-và-install">2. Một số khái niệm khi sử dụng và install</a></li>
+    <li><a href="#3-các-thao-tác-sử-dụng-cơ-bản">3. Các thao tác sử dụng cơ bản</a>
+      <ul>
+        <li><a href="#31-tạo-một-session-mới-và-thoát-khỏi">3.1 Tạo một session mới và thoát khỏi</a></li>
+        <li><a href="#32-kiểm-tra-xem-có-đang-ở-trong-1-session-hay-không">3.2 Kiểm tra xem có đang ở trong 1 session hay không</a></li>
+        <li><a href="#33-nhả-detach-session-hiện-tại">3.3 Nhả (detach) session hiện tại</a></li>
+        <li><a href="#34-gắn-lại-re-attach-session-cũ">3.4 Gắn lại (re-attach) session cũ</a></li>
+        <li><a href="#35-dừng-session">3.5 Dừng session</a></li>
+        <li><a href="#36-ghi-lại-log-của-toàn-bộ-1-session">3.6 Ghi lại log của toàn bộ 1 session</a></li>
+      </ul>
+    </li>
+    <li><a href="#4-kết-và-một-số-phím-tắt">4. Kết và một số phím tắt</a></li>
+  </ul>
+</nav>
+	</div>
+</div><div class="content post__content clearfix">
+			<p><code>screen</code> là một phần mềm (chạy ở chế độ dòng lệnh) trên Linux rất hữu ích.</p>
+<h2 id="1-screen-giải-quyết-vấn-đề-gì">1. <code>screen</code> giải quyết vấn đề gì?</h2>
+<ul>
+<li><code>Vấn đề</code>: Khi bạn kết nối bằng <code>SSH</code> đến <code>server</code> qua 1 terminal, bạn có thể gặp các vấn đề sau:
+<ul>
+<li>
+<ol>
+<li>Chương trình bạn định chạy (train 1 con AI, down phim XXX) sẽ rất mất thời gian, bạn không thể đợi đến khi nó xong được. Bạn muốn nó vẫn chạy kể cả khi bạn tắt <code>terminal</code> đi về, hôm sau đến vẫn có cái <code>terminal</code> cũ.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Bạn muốn chạy 2,3,&hellip; chương trình một lúc một lúc, chương trình nào cũng bắn lỗi ra <code>STDOUT</code>, và bạn phải kiểm tra được tình trạng lỗi của mỗi chương trình một cách riêng biệt để fix bug, điều chỉnh dựa trên <code>LOG</code> của nó.</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Bạn chán việc log lỗi chương trình bằng <code>redirect</code> chúng sang <code>file</code>.</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><code>screen</code> sinh ra để giải quyết các vấn đề ở trên.</li>
+<li>Chỉ với một câu lệnh, bạn có thể giữ lại toàn bộ trạng thái của <code>terminal</code>, giúp cho chương trình vẫn chạy bình thường, các <code>terminal log</code> vẫn được ghi lại.</li>
+<li>Chỉ với một kết nối <code>SSH</code> bạn có thể chạy bao nhiêu chương trình đồng thời tuỳ thích, mỗi chương trình sẽ có <code>terminal</code> (tức là <code>STDIN</code>,<code>STDOUT</code>,<code>STDERR</code> ) riêng.</li>
+<li>Chỉ bằng <code>screen</code>, bạn không cần mở <code>Desktop</code> lên để chỉ để mở một <code>tab terminal</code> mới để chạy chương trình của bạn.</li>
+</ul>
+<h2 id="2-một-số-khái-niệm-khi-sử-dụng-và-install">2. Một số khái niệm khi sử dụng và install</h2>
+<ul>
+<li>
+<p><code>session</code>: Tức là một <code>terminal ảo</code> do <code>screen</code> quản lý. Trên đó bạn làm được mọi thứ như trên <code>terminal</code> thật.
+Chỉ khác một điều, khi bạn thoát (bằng lệnh <code>exit</code>) thì nó sẽ huỷ <code>terminal</code> ảo thôi, và trở về <code>terminal</code> thật.</p>
+</li>
+<li>
+<p><code>windows</code>: Tức là một ô trên <code>terminal</code>, trong đó chưa một <code>terminal ảo</code> để bạn thực hiện lệnh.</p>
+</li>
+<li>
+<p>Cài đặt trên Ubuntu (với các Platform khác thì mình chịu)</p>
+</li>
+</ul>
+<pre><code>sudo apt install screen
+</code></pre><h2 id="3-các-thao-tác-sử-dụng-cơ-bản">3. Các thao tác sử dụng cơ bản</h2>
+<h3 id="31-tạo-một-session-mới-và-thoát-khỏi">3.1 Tạo một session mới và thoát khỏi</h3>
+<p>Giả sử ta có kết nối <code>SSH</code> trên một <code>terminal</code> thật với tên (chính title của cửa sổ ) : <code>minatu2d@z600:~/screen_samplesample (ssh)</code></p>
+<p><img src="https://blog.lazytrick.com/post/images/screen_cmd_real_terminal.png" alt="screen_cmd_real_terminal"></p>
+<ul>
+<li>Ta chạy <code>screen</code> command với không tham số (hay là mặc định):</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen
+</code></pre></div><pre><code>- Kết quả:
+![screen_cmd_start_up](/post/images/screen_cmd_start_up.png)
+
+- Sau khi nhấn `Enter` hoặc `Space` thì ta sẽ thấy như sau:
+![screen_cmd_in_new_session](/post/images/screen_cmd_in_new_session.png)
+
+- Đến đây, ta vẫn thấy một `terminal` như ở màn hình đầu tiên, ta vẫn có thể thực hiện mội lệnh bình thường.
+- Bạn có thể để ý `title` của cửa sổ thay đổi như nào trong 3 màn hình ở trên không?
+    - Ở 2 màn hình dưới, `title` được đổi thành `screen` hay nói cách khác là `screen` đang được chạy đó.
+    - Cụ thể hơn nữa là, `screen` command đang chạy và tạo cho chúng ta một `terminal ảo` hay còn gọi với tên `session` (như đã giải thích ở trên)
+</code></pre>
+<ul>
+<li>
+<p>Bạn có thể thêm tham số cho câu lệnh ở trên:</p>
+<ul>
+<li>Gán tên cho <code>session</code>:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen -S &lt;Tên của session&gt;
+</code></pre></div><ul>
+<li>Thay đổi title của windows khi chạy vào session</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen -t &lt;Tên của của sổ&gt;
+</code></pre></div></li>
+<li>
+<p>Để thoát khỏi <code>session</code> vừa được tạo và trở về <code>terminal thật</code>, ta sử dụng lệnh <code>exit</code> trong chính <code>terminal ảo</code> :</p>
+</li>
+</ul>
+<pre><code>exit
+</code></pre><pre><code>- Khi thoát khỏi thì `session` cũng sẽ bị huỷ và ta sẽ trở về `terminal thật` với `title` được thay đổi theo.
+</code></pre>
+<h3 id="32-kiểm-tra-xem-có-đang-ở-trong-1-session-hay-không">3.2 Kiểm tra xem có đang ở trong 1 session hay không</h3>
+<ul>
+<li>
+<p>Như bạn cũng thấy, khi chuyển từ <code>terminal thật</code> vào <code>terminal ảo</code>, gần như chúng ta không thấy có sự thay đổi nhiều.
+Nên nhiều khi khó nhận biết là chúng ta đang chạy trong <code>terminal thật</code> hay <code>terminal ảo</code>.</p>
+<ul>
+<li>Ví dụ :khi chúng ta định chạy lệnh <code>exit</code> chẳng hạn.</li>
+</ul>
+</li>
+<li>
+<p>Có một cách để kiểm tra chúng ta đang ở đâu, đó là kiểm giá trị biến môi trường <code>$STY</code> (biến này được <code>screen</code> command sử dụng để lưu tên của <code>session</code> hiện tại), câu lệnh:</p>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#658b00">echo</span> <span style="color:#00688b">$STY</span>
+</code></pre></div><pre><code>- Nếu có giá trị (eg: `11822.pts-1.z600`) -&gt; ta đang ở trong `terminal ảo` hay `session` nào đó. 
+    - Giá trị trả về sẽ cho ta biết tên của session đó.
+- Nếu không có gía trị -&gt; ta đang ở `terminal thật`.
+</code></pre>
+<h3 id="33-nhả-detach-session-hiện-tại">3.3 Nhả (detach) session hiện tại</h3>
+<ul>
+<li>
+<p>Ta muốn <code>session</code> vẫn sống, tức là chỉ ra ngoài <code>terminal thật</code> tạm thời và sẽ quay lại, ta gọi đó là <code>deattach</code>:</p>
+<ul>
+<li>Tổ hợp phím: <code>Ctrl + A</code> + <code>D</code>.</li>
+</ul>
+</li>
+<li>
+<p><strong>Ví dụ</strong>: chúng ta phải chạy 1 task để download một file lớn, lấy ví dụ: <a href="https://jaist.dl.sourceforge.net/project/ultimateedition/ultimate-edition-5.0-x64-lite-mate.iso">Ubuntu ultimate edition 5.0 LTS</a></p>
+<ul>
+<li>Bật một <code>session</code> với tên <code>Download</code> từ <code>terminal thật</code></li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen -S <span style="color:#cd5555">&#34;Download&#34;</span>
+</code></pre></div><ul>
+<li>Sau khi vào <code>terminal ảo</code> rồi, chạy câu lệnh download bằng <code>wget</code></li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">wget https://jaist.dl.sourceforge.net/project/ultimateedition/ultimate-edition-5.0-x64-lite-mate.iso
+</code></pre></div><p><img src="https://blog.lazytrick.com/post/images/screen_cmd_download_session.png" alt="screen_cmd_download_session"></p>
+<ul>
+<li>
+<p>Nhả <code>session</code> hiện tại bằng <code>Ctrl + A</code> + <code>D</code>. Và trở lại <code>terminal thật</code>
+<img src="https://blog.lazytrick.com/post/images/screen_cmd_after_detach.png" alt="screen_cmd_after_detach"></p>
+</li>
+<li>
+<p>Giả sử, sau một thời gian muốn quay lại xem tiến độ download đến đâu, ta thực hiện từ <code>terminal thật</code>:</p>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen -r <span style="color:#cd5555">&#34;Download&#34;</span>
+</code></pre></div><ul>
+<li>Ta lại quay trở lại <code>session</code> mà ta đã <code>detach</code>.
+<img src="https://blog.lazytrick.com/post/images/screen_cmd_after_reattach.png" alt="screen_cmd_after_reattach"></li>
+</ul>
+</li>
+</ul>
+<h3 id="34-gắn-lại-re-attach-session-cũ">3.4 Gắn lại (re-attach) session cũ</h3>
+<ul>
+<li>Ở phần trên ta cũng có thực hiện rồi, ở <code>terminal thật</code>, ta thực hiện lệnh</li>
+</ul>
+<pre><code>screen -r &lt;tên hoặc id của session muốn re-attach&gt;
+</code></pre><pre><code>- Và không cần phải gõ đầy đủ `tên` hay `id` của `session`, ta chỉ cần gõ đủ để `screen` phân biệt và tìm ra duy nhất là được.
+</code></pre>
+<ul>
+<li>Nếu ta không nhớ <code>session</code> có <code>tên</code> hoặc <code>id</code> là gì, ta có thể xem danh sách <code>session</code> hiện tại bằng:
+<ul>
+<li>Tham số <code>-ls</code>, như ở dưới đây, ta có 3 <code>session</code> đã ở trạng thái <code>detach</code></li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-zsh" data-lang="zsh">$ screen -ls
+There are screens on:
+    17489.Testing AI	(02/23/2020 02:06:04 PM)	(Detached)
+    17446.Training AI	(02/23/2020 02:05:49 PM)	(Detached)
+    16556.Download	(02/23/2020 01:36:07 PM)	(Detached)
+<span style="color:#b452cd">3</span> Sockets in /run/screen/S-anhca.
+</code></pre></div></li>
+</ul>
+<h3 id="35-dừng-session">3.5 Dừng session</h3>
+<ul>
+<li>
+<p><strong>Dừng tự nhiên</strong>: Tức là từ trong 1 <code>terminal ảo</code> hay <code>session</code>, ta thực hiện tự thoái</p>
+<ul>
+<li>Bằng lệnh <code>exit</code>, đơn giản ta chạy lệnh này trong <code>terminal ảo</code> muốn thoát.</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#658b00">exit</span>
+</code></pre></div><ul>
+<li>Bằng <code>shortcut key</code>: <code>Ctrl + A</code> + <code>K</code>. (<code>K</code> nghĩa là <code>Kill</code> đó). Khi thực hiện tổ hợp phím này trong <code>terminal ảo</code>, rồi nhấn thêm <code>y</code> nữa là ta sẽ thoát khỏi <code>session</code> vào trở về <code>terminal thật</code>:
+<img src="https://blog.lazytrick.com/post/images/screen_cmd_kill_session.png" alt="screen_cmd_kill_session"></li>
+</ul>
+</li>
+<li>
+<p><strong>Dừng ép buộc</strong>: Tức là dừng một <code>terminal ảo</code> từ bên ngoài, ở đây là từ <code>terminal thật</code>.</p>
+<ul>
+<li>Sau khi có được <code>tên</code> hoặc <code>id</code> của <code>session</code> muốn tắt. Từ bên ngoài <code>terminal thật</code>, thực hiện lệnh sau:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">screen -X -S &lt;name hoặc id của session&gt; quit
+</code></pre></div></li>
+</ul>
+<h3 id="36-ghi-lại-log-của-toàn-bộ-1-session">3.6 Ghi lại log của toàn bộ 1 session</h3>
+<ul>
+<li>Việc lấy log khi chạy chương trình là một việc làm phổ biến. Một số trường hợp sử dụng:
+<ul>
+<li>Lấy làm bằng chứng chạy chương trình</li>
+<li>Lấy log để phân tích lỗi &hellip;</li>
+</ul>
+</li>
+<li><code>screen</code> cung cấp cơ chế cho phép ghi lại toàn bộ log của <code>terminal ảo</code> ra file.
+<ul>
+<li>Hay nói các khác, <code>screen</code> lưu lại toàn bộ gồm: lệnh đã gõ, kết quả hiển thị ra của mỗi câu lệnh vào file.</li>
+</ul>
+</li>
+<li>Mặc định, <code>screen</code> không ghi log file đâu, chúng ta sẽ bật nó:
+<ul>
+<li>Trong 1 <code>terminal ảo</code>, ta gõ <code>Ctrl + A</code> + <code>H</code> (chữ hoa). (<code>H</code> ở đây là <code>History</code> đấy), thì bắt đầu tại thời điểm đó <code>log</code> sẽ được ghi lại.
+<img src="https://blog.lazytrick.com/post/images/screen_cmd_start_logging.png" alt="screen_cmd_start_logging"></li>
+<li>Sau khi ta thực hiện một vài lệnh hoặc chạy chương trình, ta sẽ dừng việc ghi log lại, với cùng tổ hợp phím : <code>Ctrl + A</code> + <code>H</code>.
+<img src="https://blog.lazytrick.com/post/images/screen_cmd_close_logging.png" alt="screen_cmd_close_logging"></li>
+<li>Như bạn cũng thấy, tên file là <code>screen.0</code> hiện ở góc trái dưới của màn hình.
+Đây là tên file mặc định. Số <code>0</code> ở đây là số thứ tự do <code>screen</code> tự đánh dấu cho mỗi <code>session</code></li>
+</ul>
+</li>
+<li>Để xem nội dung của file <code>screen.0</code> ở trên, ta sử dụng: <code>less -r</code>.
+Vì do có một số kí tự điều kiển được ghi lại trong file log nên nếu xem bằng <code>vim</code> hoặc <code>cat</code> ta sẽ thấy chúng.
+<ul>
+<li>Tôi recommend sử dụng <code>less -r</code> trong trường hợp này:</li>
+</ul>
+<pre><code>less -r screen.0
+</code></pre><p><img src="https://blog.lazytrick.com/post/images/screen_cmd_view_log.png" alt="screen_cmd_view_log"></p>
+</li>
+</ul>
+<h2 id="4-kết-và-một-số-phím-tắt">4. Kết và một số phím tắt</h2>
+<ul>
+<li>Nói chúng, <code>screen</code> là một công cụ rất hữu dụng trong môi trường có nhiều user cùng sử dụng một tài nguyên tính toán thông qua kết nối từ xa: <code>SSH</code>, <code>Telnet</code>, <code>Serial</code>.</li>
+<li>Một số phím tắt:
+<table>
+<thead>
+<tr>
+<th>Shortcut key</th>
+<th>Chức năng</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Ctrl + A</code> + <code>d</code></td>
+<td>Detach session hiện tại</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> + <code>H</code> (H : chữ hoa)</td>
+<td>Bắt đầu/kết thúc ghi log cho 1 session</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> + <code>k</code></td>
+<td>Thoát (và huỷ) session hiện tại</td>
+</tr>
+<tr>
+<td><code>Ctrl + A</code> + <code>?</code></td>
+<td>Xem danh sách phím tắt</td>
+</tr>
+</tbody>
+</table>
+</li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/cmd/" rel="tag">cmd</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/screen/" rel="tag">screen</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

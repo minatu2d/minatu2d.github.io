@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>RTOS - Hầu hết giống như một thư viện - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">RTOS - Hầu hết giống như một thư viện</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.</p>
+<p>Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver&hellip; Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.</p>
+<p>Gần đây, do chạy thử các Sample trên môi trường Non-OS, rồi OS. Nên vỡ ra được một số điều. Tất nhiên chưa được kiểm chứng kĩ lượng, đây chỉ là sự ghép các kiến thức rời rạc, rồi nắn cho nó nghe có vẻ logic. Không sao, cứ đưa ra dự đoán, chúng sẽ được kiểm chứng bằng trải nghiệm thực tế trong công việc.</p>
+<p>Cái NORTi (một hệ điều hành implement các API cho RTOS của iTRON Project)</p>
+<h2 id="1-diện-mạo-bên-ngoài">1. Diện mạo bên ngoài:</h2>
+<p>Không giống với Linux hay Windows, ta thường thấy một con trỏ nhấp nháy trên màn hình, để người dùng nhập lệnh hay một màn hình đồ họa cho phép thao tác bằng chuột và keyboard. Và hầu hết ta sẽ có quá trình cài đặt 2 hệ điều hành này vào máy trước khi chạy.</p>
+<p>Còn với NORTi, nó là RTOS dành cho microcontroller (có thể sử dụng ở cả máy tính nữa), nó được biên dịch với các ứng dụng, sau đó sẽ được đưa vào Microcontroller.</p>
+<p>Quá trình biên dịch giống hệt việc ta build một ứng dụng trên Linux có sử dụng một Library (cái loại mà chỉ có mã binary, không có source code ấy).</p>
+<p>Kết quả của quá trình build trên Linux là File chạy mà Linux chạy được.</p>
+<p>Còn kết quả của quá trình build với NORTi là một file binary + file memory map.</p>
+<p>Binary và map sẽ được nạp vào Microcontroller để chạy. Ta vẫn gọi là nạp Firmware.</p>
+<p>Khi chưa có firmware thì con microcontroller này ko khác một viên gạch hay một thanh tre có cùng kích thước và trọng lượng. Chẳng có tiếng Beep vào giống như ta mở PC. Có chăng có 1 điểm giống với PC là có vài cái đèn sẽ sáng khi có nguồn điện.</p>
+<h2 id="2-các-thiết-bị-ngoại-vi">2. Các thiết bị ngoại vi</h2>
+<p>Về cơ bản, RTOS sẽ chạy trên các chip được tích hợp rất nhiều chức năng. Nhưng chức năng ấy là gì. Nói ra thì nhiều vô kể, nhìn vào danh sách chức năng của một con Chip, ta những tưởng nó là hệ điều hành, một &ldquo;nồi lẩu&rdquo; với rất nhiều chức năng. Tất nhiên, rất ít ứng dụng cụ thể nào sử dụng hết được.</p>
+<p>Đó là giao tiếp tuần tự (Serial) như SPI, I2C&hellip;, hay các giao tiếp song song như Pararell, các giao tiếp mạng, các giao tiếp chuyên dụng như USB, CAN.</p>
+<p>Bản thân con chip sẽ cung cấp các thanh ghi cho phía ứng dụng để có thể cấu hình, rồi truyền đầu vào, nhận đầu ra.</p>
+<p>Về mặt phần mềm, việc phải làm là đọc hiểu cách hoạt động của các chức năng được cung cấp đó thông qua Datasheet, Userguide, và dễ tiếp cận nhất là qua các Sample Source.</p>
+<p>Về phần cứng, không rõ nên cũng không ghi ra đây.</p>
+<h2 id="3-ngắt">3. Ngắt</h2>
+<p>Nguyên tắc giao tiếp với thiết bị ngoại vi của máy tính từ xưa đến này thông qua 2 cách là Ngắt và Polling.</p>
+<p>Nhiều chip hỗ trợ ngắt ở nhiều mức ưu tiêu khác nhau. Việc này có rất nhiều lợi ích. Lợi ích lớn nhất là có phép ưu tiên một xử lý có độ ưu tiên cao không bị ngắt quãng. Ví dụ như một số đoạn lập lịch trong nhân không thể bị ngắt quãng được.</p>
+<h2 id="4-cái-gì-diễn-ra-khi-nort-được-khởi-động">4. Cái gì diễn ra khi NORT được khởi động</h2>
+<p>Các ứng dụng trên Microcontroller thì thường được chạy cách như sau:</p>
+<p>Khởi tạo các vùng trên RAM, Clock của hệ thống.</p>
+<p>&mdash;&mdash;&ndash;&gt;</p>
+<p>Khởi tạo các thiết bị ngoại vi (gồm bật cái nào, tắt cái nào, mở ngắt nào, tắt ngắt nào)</p>
+<p>&mdash;&mdash;&ndash;&gt;</p>
+<p>Chạy ứng dụng (có thể là hệ điều hành, có thể là hàm main của một sample code)</p>
+<p>Mỗi CPU thì có một địa chỉ mặc định để nhảy đến sau khi tự nó hoàn thành các kiểm tra bên trong nó. Việc chúng ta load firmware xuống Microcontroller là việc ta nạp một dãy rất dài các lệnh máy mà lệch bắt đầu phải được đặt ở vị trí mặc định của Chip.</p>
+<p>Trong trường hợp của NORTi, hoặc các hệ điều hành ITRON-based khác, nó cung cấp một đoạn chương trình nhỏ thực hiện các bước khởi tạo (có thể theo luồng phía trên). Kết thúc đoạn chương trình đó, nó sẽ nhảy tới địa chỉ hàm main() để chay ứng dụng ta đã viết.</p>
+<h2 id="5-quá-trình-multi-tasking-được-thực-hiện-như-thế-nào">5. Quá trình multi-tasking được thực hiện như thế nào?</h2>
+<p>Hầu hết các dòng Chip có thể cài được RTOS sẽ cung cấp 1 chức năng cho phép bật tắt việc xảy ra ngắt. Tức là bằng một thao tác ghi trên một ghi R nào đó, phần mềm có thể ngăn tạp thời toàn bộ, hoặc một số ngắt xảy ra. Cũng bằng thao tác ghi trên thanh R đó (tất nhiên với giá trị khác), phần mềm có thể cho phép các ngắt đã bị tạm dừng tiếp tục đươc thực hiện.</p>
+<p>Việc này có ý nghĩa hết sức quan trọng, ta thấy rằng để có hệ điều hành RTOS, ta phải có một kernel. Kernel này cũng là một phần mềm, nhưng nó thao tác trực tiếp với các thanh ghi của CPU chứ không phải thông qua các API dễ hiểu. Kernel có rất nhiều đoạn code được gọi là critical (hay nói cách khác là không thể bị ngắt ở chỗ đó được).</p>
+<p>Để thực hiện này, nó sẽ làm theo flow sau:</p>
+<p>Ngăn không cho các ngắt ảnh hưởng đến nhân (tạm thời)</p>
+<p>&mdash;&mdash;&gt;</p>
+<p>Thực hiện xử lý critical của kernel.</p>
+<p>&mdash;&mdash;&gt;</p>
+<p>Cho phép lại các ngắt đã bị ngăn</p>
+<p>Vì chức năng dừng ngắt này được cung cấp bởi CPU nên phần mềm không phải tự tạo một cơ chế như thế.</p>
+<p>Chế Lock hay Unlock cũng có thể được thực hiện bằng cách giống như trên.</p>
+<h2 id="6-một-số-chú-ý-khi-sử-dụng-itron">6. Một số chú ý khi sử dụng ITRON</h2>
+<p>Nếu MCU không hỗ trợ nhiều hơn 2 độ ưu tiên cho ngắt mà chỉ có tắt, mở thôi thì ta không cần quan tâm đến việc</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/itron/" rel="tag">ITRON</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

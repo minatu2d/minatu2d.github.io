@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tìm Driver cho Linux - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Tìm Driver cho Linux</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Trong quá trình tìm cách cài đặt driver cho <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">bản build Raspberry PI</a> sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách <strong>Linux in A Nutshell</strong> (link tại <a href="http://files.kroah.com/lkn/">đây</a> ) của pro này.</p>
+<p>Chương 7, chương mà tác giả đặc biệt &ldquo;tự hào&rdquo;, nói về Customize một Linux Kernel.<br>
+Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.</p>
+<p>Bài này xin tóm tắt nội dung đó, như một phần của việc tìm hiểu để chuyển Driver cho USB Wifi Client từ Raspbian sang <a href="https://lazytrick.wordpress.com/2016/07/29/tao-nas-server-tren-pi-bang-yocto-project/">bản Linux tự build</a>.</p>
+<p>Về cơ bản, mỗi khi driver (module) được load, một chương trình là <strong>udev</strong> sẽ tạo một Node (một File, thư mục) trong thư mục <strong><em>/sys/</em></strong> chứa tất tần tật mọi thông tin cần thiết để các thành phần khác có thể sử dụng được thiết bị mà Driver đó điều khiển.</p>
+<ol>
+<li>Driver về Network</li>
+<li>Thiết bị PCI</li>
+<li>Driver cho thiết bị USB</li>
+</ol>
+<h2 id="1-driver-về-network">1. Driver về Network</h2>
+<p>Các card mạng hiện có sẽ nằm dưới đường dẫn <strong>/sys/class/net/</strong>.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ ls /sys/class/net/  
+eth0 eth1 eth2 lo  
+</code></pre></div><p>Đây chính là các card mạng mà ta vẫn thấy khi sử sụng</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$ifconfig</span> -a  
+</code></pre></div><p>Để xác định Driver đang điều khiển các card mạng ở trên, ta làm như sau:</p>
+<p>Với <strong>eth0</strong> chẳng hạn:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ basename <span style="color:#cd5555">\`</span>readlink /sys/class/net/eth0/device/driver/module<span style="color:#cd5555">\`</span>  
+e1000  
+</code></pre></div><p>Kết quả <strong>e100</strong> đó chính là tên Driver đang được sử dụng để điều khiển card mạng <strong>eth0</strong></p>
+<h2 id="2-driver-cho-thiết-bị-pci">2. Driver cho thiết bị PCI</h2>
+<p>PCI là giao tiếp dạng Bus. Các thiết bị giao tiếp chuẩn này thường được gắn sẵn trên board của PC hoặc Laptop rồi. Ví dụ như card sound, network cũng thế.<br>
+Mỗi thiết bị PCI được phân biệt bởi <strong>VendorID</strong> (mã nhà sản xuất) và <strong>DeviceID</strong> (mã thiết bị hay sản phẩm).<br>
+Xác định driver của thiết bị PCI sẽ phức tạp hơn 1 chút.</p>
+<p>Đầu tiên, liệt kê tất cả các thiết bị PCI có trong máy (có thể có những thiết bị chưa chạy)</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$lspci</span>  
+</code></pre></div><p>Kết quả câu lệnh trên sẽ cho ta một danh sách thiết bị. Giả sử trong đó có thiết bị sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">06:04.0 Ethernet controller: Realtek Semiconductor Co., Ltd. RTL-8139/  
+8139C/8139C+ (rev 10)  
+</code></pre></div><p>Hãy để ý chuỗi <strong>06:04.0</strong> vì ta sẽ sử dụng nó để tìm kiếm trong <strong>/sys/</strong></p>
+<p>Xem danh sách các thiết bị có trong <strong>/sys/</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> /sys/bus/pci/devices/  
+$ ls  
+0000:00:00.0 0000:00:1d.0 0000:00:1e.0 0000:00:1f.3 0000:06:03.3  
+0000:00:02.0 0000:00:1d.1 0000:00:1f.0 0000:06:03.0 0000:06:03.4  
+0000:00:02.1 0000:00:1d.2 0000:00:1f.1 0000:06:03.1 0000:06:04.0  
+0000:00:1b.0 0000:00:1d.7 0000:00:1f.2 0000:06:03.2 0000:06:05.0  
+</code></pre></div><p>Ta thấy <strong>06:04.0</strong> cũng xuất hiện trong kết quả trên, vào đó xem sao:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> 0000:06:04.0  
+</code></pre></div><p>Trong <strong>0000:06:04.0</strong>, có khá nhiều file, nhưng ta chỉ quan tâm đến 2 giá trị.<br>
+Đó là <strong>Vendor</strong> và <strong>Device</strong>, chính là VendorID, và DeviceID mà ta cần tìm.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ cat vendor  
+0x10ec  
+$ cat device  
+0x8139  
+</code></pre></div><p>Từ 2 giá trị đã tìm được ở trên, ta sẽ tìm Driver thông qua source của Kernel.</p>
+<p><strong>Bằng VendorID</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
+$ grep -i 0x10ec include/linux/pci_ids.h  
+<span style="color:#228b22">#define PCI_VENDOR_ID_REALTEK 0x10ec  </span>
+</code></pre></div><p><strong>Bằng DeviceID</strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> ~/linux/linux-2.6.17.8/  
+$ grep -i 0x8139 include/linux/pci_ids.h  
+<span style="color:#228b22">#define PCI_DEVICE_ID_REALTEK_8139 0x8139  </span>
+</code></pre></div><p>Ta thấy rằng <strong>PCI_VENDOR_ID_REALTEK</strong>, <strong>PCI_DEVICE_ID_REALTEK_8139</strong> là định nghĩa liên quan đến thiết bị ta cần tìm.</p>
+<p>Tiếp tục tìm kiếm trong source code của nhân để xem có driver cho thiết bị của ta không.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep -Rl PCI_VENDOR_ID_REALTEK *  
+include/linux/pci_ids.h  
+drivers/net/r8169.c  
+drivers/net/8139too.c  
+drivers/net/8139cp.c  
+</code></pre></div><p>Mỗi Driver PCI sẽ chưa danh sách các thiết bị mà nó hỗ trợ. Vì thế.<br>
+Ngoài file .h đầu tiên ta vừa thấy ở trên, ta lần lượt xem 3 file .c để xem thiết bị của chúng ta có được hỗ trợ không.</p>
+<p>Đầu tiên,<br>
+<strong>drivers/net/r8169.c</strong><br>
+Có 1 đoạn định nghĩa như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8b008b;font-weight:bold">static</span> <span style="color:#8b008b;font-weight:bold">struct</span> pci_device_id rtl8169_pci_tbl[] = {  
+{ PCI_DEVICE(PCI_VENDOR_ID_REALTEK, <span style="color:#b452cd">0x8169</span>), },  
+{ PCI_DEVICE(PCI_VENDOR_ID_REALTEK, <span style="color:#b452cd">0x8129</span>), },  
+{ PCI_DEVICE(PCI_VENDOR_ID_DLINK, <span style="color:#b452cd">0x4300</span>), },  
+{ PCI_DEVICE(<span style="color:#b452cd">0x16ec</span>, <span style="color:#b452cd">0x0116</span>), },  
+{ PCI_VENDOR_ID_LINKSYS, <span style="color:#b452cd">0x1032</span>, PCI_ANY_ID, <span style="color:#b452cd">0x0024</span>, },  
+{<span style="color:#b452cd">0</span>,},  
+};  
+</code></pre></div><p>Tham số tư 2 sau, VendorID là Device. Không thấy có DeviceID (0x8139) cho thiết bị của chúng.<br>
+-&gt; Driver này không hỗ trợ thiết bị ta đang tìm rồi.</p>
+<p>Thứ 2,<br>
+<strong>drivers/net/8139too.c</strong><br>
+Có đoạn sau sử dụng định nghĩa Vendor</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8b008b;font-weight:bold">if</span> (pdev-&gt;vendor == PCI_VENDOR_ID_REALTEK &amp;&amp;  
+pdev-&gt;device == PCI_DEVICE_ID_REALTEK_8139 &amp;&amp; pci_rev &gt;= <span style="color:#b452cd">0x20</span>) {  
+dev_info(&amp;pdev-&gt;dev,  
+<span style="color:#cd5555">&#34;This (id %04x:%04x rev %02x) is an enhanced 8139C+ chip</span><span style="color:#cd5555">\n</span><span style="color:#cd5555">&#34;</span>,  
+pdev-&gt;vendor, pdev-&gt;device, pci_rev);  
+dev_info(&amp;pdev-&gt;dev,  
+<span style="color:#cd5555">&#34;Use the </span><span style="color:#cd5555">\&#34;</span><span style="color:#cd5555">8139cp</span><span style="color:#cd5555">\&#34;</span><span style="color:#cd5555"> driver for improved performance and  </span>
+stability.<span style="color:#a61717;background-color:#e3d2d2">\</span>n<span style="color:#cd5555">&#34;);  </span>
+}  
+</code></pre></div><p>Đoạn comment sau có ý rằng nên dùng Driver 8139cp cho DeviceID 8139.<br>
+Ồ, nó đây chăng.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C">Use the <span style="color:#b452cd">8139</span>cp driver <span style="color:#8b008b;font-weight:bold">for</span> improved performance and  
+stability.  
+</code></pre></div><p>Thứ 3,<br>
+<strong>drivers/net/8139cp.c</strong><br>
+Có đoạn code sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-C" data-lang="C"><span style="color:#8b008b;font-weight:bold">static</span> <span style="color:#8b008b;font-weight:bold">struct</span> pci_device_id cp_pci_tbl[] = {  
+{ PCI_VENDOR_ID_REALTEK, PCI_DEVICE_ID_REALTEK_8139,  
+PCI_ANY_ID, PCI_ANY_ID, <span style="color:#b452cd">0</span>, <span style="color:#b452cd">0</span>, },  
+{ PCI_VENDOR_ID_TTTECH, PCI_DEVICE_ID_TTTECH_MC322,  
+PCI_ANY_ID, PCI_ANY_ID, <span style="color:#b452cd">0</span>, <span style="color:#b452cd">0</span>, },  
+{ },  
+};  
+MODULE_DEVICE_TABLE(pci, cp_pci_tbl);  
+</code></pre></div><p>Đúng nó đây rồi, cùng VendorID, Device mà chúng ta đang tìm luôn.</p>
+<p>Vậy là ta đã biết Driver nào support thiết bị của chúng ta ở trên.</p>
+<p>Việc sau cùng là build lại kernel với Driver đó được bật.</p>
+<p>Tác giả Kroah cũng đưa ra các step để thực hiện việc tìm Driver cho thiết bị PCI như sau:</p>
+<ol>
+<li>Xác định PCI bus ID của thiết bị muốn tìm driver, sử dụng câu lệnh <strong><em>lspci</em></strong>.</li>
+<li>Chuyển vào đường dẫn thư mục <strong><em>/sys/bus/pci/devices/0000:&lt;bus_id&gt;</em></strong>, với <strong><em>bus_id</em></strong> là PCI bus ID tìm được ở Bước 1.</li>
+<li>Xác định giá trị ID của vendor và device trong thư mục chuyển vào ở Bước 2.</li>
+<li>Tìm trong file <strong><em><!-- raw HTML omitted -->/include/linux/pci_ids.h</em></strong>, xem có định nghĩa nào cho giá trị của ID của PCI vendor và device mà ta đã xác định được ở Bước 3 không.</li>
+<li>Tìm tất cả những file chưa tham chiếu đến các định nghĩa tìm được ở Bước 4. Vendor và DeviceId thường sẽ nằm trong 1 cấu trúc của thiết bị PCI, có tên là <strong>struct pci_device_id</strong>. Thường mỗi file .c sẽ tương ứng là 1 Driver.</li>
+<li>Tìm trong <strong><em>Makefiles</em></strong> cấu hình source của kernel xem có định nghĩa nào dạng **CONFIG_** cho driver ta cần build không. Ta có thể tìm bằng lệnh dưới đây:</li>
+</ol>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ find -type f -name Makefile | xargs grep DRIVER_NAME  
+</code></pre></div><p>7.Tìm đến giá trị **CONFIG_** trong kernel để cho phép driver được build khi build lại kernel.</p>
+<h2 id="3-thiết-bị-usb">3. Thiết bị USB</h2>
+<p>Việc tìm kiếm Driver cho thiết bị sử dụng giao tiếp USB khá giống với PCI ở phần 2.</p>
+<p>Các bước tượng tự như sau:</p>
+<ol>
+<li>Xác định ID USB vendor và product ID của thiết bị bạn muốn tìm Driver. Sử dụng câu lệnh <strong>lsusb</strong> ở trước và sau khi thiết bị được cắm vào máy.</li>
+<li>Tìm trong source code của kernel xem có ID của vendor và product của thiết bị ta đã tìm ở Bước 1 không. Cả Vendor ID và Product ID sẽ nằm trong 1 cấu trúc mô tả thiết bị USB, có tên là <strong>struct usb_device_id</strong>. Từ đó xác định được Driver phải build để hỗ trợ thiết bị.</li>
+<li>Tìm trong Makefiles xem có định nghĩa **CONFIG_** cho Driver ở Bước 2 không, sử dụng câu lệnh:</li>
+</ol>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ find -type f -name Makefile | xargs grep DRIVER_NAME  
+</code></pre></div><p>4.Mở lại cấu hình build kernel và bật các định nghĩa tìm được ở Bước 3.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/driver/" rel="tag">Driver</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Poky là một hệ distro linux ở dạng tham chiếu của Yocto Project.</p>
+<p>OpenEmbedded là một phần trong đó.</p>
+<p>Nào thế đủ rồi, ta đi vào phần chính.</p>
+<h3 id="1-về-yocto-project-và-ứng-dụng-cho-rasberry-pi">1. Về Yocto project và ứng dụng cho Rasberry PI</h3>
+<p>Lần trước, tôi có viết một hứng về việc <a href="http://www.cnx-software.com/2012/07/31/84-mb-minimal-raspbian-armhf-image-for-raspberry-pi/">tạo ra một ảnh cho Raspberry</a> dựa trên Raspbian (chụp lại ảnh của một hệ thống đang chạy). Với kết quả lúc trước, thì vấn đề là nó không thực sự nhỏ hơn, khi giải nén ra nó vẫn chiếm khoảng 414MB.</p>
+<p>Nào, ngay hôm nay, tôi sẽ hướng dẫn để tạo một ảnh của hệ thống (Linux distro) sử dụng Yocto Project,</p>
+<p>1 platform cho phép bạn build một Embedded Linux Distribution phù hợp chính xác với yêu cầu của dự án.</p>
+<p>Một điểm nữa là, quá trình build có thể được <strong>configure với các configure file</strong>. Nó khá năng suất trong việc tạo ra một bản distro chỉ với rất ít thao tác.</p>
+<p>Nếu bạn muốn image, bạn có thể download về ngày qua <a href="http://www.cnx-software.com/raspberry-pi/rpi-basic-image-raspberrypi-20130702123605.rootfs.rpi-sdimg.7z">link </a>này.</p>
+<p>Sau khi download về rồi thì giải nén nó, ghi vào SD card. Rồi chạy thôi.</p>
+<p>Còn nếu bạn muốn customize nó thì tiếp tục đọc.</p>
+<p>Tôi đã thử với hướng dẫn từ <a href="http://www.pimpmypi.com/blog/blogPost.php?blogPostID=7" title=" pimpmypi">pimpmypi</a>. Nhưng nó khá cũ, giờ mọi thứ dường như trở nên đơn gian hơn.</p>
+<h3 id="2-thực-hiện">2. Thực hiện</h3>
+<p>Với môi trường thực hiện là Ubuntu 14.04 LTS.</p>
+<h4 id="21-lấy-source">2.1 Lấy source</h4>
+<p>Đầu tiên chúng ta lấy source của poky và meta layer dành cho Raspberry PI.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mkdir yocto
+
+<span style="color:#658b00">cd</span> yocto
+
+git clone -b dylan git://git.yoctoproject.org/poky.git
+
+<span style="color:#658b00">cd</span> poky
+
+git clone -b dylan git://git.yoctoproject.org/meta-raspberrypi
+</code></pre></div><h3 id="22-thiết-lập-biến-môi-trường">2.2 Thiết lập biến môi trường</h3>
+<p>Chạy lệnh sau để setup một số biến môi trường</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+. oe-init-build-env build
+
+</code></pre></div><p>Nhất định phải có dấu cách sau dấu &ldquo;.&rdquo; . (Dấu này đại diện cho lệnh <code>source</code>)</p>
+<p>Sau khi chạy xong lệnh trên và succecced.</p>
+<p>Con trỏ lệnh sẽ tự động chuyển về thư mục build.</p>
+<h3 id="23-build">2.3 Build</h3>
+<p>Chúng sẽ edit 1 file cấu hình để giúp bitbake sử dụng CPU của PC chúng ta build tốt hơn.</p>
+<p>Giúp tiết kiệm thời gian build.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+Edit conf/local.conf
+
+<span style="color:#00688b">BB_NUMBER_THREADS</span> = <span style="color:#cd5555">&#34;9&#34;</span>
+
+<span style="color:#00688b">PARALLEL_MAKE</span> = <span style="color:#cd5555">&#34;-j 9&#34;</span>
+
+MACHINE ?= <span style="color:#cd5555">&#34;raspberrypi&#34;</span>
+
+<span style="color:#00688b">GPU_MEM</span> = <span style="color:#cd5555">&#34;16&#34;</span>
+</code></pre></div><p>Trường nào không có thì bỏ qua, kết quả cuối cùng không thay đổi tuy nhiên, nếu cấu hình chính xác</p>
+<p>với thông tin của máy sẽ giúp quá trình build nhanh hơn.</p>
+<p>Cuối cùng, để OE build một image cho Raspberry PI, ta cần thêm lớp của RPI vào danh sách các lớp</p>
+<p>mà OE có thể biết.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+Edit conf/bblayers
+
+BBLAYERS ?= <span style="color:#cd5555">&#34; \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">poky/meta \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">poky/meta-yocto \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">poky/meta-yocto-bsp \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">poky/meta-raspberrypi \
+</span><span style="color:#cd5555">
+</span><span style="color:#cd5555">&#34;</span>
+</code></pre></div><p>Giờ là lệnh build, có 2 option cho file image. Đó là <strong>rpi-basic-image</strong> và <strong>rpi-hwup-image</strong>.</p>
+<p>Cả 2 đều là minimal image. Nhưng <strong>rpi-basic-image</strong> có sẵn ssh-server-dropbear và splash</p>
+<p>(cho splash screen).</p>
+<p>Chúng ta sẽ build <strong>rpi-basic-image</strong></p>
+<p>Lệnh build như sau</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<span style="color:#cd5555">`</span>bitbake rpi-basic-image<span style="color:#cd5555">`</span>
+
+</code></pre></div><p>Quá trình build này phụ thuộc vào perform của máy và tốc độ mạng.</p>
+<p>Có thể mất cả tiếng đồng hồ.</p>
+<h3 id="24-kết-quả">2.4 Kết quả</h3>
+<p>Khi quá trình build này hoàn thành, bạn sẽ thấy file ảnh nằm ở đây</p>
+<p><code>tmp/deploy/images/rpi-basic-image-raspberrypi.rpi-sdimg</code></p>
+<p>Ghi file đó ra SD Card là bạn đã có thể boot ngay vào PI được rồi.</p>
+<p>User là root và không cần pass.</p>
+<h3 id="25-đặc-điểm-của-bản-build">2.5 Đặc điểm của bản build</h3>
+<p>Bản linux này bao gồm những đặc điểm sau</p>
+<ul>
+<li>shell chạy là : busybox, đương nhiên là thư viện là uglibc rồi.</li>
+</ul>
+<p><del>+ Không tích hợp driver cho wifi dongle.</del></p>
+<ul>
+<li>Chưa thấy code car wlan0.</li>
+<li>Có sắn driver cho Ethernet</li>
+</ul>
+<p>Tình trạng sau khi khởi động của máy như thế này</p>
+<p><img src="https://blog.lazytrick.com/post/images/dsc_0084.jpg?w=300" alt="Featured image"></p>
+<p>Trong hình trên, dù đã kết nối wireless dongle với PI qua USB rồi.</p>
+<p>Kiểm tra lại log hệ thống để xem, PI đã nhận dạng được thiết bị này chưa.</p>
+<p>Log như hình sau, ở đây t sử dụng lệnh</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">
+<span style="color:#cd5555">`</span>tail -f /var/log/messages <span style="color:#cd5555">`</span>
+
+</code></pre></div><p>Ta sẽ thấy log dưới đây khi cắm wire dongle vào PI.</p>
+<p><img src="https://blog.lazytrick.com/post/images/dsc_0086.jpg?w=300" alt="Featured image"></p>
+<p>Từ màn hình log ta thấy, thiết bị dường như đã được nhận dạng thành công.</p>
+<p>Hiện tại có thể đã lỗi tại dòng</p>
+<p>phy3: Failed to initialize wep : -2</p>
+<p>Mình có 2 suy đoán ở đây</p>
+<ul>
+<li>Có thể phần wireless thiếu file cấu hình nên xảy ra tình trạng này.</li>
+</ul>
+<ol start="99">
+<li>Có thể vẫn do lỗi driver, thiếu cái gì đó vì nếu chỉ khởi động bị failure thì phần hàm ifconfig phải list ra được chứ nhi.</li>
+</ol>
+<p>Giờ sẽ thử làm theo hướng dẫn này, đưa file cấu hình wifi vào PI</p>
+<p><a href="http://www.jann.cc/2012/08/08/building_freescale_s_community_yocto_bsp_for_the_olinuxino.html#extending-the-wifi-support">http://www.jann.cc/2012/08/08/building_freescale_s_community_yocto_bsp_for_the_olinuxino.html#extending-the-wifi-support</a></p>
+<p>Trong thư mục build của yocto, add thêm dòng này vào <strong>conf/local.conf</strong><br>
+IMAGE_INSTALL_append = &quot; wpa-supplicant wireless-tools dhcp-client linux-firmware&quot;</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/raspberrypi/" rel="tag">RaspberryPI</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

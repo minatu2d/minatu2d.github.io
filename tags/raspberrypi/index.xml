@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>RaspberryPI on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/raspberrypi/</link>
+    <description>Recent content in RaspberryPI on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Fri, 29 Jul 2016 08:06:07 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/raspberrypi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
+      <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
+      <description>Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.
+Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.
+Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề. Mà nếu không giải quyết được các vấn đề đó thì nội dung các bài khác sẽ không thể thực hiện được.</description>
+    </item>
+    
+    <item>
+      <title>[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</title>
+      <link>https://blog.lazytrick.com/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</link>
+      <pubDate>Sat, 25 Apr 2015 15:30:15 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</guid>
+      <description>Poky là một hệ distro linux ở dạng tham chiếu của Yocto Project.
+OpenEmbedded là một phần trong đó.
+Nào thế đủ rồi, ta đi vào phần chính.
+1. Về Yocto project và ứng dụng cho Rasberry PI Lần trước, tôi có viết một hứng về việc tạo ra một ảnh cho Raspberry dựa trên Raspbian (chụp lại ảnh của một hệ thống đang chạy). Với kết quả lúc trước, thì vấn đề là nó không thực sự nhỏ hơn, khi giải nén ra nó vẫn chiếm khoảng 414MB.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>[OE] Tại sao vẫn dùng FAT - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">[OE] Tại sao vẫn dùng FAT</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Bài hôm nay nói về một hệ thống file được sử dụng khá nhiều trên các phần mềm chạy trên mạch.</p>
+<p>Dù hiện nay có rất nhiều hệ thống file được nói đến như NTFS, Ext3, Ext4&hellip;Hầu hết những hệ thống file đó được sử dụng chủ yếu trên các máy có  năng lực tính toán cao và khả năng lưu trữ lớn. Thế còn với những máy có năng lực tính toán hạn chế, dung lượng lưu trữ nhỏ thì sẽ sử dụng hệ thống file nào. Theo ý kiến cá nhân, hầu hết sẽ là FAT, một hệ thống file được ra đời từ những năm 1970.</p>
+<p>Nói về FAT, so với những phiên bản đầu thì càng về sau càng được cải tiến đi rất nhiều. Tuy có nhiều cải tiến đi nữa thì FAT cũng khó mà phù hợp với những hệ thống lưu trữ cực lớn vì bản thân nó có giới hạn về dung lượng lưu trữ.</p>
+<p>Từ FAT12, FAT16, đến FAT32, mọi thứ đã thay đổi rất nhiều. Nhưng phần cốt lõi của FAT thì không thay đổi. FAT đơn giản về cấu tạo, dễ dàng (tính chất tương đối) để implement, dễ hiểu nữa.</p>
+<p>Một số đặc điểm của FAT có thể nêu ở đây:</p>
+<ol>
+<li>Một hệ thống file FAT khi được cài đặt sẽ có 3 phần: Phần BPB (BPB - BIOS Parameter Block), Phần FAT Entry (đánh chỉ số), Phần thư mục gốc, và cuối cùng là Phần lưu trữ dữ liệu. Phần BPB sẽ chứa các thông tin về thiết lập của FAT hiện tại, như kích thước sector, kích thước cluster,&hellip;Phần FAT Entry được sử dụng như một mảng 1 chiều, mỗi vị trí chưa giá trị của cluster tiếp theo. Kích thước theo bit của giá trị sẽ tương ứng với FAT12, FAT16, hay FAT32. Ví dụ: FAT12 thì giá trị đuợc biểu diễn ở 1 byte + 1/2 byte, FAT16 thì giá trị được biểu diễn ở 2 byte, FAT32 thì giá trị được biểu diễn trong 4 byte. Phần thư mục gốc, phần này chứa thông tin về file, thư mục của thư mục gốc. Phần lưu trữ dữ liệu, phần này là dữ liệu chúng ta lưu trữ.</li>
+<li>Không có các phương thức bảo mật hay kiểm tra độ bảo toàn của dữ liệu được lưu trữ.</li>
+<li>Có thể cài đặt trên các thiết bị nhớ có dung lương rất nhỏ, tầm dưới 1MB.</li>
+<li>Không yêu cầu nhiều xử lý phức tạp như tạo index cho việc tìm kiếm&hellip;</li>
+<li>Được hầu hết các hệ điều hành Support.</li>
+<li>Hoàn toàn miễn phí (trừ một số chức năng nâng cao)</li>
+</ol>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/fat/" rel="tag">FAT</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/filesystem/" rel="tag">FileSystem</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>USB cho dev (Chap.06 – Các gói tin Setup) - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">USB cho dev (Chap.06 – Các gói tin Setup)</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.</p>
+<p>Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây. Ngoài ra, nó cũng quy định chặt hơn cho từng Request từ phía Host.</p>
+<ul>
+<li>Yêu cầu thông tin chuẩn của thiết bị (Standard Device request) mà không có dữ liệu (hay DATA Stage) thì phải hoàn thành trong vòng 50ms.</li>
+<li>Nếu yêu cầu có dữ liệu kèm theo (có DATA stage) thì dữ liệu phải được trao đổi sau ít nhất 500ms sau request được gửi đến.
+<ul>
+<li>Mỗi gói dữ liệu phải gửi trong 500ms sau khi gói trước được gửi</li>
+<li>Thông báo trạng thái (Status Stage) phải hoàn thành trong vòng 50ms sau khi gửi gói tin cuối cùng.</li>
+</ul>
+</li>
+<li>Lệnh SetAddresss (có chưa phần Data) phải được thực hiện và trả lại Status trong vòng 50ms. Phía thiết bị có 2ms để thực hiện thay địa chỉ trước khi request tiếp theo được gửi đến.Nhưng yêu cầu về thời gian ở trên hoàn toàn có thể thực hiện được ngay cả với những thiết bị chậm nhất đi nữa. Nhưng những giới hạn về thời gian này có thể gây khó khăn trong quá trình debug. Trong vòng 50ms, chẳng thể có kí tự debug nào được gửi đi ở 9600bps ở dạng serial không đồng bộ hoặc một Emulator cho mỗi step chạy ở các thanh ghi. Chính vì thế, Khi debug USB, người cần có một vài phương pháp khác. (cái này chưa bàn đến)</li>
+</ul>
+<p>Mỗi request sẽ bắt đầu bằng 8 byte, theo định dạng sau:</p>
+<p>Offset</p>
+<p>Field</p>
+<p>Size</p>
+<p>Value</p>
+<p>Description</p>
+<p>0</p>
+<p>bmRequestType</p>
+<p>1</p>
+<p>Bit-Map</p>
+<p><strong>D7 Hướng truyền DATA</strong><br>
+0 = Host to Device<br>
+1 = Device to Host<br>
+<strong>D6..5 Loại</strong><br>
+0 = Standard<br>
+1 = Class<br>
+2 = Vendor<br>
+3 = Reserved<br>
+<strong>D4..0 Phía nhận</strong><br>
+0 = Device<br>
+1 = Interface<br>
+2 = Endpoint<br>
+3 = Other<br>
+4..31 = Reserved</p>
+<p>1</p>
+<p>bRequest</p>
+<p>1</p>
+<p>Value</p>
+<p>Request</p>
+<p>2</p>
+<p>wValue</p>
+<p>2</p>
+<p>Value</p>
+<p>Value</p>
+<p>4</p>
+<p>wIndex</p>
+<p>2</p>
+<p>Index or Offset</p>
+<p>Index</p>
+<p>6</p>
+<p>wLength</p>
+<p>2</p>
+<p>Count</p>
+<p>Số lượng byte truyền trong 1 Data Stage</p>
+<p><strong>bmRequestType</strong>: Xác định chiều của request (phần DATA), loại request, cũng như loại thông tin sẽ tiếp nhận.</p>
+<p><strong>bRequest</strong>: Muốn nói rằng, đây là Request.</p>
+<p>Thông thường bmRequestType được đọc, và sẽ được chia ra các xử lý theo các handler như Standard Device request Handler, Standard Interface request Handler, hoặc Standard Endpoint request Handler, hay Class Device request handler.etc. Tất nhiên, cách xử lý trên không bắt buộc, biệc đọc nội dung packet Setup cũng như xử lý phụ thuộc hoàn toàn các thiết kế phía Device của bạn. Một số chọn cách đọc bRequest trước tiên sau đó mới xác định đến loại thông tin sẽ tiếp nhận.</p>
+<p>Các request chuẩn (Standard request) là phổ biến ở tất cả các thiết bị USB, nó sẽ được nói chi tiết ở bên dưới. Classr request phổ biến cho các lớp Driver. Ví dụ, tất cả các thiết bị tuân theo HID class thì đều có một tập các request class chung. Tập class này khác với Communication class, và tất nhiên khác với Mass Storage class.</p>
+<p>Và cuối cùng, là các request mà các vendor tự định nghĩa. Nhưng request này được người thiết kế thiết bị tự đặt, các thiết bị thường không giống nhau. Và tất nhiên, người ta có thể làm bất cứ thứ gì người ta muốn.</p>
+<p>Một request phổ biến có thế hướng đến nhiều đối tượng khác nhau (thiết bị, giao diện, hay Endpoint). GetStatus Standard request chẳng hạn, nó có thể cho thiết ị, giao diện hoặc Endpoint. Khi hướng đến thiết bị, nó sẽ trả về trạng thái của remote wake up và nếu thiết bị là tự cung cấp nguồn. Tuy nhiên, nếu cùng request đó được gửi đến interface thì nó luôn trả lại zero, còn đến Endpoint thì nó lại trả lại một dừng tạm thời cho EndPoint đó.</p>
+<p>Giá trị wValue và wIndex cho phép các tham số được kèm theo request. wLength chỉ số lượng byte được truyền ở DATA stage.</p>
+<p>Request chuẩn (Standard Request)</p>
+<p>Ở Section 9.4 trong đặc tả về USB, có nói rằng, &ldquo;Standard request&rdquo; phải được thực hiện trên mọi USB Device. Tài liệu đó cũng cung cấp một bảng của các request có thể. Ta hãy coi rằng phía firmware của thiết bị USB sẽ thực hiện đọc các gói Setup chưa chi chúng ra để xử lý tướng ứng vỡi mỗi loại đối tượng là Device, Interface hay Endpoint.</p>
+<p>Request chuẩn cho Device (Standard Device Request)</p>
+<p>Có 8 loại request chuẩn cho thiết bị, được liệt kê ở bảng dưới đây:</p>
+<p>bmRequestType</p>
+<p>bRequest</p>
+<p>wValue</p>
+<p>wIndex</p>
+<p>wLength</p>
+<p>Data</p>
+<p>1000 0000b</p>
+<p>GET_STATUS (0x00)</p>
+<p>Zero</p>
+<p>Zero</p>
+<p>Two</p>
+<p>Device Status</p>
+<p>0000 0000b</p>
+<p>CLEAR_FEATURE (0x01)</p>
+<p>Feature Selector</p>
+<p>Zero</p>
+<p>Zero</p>
+<p>None</p>
+<p>0000 0000b</p>
+<p>SET_FEATURE (0x03)</p>
+<p>Feature Selector</p>
+<p>Zero</p>
+<p>Zero</p>
+<p>None</p>
+<p>0000 0000b</p>
+<p>SET_ADDRESS (0x05)</p>
+<p>Device Address</p>
+<p>Zero</p>
+<p>Zero</p>
+<p>None</p>
+<p>1000 0000b</p>
+<p>GET_DESCRIPTOR (0x06)</p>
+<p>Descriptor Type &amp; Index</p>
+<p>Zero or Language ID</p>
+<p>Descriptor Length</p>
+<p>Descriptor</p>
+<p>0000 0000b</p>
+<p>SET_DESCRIPTOR (0x07)</p>
+<p>Descriptor Type &amp; Index</p>
+<p>Zero or Language ID</p>
+<p>Descriptor Length</p>
+<p>Descriptor</p>
+<p>1000 0000b</p>
+<p>GET_CONFIGURATION (0x08)</p>
+<p>Zero</p>
+<p>Zero</p>
+<p>1</p>
+<p>Configuration Value</p>
+<p>0000 0000b</p>
+<p>SET_CONFIGURATION (0x09)</p>
+<p>Configuration Value</p>
+<p>Zero</p>
+<p>Zero</p>
+<p>None</p>
+<ul>
+<li>GET_STATUS : Device phải trả lại 2 byte theo dạng dưới đây:</li>
+</ul>
+<p>D15</p>
+<p>D14</p>
+<p>D13</p>
+<p>D12</p>
+<p>D11</p>
+<p>D10</p>
+<p>D9</p>
+<p>D8</p>
+<p>D7</p>
+<p>D6</p>
+<p>D5</p>
+<p>D4</p>
+<p>D3</p>
+<p>D2</p>
+<p>D1</p>
+<p>D0</p>
+<p>Reserved</p>
+<p>Remote Wakeup</p>
+<p>Self Powered</p>
+<p>Nếu D0 được set, thì có nghĩa thiết bị là nguồn tự cung, ngược lại thì đó là nguồn Bus.</p>
+<p>Nếu D1 được set, thì có nghĩa là Remote wakep up được bật, thiết bị có thể wake up Host khi Host đang suspended. Bit này có thể được thay đôi bởi SET_FEATURE hoặc CLEAR_FEATURE.</p>
+<ul>
+<li>CLEAR_FEATURE và SET_FEATURE: Sử dụng để set có hay không các feature. Khi nó hướng đên Device thì chỉ có 2 feature có thể set. Đó là DEVICE_REMOTE_WAKEUP và TEST_MODE. Test mode cho phép thiết bị diễn đạt nhiều điều kiện khác nhau. Chi tiết phần này được nói đến ở đặc tả USB 2.0.</li>
+<li>SET_ADDRESS: Sử dụng để gán một địa chỉ duy nhất cho thiết bị trong quá trình Enumuration. Chính là giá trị của trường wValue, tối đa đến 127. Ở request này, thiết bị dù đã có giá trị địa chỉ nhưng vẫn phải đợi thông báo trạng thái trước khi thực sự set địa chỉ cho chính nó. Còn với các request khác, nó thường được thực hiện trước khi Status đến.</li>
+<li>SET_DESCRIPTOR/GET_DESCRIPTOR: được sử dụng để trả về một descriptor trong wValue. Một request cho miêu tả cấu hình sẽ trả về tất cả các thông tin của miêu tả thiết bị, các interface, các Endpoint nữa. Có 1 chú ý ở đây:
+<ul>
+<li>Endpoint Descriptor: không thể được truy cập trực tiếp từ GET_DESCRIPTOR/SET_DESCRIPTOR request.</li>
+<li>Interface Descriptor: giống với Endpoint Descriptor.</li>
+<li>String Descriptor: cho phép truy cập trực tiếp</li>
+</ul>
+</li>
+<li>GET_CONFIGURATION/SET_CONFIGURATION: Được sử dụng để lấy thông tin cấu hình thiết bị hoặc set cấu hình. Trạng thái trả về ở Status Stage là 1 byte giá trị. Nếu là 0, thì có nghĩa thiết bị chưa được configured, nếu khác 0 thì có nghĩa thiết bị đã được configured. SET_CONFIGURATION được sử dụng để cho phép một thiết bị chính thức hoạt động. Nó chứa giá trị của bConfigurationValue mà Host muốn thiết lập.</li>
+</ul>
+<p>Request Giao diện chuẩn</p>
+<p>Định nghĩa 5 loại yêu cầu giao diện chuẩn, chi tiết được nêu dưới bảng sau. Chỉ có 2 request là được sử dụng một cách rõ ràng.</p>
+<p>bmRequestType</p>
+<p>bRequest</p>
+<p>wValue</p>
+<p>wIndex</p>
+<p>wLength</p>
+<p>Data</p>
+<p>1000 0001b</p>
+<p>GET_STATUS (0x00)</p>
+<p>Zero</p>
+<p>Interface</p>
+<p>Two</p>
+<p>Interface Status</p>
+<p>0000 0001b</p>
+<p>CLEAR_FEATURE (0x01)</p>
+<p>Feature Selector</p>
+<p>Interface</p>
+<p>Zero</p>
+<p>None</p>
+<p>0000 0001b</p>
+<p>SET_FEATURE (0x03)</p>
+<p>Feature Selector</p>
+<p>Interface</p>
+<p>Zero</p>
+<p>None</p>
+<p>1000 0001b</p>
+<p>GET_INTERFACE (0x0A)</p>
+<p>Zero</p>
+<p>Interface</p>
+<p>One</p>
+<p>Alternate Interface</p>
+<p>0000 0001b</p>
+<p>SET_INTERFACE (0x11)</p>
+<p>Alternative Setting</p>
+<p>Interface</p>
+<p>Zero</p>
+<p>None</p>
+<p>wIndex: Tức là chỉ số của Interface mà request này hướng đến, định dạng được nêu ra ở dưới đây:</p>
+<p>D15</p>
+<p>D14</p>
+<p>D13</p>
+<p>D12</p>
+<p>D11</p>
+<p>D10</p>
+<p>D9</p>
+<p>D8</p>
+<p>D7</p>
+<p>D6</p>
+<p>D5</p>
+<p>D4</p>
+<p>D3</p>
+<p>D2</p>
+<p>D1</p>
+<p>D0</p>
+<p>Reserved</p>
+<p>Interface Number</p>
+<ul>
+<li>GET_STATUS: được sử dụng để trả về trạng thái của interface. Giá trị thường sẽ là 2 byte (0x00, 0x00)</li>
+<li>CLEAR_FEATURE/SET_FEATURE: Sử dụng để set các giá trị boolean. Khi request cho giao diện thì không có đặc trưng này.</li>
+<li>GET_INTERFACE/SET_INTERFACE: sẽ có trường Alternative Interface mà ta đã miêu tả ở các chương trước.</li>
+</ul>
+<p>Request Endpoint chuẩn (Standard Endpoint Request)</p>
+<p>Có 4 loại khác nhau được đưa ra dưới đây:</p>
+<p>bmRequestType</p>
+<p>bRequest</p>
+<p>wValue</p>
+<p>Windex</p>
+<p>wLength</p>
+<p>Data</p>
+<p>1000 0010b</p>
+<p>GET_STATUS (0x00)</p>
+<p>Zero</p>
+<p>Endpoint</p>
+<p>Two</p>
+<p>Endpoint Status</p>
+<p>0000 0010b</p>
+<p>CLEAR_FEATURE (0x01)</p>
+<p>Feature Selector</p>
+<p>Endpoint</p>
+<p>Zero</p>
+<p>None</p>
+<p>0000 0010b</p>
+<p>SET_FEATURE (0x03)</p>
+<p>Feature Selector</p>
+<p>Endpoint</p>
+<p>Zero</p>
+<p>None</p>
+<p>1000 0010b</p>
+<p>SYNCH_FRAME (0x12)</p>
+<p>Zero</p>
+<p>Endpoint</p>
+<p>Two</p>
+<p>FrameNumber</p>
+<ul>
+<li>wIndex: tham chiếu đến Endpoint và hướng của chúng. Định dạng sẽ như bên dưới:</li>
+</ul>
+<p>D15</p>
+<p>D14</p>
+<p>D13</p>
+<p>D12</p>
+<p>D11</p>
+<p>D10</p>
+<p>D9</p>
+<p>D8</p>
+<p>D7</p>
+<p>D6</p>
+<p>D5</p>
+<p>D4</p>
+<p>D3</p>
+<p>D2</p>
+<p>D1</p>
+<p>D0</p>
+<p>Reserved</p>
+<p>Dir</p>
+<p>Reserved</p>
+<p>Endpoint Number</p>
+<ul>
+<li>
+<p>GET_STATUS:trả lại 2 bytes trạng thái (Halted/Stalled) của Endpoint. Định dạng của 2 byte đó như sau:</p>
+</li>
+<li>
+<p>D15</p>
+<p>D14</p>
+<p>D13</p>
+<p>D12</p>
+<p>D11</p>
+<p>D10</p>
+<p>D9</p>
+<p>D8</p>
+<p>D7</p>
+<p>D6</p>
+<p>D5</p>
+<p>D4</p>
+<p>D3</p>
+<p>D2</p>
+<p>D1</p>
+<p>D0</p>
+<p>Reserved</p>
+<p>Halt</p>
+</li>
+<li>
+<p>CLEAR_FEATURE/SET_FEATURE: Sử dụng để set Endpoint Features. Hiện tại chỉ có 1 feature selector, ENDPOINT_HALT(0x00) giúp Host có thể ngưng stall hoặc reset một Endpoint. Chỉ những Endpoint khác Endpoint mặc định mới nên sử dụng chức năng này.</p>
+</li>
+<li>
+<p>Synch frame: sử dụng để báo một frame đồng bộ Endpoint.</p>
+</li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/translate/" rel="tag">Translate</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

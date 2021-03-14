@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ASN.1 - BER (Basic Encoding Rules) - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">ASN.1 - BER (Basic Encoding Rules)</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Tiếp tục về <a href="https://lazytrick.wordpress.com/tag/asn1/">ASN.1</a>.</p>
+<p>Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)</p>
+<p>Ta sẽ tiếp tục nói về hiện thực dữ liệu.<br>
+Các phương thức để hiện thực dữ liệu gồm có: <strong>BER</strong>, <strong>CER/DER</strong>, và <strong>PER</strong>.</p>
+<p>Trong đó:<br>
+<strong>BER</strong> : Basic Encoding Rules<br>
+<strong>CER/DER</strong> : Canonical Encoding Rules/Distinguished Encoding Rules<br>
+<strong>PER</strong> : Packet Encoding Rules</p>
+<p>Bài này sẽ nói về <strong>BER</strong> và <strong>CER/DER</strong>, <strong>PER</strong> sẽ để ở bài sau.</p>
+<p>Link nguồn chính:<br>
+<a href="http://www5d.biglobe.ne.jp/~stssk/asn1/index.html">http://www5d.biglobe.ne.jp/~stssk/asn1/index.html</a></p>
+<p>của bác <a href="http://www5d.biglobe.ne.jp/~stssk/mail.html">Ishida So</a></p>
+<p><em>Một chút về lịch sử</em>:<br>
+<strong>BER</strong> ban đầu là phương pháp hiện thực duy nhất của ASN.1. Từ 1985, ASN.1 tách riêng phần định nghĩa và phần hiện thực dữ liệu ra, vì thế có thêm nhiều phương thức hiện thực khác được đưa ra.<br>
+<strong>CER/DER</strong> được kế thừa từ <strong>BER</strong>, còn <strong>PER</strong> được đưa ra năm 1994.</p>
+<h3 id="1-hiện-thực-hóa-tlv-tlv-encoding">1. Hiện thực hóa TLV (TLV Encoding)</h3>
+<p>Về mặt kĩ thuật, <strong>BER</strong> sử dụng <strong>TLV</strong> cho việc hiện thực dữ liệu.<br>
+Khi Encode <strong>TLV</strong> sử dụng 3 yếu tố dưới đây, để biểu diễn từng loại dữ liệu.<br>
+Khi Decode, dựa vào 3 yếu tố này để xác định kiểu, độ dài tướng ứng của mỗi loại dữ liệu.</p>
+<p><strong>T</strong> : Type, tức là kiểu dữ liệu, sử dụng <strong>Tag</strong><br>
+<strong>L</strong> : Length, tức là độ dài dữ liệu<br>
+<strong>V</strong> : Value, tức là giá trị</p>
+<p>Với kiểu cơ bản, phần giá trị (<strong>V</strong>) sẽ được biểu diễn theo dữ liệu của kiểu. Còn với kiểu cấu trúc, phần dữ liệu lại một lần nữa được biểu diễn bằng <strong>TLV</strong>.</p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_1.png" alt="pic_1"></p>
+<h3 id="2-thứ-tự-bit-bit-order">2. Thứ tự bit (Bit order)</h3>
+<p><strong>BER</strong> sử dụng đơn vị 8 bit (1 octet) để biểu diễn.<br>
+Tức là cho dù kiểu dữ liệu là 1 bit thì nó vẫn sử dụng 1 octet để biểu diễn.<br>
+Thứ tự octet là Octet ý nghĩa cao -&gt; Octet ý nghĩa thấp) theo chiều từ trái qua phải. Điều này hướng đến việc thích hợp với truyền dữ liệu qua mạng (Network Byte Order).</p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_3.png" alt="pic_3"></p>
+<p>Còn trong 1 octet, thứ tự và ý nghĩa được thể hiện như sau:</p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_4.png" alt="pic_4"></p>
+<h3 id="3-hiện-thực-hóa-các-thẻ">3. Hiện thực hóa các thẻ</h3>
+<p>Thẻ (<strong>Tag</strong>) là khái niệm đã được nhắc đến trong <a href="https://lazytrick.wordpress.com/2016/11/16/asn-1-cu-phap-co-ban/">bài trước</a></p>
+<p>Có 4 nhóm thẻ khác nhau là:</p>
+<ul>
+<li>Phổ biến (UNIVERSAL)</li>
+<li>Ứng dụng (APPLICATION)</li>
+<li>Đặc trưng ngữ cảnh</li>
+<li>Riêng (PRIVATE)</li>
+</ul>
+<p>Ta hãy xem <strong>BER</strong> biểu diễn <strong>T</strong> như thế nào:</p>
+<ul>
+<li>Bit thứ 8-7: Biểu diễn nhóm Thẻ</li>
+<li>Bit thứ 6: Biểu diễn là kiểu cơ bản hay cấu trúc</li>
+<li>Bit thứ 5-1: Biểu diễn số Thẻ<br>
+Cụ thể như sau:</li>
+</ul>
+<p>Chỉ số Thẻ</p>
+<p>Các biểu diễn</p>
+<p>Lớp：</p>
+<p>００：Phổ biến</p>
+<p>０１：Ứng dụng</p>
+<p>１０：Đặc trưng ngữ cảnh</p>
+<p>１１：Riêng</p>
+<p>Ｐ／Ｃ：</p>
+<p>０：Kiểu cơ bản</p>
+<p>１：Kiểu cấu trúc</p>
+<p>０～３０</p>
+<p><img src="https://blog.lazytrick.com/post/images/pic5.png" alt=""></p>
+<p>３１～</p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_6.png" alt=""></p>
+<p><em>Ví dụ</em>: Số điện thoại với định nghĩa và hiện thực tương ứng như bên dưới đây là một ví dụ cho 2 lần <strong>TLV</strong>.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= [<span style="color:#b452cd">1</span>] NumericString  
+</code></pre></div><p><img src="https://blog.lazytrick.com/post/images/pic_8.png" alt="pic_8"></p>
+<p>Khi muốn bỏ biểu diễn phần <strong>T</strong> đi, <strong>BER</strong> sử dụng từ khóa <strong>IMPLICIT</strong> trong định nghĩa của ASN.1.<br>
+*Thế mới biết, từ khóa này ban đầu dành cho <strong>BER</strong></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cpp" data-lang="cpp">TelephoneNumber ::= [<span style="color:#b452cd">1</span>] IMPLICIT NumericString  
+</code></pre></div><p><img src="https://blog.lazytrick.com/post/images/pic_9.png" alt="pic_9"></p>
+<p>Ngược lại với <strong>IMPLICIT</strong>, sử dụng <strong>EXPLICIT</strong> sẽ phải sử dụng <strong>TLV</strong> cho phần dữ liệu <strong>V</strong>.</p>
+<h3 id="4-hiện-thực-độ-dài-dữ-liệul">4. Hiện thực độ dài dữ liệu(L)</h3>
+<ul>
+<li>Khi độ dài dữ liệu nhỏ &lt;= 127, được gọi là Short Definite - Dạng ngắn, 1 octet được sử dụng để biểu diễn (thực sự sử dụng 7 bit, còn bit đầu là 0). - Khi độ dài &gt;=128, 2 octet trở lên được sử dụng để biểu diễn, gọi là Long Definite - Dạng dài. Bit đầu của octet đầu tiên được set là 1. 7 bit tiếp theo miêu tả độ dài tính theo octet của độ dài dữ liệu (1-126).</li>
+</ul>
+<p><img src="https://blog.lazytrick.com/post/images/pic_12.png" alt="pic_12"><br>
+Tức là nếu độ dài dữ liệu (<strong>V</strong>)là 128-255 thì 7 bit này sẽ có giá trị 1. Nếu độ dài dữ liệu từ 256-65535 thì 7 bit này sẽ có giá trị 2.</p>
+<ul>
+<li>Giá trị 127 cũng có thể được sử dụng nếu cần thiết.</li>
+</ul>
+<p><img src="https://blog.lazytrick.com/post/images/pic_13.png" alt="pic_13"></p>
+<p>Trong trường hợp của kiểu cấu trúc, phải hiện thực với độ dài có thể thay đổi (Inefinite). Trường độ dài (<strong>L</strong>) sẽ có độ dài là 1 octet, bit cao nhất được gán là 1, các bit còn lại là 0 (tức là <strong>giá trị 0x80</strong>). Phần giá trị <strong>V</strong> sẽ được hiện thực ở ngay phía sau, phần này sẽ được kết thúc bởi <strong>2 octet toàn là 0</strong>.</p>
+<p><img src="https://blog.lazytrick.com/post/images/pic_11.png" alt="pic_11"></p>
+<h3 id="5-hiện-thực-phần-giá-trị">5. Hiện thực phần giá trị</h3>
+<p>Mỗi giá trị phụ thuộc vào từng Tag tương ứng với nó.</p>
+<p>Kiểu logic</p>
+<p>(<strong>BOOLEAN</strong>)</p>
+<p>Kiểu cơ bản, sử dụng 1 octet, giá trị 0 cho FALSE, giá trị khác 0 cho TRUE</p>
+<p>Kiểu NULL</p>
+<p>(<strong>NULL</strong>)</p>
+<p>Kiểu cơ bản, độ dài bằng 0, không phục thuộc vào giá trị</p>
+<p>Kiểu số nguyên</p>
+<p>(<strong>INTEGER</strong>)</p>
+<p>Kiểu cơ bản, giá trị được biểu diễn ở dạng bù 2 (có dấu).</p>
+<p>Kiểu số thực</p>
+<p>(<strong>REAL</strong>)</p>
+<p>Đại khái là không giống với cách biểu diễn trên máy tính. (Giải thích dịp khác)</p>
+<p>Kiểu liệt kê</p>
+<p>(<strong>ENUMERATED</strong>)</p>
+<p>Phụ thuộc vào các giá trị mà nó biểu diễn, sẽ được biểu diễn giống với kiểu nguyên</p>
+<p>Kiểu dãy bit</p>
+<p>(<strong>BIT STRING</strong>)</p>
+<p>Có thể biểu diễn bằng cả kiểu cơ bản lẫn cấu trúc.<br>
+Trường hợp sử dụng kiểu cơ bản, octet đầu tiên chứa giá trị bằng số bit không được sử dụng của octet cuối cùng. Dù nó là 0 hay 1 đi nữa đều được biểu diễn. Trong trường hợp này, nếu độ dài dãy bit là 0, thì no không thục thuộc vào dữ liệu chứa nữa.<br>
+Trường hợp sử dụng kiểu cấu trúc, được biểu diễn bằng dãy kiểu cơ bản.</p>
+<p>Kiểu OCTET (byte)</p>
+<p>(<strong>OCTET STRING</strong>)</p>
+<p>Có thể biểu diễn bằng cả kiểu cơ bản lẫn kiểu cấu trúc.<br>
+Với kiểu cơ bản, thì biểu diễn bằng một dãy Octet thôi.<br>
+Với kiểu cấu trúc, được biểu diễn bằng một dãy kiểu cơ bản khác.</p>
+<p>Kiểu chỉ định đối tượng</p>
+<p>(<strong>OBJECT IDENTIFIER</strong>)</p>
+<p>Được biểu diễn bằng kiểu cơ bản. Chỉ số của đối tượng cũng được chỉ ra. (Chi tiết sẽ được giải thích sau)</p>
+<p>Kiểu giới hạn kí tự</p>
+<p>(<strong>&hellip;String</strong>)</p>
+<p>Được biểu diễn giống với kiểu Octet</p>
+<p>Kiểu lựa chọn</p>
+<p>(<strong>CHOICE</strong>)</p>
+<p>Kiểu lựa chọn bản thân nó không được biểu diễn bằng BER, BER chỉ hiện thực khi đã được lựa chọn rồi thôi.</p>
+<p>Kiểu xếp tuần tự</p>
+<p>(<strong>SEQUENCE</strong>)</p>
+<p>Biểu diễn bằng kiểu cấu trúc. Nội dung sẽ là nội dung của môi thành phần.</p>
+<p>Kiểu mảng</p>
+<p>(<strong>SEQUENCE OF</strong>)</p>
+<p>Giống với kiểu xếp tuần tự</p>
+<p>Kiểu tập hợp hỗn hợp</p>
+<p>(<strong>SET</strong>)</p>
+<p>Thứ tự tùy ý sẽ bị bỏ đi, và được biểu diễn giống với kiểu xếp tuần tự.</p>
+<p>Kiểu tập hợp đồng nhất</p>
+<p>(<strong>SET-OF</strong>)</p>
+<p>Giống với kiểu sếp tuần tự.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/asn1/" rel="tag">ASN1</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/per/" rel="tag">PER</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

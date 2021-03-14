@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Tìm source code của USB Driver trên Linux - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Tìm source code của USB Driver trên Linux</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Ở bài <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm driver cho Linux</a> cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.</p>
+<p>Cách tìm source code driver cho thiết bị USB</p>
+<h2 id="1-nói-qua-về-thiết-bị-usb">1. Nói qua về thiết bị USB</h2>
+<ul>
+<li>
+<p>Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.<br>
+Đó là <strong>Vendor</strong> (nhà sản xuất), và <strong>Product</strong> (sản phẩm).<br>
+Thông tin về <strong>Vendor</strong> được mô tả bằng một id, trong source thường là <strong>idVendor</strong>.<br>
+Thông tin về <strong>Product</strong> cũng được mô tả bằng một id, trong source thường là <strong>idProduct</strong>.<br>
+2 thông tin trên sẽ xác định duy nhất một loại thiết bị.<br>
+Thông tin về id của mỗi Vendor, Product được đăng kí với tổ chức hỗ trợ USB.</p>
+</li>
+<li>
+<p>Driver không phải là tất cả để một thiết bị cắm vào hoạt động.<br>
+Nhiều thiết bị để hoạt động được thì còn cần thêm một cái là <strong>firmware</strong> nữa.<br>
+Firmware chứa mã chương trình mà driver sẽ tống vào thiết bị.<br>
+Sau khi thiết bị chạy được bằng firmware đó rồi.<br>
+Thì giao tiếp phía sau sẽ là giữa <strong>firmware</strong> và <strong>driver</strong>.<br>
+<strong>Firmware</strong> thường chứa những đoạn chương trình không thể công khai của Vendor.<br>
+Vì thế, cách này thường được dùng để giữ những tài sản công nghệ của họ.</p>
+</li>
+</ul>
+<h2 id="2-lấy-thông-tin-vendor-product-từ-varlogsyslog">2. Lấy thông tin Vendor, Product từ /var/log/syslog</h2>
+<ul>
+<li>Như ta đã biết, linux có một hệ thống file log, chứa những thông tin trong<br>
+quá trình hoạt động của nhân, các phần mềm, dịch vụ. Nó thường nằm ở <em>/var/log/</em><br>
+Trong trường hợp này, ta chỉ quan tâm đến log của nhân, ta sẽ xem file <em>/var/log/syslog/</em><br>
+Câu lệnh để xem ở chế độ <em>live</em> là:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$tail</span> -f /var/log/syslog  
+</code></pre></div><ul>
+<li>
+<p>Để quan sát được toàn bộ log của quá trình từ lúc cắm thiết bị đến lúc dùng được<br>
+ta sẽ bật lệnh xem log ở trên ở một terminal khác cho tiện.<br>
+Nếu không, ta phải xem lại file log ở trên và tìm ra được tương ứng cho thiết bị.</p>
+<p>Để dễ hiểu hơn, ta sẽ lấy ví dụ về thiết bị cụ thể:</p>
+</li>
+<li>
+<p>Thiết bị là USB-Serial Converter, có giao tiếp bằng USB.<br>
+Ta cùng xem sẽ lấy được thông tin gì từ log của thiết bị này:<br>
+Đoạn log ta lấy được như như sau:</p>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.576063] usb 2-3.1: new full-speed USB device number <span style="color:#b452cd">14</span> using xhci_hcd  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671613] usb 2-3.1: New USB device found, <span style="color:#00688b">idVendor</span>=0403, <span style="color:#00688b">idProduct</span>=<span style="color:#b452cd">6015</span>  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671617] usb 2-3.1: New USB device strings: <span style="color:#00688b">Mfr</span>=1, <span style="color:#00688b">Product</span>=2, <span style="color:#00688b">SerialNumber</span>=<span style="color:#b452cd">3</span>  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671620] usb 2-3.1: Product: FT230X Basic UART  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671622] usb 2-3.1: Manufacturer: FTDI  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671624] usb 2-3.1: SerialNumber: DJ00LL3D  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675291] ftdi_sio 2-3.1:1.0: FTDI USB Serial Device converter detected  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675344] usb 2-3.1: Detected FT-X  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675737] usb 2-3.1: FTDI USB Serial Device converter now attached to ttyUSB0  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu mtp-probe: checking bus 2, device 14: <span style="color:#cd5555">&#34;/sys/devices/pci0000:00/0000:00:14.0/usb2/2-3/2-3.1&#34;</span>  
+Apr <span style="color:#b452cd">23</span> 12:01:54 OEDEV-Ubuntu mtp-probe: bus: 2, device: <span style="color:#b452cd">14</span> was not an MTP device  
+</code></pre></div><p>Ta thấy từ log trên có đoạn:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.671613] usb 2-3.1: New USB device found, idVendor=0403, idProduct=6015  
+</code></pre></div><p>Chính dòng này đang chứa id của <strong>Vendor</strong> và <strong>Product</strong>:<br>
+Cụ thể: <strong>idVendor</strong> = 0403, <strong>idProduct</strong> = 6015</p>
+<p>Về cơ bản, thông tin đến đây là đủ để tìm driver trong source của nhân rồi.<br>
+Ngoài ra bạn cũng sẽ thấy một số thông tin về Vendor cũng như thiết bị trong log ở trên:</p>
+<p>Ví dụ:<br>
+Product: FT230X Basic UART<br>
+Manufacturer: FTDI<br>
+SerialNumber: DJ00LL3D</p>
+<p>Ở đây, từ log trên ta cũng biết được một thông tin quan trọng khác là thiết bị đã chạy hay chưa.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">Apr 23 12:01:54 OEDEV-Ubuntu kernel: [ 5046.675737] usb 2-3.1: FTDI USB Serial Device converter now attached to ttyUSB0  
+</code></pre></div><p>Chính dòng này đã cho ta biết được là thiết bị đã chạy được.<br>
+Vì sao?<br>
+Nó đã được attached vào vị trí <strong>/dev/ttyUSB0</strong> để cho phép các ứng dụng khác sử dụng.<br>
+Tức là ta có một cổng COM giống như trên windows rồi.<br>
+Nhưng vì ở Linux thì mọi thứ là file nên cổng com cũng là một file.</p>
+<p>Nếu không có bước này thì ta có thể coi như thiết bị chưa dùng được cho dù kernel đã nhận<br>
+biết được có một thiết bị được cắm vào.</p>
+<h2 id="3-lấy-thông-tin-vendor-product-từ-lsusb">3. Lấy thông tin Vendor, Product từ lsusb</h2>
+<p>lsusb là câu lệnh liệt kê tất cả các thiết bị usb hiện có, kể cả thiết bị chưa sử dụng được.<br>
+Output của nó kiểu như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ lsusb  
+Bus 001 Device 002: ID 8087:8001 Intel Corp.  
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub  
+Bus 002 Device 009: ID 064e:c231 Suyin Corp.  
+Bus 002 Device 005: ID 8087:07dc Intel Corp.  
+Bus 002 Device 013: ID 1f55:0004  
+Bus 002 Device 014: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)  
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+</code></pre></div><p>2 giá trị được ngăn cách bởi <strong>:</strong> phía sau <strong>ID</strong> chính là id của <strong>Vendor</strong> và <strong>Product</strong>.</p>
+<p>Nếu bản linux của bạn hỗ trợ lsusb, bạn có thể dễ dàng xác định bằng cách<br>
+so sánh đầu ra của câu lệnh <strong>lsusb</strong> trước và sau khi cắm một thiết bị vào máy.</p>
+<p>Ví dụ:<br>
+Trước khi cắm thiết bị, output của <strong>lsusb</strong> là:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ lsusb  
+Bus 001 Device 002: ID 8087:8001 Intel Corp.  
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub  
+Bus 002 Device 009: ID 064e:c231 Suyin Corp.  
+Bus 002 Device 005: ID 8087:07dc Intel Corp.  
+Bus 002 Device 013: ID 1f55:0004  
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+</code></pre></div><p>Sau khi cắm thiết bị, output của <strong>lsusb</strong> là:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ lsusb  
+Bus 001 Device 002: ID 8087:8001 Intel Corp.  
+Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+Bus 003 Device 001: ID 1d6b:0003 Linux Foundation 3.0 root hub  
+Bus 002 Device 009: ID 064e:c231 Suyin Corp.  
+Bus 002 Device 005: ID 8087:07dc Intel Corp.  
+Bus 002 Device 013: ID 1f55:0004  
+Bus 002 Device 014: ID 0403:6015 Future Technology Devices International, Ltd Bridge(I2C/SPI/UART/FIFO)  
+Bus 002 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub  
+</code></pre></div><p>Như ta đã thấy, thiết bị mà ta vừa xác đinh ở trên chỉ xuất hiện ở lệnh <strong>lsusb</strong> sau.</p>
+<h2 id="4-tìm-source-code-từ-thông-tin-vendor-product">4. Tìm source code từ thông tin Vendor, Product</h2>
+<p>Giả định rằng ta đã có id của <strong>Vendor</strong> hay <strong>idVendor</strong> và id của Product hay <strong>idProduct</strong><br>
+Ta tiếp tục sử dụng thiết bị ở trên:</p>
+<p>Product: FT230X Basic UART<br>
+Manufacturer: FTDI<br>
+SerialNumber: DJ00LL3D<br>
+idVendor = 0403<br>
+idProduct = 6015</p>
+<p>Ta cần tìm source của driver cho thiết bị này trong source của kernel.</p>
+<p>Ta tải bạn kernel statble mới nhất tại <a href="https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.12.tar.xz">https://cdn.kernel.org/pub/linux/kernel/v4.x/linux-4.10.12.tar.xz</a>, và giải nén:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ <span style="color:#658b00">cd</span> linux-4.10.8/  
+$ ls  
+arch COPYING Documentation fs ipc kernel Makefile modules.order README security tools vmlinux  
+block CREDITS drivers include Kbuild lib mm Module.symvers samples sound usr vmlinux.o  
+certs crypto firmware init Kconfig MAINTAINERS modules.builtin net scripts System.map virt  
+</code></pre></div><p>Ta tìm source driver cho thiết bị trên như sau:</p>
+<ul>
+<li>Tìm theo vendor id:</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ grep -n -R 0x0403 drivers/usb  
+drivers/usb/serial/ipaq.c:66: { USB_DEVICE(0x045E, 0x0403) }, /* Windows Powered Pocket PC <span style="color:#b452cd">2002</span> */  
+drivers/usb/serial/cp210x.c:203: { USB_DEVICE(0x1FB9, 0x0403) }, /* Lake Shore Model 475A Gaussmeter */  
+drivers/usb/serial/ftdi_sio.h:449: * <span style="color:#b452cd">8</span> idVendor <span style="color:#b452cd">2</span> 0x0403 Vendor ID  
+drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID 0x0403 /* Vendor Id */  
+drivers/usb/serial/ftdi_sio_ids.h:47: * OpenRD Base, Client use VID 0x0403  
+drivers/usb/serial/ftdi_sio_ids.h:233: * Almost all of these devices use FTDI<span style="color:#a61717;background-color:#e3d2d2">&#39;</span>s vendor ID (0x0403).  
+drivers/usb/serial/ftdi_sio_ids.h:346: * Hameg HO820 and HO870 interface (using VID 0x0403)  
+drivers/usb/serial/ftdi_sio_ids.h:1352: * MJS Gadgets HD Radio / XM Radio / Sirius Radio interfaces (using VID 0x0403)  
+drivers/usb/serial/ftdi_sio_ids.h:1373: * Segway Robotic Mobility Platform USB interface (using VID 0x0403)  
+drivers/usb/misc/ftdi-elan.c:86:#define USB_FTDI_ELAN_VENDOR_ID 0x0403
+
+$ grep -n -R 0x6015 drivers/usb  
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */  
+</code></pre></div><p>Nếu ta đã biết về lập trình C, thì thường giá trị hardcode như 0403, 0615 sẽ được định nghĩa<br>
+và sử dụng định nghĩa đó ở những nơi khác chứ không sử dụng trực tiếp giá trị.</p>
+<p>Từ kết quả ở trên ta thấy có 2 dòng <strong>define</strong> cho giá trị <strong>0x0403</strong> và <strong>0x6015</strong><br>
+cùng ở file <strong>drivers/usb/serial/ftdi_sio_ids.h</strong>. Đó là</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">drivers/usb/serial/ftdi_sio_ids.h:16:#define FTDI_VID 0x0403 /* Vendor Id */  
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) *  
+</code></pre></div><p>Ta hiểu rằng, 2 giá trị trên sẽ được sử dụng bằng tên đại diện <strong>FTDI_VID</strong> và <strong>FTDO_FTX_PID</strong> ở những nơi khác.</p>
+<p>Ta tiếp tục tìm, vì một nhà sản xuất sẽ có rất nhiều thiết bị.<br>
+Vì thế ta nên tìm thiết bị để có kết quả chính xác hơn. Trong trường hợp này là <strong>FTDO_FTX_PID</strong></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-text" data-lang="text">$ grep -n -R FTDI_FTX_PID  
+drivers/usb/serial/ftdi_sio_ids.h:26:#define FTDI_FTX_PID 0x6015 /* FT-X series (FT201X, FT230X, FT231X, etc) */  
+drivers/usb/serial/ftdi_sio.c:177: { USB_DEVICE(FTDI_VID, FTDI_FTX_PID) },  
+</code></pre></div><p>Và đây, source cho driver của thiết bị nằm ở <strong>drivers/usb/serial/ftdi_sio.c</strong>.</p>
+<h2 id="5-tham-khảo">5. Tham khảo</h2>
+<p>Để biết thêm về cách tạo, đọc một driver (đặc biệt của usb) trong linux.<br>
+Có lẽ không chỗ nào tốt hơn chính là tài liệu (hoặc sách) do người viết (maintain) những driver đó.</p>
+<p>Thực sự nên đọc cuốn sách Linux Device Driver 3rd Edition (hoàn toàn free) của chính những maintainer tại địa chỉ <a href="https://lwn.net/Kernel/LDD3/">https://lwn.net/Kernel/LDD3/</a></p>
+<p>Một cuốn nữa (và cũng free) nên đọc là Linux in A Nutshell (link tại <a href="http://files.kroah.com/lkn/">http://files.kroah.com/lkn/</a> ) cũng của một maintainer chính cho nhân Linux.</p>
+
+		</div>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

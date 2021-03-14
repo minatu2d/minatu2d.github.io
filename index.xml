@@ -1,0 +1,1119 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/</link>
+    <description>Recent content on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Fri, 14 Aug 2020 10:09:00 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenGL là gì?</title>
+      <link>https://blog.lazytrick.com/post/2020-08-18-opengl-la-gi/</link>
+      <pubDate>Fri, 14 Aug 2020 10:09:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-08-18-opengl-la-gi/</guid>
+      <description>0. Tại sao đi tìm hiểu OpenGL làm cái gì?  Gần đây, phải quay sang làm 1 dự án có liên quan đến Computer Graphic, cụ thể là trong không gian 3 chiều (3D). Thực sự, đối với mình nó lại hoàn toàn mới. Ngoài chút kiến thức toán như: Vector, Ma trận (Matrix), vector đơn vị, vài phép cơ bản của Vector thì mình không còn tí kiến thức Đại số nào nữa.</description>
+    </item>
+    
+    <item>
+      <title>Sữa mẹ, sữa ngoài, bao nhiêu là đủ?</title>
+      <link>https://blog.lazytrick.com/post/2020-09-26-sua-me-va-sua-ngoai-bao-nhieu-la-du/</link>
+      <pubDate>Fri, 14 Aug 2020 10:09:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-09-26-sua-me-va-sua-ngoai-bao-nhieu-la-du/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>File locking trong linux</title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/</link>
+      <pubDate>Sat, 29 Feb 2020 21:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/</guid>
+      <description>1. Giới thiệu  File locking (khoá file) là cơ chế để đảm bảo việc đọc/ghi file giữa nhiều process cùng lúc một cách an toàn. Bài này chúng ta sẽ giới thiệu xem cơ chế Locking sinh ra giải quyết vấn đề gì và các ví dụ sử dụng của nó trên bash script và ngôn ngữ C.  2. Nếu vấn đề theo cách muôn thủa  Ví dụ mô tả vấn đề cập nhật xen kẽ trong bất cứ hệ thống thông tin nào.</description>
+    </item>
+    
+    <item>
+      <title>Sử dụng lệnh screen cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/</link>
+      <pubDate>Sun, 23 Feb 2020 01:20:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/</guid>
+      <description>screen là một phần mềm (chạy ở chế độ dòng lệnh) trên Linux rất hữu ích.
+1. screen giải quyết vấn đề gì?  Vấn đề: Khi bạn kết nối bằng SSH đến server qua 1 terminal, bạn có thể gặp các vấn đề sau:    Chương trình bạn định chạy (train 1 con AI, down phim XXX) sẽ rất mất thời gian, bạn không thể đợi đến khi nó xong được.</description>
+    </item>
+    
+    <item>
+      <title>Cảm nhận về zsh sau 1 tháng sử dụng basic</title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/</link>
+      <pubDate>Sun, 23 Feb 2020 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/</guid>
+      <description>Sau khi update chiếc máy MAC (máy công ty), terminal mặc định trong máy có recommend sang sử dụng zsh thay vì SHELL mặc định trước đó (bash thì phải) thì mới bắt đầu sử dụng thử zsh. Đọc qua một vài lời khen thấy nó khá hay nên quyết định chuyển sang dùng zsh xem sao. Xem có đúng như lời đồn không. Bài này xin tóm tắt một số ý đã tìm hiểu, cảm nhận được.</description>
+    </item>
+    
+    <item>
+      <title>Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</title>
+      <link>https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/</link>
+      <pubDate>Sun, 16 Feb 2020 23:51:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/</guid>
+      <description>1. Từ hội nghiên cứu, bảo vệ bà mẹ trẻ em Nhật Bản:  Link : https://www.mcfh.or.jp/netsoudan/article.php?id=981  Nội dung Có 4 thuyết giải thích tại sao trẻ không khóc trước khi ngủ:
+  Từ ngày xưa, loài người khi ngủ thường có nguy cơ bị các loài khác tấn công, bị mưa ưới nên bị sợ bóng tối. Những cái đó biến thành gen di truyền, nên khi người ta ko biết lúc nào sẽ ngủ mất nên sẽ bất an.</description>
+    </item>
+    
+    <item>
+      <title>Vài chú ý khi setup mail server</title>
+      <link>https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/</guid>
+      <description>Mail Server là một trong những ứng dụng phổ biến bậc nhất trong hầu hết các hệ thống thông tin. Theo mình, ngay cả khi các ứng dụng tin nhắn nhóm như Slack, Chatwork, FB Messenger đã thì việc sử dụng mail vẫn rất được ưa chuộng do những tính chất đặc trưng của nớ: như formal hơn, lưu trữ chắc chắn hơn&amp;hellip;
+Lần đầu tiên mình được trực tiếp sờ vào việc cài đặt của một mail server.</description>
+    </item>
+    
+    <item>
+      <title>Chuyển HTML thành PDF cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/</link>
+      <pubDate>Sun, 03 Nov 2019 17:41:31 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/</guid>
+      <description>1. Tại sao cần chuyển sang PDF  Nhiều lý do để người ta sử dụng PDF thay vì các định dạng khác.  Về cơ bản không thể edit nên đảm bảo thống nhất về nội dung hiển thị Ít bị lỗi FONT Tiện lợi khi gửi, nhận: bên nhận và bên gửi luôn thấy chung 1 dữ liệu và ít khi sửa được.   Vì PDF gần như tiêu chuẩn để trao đổi dạng tài liệu read-only Đọc được ở trên hầu hết mọi nền tảng: máy tính, điện thoại.</description>
+    </item>
+    
+    <item>
+      <title>Giải thích log của lệnh sendmail</title>
+      <link>https://blog.lazytrick.com/post/2019-11-02-giai-thich-log-sendmail/</link>
+      <pubDate>Sat, 02 Nov 2019 23:04:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-11-02-giai-thich-log-sendmail/</guid>
+      <description>Bài này sẽ dịch lại một phần của trang: http://sendmail.org/~ca/email/doc8.12/op-sh-2.html Về nội dung liên quan đến format log của sendmail cũng ý nghĩa của từng trường.
+0. Sendmail là gì  Một phần mềm chạy trên hệ thống Linux (hoặc là *Nix). Có nhiệm vụ gửi mail - ta nên dùng từ phân phối (delivery) thì sẽ chuẩn xác hơn. Gửi mail (hay phân phối mail) nói đơn giản là sử dụng kết nối mạng (có thể là internet hoặc không) thực hiện gửi nội dung có định dạng bằng giao thức như SMTP,&amp;hellip; đến máy chứa tài khoản người nhận.</description>
+    </item>
+    
+    <item>
+      <title>Tensorflow và AVX</title>
+      <link>https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/</link>
+      <pubDate>Thu, 31 Oct 2019 22:17:58 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/</guid>
+      <description>1. Lỗi liên quan đến CPU instruction của tensorflow  Định cài đặt tensorflow-gpu trên con máy già chạy Intel Xeon X5672 và có gắng GTX 1060 3G để nghịch chút. Nhưng khi kiểm tra xem có chạy được không:  &amp;gt;&amp;gt;&amp;gt; import tensorflow as tf Illegal instruction (コアダンプ)  Vâng, là lỗi run-time - chỉ xảy ra khi chạy, chứ cài thì chưa xuất hiện vấn đề.  2. AVX là gì  Ta tìm hiểu một chút về lỗi kể trên, thì hầu hết đề nói rằng: máy sử dụng CPU không hỗ trợ đầy tập lệnh mà tensorflow đang dùng.</description>
+    </item>
+    
+    <item>
+      <title>Chuyển sang site mới, tên miền mới</title>
+      <link>https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/</link>
+      <pubDate>Thu, 24 Oct 2019 23:30:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/chuyen-sang-site-moi-domain-moi/</guid>
+      <description>1. Lý do chuyển sang  Wordpress hỗ trợ không tốt việc viết bằng markdown Cần một site nhẹ hơn Cần một cách quản lý bài viết dễ hiểu và rõ ràng hơn Chuyển hẳn sang một domain mới để dễ dang  2. Nền tảng sử dụng  Lưu trữ: Github page Bộ sinh HTML : Hugo Tên miền: AWS 53  </description>
+    </item>
+    
+    <item>
+      <title>Học Ruby On Rails (RoR)</title>
+      <link>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</link>
+      <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-09-11-hoc-ruby-on-rails-ror/</guid>
+      <description>1. General 2. Scope  Biến bắt đầu bằng @* gọi là _**instance variable**_
+https://stackoverflow.com/questions/14319347/variables-in-ruby-on-rails  3. Model 4. View 5. Controller </description>
+    </item>
+    
+    <item>
+      <title>Bắt đầu về Docker</title>
+      <link>https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/</link>
+      <pubDate>Wed, 06 Feb 2019 07:26:15 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2019-02-06-bat-dau-ve-docker/</guid>
+      <description>Docker, là công nghệ rất nổi và có ảnh hưởng đến hầu hết developer.
+Được coi là một công nghệ ảo hóa ở mức hệ điều hành khi so với các phương pháp ảo hóa phần cứng khác.
+Theo mình hỏi, kĩ thuật để làm việc này không mới, nó dựa trên kĩ thuật chroot có được sử dụng từ khá lâu trong linux.
+Nói là vậy, nhưng học để sử dụng thì cần bài bản chút, bài này mình sẽ tóm tắt lại trang Overview từ trang của Docker</description>
+    </item>
+    
+    <item>
+      <title>Pickle - Thư viện Serialization/Deserialization trong Python</title>
+      <link>https://blog.lazytrick.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/</link>
+      <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/</guid>
+      <description>Gần đây khi chạy thử một vài thuật toán Deep Learning, đặc biệt là các thuật toán cung cấp source code sử dụng thư viện Caffe, có gặp một vài vấn đề liên quan đến module Pickle trong Python.
+Thực ra, bình thường cũng không định viết gì cả. Nhưng chợt nhớ ra mình cũng quan tâm đến chủ đề Serialization/Deserialization này. Nó có vai trò giống như ASN.1 mà có tìm hiểu hồi trước, hay phổ biến nhất của thể loại này là Protocol Buffer của Google, hay Apache Thrift.</description>
+    </item>
+    
+    <item>
+      <title>Khóa học online đầu tiên về Machine Learning (note 3) - Khó ~~</title>
+      <link>https://blog.lazytrick.com/post/2018-05-24-__trashed/</link>
+      <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2018-05-24-__trashed/</guid>
+      <description>Tiếp theo bài trước trong loạt note về Khóa học online về Machine Learning đầu tiên.
+Tuần 6 : Lời khuyên khi ứng áp dụng Machine Learning.
+Kiến thúc trong phần này không phải nói về thuật toán, mà là kĩ năng, rồi những thứ cần chú ý khi áp dụng Machine Learning. Và tất nhiên của khi áp dụng Deep Learning nữa.
+Khi áp dụng Machine Learning để giải quyết vấn đề, thì một 2 việc được lặp đi lắm lại là :</description>
+    </item>
+    
+    <item>
+      <title>Khóa học online đầu tiên về Machine Learning (note 2) - Khó ~~</title>
+      <link>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</link>
+      <pubDate>Wed, 23 May 2018 07:55:50 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-2-kho/</guid>
+      <description>Tiếp theo bài trước trong loạt note về khóa học online đầu tiên về Machine Learning.
+Tuần 4 : Neurtal Networks : Biểu diễn Như đã biết, khi nói về dữ liệu, ta thường nói đến một loạt đặc trưng.
+Ví dụ: người thì có chiều cao, cân nặng, sở thích, etc.
+Và ta cũng đã biết về tạo cá đặc trưng đa thức khi các đặc trưng bậc 1 không đủ để miêu tả tốt dữ liệu.</description>
+    </item>
+    
+    <item>
+      <title>Khoá học online đầu tiên về Machine Learning ( note 1) - Khó ~~</title>
+      <link>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</link>
+      <pubDate>Wed, 23 May 2018 02:18:56 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2018-05-23-khoa-hoc-online-dau-tien-ve-machine-learning-note-1-kho/</guid>
+      <description>Cuối cùng cũng kết thúc khoá học Online đầu tiên về Machine Learnning.
+Do tiếng Anh cùi, nên dù nhìn sub liên tục nhưng vẫn vô số lần tua lại để xem.
+Khoá học rất hay, thầy Andrew NG giảng khá kĩ các khái niệm quan trọng.
+Dù mình biết Machine Learning nặng về Toán, đặc biệt Toán Tối ưu như machinelearningcoban.com viết, nhưng khoá này không tập trung vào những cái đó.</description>
+    </item>
+    
+    <item>
+      <title>Thực hiện 3 phép tập hợp trên bash</title>
+      <link>https://blog.lazytrick.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</link>
+      <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-11-03-thuc-hien-3-phep-tap-hop-tren-bash/</guid>
+      <description>Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.
+Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.
+Nội dung được dịch từ bài viết khá chi tiết của pro Peter Krumins chủ trang http://www.catonmat.net/
+1. Phép giao Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.</description>
+    </item>
+    
+    <item>
+      <title>Một số thứ khi sử dụng command, viết script trong bash</title>
+      <link>https://blog.lazytrick.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</link>
+      <pubDate>Fri, 03 Nov 2017 06:31:11 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-11-03-mot-so-thu-khi-su-dung-command-viet-script-trong-bash/</guid>
+      <description>Bài này xin được trích rút một số thứ hữu ích từ bài viết rất hay tên The art of command line và mình cũng đã dịch thử (chưa được review) ở
+Nghệ thuật sử dụng dòng lệnh
+1. Hạn chế gõ lại câu lệnh cho dù là rất ngắn Hãy sử dụng chức năng tìm đoạn đang gõ trong history để làm giảm công gõ lại
+Hai chức năng tìm xuôi và tìm ngược được bash cung cấp rồi.</description>
+    </item>
+    
+    <item>
+      <title>Ví dụ cơ bản với pthread trên Linux</title>
+      <link>https://blog.lazytrick.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</link>
+      <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-05-20-vi-du-co-ban-voi-pthread-tren-linux/</guid>
+      <description>1. Tạo và dừng thread Source code gốc lấy từ link
+/****************************************************************************** * FILE: hello.c * DESCRIPTION: * Chuong trinh demo thao tac tao thread, tat thread * AUTHOR: Blaise Barney * LAST REVISED: 08/09/11 * * TRANSLATE to Vietnamese by Minatu * COMPILE CMD : $gcc -o hello hello.c -lpthread ******************************************************************************/ // #include &amp;lt;pthread.h&amp;gt;#include &amp;lt;stdio.h&amp;gt;#include &amp;lt;stdlib.h&amp;gt;#define NUM_THREADS 5  void *PrintHello(void *threadid) { long tid; tid = (long)threadid; printf(&amp;#34;Hello World!</description>
+    </item>
+    
+    <item>
+      <title>So sánh nhỏ về cú pháp câu lệnh ASM giữa AT&amp;T và Intel</title>
+      <link>https://blog.lazytrick.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</link>
+      <pubDate>Sun, 14 May 2017 08:43:10 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-05-14-so-sanh-nho-ve-cu-phap-cau-lenh-asm-giua-att-va-intel/</guid>
+      <description>Link gốc:
+http://www.imada.sdu.dk/Courses/DM18/Litteratur/IntelnATT.htm
+Người dịch:
+Ngôn ngữ Assembly không phải là ngôn ngữ tốt để viết ứng dụng,nhất là bây giờ đã là năm 2017. Có quá nhiều thứ hiệu quả và nhanh hơn. Tuy nhiên, khi cần tìm hiểu ở mức hệ điều hành, rồi driver thiết bị, thì việc đọc được Assembly là rất hữu ích.
+Nội dung
+Cú pháp ASM giữa Intel và AT&amp;amp;T có rất nhiều điềm khác nhau rõ rệt.</description>
+    </item>
+    
+    <item>
+      <title>Lệnh MOV trong Assembly</title>
+      <link>https://blog.lazytrick.com/post/2017-05-14-lenh-mov-trong-assembly/</link>
+      <pubDate>Sun, 14 May 2017 07:59:46 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-05-14-lenh-mov-trong-assembly/</guid>
+      <description>Link gốc: http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html
+1. Lệnh MOV Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.
+Làm bất cứ cái gì, đều có bao gồm sao chép dữ liệu trong đó. Nói là chức năng sao chép thôi, chứ thực sự nó bao hàm sao chép, truyền dữ liệu. Đó có thể là từ bộ nhớ (các loại RAM) vào thanh ghi, từ thanh ghi vào bộ nhớ, từ một giá trị nào đó xuống thanh ghi hoặc bộ nhớ chẳng hạn.</description>
+    </item>
+    
+    <item>
+      <title>Tìm source code của USB Driver trên Linux</title>
+      <link>https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</link>
+      <pubDate>Sun, 23 Apr 2017 04:10:05 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-04-23-tim-source-code-cua-usb-driver-tren-linux/</guid>
+      <description>Ở bài Tìm driver cho Linux cũng đã nói qua rồi, nhưng bài này muốn chỉ ra chi tiết hơn một chú cho nhưng ai muốn đọc source.
+Cách tìm source code driver cho thiết bị USB
+1. Nói qua về thiết bị USB   Linux kernel xác định driver phù hợp cho thiết bị bằng 2 thông tin chính.
+Đó là Vendor (nhà sản xuất), và Product (sản phẩm).</description>
+    </item>
+    
+    <item>
+      <title>Build, chạy nhân Linux trong QEMU ARM</title>
+      <link>https://blog.lazytrick.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</link>
+      <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-04-10-build-chay-nhan-trong-qemu-arm/</guid>
+      <description>Chạy một bản Linux tối giản trên Qemu ARM
+Bài này sẽ làm một ví dụ để chỉ ra sự liên quan giữa
+các thành phần của một hệ thống Linux thông qua
+việc build, chạy Kernel trên board vexpress-a9 mô phỏng bằng Qemu.
+Đó là Kernel, Root file system, Busybox, Init.
+ 1. &amp;ldquo;Chém&amp;rdquo; chút về quá trình khởi động của Linux   Về cơ bản, quá trình khởi động Linux có 2 giai đoạn.</description>
+    </item>
+    
+    <item>
+      <title>4 thành phần của Embedded Linux</title>
+      <link>https://blog.lazytrick.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</link>
+      <pubDate>Sun, 02 Apr 2017 14:29:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-04-02-4-thanh-phan-cua-embedded-linux/</guid>
+      <description>Ta biết rằng Linux chạy ở khắp nơi từ siêu máy tính, máy chủ, máy để bàn (máy xách tay), điện thoại (android)&amp;hellip;cho đến các thiết bị gia dụng, gia đình.
+Khi sử dụng máy tính cá nhân, server ta dễ dàng &amp;ldquo;sờ&amp;rdquo; thấy được các thành phần của Linux như các tiến trình, shell..etc.
+Hầu hết các bản phân phối phổ biến làm hết những thứ liên quan đến phần cứng, nhân hệ điều hành, driver cho ta rồi.</description>
+    </item>
+    
+    <item>
+      <title>Phím tắt cho bash</title>
+      <link>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</link>
+      <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</guid>
+      <description>Mặc định, bash sử dụng emacs mode, có thể chuyển sang vi mode được.
+Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.
+Chiều ngang : Di chuyển cơ bản Ctrl + b : (Backward) Di chuyển con trỏ sang trái về trước 1 kí tự
+Ctrl + f : (Fordware) Di chuyển con trỏ sang phải một kí tự.</description>
+    </item>
+    
+    <item>
+      <title>Một số điều rút ra từ việc phải sử dụng command</title>
+      <link>https://blog.lazytrick.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
+      <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
+      <description>Do yêu cầu bắt buộc nên gần đây phải làm việc với VIM.
+Thực ra vẫn dùng máy tính Windows để chạy các ứng dụng SSH Client, SCP, rồi thì Excel. Tuy nhiên, các thao tác chủ yếu với source, text file, là trên command.
+Mà trên command của Unix, hay Linux. Dù có trả qua bao nhiêu năm nữa, thì có vẻ chỉ có 2 trường phái là VIM và Emacs thôi.</description>
+    </item>
+    
+    <item>
+      <title>Chuyển sang dùng VI(M)</title>
+      <link>https://blog.lazytrick.com/post/2017-03-29-chuyen-sang-dung-vim/</link>
+      <pubDate>Wed, 29 Mar 2017 13:37:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-03-29-chuyen-sang-dung-vim/</guid>
+      <description>Chuyển sang dùng Vi Vi - Editor khá nhiều tuổi, có lẽ còn nhiều tuổi hơn của mình.
+Là editor phổ biến nhất trên hệ thống dòng lệnh Linux, Unix hoặc tương tự.
+Có Linux, bạn gần như sẽ có thể dùng Vi. Mà Linux thì có ở rất rất nhiều nơi.
+Có phải vì nó mặc định nên nó phổ biến???
+Mình từng nghĩ vậy hoặc nghĩ chắc nó nhẹ nên người ta cài sẵn nó thôi</description>
+    </item>
+    
+    <item>
+      <title>Một vài lệnh Bitbake hữu dụng</title>
+      <link>https://blog.lazytrick.com/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</link>
+      <pubDate>Sun, 19 Feb 2017 00:14:48 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-02-19-mot-vai-lenh-bitbake-huu-dung/</guid>
+      <description>Có một vài lệnh hữu dụng được cộng đồng sử dụng board NXP chia sẻ, mình sẽ note ở đây cho dễ tìm vậy. Link tại đây.
+Lệnh Bitbake
+**Miêu tả
+**
+bitbake 
+_Nấu ra 1 &amp;ldquo;ảnh&amp;rdquo; (Image) _(Thêm tham số _-k đ_ể cho phép chạy đến hết kẻ cả có lỗi thực thi)
+bitbake -c 
+Thực hiện 1 task của package nào đó. Tên các task mặc định thường có``: _fetch,_ unpack, patch, configure, compile, install, package, package_write, and build.</description>
+    </item>
+    
+    <item>
+      <title>Giới thiệu về lập trình Assembly trên Linux (AT&amp;T Style không phải Intel Style)</title>
+      <link>https://blog.lazytrick.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</link>
+      <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-02-11-gioi-thieu-ve-lap-trinh-assembly-tren-linux-att-style-khong-phai-intel-style/</guid>
+      <description>Tham khảo
+ Sách : AT&amp;amp;T Assembly Language, Richard Blum  1. Ngôn ngữ Assembly là gì?  Ở mức thấp nhất, Process chỉ hiểu instruction code Instruction Code là các mã nhị phân chứa các thành phần: Instruction prefix, Opcode, ModR/M, SIB, Displacement, Data Element. Người ta hoàn toàn có thể viết chương trình bằng instruction code, nhưng nó sẽ cực kì khó nhọc, bởi ta chỉ thấy không gì khác ngoài các byte nối tiếp nhau.</description>
+    </item>
+    
+    <item>
+      <title>So sánh giữa Buildroot và Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</link>
+      <pubDate>Fri, 20 Jan 2017 01:22:46 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-01-20-so-sanh-buildroot-va-yocto-project/</guid>
+      <description>Bài này sẽ dịch lại Slide thảo luận giữa 2 diễn giả là Alexandre Belloni, Thomas Petazzoni
+từ Free Electrons tại Embedded Linux Conference 2016.
+So sánh giữa Buildroot và OpenEmbedded/Yocto Project
+1. Điểm chung  Đều là build-system cho Embedded Linux.
+Mục tiêu là có thể customize, build hoàn chỉnh một Embedded Linux System.
+Bao gồm: filesystem, toolchain, kernel, bootloaders Đều được build từ source Sử dụng cross-compilation Rất actively trong cả dự án đang maintained và phát triển.</description>
+    </item>
+    
+    <item>
+      <title>Về /dev trong Embedded Linux</title>
+      <link>https://blog.lazytrick.com/post/2017-01-19-ve-dev-trong-embedded-linux/</link>
+      <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-01-19-ve-dev-trong-embedded-linux/</guid>
+      <description>Đây là nội dung pick up từ manual của Buildroot.
+Nó mô tả khá rõ về /dev trong hệ thống Linux, cùng
+với các giải pháp dành cho hệ thống Embedded Linux.
+6.2 /dev management Trên 1 hệ thống Linux, thư mục /dev chứa các file đặc biệt, được gọi là
+device files (hay các file thiết bị), cho phép ứng dụng phía user truy cập
+đến các thiết bị phần cứng mà Linux kernel quản lý.</description>
+    </item>
+    
+    <item>
+      <title>Thực hiện 4 Stage khi Compile bằng tay (Manual)</title>
+      <link>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
+      <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
+      <description>Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
+Trong compile thông thường dạng
+$gcc -o HelloWorld HelloWorld.c Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</description>
+    </item>
+    
+    <item>
+      <title>4 Stage khi biên dịch HelloWorld.c</title>
+      <link>https://blog.lazytrick.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</link>
+      <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-01-01-4-stage-khi-bien-dich-helloworld-c/</guid>
+      <description>Gần đây, phải giải quyết giúp một vài vấn đề liên quan đến Cross-Compile. Có tìm hiểu kĩ một chú về Compiler, Linker, và Loader.
+Bài này xin nói về cơ bản về quá trình biên dịch một file source code (.c) sang dạng chạy được.
+Ví dụ: từ HelloWorld.c thành HelloWorld và chạy được như ví dụ dưới đây.
+HelloWorld.c
+#include int main() { print(&amp;#34;Hello World \n&amp;#34;); return 0; } Kết quả chạy:</description>
+    </item>
+    
+    <item>
+      <title>Một chút hiểu thêm về &#34;Hello World&#34; trong C.</title>
+      <link>https://blog.lazytrick.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
+      <pubDate>Wed, 21 Dec 2016 05:31:09 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
+      <description>Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.
+Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì
+một chương trình sẽ được chạy 2 cách dưới đây
+1. Chương trình hoàn toàn là tĩnh  Không có symbol nào cần phải được (resolved) trước khi chạy. Không yêu cầu bất cứ một thư viện run-time nào.</description>
+    </item>
+    
+    <item>
+      <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
+      <link>https://blog.lazytrick.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <description>Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch GCC lên đó.
+Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.
+Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.</description>
+    </item>
+    
+    <item>
+      <title>PER trong ASN.1 Encoding</title>
+      <link>https://blog.lazytrick.com/post/2016-11-29-per-trong-asn-1-encoding/</link>
+      <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-11-29-per-trong-asn-1-encoding/</guid>
+      <description>PER là phương thức biểu diễn dữ liệu ngắn gọn và xúc tích nhất có thể của ASN.1. Thay vì sử dụng TLV như BER, PER sử dụng Preamble (diễn cho nhiều hoặc trạng thái bị lược bỏ của một dữ liệu bên trong), giá trị kích thước(cũng có thể bị lược bỏ), giá trị (cũng có thể bị lược bỏ), hay gọi là PLV.
+Đơn vị biểu diễn của PER không phải Octet mà là Bit.</description>
+    </item>
+    
+    <item>
+      <title>CER/DER trong ASN.1 Encoding</title>
+      <link>https://blog.lazytrick.com/post/2016-11-25-phuong-thuc-cerder/</link>
+      <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-11-25-phuong-thuc-cerder/</guid>
+      <description>Khi sử dụng BER để hiện thực dữ liêu, ta thấy rằng có khá nhiều chỗ tùy ý. Tức là cùng một thông tin có nhiều cách biểu diễn khác nhau. Khi sử dụng với trường hợp chữ kí Số, phát sinh ra nhiều vấn đề.
+Để giải quyết những vấn đề đó, người ta thêm ràng buộc vào BER, và tạo ra CER và DER.
+Sự khác nhau chủ yếu giữa CER và DER là về biểu diễn trường độ dài.</description>
+    </item>
+    
+    <item>
+      <title>ASN.1 - BER (Basic Encoding Rules)</title>
+      <link>https://blog.lazytrick.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</link>
+      <pubDate>Thu, 24 Nov 2016 15:58:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-11-24-asn-1-ber-basic-encoding-rules/</guid>
+      <description>Tiếp tục về ASN.1.
+Như bài đầu tiên, ASN.1 tách biệt phần định nghĩa dữ liệu (các file định nghĩa) với phần hiện thực dữ liệu (mỗi trường được biểu diễn bằng mấy byte, mấy bit, etc)
+Ta sẽ tiếp tục nói về hiện thực dữ liệu.
+Các phương thức để hiện thực dữ liệu gồm có: BER, CER/DER, và PER.
+Trong đó:
+BER : Basic Encoding Rules
+CER/DER : Canonical Encoding Rules/Distinguished Encoding Rules</description>
+    </item>
+    
+    <item>
+      <title>ASN.1 - Cú pháp cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2016-11-16-asn-1-cu-phap-co-ban/</link>
+      <pubDate>Wed, 16 Nov 2016 15:49:05 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-11-16-asn-1-cu-phap-co-ban/</guid>
+      <description>Tiếp theo loạt bài về ASN.1, bài này sẽ &amp;ldquo;dịch&amp;rdquo; tài liệu của anh Isida So nói về cú pháp cơ bản của ASN.1.
+Việc đầu tiên khi ứng dụng ASN.1 hoặc thiết kế một giao thức mới là viết định nghĩa cho các kiểu dữ liệu có thể được sử dụng.
+ASN.1 là một ngôn ngữ vì thế, cũng giống với C, nó có các kiểu cơ bản và các cơ chế cho phép mở rộng để định nghĩa thêm các kiểu mới.</description>
+    </item>
+    
+    <item>
+      <title>ASN.1 là gì? Tại sao nó quan trọng.</title>
+      <link>https://blog.lazytrick.com/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</link>
+      <pubDate>Sat, 12 Nov 2016 08:51:58 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-11-12-asn-1-la-gi-tai-sao-no-quan-trong/</guid>
+      <description>Mình thấy ASN.1 khá quan trọng nhất là trong thiết kế giao thức trao đổi dữ liệu giữa các thiết bị tính toán, đặc biệt là các thiết bị tài nguyên nhỏ.
+Google tiếng Việt thấy khá ít thông tin về ASN.1.
+Mình dự định sẽ tìm hiểu thêm một chút về ASN.1 và làm loại bài viết về nó.
+Nội dung bài này sẽ giới thiệu sơ qua về ASN.</description>
+    </item>
+    
+    <item>
+      <title>&#34;Data structure alignment&#34; là gì? Tại sao phải hiểu nó khi code C.</title>
+      <link>https://blog.lazytrick.com/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</link>
+      <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-10-26-data-structure-alignment-la-gi-tai-sao-phai-hieu-no-khi-code-c/</guid>
+      <description>Đây là một chủ đề hay, có rất nhiều resource bằng tiếng Việt khá dễ hiểu rồi.
+Bài này chỉ mô tả ngắn gọn một chút cùng với vài ví dụ thực nghiệm để hiểu các khái niệm về cơ bản về Data Structure Aligment.
+Giả sử ta có một cấu trúc sau:
+#include &amp;lt;stdint.h&amp;gt; typedef struct { uin8_t mem1; uin8_t mem2; uin32_t mem3; }ST_FOOL_1; typedef struct { uin8_t mem1; uin8_t mem2; uin8_t mem3; uin8_t mem4; uin8_t mem5; }ST_FOOL_2; Cấu trúc ST_FOOL_1 sẽ được miêu tả trong 6 byte?</description>
+    </item>
+    
+    <item>
+      <title>GDB dòng lệnh cơ bản (03 - Cơ bản)</title>
+      <link>https://blog.lazytrick.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</link>
+      <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-10-19-gdb-do-lenh-co-ban-03-co-ban/</guid>
+      <description>Trong bài số 02, ta đã nói đến những việc mà GDB có thể giúp chúng ta.
+Về cơ bản GDB, có thể chạy để debug mọi chương trình, tuy nhiên nếu không muốn càng debug càng rối thì ta nên sử dụng tham số -g khi biên dịch để giúp quá trình debug xác định được vị trí mỗi đoạn binary trong source ban đầu.
+0. Source code Trong bài này, ta hãy cùng xem cách sử dụng thực tế sẽ như thế nào.</description>
+    </item>
+    
+    <item>
+      <title>Cài đặt GDB (02 - Cài đặt)</title>
+      <link>https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
+      <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
+      <description>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
+ GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</description>
+    </item>
+    
+    <item>
+      <title>GDB có thể làm gì? (01 - Khả năng của GDB)</title>
+      <link>https://blog.lazytrick.com/post/2016-09-19-gdb-co-the-lam-gi/</link>
+      <pubDate>Mon, 19 Sep 2016 11:58:27 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-19-gdb-co-the-lam-gi/</guid>
+      <description>Trước khi nói về chủ đề chính là &amp;ldquo;GDB có thể làm gì&amp;rdquo;. GDB hay những phần mềm như GDB được viết ra để giải quyết vấn đề gì.
+1. Phầm mềm Debugger sinh ra giải quyết cái gì? Phần mềm thực sự được tạo ra ở bước implementation, nó hiện thực những nội dung được mô tả trong thiết kế.
+Vì con người viết code tạo ra phần mềm, mà con người không phải lúc nào cũng luôn làm đúng như những gì họ đã nghĩ, đã ý định, đã thiết kế.</description>
+    </item>
+    
+    <item>
+      <title>Làm việc với GDB - GNU Debugger (00- Mở đầu)</title>
+      <link>https://blog.lazytrick.com/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</link>
+      <pubDate>Thu, 15 Sep 2016 09:19:53 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-15-lam-viec-voi-gdb-gnu-debugger-00-mo-dau/</guid>
+      <description>Đợt này ngồi Unit Test nhiều quá, mệt!!!. Mà đã mệt, sinh ra chán để tiếp tục được thì nhất phải có gì hay ho thỉnh thoảng ngó sang tí cho đỡ chán. それはアカン！！！！
+Cách đặt mục tiêu để viết, dịch khá hiệu quả đối với &amp;ldquo;siêu lười&amp;rdquo; như mình, loạt về USB Basic dù nội dung chắc nhiều lỗi những ít ra nó cũng hoàn thành.
+Vâng, mục tiêu lần này sẽ viết một loạt bài về cách sử dụng GDB (GNU Debugger) từ cài đặt, cách sử dụng dòng lệnh đến các IDE (Eclipse hoặc VS Studio).</description>
+    </item>
+    
+    <item>
+      <title>AWK - Sử dụng cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2016-09-07-awk-su-dung-co-ban/</link>
+      <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-07-awk-su-dung-co-ban/</guid>
+      <description>AWK : 1 trong 3 tool (cùng với grep và sed) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.
+Sau một hồi tìm hiểu awk trên TutorialPoint.
+awk là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng.</description>
+    </item>
+    
+    <item>
+      <title>Quá trình load firmware của Driver trong Linux</title>
+      <link>https://blog.lazytrick.com/post/2016-09-05-qua-trinh-load-firmware-cua-driver-trong-linux/</link>
+      <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-05-qua-trinh-load-firmware-cua-driver-trong-linux/</guid>
+      <description>Để các kernel module sử dụng được các firmware thì cần 2 điều kiện sau:  Khi kernel được build, các tham số sau phải được bật (ENABLE)
+CONFIG_FW_LOADER : Cho phép load firmware
+CONFIG_EXTRA_FIRMWARE &amp;gt; CONFIG_EXTRA_FIRMWARE_DIR : Đường dẫn chưa các firmware. Các firmware phải được copy vào thư mục CONFIG_EXTRA_FIRMWARE_DIR đã set ở trên.  Một số điều lưu ý liên quan đến firmware:   Các firmware là binary(closed source) được cung cấp từ các nhà sản xuất thiết bị,</description>
+    </item>
+    
+    <item>
+      <title>Sử dụng Patch và Diff</title>
+      <link>https://blog.lazytrick.com/post/2016-09-02-su-dung-patch-vs-diff/</link>
+      <pubDate>Fri, 02 Sep 2016 08:53:59 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-02-su-dung-patch-vs-diff/</guid>
+      <description>Patch, hay người ta vẫn gọi là các bản vá, víu gì đó. Cũng thấy khái niệm này từ lâu rồi. Nhưng chưa bao giờ phát sinh nhu cầu sử dụng vì đa số các dự án mình từng làm đều dùng Server SVN tập trung. Mọi thay đổi đều có quản lý chặt chẽ, cũng ít khi rẽ quá nhiều nhánh (branch).
+Gần đây, bắt buộc phải nghĩ đến việc sử dụng 2 tool này vì phải update source trên máy thật (một board mạch) chỉ hỗ trợ truyền Serial.</description>
+    </item>
+    
+    <item>
+      <title>Driver và Firmware trong Linux</title>
+      <link>https://blog.lazytrick.com/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/</link>
+      <pubDate>Mon, 29 Aug 2016 08:25:25 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-29-khai-niem-driver-va-firmware-trong-linux/</guid>
+      <description>Gần đây, khi tìm hiểu cách cài đặt driver cho USB Wifi, mình có tìm hiểu thêm về quá trình tạo nhân Linux. Đặc biệt, việc thiết lập cấu hình trước khi build tạo ảnh của kernel.
+Mình thấy ngoài Driver, tức là thành phần trung gian giữa ứng dụng và phần cứng, còn có 1 khái niệm nữa. Đó là Firmware.
+Bài này sẽ dịch lại trang, để hiểu qua về Firmware trong Linux Kernel.</description>
+    </item>
+    
+    <item>
+      <title>Tìm Driver cho Linux</title>
+      <link>https://blog.lazytrick.com/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/</link>
+      <pubDate>Fri, 19 Aug 2016 01:38:50 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-19-xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/</guid>
+      <description>Trong quá trình tìm cách cài đặt driver cho bản build Raspberry PI sử dụng Yocto, mình có tìm hiểu driver trong Linux và tìm được cuốn sách Linux in A Nutshell (link tại đây ) của pro này.
+Chương 7, chương mà tác giả đặc biệt &amp;ldquo;tự hào&amp;rdquo;, nói về Customize một Linux Kernel.
+Trong chương này, tác giả cũng nói đến việc xác định các driver đang được sử dụng trên hệ thống hiện tại.</description>
+    </item>
+    
+    <item>
+      <title>Một chút về Driver cho USB Device trong Linux</title>
+      <link>https://blog.lazytrick.com/post/2016-08-15-mot-chut-ve-driver-cho-usb-device-trong-linux/</link>
+      <pubDate>Mon, 15 Aug 2016 05:47:10 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-15-mot-chut-ve-driver-cho-usb-device-trong-linux/</guid>
+      <description>Trong loại bài dịch trước đây nói về USB, tôi có nhắc một chút đến việc load đúng driver thì phía Host làm thế nào?
+Như ta đã biết, khi một thiết bị USB được cắm vào máy (Host), phía Host sẽ thực hiện một loạt thao tác từ xác định nguồn (bus, hay self), lấy thông tin tốc độ, các thông tin về descriptor (thiết bị, giao diện, các Endpoint).</description>
+    </item>
+    
+    <item>
+      <title>Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</link>
+      <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-11-cai-them-driver-usb-wifi-adapter-cho-ban-build-raspbery-pi-su-dung-yocto-project-chua-xong/</guid>
+      <description>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh source, ta thực hiện build tạo image có có tên là rpi-basic-image thông qua lệnh:
+$bitbake rpi-basic-image Thực ra còn 2 image khác ta có thể build đó là rpi-hwup-image rpi-test-image. Ta có thể thấy 2 file bb cho 2 image ở thư mục meta-raspberrypi/recipes-core/images/.
+rpi-hwup-image : là image nhỏ nhất (có dịp sẽ thử)</description>
+    </item>
+    
+    <item>
+      <title>Thiết lập IP mặc định của bản build Linux cho Raspberry PI bằng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</link>
+      <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-06-thiet-lap-ip-mac-dinh-cua-ban-build-linux-cho-raspberry-pi-bang-yocto-project-chua-xong/</guid>
+      <description>Để tiếp tục customize bản OS được build trong bài trước.
+Hôm nay ta sẽ thực hiện một nhiệm nhỏ. Đó là thiết lập một IP cho bản build.
+Tức là ta sẽ thiết lập 1 IP mặc định được gán cho Raspberry PI khi nó được khởi động bằng bản build của chúng ta.
+Như thường lệ ta cần thiết lập các biến môi trường trước khi định thực hiện bất cứ thay đổi nào trên bản build.</description>
+    </item>
+    
+    <item>
+      <title>Thêm samba server vào bản build Linux cho Raspberry PI bằng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</link>
+      <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-06-them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/</guid>
+      <description>Ta đã nói đến việc build một bản phân phối Linux cho Raspberry PI ở bài Tạo một bản phân phối Linux cho Raspberry PI bằng Yocto Project.
+Một trong những giao thức truy cập file phổ biến nhất hiên nay là SMB, vốn ban đầu được hỗ trợ trên các máy Windows, dùng cho giao thức chia sẻ file trong mạng nội bộ. Trên Linux, để tạo một server như thế, người ta dùng Samba (cái tên cũng na ná nhỉ).</description>
+    </item>
+    
+    <item>
+      <title>Hệ thống File Ubifs</title>
+      <link>https://blog.lazytrick.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/</link>
+      <pubDate>Fri, 05 Aug 2016 01:50:50 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-05-luot-qua-he-thong-file-ubifs/</guid>
+      <description>Gần đây, có thấy trên Board mạch phát triển của mình có xuất hiện 1 process là ubifs. Qua tìm hiểu mới biết rằng, em nó là UBIFS, được phát triển năm 2007 bởi Nokia với sự giúp đỡ của University of Szeged, Hungary.
+Bắt đầu được đưa vào mainline của Linux 2.6.27 năm 2008.
+Hỏi thấy GG thấy được 1 bài giới thiệu chung về hệ thống file cho thiết bị nhớ Flash của anh Le Dinh Thao trên blog kithuatmaytinh.</description>
+    </item>
+    
+    <item>
+      <title>Phân biệt Build vs Host vs Target</title>
+      <link>https://blog.lazytrick.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</link>
+      <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-08-03-cac-khai-niem-trong-cross-compiling/</guid>
+      <description>Khái niệm Cross-compiling là rất phổ biến khi phát triển các hệ thống nhúng.
+Với người mới, hiểu rõ khái niệm là rất quan trọng.
+Bài này sẽ cố gắng phân biệt 3 khái niệm về môi trường. Đó là Host Enviroment, Build Enviroment, và Target Enviroment. Có thể dịch nôm na là Môi trường chủ, Môi trường biên dịch, và Môi trường chạy đích.
+Vì có thể dẫn đến hiểu nhầm hoặc không rõ nghĩa nên chúng ta nên sử dụng trực tiếp thì hơn.</description>
+    </item>
+    
+    <item>
+      <title>Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
+      <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
+      <description>Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.
+Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.
+Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề. Mà nếu không giải quyết được các vấn đề đó thì nội dung các bài khác sẽ không thể thực hiện được.</description>
+    </item>
+    
+    <item>
+      <title>USB cho dev (Chap.06 – Các gói tin Setup)</title>
+      <link>https://blog.lazytrick.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</link>
+      <pubDate>Sat, 23 Jul 2016 05:46:28 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-07-23-usb-cho-dev-chap-06-cac-goi-tin-setup-chua-xong/</guid>
+      <description>Mỗi thiết bị USB phải trả lời các gói tin Setup (Setup packets) trên Endpoint mặc định (Endpoint Zero). Các gói tin Setup được sử dụng cho việc phát hiện thiết bị, cấu hình, cũng như lấy các thông tin khác như các thông tin về chức năng, địa chỉ thiết bị, kiểm tra trạng thái các Endpoint.
+Chuẩn USB yêu cầu Host sẽ mon muốn về mặt thời gian từ phát hiện đến lấy đầy đủ các thông tin trên trong vòng không quá 5 giây.</description>
+    </item>
+    
+    <item>
+      <title>USB cho dev (Chap.05 – Đặc tả thiết bị)</title>
+      <link>https://blog.lazytrick.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</link>
+      <pubDate>Mon, 18 Jul 2016 09:19:07 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-07-18-usb-cho-dev-chap-05-dac-ta-thiet-bi/</guid>
+      <description>Tất cả các thiết bị nằm trong 1 hệ thống phân cấp các miêu tả (hierachy of descriptors), miêu tả cho Host biết các thông tin về Thiết bị gì?Nhà sản xuất? Phiên bản của giao thức USB nó hỗ trợ?Các cách để cấu hình? Số lượng Endpoint và loại truyền tương ứng.
+Các đặc tả phổ biết nhất bao gồm:
+ Miêu tả thiết bị (Device Descriptors) Miêu tả các cấu hình (Configuration Descriptors) Miêu tả giao diện (Interface Descriptors) Miêu tả điểm đầu cuối (EndPoint Descriptors) Các chuỗi sử dụng trong các miêu tả trên.</description>
+    </item>
+    
+    <item>
+      <title>2 cách sử dụng thư viện trong Linux</title>
+      <link>https://blog.lazytrick.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</link>
+      <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-06-12-2-cach-su-dung-thu-vien-trong-linux/</guid>
+      <description>Mình đang gặp 1 vấn đề là 1 hàm F1() trong thư viện động mình viết (lib1.so) không hoạt động đúng như mong muốn. Trong hàm _F1()_có gọi một loại hàm F21(), F22(), F23()&amp;hellip;F2n() từ 1 thư viện tĩnh (lib2.a) khác.
+Khi build không gặp lỗi,
+Khi biên dịch thư viện động này với 1 file sample.c để chưa main() để chạy thử và gọi hàm _F1() _từ thư viện động lib1.</description>
+    </item>
+    
+    <item>
+      <title>Ví dụ minh họa sử dụng pthread</title>
+      <link>https://blog.lazytrick.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</link>
+      <pubDate>Wed, 06 Apr 2016 15:26:51 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-04-06-vi-du-minh-hoa-su-dung-pthread/</guid>
+      <description>Dự trong loạt công việc sắp tới, tôi cần hiểu kĩ về các cơ chế sử dụng của pthread để viết code sao cho ổn nhất.
+Mục đích ban đầu nói đến ở bài Cơ bản về pthread, là tạo một CMake Project cho cho ứng dụng có sử dụng pthread. Nhưng vì yêu cầu công việc sắp tới, tôi sẽ bỏ qua việc tạo CMake project mà đi vào ví dụ source code cụ thể để minh họa các đặc tính của pthread.</description>
+    </item>
+    
+    <item>
+      <title>USB cho dev (Chap.04 - Các loại Endpoint)</title>
+      <link>https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</link>
+      <pubDate>Sat, 26 Mar 2016 03:11:25 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-26-usb-cho-dev-chap-04-cac-loai-endpoint/</guid>
+      <description>Đặc tả USB định nghĩa 4 loại Transfer/EndPoint   Control Transfer
+  Interrupt Transfer
+  Isochronous Transfer
+  Bulk Transfer
+  1. Control Transfer (Truyền điều khiển) Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp).</description>
+    </item>
+    
+    <item>
+      <title>USB cho dev (Chap.03 - Giao thức)</title>
+      <link>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</link>
+      <pubDate>Mon, 21 Mar 2016 15:19:47 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chap-03-giao-thuc/</guid>
+      <description>Không giống như RS-232 và nhiều giao tiếp tuần tự khác, cái mà không định nghĩa dạng dữ liệu được gửi. USB được tạo bởi nhiều lớp protocol. Nghe có vẻ &amp;ldquo;nguy hiểm&amp;rdquo;, nhưng cứ bình tõm, nó không ghê gớm đến thế đâu. Một khi bạn hiểu cái gì đang diễn ra thì cái bạn thực sự phải bỏ công sức vào chỉ là các lớp ở tầng trên thôi.</description>
+    </item>
+    
+    <item>
+      <title>USB cho Dev (Chp.02 - Phần cứng)</title>
+      <link>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</link>
+      <pubDate>Mon, 21 Mar 2016 02:17:04 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-21-usb-cho-dev-chp-02-phan-cung/</guid>
+      <description>Tiếp theo bài chương đầu tiên về USB, chương này sẽ nói về phần cứng.
+Đầu kết nối (Connectors) Mọi thiết bị có một upstream &amp;ldquo;chảy&amp;quot;đến host, và mọi host có một downstream &amp;ldquo;chảy&amp;rdquo; thiết bị. Các điểm kết nối với Upstream, downstream không phải ở dạng hoán đổi cơ học thì thế phải các kết nối vòng không hợp lệ (illegal loopback connections) như downstream chảy đến downstream chẳng hạn phải được loại bỏ ở hubs.</description>
+    </item>
+    
+    <item>
+      <title>SCSI - Giao tiếp với USB Memory</title>
+      <link>https://blog.lazytrick.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</link>
+      <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-15-scsi-giao-tiep-voi-usb-memory/</guid>
+      <description>Gần đây, do phải tìm hiểu khả năng porting USB Memory Driver sang NORTi nên đã có dịp tìm hiểu và tự confirm trên code một số điều liên quan đến thiết bị nhớ USB (hay ta vẫn gọi là USB Flash Memory). &amp;ldquo;USB Flash Memory&amp;rdquo; bao gồm USB: là tên giao diện cả mềm, cứng; Flash : là chất liệu của chip nhớ, Memory : là chỉ thiết bị nhớ nói chung.</description>
+    </item>
+    
+    <item>
+      <title>Trường Remain Length trong MQTT Fixed Header</title>
+      <link>https://blog.lazytrick.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</link>
+      <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-08-truong-remain-length-trong-mqtt-fixed-header/</guid>
+      <description>Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.
+Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver&amp;hellip; Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.</description>
+    </item>
+    
+    <item>
+      <title>RTOS - Hầu hết giống như một thư viện</title>
+      <link>https://blog.lazytrick.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</link>
+      <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-03-01-do-uu-tien-cua-ngat-trong-nortiitron/</guid>
+      <description>Trước kia, đã từng học rất nhiều thứ về hệ điều hành. Nhưng hầu hết những nguyên lý được nói đến đều lấy Windows, hoặc Linux(*Unix), hoặc Mac làm tham chiếu đến những nội dung được học.
+Ai cũng biết sẽ có một phần mềm hệ thống gọi là Kernel, nó rất quan trọng nó lập lịch các tiến trình, quản lý bộ nhớ, các driver&amp;hellip; Thực sự cũng từng đọc code tham khảo (dành cho Academy của M$ về Windows NT), nhưng thực sự vẫn chưa có một hình dung tương đối về cái Kernel kia.</description>
+    </item>
+    
+    <item>
+      <title>Cờ Retain và QoS trong message PUBLISH</title>
+      <link>https://blog.lazytrick.com/post/2016-02-21-khai-quat-ve-mqtt/</link>
+      <pubDate>Sun, 21 Feb 2016 15:41:14 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-02-21-khai-quat-ve-mqtt/</guid>
+      <description>Giao thức MQTT dựa trên mô hình publisher/subscriber (nhà cung cấp/người sử dụng), publisher có dữ liệu trên một lĩnh nào đó (được đại diện bằng các topic), phía subscriber (người mong muốn thông tin) sẽ mong muốn thông tin trên môt lĩnh vực nào đó (cũng được miêu tả bằng topic). Môt anh trung gian ở giữa sẽ nhận từ rất nhiều anh cung cấp trên rất nhiều lĩnh vực, sau đó xem xét, thông tin phù hợp để gửi đến những người sử dụng mà anh trung gian này biết.</description>
+    </item>
+    
+    <item>
+      <title>Một chút về RGB VGA, Digital RGB</title>
+      <link>https://blog.lazytrick.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</link>
+      <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-02-03-mot-chut-ve-rgb-vga-digital-rgb/</guid>
+      <description>MCU phải giao tiếp với chip ADV7401, tìm mãi tài liệu tiếng Việt mà không tìm được (chắc do tìm kém). Mất hơn 1 hôm mới hiểu được cơ bản chức năng của nó làm gì.
+Mô tả ngắn gọn ở đây để sau đỡ quên vậy:
+ADV7401 : Chip chuyển đổi tín hiệu truyền hình Analog (PAL, NTSC&amp;hellip;) sang dạng số, hoặc số hóa tín hiệu RGB/VGA về dạng Digital RGB.</description>
+    </item>
+    
+    <item>
+      <title>Hiểu thêm về HID Report Descriptor</title>
+      <link>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</link>
+      <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/</guid>
+      <description>Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.
+Giờ xin dịch lại bài này một cách khái quát nhất.
+Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau.</description>
+    </item>
+    
+    <item>
+      <title>Về Renesas FIT - Firmware Intergrated Technology</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-ve-renesas-fit-firmware-intergrated-technology/</link>
+      <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-ve-renesas-fit-firmware-intergrated-technology/</guid>
+      <description>Kinh nghiệm lập trình với Microcontroller chưa nhiều, chỉ mới 3 năm không liên tục. Nhưng cũng thấy phần nào được một ít gọi là cái hay của một công nghệ (thực ra cứ gọi là công nghệ thôi, chứ nhiều lúc công nghệ với kĩ thuật cũng khá gần nhau). Đó là FIT viết tắt của Firmware Intergration Technology (FIT) của Renesas.
+Theo những gì Renesas cung cấp, công nghệ này được sử dụng trong các dòng Chip RX từ RX63M, RX64M&amp;hellip;RX113).</description>
+    </item>
+    
+    <item>
+      <title>Bộ nhớ Flash</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-bo-nho-flash-se-viet/</link>
+      <pubDate>Mon, 25 Jan 2016 14:29:09 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-bo-nho-flash-se-viet/</guid>
+      <description>Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.
+Lập trình với bộ nhớ Flash Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn 0xFF thôi.
+Serial Flash Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất.</description>
+    </item>
+    
+    <item>
+      <title>Porting Non-OS Driver sang ITRON-based OS</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-porting-non-os-driver-sang-itron-based-os/</link>
+      <pubDate>Mon, 25 Jan 2016 14:27:20 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-porting-non-os-driver-sang-itron-based-os/</guid>
+      <description>Hệ điều hành ITRON-based</description>
+    </item>
+    
+    <item>
+      <title>Hệ điều hành ITRON-based trông như thế nào?(sẽ viết)</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</link>
+      <pubDate>Mon, 25 Jan 2016 14:25:05 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/</guid>
+      <description>Có lẽ viết về ITRON cần toàn diện một chút, tiếc là không có mạch để thử.
+Cứ viết trước 3 đề mục lớn để có hướng để ý, tìm hiểu.
+ ITRON-OS là gì? Những thuật ngữ cơ bản Người ta đã viết ITRON như thế nào?  </description>
+    </item>
+    
+    <item>
+      <title>I2C - Kế thừa UART và SPI (sẽ viết)</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</link>
+      <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>USB cho Dev (Chp.01 - Giới thiệu)</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</link>
+      <pubDate>Mon, 25 Jan 2016 14:18:10 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-usb-driver-va-usb-device-firmware-se-viet/</guid>
+      <description>USB - Một chuẩn giao tiếp phổ biến nhất (tính đến 2016), hãy cùng tìm hiểu một chút về nó. Bài này không phải dành cho người sử dụng bằng nhứng con số về tốc độ, hay cách cắm vật lý. Bài này là một bài dịch, mình thấy cần rất hữu ích khi bắt đầu phát triển sử dụng USB.
+Link gốc tại http://www.beyondlogic.org/usbnutshell/usb1.shtml
+Tóm tắt về USB Hiểu chuẩn USB để sử dụng trong phát triển Nếu bạn là người bắt đầu công việc phát triển sử dụng USB, thì quả thật nó không dễ dàng gì.</description>
+    </item>
+    
+    <item>
+      <title>Tầng thấp của USB</title>
+      <link>https://blog.lazytrick.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</link>
+      <pubDate>Mon, 25 Jan 2016 14:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-25-tang-thap-cua-usb-se-viet/</guid>
+      <description>USB - Khỏi cần nói thì nó cũng đã quá nổi tiếng về sự phổ biến rồi. Gần như mọi thứ đều mặc định phải có kết nối USB, cổng USB gần như là bắt buộc trên máy tính, và rất nhiều thiết bị điện tử ta thấy. Từ USB1.1 đến 2.0, rồi gần đây nhất là 3.0. Rồi gần đây người ta có nhắc nhiều đến USB Type C.</description>
+    </item>
+    
+    <item>
+      <title>Một số thuật ngữ về giao thông thông minh</title>
+      <link>https://blog.lazytrick.com/post/2016-01-24-mot-so-thuat-ngu-ve-giao-thong-thong-minh/</link>
+      <pubDate>Sun, 24 Jan 2016 13:28:34 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-24-mot-so-thuat-ngu-ve-giao-thong-thong-minh/</guid>
+      <description>ITS - Intelligen Transport System : Hệ thống giao thông thông minh  ETC - Electronic Toll Collection : Tập hợp các hệ thống toán toán phí điện tử OBU - On-Board Unit : Thiết bị gắn vào phương tiện giao thông RDU - Road Side Unit : Thiết bị đặt ở các trạm thu phí, thường là 1 hoặc 1 vài Anten được kết nối với một hệ thống máy tính.</description>
+    </item>
+    
+    <item>
+      <title>Chia sẻ dữ liệu giữa Host và Guest như thế nào là có lợi nhất?</title>
+      <link>https://blog.lazytrick.com/post/2016-01-24-chia-se-du-lieu-giua-host-va-guest-nhu-the-nao-la-co-loi-nhat/</link>
+      <pubDate>Sun, 24 Jan 2016 13:14:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-24-chia-se-du-lieu-giua-host-va-guest-nhu-the-nao-la-co-loi-nhat/</guid>
+      <description>Ngày nay, dù chỉ cần có 1 mày tính thì người ta vẫn có thể sử dụng nhiều môi trường hệ điều hành khác nhau. Cái đó gọi là ảo hóa.
+Tức là trên một máy tính chạy một hệ điều hành cụ thể. Ta cài đặt một ứng dụng mô phỏng một máy tính trên đó. Ta sẽ có bao nhiều máy tính tùy vào khả năng phần cứng của máy thôi.</description>
+    </item>
+    
+    <item>
+      <title>[CodeC] Về cách viết code</title>
+      <link>https://blog.lazytrick.com/post/2016-01-05-codec-ve-cach-viet-code/</link>
+      <pubDate>Tue, 05 Jan 2016 15:02:39 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-05-codec-ve-cach-viet-code/</guid>
+      <description>Việc code thường hay phải lặp đi lặp lại rất nhiều thao tác trong nhiều dự án khác nhau. Có thể kể đến nhưng scanf, fread, fwrite&amp;hellip;.print, debug&amp;hellip;
+Giờ có một design, tức là flow chart+ danh sách tên hàm.
+Flow chart thì rõ là phải viết rồi, có thể đặt tên theo các xử lý, gắn các mã. Nó dù rất giống với phần implement nhưng ta có thể tách bạch được.</description>
+    </item>
+    
+    <item>
+      <title>ECB, CBC trong AES</title>
+      <link>https://blog.lazytrick.com/post/2016-01-05-ecb-cbc-trong-aes/</link>
+      <pubDate>Tue, 05 Jan 2016 14:48:34 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-01-05-ecb-cbc-trong-aes/</guid>
+      <description>Một trong những phương pháp mã hóa dữ liệu được sử dụng như là một chuẩn. Đó là AES (Advanced Encryption Standard)
+Về mã hóa, là quá trình biến dữ liệu rõ (plain) thành dữ liệu nhiễu (encrypt).
+1. Hai cách ứng dụng Mã hóa nói chung, thường sử dụng dụng một phương pháp toán học, mã học nào đó để làm nhiễu một cách chủ động thông tin ban đầu.</description>
+    </item>
+    
+    <item>
+      <title>Khái quát về FAT</title>
+      <link>https://blog.lazytrick.com/post/2015-12-27-khai-quat-ve-fat/</link>
+      <pubDate>Sun, 27 Dec 2015 13:39:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-12-27-khai-quat-ve-fat/</guid>
+      <description>Trong quá trình porting sang hệ điều hành ITRON-based (NORTi), đã có dịp tìm hiểu về FAT, thấy bài của anh ELMちゃん này đầy đủ những thứ mình muốn biết về FAT nên sẽ dịch lại cả bài ở đây.
+Link gốc: http://elm-chan.org/docs/fat.html
+Trong tài liệu này, về cơ bản là dựa trên tài liệu vể FAT32 Spec , nhưng sẽ được giản luợc và bô sung thêm phần giải thích khái niệm mà bản gốc không có.</description>
+    </item>
+    
+    <item>
+      <title>[OE] Tại sao vẫn dùng FAT</title>
+      <link>https://blog.lazytrick.com/post/2015-12-27-oe-tai-sao-van-dung-fat/</link>
+      <pubDate>Sun, 27 Dec 2015 13:17:33 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-12-27-oe-tai-sao-van-dung-fat/</guid>
+      <description>Bài hôm nay nói về một hệ thống file được sử dụng khá nhiều trên các phần mềm chạy trên mạch.
+Dù hiện nay có rất nhiều hệ thống file được nói đến như NTFS, Ext3, Ext4&amp;hellip;Hầu hết những hệ thống file đó được sử dụng chủ yếu trên các máy có năng lực tính toán cao và khả năng lưu trữ lớn. Thế còn với những máy có năng lực tính toán hạn chế, dung lượng lưu trữ nhỏ thì sẽ sử dụng hệ thống file nào.</description>
+    </item>
+    
+    <item>
+      <title>[USB]Các khái niệm về USB</title>
+      <link>https://blog.lazytrick.com/post/2015-12-22-usbcac-khai-niem-ve-usb/</link>
+      <pubDate>Tue, 22 Dec 2015 16:41:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-12-22-usbcac-khai-niem-ve-usb/</guid>
+      <description>Kết nối USB, chắc chắn ai cũng biết. Mỗi người đểu sở hữu ít nhất một thiết bị có kết nối này.
+Tôi cũng đã từng nghĩ nó sẽ khá dễ dàng để hiểu, để lập trình giống như người dùng vẫn hiểu về nó.
+Đúng là với người dùng cuối, một thiết bị có kết nối thì khả năng có nó có thể kết với máy tính như smartphone, máy nghe nhạc, bộ sạc&amp;hellip;.</description>
+    </item>
+    
+    <item>
+      <title>CMake - Một ví dụ đơn giản</title>
+      <link>https://blog.lazytrick.com/post/2015-08-16-cmake-mot-vi-du-don-gian/</link>
+      <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-08-16-cmake-mot-vi-du-don-gian/</guid>
+      <description>Trong bài tôi đã giới thiệu qua về CMake. Như ta đã biết nó cung cấp tính tăng giúp việc sinh ra Makefile một cách hiệu quả. Nhất là đối với các dự án phức tạp. Nó cũng cung cấp thêm các bộ sinh khác để sinh cấu trúc quản lý source cho các IDE khác nhau như Visual Studio, KDE.
+Trong giới hạn, tôi sẽ nói về việc sử dụng CMake để build một simple project trên cả Windows và Linux.</description>
+    </item>
+    
+    <item>
+      <title>Giao thức MQTT</title>
+      <link>https://blog.lazytrick.com/post/2015-08-04-giao-thuc-mqtt/</link>
+      <pubDate>Tue, 04 Aug 2015 14:56:02 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-08-04-giao-thuc-mqtt/</guid>
+      <description>Bài này dự là sẽ dịch lại đặc của giao thức MQTT này, nhằm có một cách hiểu tổng quát về MQTT protocol.
+Link gốc :
+http://public.dhe.ibm.com/software/dw/webservices/ws-mqtt/mqtt-v3r1.html
+Update 2017/03/24: Bản dịch của MQTT đã được chuyển sang địa chỉ sau:
+http://minatu2d.github.io/</description>
+    </item>
+    
+    <item>
+      <title>CMake - Công cụ hỗ trợ việc build source trên nhiều platform.</title>
+      <link>https://blog.lazytrick.com/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</link>
+      <pubDate>Sun, 02 Aug 2015 20:38:27 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-08-02-cmake-cong-cu-ho-tro-viec-build-source-tren-nhieu-platform/</guid>
+      <description>Đuợc làm việc cùng những pro đầy kinh nghiệm thực sự rất thú vị, ngoài việc chia sẻ hiểu biết của mình, còn đuợc hóng nhiều kĩ năng sử dụng tool của các pro nữa. Mình thấy rằng, không có tool nào gọi là thần thành, mọi tool chỉ giúp tăng tốc độc với những người mới và không đủ thời gian để hiểu sâu. Còn với những người đã nhiều kinh nghiệm, họ sử dụng tool theo các điểm mạnh của chúng và kết hợp rất nhiều tool một cách nhịp nhàng sao cho công việc tiến hành nhanh nhất.</description>
+    </item>
+    
+    <item>
+      <title>Glogger - Log viewer tốt nhưng còn một vài điểm</title>
+      <link>https://blog.lazytrick.com/post/2015-07-28-glogger-log-viewer-very-tot-nhung-con-mot-vai-diem/</link>
+      <pubDate>Tue, 28 Jul 2015 15:21:24 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-28-glogger-log-viewer-very-tot-nhung-con-mot-vai-diem/</guid>
+      <description>Nói đến editor, ai cũng nghĩ đến Notepad++. Sakura (JP thôi), hay gì gì đó.
+Ừ thì đúng Notepad++ rất nhiều tính năng, rất nhanh, rất nhẹ.
+Nhưng gần đây tôi phát hiện ra điểm yếu của nó, xử lý file lớn của nó rất tệ. Thậm chí nó còn gây mất dữ liệu.
+Tôi và bạn tôi đã thử với một file khoảng 600MB trở lên thì khó có thể thực hiện một phép copy &amp;amp; paste nào nữa.</description>
+    </item>
+    
+    <item>
+      <title>Thêm chức năng giao tiếp bằng telnet cho ứng dụng?</title>
+      <link>https://blog.lazytrick.com/post/2015-07-28-them-chuc-nang-giao-tiep-bang-telnet-cho-ung-dung/</link>
+      <pubDate>Tue, 28 Jul 2015 15:09:41 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-28-them-chuc-nang-giao-tiep-bang-telnet-cho-ung-dung/</guid>
+      <description>Hôm nay mình có gợi ý ông leader về việc sử dụng giao diện telnet để giúp ứng dụng giao tiếp tốt hơn với bên ngoài.
+Thì ông ấy hỏi : &amp;ldquo;Mày làm nó bao giờ chưa? Không đủ time đâu. Nghĩ cũng đúng, mình thấy có thể làm thôi chứ chưa đo time để làm cái đó.&amp;rdquo;
+Vậy thì thử xem sao:
+Tôi dự định sẽ thêm tính năng giao tiếp bằng telnet cho một ứng dụng chát.</description>
+    </item>
+    
+    <item>
+      <title>Nếu wireshark trên Windows gặp lỗi, hãy thử dùng dumpcap</title>
+      <link>https://blog.lazytrick.com/post/2015-07-28-neu-wireshark-tren-windows-gap-loi-hay-thu-dung-dumpcap/</link>
+      <pubDate>Tue, 28 Jul 2015 15:04:10 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-28-neu-wireshark-tren-windows-gap-loi-hay-thu-dung-dumpcap/</guid>
+      <description>Wireshark, một phần mềm quá phổ biến để phân tích gói tin cho dù là có dây hay không dây, 1 dây hay 2 dây, tất tần tật. Gì em nó cũng làm được.
+Wireshark vốn đuợc phát triển cho Solaris và Linux. Và thư viện đồ họa hiện đang sử dụng là gtk.
+Gtk là vốn là thư viện đựoc phát triển từ dự án GIMP ( GNOME Graphic Toolkit).</description>
+    </item>
+    
+    <item>
+      <title>Cơ bản về pthread</title>
+      <link>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</link>
+      <pubDate>Thu, 16 Jul 2015 23:18:38 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/</guid>
+      <description>Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.</description>
+    </item>
+    
+    <item>
+      <title>Wireshark có thể làm gì?</title>
+      <link>https://blog.lazytrick.com/post/2015-07-14-wireshark-co-the-lam-gi/</link>
+      <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-14-wireshark-co-the-lam-gi/</guid>
+      <description>Dù biết tool này đã lâu, từ hồi học ĐH có mở ra mở vào để làm mấy bài tập mạng theo kiểu &amp;ldquo;chống chế&amp;rdquo;. Hơn nữa ngày đó, phần mạng (networking) mình cũng không nhiều kiến thức vì đang ham hố phần viết một phần mềm để đời, có giao diện chứ không đen ngòm như mấy cái thầy giáo dạy trên lớp.
+Lại sắp lan man rồi, vào đề thôi.</description>
+    </item>
+    
+    <item>
+      <title>Một ứng dụng Web đơn giản sử dụng CGI/Perl sẽ cần những gì?</title>
+      <link>https://blog.lazytrick.com/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</link>
+      <pubDate>Sat, 11 Jul 2015 13:52:18 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-07-11-mot-ung-dung-web-don-gian-su-dung-cgiperl-se-can-nhung-gi/</guid>
+      <description>Với những ai đã từng làm nhiều với CGI và Perl sẽ dễ dàng đưa ra phương án tối ưu nhất.
+Còn với những ai mới bắt đầu như mình , hoặc chỉ cần 1 chút thôi chẳng hạn thì có thể dễ bị lạc đường giữa rất nhiều framework hoặc thư viện của perl.
+Vừa rồi mình có làm một ứng dụng Web
+ Server Side : CGI sử dụng ngôn ngữ perl.</description>
+    </item>
+    
+    <item>
+      <title>[OE] Build một bản Linux cho Raspberry PI B&#43; sử dụng OpenEmbedded</title>
+      <link>https://blog.lazytrick.com/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</link>
+      <pubDate>Sat, 25 Apr 2015 15:30:15 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-04-25-oe-build-mot-ban-linux-cho-raspberry-pi-b-su-dung-openembedded/</guid>
+      <description>Poky là một hệ distro linux ở dạng tham chiếu của Yocto Project.
+OpenEmbedded là một phần trong đó.
+Nào thế đủ rồi, ta đi vào phần chính.
+1. Về Yocto project và ứng dụng cho Rasberry PI Lần trước, tôi có viết một hứng về việc tạo ra một ảnh cho Raspberry dựa trên Raspbian (chụp lại ảnh của một hệ thống đang chạy). Với kết quả lúc trước, thì vấn đề là nó không thực sự nhỏ hơn, khi giải nén ra nó vẫn chiếm khoảng 414MB.</description>
+    </item>
+    
+    <item>
+      <title>CentOS 7 - Ổn định, chính xác, dễ hiểu</title>
+      <link>https://blog.lazytrick.com/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</link>
+      <pubDate>Sat, 25 Apr 2015 08:19:53 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-04-25-centos-7-on-dinh-chinh-xac-de-hieu/</guid>
+      <description>Đang chán nản với cái ứng dụng C# vì không thích cái kiểu làm thì theo yêu cầu mà hỏi thì cái gì các sếp cũng không rõ. Thì anh Kusu ra hỏi.
+ Kusu : Mày biết CGI không? Mình : (Ah ha, có việc khác hay hơn ư) Có, trả lời ngay, Kusu : Bọn tao cần 1 cái web dùng CGI chạy trên CentOS (Wow, good xúc thôi), trong công ty ít người làm về server với Web lắm.</description>
+    </item>
+    
+    <item>
+      <title>[OE]Bitbake - Từ Hello World đến một Distro</title>
+      <link>https://blog.lazytrick.com/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</link>
+      <pubDate>Sat, 25 Apr 2015 07:50:24 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-04-25-oebitbake-tu-hello-world-den-mot-distro/</guid>
+      <description>Bitbake là một công cụ cốt lõi của Yocto Project. Nó bao gồm 1 bộ thông dịch các script được viết trong các file recipe (công thức tạo phần mềm), và thực hiện các lệnh trong đó. Nó mô tả lại và tự động hóa qúa trình người ta đưa một phần mềm vào một distro.
+Về việc đưa một phần mềm vào distro, ta có thể thấy nó bao gồm vài step chính.</description>
+    </item>
+    
+    <item>
+      <title>NodeJS - Cũng hay hay</title>
+      <link>https://blog.lazytrick.com/post/2015-04-11-nodejs-cung-hay-hay/</link>
+      <pubDate>Sat, 11 Apr 2015 06:30:59 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-04-11-nodejs-cung-hay-hay/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>OpenEmbedded là gì?</title>
+      <link>https://blog.lazytrick.com/post/2015-02-11-openembedded-la-gi/</link>
+      <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2015-02-11-openembedded-la-gi/</guid>
+      <description>Cái gì liên quan đến Linux, Embedded thì mình tìm hiểu kĩ nhất có thể. Trừ những chỗ không thể sờ vào hoặc cực kì mất thời gian để tìm hiểu nó thì mình sẽ bỏ quá.
+Đại khái sẽ trả lời mấy câu hỏi sau
+  OpenEmbedded là cái L gì?
+  Tại sao người ta dùng nó?
+  Những cách tiếp cận với em nó ở mức độ SW</description>
+    </item>
+    
+    <item>
+      <title>About</title>
+      <link>https://blog.lazytrick.com/about/</link>
+      <pubDate>Fri, 23 Jan 2015 07:19:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/about/</guid>
+      <description>Xin chào, Tôi là một lập trình viên tầm thường, một người lười ghi nhớ (A mediocre developer, a lazier). Tôi quan tâm đến Linux, đặc biệt là Embedded Linux và những thứ ở mức thấp (low-level). Hiện tại, tôi đang việc như một BrSE tại đất nước của những thánh nữ. Tôi viết trang này để mô tả những gì tôi học được, trong quá trình làm việc của mình.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-clone-private-github-repo-tu-docker-container/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-clone-private-github-repo-tu-docker-container/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://blog.lazytrick.com/post/2020-04-01-aws-security-group-is-stateful/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-04-01-aws-security-group-is-stateful/</guid>
+      <description>Như một beginner (một người chậm tiến chăng??!) đến với thế giới Cloud Computing. Có nhiều khái niệm quá. Khái niệm đầu tiên thấy khó hiểu là Security Group (dịch: nhóm bảo mật??).
+1. Security Group là gì? 2. Security Group khác gì Network ACL 3. Tại sao lại nói Secirity Group is stateful 4. Một số công cụ visilize cho Security Group 5. Chú ý khi sử dụng Security Group </description>
+    </item>
+    
+  </channel>
+</rss>

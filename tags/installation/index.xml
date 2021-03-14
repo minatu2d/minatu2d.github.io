@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Installation on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/installation/</link>
+    <description>Recent content in Installation on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Tue, 20 Sep 2016 08:42:17 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/installation/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cài đặt GDB (02 - Cài đặt)</title>
+      <link>https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</link>
+      <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-20-cai-dat-gdb-02-cai-dat/</guid>
+      <description>Khi sử dụng GDB để debug 1 chương trình thì chương trình đó gọi là target program.
+Khi nói về vị trí của GDB dùng để debug và target program, ta sẽ có 2 cách trường hợp sử dụng sau:
+ GDB và target program cùng ở 1 máy : Thường sử dụng với chính các chương trình được dev, rồi build, rồi chạy trên máy đó. Đây là trường hợp chúng ta hay thấy nhất, đó là khi phát triển các app desktop.</description>
+    </item>
+    
+  </channel>
+</rss>

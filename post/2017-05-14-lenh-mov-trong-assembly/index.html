@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Lệnh MOV trong Assembly - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Lệnh MOV trong Assembly</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p><strong>Link gốc</strong>: <a href="http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html">http://www5c.biglobe.ne.jp/~ecb/assembler/2_1.html</a></p>
+<h2 id="1-lệnh-mov">1. Lệnh MOV</h2>
+<p>Lệnh MOV, có thể nói là lệnh cơ bản nhất, có tần số sử dụng nhiều nhất trong bất cứ hệ tính toàn nào.<br>
+Làm bất cứ cái gì, đều có bao gồm <code>sao chép</code> dữ liệu trong đó. Nói là chức năng <code>sao chép</code> thôi, chứ thực sự nó bao hàm sao chép, truyền dữ liệu. Đó có thể là từ bộ nhớ (các loại RAM) vào thanh ghi, từ thanh ghi vào bộ nhớ, từ một giá trị nào đó xuống thanh ghi hoặc bộ nhớ chẳng hạn.<br>
+Tuy nhiên hãy nhớ rằng <strong>KHÔNG THỂ CHUYỂN DỮ LIỆU TỪ BỘ NHỚ SANG BỐ NHỚ ĐƯỢC</strong>,<br>
+bởi vì <strong>BỘ NHỚ ĐƯỢC TRUY CẬP THEO BUS (20bit hoặc 32bit), MỖI LẦN TRUY CẬP BỘ NHỚ CHỈ CÓ THỂ TRUY CẬP MỘT ĐỊA CHỈ MÀ THÔI</strong></p>
+<p>`</p>
+<p>Lệnh MOV có 2 tham số, được gọi là <strong>Operand</strong>, nó giống như bên dưới đây:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#008b45">MOV</span> <span style="color:#00688b">DEST</span>, <span style="color:#00688b">SOURCE</span>  
+</code></pre></div><p>Lệnh này theo cú pháp Intel nha.<br>
+Chuyển (Copy) dữ liệu từ <strong>SRC</strong> đến <strong>DEST</strong><br>
+<strong>SRC</strong>, <strong>DEST</strong>: là địa chỉ thanh ghi hoặc bộ nhớ, bỏ trường hợp cả 2 là bộ nhớ.</p>
+<p>Một số ví dụ:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#008b45">MOV</span> <span style="color:#00688b">AX</span>, <span style="color:#00688b">BX</span> : <span style="color:#00688b">Copy</span> <span style="color:#00688b">nội</span> <span style="color:#00688b">dung</span> <span style="color:#00688b">từ</span> <span style="color:#00688b">thanh</span> <span style="color:#00688b">ghi</span> <span style="color:#00688b">BX</span> <span style="color:#00688b">sang</span> <span style="color:#00688b">thanh</span> <span style="color:#00688b">ghi</span> <span style="color:#00688b">AX</span>  
+<span style="color:#00688b">MOV</span> <span style="color:#00688b">AL</span>,<span style="color:#b452cd">10</span> : <span style="color:#00688b">Lưu</span> <span style="color:#00688b">giá</span> <span style="color:#00688b">trị</span> <span style="color:#b452cd">10</span> <span style="color:#00688b">vào</span> <span style="color:#00688b">thanh</span> <span style="color:#00688b">ghi</span> <span style="color:#00688b">AL</span>  
+</code></pre></div><p><code>Một số chú ý</code>:</p>
+<ul>
+<li>Không thể chuyển dữ liệu giữa bộ nhớ với nhau.</li>
+<li>Nguồn và đích chuyển dữ liệu phải có cùng kích thước</li>
+<li>Không thể chuyển giá giá trị vào thanh ghi segment`</li>
+</ul>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/assembly/" rel="tag">Assembly</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>USB cho dev (Chap.04 - Các loại Endpoint) - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">USB cho dev (Chap.04 - Các loại Endpoint)</h1>
+			
+		</header><div class="content post__content clearfix">
+			<h2 id="đặc-tả-usb-định-nghĩa-4-loại-transferendpoint">Đặc tả USB định nghĩa 4 loại Transfer/EndPoint</h2>
+<ol>
+<li>
+<p>Control Transfer</p>
+</li>
+<li>
+<p>Interrupt Transfer</p>
+</li>
+<li>
+<p>Isochronous Transfer</p>
+</li>
+<li>
+<p>Bulk Transfer</p>
+</li>
+</ol>
+<h3 id="1-control-transfer-truyền-điều-khiển">1. Control Transfer (Truyền điều khiển)</h3>
+<p>Control Transfer thường được sử dụng cho Commands và Status. Đây là loại truyền chủ yếu được sử dụng trong suốt quá trình Enumeration. Ở dạng truyền này, các gói tin được gửi theo phương trâm best effort delivery (gửi đến khi nào nhận được thì tính tiếp). Độ dài mỗi packet trong dạng truyền control ở mỗi speed lại khác nhau. Ở low speed, nó là 8 byte; Ở High Speed cho phép độ dài 8, 16, 32 và 64 nữa; Ở Full Speed thì phải là 64 byte.</p>
+<p>Trong dạng truyền Control, mỗi lần truyền sẽ có 3 stage, mỗi Stage là một nhóm packet và được thực hiện liên tiếp nhau.</p>
+<p><strong>Đầu tiên là Setup Stage.</strong></p>
+<p>Ở Stage này, request sẽ được chuyển đến phía Function Device. Quá trình này được thực hiện trong 3 packet. Packet đầu tiên là Setup Token, chứa Address và Endpoint Number. Tiếp theo là Data Packet, luôn chứa PID Type ở Data0 và một Setup Packet chỉ rõ loại request (Setup Packet sẽ được giải thích chương 6). Packet cuối cùng là một handshaked, dùng để cho biết việc nhận đã xảy thành công hay chưa. Nếu phía Function Device nhận thành công Setup Data (gồm CRC và PID đều OK), nó sẽ trả lời phía Host bằng ACK. Ngược lại, nó có thẻ bỏ qua, không cần gửi lại gì hết. Phía Function không thể gửi một gói STALL hoặc NAK để trả lời Setup Packet được.</p>
+<p><img src="https://blog.lazytrick.com/post/images/contset.gif" alt="contset"></p>
+<p><strong>Tiếp theo là Data Stage.</strong></p>
+<p>Stage này không phải lúc nào cũng có. Nó chứa một hoặc nhiều transfer IN hoặc OUT. Request Setup sẽ cho biết lượng dữ liệu được truyền. Nếu lượng dữ liệu phải truyền vượt quá kích thước tối đa của một Packet, thì dữ liệu sẽ được gửi lần lượt theo từng gói.</p>
+<p>Có 2 kịch bản gửi dữ liệu, đó là IN và OUT.</p>
+<p><strong>IN :</strong></p>
+<p>Khi Host muốn nhận dữ liệu, nó sẽ gửi một IN Token. Phía Function nhận được IN Token sẽ kiểm tra xem trường PID (bao gồm phần đảo bit) có hợp lệ hay không. Nếu hợp lệ, device Function sẽ trả lại bằng một packet DATA chứa dữ liệu cần gửi hoặc packet STALL nếu EndPoint có lỗi hoặc NAK nếu EndPoint đang có xử lý khác (tất nhiên các trường hợp lỗi sẽ không có dữ liệu được gửi đi).</p>
+<p><img src="https://blog.lazytrick.com/post/images/contdata.gif" alt=""></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt=""></p>
+<p><strong>OUT:</strong></p>
+<p>Khi host cần gửi một gói dữ liệu điều khiển, nó sẽ gửi đi một token OUT với phần payload là dữ liệu cần gửi. Nếu có bất cứ phần nào của token OUT hoặc packet Data bị lỗi, thì phía Function sẽ bỏ qua các packet này. Ngược lại, nếu dữ liệu hợp lệ và buffer Endpoint chỉ định đang rỗng nữa thì phía Functions sẽ đẩy dữ liệu vào buffer đó. Rồi Function sẽ gửi lại một ACK cho Host khi nó nhận đầy đủ dữ liệu. Còn nếu buffer Endpoint không rỗng (tức đang có dữ liệu chờ xử lý), nó sẽ gửi lại phía Host một NAK. Còn lại, khi endpoint gặp bất cứ lỗi nào khác, Function sẽ trả lại STALL cho Host.</p>
+<p><strong>Cuối cùng là Status Stage</strong></p>
+<p>Sẽ thông báo trạng thái của toàn bộ quá trình, nội dung của stage này phụ thuộc vào hướng truyền. Thông báo về Status luôn được thực hiện bởi Functions.</p>
+<p><strong>IN :</strong> Nếu host gửi một Token IN để nhận dữ liệu, thì phía Host phải xác nhận dữ liệu đã được nhận thành công. Việc xác nhận này được thực hiện khi Host gửi một token OUT với độ dài payload là zero. Việc nhận được token này sẽ coi như là ACK. Nếu không nhận được hoặc nhận lỗi, phía Host sẽ coi là STALL. Trường hợp còn lại sẽ coi là NACK, để báo rằng Host sẽ lặp lại Status Stage sau đó.</p>
+<p><img src="https://blog.lazytrick.com/post/images/contsta1.gif" alt=""></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt=""></p>
+<p><strong>OUT</strong>: Nếu host gửi OUT token để gửi dữ liệu ra thì phía Function sẽ xác nhận việc nhận dữ liệu thành công bằng cách gửi lại một Packet có độ dài là Zero cho 1 Token IN mà Host sẽ gửi sau cùng. Tuy nhiên, nếu có lỗi xảy ra khi trả lại Zero Packet thì nó sẽ coi là STALL. Nếu Function ko thể trả lời IN Token do bận, nó sẽ báo lại là NACK để Host nhận lại Status trong Phase tiếp theo.</p>
+<p><img src="https://blog.lazytrick.com/post/images/contsta2.gif" alt=""></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt=""></p>
+<p><strong><em>Truyền Control : Một bức tranh lớn hơn</em></strong></p>
+<p>Giờ, chúng ta cùng xem những thứ chúng ta đã nói ở phần trước kết hợp với nhau như thế nào? Hãy xem ví dụ : Host muốn request Device Descriptor trong quá trình Enumeration thì những packet nào sẽ được gửi/nhận.</p>
+<p>Đầu tiên, Host sẽ gửi Set up Token để báo cho function biết rằng nó sẽ gửi Setup packet tiếp sau. Trường địa chỉ ADDR sẽ chứa địa chỉ của device mà Host muốn request đến. EndPoint number là Zero, tức là Default Pipe.</p>
+<p>Tiếp đó, Host sẽ gửi Data Packet (loại Setup) chưa 8 byte payload (chính là Device Descriptor Request được miêu tả trong Chapter 09 của USB Specification). Phía USB Function sau đó gửi ACK (để xác nhận) sau khi đã nhận Setup Packet đầy đủ và không lỗi. Nếu nội dung của Packet bị lỗi, Device sẽ bỏ qua Packet đó và không gửi ACK gì hết. Phía Host sẽ tự nhận ra và gửi lại Packet đó sau đó ít lâu.</p>
+<p><strong>1. Setup Token</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>ADDR</strong></p>
+<p> </p>
+<p><strong>ENDP</strong></p>
+<p> </p>
+<p><strong>CRC5</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Address &amp; Endpoint Number</p>
+<p><strong>2. Data0 Packet</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>Data0</strong></p>
+<p> </p>
+<p><strong>CRC16</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Device Descriptor Request</p>
+<p><strong>3. Ack Handshake</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Device Ack. Setup Pack</p>
+<p><em>Hình trên chưa 3 packet đã nói ở trên.</em></p>
+<p>Giờ phía Device sẽ decode Packet và có được 8 byte. Sau khi xác định được 8 byte này là Device Descriptor Request, nó sẽ gửi Device Descriptor trong các packet bên dưới đây.</p>
+<p><strong>1. In Token</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>ADDR</strong></p>
+<p> </p>
+<p><strong>ENDP</strong></p>
+<p> </p>
+<p><strong>CRC5</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Address &amp; Endpoint Number</p>
+<p><strong>2. Data1 Packet</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>Data1</strong></p>
+<p> </p>
+<p><strong>CRC16</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>First 8 Bytes of Device Descriptor</p>
+<p><strong>3. Ack Handshake</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Host Acknowledges Packet</p>
+<p><strong>1. In Token</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>ADDR</strong></p>
+<p> </p>
+<p><strong>ENDP</strong></p>
+<p> </p>
+<p><strong>CRC5</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Address &amp; Endpoint Number</p>
+<p><strong>2. Data0 Packet</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>Data0</strong></p>
+<p> </p>
+<p><strong>CRC16</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Last 4 bytes + Padding</p>
+<p><strong>3. Ack Handshake</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Host Acknowledges Packet</p>
+<p>Ở hình trên, payload tối đa của 1 packet được giả định là có độ dài 8 byte. Vì thế, ta thấy Device Descriptor (độ dài 12 byte) được chia ra 2 lần gửi tương ứng với 2 lần nhận IN Token.</p>
+<p>Sau khi Device Descriptor được gửi hết, thì Host sẽ yêu cầu phía Function xác nhận dữ liệu gửi bằng cách gửi OUT và mong muốn nhận được response với length là ZERO.</p>
+<p><strong>1. Out Token</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>ADDR</strong></p>
+<p> </p>
+<p><strong>ENDP</strong></p>
+<p> </p>
+<p><strong>CRC5</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Address &amp; Endpoint Number</p>
+<p><strong>2. Data1 Packet</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>Data1</strong></p>
+<p> </p>
+<p><strong>CRC16</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Zero Length Packet</p>
+<p><strong>3. Ack Handshake</strong></p>
+<p> </p>
+<p><strong>Sync</strong></p>
+<p> </p>
+<p><strong>PID</strong></p>
+<p> </p>
+<p><strong>EOP</strong></p>
+<p>Device Ack. Entire Transaction</p>
+<h3 id="2-interrupt-transfers-dạng-truyền-ngắt">2. Interrupt Transfers (Dạng truyền ngắt)</h3>
+<p>Như ta đã biết, ngắt được sinh ra từ thiết bị ở bất cứ thời điểm cho phép nào. Tuy nhiên, trong USB thì phía thiết bị (Function) vẫn phải đợi Host hỏi rồi mới báo là có ngắt hay không.</p>
+<p><strong>Đặc điểm của Interrupt Transfers:</strong></p>
+<ul>
+<li>Có độ trễ được đảm bảo</li>
+<li>1 hướng</li>
+<li>Có phát hiện lỗi và retry</li>
+</ul>
+<p>Interrupt Transfer thông thường là không có chu kì cố định, thiết bị nhỏ sẽ bắt đầu truyển trong một độ trễ đảm bảo. Các Interrupt request sinh ra từ thiết bị sẽ được giữ đến khi host hỏi .</p>
+<p><strong>Đặc trưng về payload của data:</strong></p>
+<ul>
+<li>Kích thước tối đa của payload cho low-speed là 8 bytes.</li>
+<li>Kich thước tối đa của payload cho Full-Speed là 64 bytes.</li>
+<li>Kích thước tối đa của payload cho High-Speed là 1024 bytes.</li>
+</ul>
+<p><img src="https://blog.lazytrick.com/post/images/transint.gif" alt=""></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt=""></p>
+<p>Hình trên miêu tả định dạng phổ biến của IN và OUT Interrupt:</p>
+<p><strong>IN</strong> : Phía Host sẽ định kì poll (hỏi) phía Function xem có ngắt hay chưa. Tần số polling này được quy định trong phần EndPoint Description của thiết bị đó. Mỗi lần hỏi host sẽ gửi một token IN. Nếu token này bị hỏng, phía Function sẽ bỏ qua packet và tiếp tục theo dõi bus để đợi token mới.</p>
+<p>Nếu có ngắt đang được xếp bên trong thiết bị, thì Function sẽ gửi một packet trả loại phía Host và kèm theo dữ liệu tương ứng với ngắt đó. Host sau khi nhận được trả lời, nó sẽ báo lại bằng 1 ACK. Nếu dữ liệu trả lại bị hỏng, thì Host sẽ không trả lại gì hết. Nếu không có ngắt nào xảy ra khi Function nhận được poll từ Host, nó sẽ báo lại cho Host bằng NAK. Nếu có lỗi xảy ra trên Function thì nó sẽ gửi lại STALL cho Host.</p>
+<p><strong>OUT</strong>: Khi một host muốn gửi dữ liệu ngắt đến thiết bị bằng ngắt, nó sẽ đây một OUT token, tiếp theo đó là dữ liệu. Nếu bất kì phần nào của OUT token hoặc dữ liệu bị hỏng, phía Function sẽ bỏ qua packet. Nếu buffer của EndPoint bị rỗng, Function sẽ copy dữ liệu vào, rồi báo lại cho Host biết bằng 1 ACK. Nếu buffer của EndPoint không rỗng, tức là dữ liệu trước đó chưa được xử lý, thì Function sẽ gửi trả lại Host 1 gói NACK. Tuy nhiên, nếu lỗi xảy ra liên tục, và thấy rằng nên gửi lại thì nó sẽ gửi cho Host 1 STALL.</p>
+<h3 id="3-isochronous-transfer-dạng-truyền-đồng-bộ">3. Isochronous Transfer (Dạng truyền đồng bộ)</h3>
+<p>Là dạng truyền xảy ra liên tục và có chu kì ổn định. Được sử dụng khi truyền những thông tin đặc trưng như âm thanh, hình ảnh. Nếu delay hoặc gửi lại xảy ra khi truyền âm thanh, hình ảnh, thì chúng ta sẽ thấy một số âm thanh có vẻ kì cục, kiểu như xước đĩa etc. Hoặc các nhạc không đồng bộ với hình ảnh, ta có thể dễ dàng nhận thấy chúng. Tuy nhiên, nếu 1 packet hoặc 1 frame bị drop một vài lần thì nó ít khi bị chú ý bởi người xem, nghe.</p>
+<p><strong>Dạng truyền đồng bộ sẽ cung cấp:</strong></p>
+<ul>
+<li>Một bandwidth đảm bảo</li>
+<li>Độ trẽ được giới hạn</li>
+<li>Một đường ống (stream pipe) vô hướng</li>
+<li>Phát hiện lỗi thông qua CRC, nhưng không yêu cầu gửi lại</li>
+<li>Chỉ sử dụng ở Full hoặc High Speed mode</li>
+<li>Không data toggling</li>
+</ul>
+<p>Kích thước lớn nhất của dữ liệu truyền (payload) được chỉ rõ trong phần mô tả EndPoint của một Endpoint truyền đồng bộ. Nó có thể truyền tới 1023 bytes với Full Speed và 1024 bytes với High Speed. Kích thước lớn nhất của payload sẽ ảnh hướng đến bandwitdh yêu cầu đến bus. Vì thế, phải thận trọng để chọn payload size phù hợp. Nếu sử dụng một payload lớn, thì nên sử dụng các định nghĩa cho alternative interface (interface thay thế khi cần) để thực hiện nhiều payload size. Nếu trong quá trình enumeration, host không thể cho phép bandwidth mà Endpoint yêu cầu do việc hạn chế sử dụng bandwidth, thỉnh thoảng sẽ phải hạn bandwidth xuống chứ không hẳn là không thể sử dụng được. Dữ liệu được gửi trong Endpoint có thể ít hơn con số đã được chấp nhận tại bước enumeration. Có thể thay đổi trong mỗi transaction.</p>
+<p><img src="https://blog.lazytrick.com/post/images/transiso.gif" alt=""></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt=""></p>
+<p>Hình trên mô tả định dạng truyền dồng bộ với IN và OUT token. Transaction truyền động bộ không có bước handshake và cũng không thể thông báo lỗi dạng STALL, HALT được.</p>
+<h3 id="4-bulk-transfer-dạng-truyền-hàng-loạt">4. Bulk Transfer (Dạng truyền hàng loạt)</h3>
+<p>Có thể được sử dụng cho truyền những dữ liệu rất lớn. Ví dụ, một dữ liệu để print hoặc một ảnh được scan từ scanner. Dạng truyền hàng loạt cung cấp cơ chế phát hiện lỗi thông qua CRC16 và có cơ chế để yêu cầu gửi lại nếu lỗi để đảm bảo dữ liệu được truyền/nhận không lỗi.</p>
+<p>Dạng truyền này sử dụng số bandwidth chưa được sử dụng còn lại sau khi tất cả các dạng truyền khác đã được cấp. Nếu bus quá bận với các dạng truyền khác thì dạng truyền hàng loạt sẽ rất nhỏ giọt. Vì thế, dạng truyền này nên sử dụng với các dữ liệu không yêu cầu đáp ứng về mặt thời gian, cũng như đảm bảo về độ trễ.</p>
+<p><strong>Dạng truyền hàng loạt:</strong></p>
+<ul>
+<li>Sử dụng để truyền dữ liệu lớn</li>
+<li>Phát hiện lỗi bằng CRC, với cơ chế đảm bảo truyền nhận</li>
+<li>Không đảm bảo bandwidth tối thiểu</li>
+<li>Truyền theo đường ống (stream pipe) vô hướng</li>
+<li>Chỉ sử dụng ở mode Full và High Speed.</li>
+</ul>
+<p>Dạng truyền hàng loạt chỉ được hỗ trợ ở Full và High Speed. Kích thước tối đa của payload mỗi packet có thể là 8,16,32,64 byte với Full Speed, và lên đến 512 bytes với High Speed. Dù dữ liệu truyền thực tế nhỏ hơn kích thước lớn nhất, nó cũng không cần padding zero. Một lần truyền hàng loạt được xem là hoàn thành khi nó truyền chính xác số dữ liệu được yêu cầu. Packet truyền đi có thể nhỏ hơn kích thước lớn nhất của EndPoint hoặc là Zero-length packet.</p>
+<p><img src="https://blog.lazytrick.com/post/images/contdata.gif" alt=""></p>
+<p><img src="https://blog.lazytrick.com/post/images/transkey.gif" alt=""></p>
+<p>Hình trên chỉ ra định dạng của 1 bulk IN và bulk OUT transaction:</p>
+<p><strong>IN</strong> : Khi Host sẵn sàng nhận dữ liệu hàng loạt, nó sẽ gửi một IN token. Gói này sẽ bị Function bỏ qua nếu có lỗi. Function sẽ gửi trả lại dữ liệu bằng gói DATA nếu nhận đúng gói IN. STALL được gửi khi phía Function có lỗi, NACK được gửi nếu phía Function chưa có dữ liệu hoặc EndPoint đang bận.</p>
+<p><strong>OUT</strong>: Khi host muốn gửi đến Function dữ liệu bulk, nó sẽ gửi một OUT Token, sau đó là gói dữ liệu. Nếu OUT token hoặc Data Packet bị hỏng, thì Function sẽ bỏ qua Packet này. Nếu buffer của EndPoint là Empty, thì Function sẽ copy dữ liệu vào buffer rồi trả lại Host gói ACK. Nếu endpoint buffer chưa rỗng do dữ liệu trước chưa được xử lý, thì Function sẽ trả lại NAK. Nếu có lỗi xảy ra, Function sẽ gửi lại STALL.</p>
+<h2 id="quản-lý-bandwidth">Quản lý BandWidth</h2>
+<p>Host chịu trách nhiệm quản lý bandwidth của bus. Việc này được thực hiện trong quá trình enumeration khi cấu hình các Endpoint đồng bộ, End Point ngắt. Đặc tả của USB nêu chỉ rõ giới hạn để đảm bảo rằng không cho phép quá 90% số frame được cấp phương thức truyền có tính chu kì (Interrupt và Isochronous) khi ở Full-Speed. Ở High-Speed, giới hạn trên được giảm xuống còn 80% microframe có thể cấp cho các phương thức truyền có tính chu kì.</p>
+<p>Vì thế, bạn sẽ thấy rằng, sẽ có một đủ bandwidth đế mức không dùng hết với các phương thức truyền có tính chu kì. Chỉ còn khoảng 10% dành cho control nếu nó được sử dụng, còn lại mới đến lượt bulk transfer.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/translate/" rel="tag">Translate</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

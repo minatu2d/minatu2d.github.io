@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Compiler on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/compiler/</link>
+    <description>Recent content in Compiler on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sun, 08 Jan 2017 06:18:19 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/compiler/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Thực hiện 4 Stage khi Compile bằng tay (Manual)</title>
+      <link>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
+      <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
+      <description>Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
+Trong compile thông thường dạng
+$gcc -o HelloWorld HelloWorld.c Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</description>
+    </item>
+    
+    <item>
+      <title>Một chút hiểu thêm về &#34;Hello World&#34; trong C.</title>
+      <link>https://blog.lazytrick.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</link>
+      <pubDate>Wed, 21 Dec 2016 05:31:09 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-12-21-mot-chut-hieu-them-ve-hello-world-trong-c/</guid>
+      <description>Gần đây, gặp một số vấn đề về Loader-Linker giữa môi trường build và môi trường chạy trong Cross-Compiling.
+Có thể bất kì chương nào trong Linux cũng vậy. Nhưng chỉ xét một chường trình được build bằng C thì
+một chương trình sẽ được chạy 2 cách dưới đây
+1. Chương trình hoàn toàn là tĩnh  Không có symbol nào cần phải được (resolved) trước khi chạy. Không yêu cầu bất cứ một thư viện run-time nào.</description>
+    </item>
+    
+  </channel>
+</rss>

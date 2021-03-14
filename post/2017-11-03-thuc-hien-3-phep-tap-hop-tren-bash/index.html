@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Thực hiện 3 phép tập hợp trên bash - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Thực hiện 3 phép tập hợp trên bash</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Gần đây do phải làm việc crawling dữ liệu, nên có một chút ít động đến các phép toán tập hợp.<br>
+Bài này sử dụng để note lại các câu lệnh để thực hiện các phép toán phổ biến với tập hợp.<br>
+Nội dung được dịch từ <a href="http://www.catonmat.net/blog/set-operations-in-unix-shell/">bài viết</a> khá chi tiết của pro <a href="http://www.catonmat.net/about/">Peter Krumins</a> chủ trang <a href="http://www.catonmat.net/">http://www.catonmat.net/</a></p>
+<h2 id="1-phép-giao">1. Phép giao</h2>
+<p>Có rất nhiều cách để tìm giao của 2 tập hơn trong bash.</p>
+<p>Cách đầu tiên, đơn giản nhất, dùng <code>uniq -d</code> với sự hỗ trợ của <code>sort</code><br>
+Giả sử có 2 tập (tức là file text luôn) <code>set1</code>, <code>set2</code> (mỗi phần tử nằm trên một dòng).<br>
+Câu lệnh sau sẽ tìm giao của chúng:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$set</span> set1 set2 | uniq -d  
+</code></pre></div><p>Cách thứ hai, sử dụng câu lệnh <code>comm</code>, câu lệnh sử dụng để so sánh 2 files đã được sắp xếp.<br>
+Câu lệnh sẽ như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell">$ comm -12 &lt;(sort set1) &lt;(sort set2)  
+</code></pre></div><p>Cách thứ ba, sử dụng câu lệnh <code>join</code>, câu lệnh sử dụng để nối 2 hoặc nhiều files (thường được dùng kết hợp với <code>split</code>).<br>
+Với câu lệnh này, việc tìm giao hai tập sẽ như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ join &lt;(sort set1) &lt;(sort set2)  
+</code></pre></div><h2 id="2-phép-hợp">2. Phép hợp</h2>
+<p>Đây là phép tập hợp dễ làm nhất.</p>
+<p>Cách đầu tiên, sử dụng <code>cat</code>.<br>
+Ta cũng giả sử có 2 tập set1, set2 như phần 1.<br>
+Như ta đã biết, ta đã có câu lệnh <code>cat</code> để nối lại, rồi in ra một, hai hay nhiều files.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cat</span> set1 set2  
+</code></pre></div><p>Giờ ta phải loại bỏ các phần tử lặp lại và chỉ để lại một từ kết của của lệnh <code>cat</code> ở trên.<br>
+Đơn giản nhất là <code>sort</code> rồi cho qua <code>uniq</code> để lấy dãy duy nhất các phần tử.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$cat</span> set1 set2 | sort | uniq  
+</code></pre></div><p>Hoặc khỏi cần dùng <code>cat</code> mà <code>sort</code> trực tiếp luôn.</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$sort</span> set1 set2 | uniq  
+</code></pre></div><p>Thậm chí, có thể bỏ qua của <code>uniq</code> bằng tham số <code>-u</code> của <code>sort</code>:```shell</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-shell" data-lang="shell"><span style="color:#00688b">$sort</span> -u set1 set2  
+</code></pre></div><p><strong>Nếu 2 tập đã được sắp xếp rồi</strong>, bạn có thể lấy hợp của hai tập nhanh hơn bằng tham số <code>-m</code> của <code>sort</code>.<br>
+Tham số này nghĩa là <code>merge</code>.<br>
+Câu lệnh có thể như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$sort</span> -m set1 set2 | uniq  
+</code></pre></div><p>Đương nhiên, có thể bỏ <code>uniq</code> nếu thay <code>-m</code> bằng <code>-um</code> như đã nói ngay trên.</p>
+<h2 id="3-phép-hiệu">3. Phép hiệu</h2>
+<p>Tức là lấy các phần từ thuộc chỉ một trong 2 tập mà thôi.<br>
+Ta cũng giả sử có 2 tập set1, set2 như phần 1.</p>
+<p>Đầu tiên, câu lệnh phù hợp nhất trong trường hợp này là <code>comm</code>.<br>
+Câu lệnh sau sẽ in ra các phần tử chỉ thuộc set1 mà không thuộc set2:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ comm -23 &lt;(sort set1) &lt;(sort set2)  
+</code></pre></div><p>Về câu lệnh <code>comm</code>, ở phần 1 chúng ta cũng đã có dùng với tham số <code>-12</code> rồi.<br>
+Tiện thể giải thích một chút về tham số này:<br>
+<strong>1</strong> : Không in những dòng chỉ thuộc file 1<br>
+<strong>2</strong> : Không in những dòng chỉ thuộc file 2<br>
+<strong>3</strong> : Không in những dòng thuộc cả 2 file<br>
+Trong trường hợp này, sử dụng <code>-23</code> sẽ không in ra các dòng thuộc file 2 và cả hai file.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/bash/" rel="tag">Bash</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/script/" rel="tag">script</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

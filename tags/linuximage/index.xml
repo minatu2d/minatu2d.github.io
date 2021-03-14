@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LinuxImage on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/linuximage/</link>
+    <description>Recent content in LinuxImage on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Fri, 29 Jul 2016 08:06:07 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/linuximage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tạo một bản build Linux cho Raspberry PI bằng Yocto Project</title>
+      <link>https://blog.lazytrick.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</link>
+      <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-07-29-tao-nas-server-tren-pi-bang-yocto-project/</guid>
+      <description>Ban đầu, dự định sẽ tạo một NAS server theo link tham khảo bên dưới.
+Nhưng thấy ta nên tách riêng phần tạo bản phân phối Linux thành 1 bài riêng, rồi viết các nội dung liên quan đến customize thành các bài khác sẽ dễ hiểu hơn.
+Hơn nữa, phần tạo bản build basic sẽ cần được thảo luận kĩ hơn do có thể phát sinh nhiều vấn đề. Mà nếu không giải quyết được các vấn đề đó thì nội dung các bài khác sẽ không thể thực hiện được.</description>
+    </item>
+    
+  </channel>
+</rss>

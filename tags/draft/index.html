@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Draft - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+	<link rel="alternate" type="application/rss+xml" href="https://blog.lazytrick.com/tags/draft/index.xml" title="Lazytrick - Limited size memory of mind">
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main list" role="main">
+	<header class="main__header">
+		<h1 class="main__title">Draft</h1>
+	</header><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="https://blog.lazytrick.com/post/2016-01-28-hieu-them-ve-hid-report-descriptor/" rel="bookmark">
+			Hiểu thêm về HID Report Descriptor
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Đang hì hục đọc sách các kiểu con đà điều để hiểu kĩ hơn về HID Report Descriptor (Đặc tả cấu trúc dữ liệu trao đổi của HID). Thì tìm được bài này, nó giải thích hầu hết những chỗ khó hiểu một cách dễ hiểu, và đặc biệt có ví dụ minh họa.
+Giờ xin dịch lại bài này một cách khái quát nhất.
+Vì để hiểu bài này cần biết đến một vài khái niệm về USB, về HID Device, nữa nên để xin tóm tắt nội dung bên dưới như sau.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="https://blog.lazytrick.com/post/2016-01-25-bo-nho-flash-se-viet/" rel="bookmark">
+			Bộ nhớ Flash
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Để thành 1 bài thì hơi nhiều, những thôi đã để thành 1 bài thì vẫn phải viết.
+Lập trình với bộ nhớ Flash Nếu là Flash memory, khi lập trình nhất định phải có một thao tác xóa trước một thao tác ghi. Sau khi xóa, giá trị tất cả các ô nhớ là 1, tức là nếu đọc ra ta sẽ thấy toàn 0xFF thôi.
+Serial Flash Có rất nhiều loại Flash, nhưng trên các ứng dụng embedded thì Serial Flash được sử dụng phổ biến nhất.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="https://blog.lazytrick.com/post/2016-01-25-porting-non-os-driver-sang-itron-based-os/" rel="bookmark">
+			Porting Non-OS Driver sang ITRON-based OS
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Hệ điều hành ITRON-based
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="https://blog.lazytrick.com/post/2016-01-25-he-dieu-hanh-itron-based-trong-nhu-the-naose-viet/" rel="bookmark">
+			Hệ điều hành ITRON-based trông như thế nào?(sẽ viết)
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Có lẽ viết về ITRON cần toàn diện một chút, tiếc là không có mạch để thử.
+Cứ viết trước 3 đề mục lớn để có hướng để ý, tìm hiểu.
+ ITRON-OS là gì? Những thuật ngữ cơ bản Người ta đã viết ITRON như thế nào?  
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="https://blog.lazytrick.com/post/2016-01-25-i2c-ke-thua-uart-va-spi/" rel="bookmark">
+			I2C - Kế thừa UART và SPI (sẽ viết)
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="https://blog.lazytrick.com/post/2016-01-24-mot-so-thuat-ngu-ve-giao-thong-thong-minh/" rel="bookmark">
+			Một số thuật ngữ về giao thông thông minh
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		ITS - Intelligen Transport System : Hệ thống giao thông thông minh  ETC - Electronic Toll Collection : Tập hợp các hệ thống toán toán phí điện tử OBU - On-Board Unit : Thiết bị gắn vào phương tiện giao thông RDU - Road Side Unit : Thiết bị đặt ở các trạm thu phí, thường là 1 hoặc 1 vài Anten được kết nối với một hệ thống máy tính.
+	</div>
+</article><article class="list__item post">
+	<header class="list__header">
+		<h2 class="list__title post__title">
+			<a href="https://blog.lazytrick.com/post/2015-07-16-dung-pthread-theo-cac-da-nen-tang-den-muc-nao/" rel="bookmark">
+			Cơ bản về pthread
+			</a>
+		</h2>
+		
+	</header>
+	<div class="content list__excerpt post__content clearfix">
+		Ngày trước, khi tìm hiểu về Java, rồi Qt, nghe đến thuật ngữ đa nền (multi-platform). kì thực cái multi platform đó sẽ được phát triển như thế nào. Nó có thực sự dễ dàng như họ quảng cáo? Họ thường quảng cáo rằng, chỉ cần thay đổi cấu hình bằng một vài click chuột thì có thể build lại một dự án bất kì của Qt từ OS này sang OS khác.
+	</div>
+</article>
+</main>
+
+
+			</div>
+			
+<aside class="sidebar">
+<div class="widget-recent widget">
+	<h4 class="widget__title">Bài viết gần đây</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-08-18-opengl-la-gi/">OpenGL là gì?</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-09-26-sua-me-va-sua-ngoai-bao-nhieu-la-du/">Sữa mẹ, sữa ngoài, bao nhiêu là đủ?</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-file-locking-trong-linux/">File locking trong linux</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/">Sử dụng lệnh screen cơ bản</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-20-cam-nhan-ve-zsh-sau-1-thang-su-dung-basic/">Cảm nhận về zsh sau 1 tháng sử dụng basic</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-02-16-ve-viec-tre-em-khoc-truoc-khi-ngu/">Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONGO)</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2020-01-01-vai-chu-y-khi-setup-mailserver-tren-ubuntu/">Vài chú ý khi setup mail server</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-11-03-chuyen-html-thanh-pdf-co-ban/">Chuyển HTML thành PDF cơ bản</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-11-02-giai-thich-log-sendmail/">Giải thích log của lệnh sendmail</a></li>
+			<li class="widget__item"><a class="widget__link" href="https://blog.lazytrick.com/post/2019-10-31-tensorflow-va-avx/">Tensorflow và AVX</a></li>
+		</ul>
+	</div>
+</div>
+<div class="widget-categories widget">
+	<h4 class="widget__title">Chủ đề</h4>
+	<div class="widget__content">
+		<ul class="widget__list">
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/babycare/">babycare</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/basic/">Basic</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/buildroot/">Buildroot</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/cmd/">cmd</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/codeskill/">CodeSkill</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/communication/">Communication</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/compile/">Compile</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/computer_graphic/">computer_graphic</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/debug/">Debug</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/driver/">Driver</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/embedded/">Embedded</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/firmware/">Firmware</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/fixproblem/">fixproblem</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/iot/">IoT</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/its/">ITS</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/js/">Js</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/kh%C3%A1c/">Khác</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/learningnew/">learningnew</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/machine-learning/">Machine Learning</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/microcontroller/">Microcontroller</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/network/">Network</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/openembbeded/">OpenEmbbeded</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/opengl/">opengl</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/opensource/">OpenSource</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/python/">Python</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/rtos/">RTOS</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/security/">Security</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/thread/">thread</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/usb/">USB</a>
+			</li>
+			<li class="widget__item">
+				<a class="widget__link" href="https://blog.lazytrick.com/categories/yoctoproject/">YoctoProject</a>
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="widget-taglist widget">
+	<h4 class="widget__title">Thẻ</h4>
+	<div class="widget__content">
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/3d/" title="3D">3D</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/aes/" title="AES">AES</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/aligment/" title="Aligment">Aligment</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/asm/" title="Asm">Asm</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/asn1/" title="ASN1">ASN1</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/assembly/" title="Assembly">Assembly</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/avx/" title="avx">avx</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/bash/" title="Bash">Bash</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/beyondlogic/" title="Beyondlogic">Beyondlogic</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/bitbake/" title="Bitbake">Bitbake</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/busybox/" title="busybox">busybox</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/c/" title="C">C</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/casting/" title="Casting">Casting</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/cer/" title="CER">CER</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/cmake/" title="Cmake">Cmake</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/cmd/" title="cmd">cmd</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/command/" title="Command">Command</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/compiler/" title="Compiler">Compiler</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/coursera/" title="CourserA">CourserA</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/crosscompile/" title="CrossCompile">CrossCompile</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/der/" title="DER">DER</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/deserialization/" title="Deserialization">Deserialization</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/device-file/" title="device file">device file</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/digitalsignal/" title="DigitalSignal">DigitalSignal</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/distro/" title="Distro">Distro</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/draft/" title="Draft">Draft</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/driver/" title="Driver">Driver</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/editor/" title="Editor">Editor</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/embbeded/" title="Embbeded">Embbeded</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/error/" title="Error">Error</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fat/" title="FAT">FAT</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filelock/" title="filelock">filelock</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/filesystem/" title="FileSystem">FileSystem</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/firmware/" title="Firmware">Firmware</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/fit/" title="FIT">FIT</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/flash/" title="Flash">Flash</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/gcc/" title="GCC">GCC</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/gdb/" title="GDB">GDB</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/glfw/" title="glfw">glfw</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/glu/" title="glu">glu</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/helloworld/" title="HelloWorld">HelloWorld</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/hid/" title="HID">HID</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/html2pdf/" title="html2pdf">html2pdf</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/i2c/" title="I2C">I2C</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/installation/" title="Installation">Installation</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/itron/" title="ITRON">ITRON</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/kernel/" title="Kernel">Kernel</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/khoc/" title="khoc">khoc</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/library/" title="Library">Library</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linker/" title="Linker">Linker</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linking/" title="Linking">Linking</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linux/" title="Linux">Linux</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/linuximage/" title="LinuxImage">LinuxImage</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/loader/" title="Loader">Loader</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/locking/" title="locking">locking</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/log/" title="log">log</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mailserver/" title="mailserver">mailserver</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/make/" title="Make">Make</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/mqtt/" title="mqtt">mqtt</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/nodejs/" title="Nodejs">Nodejs</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/objectfile/" title="ObjectFile">ObjectFile</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/open/" title="Open">Open</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/opengl/" title="opengl">opengl</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/pdf/" title="pdf">pdf</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/per/" title="PER">PER</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/pickle/" title="Pickle">Pickle</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/pointer/" title="Pointer">Pointer</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/porting/" title="Porting">Porting</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/pthread/" title="pthread">pthread</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/qemu/" title="qemu">qemu</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/rails/" title="rails">rails</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/raspberrypi/" title="RaspberryPI">RaspberryPI</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/recipe/" title="Recipe">Recipe</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/renesas/" title="Renesas">Renesas</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/rgb/" title="RGB">RGB</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/rootfs/" title="rootfs">rootfs</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/ror/" title="ror">ror</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/rt2870/" title="RT2870">RT2870</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/ruby/" title="ruby">ruby</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/samba/" title="Samba">Samba</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/screen/" title="screen">screen</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/script/" title="script">script</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/scsi/" title="SCSI">SCSI</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/sendmail/" title="sendmail">sendmail</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/serialization/" title="Serialization">Serialization</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/smb/" title="SMB">SMB</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/spi/" title="SPI">SPI</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/staticip/" title="StaticIP">StaticIP</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/systemd/" title="systemd">systemd</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/tensorflow/" title="tensorflow">tensorflow</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/thread/" title="thread">thread</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/translate/" title="Translate">Translate</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/uart/" title="UART">UART</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/udev/" title="udev">udev</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/unix/" title="Unix">Unix</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/usb/" title="USB">USB</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/usbdescriptor/" title="USBDescriptor">USBDescriptor</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/usbmemory/" title="USBMemory">USBMemory</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/vga/" title="VGA">VGA</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/vim/" title="Vim">Vim</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/wifiusb/" title="WifiUSB">WifiUSB</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/wireshark/" title="Wireshark">Wireshark</a>
+		<a class="widget-taglist__link widget__link btn" href="https://blog.lazytrick.com/tags/zsh/" title="zsh">zsh</a>
+	</div>
+</div>
+</aside>
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

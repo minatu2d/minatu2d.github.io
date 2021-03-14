@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Glogger - Log viewer tốt nhưng còn một vài điểm - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Glogger - Log viewer tốt nhưng còn một vài điểm</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Nói đến editor, ai cũng nghĩ đến Notepad++. Sakura (JP thôi), hay gì gì đó.<br>
+Ừ thì đúng Notepad++ rất nhiều tính năng, rất nhanh, rất nhẹ.</p>
+<p>Nhưng gần đây tôi phát hiện ra điểm yếu của nó, xử lý file lớn của nó rất tệ. Thậm chí nó còn gây mất dữ liệu.<br>
+Tôi và bạn tôi đã thử với một file khoảng 600MB trở lên thì khó có thể thực hiện một phép copy &amp; paste nào nữa.<br>
+Nếu có thể thực hiện được đi nữa thì rất dễ gây sai dữ liệu hoặc mất dữ liệu.</p>
+<p>Thực ra ngoài với những file đó tôi cũng chẳng làm gì nhiều, chỉ copy paste một vài đoạn thôi. chứ chưa edit sử dụng các chức khác. Mục đích của tôi lần đó là để xem thôi chứ edit sửa lại thì rất ít. Bạn tôi &ldquo;thích&rdquo; và tin tưởng Notepad++ cực kì, giống như tôi tin tưởng emacs hay vi vậy. Em nó luôn đúng và chính xác. Tôi có khuyên cậu ấy nếu chỉ dùng view log hay dùng glogger,<br>
+tool như Notepad++ thích hợp cho việc edit thôi và với file dung lượng nhỏ thì tốt. Lớn chút là giật đùng đùng.</p>
+<p>Tôi muốn nói đến cái tool đẻ view log rất mạnh tôi đang dùng. Đó là glogger, và là open source sữ dụng Qt.</p>
+<p>Nhưng điểm mạnh của em nó.</p>
+<ul>
+<li>
+<ol>
+<li>Giao diện view log trực quan.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Sử dụng tab, giúp mở nhiều file.</li>
+</ol>
+</li>
+<li>
+<ol start="3">
+<li>Có chức nằng tìm kiếm, hỗ trợ cả regex thì phải.</li>
+</ol>
+</li>
+<li>
+<ol start="4">
+<li>Đọc file lớn cực tốt, và usability tìm kiếm, mở file lớn rất thân thiện.</li>
+</ol>
+</li>
+</ul>
+<p>Tuy nhiên hôm nay tôi thấy em nó có 2 điểm yếu, tôi thấy nó trên bản Window, bảng Linux tôi chưa thử:</p>
+<ul>
+<li>
+<ol>
+<li>Mở file log nằm trên đĩa cứng hoặc ổ đĩa (network) thì ngon lành cành đào. Nhưng mở file qua network trên window thì bó tay.</li>
+</ol>
+</li>
+<li>
+<ol start="2">
+<li>Mở file mà đường dẫn có chưa kí tự tiếng Nhật là chịu luôn.</li>
+</ol>
+</li>
+</ul>
+<p>tôi nghĩ 2 chức năng này không hẳn quá khó để add, tôi cứ note tạm ở đây.<br>
+Có thời gian sẽ nghịch.</p>
+
+		</div>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pickle on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/pickle/</link>
+    <description>Recent content in Pickle on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Thu, 24 May 2018 07:53:35 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/pickle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pickle - Thư viện Serialization/Deserialization trong Python</title>
+      <link>https://blog.lazytrick.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/</link>
+      <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2018-05-24-pickle-thu-vien-serialization-deserialization-trong-python/</guid>
+      <description>Gần đây khi chạy thử một vài thuật toán Deep Learning, đặc biệt là các thuật toán cung cấp source code sử dụng thư viện Caffe, có gặp một vài vấn đề liên quan đến module Pickle trong Python.
+Thực ra, bình thường cũng không định viết gì cả. Nhưng chợt nhớ ra mình cũng quan tâm đến chủ đề Serialization/Deserialization này. Nó có vai trò giống như ASN.1 mà có tìm hiểu hồi trước, hay phổ biến nhất của thể loại này là Protocol Buffer của Google, hay Apache Thrift.</description>
+    </item>
+    
+  </channel>
+</rss>

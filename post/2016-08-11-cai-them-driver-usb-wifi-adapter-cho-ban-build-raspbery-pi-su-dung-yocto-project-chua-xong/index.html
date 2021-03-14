@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Cài thêm driver usb-wifi adapter cho bản build Raspbery PI sử dụng Yocto Project</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Như ta đã làm trong bài trước, sau khi thực hiện việc setup các biến môi trường bằng lệnh <strong>source</strong>, ta thực hiện build tạo image có có tên là <strong>rpi-basic-image</strong> thông qua lệnh:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$bitbake</span> rpi-basic-image  
+</code></pre></div><p>Thực ra còn 2 image khác ta có thể build đó là <strong>rpi-hwup-image</strong> <strong>rpi-test-image</strong>. Ta có thể thấy 2 file bb cho 2 image ở thư mục <strong>meta-raspberrypi/recipes-core/images/</strong>.</p>
+<p><strong>rpi-hwup-image</strong> : là image nhỏ nhất (có dịp sẽ thử)<br>
+<strong>rpi-basic-image</strong>: là image ta vấn dùng đến bây giờ.<br>
+<strong>rpi-test-image</strong> : là image dùng cho việc test. (có dịp sẽ thử)</p>
+<p>Dù image chúng ta vẫn build (<strong>rpi-basic-image</strong>) được tích hợp nhiều nhất trong số 3 image ở trên nhưng không phải tất cả driver đều được cài đặt.<br>
+Điển hình là USB Toggle - Wifi thông qua USB (Buffalo WLI-UC-GNM) không chạy được.<br>
+Thông qua log hệ thống, ta thấy được rằng việc load firmware cho thiết bị đã không thành công vì thế không thể bật được thiết bị.</p>
+<p>Mục đích của bài này là làm cho thiết bị trên có thể chạy được trên bản build <strong>rpi-basic-image</strong>, giống như Raspbian.</p>
+<p>Trong bài này sẽ thử thực hiện 2 cách sau:</p>
+<ol>
+<li>Chuyển driver đã chạy tốt từ Raspbian sang bản build <strong>rpi-basic-image</strong></li>
+<li>Build driver từ source code.</li>
+</ol>
+<h2 id="1-chuyển-driver-đã-chạy-tốt-từ-raspbian-sang-bản-build-rpi-basic-image">1.  Chuyển driver đã chạy tốt từ Raspbian sang bản build <strong>rpi-basic-image</strong></h2>
+<p>Cách này về cơ bản là một &ldquo;cheat&rdquo;, nó hơi khác với tinh thần ban đầu khi build toàn bộ từ source. Nhưng trong tình huống này, ta vẫn hay thử nó.</p>
+<p>Trước hết, ta cần chạy lại <strong>Raspbian</strong> và kiểm tra các thông tin sau:</p>
+<ul>
+<li>Các thông số phần cứng của USB-Wifi Adapter mà ta đang sử dụng</li>
+<li>Lấy log hệ thống từ thời điểm thiết bị được cắm vào đến lúc sử dụng được.</li>
+</ul>
+<p>Update:2016/09/05:<br>
+Qua kết quả tìm hiểu từ <a href="https://lazytrick.wordpress.com/2016/08/29/khai-niem-driver-va-firmware-trong-linux/">Driver và Firmware trong Linux</a>, <a href="https://lazytrick.wordpress.com/2016/09/05/qua-trinh-load-firmware-cua-driver-trong-linux/">Quá trình load firmware của Driver trong Linux</a>, <a href="https://lazytrick.wordpress.com/2016/08/19/xac-dinh-cac-driver-module-dang-duoc-su-dung-tren-linux/">Tìm Driver cho Linux</a></p>
+<p>Trong trường hợp này ta phải làm sao để firmware của USB Wifi Client có mặt ở <strong>/lib/firmware/</strong> khi Driver của thiết bị được chạy.<br>
+Cách đơn giản nhát là thêm rcipy <strong>linux-firmware</strong> vào layer <strong>meta-local</strong><br>
+Tuy nhiên, để cấu hình sử dụng được USB Wifi Client ta cần thêm một tập các tool về Wifi nữa. Nó nằm trong gói <strong>packagegroup-base-wifi</strong></p>
+<p>Xem lại <strong>meta-local</strong> ở bài<a href="https://lazytrick.wordpress.com/2016/08/06/them-samba-server-vao-ban-build-linux-cho-raspberry-pi-bang-yocto-project/"></a></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">poky/meta-local/  
+├── conf  
+│ └── layer.conf  
+└── recipes-core  
+└── images  
+└── rpi-basic-image.bbappend  
+</code></pre></div><p>Ta cần sửa lại <strong>rpi-basic-image.bbappend</strong> thành như sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-python" data-lang="python">IMAGE_INSTALL += &amp;quot;samba \  
+linux-firmware \  
+packagegroup-base-wifi  
+</code></pre></div><h2 id="2-build-từ-source-code">2. Build từ source code</h2>
+<p>Cách này sai lầm vì bản thân Driver đã có rồi chứ không phải chưa có như đã nghĩ lúc trước.<br>
+Thứ còn thiếu là <strong>firmware</strong> cái sẽ được Driver tải vào để thực hiện cá chức năng vốn có của nó.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/driver/" rel="tag">Driver</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/firmware/" rel="tag">Firmware</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/rt2870/" rel="tag">RT2870</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/wifiusb/" rel="tag">WifiUSB</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Ví dụ cơ bản với pthread trên Linux - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">Ví dụ cơ bản với pthread trên Linux</h1>
+			
+		</header><div class="content post__content clearfix">
+			<h2 id="1-tạo-và-dừng-thread">1. Tạo và dừng thread</h2>
+<p>Source code gốc lấy từ <a href="https://computing.llnl.gov/tutorials/pthreads/samples/hello.c">link</a></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#228b22">/******************************************************************************
+</span><span style="color:#228b22"> * FILE: hello.c
+</span><span style="color:#228b22"> * DESCRIPTION:
+</span><span style="color:#228b22"> * Chuong trinh demo thao tac tao thread, tat thread
+</span><span style="color:#228b22"> * AUTHOR: Blaise Barney
+</span><span style="color:#228b22"> * LAST REVISED: 08/09/11
+</span><span style="color:#228b22"> *
+</span><span style="color:#228b22"> * TRANSLATE to Vietnamese by Minatu
+</span><span style="color:#228b22"> * COMPILE CMD : $gcc -o hello hello.c -lpthread
+</span><span style="color:#228b22"> ******************************************************************************/</span>
+<span style="color:#228b22">//
+</span><span style="color:#228b22"></span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;pthread.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;stdio.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#include</span> <span style="color:#1e889b">&lt;stdlib.h&gt;</span><span style="color:#1e889b">
+</span><span style="color:#1e889b">#define NUM_THREADS 5
+</span><span style="color:#1e889b"></span>
+<span style="color:#00688b;font-weight:bold">void</span> *<span style="color:#008b45">PrintHello</span>(<span style="color:#00688b;font-weight:bold">void</span> *threadid) {
+  <span style="color:#00688b;font-weight:bold">long</span> tid;
+  tid = (<span style="color:#00688b;font-weight:bold">long</span>)threadid;
+  printf(<span style="color:#cd5555">&#34;Hello World! Thread #%ld o day !!!n&#34;</span>, tid);
+  pthread_exit(<span style="color:#658b00">NULL</span>);
+}
+
+<span style="color:#00688b;font-weight:bold">int</span> <span style="color:#008b45">main</span>(<span style="color:#00688b;font-weight:bold">int</span> argc, <span style="color:#00688b;font-weight:bold">char</span> *argv[]) {
+  pthread_t threads[NUM_THREADS];
+  <span style="color:#00688b;font-weight:bold">int</span> rc;
+  <span style="color:#00688b;font-weight:bold">long</span> tId;
+
+  <span style="color:#8b008b;font-weight:bold">for</span> (tId = <span style="color:#b452cd">0</span>; tId &lt; NUM_THREADS; tId++) {
+    printf(<span style="color:#cd5555">&#34; Ham main() : Thread Main : Tao...thread moi: %ldn&#34;</span>, tId);
+    rc = pthread_create(&amp;threads[tId], <span style="color:#658b00">NULL</span>, PrintHello, (<span style="color:#00688b;font-weight:bold">void</span> *)tId);
+    <span style="color:#8b008b;font-weight:bold">if</span> (rc) {
+      printf(<span style="color:#cd5555">&#34;ERROR; loi khi chay pthread_create(), ma loi: %dn&#34;</span>, rc);
+      exit(-<span style="color:#b452cd">1</span>);
+    }
+  }
+
+  <span style="color:#228b22">/* Last thing that main() should do */</span>
+  pthread_exit(<span style="color:#658b00">NULL</span>);
+}
+}  
+</code></pre></div><p>Kết quả sau khi biên dịch và chạy:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">oedev@OEDEV-Ubuntu:code$ gcc -o hello hello.c -lpthread  
+oedev@OEDEV-Ubuntu:code$ ./hello  
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">0</span>  
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">1</span>  
+Hello World! Thread <span style="color:#228b22">#0 o day !!!  </span>
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">2</span>  
+Hello World! Thread <span style="color:#228b22">#1 o day !!!  </span>
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">3</span>  
+Ham main() : Thread Main : Tao...thread moi: <span style="color:#b452cd">4</span>  
+Hello World! Thread <span style="color:#228b22">#2 o day !!!  </span>
+Hello World! Thread <span style="color:#228b22">#3 o day !!!  </span>
+Hello World! Thread <span style="color:#228b22">#4 o day !!!  </span>
+</code></pre></div><p>Như ta thấy, các thread được tạo và chạy hàm <code>PrintHello</code> rồi hiển thị giá trị <code>tId</code><br>
+được truyền khi tạo trong nội dung của nó.<br>
+Ta chú ý ở đây, thông tin hiện ra màn hình có thể không theo <strong>thứ tự đâu</strong>.<br>
+Tức là có thể dù thread 1 được tạo trước thread 2 nhưng chưa chắc chữ <code>Hello World</code><br>
+của nó sẽ ra trước thread 2.</p>
+<p>Nói kĩ hơn về các hàm sử dụng ở trên:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">rc = pthread_create(  
+&amp;threads[tId],  
+<span style="color:#658b00">NULL</span>,  
+PrintHello,  
+(<span style="color:#00688b;font-weight:bold">void</span> *)tId);  
+</code></pre></div><p>Trong đó,</p>
+<ul>
+<li>Tham số thứ nhất: <code>&amp;amp;threads[tId]</code> : Chứa các thông tin của thread sau khi được tạo.<br>
+Bất cứ thao tác nào liên quan đến thread này đều thông qua biến này.</li>
+</ul>
+<ul>
+<li>
+<p>Tham số thứ 2 : <code>NULL</code> : Tức là không set thêm thuộc tính nào cho thread sẽ được tạo,<br>
+lấy hết mặc định.</p>
+</li>
+<li>
+<p>Tham số thứ 3 : <code>PrintHello</code> : Hàm (hoặc con trỏ hàm) sẽ chạy trong thread sau khi được tạo.<br>
+Thông thường hàm này sẽ chạy mãi bằng một vòng lặp vô tận chẳng hạn.</p>
+</li>
+<li>
+<p>Tham số thứ 4 : <code>(void*)tId</code> : Tham số này là một con trỏ thôi, kiểu gì cũng được.<br>
+Nó sẽ được truyền như là tham số như thread thực hiện hàm đã truyền ở tham số thứ 3.<br>
+Trong trường hợp này hàm <code>PrintHello</code> nhận tham số <code>void *</code> vì thế nên ép kiểu sang<br>
+<code>void *</code> cho <code>tId</code>. Và ta cũng thấy, giá trị <code>tId</code> được ép kiểu trở lại trong hàm <code>PrintHello</code></p>
+</li>
+</ul>
+<p>Tiếp theo đến</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c">pthread_exit(<span style="color:#658b00">NULL</span>);  
+</code></pre></div><ul>
+<li>Tham số của hàm này ở đây được sử dụng để truyền ra cho một thread khác đang đợi bằng <code>join</code><br>
+nó kết thúc, trong trường hợp này không sử dụng nên giá trị nó là NULL.</li>
+</ul>
+<h2 id="2-thêm-một-chút-xử-lý-cho-thread">2. Thêm một chút xử lý cho thread</h2>
+<ul>
+<li>
+<p>Giả sử mỗi thread chạy một vòng lặp vô hạn, sẽ in giá trị tăng dần đến các terminal (được bật sẵn)<br>
+khác nhau.</p>
+</li>
+<li>
+<p>Để đơn giản, ta sử dụng 4 terminal.<br>
+1 Terminal (gọi là Terminal 0) để cho thread chính hay chính cái xử lý chứa hàm <code>main()</code><br>
+3 Terminal (gọi là Terminal 1,2,3) còn lại sẽ sử dụng để 5 thread con được tạo hiển thị giá trị:<br>
+Thread 1, 2 sẽ hiển thị Terminal 1<br>
+Thread 3, 4 sẽ hiển thị Terminal 2<br>
+Thread 5 sẽ hiển thị Terminal 3</p>
+</li>
+<li>
+<p>Mỗi terminal trong Linux có thể được truy cập qua một đường dẫn file.<br>
+Ta có thể lấy đường dẫn của terminal ta đang sử dụng bằng lệnh <code>tty</code><br>
+Giả sử 4 terminal của chúng ta có đường dẫn tương ứng là:<br>
+<code>/dev/pts/15</code> đến <code>/dev/pts/17</code></p>
+</li>
+<li>
+<p>Ta sẽ sửa lại hàm <code>PrintHello</code> ở trên như sau:</p>
+</li>
+</ul>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#8b008b;font-weight:bold">const</span> <span style="color:#00688b;font-weight:bold">char</span> *TERMINAL_DEV_FILES[] = {
+    <span style="color:#cd5555">&#34;/dev/pts/19&#34;</span>, <span style="color:#cd5555">&#34;/dev/pts/19&#34;</span>, <span style="color:#cd5555">&#34;/dev/pts/20&#34;</span>, <span style="color:#cd5555">&#34;/dev/pts/20&#34;</span>, <span style="color:#cd5555">&#34;/dev/pts/21&#34;</span>,
+};
+
+<span style="color:#00688b;font-weight:bold">void</span> <span style="color:#008b45">PrintHello</span>(<span style="color:#00688b;font-weight:bold">void</span> *threadid) {
+  FILE *fo = <span style="color:#658b00">NULL</span>;
+  <span style="color:#00688b;font-weight:bold">long</span> count = <span style="color:#b452cd">0</span>;
+  <span style="color:#00688b;font-weight:bold">long</span> tid;
+  tid = (<span style="color:#00688b;font-weight:bold">long</span>)threadid;
+  fo = fopen(TERMINAL_DEV_FILES[tid], <span style="color:#cd5555">&#34;a&#34;</span>);
+  <span style="color:#8b008b;font-weight:bold">if</span> (fo != <span style="color:#658b00">NULL</span>) {
+    count = <span style="color:#b452cd">0</span>;
+    <span style="color:#8b008b;font-weight:bold">while</span> (<span style="color:#b452cd">1</span>) {
+      fprintf(fo, <span style="color:#cd5555">&#34;Thread %ld : %ldn&#34;</span>, tid + <span style="color:#b452cd">1</span>, ++count);
+      <span style="color:#8b008b;font-weight:bold">if</span> (count == <span style="color:#b452cd">100</span>)
+        <span style="color:#8b008b;font-weight:bold">break</span>;
+      sleep(<span style="color:#b452cd">3</span>);
+    }
+  }
+  fclose(fo);
+  printf(<span style="color:#cd5555">&#34;Bye!!!! Thread #%ld o day !!!n&#34;</span>, tid);
+  pthread_exit(<span style="color:#658b00">NULL</span>);
+}
+</code></pre></div><p>Giử sử thread chính sẽ được chạy từ một terminal khác.<br>
+Kết quả sẽ như sau:<br>
+<a href="https://youtu.be/Gpy6m8B19qc">https://youtu.be/Gpy6m8B19qc</a></p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/pthread/" rel="tag">pthread</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/thread/" rel="tag">thread</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

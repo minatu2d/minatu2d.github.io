@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>ECB, CBC trong AES - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">ECB, CBC trong AES</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p>Một trong những phương pháp mã hóa dữ liệu được sử dụng như là một chuẩn. Đó là <strong>AES</strong> (Advanced Encryption Standard)</p>
+<p>Về mã hóa, là quá trình biến dữ liệu rõ (<strong>plain</strong>) thành dữ liệu nhiễu (<strong>encrypt</strong>).</p>
+<h2 id="1-hai-cách-ứng-dụng">1. Hai cách ứng dụng</h2>
+<p>Mã hóa nói chung, thường sử dụng dụng một phương pháp toán học, mã học nào đó để làm nhiễu một cách chủ động thông tin ban đầu.</p>
+<p>Phương pháp (method) mã hóa là các bước toán học để tạo ra dữ liệu nhiễu.</p>
+<p>Một số loại mã hóa, người ta có thể giấu phương pháp đi, ai biết phương pháp thì mới đọc được dữ liệu nhiễu. Nhưng cách này không hay vì gặp phải nhiều vấn đề trong chia sẻ dữ liệu, tức là phải đi giải thích cả phương pháp lẫn các tham số đi kèm phương pháp đó khi người khác muốn sử dụng.</p>
+<p>Một số loại khác, là công khai phương pháp mã hóa những giấu đi 1 yếu tố là giống như các tham số của phương pháp. Ví dụ là KEY. Ai có KEY, nếu áp dụng đúng phương pháp sẽ giải mã được.</p>
+<h2 id="2-các-từ-khóa">2. Các từ khóa</h2>
+<p>Trường hợp AES,dù đã public, cũng khá dễ hiểu cho việc implement nhưng hiểu chứng minh thì cực kì khó với người không phải chuyên môn.</p>
+<p><strong>Key</strong> : Là key thôi, nó sẽ đuợc sử dụng khi áp dụng phương pháp mã Hóa.</p>
+<p><strong>Block</strong>: Đơn vị cho việc mã hóa, đơn vị tối thiểu để mã hóa, 1 khối dữ liệu bản plain sẽ cho ra một khối dữ liệu encrypted cùng độ dài.</p>
+<p>Thông thường, để mã hóa một đoạn dữ liệu độ dài bất kì, người ta phải chia khối đó thành những Block đơn vị rồi mã hóa cho từng khối đó.</p>
+<p>Để tăng độ phức tạp cho việc mã hóa, người ta có thể tạo ra mối liên hệ giữa các block với nhau.</p>
+<h2 id="3-ecb-và-cbc">3. ECB và CBC</h2>
+<p>2 khái niệm trong AES muốn nói đến ở đây là : ECB và CBC.</p>
+<p><strong>ECB</strong> : Các block được mã hóa riêng rẽ, một block bị hỏng hoàn toàn không ảnh hưởng đến việc giải mã các block khác</p>
+<p><strong>CBC</strong> : Khi mã hóa mỗi block thì ngoài việc sử dụng KEY ra thì nó còn sử dụng kết quả của Block trước đó làm tham số. Cứ như thế, khi hỏng 1 block có thể ảnh hưởng đến rất nhiều block khác nữa.</p>
+
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/aes/" rel="tag">AES</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

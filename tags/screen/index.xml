@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>screen on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/screen/</link>
+    <description>Recent content in screen on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sun, 23 Feb 2020 01:20:01 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/screen/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Sử dụng lệnh screen cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/</link>
+      <pubDate>Sun, 23 Feb 2020 01:20:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-02-20-su-dung-lenh-screen-co-ban/</guid>
+      <description>screen là một phần mềm (chạy ở chế độ dòng lệnh) trên Linux rất hữu ích.
+1. screen giải quyết vấn đề gì?  Vấn đề: Khi bạn kết nối bằng SSH đến server qua 1 terminal, bạn có thể gặp các vấn đề sau:    Chương trình bạn định chạy (train 1 con AI, down phim XXX) sẽ rất mất thời gian, bạn không thể đợi đến khi nó xong được.</description>
+    </item>
+    
+  </channel>
+</rss>

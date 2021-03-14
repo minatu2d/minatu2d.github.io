@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/</link>
+    <description>Recent content in Tags on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Fri, 14 Aug 2020 10:09:00 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>3D</title>
+      <link>https://blog.lazytrick.com/tags/3d/</link>
+      <pubDate>Fri, 14 Aug 2020 10:09:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/3d/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>glfw</title>
+      <link>https://blog.lazytrick.com/tags/glfw/</link>
+      <pubDate>Fri, 14 Aug 2020 10:09:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/glfw/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>glu</title>
+      <link>https://blog.lazytrick.com/tags/glu/</link>
+      <pubDate>Fri, 14 Aug 2020 10:09:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/glu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>opengl</title>
+      <link>https://blog.lazytrick.com/tags/opengl/</link>
+      <pubDate>Fri, 14 Aug 2020 10:09:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/opengl/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>cmd</title>
+      <link>https://blog.lazytrick.com/tags/cmd/</link>
+      <pubDate>Sat, 29 Feb 2020 21:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/cmd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>filelock</title>
+      <link>https://blog.lazytrick.com/tags/filelock/</link>
+      <pubDate>Sat, 29 Feb 2020 21:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/filelock/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>locking</title>
+      <link>https://blog.lazytrick.com/tags/locking/</link>
+      <pubDate>Sat, 29 Feb 2020 21:17:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/locking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>screen</title>
+      <link>https://blog.lazytrick.com/tags/screen/</link>
+      <pubDate>Sun, 23 Feb 2020 01:20:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/screen/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bash</title>
+      <link>https://blog.lazytrick.com/tags/bash/</link>
+      <pubDate>Sun, 23 Feb 2020 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/bash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>zsh</title>
+      <link>https://blog.lazytrick.com/tags/zsh/</link>
+      <pubDate>Sun, 23 Feb 2020 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/zsh/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>khoc</title>
+      <link>https://blog.lazytrick.com/tags/khoc/</link>
+      <pubDate>Sun, 16 Feb 2020 23:51:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/khoc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mailserver</title>
+      <link>https://blog.lazytrick.com/tags/mailserver/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/mailserver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pdf</title>
+      <link>https://blog.lazytrick.com/tags/pdf/</link>
+      <pubDate>Wed, 01 Jan 2020 01:01:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/pdf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>html2pdf</title>
+      <link>https://blog.lazytrick.com/tags/html2pdf/</link>
+      <pubDate>Sun, 03 Nov 2019 17:41:31 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/html2pdf/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>log</title>
+      <link>https://blog.lazytrick.com/tags/log/</link>
+      <pubDate>Sat, 02 Nov 2019 23:04:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/log/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>sendmail</title>
+      <link>https://blog.lazytrick.com/tags/sendmail/</link>
+      <pubDate>Sat, 02 Nov 2019 23:04:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/sendmail/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>avx</title>
+      <link>https://blog.lazytrick.com/tags/avx/</link>
+      <pubDate>Thu, 31 Oct 2019 22:17:58 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/avx/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>tensorflow</title>
+      <link>https://blog.lazytrick.com/tags/tensorflow/</link>
+      <pubDate>Thu, 31 Oct 2019 22:17:58 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/tensorflow/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rails</title>
+      <link>https://blog.lazytrick.com/tags/rails/</link>
+      <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/rails/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ror</title>
+      <link>https://blog.lazytrick.com/tags/ror/</link>
+      <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/ror/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ruby</title>
+      <link>https://blog.lazytrick.com/tags/ruby/</link>
+      <pubDate>Wed, 11 Sep 2019 06:00:22 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/ruby/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Deserialization</title>
+      <link>https://blog.lazytrick.com/tags/deserialization/</link>
+      <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/deserialization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pickle</title>
+      <link>https://blog.lazytrick.com/tags/pickle/</link>
+      <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/pickle/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Serialization</title>
+      <link>https://blog.lazytrick.com/tags/serialization/</link>
+      <pubDate>Thu, 24 May 2018 07:53:35 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/serialization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CourserA</title>
+      <link>https://blog.lazytrick.com/tags/coursera/</link>
+      <pubDate>Thu, 24 May 2018 00:30:01 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/coursera/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>script</title>
+      <link>https://blog.lazytrick.com/tags/script/</link>
+      <pubDate>Fri, 03 Nov 2017 09:02:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/script/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pthread</title>
+      <link>https://blog.lazytrick.com/tags/pthread/</link>
+      <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/pthread/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>thread</title>
+      <link>https://blog.lazytrick.com/tags/thread/</link>
+      <pubDate>Sat, 20 May 2017 15:50:20 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/thread/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Assembly</title>
+      <link>https://blog.lazytrick.com/tags/assembly/</link>
+      <pubDate>Sun, 14 May 2017 08:43:10 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/assembly/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>busybox</title>
+      <link>https://blog.lazytrick.com/tags/busybox/</link>
+      <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/busybox/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>qemu</title>
+      <link>https://blog.lazytrick.com/tags/qemu/</link>
+      <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/qemu/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>rootfs</title>
+      <link>https://blog.lazytrick.com/tags/rootfs/</link>
+      <pubDate>Mon, 10 Apr 2017 14:07:48 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/rootfs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linux</title>
+      <link>https://blog.lazytrick.com/tags/linux/</link>
+      <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/linux/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Editor</title>
+      <link>https://blog.lazytrick.com/tags/editor/</link>
+      <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/editor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Unix</title>
+      <link>https://blog.lazytrick.com/tags/unix/</link>
+      <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/unix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Vim</title>
+      <link>https://blog.lazytrick.com/tags/vim/</link>
+      <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/vim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Bitbake</title>
+      <link>https://blog.lazytrick.com/tags/bitbake/</link>
+      <pubDate>Sun, 19 Feb 2017 00:14:48 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/bitbake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Asm</title>
+      <link>https://blog.lazytrick.com/tags/asm/</link>
+      <pubDate>Sat, 11 Feb 2017 12:47:50 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/asm/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>device file</title>
+      <link>https://blog.lazytrick.com/tags/device-file/</link>
+      <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/device-file/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kernel</title>
+      <link>https://blog.lazytrick.com/tags/kernel/</link>
+      <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/kernel/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>systemd</title>
+      <link>https://blog.lazytrick.com/tags/systemd/</link>
+      <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/systemd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>udev</title>
+      <link>https://blog.lazytrick.com/tags/udev/</link>
+      <pubDate>Thu, 19 Jan 2017 16:19:32 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/udev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Compiler</title>
+      <link>https://blog.lazytrick.com/tags/compiler/</link>
+      <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/compiler/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linker</title>
+      <link>https://blog.lazytrick.com/tags/linker/</link>
+      <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/linker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Loader</title>
+      <link>https://blog.lazytrick.com/tags/loader/</link>
+      <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/loader/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GCC</title>
+      <link>https://blog.lazytrick.com/tags/gcc/</link>
+      <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/gcc/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HelloWorld</title>
+      <link>https://blog.lazytrick.com/tags/helloworld/</link>
+      <pubDate>Sun, 01 Jan 2017 22:00:04 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/helloworld/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C</title>
+      <link>https://blog.lazytrick.com/tags/c/</link>
+      <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Error</title>
+      <link>https://blog.lazytrick.com/tags/error/</link>
+      <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/error/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FileSystem</title>
+      <link>https://blog.lazytrick.com/tags/filesystem/</link>
+      <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/filesystem/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ASN1</title>
+      <link>https://blog.lazytrick.com/tags/asn1/</link>
+      <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/asn1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PER</title>
+      <link>https://blog.lazytrick.com/tags/per/</link>
+      <pubDate>Tue, 29 Nov 2016 14:48:30 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/per/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CER</title>
+      <link>https://blog.lazytrick.com/tags/cer/</link>
+      <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/cer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DER</title>
+      <link>https://blog.lazytrick.com/tags/der/</link>
+      <pubDate>Fri, 25 Nov 2016 14:43:11 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/der/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Aligment</title>
+      <link>https://blog.lazytrick.com/tags/aligment/</link>
+      <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/aligment/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Casting</title>
+      <link>https://blog.lazytrick.com/tags/casting/</link>
+      <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/casting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Pointer</title>
+      <link>https://blog.lazytrick.com/tags/pointer/</link>
+      <pubDate>Wed, 26 Oct 2016 06:50:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/pointer/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GDB</title>
+      <link>https://blog.lazytrick.com/tags/gdb/</link>
+      <pubDate>Wed, 19 Oct 2016 14:27:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/gdb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Installation</title>
+      <link>https://blog.lazytrick.com/tags/installation/</link>
+      <pubDate>Tue, 20 Sep 2016 08:42:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/installation/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Command</title>
+      <link>https://blog.lazytrick.com/tags/command/</link>
+      <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/command/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Driver</title>
+      <link>https://blog.lazytrick.com/tags/driver/</link>
+      <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/driver/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Firmware</title>
+      <link>https://blog.lazytrick.com/tags/firmware/</link>
+      <pubDate>Mon, 05 Sep 2016 01:44:02 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/firmware/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RT2870</title>
+      <link>https://blog.lazytrick.com/tags/rt2870/</link>
+      <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/rt2870/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WifiUSB</title>
+      <link>https://blog.lazytrick.com/tags/wifiusb/</link>
+      <pubDate>Thu, 11 Aug 2016 15:04:03 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/wifiusb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Recipe</title>
+      <link>https://blog.lazytrick.com/tags/recipe/</link>
+      <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/recipe/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>StaticIP</title>
+      <link>https://blog.lazytrick.com/tags/staticip/</link>
+      <pubDate>Sat, 06 Aug 2016 17:08:17 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/staticip/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Samba</title>
+      <link>https://blog.lazytrick.com/tags/samba/</link>
+      <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/samba/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SMB</title>
+      <link>https://blog.lazytrick.com/tags/smb/</link>
+      <pubDate>Sat, 06 Aug 2016 16:05:42 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/smb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Flash</title>
+      <link>https://blog.lazytrick.com/tags/flash/</link>
+      <pubDate>Fri, 05 Aug 2016 01:50:50 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/flash/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CrossCompile</title>
+      <link>https://blog.lazytrick.com/tags/crosscompile/</link>
+      <pubDate>Wed, 03 Aug 2016 01:24:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/crosscompile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LinuxImage</title>
+      <link>https://blog.lazytrick.com/tags/linuximage/</link>
+      <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/linuximage/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RaspberryPI</title>
+      <link>https://blog.lazytrick.com/tags/raspberrypi/</link>
+      <pubDate>Fri, 29 Jul 2016 08:06:07 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/raspberrypi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Translate</title>
+      <link>https://blog.lazytrick.com/tags/translate/</link>
+      <pubDate>Sat, 23 Jul 2016 05:46:28 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/translate/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Library</title>
+      <link>https://blog.lazytrick.com/tags/library/</link>
+      <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/library/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linking</title>
+      <link>https://blog.lazytrick.com/tags/linking/</link>
+      <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/linking/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ObjectFile</title>
+      <link>https://blog.lazytrick.com/tags/objectfile/</link>
+      <pubDate>Sun, 12 Jun 2016 13:20:13 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/objectfile/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SCSI</title>
+      <link>https://blog.lazytrick.com/tags/scsi/</link>
+      <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/scsi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>USB</title>
+      <link>https://blog.lazytrick.com/tags/usb/</link>
+      <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/usb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>USBMemory</title>
+      <link>https://blog.lazytrick.com/tags/usbmemory/</link>
+      <pubDate>Tue, 15 Mar 2016 14:54:41 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/usbmemory/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>mqtt</title>
+      <link>https://blog.lazytrick.com/tags/mqtt/</link>
+      <pubDate>Tue, 08 Mar 2016 15:39:23 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/mqtt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>ITRON</title>
+      <link>https://blog.lazytrick.com/tags/itron/</link>
+      <pubDate>Tue, 01 Mar 2016 15:25:24 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/itron/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>DigitalSignal</title>
+      <link>https://blog.lazytrick.com/tags/digitalsignal/</link>
+      <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/digitalsignal/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RGB</title>
+      <link>https://blog.lazytrick.com/tags/rgb/</link>
+      <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/rgb/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VGA</title>
+      <link>https://blog.lazytrick.com/tags/vga/</link>
+      <pubDate>Wed, 03 Feb 2016 15:31:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/vga/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Draft</title>
+      <link>https://blog.lazytrick.com/tags/draft/</link>
+      <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/draft/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>HID</title>
+      <link>https://blog.lazytrick.com/tags/hid/</link>
+      <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/hid/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>USBDescriptor</title>
+      <link>https://blog.lazytrick.com/tags/usbdescriptor/</link>
+      <pubDate>Thu, 28 Jan 2016 15:44:23 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/usbdescriptor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FIT</title>
+      <link>https://blog.lazytrick.com/tags/fit/</link>
+      <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/fit/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Renesas</title>
+      <link>https://blog.lazytrick.com/tags/renesas/</link>
+      <pubDate>Mon, 25 Jan 2016 14:31:47 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/renesas/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Porting</title>
+      <link>https://blog.lazytrick.com/tags/porting/</link>
+      <pubDate>Mon, 25 Jan 2016 14:27:20 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/porting/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>I2C</title>
+      <link>https://blog.lazytrick.com/tags/i2c/</link>
+      <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/i2c/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SPI</title>
+      <link>https://blog.lazytrick.com/tags/spi/</link>
+      <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/spi/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>UART</title>
+      <link>https://blog.lazytrick.com/tags/uart/</link>
+      <pubDate>Mon, 25 Jan 2016 14:22:56 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/uart/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Beyondlogic</title>
+      <link>https://blog.lazytrick.com/tags/beyondlogic/</link>
+      <pubDate>Mon, 25 Jan 2016 14:18:10 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/beyondlogic/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>AES</title>
+      <link>https://blog.lazytrick.com/tags/aes/</link>
+      <pubDate>Tue, 05 Jan 2016 14:48:34 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/aes/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>FAT</title>
+      <link>https://blog.lazytrick.com/tags/fat/</link>
+      <pubDate>Sun, 27 Dec 2015 13:39:16 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/fat/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Cmake</title>
+      <link>https://blog.lazytrick.com/tags/cmake/</link>
+      <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/cmake/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Make</title>
+      <link>https://blog.lazytrick.com/tags/make/</link>
+      <pubDate>Sun, 16 Aug 2015 04:12:53 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/make/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Wireshark</title>
+      <link>https://blog.lazytrick.com/tags/wireshark/</link>
+      <pubDate>Tue, 14 Jul 2015 14:40:03 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/wireshark/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Distro</title>
+      <link>https://blog.lazytrick.com/tags/distro/</link>
+      <pubDate>Sat, 25 Apr 2015 07:50:24 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/distro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nodejs</title>
+      <link>https://blog.lazytrick.com/tags/nodejs/</link>
+      <pubDate>Sat, 11 Apr 2015 06:30:59 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/nodejs/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Embbeded</title>
+      <link>https://blog.lazytrick.com/tags/embbeded/</link>
+      <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/embbeded/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Open</title>
+      <link>https://blog.lazytrick.com/tags/open/</link>
+      <pubDate>Wed, 11 Feb 2015 09:21:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/tags/open/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

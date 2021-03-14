@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html class="no-js" lang="vi">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>AWK - Sử dụng cơ bản - Lazytrick - Limited size memory of mind</title>
+	<script>(function(d,e){d[e]=d[e].replace("no-js","js");})(document.documentElement,"className");</script>
+	<meta name="description" content="">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="dns-prefetch" href="//fonts.googleapis.com">
+	<link rel="dns-prefetch" href="//fonts.gstatic.com">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700">
+
+	<link rel="stylesheet" href="https://blog.lazytrick.com/css/style.css">
+	
+
+	<link rel="shortcut icon" href="https://blog.lazytrick.com/favicon.ico">
+		
+<script type="application/javascript">
+var doNotTrack = false;
+if (!doNotTrack) {
+	window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+	ga('create', 'UA-53476519-2', 'auto');
+	
+	ga('send', 'pageview');
+}
+</script>
+<script async src='https://www.google-analytics.com/analytics.js'></script>
+
+</head>
+<body class="body">
+	<div class="container container--outer">
+		<header class="header">
+	<div class="container header__container">
+		
+	<div class="logo">
+		<a class="logo__link" href="https://blog.lazytrick.com/" title="Lazytrick - Limited size memory of mind" rel="home">
+			<div class="logo__item logo__text">
+					<div class="logo__title">Lazytrick - Limited size memory of mind</div>
+					
+				</div>
+		</a>
+	</div>
+		
+<nav class="menu">
+	<button class="menu__btn" aria-haspopup="true" aria-expanded="false" tabindex="0">
+		<span class="menu__btn-title" tabindex="-1">Menu</span>
+	</button>
+	<ul class="menu__list">
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/">
+				
+				<span class="menu__text">Home</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/post/">
+				
+				<span class="menu__text">Viết những gì?</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/tags/">
+				
+				<span class="menu__text">Tags</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/categories/">
+				
+				<span class="menu__text">Category</span>
+				
+			</a>
+		</li>
+		<li class="menu__item">
+			<a class="menu__link" href="https://blog.lazytrick.com/about/">
+				
+				<span class="menu__text">Ai viết?</span>
+				
+			</a>
+		</li>
+	</ul>
+</nav>
+
+	</div>
+</header>
+		<div class="wrapper flex">
+			<div class="primary">
+			
+<main class="main" role="main">
+	<article class="post">
+		<header class="post__header">
+			<h1 class="post__title">AWK - Sử dụng cơ bản</h1>
+			
+		</header><div class="content post__content clearfix">
+			<p><strong>AWK</strong> : 1 trong 3 tool (cùng với <strong>grep</strong> và <strong>sed</strong>) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.</p>
+<p>Sau một hồi tìm hiểu <strong>awk</strong> trên <a href="http://www.tutorialspoint.com/awk/index.htm">TutorialPoint</a>.</p>
+<p><strong>awk</strong> là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng. AWK cung cấp hẳn 1 ngôn ngữ để so khớp input cũng như xuất output. Ngôn ngữ này cực kì giống ngôn ngữ C, nên rất dễ làm quen. Nó cung cấp 1 cơ chế matching mạnh là regular express nữa cho xử lý input.</p>
+<p><strong>Khi làm việc với AWK, ta hãy hiểu rằng, từng line trong input sẽ được thực hiện qua đoạn script mà ta cung cấp cho Awk.</strong></p>
+<p>AWK sẽ làm việc theo flow sau:</p>
+<p><img src="https://blog.lazytrick.com/post/images/awk_workflow.png" alt="awk_workflow"></p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$awk</span> <span style="color:#cd5555">&#39;BEGIN {} {} END {}&#39;</span>  
+</code></pre></div><p>Có 3 khối : <strong>BEGIN</strong>, Body (không có từ khóa), <strong>END</strong>.</p>
+<p>Khối <strong>BEGIN</strong>: được thực hiện chỉ duy nhất 1 lần, trước khi bắt đầu đọc dữ liệu.<br>
+Khối <strong>END</strong>: được thực hiện chỉ duy nhất 1 lần, sau khi thực hiện xong phần xử lý chính.<br>
+Khối Body: không có từ khóa bắt đầu, được thực hiện với mỗi line dữ liệu đầu vào.</p>
+<p>Một số ví dụ đơn giản.</p>
+<h2 id="1viết-lại-pgrep">1.Viết lại pgrep</h2>
+<p><a href="http://linux.die.net/man/1/pgrep">pgrep</a> là tìm process ID theo keyword được nhập vào. Lệnh này được sử dụng trong rất nhiều trường hợp như tìm process ứng dụng, kết hợp <a href="http://linux.die.net/man/1/kill">kill</a> để tắt 1 loạt ứng dụng, etc.</p>
+<p>Giả sử với <strong><em>ps uax</em></strong>, ta có kết quả sau:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">root <span style="color:#b452cd">3853</span> 0.0 0.0 <span style="color:#b452cd">21024</span> <span style="color:#b452cd">480</span> ? Ss 18:52 0:00 /usr/sbin/vmware-authdlauncher  
+root <span style="color:#b452cd">4028</span> 0.0 0.0 <span style="color:#b452cd">241144</span> <span style="color:#b452cd">5928</span> ? Ss 18:52 0:00 /usr/sbin/nmbd -D  
+root <span style="color:#b452cd">4073</span> 0.0 0.1 <span style="color:#b452cd">338924</span> <span style="color:#b452cd">15976</span> ? Ss 18:52 0:00 /usr/sbin/smbd -D  
+root <span style="color:#b452cd">4077</span> 0.0 0.0 <span style="color:#b452cd">330820</span> <span style="color:#b452cd">5792</span> ? S 18:52 0:00 /usr/sbin/smbd -D  
+root <span style="color:#b452cd">4079</span> 0.0 0.0 <span style="color:#b452cd">338932</span> <span style="color:#b452cd">7484</span> ? S 18:52 0:00 /usr/sbin/smbd -D
+
+</code></pre></div><p>Ta sẽ thực hiện lấy PID của các process có chưa từ khóa <strong><em>daemon</em></strong>:</p>
+<div class="highlight"><pre style="background-color:#eed;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"><span style="color:#00688b">$ps</span> aux|grep daemon|awk {print <span style="color:#00688b">$2</span>}  
+</code></pre></div>
+		</div>
+		<footer class="post__footer">
+			
+<div class="post__tags tags clearfix">
+	<svg class="tags__badge icon icon-tag" width="16" height="16" viewBox="0 0 32 32"><path d="M32 19c0 1-1 2-1 2L21 31s-1 1-2 1-2-1-2-1L2 16c-1-1-1.4-2-1.4-2S0 12.5 0 11V3C0 1.5.8.8.8.8S1.5 0 3 0h8c1.5 0 3 .6 3 .6S15 1 16 2l15 15s1 1 1 2zM7 10a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/></svg>
+	<ul class="tags__list">
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/command/" rel="tag">Command</a>
+		</li>
+		<li class="tags__item">
+			<a class="tags__link btn" href="https://blog.lazytrick.com/tags/linux/" rel="tag">Linux</a>
+		</li>
+	</ul>
+</div>
+		</footer>
+	</article>
+</main>
+
+
+
+<section class="comments">
+	<div id="disqus_thread"></div>
+<script type="application/javascript">
+    var disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "https-blog-lazytrick-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+</section>
+
+
+			</div>
+			
+		</div>
+		<footer class="footer">
+	<div class="container footer__container flex">
+		
+		<div class="footer__copyright">
+			&copy; 2021 Lazytrick - Limited size memory of mind.
+			<span class="footer__copyright-credits">Được tạo từ <a href="https://gohugo.io/" rel="nofollow noopener" target="_blank">Hugo</a> sử dụng với <a href="https://github.com/Vimux/Mainroad/" rel="nofollow noopener" target="_blank">Mainroad</a>.</span>
+		</div>
+	</div>
+</footer>
+	</div>
+<script async defer src="https://blog.lazytrick.com/js/menu.js"></script>
+</body>
+</html>

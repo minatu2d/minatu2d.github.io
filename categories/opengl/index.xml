@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>opengl on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/categories/opengl/</link>
+    <description>Recent content in opengl on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Fri, 14 Aug 2020 10:09:00 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/categories/opengl/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>OpenGL là gì?</title>
+      <link>https://blog.lazytrick.com/post/2020-08-18-opengl-la-gi/</link>
+      <pubDate>Fri, 14 Aug 2020 10:09:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-08-18-opengl-la-gi/</guid>
+      <description>0. Tại sao đi tìm hiểu OpenGL làm cái gì?  Gần đây, phải quay sang làm 1 dự án có liên quan đến Computer Graphic, cụ thể là trong không gian 3 chiều (3D). Thực sự, đối với mình nó lại hoàn toàn mới. Ngoài chút kiến thức toán như: Vector, Ma trận (Matrix), vector đơn vị, vài phép cơ bản của Vector thì mình không còn tí kiến thức Đại số nào nữa.</description>
+    </item>
+    
+    <item>
+      <title>Sữa mẹ, sữa ngoài, bao nhiêu là đủ?</title>
+      <link>https://blog.lazytrick.com/post/2020-09-26-sua-me-va-sua-ngoai-bao-nhieu-la-du/</link>
+      <pubDate>Fri, 14 Aug 2020 10:09:00 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2020-09-26-sua-me-va-sua-ngoai-bao-nhieu-la-du/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Linux on Lazytrick - Limited size memory of mind</title>
+    <link>https://blog.lazytrick.com/tags/linux/</link>
+    <description>Recent content in Linux on Lazytrick - Limited size memory of mind</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <copyright>&amp;copy; 2019 Minatu2d</copyright>
+    <lastBuildDate>Sun, 02 Apr 2017 11:16:36 +0900</lastBuildDate><atom:link href="https://blog.lazytrick.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Phím tắt cho bash</title>
+      <link>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</link>
+      <pubDate>Sun, 02 Apr 2017 11:16:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-04-02-phim-tat-cho-bash/</guid>
+      <description>Mặc định, bash sử dụng emacs mode, có thể chuyển sang vi mode được.
+Nếu sử dụng ở chế độ mặc định, thì dưới đây là một số shortcut hữu ích khi sử dụng.
+Chiều ngang : Di chuyển cơ bản Ctrl + b : (Backward) Di chuyển con trỏ sang trái về trước 1 kí tự
+Ctrl + f : (Fordware) Di chuyển con trỏ sang phải một kí tự.</description>
+    </item>
+    
+    <item>
+      <title>Một số điều rút ra từ việc phải sử dụng command</title>
+      <link>https://blog.lazytrick.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</link>
+      <pubDate>Thu, 30 Mar 2017 13:16:57 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-03-30-mot-so-dieu-rut-ra-viec-phai-su-dung-command/</guid>
+      <description>Do yêu cầu bắt buộc nên gần đây phải làm việc với VIM.
+Thực ra vẫn dùng máy tính Windows để chạy các ứng dụng SSH Client, SCP, rồi thì Excel. Tuy nhiên, các thao tác chủ yếu với source, text file, là trên command.
+Mà trên command của Unix, hay Linux. Dù có trả qua bao nhiêu năm nữa, thì có vẻ chỉ có 2 trường phái là VIM và Emacs thôi.</description>
+    </item>
+    
+    <item>
+      <title>Chuyển sang dùng VI(M)</title>
+      <link>https://blog.lazytrick.com/post/2017-03-29-chuyen-sang-dung-vim/</link>
+      <pubDate>Wed, 29 Mar 2017 13:37:36 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-03-29-chuyen-sang-dung-vim/</guid>
+      <description>Chuyển sang dùng Vi Vi - Editor khá nhiều tuổi, có lẽ còn nhiều tuổi hơn của mình.
+Là editor phổ biến nhất trên hệ thống dòng lệnh Linux, Unix hoặc tương tự.
+Có Linux, bạn gần như sẽ có thể dùng Vi. Mà Linux thì có ở rất rất nhiều nơi.
+Có phải vì nó mặc định nên nó phổ biến???
+Mình từng nghĩ vậy hoặc nghĩ chắc nó nhẹ nên người ta cài sẵn nó thôi</description>
+    </item>
+    
+    <item>
+      <title>Thực hiện 4 Stage khi Compile bằng tay (Manual)</title>
+      <link>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</link>
+      <pubDate>Sun, 08 Jan 2017 06:18:19 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2017-01-08-thuc-hien-4-stage-khi-compile-bang-tay-manual/</guid>
+      <description>Ta đã có bài giới thiệu về 4 Stage khi Compiling rồi. Đầu ra của Stage trước sẽ là đầu vào của Stage sau.
+Trong compile thông thường dạng
+$gcc -o HelloWorld HelloWorld.c Với câu lệnh trên,ta sẽ không thấy kết quả của 3 Stage đầu tiên.
+Để hiểu rõ hơn, chúng ta hãy thử thực hiện các Stage bằng tay xem liệu ta có thể tạo ra file chạy như câu lệnh compile trên hay không.</description>
+    </item>
+    
+    <item>
+      <title>Lỗi về Case-sensive khi biên dịch C (gcc)</title>
+      <link>https://blog.lazytrick.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</link>
+      <pubDate>Thu, 01 Dec 2016 13:08:38 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-12-01-loi-ve-case-sensive-khi-bien-dich-c-gcc/</guid>
+      <description>Khi phát triển các ứng dụng trên Linux, nhúng Linux, mình hầu như cài đặt và sử dụng một máy ảo (tạo bằng VMWare hoặc VirtualBox). Cài trình biên dịch GCC lên đó.
+Hầu như mình có thể làm mọi việc trên môi trường máy ảo đó trừ quản lý source.
+Vì cty mình vẫn sử dụng SVN với Client là Tortoise. Linux cũng có rất nhiều công cụ tuơng tự Tortoise nhưng để tránh những vấn đề không cần thiết, có thể làm phiền người khác liên quan đến tương thích SVN, mình vẫn chọn quản lý bằng Tortoise trên Windows.</description>
+    </item>
+    
+    <item>
+      <title>AWK - Sử dụng cơ bản</title>
+      <link>https://blog.lazytrick.com/post/2016-09-07-awk-su-dung-co-ban/</link>
+      <pubDate>Wed, 07 Sep 2016 09:25:06 +0900</pubDate>
+      
+      <guid>https://blog.lazytrick.com/post/2016-09-07-awk-su-dung-co-ban/</guid>
+      <description>AWK : 1 trong 3 tool (cùng với grep và sed) mạnh dùng xử lý chuỗi, xuất hiện ban đầu ở Unix, và được mặc định có trong bất cứ bản phân phối Linux nào.
+Sau một hồi tìm hiểu awk trên TutorialPoint.
+awk là một một tool để xử lý một chuỗi, đầu vào có thể là file, là output của một câu lệnh khác. Đơn vị xử lý là dòng, tức là nó đọc vào từng dòng text từ dữ liệu đầu vào rồi thực hiện các xử lý tương ứng.</description>
+    </item>
+    
+  </channel>
+</rss>
