@@ -3,7 +3,7 @@ title: "Về việc trẻ em khóc trước khi ngủ (tìm hiểu bằng NIHONG
 description: "Tìm hiểu về việc trẻ em khóc trước khi ngủ bằng tiếng Nhật"
 date: "2020-02-16T23:51:01+09:00"
 thumbnail: ""
-published: true
+published: false
 categories:
   - babycare
   - fixproblem
@@ -11,10 +11,10 @@ tags:
   - khoc
 ---
 
-## 1. Từ hội nghiên cứu, bảo vệ bà mẹ trẻ em Nhật Bản: 
+## 1. Từ hội nghiên cứu, bảo vệ bà mẹ trẻ em Nhật Bản:
 - Link : https://www.mcfh.or.jp/netsoudan/article.php?id=981
 
-### Nội dung 
+### Nội dung
 Có 4 `thuyết` giải thích tại sao trẻ không khóc trước khi ngủ:
 
   1. Từ ngày xưa, loài người khi ngủ thường có nguy cơ bị các loài khác tấn công, bị mưa ưới nên bị sợ bóng tối. Những cái đó `biến thành gen di truyền`, nên khi người ta ko biết lúc nào sẽ ngủ mất nên sẽ bất an. Vì trẻ nhỏ vẫn còn những cái đó, lại chưa tập luyện đủ lâu để quen cảm giác `ngủ thì sẽ không bất an nữa` nên cần thêm time.
@@ -29,7 +29,7 @@ Có 4 `thuyết` giải thích tại sao trẻ không khóc trước khi ngủ:
 
 - Trên đó chỉ là `thuyết` thôi, không hẳn có thuyết nào liên quan đến giờ ngủ "theo quy định".
 - Trẻ em chưa thể cảm nhận ngay được việc "ngủ là thoải mái" ngay được, nó cần thời gian làm quen.
-- Thực sự cũng ko rõ nguyên nhân chính xác là gì, nhưng đại ý có vẻ là là trẻ cảm thấy bất an nên sẽ khóc. 
+- Thực sự cũng ko rõ nguyên nhân chính xác là gì, nhưng đại ý có vẻ là là trẻ cảm thấy bất an nên sẽ khóc.
 - Đôi khi, chỉ là khi trẻ được chơi đủ khi thức sẽ dễ vào giấc ngủ hơn thôi.
 - Khi ngủ thì đưa cho con cái gì để cầm vào, hoặc giữ con để con đỡ cảm thấy bất an thì có khi cũng tốt.
 

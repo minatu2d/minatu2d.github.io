@@ -4,7 +4,7 @@ description: "Sữa mẹ, sữa ngoài, bao nhiêu là đủ"
 date: "2020-08-14T10:09:00+09:00"
 thumbnail: ""
 toc: true
-published: true
+published: false
 categories:
   - basic
   - opengl
