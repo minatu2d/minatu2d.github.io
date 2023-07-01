@@ -13,7 +13,7 @@ paginate = 20
 disqusShortname = "https-blog-lazytrick-com"
 
 # Google Analytics for Hit counter
-googleAnalytics = "UA-53476519-2"
+googleAnalytics = "G-HQVEP2NRZW"
 
 # Add SEO optimization
 enableRobotsTXT = true
@@ -67,7 +67,7 @@ pygmentsStyle = "perldoc"
 	debugCSS = false
 	# Custom CSS
 	customCSS = []
-	
+
 	# Site meta description
 	description = "Write to read later"
 	# Site's Tagline (Subtitle or Keyword)
@@ -86,12 +86,12 @@ pygmentsStyle = "perldoc"
 	mainSections = ["post"]
 	# Configure which sections for Latest Works
 	workSections = ["post"]
-	
+
 	# List of sections that support disqus comments
 	disqusSections = [ "post" ]
 	# List of sections that support utterances comments
 	utterancesSections = [ "post" ]
-	
+
 	# Utterances Configuration
 	utterancesRepo = ""
 	utterancesTheme = "github-light"
