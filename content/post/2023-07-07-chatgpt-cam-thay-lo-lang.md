@@ -2,7 +2,7 @@
 title: "ChatGPT là gì? Tại sao Developer nên lo lắng"
 description: "ChatGPT là gì? Tại sao nên lo lắng về công việc developer"
 date: "2023-07-07T15:30:00+09:00"
-thumbnail: ""
+thumbnail: "/post/images/2023/chatgpt_plus.png"
 toc: true
 published: true
 categories:
