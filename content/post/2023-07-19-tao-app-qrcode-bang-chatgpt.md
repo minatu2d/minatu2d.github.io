@@ -23,3 +23,6 @@ tags:
 
 ## Prompts đã sử dụng
 - https://chat.openai.com/share/17cc3dd3-f2a5-4828-8adf-382fbace5da5
+
+## Github
+- https://github.com/minatu2d/simpleqr
