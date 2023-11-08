@@ -37,7 +37,7 @@ Execution time: 24486 ms
 [INFO] Finished at: 2023-11-09T06:56:38+09:00
 ```
 - CPU, Memory Usage :
-  ![Alt text](/post/images/2023/20231101_export_file_problem/TestXSSFWorkbook.png)
+  ![Alt text](/post/images/20231101_export_file_problem/TestXSSFWorkbook.png)
 
 ## Khi sử dụng với sxssfworkbook
 - Thời gian chạy : 5.1 s
@@ -59,7 +59,7 @@ Execution time: 4779 ms
 [INFO] ------------------------------------------------------------------------
 ```
 - CPU, Memory Usage
-![Alt text](/post/images/2023/20231101_export_file_problem/TestSXSSFWorkbook.png)
+![Alt text](/post/images/20231101_export_file_problem/TestSXSSFWorkbook.png)
 # Đánh giá:
 - Sử dụng `sxssfworkbook` cho thời gian chạy nhanh hơn : 24.7 s vs 5.1 s
 - Sử dụng `sxssfworkbook` cho mức độ chiếm dụng CPU ít hơn
