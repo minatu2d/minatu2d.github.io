@@ -11,6 +11,7 @@ tags:
   - java
   - excel
   - apache poi
+  - chatgpt
 ---
 
 # Môi trường, điều kiện
@@ -69,3 +70,7 @@ Execution time: 4779 ms
 # Một số chú ý
 - Khi sử dụng `sxssfworkbook` thì một số thao tác `GetRow` sẽ không thể hoạt động được nữa.
 - Tức là một phần của file `Excel` đã bị ghi ra rồi thì không thể tham chiếu lại nữa.
+
+# Tham khảo
+- https://poi.apache.org/
+- Code trên đều viết bằng `ChatGPT`
